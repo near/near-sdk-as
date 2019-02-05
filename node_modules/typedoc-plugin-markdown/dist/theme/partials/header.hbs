@@ -1,0 +1,12 @@
+{{!-- {{ breadcrumbs }} --}}
+{{#ifDisplayBreadcrumbs}}{{#unless model.isIndex}}[{{project.name}}](../README.md){{~#with model~}}{{> breadcrumb}}{{/with}}{{getNewLine}}{{/unless}}{{/ifDisplayBreadcrumbs}}
+{{!-- {{ title }} --}}
+{{~#ifDisplayMainTitle this ~}}
+# {{#unless model.isIndex }}{{model.kindString }}:{{/unless}} {{{ model.name }}}
+{{/ifDisplayMainTitle}}
+{{#compact}}
+{{~#with model~}}
+{{~#unless displayIndexTitle~}}
+{{~/unless}}
+{{~/with}}
+{{/compact}}
