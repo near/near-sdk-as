@@ -29,7 +29,7 @@ Provides context for contract execution, including information about transaction
 
 getcontractName(): `string`
 
-*Defined in near.ts:20*
+*Defined in [near.ts:20](https://github.com/nearprotocol/near-runtime-ts/blob/cb19563/near.ts#L20)*
 
 Account ID of contract.
 
@@ -42,7 +42,7 @@ ___
 
 getsender(): `string`
 
-*Defined in near.ts:13*
+*Defined in [near.ts:13](https://github.com/nearprotocol/near-runtime-ts/blob/cb19563/near.ts#L13)*
 
 Account ID of transaction sender.
 
@@ -58,7 +58,7 @@ ___
 
 ▸ **getString**(typeIndex: *[BufferTypeIndex](../modules/_near_.md#buffertypeindex)*, key: *`string`*): `string`
 
-*Defined in near.ts:27*
+*Defined in [near.ts:27](https://github.com/nearprotocol/near-runtime-ts/blob/cb19563/near.ts#L27)*
 
 Returns context value with given index and key. Internal usage only for now.
 

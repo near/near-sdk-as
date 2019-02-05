@@ -97,7 +97,7 @@ export class GlobalStorage {
    * Store byte array under given key. Key is encoded as UTF-8 strings.
    * Byte array stored as is.
    *
-   * It's convenient to use this togetger with `domainObject.encode()`.
+   * It's convenient to use this together with `domainObject.encode()`.
    */
   setBytes(key: string, value: Uint8Array): void {
     storage_write(near.utf8(key), near.bufferWithSize(value).buffer.data)
@@ -107,7 +107,7 @@ export class GlobalStorage {
    * Get byte array stored under given key. Key is encoded as UTF-8 strings.
    * Byte array stored as is.
    *
-   * It's convenient to use this togetger with `DomainObject.decode()`.
+   * It's convenient to use this together with `DomainObject.decode()`.
    */
   getBytes(key: string): Uint8Array {
     let len = storage_read_len(near.utf8(key));
