@@ -306,18 +306,33 @@ declare function read_len(type_index: u32, key: usize): u32;
 @external("env", "read_into")
 declare function read_into(type_index: u32, key: usize, value: usize): void;
 
-/// Hash buffer is 32 bytes
+/**
+* @hidden
+* Hash buffer is 32 bytes
+*/
 @external("env", "hash")
 declare function _near_hash(buffer: usize, out: usize): void;
+/**
+* @hidden
+*/
 @external("env", "hash32")
 declare function _near_hash32(buffer: usize): u32;
 
-// Fills given buffer with random u8.
+/**
+* @hidden
+* Fills given buffer with random u8.
+*/
 @external("env", "random_buf")
 declare function _near_random_buf(len: u32, out: usize): void
+/**
+* @hidden
+*/
 @external("env", "random32")
 declare function _near_random32(): u32;
 
+/**
+* @hidden
+*/
 @external("env", "log")
 declare function _near_log(msg_ptr: usize): void;
 
