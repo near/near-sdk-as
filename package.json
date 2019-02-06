@@ -1,0 +1,16 @@
+{
+  "name": "near-runtime-ts",
+  "version": "0.0.1",
+  "description": "Near smart contract runtime library for typescript",
+  "main": "index.js",
+  "scripts": {
+    "doc": "rm -rf apidoc; mkdir apidoc; node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-markdown": "^1.1.25"
+  }
+}
