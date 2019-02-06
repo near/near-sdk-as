@@ -16,8 +16,12 @@ npm install --save-dev typedoc typedoc-plugin-markdown
 After installing typedoc, run
 
 ```
-node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --out apidoc/
+rm -rf apidoc
+mkdir apidoc
+node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/
 ```
+
+(The tool does not deal well with items being removed from documentation, hence the need to delete output)
 
 ## Index
 

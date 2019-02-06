@@ -1,4 +1,4 @@
-[](../README.md) > ["near"](../modules/_near_.md) > [GlobalStorage](../classes/_near_.globalstorage.md)
+[near-runtime-ts](../README.md) > ["near"](../modules/_near_.md) > [GlobalStorage](../classes/_near_.globalstorage.md)
 
 # Class: GlobalStorage
 
@@ -35,7 +35,7 @@ For now it's just simple key-value store with prefix queries.
 
 ▸ **getBytes**(key: *`string`*): `Uint8Array`
 
-*Defined in [near.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L112)*
+*Defined in [near.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L112)*
 
 Get byte array stored under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -56,7 +56,7 @@ ___
 
 ▸ **getItem**(key: *`string`*): `string`
 
-*Defined in [near.ts:70](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L70)*
+*Defined in [near.ts:70](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L70)*
 
 **Parameters:**
 
@@ -73,7 +73,7 @@ ___
 
 ▸ **getString**(key: *`string`*): `string`
 
-*Defined in [near.ts:84](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L84)*
+*Defined in [near.ts:84](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L84)*
 
 Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
 
@@ -92,7 +92,7 @@ ___
 
 ▸ **getU64**(key: *`string`*): `u64`
 
-*Defined in [near.ts:141](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L141)*
+*Defined in [near.ts:141](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L141)*
 
 Get 64-bit unsigned int stored under given key. Key is encoded as UTF-8 strings. Number is encoded as decimal string.
 
@@ -112,7 +112,7 @@ ___
 
 ▸ **keys**(prefix: *`string`*): `string`[]
 
-*Defined in [near.ts:52](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L52)*
+*Defined in [near.ts:52](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L52)*
 
 Returns list of keys starting with given prefix.
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **removeItem**(key: *`string`*): `void`
 
-*Defined in [near.ts:123](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L123)*
+*Defined in [near.ts:123](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L123)*
 
 **Parameters:**
 
@@ -150,7 +150,7 @@ ___
 
 ▸ **setBytes**(key: *`string`*, value: *`Uint8Array`*): `void`
 
-*Defined in [near.ts:102](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L102)*
+*Defined in [near.ts:102](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L102)*
 
 Store byte array under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -172,7 +172,7 @@ ___
 
 ▸ **setItem**(key: *`string`*, value: *`string`*): `void`
 
-*Defined in [near.ts:67](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L67)*
+*Defined in [near.ts:67](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L67)*
 
 **Parameters:**
 
@@ -190,7 +190,7 @@ ___
 
 ▸ **setString**(key: *`string`*, value: *`string`*): `void`
 
-*Defined in [near.ts:77](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L77)*
+*Defined in [near.ts:77](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L77)*
 
 Store string value under given key. Both key and value are encoded as UTF-8 strings.
 
@@ -210,7 +210,7 @@ ___
 
 ▸ **setU64**(key: *`string`*, value: *`u64`*): `void`
 
-*Defined in [near.ts:131](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L131)*
+*Defined in [near.ts:131](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L131)*
 
 Store 64-bit unsigned int under given key. Key is encoded as UTF-8 strings. Number is encoded as decimal string.
 

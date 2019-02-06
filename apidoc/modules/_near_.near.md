@@ -1,4 +1,4 @@
-[](../README.md) > ["near"](../modules/_near_.md) > [near](../modules/_near_.near.md)
+[near-runtime-ts](../README.md) > ["near"](../modules/_near_.md) > [near](../modules/_near_.near.md)
 
 # Module: near
 
@@ -27,7 +27,7 @@
 
 ▸ **base58**(source: *`Uint8Array`*): `string`
 
-*Defined in [near.ts:225](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L225)*
+*Defined in [near.ts:225](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L225)*
 
 **Parameters:**
 
@@ -44,7 +44,7 @@ ___
 
 ▸ **bufferWithSize**(buf: *`Uint8Array`*): `Uint8Array`
 
-*Defined in [near.ts:208](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L208)*
+*Defined in [near.ts:208](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L208)*
 
 **Parameters:**
 
@@ -61,7 +61,7 @@ ___
 
 ▸ **bufferWithSizeFromPtr**(ptr: *`usize`*, length: *`usize`*): `Uint8Array`
 
-*Defined in [near.ts:198](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L198)*
+*Defined in [near.ts:198](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L198)*
 
 **Parameters:**
 
@@ -79,7 +79,7 @@ ___
 
 ▸ **hash**<`T`>(data: *`T`*): `Uint8Array`
 
-*Defined in [near.ts:154](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L154)*
+*Defined in [near.ts:154](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L154)*
 
 Hash given data. Returns hash as 32-byte array.
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **hash32**<`T`>(data: *`T`*): `u32`
 
-*Defined in [near.ts:171](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L171)*
+*Defined in [near.ts:171](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L171)*
 
 Hash given data. Returns hash as 32-bit integer.
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **log**(msg: *`string`*): `void`
 
-*Defined in [near.ts:212](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L212)*
+*Defined in [near.ts:212](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L212)*
 
 **Parameters:**
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **random32**(): `u32`
 
-*Defined in [near.ts:194](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L194)*
+*Defined in [near.ts:194](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L194)*
 
 Returns random 32-bit integer.
 
@@ -153,7 +153,7 @@ ___
 
 ▸ **randomBuffer**(len: *`u32`*): `Uint8Array`
 
-*Defined in [near.ts:185](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L185)*
+*Defined in [near.ts:185](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L185)*
 
 Returns random byte buffer of given length.
 
@@ -172,7 +172,7 @@ ___
 
 ▸ **str**<`T`>(value: *`T`*): `string`
 
-*Defined in [near.ts:216](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L216)*
+*Defined in [near.ts:216](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L216)*
 
 **Type parameters:**
 
@@ -192,7 +192,7 @@ ___
 
 ▸ **utf8**(value: *`string`*): `usize`
 
-*Defined in [near.ts:221](https://github.com/nearprotocol/near-runtime-ts/blob/ffaa7f3/near.ts#L221)*
+*Defined in [near.ts:221](https://github.com/nearprotocol/near-runtime-ts/blob/a6cbaa1/near.ts#L221)*
 
 **Parameters:**
 
