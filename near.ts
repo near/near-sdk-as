@@ -121,7 +121,7 @@ export class GlobalStorage {
   }
 
   removeItem(key: string): void {
-    assert(false, "storage_remove not implemented yet.");
+    storage_remove(near.utf8(key));
   }
 
   /**
@@ -284,6 +284,8 @@ declare function storage_write(key: usize, value: usize): void;
 declare function storage_read_len(key: usize): usize;
 @external("env", "storage_read_into")
 declare function storage_read_into(key: usize, value: usize): void;
+@external("env", "storage_remove")
+declare function storage_remove(key: usize): void;
 @external("env", "storage_iter")
 declare function storage_iter(prefix: usize): u32;
 @external("env", "storage_iter_next")
