@@ -283,8 +283,8 @@ export class ContractPromise {
     return { id: promise_create(near.utf8(contractName), near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana, amount) }
   }
 
-  then(methodName: string, args: Uint8Array, mana: u32): void {
-    promise_then(this.id, near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana);
+  then(methodName: string, args: Uint8Array, mana: u32): ContractPromise {
+    return { id: promise_then(this.id, near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana) };
   }
 
   static all(promises: ContractPromise[]): ContractPromise {
