@@ -276,6 +276,45 @@ export namespace near {
   }
 }
 
+export class ContractPromise {
+  id: i32;
+
+  static create(contractName: string, methodName: string, args: Uint8Array, mana: u32, amount: u64 = 0): ContractPromise {
+    return { id: promise_create(near.utf8(contractName), near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana, amount) }
+  }
+
+  then(methodName: string, args: Uint8Array, mana: u32): ContractPromise {
+    return { id: promise_then(this.id, near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana) };
+  }
+
+  static all(promises: ContractPromise[]): ContractPromise {
+    let result: ContractPromise = promises[0];
+    for (let i = 1; i < promises.length; i++) {
+      result = { id: promise_and(result.id, promises[i].id) };
+    }
+    return result;
+  }
+
+  static getResults() : ContractPromiseResult[] {
+    let count = <i32>result_count();
+    let results = new Array<ContractPromiseResult>(count);
+    for (let i = 0; i < count; i++) {
+      let isOk = result_is_ok(i);
+      // TODO: Check what to do when not ok
+      let len = result_read_len(i);
+      let buffer = new Uint8Array(len);
+      result_read_into(i, buffer.buffer.data);
+      results[i] = { success: isOk, buffer: buffer };
+    }
+    return results;
+  }
+}
+
+export class ContractPromiseResult {
+  success: bool;
+  buffer: Uint8Array;
+}
+
 // TODO: Other functions exposed by runtime should be defined here
 
 @external("env", "storage_write")
@@ -300,6 +339,15 @@ declare function input_read_len(): usize;
 @external("env", "input_read_into")
 declare function input_read_into(ptr: usize): void;
 
+@external("env", "result_count")
+declare function result_count(): u32;
+@external("env", "result_is_ok")
+declare function result_is_ok(index: u32): bool;
+@external("env", "result_read_len")
+declare function result_read_len(index: u32): u32;
+@external("env", "result_read_into")
+declare function result_read_into(index: u32, value: usize): void;
+
 @external("env", "return_value")
 declare function return_value(value_ptr: usize): void;
 
@@ -308,33 +356,44 @@ declare function read_len(type_index: u32, key: usize): u32;
 @external("env", "read_into")
 declare function read_into(type_index: u32, key: usize, value: usize): void;
 
+@external("env", "promise_create")
+declare function promise_create(account_id: usize, method_name: usize, args: usize, mana: u32, amount: u64): u32;
+
+@external("env", "promise_then")
+declare function promise_then(promise_index: u32, method_name: usize, args: usize, mana: u32): u32;
+
+@external("env", "promise_and")
+declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
+
 /**
-* @hidden
-* Hash buffer is 32 bytes
-*/
+ * @hidden
+ * Hash buffer is 32 bytes
+ */
 @external("env", "hash")
 declare function _near_hash(buffer: usize, out: usize): void;
+
 /**
-* @hidden
-*/
+ * @hidden
+ */
 @external("env", "hash32")
 declare function _near_hash32(buffer: usize): u32;
 
 /**
-* @hidden
-* Fills given buffer with random u8.
-*/
+ * @hidden
+ * Fills given buffer with random u8.
+ */
 @external("env", "random_buf")
 declare function _near_random_buf(len: u32, out: usize): void
+
 /**
-* @hidden
-*/
+ * @hidden
+ */
 @external("env", "random32")
 declare function _near_random32(): u32;
 
 /**
-* @hidden
-*/
+ * @hidden
+ */
 @external("env", "log")
 declare function _near_log(msg_ptr: usize): void;
 
