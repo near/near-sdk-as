@@ -287,6 +287,10 @@ export class ContractPromise {
     return { id: promise_then(this.id, near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana) };
   }
 
+  returnAsResult(): void {
+    return_promise(this.id);
+  }
+
   static all(promises: ContractPromise[]): ContractPromise {
     let result: ContractPromise = promises[0];
     for (let i = 1; i < promises.length; i++) {
@@ -350,6 +354,8 @@ declare function result_read_into(index: u32, value: usize): void;
 
 @external("env", "return_value")
 declare function return_value(value_ptr: usize): void;
+@external("env", "return_promise")
+declare function return_promise(promise_index: u32): void;
 
 @external("env", "read_len")
 declare function read_len(type_index: u32, key: usize): u32;
