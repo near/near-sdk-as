@@ -304,7 +304,10 @@ export class ContractPromise {
     let results = new Array<ContractPromiseResult>(count);
     for (let i = 0; i < count; i++) {
       let isOk = result_is_ok(i);
-      // TODO: Check what to do when not ok
+      if (!isOk) {
+        results[i] = { success: false }
+        continue;
+      }
       let len = result_read_len(i);
       let buffer = new Uint8Array(len);
       result_read_into(i, buffer.buffer.data);
