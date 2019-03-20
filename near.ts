@@ -1,48 +1,20 @@
-type BufferTypeIndex = u32;
+const DEFAULT_SCRATCH_BUFFER_SIZE: usize = 1 << 16;
 
-const BUFFER_TYPE_ORIGINATOR_ACCOUNT_ID: BufferTypeIndex = 1;
-const BUFFER_TYPE_CURRENT_ACCOUNT_ID: BufferTypeIndex = 2;
+type DataTypeIndex = u32;
 
-/**
- * Provides context for contract execution, including information about transaction sender, etc.
- */
-class ContractContext {
-  /**
-   * Account ID of transaction sender.
-   */
-  get sender(): string {
-    return this.getString(BUFFER_TYPE_ORIGINATOR_ACCOUNT_ID, "");
-  }
-
-  /**
-   * Account ID of contract.
-   */
-  get contractName(): string {
-    return this.getString(BUFFER_TYPE_CURRENT_ACCOUNT_ID, "");
-  }
-
-  /**
-   * Returns context value with given index and key. Internal usage only for now.
-   */
-  getString(typeIndex: BufferTypeIndex, key: string): string {
-    let len = read_len(typeIndex, near.utf8(key));
-    if (len == 0) {
-      return null;
-    }
-
-    let buf = new Uint8Array(len);
-    read_into(typeIndex, near.utf8(key), buf.buffer.data);
-    let value = String.fromUTF8(buf.buffer.data, buf.byteLength);
-    return value;
-  }
-}
+const DATA_TYPE_ORIGINATOR_ACCOUNT_ID: DataTypeIndex = 1;
+const DATA_TYPE_CURRENT_ACCOUNT_ID: DataTypeIndex = 2;
+const DATA_TYPE_STORAGE: DataTypeIndex = 3;
+const DATA_TYPE_INPUT: DataTypeIndex = 4;
+const DATA_TYPE_RESULT: DataTypeIndex = 5;
+const DATA_TYPE_STORAGE_ITER: DataTypeIndex = 6;
 
 /**
  * Represents contract storage.
- *
- * For now it's just simple key-value store with prefix queries.
  */
-export class GlobalStorage {
+export class Storage {
+  private _scratchBuf: Uint8Array = new Uint8Array(DEFAULT_SCRATCH_BUFFER_SIZE);
+
   /**
    * Returns list of keys starting with given prefix.
    *
@@ -50,14 +22,11 @@ export class GlobalStorage {
    * Make sure there is a hard limit on number of keys returned even if contract state size grows.
    */
   keys(prefix: string): string[] {
-    let result: string[] = [];
-    let iterId = storage_iter(near.utf8(prefix));
+    let result: string[] = new Array<string>();
+    let iterId = storage_iter(prefix.lengthUTF8 - 1, prefix.toUTF8());
     do {
-      let len = storage_iter_peek_len(iterId);
-      if (len > 0) {
-        let buf = new Uint8Array(len);
-        storage_iter_peek_into(iterId, buf.buffer.data);
-        let key = String.fromUTF8(buf.buffer.data, buf.byteLength);
+      let key = this._internalReadString(DATA_TYPE_STORAGE_ITER, 0, iterId);
+      if (key != null) {
         result.push(key);
       }
     } while (storage_iter_next(iterId));
@@ -67,6 +36,7 @@ export class GlobalStorage {
   setItem(key: string, value: string): void {
     this.setString(key, value);
   }
+
   getItem(key: string): string {
     return this.getString(key);
   }
@@ -75,22 +45,14 @@ export class GlobalStorage {
    * Store string value under given key. Both key and value are encoded as UTF-8 strings.
    */
   setString(key: string, value: string): void {
-    storage_write(near.utf8(key), near.utf8(value));
+    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.lengthUTF8 - 1, value.toUTF8());
   }
 
   /**
    * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
    */
   getString(key: string): string {
-    let len = storage_read_len(near.utf8(key));
-    if (len == 0) {
-      return null;
-    }
-
-    let buf = new Uint8Array(len);
-    storage_read_into(near.utf8(key), buf.buffer.data);
-    let value = String.fromUTF8(buf.buffer.data, buf.byteLength);
-    return value;
+    return this._internalReadString(DATA_TYPE_STORAGE, key.lengthUTF8 - 1, key.toUTF8());
   }
 
   /**
@@ -100,7 +62,7 @@ export class GlobalStorage {
    * It's convenient to use this together with `domainObject.encode()`.
    */
   setBytes(key: string, value: Uint8Array): void {
-    storage_write(near.utf8(key), near.bufferWithSize(value).buffer.data)
+    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.buffer.data);
   }
 
   /**
@@ -110,18 +72,15 @@ export class GlobalStorage {
    * It's convenient to use this together with `DomainObject.decode()`.
    */
   getBytes(key: string): Uint8Array {
-    let len = storage_read_len(near.utf8(key));
-    if (len == 0) {
-      return null;
-    }
+    return this._internalReadBytes(DATA_TYPE_STORAGE, key.lengthUTF8 - 1, key.toUTF8());
+  }
 
-    let buf = new Uint8Array(len);
-    storage_read_into(near.utf8(key), buf.buffer.data);
-    return buf;
+  hasKey(key: string): bool {
+    return storage_has_key(key.lengthUTF8 - 1, key.toUTF8());
   }
 
   removeItem(key: string): void {
-    storage_remove(near.utf8(key));
+    storage_remove(key.lengthUTF8 - 1, key.toUTF8());
   }
 
   /**
@@ -141,10 +100,113 @@ export class GlobalStorage {
   getU64(key: string): u64 {
     return U64.parseInt(this.getItem(key) || "0");
   }
+
+  /**
+   * @hidden
+   * Reads given params into the internal scratch buffer and returns length.
+   */
+  private _internalBufferRead(dataType: DataTypeIndex, keyLen: usize, key: usize): usize {
+    for (let i = 0; i < 2; ++i) {
+      let len = data_read(
+        dataType,
+        keyLen,
+        key,
+        this._scratchBuf.byteLength,
+        this._scratchBuf.buffer.data,
+      );
+      if (len <= <usize>(this._scratchBuf.byteLength)) {
+        return len;
+      }
+      this._scratchBuf = new Uint8Array(len);
+    }
+    assert(false, "Internal scratch buffer was resized more than once");
+    return 0;
+  }
+
+  /**
+   * @hidden
+   * Reads a string for the given params.
+   */
+  _internalReadString(dataType: DataTypeIndex, keyLen: usize, key: usize): string {
+    let len = this._internalBufferRead(dataType, keyLen, key);
+    if (len == 0) {
+      return null;
+    }
+    return String.fromUTF8(this._scratchBuf.buffer.data, len);
+  }
+
+  /**
+   * @hidden
+   * Reads bytes for the given params.
+   */
+  _internalReadBytes(dataType: DataTypeIndex, keyLen: usize, key: usize): Uint8Array {
+    let len = this._internalBufferRead(dataType, keyLen, key);
+    if (len == 0) {
+      return null;
+    }
+    let res = new Uint8Array(len);
+    memory.copy(res.buffer.data, this._scratchBuf.buffer.data, len);
+    return res;
+  }
 }
 
-export let globalStorage: GlobalStorage = new GlobalStorage();
-export let contractContext: ContractContext = new ContractContext();
+export let storage: Storage = new Storage();
+
+/**
+ * Provides context for contract execution, including information about transaction sender, etc.
+ */
+class Context {
+  /**
+   * Account ID of transaction sender.
+   */
+  get sender(): string {
+    return storage._internalReadString(DATA_TYPE_ORIGINATOR_ACCOUNT_ID, 0, 0);
+  }
+
+  /**
+   * Account ID of contract.
+   */
+  get contractName(): string {
+    return storage._internalReadString(DATA_TYPE_CURRENT_ACCOUNT_ID, 0, 0);
+  }
+
+  /**
+   * Current block index.
+   */
+  get blockIndex(): u64 {
+    return block_index();
+  }
+
+  /**
+   * Current balance of the contract.
+   */
+  get currentBalance(): u64 {
+    return balance();
+  }
+
+  /**
+   * The amount of tokens received with this execution call.
+   */
+  get receivedAmount(): u64 {
+    return received_amount();
+  }
+
+  /**
+   * The amount of available gas left for this execution call.
+   */
+  get gasLeft(): u64 {
+    return gas_left();
+  }
+
+  /**
+   * The amount of available mana left for this execution call.
+   */
+  get manaLeft(): u32 {
+    return mana_left();
+  }
+}
+
+export let context: Context = new Context();
 
 export namespace near {
   /**
@@ -153,14 +215,12 @@ export namespace near {
    */
   export function hash<T>(data: T): Uint8Array {
     let result = new Uint8Array(32);
-    let dataToHash : Uint8Array;
     if (data instanceof Uint8Array) {
-      dataToHash = bufferWithSize(data);
+      _near_hash(data.byteLength, data.buffer.data, result.buffer.data);
     } else {
       let str = data.toString();
-      dataToHash = bufferWithSizeFromPtr(str.toUTF8(), str.lengthUTF8 - 1)
+      _near_hash(str.lengthUTF8 - 1, str.toUTF8(), result.buffer.data);
     }
-    _near_hash(dataToHash.buffer.data, result.buffer.data);
     return result;
   }
 
@@ -171,12 +231,11 @@ export namespace near {
   export function hash32<T>(data: T): u32 {
     let dataToHash : Uint8Array;
     if (data instanceof Uint8Array) {
-      dataToHash = bufferWithSize(data);
+      return _near_hash32(data.byteLength, data.buffer.data);
     } else {
       let str = data.toString();
-      dataToHash = bufferWithSizeFromPtr(str.toUTF8(), str.lengthUTF8 - 1)
+      return _near_hash32(str.lengthUTF8 - 1, str.toUTF8());
     }
-    return _near_hash32(dataToHash.buffer.data);
   }
 
   /**
@@ -192,21 +251,7 @@ export namespace near {
    * Returns random 32-bit integer.
    */
   export function random32(): u32 {
-    return _near_random32();
-  }
-
-  export function bufferWithSizeFromPtr(ptr: usize, length: usize): Uint8Array {
-    let withSize = new Uint8Array(length + 4);
-    store<u32>(withSize.buffer.data, length);
-    // TODO: Should use better copy routine or better avoid copy altogether
-    for (let i = <usize>0; i < length; i++) {
-        withSize[i + 4] = load<u8>(ptr + i);
-    }
-    return withSize;
-  }
-
-  export function bufferWithSize(buf: Uint8Array): Uint8Array {
-    return bufferWithSizeFromPtr(buf.buffer.data, buf.byteLength);
+    return random32();
   }
 
   export function log(msg: string): void {
@@ -216,10 +261,6 @@ export namespace near {
   export function str<T>(value: T): string {
     let arr: Array<T> = [value];
     return arr.toString();
-  }
-
-  export function utf8(value: string): usize {
-    return bufferWithSizeFromPtr(value.toUTF8(), value.lengthUTF8 - 1).buffer.data;
   }
 
   export function base58(source: Uint8Array): string {
@@ -279,12 +320,35 @@ export namespace near {
 export class ContractPromise {
   id: i32;
 
-  static create(contractName: string, methodName: string, args: Uint8Array, mana: u32, amount: u64 = 0): ContractPromise {
-    return { id: promise_create(near.utf8(contractName), near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana, amount) }
+  static create(
+      contractName: string,
+      methodName: string,
+      args: Uint8Array,
+      mana: u32,
+      amount: u64 = 0
+  ): ContractPromise {
+    return {
+      id: promise_create(
+        contractName.lengthUTF8 - 1, contractName.toUTF8(),
+        methodName.lengthUTF8 - 1, methodName.toUTF8(),
+        args.byteLength, args.buffer.data,
+        mana,
+        amount)
+    };
   }
 
-  then(methodName: string, args: Uint8Array, mana: u32): ContractPromise {
-    return { id: promise_then(this.id, near.utf8(methodName), near.bufferWithSize(args).buffer.data, mana) };
+  then(
+      methodName: string,
+      args: Uint8Array,
+      mana: u32
+  ): ContractPromise {
+    return {
+      id: promise_then(
+        this.id,
+        methodName.lengthUTF8 - 1, methodName.toUTF8(),
+        args.byteLength, args.buffer.data,
+        mana)
+    };
   }
 
   returnAsResult(): void {
@@ -292,11 +356,12 @@ export class ContractPromise {
   }
 
   static all(promises: ContractPromise[]): ContractPromise {
-    let result: ContractPromise = promises[0];
+    assert(promises.length > 0);
+    let id = promises[0].id;
     for (let i = 1; i < promises.length; i++) {
-      result = { id: promise_and(result.id, promises[i].id) };
+      id = promise_and(id, promises[i].id);
     }
-    return result;
+    return { id };
   }
 
   static getResults() : ContractPromiseResult[] {
@@ -308,9 +373,7 @@ export class ContractPromise {
         results[i] = { success: false }
         continue;
       }
-      let len = result_read_len(i);
-      let buffer = new Uint8Array(len);
-      result_read_into(i, buffer.buffer.data);
+      let buffer = storage._internalReadBytes(DATA_TYPE_RESULT, 0, i);
       results[i] = { success: isOk, buffer: buffer };
     }
     return results;
@@ -325,51 +388,43 @@ export class ContractPromiseResult {
 // TODO: Other functions exposed by runtime should be defined here
 
 @external("env", "storage_write")
-declare function storage_write(key: usize, value: usize): void;
-@external("env", "storage_read_len")
-declare function storage_read_len(key: usize): usize;
-@external("env", "storage_read_into")
-declare function storage_read_into(key: usize, value: usize): void;
+declare function storage_write(key_len: usize, key_ptr: usize, value_len: usize, value_ptr: usize): void;
 @external("env", "storage_remove")
-declare function storage_remove(key: usize): void;
+declare function storage_remove(key_len: usize, key_ptr: usize): void;
+@external("env", "storage_has_key")
+declare function storage_has_key(key_len: usize, key_ptr: usize): bool;
 @external("env", "storage_iter")
-declare function storage_iter(prefix: usize): u32;
+declare function storage_iter(prefix_len: usize, prefix_ptr: usize): u32;
 @external("env", "storage_iter_next")
 declare function storage_iter_next(id: u32): u32;
-@external("env", "storage_iter_peek_len")
-declare function storage_iter_peek_len(id: u32): usize;
-@external("env", "storage_iter_peek_into")
-declare function storage_iter_peek_into(id: u32, value: usize): void;
-
-@external("env", "input_read_len")
-declare function input_read_len(): usize;
-@external("env", "input_read_into")
-declare function input_read_into(ptr: usize): void;
 
 @external("env", "result_count")
 declare function result_count(): u32;
 @external("env", "result_is_ok")
 declare function result_is_ok(index: u32): bool;
-@external("env", "result_read_len")
-declare function result_read_len(index: u32): u32;
-@external("env", "result_read_into")
-declare function result_read_into(index: u32, value: usize): void;
 
 @external("env", "return_value")
-declare function return_value(value_ptr: usize): void;
+declare function return_value(value_len: usize, value_ptr: usize): void;
 @external("env", "return_promise")
 declare function return_promise(promise_index: u32): void;
 
-@external("env", "read_len")
-declare function read_len(type_index: u32, key: usize): u32;
-@external("env", "read_into")
-declare function read_into(type_index: u32, key: usize, value: usize): void;
+@external("env", "data_read")
+declare function data_read(type_index: u32, key_len: usize, key: usize, max_buf_len: usize, buf_ptr: usize): usize;
 
 @external("env", "promise_create")
-declare function promise_create(account_id: usize, method_name: usize, args: usize, mana: u32, amount: u64): u32;
+declare function promise_create(
+    account_id_len: usize, account_id_ptr: usize,
+    method_name_len: usize, method_name_ptr: usize,
+    args_len: usize, args_ptr: usize,
+    mana: u32,
+    amount: u64): u32;
 
 @external("env", "promise_then")
-declare function promise_then(promise_index: u32, method_name: usize, args: usize, mana: u32): u32;
+declare function promise_then(
+    promise_index: u32,
+    method_name_len: usize, method_name_ptr: usize,
+    args_len: usize, args_ptr: usize,
+    mana: u32): u32;
 
 @external("env", "promise_and")
 declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
@@ -379,26 +434,26 @@ declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
  * Hash buffer is 32 bytes
  */
 @external("env", "hash")
-declare function _near_hash(buffer: usize, out: usize): void;
+declare function _near_hash(value_len: usize, value_ptr: usize, buf_ptr: usize): void;
 
 /**
  * @hidden
  */
 @external("env", "hash32")
-declare function _near_hash32(buffer: usize): u32;
+declare function _near_hash32(value_len: usize, value_ptr: usize): u32;
 
 /**
  * @hidden
  * Fills given buffer with random u8.
  */
 @external("env", "random_buf")
-declare function _near_random_buf(len: u32, out: usize): void
+declare function _near_random_buf(buf_len: u32, buf_ptr: usize): void
 
 /**
  * @hidden
  */
 @external("env", "random32")
-declare function _near_random32(): u32;
+declare function random32(): u32;
 
 /**
  * @hidden
@@ -406,42 +461,62 @@ declare function _near_random32(): u32;
 @external("env", "log")
 declare function _near_log(msg_ptr: usize): void;
 
+/**
+ * @hidden
+ */
+@external("env", "balance")
+declare function balance(): u64;
+
+/**
+ * @hidden
+ */
+@external("env", "mana_left")
+declare function mana_left(): u32;
+
+/**
+ * @hidden
+ */
+@external("env", "gas_left")
+declare function gas_left(): u64;
+
+/**
+ * @hidden
+ */
+@external("env", "received_amount")
+declare function received_amount(): u64;
+
+/**
+ * @hidden
+ */
+@external("env", "block_index")
+declare function block_index(): u64;
 
 /*
-    // TODO(#350): Refactor read/write APIs to unify them.
-    // First 4 bytes are the length of the remaining buffer.
-    fn storage_write(key: *const u8, value: *const u8);
-    fn storage_read_len(key: *const u8) -> u32;
-    fn storage_read_into(key: *const u8, value: *mut u8);
-
-    fn input_read_len() -> u32;
-    fn input_read_into(value: *mut u8);
+    fn storage_write(key_len: usize, key_ptr: *const u8, value_len: usize, value_ptr: *const u8);
+    fn storage_remove(key_len: usize, key_ptr: *const u8);
+    fn storage_has_key(key_len: usize, key_ptr: *const u8) -> bool;
 
     fn result_count() -> u32;
     fn result_is_ok(index: u32) -> bool;
-    fn result_read_len(index: u32) -> u32;
-    fn result_read_into(index: u32, value: *mut u8);
 
-    fn return_value(value: *const u8);
+    fn return_value(value_len: usize, value_ptr: *const u8);
     fn return_promise(promise_index: u32);
 
-    // key can be 0 for certain types
-    fn read_len(type_index: u32, key: *const u8) -> u32;
-    fn read_into(type_index: u32, key: *const u8, value: *mut u8);
+    fn data_read(data_type_index: u32, key_len: usize, key_ptr: *const u8, max_buf_len: usize, buf_ptr: *mut u8) -> usize;
 
     // AccountID is just 32 bytes without the prefix length.
     fn promise_create(
-        account_id: *const u8,
-        method_name: *const u8,
-        arguments: *const u8,
+        account_id_len: usize, account_id_ptr: *const u8,
+        method_name_len: usize, method_name_ptr: *const u8,
+        arguments_len: usize, arguments_ptr: *const u8,
         mana: u32,
         amount: u64,
     ) -> u32;
 
     fn promise_then(
         promise_index: u32,
-        method_name: *const u8,
-        arguments: *const u8,
+        method_name_len: usize, method_name_ptr: *const u8,
+        arguments_len: usize, arguments_ptr: *const u8,
         mana: u32,
     ) -> u32;
 
@@ -454,12 +529,15 @@ declare function _near_log(msg_ptr: usize): void;
     fn assert(expr: bool);
 
     /// Hash buffer is 32 bytes
-    fn hash(buffer: *const u8, out: *mut u8);
-    fn hash32(buffer: *const u8) -> u32;
+    fn hash(value_len: usize, value_ptr: *const u8, buf_ptr: *mut u8);
+    fn hash32(value_len: usize, value_ptr: *const u8) -> u32;
 
     // Fills given buffer with random u8.
-    fn random_buf(len: u32, out: *mut u8);
+    fn random_buf(buf_len: u32, buf_ptr: *mut u8);
     fn random32() -> u32;
 
     fn block_index() -> u64;
+
+    /// Log using utf-8 string format.
+    fn debug(msg_len: usize, msg_ptr: *const u8);
 */
