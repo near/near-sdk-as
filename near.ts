@@ -90,7 +90,7 @@ export class Storage {
   }
 
   /**
-   * @deprecated User #remove
+   * @deprecated Use #remove
    */
   removeItem(key: string): void {
     this.remove(key);
@@ -327,7 +327,7 @@ export namespace collections {
      */
     @operator("[]=")
     private __set(index: i32, value: T): void {
-      assert(index >= 0 && index < this.length, "Index out of range");
+      assert(this.containsIndex(index), "Index out of range");
       this.__unchecked_set(index, value);
     }
 
