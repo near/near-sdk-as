@@ -157,7 +157,8 @@ export class Storage {
     } else {
       let bytes = this.getBytes(key);
       if (bytes != null) {
-        return instantiate<T>().decode(bytes);
+        let v = instantiate<T>();
+        return v.decode(bytes);
       } else {
         return defaultValue;
       }
@@ -394,10 +395,26 @@ export namespace collections {
     }
 
     /**
+     * @returns The last element of the vector. Asserts that the vector is not empty.
+     */
+    @inline
+    get last(): T {
+      return this.back;
+    }
+
+    /**
      * @returns The first element of the vector. Asserts that the vector is not empty.
      */
     get front(): T {
       return this.__get(0);
+    }
+
+    /**
+     * @returns The first element of the vector. Asserts that the vector is not empty.
+     */
+    @inline
+    get first(): T {
+      return this.front;
     }
   }
 
@@ -456,7 +473,7 @@ export namespace collections {
      */
     private get backIndex(): i32 {
       if (this._backIndex == i32.MAX_VALUE) {
-        this._backIndex = storage.get<i32>(this._backIndex, -1);
+        this._backIndex = storage.get<i32>(this._backIndexKey, -1);
       }
       return this._backIndex;
     }
@@ -466,7 +483,7 @@ export namespace collections {
      */
     private set backIndex(value: i32) {
       this._backIndex = value;
-      storage.set<i32>(this._backIndex, value);
+      storage.set<i32>(this._backIndexKey, value);
     }
 
     /**
@@ -482,15 +499,14 @@ export namespace collections {
      * @param index The index of the element to remove.
      */
     remove(index: i32): void {
-      index -= this.frontIndex;
       assert(this.containsIndex(index), "Index out of range");
-      return storage.remove(this._key(index));
+      return storage.remove(this._key(index + this.frontIndex));
     }
 
     /**
      * @returns The length of the deque.
      */
-    get length() {
+    get length(): i32 {
       return this.backIndex - this.frontIndex + 1;
     }
 
@@ -509,7 +525,7 @@ export namespace collections {
      */
     @operator("[]")
     private __get(index: i32): T {
-      assert(this.containsIndex(index - this.frontIndex), "Index out of range");
+      assert(this.containsIndex(index), "Index out of range");
       return this.__unchecked_get(index);
     }
 
@@ -520,7 +536,7 @@ export namespace collections {
      */
     @operator("{}")
     private __unchecked_get(index: i32): T {
-      return storage.get<T>(this._key(index - this.frontIndex));
+      return storage.get<T>(this._key(index + this.frontIndex));
     }
 
     /**
@@ -531,7 +547,7 @@ export namespace collections {
      */
     @operator("[]=")
     private __set(index: i32, value: T): void {
-      assert(this.containsIndex(index - this.frontIndex), "Index out of range");
+      assert(this.containsIndex(index), "Index out of range");
       this.__unchecked_set(index, value);
     }
 
@@ -542,7 +558,7 @@ export namespace collections {
      */
     @operator("{}=")
     private __unchecked_set(index: i32, value: T): void {
-      storage.set<T>(this._key(index - this.frontIndex), value);
+      storage.set<T>(this._key(index + this.frontIndex), value);
     }
 
     /**
@@ -577,6 +593,14 @@ export namespace collections {
     }
 
     /**
+     * @returns The first/front element of the deque.
+     */
+    @inline
+    get first(): T {
+      return this.front;
+    }
+
+    /**
      * Adds a new element to the end of the deque. Increases the length of the deque.
      * @param element A new element to add.
      * @returns The index of a newly added element
@@ -594,8 +618,8 @@ export namespace collections {
      * @returns The removed first element of the queue.
      */
     popBack(): T {
-      let index = this.length;
-      assert(index > 0, "Deque is empty");
+      let index = this.length - 1;
+      assert(index >= 0, "Deque is empty");
       let result = this.__unchecked_get(index);
       storage.remove(this._key(this.backIndex));
       this.backIndex -= 1;
@@ -603,10 +627,18 @@ export namespace collections {
     }
 
     /**
-     * @returns The last/back element of the deque. 
+     * @returns The last/back element of the deque.
      */
     get back(): T {
       return this.__get(this.length - 1);
+    }
+
+    /**
+     * @returns The last/back element of the deque.
+     */
+    @inline
+    get last(): T {
+      return this.back;
     }
   }
 
