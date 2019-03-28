@@ -661,7 +661,6 @@ export namespace collections {
     /**
      * @returns An interal string key for a given key of type K.
      */
-    @inline
     private _key(key: K): string {
       if (isString<K>()) {
         return this._elementPrefix + key;
@@ -691,8 +690,7 @@ export namespace collections {
      * @param defaultValue The default value if the key is not present.
      * @returns Value for the given key or the default value.
      */
-    @operator("[]")
-    private __get(key: K, defaultValue: V = null): V {
+    get(key: K, defaultValue: V = null): V {
       return storage.get<V>(this._key(key), defaultValue);
     }
 
@@ -701,8 +699,7 @@ export namespace collections {
      * @param key Key of the element.
      * @param value The new value of the element.
      */
-    @operator("[]=")
-    private __set(key: K, value: V): void {
+    set(key: K, value: V): void {
       storage.set<V>(this._key(key), value);
     }
   }
