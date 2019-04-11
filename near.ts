@@ -16,21 +16,47 @@ export class Storage {
   private _scratchBuf: Uint8Array = new Uint8Array(DEFAULT_SCRATCH_BUFFER_SIZE);
 
   /**
-   * Returns list of keys starting with given prefix.
-   *
-   * NOTE: Must be very careful to avoid exploding amount of compute with this method.
-   * Make sure there is a hard limit on number of keys returned even if contract state size grows.
+   * Internal method to fetch list of keys from the given iterator up the limit.
    */
-  keys(prefix: string): string[] {
+  private _fetchIter(iterId: u32, limit: i32 = -1): string[] {
     let result: string[] = new Array<string>();
-    let iterId = storage_iter(prefix.lengthUTF8 - 1, prefix.toUTF8());
-    do {
+    while (limit-- != 0) {
       let key = this._internalReadString(DATA_TYPE_STORAGE_ITER, 0, iterId);
       if (key != null) {
         result.push(key);
       }
-    } while (storage_iter_next(iterId));
+      if (!storage_iter_next(iterId)) {
+        break;
+      }
+    }
     return result;
+  }
+
+  /**
+   * Returns list of keys between the given start key and the end key. Both inclusive.
+   * NOTE: Must be very careful to avoid exploding amount of compute with this method.
+   * @param start The start key used as a lower bound in lexicographical order. Inclusive.
+   * @param end The end key used as a upper bound in lexicographical order. Inclusive.
+   * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
+   */
+  keyRange(start: string, end: string, limit: i32 = -1): string[] {
+    return this._fetchIter(
+      storage_range(start.lengthUTF8 - 1, start.toUTF8(), end.lengthUTF8 - 1, end.toUTF8()),
+      limit,
+    );
+  }
+
+  /**
+   * Returns list of keys starting with given prefix.
+   * NOTE: Must be very careful to avoid exploding amount of compute with this method.
+   * @param prefix The key prefix.
+   * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
+   */
+  keys(prefix: string, limit: i32 = -1): string[] {
+    return this._fetchIter(
+      storage_iter(prefix.lengthUTF8 - 1, prefix.toUTF8()),
+      limit,
+    );
   }
 
   /**
@@ -81,19 +107,36 @@ export class Storage {
     return this._internalReadBytes(DATA_TYPE_STORAGE, key.lengthUTF8 - 1, key.toUTF8());
   }
 
-  hasKey(key: string): bool {
+  /**
+   * Returns true if the given key is present in the storage.
+   */
+  contains(key: string): bool {
     return storage_has_key(key.lengthUTF8 - 1, key.toUTF8());
   }
 
-  remove(key: string): void {
+  @inline
+  hasKey(key: string): bool {
+    return this.contains(key);
+  }
+
+  delete(key: string): void {
     storage_remove(key.lengthUTF8 - 1, key.toUTF8());
   }
 
   /**
-   * @deprecated Use #remove
+   * @deprecated Use #delete
    */
+  @inline
+  remove(key: string): void {
+    this.delete(key);
+  }
+
+  /**
+   * @deprecated Use #delete
+   */
+  @inline
   removeItem(key: string): void {
-    this.remove(key);
+    this.delete(key);
   }
 
   /**
@@ -227,6 +270,8 @@ export namespace collections {
   const _KEY_FRONT_INDEX_SUFFIX = ":front";
   const _KEY_BACK_INDEX_SUFFIX = ":back";
   const _KEY_ELEMENT_SUFFIX = "::";
+  const _KEY_RATING_SUFFIX = ":r";
+  const _RATING_OFFSET: u64 = 2147483648;
 
   /**
    * A vector class that implements a persistent array.
@@ -259,9 +304,9 @@ export namespace collections {
      * Removes the content of the element from storage without changing length of the vector.
      * @param index The index of the element to remove.
      */
-    remove(index: i32): void {
+    delete(index: i32): void {
       assert(this.containsIndex(index), "Index out of range");
-      return storage.remove(this._key(index));
+      storage.delete(this._key(index));
     }
 
     /**
@@ -373,7 +418,7 @@ export namespace collections {
       let index = this.length - 1;
       this.length = index;
       let result = this.__unchecked_get(index);
-      storage.remove(this._key(index));
+      storage.delete(this._key(index));
       return result;
     }
 
@@ -498,9 +543,9 @@ export namespace collections {
      * Removes the content of the element from storage without changing length of the deque.
      * @param index The index of the element to remove.
      */
-    remove(index: i32): void {
+    delete(index: i32): void {
       assert(this.containsIndex(index), "Index out of range");
-      return storage.remove(this._key(index + this.frontIndex));
+      storage.delete(this._key(index + this.frontIndex));
     }
 
     /**
@@ -580,7 +625,7 @@ export namespace collections {
     popFront(): T {
       assert(this.length > 0, "Deque is empty");
       let result = this.__unchecked_get(0);
-      storage.remove(this._key(this.frontIndex));
+      storage.delete(this._key(this.frontIndex));
       this.frontIndex += 1;
       return result;
     }
@@ -621,7 +666,7 @@ export namespace collections {
       let index = this.length - 1;
       assert(index >= 0, "Deque is empty");
       let result = this.__unchecked_get(index);
-      storage.remove(this._key(this.backIndex));
+      storage.delete(this._key(this.backIndex));
       this.backIndex -= 1;
       return result;
     }
@@ -645,6 +690,7 @@ export namespace collections {
 
   /**
    * A map class that implements a persistent unordered map.
+   * NOTE: The Map doesn't store keys, so if you need to retrive them, include keys in the values.
    */
   export class Map<K, V> {
     private _elementPrefix: string;
@@ -662,27 +708,41 @@ export namespace collections {
      * @returns An interal string key for a given key of type K.
      */
     private _key(key: K): string {
-      if (isString<K>()) {
-        return this._elementPrefix + key;
-      } else {
-        return this._elementPrefix + key.toString();
+      return this._elementPrefix + key.toString();
+    }
+
+    /**
+     * Returns values of the map between the given start key and the end key.
+     * @param start Starting from which key to include values. Default is `null`, means from the beginning.
+     * @param end Up to which key include values (inclusive). Default is `null`, means to the end.
+     * @param limit The maximum number of values to return. Default is `-1`, means no limit.
+     * @param startInclusive Whether the start key is inclusive. Default is `true`, means include start key.
+     *     It's useful to set it to false for pagination.
+     */
+    values(start: K = null, end: K = null, limit: i32 = -1, startInclusive: bool = true): V[] {
+      let startKey = (start != null) ? this._key(start) : this._elementPrefix;
+      if (!startInclusive) {
+        startKey += String.fromCharCode(0);
       }
+      let endKey = (end != null) ? this._key(end) : (this._elementPrefix + String.fromCharCode(255));
+      let keys = storage.keyRange(startKey, endKey, limit);
+      return keys.map<V>((key: string) => storage.get<V>(key));
     }
 
     /**
      * @param key Key to check.
      * @returns True if the given key present in the map.
      */
-    containsKey(key: K): bool {
-      return storage.hasKey(this._key(key));
+    contains(key: K): bool {
+      return storage.contains(this._key(key));
     }
 
     /**
      * Removes value and the key from the map.
      * @param key Key to remove.
      */
-    removeKey(key: K): void {
-      return storage.remove(this._key(key));
+    delete(key: K): void {
+      storage.delete(this._key(key));
     }
 
     /**
@@ -701,6 +761,209 @@ export namespace collections {
      */
     set(key: K, value: V): void {
       storage.set<V>(this._key(key), value);
+    }
+  }
+
+  /**
+   * A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32.
+   * Default sort order is descending (highest rated keys), but can be changed to ascending (lowest rated keys).
+   */
+  export class TopN<K> {
+    // Internally, this prefix is used for storing padded ratings
+    private _orderPrefix: string;
+    // Whether the order is descending
+    private _descending: bool;
+    // Number of unique keys.
+    private _length: i32;
+    // The key to store length.
+    private _lengthKey: string;
+
+    // A map to store rating by key
+    private _ratings: Map<K, i32>; 
+
+    /**
+     * Creates or restores a persistent top N collection with a given storage prefix.
+     * Always use a unique storage prefix for different collections.
+     * @param prefix A prefix to use for every key of this collection.
+     * @param descending Sorting order of keys for rating. Default is descending (the highest rated keys).
+     */
+    constructor(prefix: string, descending: bool = true) {
+      this._ratings = new Map<K, i32>(prefix + _KEY_RATING_SUFFIX);
+      this._orderPrefix = prefix + _KEY_ELEMENT_SUFFIX;
+      this._descending = descending;
+      this._lengthKey = prefix + _KEY_LENGTH_SUFFIX;
+      this._length = -1;
+    }
+
+    /**
+     * @returns A suffix for an internal key for a given external key of type K.
+     */
+    private _keySuffix(key: K): string {
+      return _KEY_ELEMENT_SUFFIX + key.toString();
+    }
+
+    /**
+     * @returns Converted integer rating into a padded string.
+     */
+    private _ratingKey(rating: i32): string {
+      let r: u32 = <u32>((<i64>rating) + _RATING_OFFSET);
+      if (this._descending) {
+        r = u32.MAX_VALUE - r;
+      }
+      return r.toString().padStart(10, "0");
+    }
+
+    /**
+     * Creates an internal key from a given rating and a given external key.
+     */
+    private _orderKey(rating: i32, key: K): string {
+      return this._orderPrefix + this._ratingKey(rating) + this._keySuffix(key);
+    }
+
+    /**
+     * @returns True if the TopN collection is empty.
+     */
+    get isEmpty(): bool {
+      return this.length == 0;
+    }
+
+    /**
+     * @returns The number of unique elements in the TopN collection.
+     */
+    get length(): i32 {
+      if (this._length < 0) {
+        this._length = storage.get<i32>(this._lengthKey, 0);
+      }
+      return this._length;
+    }
+
+    /**
+     * Internally sets the length of the collection.
+     */
+    private set length(value: i32) {
+      this._length = value;
+      storage.set<i32>(this._lengthKey, value);
+    }
+
+
+    /**
+     * @param key Key to check.
+     * @returns True if the given key is present.
+     */
+    contains(key: K): bool {
+      return this._ratings.contains(key);
+    }
+
+    /**
+     * Removes rating and the key from the collection.
+     * @param key Key to remove.
+     */
+    delete(key: K): void {
+      if (this.contains(key)) {
+        let rating = this._ratings.get(key);
+        this._ratings.delete(key);
+        storage.delete(this._orderKey(rating, key));
+        this.length -= 1;
+      }
+    }
+
+    /**
+     * @param keys The array of keys to lookup rating.
+     * @returns an array of key to rating pairs for the given keys.
+     */
+    keysToRatings(keys: K[]): near.MapEntry<K, i32>[] {
+      let result = new Array<near.MapEntry<K, i32>>(keys.length);
+      for (let index = 0; index < keys.length; ++index) {
+        let key = keys[index];
+        result[index] = new near.MapEntry<K, i32>(key, this._ratings.get(key));
+      }
+      return result;
+    }
+
+    /**
+     * @param limit The maximum limit of keys to return.
+     * @returns The array of top rated keys.
+     */
+    getTop(limit: i32): K[] {
+      let orderKeys = storage.keys(this._orderPrefix, limit);
+      return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
+    }
+
+    /**
+     * Returns a top list starting from the given key (exclusive). It's useful for pagination.
+     * @param limit The maximum limit of keys to return.
+     * @param fromKey The key from which return top list (exclisive).
+     * @returns The array of top rated keys starting from the given key.
+     */
+    getTopFromKey(limit: i32, fromKey: K): K[] {
+      let rating = this.getRating(fromKey, 0);
+      let orderKeys = storage.keyRange(
+        this._orderKey(rating, fromKey) + String.fromCharCode(0),
+        this._orderPrefix + String.fromCharCode(255),
+        limit);
+      return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
+    }
+
+    /**
+     * @param limit The maximum limit of keys to return.
+     * @returns The array of top rated keys with their corresponding rating.
+     */
+    getTopWithRating(limit: i32): near.MapEntry<K, i32>[] {
+      return this.keysToRatings(this.getTop(limit));
+    }
+
+    /**
+     * Returns a top list with rating starting from the given key (exclusive).
+     * It's useful for pagination.
+     * @param limit The maximum limit of keys to return.
+     * @param fromKey The key from which return top list (exclisive).
+     * @returns The array of top rated keys with their rating starting from the given key.
+     */
+    getTopWithRatingFromKey(limit: i32, fromKey: K): near.MapEntry<K, i32>[] {
+      return this.keysToRatings(this.getTopFromKey(limit, fromKey));
+    }
+
+    /**
+     * @param key Key of the element.
+     * @param defaultRating The default rating to return if the key is not present.
+     * @returns Value for the given key or the defaultRating.
+     */
+    getRating(key: K, defaultRating: i32 = 0): i32 {
+      return this._ratings.get(key, defaultRating);
+    }
+
+    /**
+     * Sets the new rating for the given key.
+     * @param key The key to update.
+     * @param rating The new rating of the key.
+     */
+    setRating(key: K, rating: i32): void {
+      if (this.contains(key)) {
+        let oldRating = this.getRating(key);
+        storage.delete(this._orderKey(oldRating, key));
+      } else {
+        this.length += 1;
+      }
+      this._ratings.set(key, rating);
+      storage.set<K>(this._orderKey(rating, key), key);
+    }
+
+    /**
+     * Increments rating of the given key by the given increment (1 by default).
+     * @param key The key to update.
+     * @param increment The increment value for the rating (1 by default).
+     */
+    incrementRating(key: K, increment: i32 = 1): void {
+      let oldRating = 0;
+      if (this.contains(key)) {
+        oldRating = this.getRating(key);
+        storage.delete(this._orderKey(oldRating, key));
+      } else {
+        this.length += 1;
+      }
+      let rating = oldRating + increment;
+      this._ratings.set(key, rating);
+      storage.set<K>(this._orderKey(rating, key), key);
     }
   }
 
@@ -729,6 +992,16 @@ export namespace collections {
    */
   export function map<K, V>(prefix: string): Map<K, V> {
     return new Map<K, V>(prefix);
+  }
+
+  /**
+   * Creates or restores a persistent TopN with a given storage prefix.
+   * Always use a unique storage prefix for different collections.
+   * @param prefix A prefix to use for every key of this collection.
+   * @param descending Sorting order of keys for rating. Default is descending (the highest rated keys).
+   */
+  export function topN<K>(prefix: string, descending: bool = true): TopN<K> {
+    return new TopN<K>(prefix, descending);
   }
 }
 
@@ -789,6 +1062,20 @@ class Context {
 export let context: Context = new Context();
 
 export namespace near {
+
+  /**
+   * Helper class to store key->value pairs.
+   */
+  export class MapEntry<K, V> {
+    key: K;
+    value: V;
+
+    constructor(key: K, value: V) {
+      this.key = key;
+      this.value = value;
+    }
+  }
+
   /**
    * Hash given data. Returns hash as 32-byte array.
    * @param data data can be passed as either Uint8Array or anything with .toString (hashed as UTF-8 string).
@@ -897,9 +1184,60 @@ export namespace near {
   }
 }
 
+/**
+ * Class to make asynchronous calls to other contracts and receive callbacks.
+ * Here is an example on how to create a new async call with the callback.
+ * ```
+ * export function callMetaNear(): void {
+ *   let itemArgs: AddItemArgs = {
+ *     accountId: "alice.near",
+ *     itemId: "Sword +9000",s
+ *   };
+ *   let promise = ContractPromise.create(
+ *     "metanear",
+ *     "addItem",
+ *     itemArgs.encode(),
+ *     0,
+ *     0,
+ *   );
+ *   // Setting up args for the callback
+ *   let requestArgs: OnItemAddedArgs = {
+ *     "itemAddedRequestId": "UNIQUE_REQUEST_ID",
+ *   };
+ *   let callbackPromise = promise.then(
+ *      "_onItemAdded",
+ *      requestArgs.encode(),
+ *      2,  // Attaching 2 additional requests, in case we need to do another call
+ *   );
+ *   callbackPromise.returnAsResult();
+ * }
+ * ```
+ * See docs on used methods for more details.
+ */
 export class ContractPromise {
+  // Session-based unique promise ID. Don't preserve it longer than this execution.
   id: i32;
 
+  /**
+   * Creates a new async call promise. Returns an instance of `ContractPromise`.
+   * The call would be scheduled if the this current execution of the contract succeeds
+   * without errors or failed asserts.
+   * @param contractName Account ID of the remote contract to call. E.g. `metanear`.
+   * @param methodName Method name on the remote contract to call. E.g. `addItem`.
+   * @param args Serialized arguments to pass into the method. To get them create a new model
+   *     specific for the method you calling, e.g. `AddItemArgs`. Then create an instance of it
+   *     and populate arguments. After this, serialize it into bytes. E.g.
+   *     ```
+   *     let itemArgs: AddItemArgs = {
+   *       accountId: "alice.near",
+   *       itemId: "Sword +9000",
+   *     };
+   *     // Serialize args
+   *     let args = itemArgs.encode();
+   *     ```
+   * @param mana The amount of additional requests the remote contract would be able to do.
+   * @param amount The amount of tokens from your contract to be sent to the remote contract with this call.
+   */
   static create(
       contractName: string,
       methodName: string,
@@ -917,6 +1255,14 @@ export class ContractPromise {
     };
   }
 
+  /**
+   * Creating a callback for the AsyncCall Promise created with `create` method.
+   * @param methodName Method name on your contract to be called to receive the callback.
+   *     NOTE: Your callback method name can start with `_`, which would prevent other
+   *     contracts from calling it directly. Only callbacks can call methods with `_` prefix.
+   * @param args Serialized arguments on your callback method, see `create` for details.
+   * @param mana The amount of additional requests your contract would be able to do.
+   */
   then(
       methodName: string,
       args: Uint8Array,
@@ -931,10 +1277,62 @@ export class ContractPromise {
     };
   }
 
+  /**
+   * Returns the promise as a result of your function. Don't return any other results from the function.
+   * Your current function should be `void` and shouldn't return anything else. E.g.
+   * ```
+   * export function callMetaNear(): void {
+   *   let itemArgs: AddItemArgs = {
+   *     accountId: "alice.near",
+   *     itemId: "Sword +9000",
+   *   };
+   *   let promise = ContractPromise.create(
+   *     "metanear",
+   *     "addItem",
+   *     itemArgs.encode(),
+   *     0,
+   *     0,
+   *   );
+   *   promise.returnAsResult();
+   * }
+   * ```
+   *
+   * Now when you call `callMetaNear` method, it creates new promise to `metanear` contract.
+   * And saying that the result of the current execution depends on the result `addItem`.
+   * Even though this contract is not going to be called with a callback, the contract which
+   * calling `callMetaNear` would receive the result from `addItem`. This call essentially acts
+   * as a proxy.
+   *
+   * You can also attach a callback on top of the promise before returning it, e.g.
+   *
+   * ```
+   *   ...
+   *   let promise = ContractPromise.create(
+   *      ...
+   *   );
+   *   // Setting up args for the callback
+   *   let requestArgs: OnItemAddedArgs = {
+   *     "itemAddedRequestId": "UNIQUE_REQUEST_ID",
+   *   };
+   *   let callbackPromise = promise.then(
+   *      "_onItemAdded",
+   *      requestArgs.encode(),
+   *      2,  // Attaching 2 additional requests, in case we need to do another call
+   *   );
+   *   callbackPromise.returnAsResult();
+   * }
+   * ```
+   */
   returnAsResult(): void {
     return_promise(this.id);
   }
 
+  /**
+   * Joins multiple async call promises into one, to aggregate results before the callback.
+   * NOTE: Given promises can only be new async calls and can't be callbacks.
+   * Joined promise can't be returned as a result
+   * @param promises List of async call promises to join.
+   */
   static all(promises: ContractPromise[]): ContractPromise {
     assert(promises.length > 0);
     let id = promises[0].id;
@@ -944,6 +1342,29 @@ export class ContractPromise {
     return { id };
   }
 
+  /**
+   * Method to receive async (one or multiple) results from the remote contract in the callback.
+   * Example of using it.
+   * ```
+   * // This function is prefixed with `_`, so other contracts or people can't call it directly.
+   * export function _onItemAdded(itemAddedRequestId: string): bool {
+   *   // Get all results
+   *   let results = ContractPromise.getResults();
+   *   let addItemResult = results[0];
+   *   // Verifying the remote contract call succeeded.
+   *   if (addItemResult.success) {
+   *     // Decoding data from the bytes buffer into the local object.
+   *     let data = AddItemResult.decode(addItemResult.buffer);
+   *     if (data.itemPower > 9000) {
+   *       return true;
+   *     }
+   *   }
+   *   return false;
+   * }
+   * ```
+   * @returns An array of results based on the number of promises the callback was created on.
+   *     If the callback using `then` was scheduled only on one result, then one result will be returned.
+   */
   static getResults() : ContractPromiseResult[] {
     let count = <i32>result_count();
     let results = new Array<ContractPromiseResult>(count);
@@ -960,12 +1381,16 @@ export class ContractPromise {
   }
 }
 
+/**
+ * Class to store results of the async calls on the remote contracts.
+ */
 export class ContractPromiseResult {
+  // Whether the execution of the remote call succeeded.
   success: bool;
+  // Bytes data returned by the remote contract. Can be empty or null, if the remote
+  // method returns `void`.
   buffer: Uint8Array;
 }
-
-// TODO: Other functions exposed by runtime should be defined here
 
 @external("env", "storage_write")
 declare function storage_write(key_len: usize, key_ptr: usize, value_len: usize, value_ptr: usize): void;
@@ -975,6 +1400,8 @@ declare function storage_remove(key_len: usize, key_ptr: usize): void;
 declare function storage_has_key(key_len: usize, key_ptr: usize): bool;
 @external("env", "storage_iter")
 declare function storage_iter(prefix_len: usize, prefix_ptr: usize): u32;
+@external("env", "storage_range")
+declare function storage_range(start_len: usize, start_ptr: usize, end_len: usize, end_ptr: usize): u32;
 @external("env", "storage_iter_next")
 declare function storage_iter_next(id: u32): u32;
 
@@ -1070,54 +1497,3 @@ declare function received_amount(): u64;
  */
 @external("env", "block_index")
 declare function block_index(): u64;
-
-/*
-    fn storage_write(key_len: usize, key_ptr: *const u8, value_len: usize, value_ptr: *const u8);
-    fn storage_remove(key_len: usize, key_ptr: *const u8);
-    fn storage_has_key(key_len: usize, key_ptr: *const u8) -> bool;
-
-    fn result_count() -> u32;
-    fn result_is_ok(index: u32) -> bool;
-
-    fn return_value(value_len: usize, value_ptr: *const u8);
-    fn return_promise(promise_index: u32);
-
-    fn data_read(data_type_index: u32, key_len: usize, key_ptr: *const u8, max_buf_len: usize, buf_ptr: *mut u8) -> usize;
-
-    // AccountID is just 32 bytes without the prefix length.
-    fn promise_create(
-        account_id_len: usize, account_id_ptr: *const u8,
-        method_name_len: usize, method_name_ptr: *const u8,
-        arguments_len: usize, arguments_ptr: *const u8,
-        mana: u32,
-        amount: u64,
-    ) -> u32;
-
-    fn promise_then(
-        promise_index: u32,
-        method_name_len: usize, method_name_ptr: *const u8,
-        arguments_len: usize, arguments_ptr: *const u8,
-        mana: u32,
-    ) -> u32;
-
-    fn promise_and(promise_index1: u32, promise_index2: u32) -> u32;
-
-    fn balance() -> u64;
-    fn mana_left() -> u32;
-    fn gas_left() -> u64;
-    fn received_amount() -> u64;
-    fn assert(expr: bool);
-
-    /// Hash buffer is 32 bytes
-    fn hash(value_len: usize, value_ptr: *const u8, buf_ptr: *mut u8);
-    fn hash32(value_len: usize, value_ptr: *const u8) -> u32;
-
-    // Fills given buffer with random u8.
-    fn random_buf(buf_len: u32, buf_ptr: *mut u8);
-    fn random32() -> u32;
-
-    fn block_index() -> u64;
-
-    /// Log using utf-8 string format.
-    fn debug(msg_len: usize, msg_ptr: *const u8);
-*/
