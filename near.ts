@@ -708,11 +708,7 @@ export namespace collections {
      * @returns An interal string key for a given key of type K.
      */
     private _key(key: K): string {
-      if (isString<K>()) {
-        return this._elementPrefix + key;
-      } else {
-        return this._elementPrefix + key.toString();
-      }
+      return this._elementPrefix + key.toString();
     }
 
     /**
@@ -803,11 +799,7 @@ export namespace collections {
      * @returns A suffix for an internal key for a given external key of type K.
      */
     private _keySuffix(key: K): string {
-      if (isString<K>()) {
-        return _KEY_ELEMENT_SUFFIX + key;
-      } else {
-        return _KEY_ELEMENT_SUFFIX + key.toString();
-      }
+      return _KEY_ELEMENT_SUFFIX + key.toString();
     }
 
     /**
@@ -1005,8 +997,8 @@ export namespace collections {
   /**
    * Creates or restores a persistent TopN with a given storage prefix.
    * Always use a unique storage prefix for different collections.
-   * @param prefix A prefix to use.
-   * @
+   * @param prefix A prefix to use for every key of this collection.
+   * @param descending Sorting order of keys for rating. Default is descending (the highest rated keys).
    */
   export function topN<K>(prefix: string, descending: bool = true): TopN<K> {
     return new TopN<K>(prefix, descending);

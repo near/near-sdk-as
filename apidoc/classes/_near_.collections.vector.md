@@ -44,7 +44,7 @@ A vector class that implements a persistent array.
 
 ⊕ **new Vector**(prefix: *`string`*): [Vector](_near_.collections.vector.md)
 
-*Defined in [near.ts:282](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L282)*
+*Defined in [near.ts:282](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L282)*
 
 Creates or restores a persistent vector with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -66,7 +66,7 @@ ___
 
 getback(): `T`
 
-*Defined in [near.ts:438](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L438)*
+*Defined in [near.ts:438](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L438)*
 
 **Returns:** `T`
 The last element of the vector. Asserts that the vector is not empty.
@@ -78,7 +78,7 @@ ___
 
 getfirst(): `T`
 
-*Defined in [near.ts:461](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L461)*
+*Defined in [near.ts:461](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L461)*
 
 **Returns:** `T`
 The first element of the vector. Asserts that the vector is not empty.
@@ -90,7 +90,7 @@ ___
 
 getfront(): `T`
 
-*Defined in [near.ts:453](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L453)*
+*Defined in [near.ts:453](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L453)*
 
 **Returns:** `T`
 The first element of the vector. Asserts that the vector is not empty.
@@ -102,7 +102,7 @@ ___
 
 getisEmpty(): `bool`
 
-*Defined in [near.ts:323](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L323)*
+*Defined in [near.ts:323](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L323)*
 
 **Returns:** `bool`
 True if the vector is empty.
@@ -114,7 +114,7 @@ ___
 
 getlast(): `T`
 
-*Defined in [near.ts:446](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L446)*
+*Defined in [near.ts:446](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L446)*
 
 **Returns:** `T`
 The last element of the vector. Asserts that the vector is not empty.
@@ -126,7 +126,7 @@ ___
 
 getlength(): `i32`
 
-*Defined in [near.ts:330](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L330)*
+*Defined in [near.ts:330](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L330)*
 
 **Returns:** `i32`
 The length of the vector.
@@ -141,7 +141,7 @@ ___
 
 ▸ **containsIndex**(index: *`i32`*): `bool`
 
-*Defined in [near.ts:316](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L316)*
+*Defined in [near.ts:316](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L316)*
 
 **Parameters:**
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **delete**(index: *`i32`*): `void`
 
-*Defined in [near.ts:307](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L307)*
+*Defined in [near.ts:307](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L307)*
 
 Removes the content of the element from storage without changing length of the vector.
 
@@ -178,7 +178,7 @@ ___
 
 ▸ **pop**(): `T`
 
-*Defined in [near.ts:416](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L416)*
+*Defined in [near.ts:416](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L416)*
 
 Removes the last element from the vector and returns it. Asserts that the vector is not empty. Decreases the length of the vector.
 
@@ -192,7 +192,7 @@ ___
 
 ▸ **popBack**(): `T`
 
-*Defined in [near.ts:431](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L431)*
+*Defined in [near.ts:431](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L431)*
 
 Removes the last element from the vector and returns it. Asserts that the vector is not empty. Decreases the length of the vector.
 
@@ -206,7 +206,7 @@ ___
 
 ▸ **push**(element: *`T`*): `i32`
 
-*Defined in [near.ts:394](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L394)*
+*Defined in [near.ts:394](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L394)*
 
 Adds a new element to the end of the vector. Increases the length of the vector.
 
@@ -226,7 +226,7 @@ ___
 
 ▸ **pushBack**(element: *`T`*): `i32`
 
-*Defined in [near.ts:407](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L407)*
+*Defined in [near.ts:407](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L407)*
 
 Adds a new element to the end of the vector. Increases the length of the vector.
 

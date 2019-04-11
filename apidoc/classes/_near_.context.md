@@ -30,7 +30,7 @@ Provides context for contract execution, including information about transaction
 
 getblockIndex(): `u64`
 
-*Defined in [near.ts:1037](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1037)*
+*Defined in [near.ts:1029](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1029)*
 
 Current block index.
 
@@ -43,7 +43,7 @@ ___
 
 getcontractName(): `string`
 
-*Defined in [near.ts:1030](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1030)*
+*Defined in [near.ts:1022](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1022)*
 
 Account ID of contract.
 
@@ -56,7 +56,7 @@ ___
 
 getcurrentBalance(): `u64`
 
-*Defined in [near.ts:1044](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1044)*
+*Defined in [near.ts:1036](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1036)*
 
 Current balance of the contract.
 
@@ -69,7 +69,7 @@ ___
 
 getgasLeft(): `u64`
 
-*Defined in [near.ts:1058](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1058)*
+*Defined in [near.ts:1050](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1050)*
 
 The amount of available gas left for this execution call.
 
@@ -82,7 +82,7 @@ ___
 
 getmanaLeft(): `u32`
 
-*Defined in [near.ts:1065](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1065)*
+*Defined in [near.ts:1057](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1057)*
 
 The amount of available mana left for this execution call.
 
@@ -95,7 +95,7 @@ ___
 
 getreceivedAmount(): `u64`
 
-*Defined in [near.ts:1051](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1051)*
+*Defined in [near.ts:1043](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1043)*
 
 The amount of tokens received with this execution call.
 
@@ -108,7 +108,7 @@ ___
 
 getsender(): `string`
 
-*Defined in [near.ts:1023](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1023)*
+*Defined in [near.ts:1015](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1015)*
 
 Account ID of transaction sender.
 

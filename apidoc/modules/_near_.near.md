@@ -28,7 +28,7 @@
 
 ▸ **base58**(source: *`Uint8Array`*): `string`
 
-*Defined in [near.ts:1141](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1141)*
+*Defined in [near.ts:1133](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1133)*
 
 **Parameters:**
 
@@ -45,7 +45,7 @@ ___
 
 ▸ **hash**<`T`>(data: *`T`*): `Uint8Array`
 
-*Defined in [near.ts:1091](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1091)*
+*Defined in [near.ts:1083](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1083)*
 
 Hash given data. Returns hash as 32-byte array.
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **hash32**<`T`>(data: *`T`*): `u32`
 
-*Defined in [near.ts:1106](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1106)*
+*Defined in [near.ts:1098](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1098)*
 
 Hash given data. Returns hash as 32-bit integer.
 
@@ -89,7 +89,7 @@ ___
 
 ▸ **log**(msg: *`string`*): `void`
 
-*Defined in [near.ts:1132](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1132)*
+*Defined in [near.ts:1124](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1124)*
 
 **Parameters:**
 
@@ -106,7 +106,7 @@ ___
 
 ▸ **random32**(): `u32`
 
-*Defined in [near.ts:1128](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1128)*
+*Defined in [near.ts:1120](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1120)*
 
 Returns random 32-bit integer.
 
@@ -119,7 +119,7 @@ ___
 
 ▸ **randomBuffer**(len: *`u32`*): `Uint8Array`
 
-*Defined in [near.ts:1119](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1119)*
+*Defined in [near.ts:1111](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1111)*
 
 Returns random byte buffer of given length.
 
@@ -138,7 +138,7 @@ ___
 
 ▸ **str**<`T`>(value: *`T`*): `string`
 
-*Defined in [near.ts:1136](https://github.com/nearprotocol/near-runtime-ts/blob/d90519d/near.ts#L1136)*
+*Defined in [near.ts:1128](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1128)*
 
 **Type parameters:**
 
