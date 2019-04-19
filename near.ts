@@ -159,7 +159,7 @@ export class Storage {
 
   /**
    * Stores given generic value under the key. Key is encoded as UTF-8 strings.
-   * Supported types: bools, integers, string and data objects defined in model.ts.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
    *
    * @param key A key to use for storage.
    * @param value A value to store.
@@ -176,35 +176,17 @@ export class Storage {
 
   /**
    * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
-   * Supported types: bools, integers, string and data objects defined in model.ts.
-   * For common/dynamic arrays use {@link #getArray}
+   * Supported types: bool, integer, string and data objects defined in model.ts.
    *
    * @param key A key to read from storage.
    * @param defaultValue The default value if the key is not available
    * @returns A value of type T stored under the given key.
    */
   get<T>(key: string, defaultValue: T = null): T {
-    if (isString<T>()) { 
-      return this.getString(key) || defaultValue;
-    } else if (isInteger<T>()) {
-      let s = this.getString(key);
-      if (s != null) {
-        if (isSigned<T>()) {
-          return <T>I64.parseInt(s);
-        } else {
-          return <T>U64.parseInt(s);
-        }
-      } else {
-        return defaultValue;
-      }
+    if (isString<T>() || isInteger<T>()) {
+      return near.parseFromString<T>(this.getString(key), defaultValue);
     } else {
-      let bytes = this.getBytes(key);
-      if (bytes != null) {
-        let v = instantiate<T>();
-        return v.decode(bytes);
-      } else {
-        return defaultValue;
-      }
+      return near.parseFromBytes<T>(this.getBytes(key), defaultValue);
     }
   }
 
@@ -1062,6 +1044,65 @@ class Context {
 export let context: Context = new Context();
 
 export namespace near {
+
+  /**
+   * Parses given generic value from the given string.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
+   *
+   * @param s String to parse.
+   * @param defaultValue The default value if the string is null
+   * @returns A parsed value of type T.
+   */
+  export function parseFromString<T>(s: string, defaultValue: T = null): T {
+    if (s == null) {
+      return defaultValue;
+    }
+    if (isString<T>()) {
+      return s;
+    } else if (isInteger<T>()) {
+      if (defaultValue instanceof bool) {
+        return <T>(s == "true");
+      } else if (isSigned<T>()) {
+        return <T>I64.parseInt(s);
+      } else {
+        return <T>U64.parseInt(s);
+      }
+    } else {
+      let v = instantiate<T>();
+      return v.decode(stringToBytes(s));
+    }
+  }
+
+  /**
+   * Parses given generic value from the given bytes array.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
+   *
+   * @param bytes Bytes to parse.
+   * @param defaultValue The default value if the bytes are null
+   * @returns A parsed value of type T.
+   */
+  export function parseFromBytes<T>(bytes: Uint8Array, defaultValue: T = null): T {
+    if (bytes == null) {
+      return defaultValue;
+    }
+    if (isString<T>() || isInteger<T>()) {
+      return parseFromString<T>(bytesToString(bytes), defaultValue);
+    } else {
+      let v = instantiate<T>();
+      return v.decode(bytes);
+    }
+  }
+
+  export function bytesToString(bytes: Uint8Array): string {
+    return String.fromUTF8(bytes.buffer.data, bytes.byteLength)
+  }
+
+  export function stringToBytes(s: string): Uint8Array {
+    let len = s.lengthUTF8 - 1;
+    let bytes = new Uint8Array(len);
+    memory.copy(bytes.buffer.data, s.toUTF8(), len);
+    return bytes;
+  }
 
   /**
    * Helper class to store key->value pairs.
