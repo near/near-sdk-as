@@ -1046,7 +1046,7 @@ export let context: Context = new Context();
 export namespace near {
 
   /**
-   * Parses given generic value from the given string.
+   * Parses the given string to return a value of the given generic type.
    * Supported types: bool, integer, string and data objects defined in model.ts.
    *
    * @param s String to parse.
@@ -1074,7 +1074,7 @@ export namespace near {
   }
 
   /**
-   * Parses given generic value from the given bytes array.
+   * Parses the given bytes array to return a value of the given generic type.
    * Supported types: bool, integer, string and data objects defined in model.ts.
    *
    * @param bytes Bytes to parse.
