@@ -11,6 +11,6 @@
   "dependencies": {},
   "devDependencies": {
     "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.1.25"
+    "typedoc-plugin-markdown": "^1.2.0"
   }
 }
