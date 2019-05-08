@@ -1039,6 +1039,14 @@ class Context {
   get manaLeft(): u32 {
     return mana_left();
   }
+
+  /**
+   * The total storage used by the contract at the moment of method invocation,
+   * in bytes.
+   */
+  get storageUsage(): u64 {
+    return storage_usage();
+  }
 }
 
 export let context: Context = new Context();
@@ -1520,6 +1528,12 @@ declare function balance(): u64;
  */
 @external("env", "mana_left")
 declare function mana_left(): u32;
+
+/**
+ * @hidden
+ */
+@external("env", "storage_usage")
+declare function storage_usage(): u64;
 
 /**
  * @hidden
