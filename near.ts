@@ -245,7 +245,7 @@ export class Storage {
 export let storage: Storage = new Storage();
 
 /**
- * A namespace with classes and functions for persistent collections on the blockchain. 
+ * A namespace with classes and functions for persistent collections on the blockchain.
  */
 export namespace collections {
   const _KEY_LENGTH_SUFFIX = ":len";
@@ -761,7 +761,7 @@ export namespace collections {
     private _lengthKey: string;
 
     // A map to store rating by key
-    private _ratings: Map<K, i32>; 
+    private _ratings: Map<K, i32>;
 
     /**
      * Creates or restores a persistent top N collection with a given storage prefix.
@@ -1547,23 +1547,23 @@ export class Base64 {
   private PADCHAR: string = '=';
   private ALPHA: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
-  private getByte64(s: string, i: i32): u32 {
+  private getByte64(s: string, i: u32): u32 {
     const idx = this.ALPHA.indexOf(s.charAt(i));
     return idx;
   }
 
   public decode (s: string): Uint8Array {
-    let i: i32, b10: u32;
+    let i: u32, b10: u32;
     let pads = 0,
-        imax = s.length as i32;
+        imax = s.length as u32;
 
-    if (imax === 0) {
+    if (imax == 0) {
       return new Uint8Array(0);
     }
 
-    if (s.charAt(imax - 1) === this.PADCHAR) {
+    if (s.charAt(imax - 1) == this.PADCHAR) {
       pads = 1;
-      if (s.charAt(imax - 2) === this.PADCHAR) {
+      if (s.charAt(imax - 2) == this.PADCHAR) {
         pads = 2;
       }
       imax -= 4;
@@ -1572,7 +1572,6 @@ export class Base64 {
     let main_chunk = imax % 4 == 0 ? imax / 4 * 3 : (imax / 4 + 1) * 3;
     let pad_size = pads > 0 ? 3 - pads : 0;
     let size = main_chunk + pad_size;
-    near.log(size.toString());
 
     let x = new Uint8Array(size),
         index = 0;
@@ -1603,7 +1602,7 @@ export class Base64 {
     let x = "",
         imax = bytes.length - bytes.length % 3;
 
-    if (bytes.length === 0) {
+    if (bytes.length == 0) {
       return "";
     }
 
