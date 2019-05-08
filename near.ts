@@ -1041,7 +1041,8 @@ class Context {
   }
 
   /**
-   * The current storage usage in bytes.
+   * The total storage used by the contract at the moment of method invocation,
+   * in bytes.
    */
   get storageUsage(): u64 {
     return storage_usage();
