@@ -32,7 +32,7 @@ Helper class to store key->value pairs.
 
 ⊕ **new MapEntry**(key: *`K`*, value: *`V`*): [MapEntry](_near_.near.mapentry.md)
 
-*Defined in [near.ts:1071](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1071)*
+*Defined in [near.ts:1124](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1124)*
 
 **Parameters:**
 
@@ -53,7 +53,7 @@ ___
 
 **● key**: *`K`*
 
-*Defined in [near.ts:1070](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1070)*
+*Defined in [near.ts:1123](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1123)*
 
 ___
 <a id="value"></a>
@@ -62,7 +62,7 @@ ___
 
 **● value**: *`V`*
 
-*Defined in [near.ts:1071](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L1071)*
+*Defined in [near.ts:1124](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1124)*
 
 ___
 
