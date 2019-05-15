@@ -1035,6 +1035,13 @@ class Context {
   }
 
   /**
+   * The current storage usage in bytes.
+   */
+  get storageUsage(): u64 {
+    return storage_usage();
+  }
+
+  /**
    * Moves assets from liquid balance to frozen balance.
    * If there is enough liquid balance will deposit the maximum amount. Otherwise will deposit as much as possible.
    * Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
@@ -1527,6 +1534,12 @@ declare function frozen_balance(): u64;
  */
 @external("env", "liquid_balance")
 declare function liquid_balance(): u64;
+
+/**
+ * @hidden
+ */
+@external("env", "storage_usage")
+declare function storage_usage(): u64;
 
 /**
  * @hidden

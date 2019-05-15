@@ -27,7 +27,7 @@ base64 encoding/decoding
 
 **● ALPHA**: *`string`* = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-*Defined in [near.ts:1561](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1561)*
+*Defined in [near.ts:1574](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1574)*
 
 ___
 <a id="padchar"></a>
@@ -36,7 +36,7 @@ ___
 
 **● PADCHAR**: *`string`* = "="
 
-*Defined in [near.ts:1560](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1560)*
+*Defined in [near.ts:1573](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1573)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 ▸ **decode**(s: *`string`*): `Uint8Array`
 
-*Defined in [near.ts:1571](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1571)*
+*Defined in [near.ts:1584](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1584)*
 
 Decode base64-encoded string and return a Uint8Array.
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **encode**(bytes: *`Uint8Array`*): `string`
 
-*Defined in [near.ts:1620](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1620)*
+*Defined in [near.ts:1633](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1633)*
 
 Encode Uint8Array in base64.
 
@@ -86,7 +86,7 @@ ___
 
 ▸ **getByte64**(s: *`string`*, i: *`u32`*): `u32`
 
-*Defined in [near.ts:1563](https://github.com/nearprotocol/near-runtime-ts/blob/16a2965/near.ts#L1563)*
+*Defined in [near.ts:1576](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1576)*
 
 **Parameters:**
 
