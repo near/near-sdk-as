@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "doc": "rm -rf apidoc; mkdir apidoc; node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "asp"
+    "test": "cp node_modules/as-pect/assembly/__tests__/as-pect.d.ts assembly/__tests__/; asp"
   },
   "author": "",
   "license": "MIT",
