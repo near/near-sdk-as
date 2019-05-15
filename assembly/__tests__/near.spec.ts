@@ -11,11 +11,7 @@ function stringToBytes(s: string): Uint8Array {
 }
 
 function bytesToString(bytes: Uint8Array): string {
-    let res = new Array<string>();
-    for (let i = 0; i < bytes.length; i++) {
-        res.push(String.fromCharCode(bytes[i]));
-    }
-    return res.join('');
+    return String.fromUTF8(bytes.buffer.data, bytes.length);
 }
 
 function testBase64(original: string, expectedEncoding: string): void {
