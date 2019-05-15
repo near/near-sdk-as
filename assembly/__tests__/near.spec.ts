@@ -1,25 +1,11 @@
-import { base64 } from '../../near';
-
-function stringToBytes(s: string): Uint8Array {
-    let len = s.lengthUTF8 - 1;
-    let res = new Uint8Array(len);
-    let ptr = s.toUTF8();
-    for (let i = 0; i < len; i++) {
-        res[i] = load<u8>(ptr + i);
-    }
-    return res;
-}
-
-function bytesToString(bytes: Uint8Array): string {
-    return String.fromUTF8(bytes.buffer.data, bytes.length);
-}
+import { base64, near } from '../../near';
 
 function testBase64(original: string, expectedEncoding: string): void {
-    let bytes = stringToBytes(original);
+    let bytes = near.stringToBytes(original);
     let encoded = base64.encode(bytes);
     expect<string>(encoded).toBe(expectedEncoding);
     let decoded = base64.decode(encoded);
-    expect<string>(bytesToString(decoded)).toBe(original);
+    expect<string>(near.bytesToString(decoded)).toBe(original);
 }
 
 describe('base64 encoding/decoding', (): void => {
