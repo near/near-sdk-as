@@ -40,7 +40,7 @@ Represents contract storage.
 
 ▸ **contains**(key: *`string`*): `bool`
 
-*Defined in [near.ts:113](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L113)*
+*Defined in [near.ts:113](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L113)*
 
 Returns true if the given key is present in the storage.
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **delete**(key: *`string`*): `void`
 
-*Defined in [near.ts:122](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L122)*
+*Defined in [near.ts:122](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L122)*
 
 **Parameters:**
 
@@ -76,7 +76,7 @@ ___
 
 ▸ **get**<`T`>(key: *`string`*, defaultValue?: *`T`*): `T`
 
-*Defined in [near.ts:185](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L185)*
+*Defined in [near.ts:185](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L185)*
 
 Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer, string and data objects defined in model.ts.
 
@@ -100,7 +100,7 @@ ___
 
 ▸ **getBytes**(key: *`string`*): `Uint8Array`
 
-*Defined in [near.ts:106](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L106)*
+*Defined in [near.ts:106](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L106)*
 
 Get byte array stored under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -121,7 +121,7 @@ ___
 
 ▸ **getItem**(key: *`string`*): `string`
 
-*Defined in [near.ts:72](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L72)*
+*Defined in [near.ts:72](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L72)*
 
 *__deprecated__*: Use getString or get
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **getString**(key: *`string`*): `string`
 
-*Defined in [near.ts:86](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L86)*
+*Defined in [near.ts:86](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L86)*
 
 Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **getU64**(key: *`string`*): `u64`
 
-*Defined in [near.ts:156](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L156)*
+*Defined in [near.ts:156](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L156)*
 
 Get 64-bit unsigned int stored under given key. Key is encoded as UTF-8 strings. Number is encoded as decimal string.
 
@@ -179,7 +179,7 @@ ___
 
 ▸ **hasKey**(key: *`string`*): `bool`
 
-*Defined in [near.ts:118](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L118)*
+*Defined in [near.ts:118](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L118)*
 
 **Parameters:**
 
@@ -196,7 +196,7 @@ ___
 
 ▸ **keyRange**(start: *`string`*, end: *`string`*, limit?: *`i32`*): `string`[]
 
-*Defined in [near.ts:42](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L42)*
+*Defined in [near.ts:42](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L42)*
 
 Returns list of keys between the given start key and the end key. Both inclusive. NOTE: Must be very careful to avoid exploding amount of compute with this method.
 
@@ -217,7 +217,7 @@ ___
 
 ▸ **keys**(prefix: *`string`*, limit?: *`i32`*): `string`[]
 
-*Defined in [near.ts:55](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L55)*
+*Defined in [near.ts:55](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L55)*
 
 Returns list of keys starting with given prefix. NOTE: Must be very careful to avoid exploding amount of compute with this method.
 
@@ -237,7 +237,7 @@ ___
 
 ▸ **remove**(key: *`string`*): `void`
 
-*Defined in [near.ts:130](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L130)*
+*Defined in [near.ts:130](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L130)*
 
 *__deprecated__*: Use #delete
 
@@ -256,7 +256,7 @@ ___
 
 ▸ **removeItem**(key: *`string`*): `void`
 
-*Defined in [near.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L138)*
+*Defined in [near.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L138)*
 
 *__deprecated__*: Use #delete
 
@@ -275,7 +275,7 @@ ___
 
 ▸ **set**<`T`>(key: *`string`*, value: *`T`*): `void`
 
-*Defined in [near.ts:167](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L167)*
+*Defined in [near.ts:167](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L167)*
 
 Stores given generic value under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer, string and data objects defined in model.ts.
 
@@ -298,7 +298,7 @@ ___
 
 ▸ **setBytes**(key: *`string`*, value: *`Uint8Array`*): `void`
 
-*Defined in [near.ts:96](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L96)*
+*Defined in [near.ts:96](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L96)*
 
 Store byte array under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -320,7 +320,7 @@ ___
 
 ▸ **setItem**(key: *`string`*, value: *`string`*): `void`
 
-*Defined in [near.ts:65](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L65)*
+*Defined in [near.ts:65](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L65)*
 
 *__deprecated__*: Use setString or set
 
@@ -340,7 +340,7 @@ ___
 
 ▸ **setString**(key: *`string`*, value: *`string`*): `void`
 
-*Defined in [near.ts:79](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L79)*
+*Defined in [near.ts:79](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L79)*
 
 Store string value under given key. Both key and value are encoded as UTF-8 strings.
 
@@ -360,7 +360,7 @@ ___
 
 ▸ **setU64**(key: *`string`*, value: *`u64`*): `void`
 
-*Defined in [near.ts:146](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L146)*
+*Defined in [near.ts:146](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L146)*
 
 Store 64-bit unsigned int under given key. Key is encoded as UTF-8 strings. Number is encoded as decimal string.
 

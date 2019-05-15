@@ -1046,7 +1046,7 @@ class Context {
    * If there is enough liquid balance will deposit the maximum amount. Otherwise will deposit as much as possible.
    * Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
    */
-  get deposit(min_amount: u64, max_amount: u64): u64 {
+  deposit(min_amount: u64, max_amount: u64): u64 {
     deposit(min_amount, max_amount)
   }
 
@@ -1055,7 +1055,7 @@ class Context {
    * If there is enough frozen balance will withdraw the maximum amount. Otherwise will withdraw as much as possible.
    * Will fail if there is less than minimum amount on the frozen balance. Returns the withdrawn amount.
    */
-  get withdraw(min_amount: u64, max_amount: u64): u64 {
+  withdraw(min_amount: u64, max_amount: u64): u64 {
     withdraw(min_amount, max_amount)
   }
 }

@@ -32,7 +32,7 @@
 
 ▸ **base58**(source: *`Uint8Array`*): `string`
 
-*Defined in [near.ts:1193](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1193)*
+*Defined in [near.ts:1193](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1193)*
 
 **Parameters:**
 
@@ -49,7 +49,7 @@ ___
 
 ▸ **bytesToString**(bytes: *`Uint8Array`*): `string`
 
-*Defined in [near.ts:1115](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1115)*
+*Defined in [near.ts:1115](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1115)*
 
 **Parameters:**
 
@@ -66,7 +66,7 @@ ___
 
 ▸ **hash**<`T`>(data: *`T`*): `Uint8Array`
 
-*Defined in [near.ts:1143](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1143)*
+*Defined in [near.ts:1143](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1143)*
 
 Hash given data. Returns hash as 32-byte array.
 
@@ -88,7 +88,7 @@ ___
 
 ▸ **hash32**<`T`>(data: *`T`*): `u32`
 
-*Defined in [near.ts:1158](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1158)*
+*Defined in [near.ts:1158](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1158)*
 
 Hash given data. Returns hash as 32-bit integer.
 
@@ -110,7 +110,7 @@ ___
 
 ▸ **log**(msg: *`string`*): `void`
 
-*Defined in [near.ts:1184](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1184)*
+*Defined in [near.ts:1184](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1184)*
 
 **Parameters:**
 
@@ -127,7 +127,7 @@ ___
 
 ▸ **parseFromBytes**<`T`>(bytes: *`Uint8Array`*, defaultValue?: *`T`*): `T`
 
-*Defined in [near.ts:1103](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1103)*
+*Defined in [near.ts:1103](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1103)*
 
 Parses the given bytes array to return a value of the given generic type. Supported types: bool, integer, string and data objects defined in model.ts.
 
@@ -151,7 +151,7 @@ ___
 
 ▸ **parseFromString**<`T`>(s: *`string`*, defaultValue?: *`T`*): `T`
 
-*Defined in [near.ts:1075](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1075)*
+*Defined in [near.ts:1075](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1075)*
 
 Parses the given string to return a value of the given generic type. Supported types: bool, integer, string and data objects defined in model.ts.
 
@@ -175,7 +175,7 @@ ___
 
 ▸ **random32**(): `u32`
 
-*Defined in [near.ts:1180](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1180)*
+*Defined in [near.ts:1180](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1180)*
 
 Returns random 32-bit integer.
 
@@ -188,7 +188,7 @@ ___
 
 ▸ **randomBuffer**(len: *`u32`*): `Uint8Array`
 
-*Defined in [near.ts:1171](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1171)*
+*Defined in [near.ts:1171](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1171)*
 
 Returns random byte buffer of given length.
 
@@ -207,7 +207,7 @@ ___
 
 ▸ **str**<`T`>(value: *`T`*): `string`
 
-*Defined in [near.ts:1188](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1188)*
+*Defined in [near.ts:1188](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1188)*
 
 **Type parameters:**
 
@@ -227,7 +227,7 @@ ___
 
 ▸ **stringToBytes**(s: *`string`*): `Uint8Array`
 
-*Defined in [near.ts:1119](https://github.com/nearprotocol/near-runtime-ts/blob/60838e5/near.ts#L1119)*
+*Defined in [near.ts:1119](https://github.com/nearprotocol/near-runtime-ts/blob/cb5fe1e/near.ts#L1119)*
 
 **Parameters:**
 
