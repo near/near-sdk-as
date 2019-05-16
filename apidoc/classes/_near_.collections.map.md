@@ -35,7 +35,7 @@ A map class that implements a persistent unordered map. NOTE: The Map doesn't st
 
 ⊕ **new Map**(prefix: *`string`*): [Map](_near_.collections.map.md)
 
-*Defined in [near.ts:696](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L696)*
+*Defined in [near.ts:678](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L678)*
 
 Creates or restores a persistent map with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -57,7 +57,7 @@ ___
 
 ▸ **contains**(key: *`K`*): `bool`
 
-*Defined in [near.ts:736](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L736)*
+*Defined in [near.ts:718](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L718)*
 
 **Parameters:**
 
@@ -75,7 +75,7 @@ ___
 
 ▸ **delete**(key: *`K`*): `void`
 
-*Defined in [near.ts:744](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L744)*
+*Defined in [near.ts:726](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L726)*
 
 Removes value and the key from the map.
 
@@ -94,7 +94,7 @@ ___
 
 ▸ **get**(key: *`K`*, defaultValue?: *`V`*): `V`
 
-*Defined in [near.ts:753](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L753)*
+*Defined in [near.ts:735](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L735)*
 
 **Parameters:**
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **set**(key: *`K`*, value: *`V`*): `void`
 
-*Defined in [near.ts:762](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L762)*
+*Defined in [near.ts:744](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L744)*
 
 Sets the new value for the given key.
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **values**(start?: *`K`*, end?: *`K`*, limit?: *`i32`*, startInclusive?: *`bool`*): `V`[]
 
-*Defined in [near.ts:722](https://github.com/nearprotocol/near-runtime-ts/blob/a04d184/near.ts#L722)*
+*Defined in [near.ts:704](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L704)*
 
 Returns values of the map between the given start key and the end key.
 

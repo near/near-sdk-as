@@ -11,8 +11,8 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "as-pect": "jtenner/as-pect",
     "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.1.25",
-    "as-pect": "jtenner/as-pect"
+    "typedoc-plugin-markdown": "^1.2.1"
   }
 }
