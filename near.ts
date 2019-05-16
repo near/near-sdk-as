@@ -1094,7 +1094,7 @@ export namespace near {
   }
 
   export function bytesToString(bytes: Uint8Array): string {
-    return String.fromUTF8(bytes.buffer.data, bytes.byteLength)
+    return String.fromUTF8(bytes.buffer.data + bytes.byteOffset, bytes.byteLength)
   }
 
   export function stringToBytes(s: string): Uint8Array {
