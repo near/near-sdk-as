@@ -1,7 +1,7 @@
 # near-runtime-ts
 Typescript library for writing near smart contracts
 
-## Documentation
+## Generate documentation
 
 API docs are produced using typedoc. To run, first install dependencies:
 
@@ -13,4 +13,10 @@ After installing dependencies, run
 
 ```
 npm run doc
+```
+
+## Run tests
+
+```
+npm test
 ```
