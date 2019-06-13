@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "doc": "rm -rf apidoc; mkdir apidoc; node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "cp node_modules/as-pect/assembly/__tests__/as-pect.d.ts assembly/__tests__/; asp"
+    "test": "asp"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "as-pect": "github:jtenner/as-pect",
     "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.1.25",
-    "as-pect": "jtenner/as-pect"
+    "typedoc-plugin-markdown": "^1.1.25"
   }
 }
