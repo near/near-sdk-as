@@ -1,3 +1,5 @@
+import { u128 } from "./node_modules/bignum/assembly/integer/u128";
+
 const DEFAULT_SCRATCH_BUFFER_SIZE: usize = 1 << 16;
 
 type DataTypeIndex = u32;
@@ -1015,14 +1017,14 @@ class Context {
   /**
    * The amount of tokens received with this execution call.
    */
-  get receivedAmount(): u64 {
+  get receivedAmount(): u128 {
     return received_amount();
   }
 
   /**
    * The amount of tokens that are locked in the account. Storage usage fee is deducted from this balance.
    */
-  get frozenBalance(): u64 {
+  get frozenBalance(): u128 {
     return frozen_balance();
   }
 
@@ -1030,7 +1032,7 @@ class Context {
    * The amount of tokens that can be used for running wasm, creating transactions, and sending to other contracts
    * through cross-contract calls.
    */
-  get liquidBalance(): u64 {
+  get liquidBalance(): u128 {
       return liquid_balance();
   }
 
@@ -1046,7 +1048,7 @@ class Context {
    * If there is enough liquid balance will deposit the maximum amount. Otherwise will deposit as much as possible.
    * Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
    */
-  deposit(minAmount: u64, maxAmount: u64): u64 {
+  deposit(minAmount: u128, maxAmount: u128): u128 {
     deposit(minAmount, maxAmount)
   }
 
@@ -1055,7 +1057,7 @@ class Context {
    * If there is enough frozen balance will withdraw the maximum amount. Otherwise will withdraw as much as possible.
    * Will fail if there is less than minimum amount on the frozen balance. Returns the withdrawn amount.
    */
-  withdraw(minAmount: u64, maxAmount: u64): u64 {
+  withdraw(minAmount: u128, maxAmount: u128): u128 {
     withdraw(minAmount, maxAmount)
   }
 }
@@ -1300,7 +1302,7 @@ export class ContractPromise {
       contractName: string,
       methodName: string,
       args: Uint8Array,
-      amount: u64 = 0
+      amount: u128 = 0
   ): ContractPromise {
     return {
       id: promise_create(
@@ -1322,7 +1324,7 @@ export class ContractPromise {
   then(
       methodName: string,
       args: Uint8Array,
-      amount: u64
+      amount: u128
   ): ContractPromise {
     return {
       id: promise_then(
@@ -1479,14 +1481,14 @@ declare function promise_create(
     account_id_len: usize, account_id_ptr: usize,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    amount: u64): u32;
+    amount: u128): u32;
 
 @external("env", "promise_then")
 declare function promise_then(
     promise_index: u32,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    amount: u64): u32;
+    amount: u128): u32;
 
 @external("env", "promise_and")
 declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
@@ -1527,13 +1529,13 @@ declare function _near_log(msg_ptr: usize): void;
  * @hidden
  */
 @external("env", "frozen_balance")
-declare function frozen_balance(): u64;
+declare function frozen_balance(): u128;
 
 /**
  * @hidden
  */
 @external("env", "liquid_balance")
-declare function liquid_balance(): u64;
+declare function liquid_balance(): u128;
 
 /**
  * @hidden
@@ -1545,19 +1547,19 @@ declare function storage_usage(): u64;
  * @hidden
  */
 @external("env", "deposit")
-declare function deposit(min_amount: u64, max_amount: u64): u64;
+declare function deposit(min_amount: u128, max_amount: u128): u128;
 
 /**
  * @hidden
  */
 @external("env", "withdraw")
-declare function withdraw(min_amount: u64, max_amount: u64): u64;
+declare function withdraw(min_amount: u128, max_amount: u128): u128;
 
 /**
  * @hidden
  */
 @external("env", "received_amount")
-declare function received_amount(): u64;
+declare function received_amount(): u128;
 
 /**
  * @hidden
