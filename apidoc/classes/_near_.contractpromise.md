@@ -59,7 +59,7 @@ See docs on used methods for more details.
 
 **● id**: *`i32`*
 
-*Defined in [near.ts:1278](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1278)*
+*Defined in [near.ts:1278](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1278)*
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 ▸ **returnAsResult**(): `void`
 
-*Defined in [near.ts:1382](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1382)*
+*Defined in [near.ts:1382](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1382)*
 
 Returns the promise as a result of your function. Don't return any other results from the function. Your current function should be `void` and shouldn't return anything else. E.g.
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **then**(methodName: *`string`*, args: *`Uint8Array`*, amount: *`u64`*): [ContractPromise](_near_.contractpromise.md)
 
-*Defined in [near.ts:1322](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1322)*
+*Defined in [near.ts:1322](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1322)*
 
 Creating a callback for the AsyncCall Promise created with `create` method.
 
@@ -144,7 +144,7 @@ ___
 
 ▸ **all**(promises: *[ContractPromise](_near_.contractpromise.md)[]*): [ContractPromise](_near_.contractpromise.md)
 
-*Defined in [near.ts:1392](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1392)*
+*Defined in [near.ts:1392](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1392)*
 
 Joins multiple async call promises into one, to aggregate results before the callback. NOTE: Given promises can only be new async calls and can't be callbacks. Joined promise can't be returned as a result
 
@@ -163,7 +163,7 @@ ___
 
 ▸ **create**(contractName: *`string`*, methodName: *`string`*, args: *`Uint8Array`*, amount?: *`u64`*): [ContractPromise](_near_.contractpromise.md)
 
-*Defined in [near.ts:1299](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1299)*
+*Defined in [near.ts:1299](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1299)*
 
 Creates a new async call promise. Returns an instance of `ContractPromise`. The call would be scheduled if the this current execution of the contract succeeds without errors or failed asserts.
 
@@ -185,7 +185,7 @@ ___
 
 ▸ **getResults**(): [ContractPromiseResult](_near_.contractpromiseresult.md)[]
 
-*Defined in [near.ts:1424](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1424)*
+*Defined in [near.ts:1424](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1424)*
 
 Method to receive async (one or multiple) results from the remote contract in the callback. Example of using it.
 
