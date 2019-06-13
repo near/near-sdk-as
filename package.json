@@ -14,6 +14,6 @@
     "as-pect": "jtenner/as-pect",
     "bignum": "MaxGraey/bignum.wasm",
     "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.1.25"
+    "typedoc-plugin-markdown": "^1.2.1"
   }
 }

@@ -33,9 +33,9 @@ Provides context for contract execution, including information about transaction
 
 ###  blockIndex
 
-getblockIndex(): `u64`
+**get blockIndex**(): `u64`
 
-*Defined in [near.ts:1011](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1011)*
+*Defined in [near.ts:1013](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1013)*
 
 Current block index.
 
@@ -46,9 +46,9 @@ ___
 
 ###  contractName
 
-getcontractName(): `string`
+**get contractName**(): `string`
 
-*Defined in [near.ts:1004](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1004)*
+*Defined in [near.ts:1006](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1006)*
 
 Account ID of contract.
 
@@ -59,48 +59,48 @@ ___
 
 ###  frozenBalance
 
-getfrozenBalance(): `u64`
+**get frozenBalance**(): `u128`
 
-*Defined in [near.ts:1025](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1025)*
+*Defined in [near.ts:1027](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1027)*
 
 The amount of tokens that are locked in the account. Storage usage fee is deducted from this balance.
 
-**Returns:** `u64`
+**Returns:** `u128`
 
 ___
 <a id="liquidbalance"></a>
 
 ###  liquidBalance
 
-getliquidBalance(): `u64`
+**get liquidBalance**(): `u128`
 
-*Defined in [near.ts:1033](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1033)*
+*Defined in [near.ts:1035](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1035)*
 
 The amount of tokens that can be used for running wasm, creating transactions, and sending to other contracts through cross-contract calls.
 
-**Returns:** `u64`
+**Returns:** `u128`
 
 ___
 <a id="receivedamount"></a>
 
 ###  receivedAmount
 
-getreceivedAmount(): `u64`
+**get receivedAmount**(): `u128`
 
-*Defined in [near.ts:1018](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1018)*
+*Defined in [near.ts:1020](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1020)*
 
 The amount of tokens received with this execution call.
 
-**Returns:** `u64`
+**Returns:** `u128`
 
 ___
 <a id="sender"></a>
 
 ###  sender
 
-getsender(): `string`
+**get sender**(): `string`
 
-*Defined in [near.ts:997](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L997)*
+*Defined in [near.ts:999](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L999)*
 
 Account ID of transaction sender.
 
@@ -111,9 +111,9 @@ ___
 
 ###  storageUsage
 
-getstorageUsage(): `u64`
+**get storageUsage**(): `u64`
 
-*Defined in [near.ts:1040](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1040)*
+*Defined in [near.ts:1042](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1042)*
 
 The current storage usage in bytes.
 
@@ -127,9 +127,9 @@ ___
 
 ###  deposit
 
-▸ **deposit**(minAmount: *`u64`*, maxAmount: *`u64`*): `u64`
+▸ **deposit**(minAmount: *`u128`*, maxAmount: *`u128`*): `u128`
 
-*Defined in [near.ts:1049](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1049)*
+*Defined in [near.ts:1051](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1051)*
 
 Moves assets from liquid balance to frozen balance. If there is enough liquid balance will deposit the maximum amount. Otherwise will deposit as much as possible. Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
 
@@ -137,19 +137,19 @@ Moves assets from liquid balance to frozen balance. If there is enough liquid ba
 
 | Name | Type |
 | ------ | ------ |
-| minAmount | `u64` |
-| maxAmount | `u64` |
+| minAmount | `u128` |
+| maxAmount | `u128` |
 
-**Returns:** `u64`
+**Returns:** `u128`
 
 ___
 <a id="withdraw"></a>
 
 ###  withdraw
 
-▸ **withdraw**(minAmount: *`u64`*, maxAmount: *`u64`*): `u64`
+▸ **withdraw**(minAmount: *`u128`*, maxAmount: *`u128`*): `u128`
 
-*Defined in [near.ts:1058](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L1058)*
+*Defined in [near.ts:1060](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1060)*
 
 Moves assets from frozen balance to liquid balance. If there is enough frozen balance will withdraw the maximum amount. Otherwise will withdraw as much as possible. Will fail if there is less than minimum amount on the frozen balance. Returns the withdrawn amount.
 
@@ -157,10 +157,10 @@ Moves assets from frozen balance to liquid balance. If there is enough frozen ba
 
 | Name | Type |
 | ------ | ------ |
-| minAmount | `u64` |
-| maxAmount | `u64` |
+| minAmount | `u128` |
+| maxAmount | `u128` |
 
-**Returns:** `u64`
+**Returns:** `u128`
 
 ___
 
