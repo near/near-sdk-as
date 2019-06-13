@@ -1493,6 +1493,15 @@ declare function promise_then(
 @external("env", "promise_and")
 declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
 
+@external("env", "check_ethash")
+declare function check_ethash(
+    block_number: u64,
+    header_hash_ptr: u32, header_hash_len: u32,
+    nonce: u64,
+    mix_hash_ptr: u32, mix_hash_len: u32,
+    difficulty: u64
+): bool;
+
 /**
  * @hidden
  * Hash buffer is 32 bytes

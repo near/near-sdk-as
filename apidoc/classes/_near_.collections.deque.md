@@ -44,7 +44,7 @@ A deque class that implements a persistent bidirectional queue.
 
 ⊕ **new Deque**(prefix: *`string`*): [Deque](_near_.collections.deque.md)
 
-*Defined in [near.ts:457](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L457)*
+*Defined in [near.ts:459](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L459)*
 
 Creates or restores a persistent deque with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -64,9 +64,9 @@ ___
 
 ###  back
 
-getback(): `T`
+**get back**(): `T`
 
-*Defined in [near.ts:659](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L659)*
+*Defined in [near.ts:661](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L661)*
 
 **Returns:** `T`
 The last/back element of the deque.
@@ -76,9 +76,9 @@ ___
 
 ###  first
 
-getfirst(): `T`
+**get first**(): `T`
 
-*Defined in [near.ts:626](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L626)*
+*Defined in [near.ts:628](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L628)*
 
 **Returns:** `T`
 The first/front element of the deque.
@@ -88,9 +88,9 @@ ___
 
 ###  front
 
-getfront(): `T`
+**get front**(): `T`
 
-*Defined in [near.ts:618](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L618)*
+*Defined in [near.ts:620](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L620)*
 
 **Returns:** `T`
 The first/front element of the deque.
@@ -100,9 +100,9 @@ ___
 
 ###  isEmpty
 
-getisEmpty(): `bool`
+**get isEmpty**(): `bool`
 
-*Defined in [near.ts:543](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L543)*
+*Defined in [near.ts:545](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L545)*
 
 **Returns:** `bool`
 True if the deque is empty.
@@ -112,9 +112,9 @@ ___
 
 ###  last
 
-getlast(): `T`
+**get last**(): `T`
 
-*Defined in [near.ts:667](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L667)*
+*Defined in [near.ts:669](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L669)*
 
 **Returns:** `T`
 The last/back element of the deque.
@@ -124,9 +124,9 @@ ___
 
 ###  length
 
-getlength(): `i32`
+**get length**(): `i32`
 
-*Defined in [near.ts:536](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L536)*
+*Defined in [near.ts:538](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L538)*
 
 **Returns:** `i32`
 The length of the deque.
@@ -141,7 +141,7 @@ ___
 
 ▸ **containsIndex**(index: *`i32`*): `bool`
 
-*Defined in [near.ts:520](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L520)*
+*Defined in [near.ts:522](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L522)*
 
 **Parameters:**
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **delete**(index: *`i32`*): `void`
 
-*Defined in [near.ts:528](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L528)*
+*Defined in [near.ts:530](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L530)*
 
 Removes the content of the element from storage without changing length of the deque.
 
@@ -178,7 +178,7 @@ ___
 
 ▸ **popBack**(): `T`
 
-*Defined in [near.ts:647](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L647)*
+*Defined in [near.ts:649](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L649)*
 
 Removes the last/back element from the deque and returns it. Asserts that the deque is not empty. Decreases the length of the deque.
 
@@ -192,7 +192,7 @@ ___
 
 ▸ **popFront**(): `T`
 
-*Defined in [near.ts:607](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L607)*
+*Defined in [near.ts:609](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L609)*
 
 Removes the first/front element from the deque and returns it. Asserts that the deque is not empty. Decreases the length of the deque.
 
@@ -206,7 +206,7 @@ ___
 
 ▸ **pushBack**(element: *`T`*): `i32`
 
-*Defined in [near.ts:635](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L635)*
+*Defined in [near.ts:637](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L637)*
 
 Adds a new element to the end of the deque. Increases the length of the deque.
 
@@ -226,7 +226,7 @@ ___
 
 ▸ **pushFront**(element: *`T`*): `i32`
 
-*Defined in [near.ts:596](https://github.com/nearprotocol/near-runtime-ts/blob/273b67b/near.ts#L596)*
+*Defined in [near.ts:598](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L598)*
 
 Adds a new element in front of the deque. Increases the length of the deque.
 
