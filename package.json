@@ -11,8 +11,9 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "as-pect": "jtenner/as-pect",
     "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.2.1"
+    "typedoc-plugin-markdown": "^1.2.1",
+    "as-pect": "jtenner/as-pect",
+    "bignum": "MaxGraey/bignum.wasm"
   }
 }

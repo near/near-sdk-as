@@ -4,24 +4,27 @@ near-runtime-ts
 
 Typescript library for writing near smart contracts
 
-\## Documentation
+Generate documentation
+----------------------
 
-API docs are produced using typedoc. To run, first install typedoc
-
-```
-npm install --save-dev typedoc
-npm install --save-dev typedoc typedoc-plugin-markdown
-```
-
-After installing typedoc, run
+API docs are produced using typedoc. To run, first install dependencies:
 
 ```
-rm -rf apidoc
-mkdir apidoc
-node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/
+npm install
 ```
 
-(The tool does not deal well with items being removed from documentation, hence the need to delete output)
+After installing dependencies, run
+
+```
+npm run doc
+```
+
+Run tests
+---------
+
+```
+npm test
+```
 
 ## Index
 

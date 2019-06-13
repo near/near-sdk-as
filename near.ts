@@ -1,3 +1,5 @@
+import { u128 } from "./node_modules/bignum/assembly/integer/u128";
+
 const DEFAULT_SCRATCH_BUFFER_SIZE: usize = 1 << 16;
 
 type DataTypeIndex = u32;
@@ -94,7 +96,7 @@ export class Storage {
    * It's convenient to use this together with `domainObject.encode()`.
    */
   setBytes(key: string, value: Uint8Array): void {
-    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.buffer.data);
+    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, <usize>value.buffer + value.byteOffset);
   }
 
   /**
@@ -201,7 +203,7 @@ export class Storage {
         keyLen,
         key,
         this._scratchBuf.byteLength,
-        this._scratchBuf.buffer.data,
+        <usize>this._scratchBuf.buffer + this._scratchBuf.byteOffset,
       );
       if (len <= <usize>(this._scratchBuf.byteLength)) {
         return len;
@@ -221,7 +223,7 @@ export class Storage {
     if (len == 0) {
       return null;
     }
-    return String.fromUTF8(this._scratchBuf.buffer.data, len);
+    return String.fromUTF8(<usize>this._scratchBuf.buffer + this._scratchBuf.byteOffset, len);
   }
 
   /**
@@ -234,7 +236,7 @@ export class Storage {
       return null;
     }
     let res = new Uint8Array(len);
-    memory.copy(res.buffer.data, this._scratchBuf.buffer.data, len);
+    memory.copy(<usize>res.buffer, <usize>this._scratchBuf.buffer + this._scratchBuf.byteOffset, len);
     return res;
   }
 }
@@ -1013,31 +1015,50 @@ class Context {
   }
 
   /**
-   * Current balance of the contract.
-   */
-  get currentBalance(): u64 {
-    return balance();
-  }
-
-  /**
    * The amount of tokens received with this execution call.
    */
-  get receivedAmount(): u64 {
+  get receivedAmount(): u128 {
     return received_amount();
   }
 
   /**
-   * The amount of available gas left for this execution call.
+   * The amount of tokens that are locked in the account. Storage usage fee is deducted from this balance.
    */
-  get gasLeft(): u64 {
-    return gas_left();
+  get frozenBalance(): u128 {
+    return frozen_balance();
   }
 
   /**
-   * The amount of available mana left for this execution call.
+   * The amount of tokens that can be used for running wasm, creating transactions, and sending to other contracts
+   * through cross-contract calls.
    */
-  get manaLeft(): u32 {
-    return mana_left();
+  get liquidBalance(): u128 {
+      return liquid_balance();
+  }
+
+  /**
+   * The current storage usage in bytes.
+   */
+  get storageUsage(): u64 {
+    return storage_usage();
+  }
+
+  /**
+   * Moves assets from liquid balance to frozen balance.
+   * If there is enough liquid balance will deposit the maximum amount. Otherwise will deposit as much as possible.
+   * Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
+   */
+  deposit(minAmount: u128, maxAmount: u128): u128 {
+    deposit(minAmount, maxAmount)
+  }
+
+   /**
+   * Moves assets from frozen balance to liquid balance.
+   * If there is enough frozen balance will withdraw the maximum amount. Otherwise will withdraw as much as possible.
+   * Will fail if there is less than minimum amount on the frozen balance. Returns the withdrawn amount.
+   */
+  withdraw(minAmount: u128, maxAmount: u128): u128 {
+    withdraw(minAmount, maxAmount)
   }
 }
 
@@ -1094,13 +1115,13 @@ export namespace near {
   }
 
   export function bytesToString(bytes: Uint8Array): string {
-    return String.fromUTF8(bytes.buffer.data + bytes.byteOffset, bytes.byteLength)
+    return String.fromUTF8(<usize>bytes.buffer + bytes.byteOffset, bytes.byteLength)
   }
 
   export function stringToBytes(s: string): Uint8Array {
     let len = s.lengthUTF8 - 1;
     let bytes = new Uint8Array(len);
-    memory.copy(bytes.buffer.data, s.toUTF8(), len);
+    memory.copy(<usize>bytes.buffer, s.toUTF8(), len);
     return bytes;
   }
 
@@ -1124,10 +1145,10 @@ export namespace near {
   export function hash<T>(data: T): Uint8Array {
     let result = new Uint8Array(32);
     if (data instanceof Uint8Array) {
-      _near_hash(data.byteLength, data.buffer.data, result.buffer.data);
+      _near_hash(data.byteLength, <usize>data.buffer + data.byteOffset, <usize>result.buffer);
     } else {
       let str = data.toString();
-      _near_hash(str.lengthUTF8 - 1, str.toUTF8(), result.buffer.data);
+      _near_hash(str.lengthUTF8 - 1, str.toUTF8(), <usize>result.buffer);
     }
     return result;
   }
@@ -1139,7 +1160,7 @@ export namespace near {
   export function hash32<T>(data: T): u32 {
     let dataToHash : Uint8Array;
     if (data instanceof Uint8Array) {
-      return _near_hash32(data.byteLength, data.buffer.data);
+      return _near_hash32(data.byteLength, <usize>data.buffer + data.byteOffset);
     } else {
       let str = data.toString();
       return _near_hash32(str.lengthUTF8 - 1, str.toUTF8());
@@ -1151,7 +1172,7 @@ export namespace near {
    */
   export function randomBuffer(len: u32): Uint8Array {
     let result = new Uint8Array(len);
-    _near_random_buf(len, result.buffer.data);
+    _near_random_buf(len, <usize>result.buffer);
     return result;
   }
 
@@ -1239,7 +1260,6 @@ export namespace near {
  *     "addItem",
  *     itemArgs.encode(),
  *     0,
- *     0,
  *   );
  *   // Setting up args for the callback
  *   let requestArgs: OnItemAddedArgs = {
@@ -1276,22 +1296,19 @@ export class ContractPromise {
    *     // Serialize args
    *     let args = itemArgs.encode();
    *     ```
-   * @param mana The amount of additional requests the remote contract would be able to do.
    * @param amount The amount of tokens from your contract to be sent to the remote contract with this call.
    */
   static create(
       contractName: string,
       methodName: string,
       args: Uint8Array,
-      mana: u32,
-      amount: u64 = 0
+      amount: u128 = 0
   ): ContractPromise {
     return {
       id: promise_create(
         contractName.lengthUTF8 - 1, contractName.toUTF8(),
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
-        args.byteLength, args.buffer.data,
-        mana,
+        args.byteLength, <usize>args.buffer + args.byteOffset,
         amount)
     };
   }
@@ -1302,19 +1319,19 @@ export class ContractPromise {
    *     NOTE: Your callback method name can start with `_`, which would prevent other
    *     contracts from calling it directly. Only callbacks can call methods with `_` prefix.
    * @param args Serialized arguments on your callback method, see `create` for details.
-   * @param mana The amount of additional requests your contract would be able to do.
+   * @param amount The amount of tokens from the called contract to be sent to the current contract with this call.
    */
   then(
       methodName: string,
       args: Uint8Array,
-      mana: u32
+      amount: u128
   ): ContractPromise {
     return {
       id: promise_then(
         this.id,
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
-        args.byteLength, args.buffer.data,
-        mana)
+        args.byteLength, <usize>args.buffer + args.byteOffset,
+        amount)
     };
   }
 
@@ -1464,15 +1481,14 @@ declare function promise_create(
     account_id_len: usize, account_id_ptr: usize,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    mana: u32,
-    amount: u64): u32;
+    amount: u128): u32;
 
 @external("env", "promise_then")
 declare function promise_then(
     promise_index: u32,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    mana: u32): u32;
+    amount: u128): u32;
 
 @external("env", "promise_and")
 declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
@@ -1521,26 +1537,38 @@ declare function _near_log(msg_ptr: usize): void;
 /**
  * @hidden
  */
-@external("env", "balance")
-declare function balance(): u64;
+@external("env", "frozen_balance")
+declare function frozen_balance(): u128;
 
 /**
  * @hidden
  */
-@external("env", "mana_left")
-declare function mana_left(): u32;
+@external("env", "liquid_balance")
+declare function liquid_balance(): u128;
 
 /**
  * @hidden
  */
-@external("env", "gas_left")
-declare function gas_left(): u64;
+@external("env", "storage_usage")
+declare function storage_usage(): u64;
+
+/**
+ * @hidden
+ */
+@external("env", "deposit")
+declare function deposit(min_amount: u128, max_amount: u128): u128;
+
+/**
+ * @hidden
+ */
+@external("env", "withdraw")
+declare function withdraw(min_amount: u128, max_amount: u128): u128;
 
 /**
  * @hidden
  */
 @external("env", "received_amount")
-declare function received_amount(): u64;
+declare function received_amount(): u128;
 
 /**
  * @hidden

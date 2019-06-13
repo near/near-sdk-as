@@ -39,7 +39,7 @@ A namespace with classes and functions for persistent collections on the blockch
 
 **● _KEY_BACK_INDEX_SUFFIX**: *":back"* = ":back"
 
-*Defined in [near.ts:253](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L253)*
+*Defined in [near.ts:255](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L255)*
 
 ___
 <a id="_key_element_suffix"></a>
@@ -48,7 +48,7 @@ ___
 
 **● _KEY_ELEMENT_SUFFIX**: *"::"* = "::"
 
-*Defined in [near.ts:254](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L254)*
+*Defined in [near.ts:256](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L256)*
 
 ___
 <a id="_key_front_index_suffix"></a>
@@ -57,7 +57,7 @@ ___
 
 **● _KEY_FRONT_INDEX_SUFFIX**: *":front"* = ":front"
 
-*Defined in [near.ts:252](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L252)*
+*Defined in [near.ts:254](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L254)*
 
 ___
 <a id="_key_length_suffix"></a>
@@ -66,7 +66,7 @@ ___
 
 **● _KEY_LENGTH_SUFFIX**: *":len"* = ":len"
 
-*Defined in [near.ts:251](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L251)*
+*Defined in [near.ts:253](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L253)*
 
 ___
 <a id="_key_rating_suffix"></a>
@@ -75,7 +75,7 @@ ___
 
 **● _KEY_RATING_SUFFIX**: *":r"* = ":r"
 
-*Defined in [near.ts:255](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L255)*
+*Defined in [near.ts:257](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L257)*
 
 ___
 <a id="_rating_offset"></a>
@@ -84,7 +84,7 @@ ___
 
 **● _RATING_OFFSET**: *`u64`* = 2147483648
 
-*Defined in [near.ts:256](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L256)*
+*Defined in [near.ts:258](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L258)*
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 ▸ **deque**<`T`>(prefix: *`string`*): [Deque](../classes/_near_.collections.deque.md)<`T`>
 
-*Defined in [near.ts:966](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L966)*
+*Defined in [near.ts:968](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L968)*
 
 Creates or restores a persistent deque with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -118,7 +118,7 @@ ___
 
 ▸ **map**<`K`,`V`>(prefix: *`string`*): [Map](../classes/_near_.collections.map.md)<`K`, `V`>
 
-*Defined in [near.ts:975](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L975)*
+*Defined in [near.ts:977](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L977)*
 
 Creates or restores a persistent map with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -141,7 +141,7 @@ ___
 
 ▸ **topN**<`K`>(prefix: *`string`*, descending?: *`bool`*): [TopN](../classes/_near_.collections.topn.md)<`K`>
 
-*Defined in [near.ts:985](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L985)*
+*Defined in [near.ts:987](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L987)*
 
 Creates or restores a persistent TopN with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -164,7 +164,7 @@ ___
 
 ▸ **vector**<`T`>(prefix: *`string`*): [Vector](../classes/_near_.collections.vector.md)<`T`>
 
-*Defined in [near.ts:957](https://github.com/nearprotocol/near-runtime-ts/blob/9615ced/near.ts#L957)*
+*Defined in [near.ts:959](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L959)*
 
 Creates or restores a persistent vector with a given storage prefix. Always use a unique storage prefix for different collections.
 
