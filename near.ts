@@ -1018,14 +1018,18 @@ class Context {
    * The amount of tokens received with this execution call.
    */
   get receivedAmount(): u128 {
-    return received_amount();
+    let buffer = new Uint8Array(16);
+    received_amount(buffer.dataStart);
+    return u128.fromBytes(<Uint8Array>buffer);
   }
 
   /**
    * The amount of tokens that are locked in the account. Storage usage fee is deducted from this balance.
    */
   get frozenBalance(): u128 {
-    return frozen_balance();
+    let buffer = new Uint8Array(16);
+    frozen_balance(buffer.dataStart);
+    return u128.fromBytes(<Uint8Array>buffer);
   }
 
   /**
@@ -1033,7 +1037,9 @@ class Context {
    * through cross-contract calls.
    */
   get liquidBalance(): u128 {
-      return liquid_balance();
+    let buffer = new Uint8Array(16);
+    liquid_balance(buffer.dataStart);
+    return u128.fromBytes(<Uint8Array>buffer);
   }
 
   /**
@@ -1049,7 +1055,11 @@ class Context {
    * Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
    */
   deposit(minAmount: u128, maxAmount: u128): u128 {
-    deposit(minAmount, maxAmount)
+    let minAmountBuffer = minAmount.toUint8Array();
+    let maxAmountBuffer = maxAmount.toUint8Array();
+    let balanceBuffer = new Uint8Array(16);
+    deposit(minAmountBuffer.dataStart, maxAmountBuffer.dataStart, balanceBuffer.dataStart);
+    return u128.fromBytes(<Uint8Array>balanceBuffer);
   }
 
    /**
@@ -1058,7 +1068,11 @@ class Context {
    * Will fail if there is less than minimum amount on the frozen balance. Returns the withdrawn amount.
    */
   withdraw(minAmount: u128, maxAmount: u128): u128 {
-    withdraw(minAmount, maxAmount)
+     let minAmountBuffer = minAmount.toUint8Array();
+     let maxAmountBuffer = maxAmount.toUint8Array();
+     let balanceBuffer = new Uint8Array(16);
+     withdraw(minAmountBuffer.dataStart, maxAmountBuffer.dataStart, balanceBuffer.dataStart);
+     return u128.fromBytes(<Uint8Array>balanceBuffer);
   }
 }
 
@@ -1309,7 +1323,7 @@ export class ContractPromise {
         contractName.lengthUTF8 - 1, contractName.toUTF8(),
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
         args.byteLength, <usize>args.buffer + args.byteOffset,
-        amount)
+        amount.toUint8Array().dataStart)
     };
   }
 
@@ -1331,7 +1345,7 @@ export class ContractPromise {
         this.id,
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
         args.byteLength, <usize>args.buffer + args.byteOffset,
-        amount)
+        amount.toUint8Array().dataStart)
     };
   }
 
@@ -1481,14 +1495,14 @@ declare function promise_create(
     account_id_len: usize, account_id_ptr: usize,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    amount: u128): u32;
+    amount_ptr: usize): u32;
 
 @external("env", "promise_then")
 declare function promise_then(
     promise_index: u32,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    amount: u128): u32;
+    amount_ptr: usize): u32;
 
 @external("env", "promise_and")
 declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
@@ -1496,9 +1510,9 @@ declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
 @external("env", "check_ethash")
 declare function check_ethash(
     block_number: u64,
-    header_hash_ptr: u32, header_hash_len: u32,
+    header_hash_ptr: usize, header_hash_len: u32,
     nonce: u64,
-    mix_hash_ptr: u32, mix_hash_len: u32,
+    mix_hash_ptr: usize, mix_hash_len: u32,
     difficulty: u64
 ): bool;
 
@@ -1538,13 +1552,13 @@ declare function _near_log(msg_ptr: usize): void;
  * @hidden
  */
 @external("env", "frozen_balance")
-declare function frozen_balance(): u128;
+declare function frozen_balance(balance_ptr: usize): void;
 
 /**
  * @hidden
  */
 @external("env", "liquid_balance")
-declare function liquid_balance(): u128;
+declare function liquid_balance(balance_ptr: usize): void;
 
 /**
  * @hidden
@@ -1556,19 +1570,19 @@ declare function storage_usage(): u64;
  * @hidden
  */
 @external("env", "deposit")
-declare function deposit(min_amount: u128, max_amount: u128): u128;
+declare function deposit(min_amount_ptr: usize, max_amount_ptr: usize, balance_ptr: usize): void;
 
 /**
  * @hidden
  */
 @external("env", "withdraw")
-declare function withdraw(min_amount: u128, max_amount: u128): u128;
+declare function withdraw(min_amount_ptr: usize, max_amount_ptr: usize, balance_ptr: usize): void;
 
 /**
  * @hidden
  */
 @external("env", "received_amount")
-declare function received_amount(): u128;
+declare function received_amount(balance_ptr: usize): void;
 
 /**
  * @hidden
