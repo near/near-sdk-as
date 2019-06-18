@@ -856,7 +856,7 @@ export namespace collections {
      * @returns an array of key to rating pairs for the given keys.
      */
     keysToRatings(keys: K[]): near.MapEntry<K, i32>[] {
-      let result = new Array<near.MapEntry<K, i32>>(keys.length);
+      let result = Array.create<near.MapEntry<K, i32>>(keys.length);
       for (let index = 0; index < keys.length; ++index) {
         let key = keys[index];
         result[index] = new near.MapEntry<K, i32>(key, this._ratings.get(key));
@@ -1322,8 +1322,7 @@ export class ContractPromise {
       id: promise_create(
         contractName.lengthUTF8 - 1, contractName.toUTF8(),
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
-        args.byteLength, args.dataStart,
-          amount.toUint8Array().dataStart)
+        args.byteLength, args.dataStart, amount.toUint8Array().dataStart)
     };
   }
 
@@ -1439,7 +1438,7 @@ export class ContractPromise {
    */
   static getResults() : ContractPromiseResult[] {
     let count = <i32>result_count();
-    let results = new Array<ContractPromiseResult>(count);
+    let results = Array.create<ContractPromiseResult>(count);
     for (let i = 0; i < count; i++) {
       let isOk = result_is_ok(i);
       if (!isOk) {
