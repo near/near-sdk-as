@@ -96,7 +96,7 @@ export class Storage {
    * It's convenient to use this together with `domainObject.encode()`.
    */
   setBytes(key: string, value: Uint8Array): void {
-    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, <usize>value.buffer + value.byteOffset);
+    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.dataStart);
   }
 
   /**
@@ -203,7 +203,7 @@ export class Storage {
         keyLen,
         key,
         this._scratchBuf.byteLength,
-        <usize>this._scratchBuf.buffer + this._scratchBuf.byteOffset,
+        this._scratchBuf.dataStart,
       );
       if (len <= <usize>(this._scratchBuf.byteLength)) {
         return len;
@@ -223,7 +223,7 @@ export class Storage {
     if (len == 0) {
       return null;
     }
-    return String.fromUTF8(<usize>this._scratchBuf.buffer + this._scratchBuf.byteOffset, len);
+    return String.fromUTF8(this._scratchBuf.dataStart, len);
   }
 
   /**
@@ -236,7 +236,7 @@ export class Storage {
       return null;
     }
     let res = new Uint8Array(len);
-    memory.copy(<usize>res.buffer, <usize>this._scratchBuf.buffer + this._scratchBuf.byteOffset, len);
+    memory.copy(res.dataStart, this._scratchBuf.dataStart, len);
     return res;
   }
 }
@@ -1129,13 +1129,13 @@ export namespace near {
   }
 
   export function bytesToString(bytes: Uint8Array): string {
-    return String.fromUTF8(<usize>bytes.buffer + bytes.byteOffset, bytes.byteLength)
+    return String.fromUTF8(bytes.dataStart, bytes.byteLength)
   }
 
   export function stringToBytes(s: string): Uint8Array {
     let len = s.lengthUTF8 - 1;
     let bytes = new Uint8Array(len);
-    memory.copy(<usize>bytes.buffer, s.toUTF8(), len);
+    memory.copy(bytes.dataStart, s.toUTF8(), len);
     return bytes;
   }
 
@@ -1159,10 +1159,10 @@ export namespace near {
   export function hash<T>(data: T): Uint8Array {
     let result = new Uint8Array(32);
     if (data instanceof Uint8Array) {
-      _near_hash(data.byteLength, <usize>data.buffer + data.byteOffset, <usize>result.buffer);
+      _near_hash(data.byteLength, data.dataStart, result.dataStart);
     } else {
       let str = data.toString();
-      _near_hash(str.lengthUTF8 - 1, str.toUTF8(), <usize>result.buffer);
+      _near_hash(str.lengthUTF8 - 1, str.toUTF8(), result.dataStart);
     }
     return result;
   }
@@ -1174,7 +1174,7 @@ export namespace near {
   export function hash32<T>(data: T): u32 {
     let dataToHash : Uint8Array;
     if (data instanceof Uint8Array) {
-      return _near_hash32(data.byteLength, <usize>data.buffer + data.byteOffset);
+      return _near_hash32(data.byteLength, data.dataStart);
     } else {
       let str = data.toString();
       return _near_hash32(str.lengthUTF8 - 1, str.toUTF8());
@@ -1186,7 +1186,7 @@ export namespace near {
    */
   export function randomBuffer(len: u32): Uint8Array {
     let result = new Uint8Array(len);
-    _near_random_buf(len, <usize>result.buffer);
+    _near_random_buf(len, result.dataStart);
     return result;
   }
 
@@ -1322,8 +1322,8 @@ export class ContractPromise {
       id: promise_create(
         contractName.lengthUTF8 - 1, contractName.toUTF8(),
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
-        args.byteLength, <usize>args.buffer + args.byteOffset,
-        amount.toUint8Array().dataStart)
+        args.byteLength, args.dataStart,
+          amount.toUint8Array().dataStart)
     };
   }
 
@@ -1344,7 +1344,7 @@ export class ContractPromise {
       id: promise_then(
         this.id,
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
-        args.byteLength, <usize>args.buffer + args.byteOffset,
+        args.byteLength, args.dataStart,
         amount.toUint8Array().dataStart)
     };
   }
