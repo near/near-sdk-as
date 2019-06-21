@@ -1,4 +1,4 @@
-import { u128 } from "./node_modules/bignum/assembly/integer/u128";
+import { u128 } from "./bignum/integer/u128";
 
 const DEFAULT_SCRATCH_BUFFER_SIZE: usize = 1 << 16;
 
