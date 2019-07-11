@@ -1,6 +1,6 @@
 {
   "name": "near-runtime-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Near smart contract runtime library for typescript",
   "main": "index.js",
   "scripts": {
