@@ -1,3 +1,5 @@
+import { u128 } from "./bignum/integer/u128";
+
 const DEFAULT_SCRATCH_BUFFER_SIZE: usize = 1 << 16;
 
 type DataTypeIndex = u32;
@@ -94,7 +96,7 @@ export class Storage {
    * It's convenient to use this together with `domainObject.encode()`.
    */
   setBytes(key: string, value: Uint8Array): void {
-    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.buffer.data);
+    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.dataStart);
   }
 
   /**
@@ -201,7 +203,7 @@ export class Storage {
         keyLen,
         key,
         this._scratchBuf.byteLength,
-        this._scratchBuf.buffer.data,
+        this._scratchBuf.dataStart,
       );
       if (len <= <usize>(this._scratchBuf.byteLength)) {
         return len;
@@ -221,7 +223,7 @@ export class Storage {
     if (len == 0) {
       return null;
     }
-    return String.fromUTF8(this._scratchBuf.buffer.data, len);
+    return String.fromUTF8(this._scratchBuf.dataStart, len);
   }
 
   /**
@@ -234,7 +236,7 @@ export class Storage {
       return null;
     }
     let res = new Uint8Array(len);
-    memory.copy(res.buffer.data, this._scratchBuf.buffer.data, len);
+    memory.copy(res.dataStart, this._scratchBuf.dataStart, len);
     return res;
   }
 }
@@ -854,7 +856,7 @@ export namespace collections {
      * @returns an array of key to rating pairs for the given keys.
      */
     keysToRatings(keys: K[]): near.MapEntry<K, i32>[] {
-      let result = new Array<near.MapEntry<K, i32>>(keys.length);
+      let result = Array.create<near.MapEntry<K, i32>>(keys.length);
       for (let index = 0; index < keys.length; ++index) {
         let key = keys[index];
         result[index] = new near.MapEntry<K, i32>(key, this._ratings.get(key));
@@ -1015,23 +1017,29 @@ class Context {
   /**
    * The amount of tokens received with this execution call.
    */
-  get receivedAmount(): u64 {
-    return received_amount();
+  get receivedAmount(): u128 {
+    let buffer = new Uint8Array(16);
+    received_amount(buffer.dataStart);
+    return u128.fromBytes(<Uint8Array>buffer);
   }
 
   /**
    * The amount of tokens that are locked in the account. Storage usage fee is deducted from this balance.
    */
-  get frozenBalance(): u64 {
-    return frozen_balance();
+  get frozenBalance(): u128 {
+    let buffer = new Uint8Array(16);
+    frozen_balance(buffer.dataStart);
+    return u128.fromBytes(<Uint8Array>buffer);
   }
 
   /**
    * The amount of tokens that can be used for running wasm, creating transactions, and sending to other contracts
    * through cross-contract calls.
    */
-  get liquidBalance(): u64 {
-      return liquid_balance();
+  get liquidBalance(): u128 {
+    let buffer = new Uint8Array(16);
+    liquid_balance(buffer.dataStart);
+    return u128.fromBytes(<Uint8Array>buffer);
   }
 
   /**
@@ -1046,8 +1054,12 @@ class Context {
    * If there is enough liquid balance will deposit the maximum amount. Otherwise will deposit as much as possible.
    * Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
    */
-  deposit(minAmount: u64, maxAmount: u64): u64 {
-    deposit(minAmount, maxAmount)
+  deposit(minAmount: u128, maxAmount: u128): u128 {
+    let minAmountBuffer = minAmount.toUint8Array();
+    let maxAmountBuffer = maxAmount.toUint8Array();
+    let balanceBuffer = new Uint8Array(16);
+    deposit(minAmountBuffer.dataStart, maxAmountBuffer.dataStart, balanceBuffer.dataStart);
+    return u128.fromBytes(<Uint8Array>balanceBuffer);
   }
 
    /**
@@ -1055,8 +1067,12 @@ class Context {
    * If there is enough frozen balance will withdraw the maximum amount. Otherwise will withdraw as much as possible.
    * Will fail if there is less than minimum amount on the frozen balance. Returns the withdrawn amount.
    */
-  withdraw(minAmount: u64, maxAmount: u64): u64 {
-    withdraw(minAmount, maxAmount)
+  withdraw(minAmount: u128, maxAmount: u128): u128 {
+     let minAmountBuffer = minAmount.toUint8Array();
+     let maxAmountBuffer = maxAmount.toUint8Array();
+     let balanceBuffer = new Uint8Array(16);
+     withdraw(minAmountBuffer.dataStart, maxAmountBuffer.dataStart, balanceBuffer.dataStart);
+     return u128.fromBytes(<Uint8Array>balanceBuffer);
   }
 }
 
@@ -1113,13 +1129,13 @@ export namespace near {
   }
 
   export function bytesToString(bytes: Uint8Array): string {
-    return String.fromUTF8(bytes.buffer.data + bytes.byteOffset, bytes.byteLength)
+    return String.fromUTF8(bytes.dataStart, bytes.byteLength)
   }
 
   export function stringToBytes(s: string): Uint8Array {
     let len = s.lengthUTF8 - 1;
     let bytes = new Uint8Array(len);
-    memory.copy(bytes.buffer.data, s.toUTF8(), len);
+    memory.copy(bytes.dataStart, s.toUTF8(), len);
     return bytes;
   }
 
@@ -1143,10 +1159,10 @@ export namespace near {
   export function hash<T>(data: T): Uint8Array {
     let result = new Uint8Array(32);
     if (data instanceof Uint8Array) {
-      _near_hash(data.byteLength, data.buffer.data, result.buffer.data);
+      _near_hash(data.byteLength, data.dataStart, result.dataStart);
     } else {
       let str = data.toString();
-      _near_hash(str.lengthUTF8 - 1, str.toUTF8(), result.buffer.data);
+      _near_hash(str.lengthUTF8 - 1, str.toUTF8(), result.dataStart);
     }
     return result;
   }
@@ -1158,7 +1174,7 @@ export namespace near {
   export function hash32<T>(data: T): u32 {
     let dataToHash : Uint8Array;
     if (data instanceof Uint8Array) {
-      return _near_hash32(data.byteLength, data.buffer.data);
+      return _near_hash32(data.byteLength, data.dataStart);
     } else {
       let str = data.toString();
       return _near_hash32(str.lengthUTF8 - 1, str.toUTF8());
@@ -1170,7 +1186,7 @@ export namespace near {
    */
   export function randomBuffer(len: u32): Uint8Array {
     let result = new Uint8Array(len);
-    _near_random_buf(len, result.buffer.data);
+    _near_random_buf(len, result.dataStart);
     return result;
   }
 
@@ -1300,14 +1316,13 @@ export class ContractPromise {
       contractName: string,
       methodName: string,
       args: Uint8Array,
-      amount: u64 = 0
+      amount: u128 = 0
   ): ContractPromise {
     return {
       id: promise_create(
         contractName.lengthUTF8 - 1, contractName.toUTF8(),
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
-        args.byteLength, args.buffer.data,
-        amount)
+        args.byteLength, args.dataStart, amount.toUint8Array().dataStart)
     };
   }
 
@@ -1322,14 +1337,14 @@ export class ContractPromise {
   then(
       methodName: string,
       args: Uint8Array,
-      amount: u64
+      amount: u128
   ): ContractPromise {
     return {
       id: promise_then(
         this.id,
         methodName.lengthUTF8 - 1, methodName.toUTF8(),
-        args.byteLength, args.buffer.data,
-        amount)
+        args.byteLength, args.dataStart,
+        amount.toUint8Array().dataStart)
     };
   }
 
@@ -1423,7 +1438,7 @@ export class ContractPromise {
    */
   static getResults() : ContractPromiseResult[] {
     let count = <i32>result_count();
-    let results = new Array<ContractPromiseResult>(count);
+    let results = Array.create<ContractPromiseResult>(count);
     for (let i = 0; i < count; i++) {
       let isOk = result_is_ok(i);
       if (!isOk) {
@@ -1479,17 +1494,26 @@ declare function promise_create(
     account_id_len: usize, account_id_ptr: usize,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    amount: u64): u32;
+    amount_ptr: usize): u32;
 
 @external("env", "promise_then")
 declare function promise_then(
     promise_index: u32,
     method_name_len: usize, method_name_ptr: usize,
     args_len: usize, args_ptr: usize,
-    amount: u64): u32;
+    amount_ptr: usize): u32;
 
 @external("env", "promise_and")
 declare function promise_and(promise_index1: u32, promise_index2: u32): u32;
+
+@external("env", "check_ethash")
+declare function check_ethash(
+    block_number: u64,
+    header_hash_ptr: usize, header_hash_len: u32,
+    nonce: u64,
+    mix_hash_ptr: usize, mix_hash_len: u32,
+    difficulty: u64
+): bool;
 
 /**
  * @hidden
@@ -1527,13 +1551,13 @@ declare function _near_log(msg_ptr: usize): void;
  * @hidden
  */
 @external("env", "frozen_balance")
-declare function frozen_balance(): u64;
+declare function frozen_balance(balance_ptr: usize): void;
 
 /**
  * @hidden
  */
 @external("env", "liquid_balance")
-declare function liquid_balance(): u64;
+declare function liquid_balance(balance_ptr: usize): void;
 
 /**
  * @hidden
@@ -1545,19 +1569,19 @@ declare function storage_usage(): u64;
  * @hidden
  */
 @external("env", "deposit")
-declare function deposit(min_amount: u64, max_amount: u64): u64;
+declare function deposit(min_amount_ptr: usize, max_amount_ptr: usize, balance_ptr: usize): void;
 
 /**
  * @hidden
  */
 @external("env", "withdraw")
-declare function withdraw(min_amount: u64, max_amount: u64): u64;
+declare function withdraw(min_amount_ptr: usize, max_amount_ptr: usize, balance_ptr: usize): void;
 
 /**
  * @hidden
  */
 @external("env", "received_amount")
-declare function received_amount(): u64;
+declare function received_amount(balance_ptr: usize): void;
 
 /**
  * @hidden

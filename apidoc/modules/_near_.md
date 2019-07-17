@@ -35,6 +35,7 @@
 
 ### Functions
 
+* [check_ethash](_near_.md#check_ethash)
 * [data_read](_near_.md#data_read)
 * [promise_and](_near_.md#promise_and)
 * [promise_create](_near_.md#promise_create)
@@ -60,7 +61,7 @@
 
 **Ƭ DataTypeIndex**: *`u32`*
 
-*Defined in [near.ts:3](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L3)*
+*Defined in [near.ts:5](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L5)*
 
 ___
 
@@ -72,7 +73,7 @@ ___
 
 **● DATA_TYPE_CURRENT_ACCOUNT_ID**: *[DataTypeIndex](_near_.md#datatypeindex)* = 2
 
-*Defined in [near.ts:6](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L6)*
+*Defined in [near.ts:8](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L8)*
 
 ___
 <a id="data_type_input"></a>
@@ -81,7 +82,7 @@ ___
 
 **● DATA_TYPE_INPUT**: *[DataTypeIndex](_near_.md#datatypeindex)* = 4
 
-*Defined in [near.ts:8](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L8)*
+*Defined in [near.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L10)*
 
 ___
 <a id="data_type_originator_account_id"></a>
@@ -90,7 +91,7 @@ ___
 
 **● DATA_TYPE_ORIGINATOR_ACCOUNT_ID**: *[DataTypeIndex](_near_.md#datatypeindex)* = 1
 
-*Defined in [near.ts:5](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L5)*
+*Defined in [near.ts:7](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L7)*
 
 ___
 <a id="data_type_result"></a>
@@ -99,7 +100,7 @@ ___
 
 **● DATA_TYPE_RESULT**: *[DataTypeIndex](_near_.md#datatypeindex)* = 5
 
-*Defined in [near.ts:9](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L9)*
+*Defined in [near.ts:11](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L11)*
 
 ___
 <a id="data_type_storage"></a>
@@ -108,7 +109,7 @@ ___
 
 **● DATA_TYPE_STORAGE**: *[DataTypeIndex](_near_.md#datatypeindex)* = 3
 
-*Defined in [near.ts:7](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L7)*
+*Defined in [near.ts:9](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L9)*
 
 ___
 <a id="data_type_storage_iter"></a>
@@ -117,7 +118,7 @@ ___
 
 **● DATA_TYPE_STORAGE_ITER**: *[DataTypeIndex](_near_.md#datatypeindex)* = 6
 
-*Defined in [near.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L10)*
+*Defined in [near.ts:12](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L12)*
 
 ___
 <a id="default_scratch_buffer_size"></a>
@@ -126,7 +127,7 @@ ___
 
 **● DEFAULT_SCRATCH_BUFFER_SIZE**: *`usize`* =  1 << 16
 
-*Defined in [near.ts:1](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1)*
+*Defined in [near.ts:3](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L3)*
 
 ___
 <a id="context-1"></a>
@@ -135,7 +136,7 @@ ___
 
 **● context**: *[Context](../classes/_near_.context.md)* =  new Context()
 
-*Defined in [near.ts:1063](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1063)*
+*Defined in [near.ts:1065](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1065)*
 
 ___
 <a id="storage-1"></a>
@@ -144,7 +145,7 @@ ___
 
 **● storage**: *[Storage](../classes/_near_.storage.md)* =  new Storage()
 
-*Defined in [near.ts:245](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L245)*
+*Defined in [near.ts:247](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L247)*
 
 An instance of a Storage class that is used for working with contract storage on the blockchain.
 
@@ -152,13 +153,36 @@ ___
 
 ## Functions
 
+<a id="check_ethash"></a>
+
+###  check_ethash
+
+▸ **check_ethash**(block_number: *`u64`*, header_hash_ptr: *`u32`*, header_hash_len: *`u32`*, nonce: *`u64`*, mix_hash_ptr: *`u32`*, mix_hash_len: *`u32`*, difficulty: *`u64`*): `bool`
+
+*Defined in [near.ts:1497](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1497)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| block_number | `u64` |
+| header_hash_ptr | `u32` |
+| header_hash_len | `u32` |
+| nonce | `u64` |
+| mix_hash_ptr | `u32` |
+| mix_hash_len | `u32` |
+| difficulty | `u64` |
+
+**Returns:** `bool`
+
+___
 <a id="data_read"></a>
 
 ###  data_read
 
 ▸ **data_read**(type_index: *`u32`*, key_len: *`usize`*, key: *`usize`*, max_buf_len: *`usize`*, buf_ptr: *`usize`*): `usize`
 
-*Defined in [near.ts:1475](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1475)*
+*Defined in [near.ts:1477](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1477)*
 
 **Parameters:**
 
@@ -179,7 +203,7 @@ ___
 
 ▸ **promise_and**(promise_index1: *`u32`*, promise_index2: *`u32`*): `u32`
 
-*Defined in [near.ts:1492](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1492)*
+*Defined in [near.ts:1494](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1494)*
 
 **Parameters:**
 
@@ -195,9 +219,9 @@ ___
 
 ###  promise_create
 
-▸ **promise_create**(account_id_len: *`usize`*, account_id_ptr: *`usize`*, method_name_len: *`usize`*, method_name_ptr: *`usize`*, args_len: *`usize`*, args_ptr: *`usize`*, amount: *`u64`*): `u32`
+▸ **promise_create**(account_id_len: *`usize`*, account_id_ptr: *`usize`*, method_name_len: *`usize`*, method_name_ptr: *`usize`*, args_len: *`usize`*, args_ptr: *`usize`*, amount: *`u128`*): `u32`
 
-*Defined in [near.ts:1478](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1478)*
+*Defined in [near.ts:1480](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1480)*
 
 **Parameters:**
 
@@ -209,7 +233,7 @@ ___
 | method_name_ptr | `usize` |
 | args_len | `usize` |
 | args_ptr | `usize` |
-| amount | `u64` |
+| amount | `u128` |
 
 **Returns:** `u32`
 
@@ -218,9 +242,9 @@ ___
 
 ###  promise_then
 
-▸ **promise_then**(promise_index: *`u32`*, method_name_len: *`usize`*, method_name_ptr: *`usize`*, args_len: *`usize`*, args_ptr: *`usize`*, amount: *`u64`*): `u32`
+▸ **promise_then**(promise_index: *`u32`*, method_name_len: *`usize`*, method_name_ptr: *`usize`*, args_len: *`usize`*, args_ptr: *`usize`*, amount: *`u128`*): `u32`
 
-*Defined in [near.ts:1485](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1485)*
+*Defined in [near.ts:1487](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1487)*
 
 **Parameters:**
 
@@ -231,7 +255,7 @@ ___
 | method_name_ptr | `usize` |
 | args_len | `usize` |
 | args_ptr | `usize` |
-| amount | `u64` |
+| amount | `u128` |
 
 **Returns:** `u32`
 
@@ -242,7 +266,7 @@ ___
 
 ▸ **result_count**(): `u32`
 
-*Defined in [near.ts:1465](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1465)*
+*Defined in [near.ts:1467](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1467)*
 
 **Returns:** `u32`
 
@@ -253,7 +277,7 @@ ___
 
 ▸ **result_is_ok**(index: *`u32`*): `bool`
 
-*Defined in [near.ts:1467](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1467)*
+*Defined in [near.ts:1469](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1469)*
 
 **Parameters:**
 
@@ -270,7 +294,7 @@ ___
 
 ▸ **return_promise**(promise_index: *`u32`*): `void`
 
-*Defined in [near.ts:1472](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1472)*
+*Defined in [near.ts:1474](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1474)*
 
 **Parameters:**
 
@@ -287,7 +311,7 @@ ___
 
 ▸ **return_value**(value_len: *`usize`*, value_ptr: *`usize`*): `void`
 
-*Defined in [near.ts:1470](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1470)*
+*Defined in [near.ts:1472](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1472)*
 
 **Parameters:**
 
@@ -305,7 +329,7 @@ ___
 
 ▸ **storage_has_key**(key_len: *`usize`*, key_ptr: *`usize`*): `bool`
 
-*Defined in [near.ts:1456](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1456)*
+*Defined in [near.ts:1458](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1458)*
 
 **Parameters:**
 
@@ -323,7 +347,7 @@ ___
 
 ▸ **storage_iter**(prefix_len: *`usize`*, prefix_ptr: *`usize`*): `u32`
 
-*Defined in [near.ts:1458](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1458)*
+*Defined in [near.ts:1460](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1460)*
 
 **Parameters:**
 
@@ -341,7 +365,7 @@ ___
 
 ▸ **storage_iter_next**(id: *`u32`*): `u32`
 
-*Defined in [near.ts:1462](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1462)*
+*Defined in [near.ts:1464](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1464)*
 
 **Parameters:**
 
@@ -358,7 +382,7 @@ ___
 
 ▸ **storage_range**(start_len: *`usize`*, start_ptr: *`usize`*, end_len: *`usize`*, end_ptr: *`usize`*): `u32`
 
-*Defined in [near.ts:1460](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1460)*
+*Defined in [near.ts:1462](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1462)*
 
 **Parameters:**
 
@@ -378,7 +402,7 @@ ___
 
 ▸ **storage_remove**(key_len: *`usize`*, key_ptr: *`usize`*): `void`
 
-*Defined in [near.ts:1454](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1454)*
+*Defined in [near.ts:1456](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1456)*
 
 **Parameters:**
 
@@ -396,7 +420,7 @@ ___
 
 ▸ **storage_write**(key_len: *`usize`*, key_ptr: *`usize`*, value_len: *`usize`*, value_ptr: *`usize`*): `void`
 
-*Defined in [near.ts:1452](https://github.com/nearprotocol/near-runtime-ts/blob/4c31143/near.ts#L1452)*
+*Defined in [near.ts:1454](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1454)*
 
 **Parameters:**
 
