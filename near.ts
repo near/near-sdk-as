@@ -79,7 +79,7 @@ export class Storage {
    * Store string value under given key. Both key and value are encoded as UTF-8 strings.
    */
   setString(key: string, value: string): void {
-    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.lengthUTF8 - 1, value.toUTF8());
+    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.lengthUTF8 - 1, value.toUTF8(), 0);
   }
 
   /**
@@ -96,7 +96,7 @@ export class Storage {
    * It's convenient to use this together with `domainObject.encode()`.
    */
   setBytes(key: string, value: Uint8Array): void {
-    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.dataStart);
+    storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.dataStart, 0);
   }
 
   /**
@@ -1463,8 +1463,7 @@ export class ContractPromiseResult {
   buffer: Uint8Array;
 }
 
-@external("env", "storage_write")
-declare function storage_write(key_len: usize, key_ptr: usize, value_len: usize, value_ptr: usize): void;
+declare function storage_write(key_len: u64, key_ptr: u64, value_len: u64, value_ptr: u64, register_id: u64): u64;
 @external("env", "storage_remove")
 declare function storage_remove(key_len: usize, key_ptr: usize): void;
 @external("env", "storage_has_key")
