@@ -26,9 +26,8 @@ export namespace runtime_api {
     @external("env", "storage_usage")
     declare function storage_usage() : u64;
 
-	
-	// #################
-	// # Economics API #
+    // #################
+    // # Economics API #
     // #################
     @external("env", "account_balance")
     declare function account_balance(balance_ptr: u64) : void;
@@ -39,8 +38,8 @@ export namespace runtime_api {
     @external("env", "used_gas")
     declare function used_gas() : u64;
 
-	// ############
-	// # Math API #
+    // ############
+    // # Math API #
     // ############
     @external("env", "random_buf")
     declare function random_buf(len: u64, register_id: u64) : void;
@@ -49,8 +48,8 @@ export namespace runtime_api {
     @external("env", "sha256")
     declare function sha256(value_len: u64, value_ptr: u64, register_id: u64) : void;
 
-	// #####################
-	// # Miscellaneous API #
+    // #####################
+    // # Miscellaneous API #
     // #####################
     @external("env", "value_return")
     declare function value_return(value_len: u64, value_ptr: u64) : void;
@@ -63,8 +62,8 @@ export namespace runtime_api {
     @external("env", "abort")
     declare function abort(msg_ptr: u32, filename_ptr: u32, line: u32, col: u32) : void;
 
-	// ################
-	// # Promises API #
+    // ################
+    // # Promises API #
     // ################
     @external("env", "promise_create")
     declare function promise_create(account_id_len: u64,account_id_ptr: u64,method_name_len: u64,method_name_ptr: u64,arguments_len: u64, arguments_ptr: u64, amount_ptr: u64, gas: u64) : u64;
@@ -78,9 +77,9 @@ export namespace runtime_api {
     declare function promise_result(result_idx: u64, register_id: u64) : u64;
     @external("env", "promise_return")
     declare function promise_return(promise_id: u64) : void;
-    
-	// ###############
-	// # Storage API #
+
+    // ###############
+    // # Storage API #
     // ###############
     @external("env", "storage_write")
     declare function storage_write(key_len: u64, key_ptr: u64, value_len: u64, value_ptr: u64, register_id: u64) : u64;
@@ -92,8 +91,8 @@ export namespace runtime_api {
     declare function storage_has_key(key_len: u64, key_ptr: u64) : u64;
     @external("env", "storage_iter_prefix")
     declare function storage_iter_prefix(prefix_len: u64, prefix_ptr: u64) : u64;
-    @external("env", "storage_range")
-    declare function storage_range(start_len: u64, start_ptr: u64, end_len: u64, end_ptr: u64) : u64;
+    @external("env", "storage_iter_range")
+    declare function storage_iter_range(start_len: u64, start_ptr: u64, end_len: u64, end_ptr: u64) : u64;
     @external("env", "storage_iter_next")
     declare function storage_iter_next(iterator_id: u64, key_register_id: u64, value_register_id: u64) : u64;
     // Function for the injected gas counter. Automatically called by the gas meter.

@@ -15,37 +15,35 @@ const DATA_TYPE_INPUT: DataTypeIndex = 4;
  */
 export class Storage {
     private _scratchBuf: Uint8Array = new Uint8Array(DEFAULT_SCRATCH_BUFFER_SIZE);
-  
-    // /**
-    //  * Internal method to fetch list of keys from the given iterator up the limit.
-    //  */
-    // private _fetchIter(iterId: u32, limit: i32 = -1): string[] {
-    //   let result: string[] = new Array<string>();
-    //   while (limit-- != 0) {
-    //     let key = this._internalReadString(DATA_TYPE_STORAGE_ITER, 0, iterId);
-    //     if (key != null) {
-    //       result.push(key);
-    //     }
-    //     if (!storage_iter_next(iterId)) {
-    //       break;
-    //     }
-    //   }
-    //   return result;
-    // }
-  
-    // /**
-    //  * Returns list of keys between the given start key and the end key. Both inclusive.
-    //  * NOTE: Must be very careful to avoid exploding amount of compute with this method.
-    //  * @param start The start key used as a lower bound in lexicographical order. Inclusive.
-    //  * @param end The end key used as a upper bound in lexicographical order. Inclusive.
-    //  * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
-    //  */
-    // keyRange(start: string, end: string, limit: i32 = -1): string[] {
-    //   return this._fetchIter(
-    //     storage_range(start.lengthUTF8 - 1, start.toUTF8(), end.lengthUTF8 - 1, end.toUTF8()),
-    //     limit,
-    //   );
-    // }
+
+    /**
+     * Returns list of keys between the given start key and the end key. Both inclusive.
+     * NOTE: Must be very careful to avoid exploding amount of compute with this method.
+     * @param start The start key used as a lower bound in lexicographical order. Inclusive.
+     * @param end The end key used as a upper bound in lexicographical order. Inclusive.
+     * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
+     */
+    keyRange(start: string, end: string, limit: i32 = -1): string[] {
+        let start_encoded = near.stringToBytes(start);
+        let end_encoded = near.stringToBytes(end);
+        const iterator_id = runtime_api.storage_iter_range(
+            start_encoded.buffer.byteLength,
+            start_encoded.buffer as u64,
+            end_encoded.buffer.byteLength,
+            end_encoded.buffer as u64);
+
+        let result: string[] = new Array<string>();
+
+        while (limit-- != 0 && runtime_api.storage_iter_next(iterator_id, 0, 1) == 1) {
+            let key_len = runtime_api.register_len(0);
+            let key_data = new Uint8Array(key_len as i32);
+            runtime_api.read_register(0, key_data.buffer as u64);
+            if (key_data.buffer != null) {
+                result.push(near.bytesToString(key_data));
+            }
+        }
+        return result;
+    }
   
     // /**
     //  * Returns list of keys starting with given prefix.
@@ -64,10 +62,10 @@ export class Storage {
      * Store string value under given key. Both key and value are encoded as UTF-8 strings.
      */
     setString(key: string, value: string): void {
-        let keyEncoded = near.stringToBytes(key);
-        let valueEncoded = near.stringToBytes(value);
-        const storageWriteResult =
-            runtime_api.storage_write(keyEncoded.buffer.byteLength, keyEncoded.buffer as u64, valueEncoded.buffer.byteLength, valueEncoded.buffer as u64, 0);
+        let key_encoded = near.stringToBytes(key);
+        let value_encoded = near.stringToBytes(value);
+        const storage_write_result =
+            runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.buffer as u64, value_encoded.buffer.byteLength, value_encoded.buffer as u64, 0);
         // TODO: handle return value?
     }
   
@@ -75,8 +73,8 @@ export class Storage {
      * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
      */
     getString(key: string): string {
-        let keyEncoded = near.stringToBytes(key);
-        let res = runtime_api.storage_read(keyEncoded.buffer.byteLength, keyEncoded.buffer as u64, 0);
+        let key_encoded = near.stringToBytes(key);
+        let res = runtime_api.storage_read(key_encoded.buffer.byteLength, key_encoded.buffer as u64, 0);
         if (res == 1) {
             let value_len = runtime_api.register_len(0);
             let value = new Uint8Array(value_len as i32);
@@ -121,22 +119,6 @@ export class Storage {
   
     // delete(key: string): void {
     //   storage_remove(key.lengthUTF8 - 1, key.toUTF8());
-    // }
-  
-    // /**
-    //  * @deprecated Use #delete
-    //  */
-    // @inline
-    // remove(key: string): void {
-    //   this.delete(key);
-    // }
-  
-    // /**
-    //  * @deprecated Use #delete
-    //  */
-    // @inline
-    // removeItem(key: string): void {
-    //   this.delete(key);
     // }
   
     // /**
@@ -236,5 +218,23 @@ export class Storage {
     //   let res = new Uint8Array(len);
     //   memory.copy(res.dataStart, this._scratchBuf.dataStart, len);
     //   return res;
+    // }
+
+    /**
+     * @hidden
+     * Internal method to fetch list of keys from the given iterator up the limit.
+     */
+    // private _fetchIter(iterId: u32, limit: i32 = -1): string[] {
+    //   let result: string[] = new Array<string>();
+    //   while (limit-- != 0) {
+    //     let key = this._internalReadString(DATA_TYPE_STORAGE_ITER, 0, iterId);
+    //     if (key != null) {
+    //       result.push(key);
+    //     }
+    //     if (!storage_iter_next(iterId)) {
+    //       break;
+    //     }
+    //   }
+    //   return result;
     // }
   }

@@ -5,10 +5,6 @@
 export namespace base64 {
     const PADCHAR: string = '=';
     const ALPHA: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-
-    function getByte64(s: string, i: u32): u32 {
-      return this.ALPHA.indexOf(s.charAt(i));
-    }
   
     /**
      * Decode base64-encoded string and return a Uint8Array.
@@ -98,5 +94,9 @@ export namespace base64 {
       }
   
       return x.join('');
+    }
+
+    function getByte64(s: string, i: u32): u32 {
+        return this.ALPHA.indexOf(s.charAt(i));
     }
 }
