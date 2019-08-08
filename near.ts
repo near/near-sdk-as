@@ -155,6 +155,9 @@ export namespace near {
   }
 
   export function bytesToString(bytes: Uint8Array): string {
+    if (bytes == null) {
+      return null;
+    }
     return String.fromUTF8(bytes.dataStart, bytes.byteLength)
   }
 
