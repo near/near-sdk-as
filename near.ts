@@ -2,7 +2,6 @@ import { u128 } from "./bignum/integer/u128";
 import { Storage } from './storage';
 
 
-
 type DataTypeIndex = u32;
 
 const DATA_TYPE_ORIGINATOR_ACCOUNT_ID: DataTypeIndex = 1;
@@ -222,10 +221,6 @@ export namespace near {
    */
   export function random32(): u32 {
     return random32();
-  }
-
-  export function log(msg: string): void {
-    _near_log(<usize>msg);
   }
 
   export function str<T>(value: T): string {
