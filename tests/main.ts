@@ -1,28 +1,34 @@
 import { context, storage, near } from "./near";
 import { base64 } from "./base64";
+import { base58 } from "./base58";
 import { collections } from "./collections";
 import { logging } from "./logging";
 import { runtime_api } from "./runtime_api";
+import { TextMessage } from "./model.near";
 
 export function hello(): string {
-    return "hello".concat("alice");
-}
-
-export function base64encode(): string {
-  const array = _testBytes();
-  return base64.encode(array);
-}
-
-export function base64decode(): Uint8Array {
-  const encoded = "AAFaZA==";
-  const decoded = base64.decode(encoded);
-  return decoded;
+  return "hello".concat("alice");
 }
 
 export function vectorOperations(): void {
   const vector = new collections.Vector<String>("vector1");
   assert(vector != null, "Vector not initialized");
   assert(vector.length == 0, "Empty vector has incorrect length");
+}
+
+export function base58Test(): void {
+  const array = _testBytes();
+  const encoded = base58.encode(array);
+  logging.log("base58 encoded value " + encoded);
+  assert(encoded == "1TMu", "Wrong encoded value for base58 encoding")
+}
+
+export function base64Test(): void {
+  const array = _testBytes();
+  const encoded = base64.encode(array);
+  assert(encoded == "AAFaZA==", "Incorrect keys contents");
+  const decoded = base64.decode("AAFaZA==");
+  assert(_arrayEqual(decoded, array), "Incorrect decoded value after base64 roundtrip");
 }
 
 export function logTest(): void {
@@ -45,9 +51,31 @@ export function storageBytesRoundtripTest(): void {
   storage.setBytes("someKey", bytes);
   storage.setBytes("someOtherKey", bytes2);
   const getValueResult = storage.getBytes("someKey");
-  assert(_arrayEqual(getValueResult, bytes), "Incorrect value from storage");
+  assert(_arrayEqual(getValueResult, bytes), "Incorrect bytes value from storage");
   const otherValueResult = storage.getBytes("someOtherKey");
-  assert(_arrayEqual(otherValueResult, bytes2), "Incorrect value from storage");
+  assert(_arrayEqual(otherValueResult, bytes2), "Incorrect bytes value from storage");
+}
+
+export function storageGenericGetSetRoundtripTest(): TextMessage {
+  const message = new TextMessage();
+  message.sender = "mysteriousStranger";
+  message.text = "Hello world";
+  message.number = 415;
+  storage.set<TextMessage>("message1", message);
+
+  const messageFromStorage = storage.get<TextMessage>("message1");
+  assert(messageFromStorage.sender == "mysteriousStranger", "Incorrect data value (sender) for retrieved object");
+  assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
+  assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
+
+  storage.set<u64>("u64key", 20);
+  const u64get = storage.get<u64>("u64key");
+  assert(u64get == 20, "Incorrect data value for u64 roundtrip");
+
+  storage.set<String>("stringkey", "StringValue");
+  const stringGet = storage.get<String>("stringkey");
+  assert(stringGet == "StringValue", "Incorrect data value for string roundtrip");
+  return messageFromStorage;
 }
 
 export function storageKeysTest(): string[] {
@@ -61,50 +89,42 @@ export function storageKeysTest(): string[] {
   storage.setString("someKey2", "myValue1");
   storage.setString("someKey6", "myValue2");
 
-  let start_encoded = near.stringToBytes("someKey");
-  let end_encoded = near.stringToBytes("someKey3");
-  const iterator_id = runtime_api.storage_iter_range(
-    start_encoded.buffer.byteLength,
-    start_encoded.buffer as u64,
-    end_encoded.buffer.byteLength,
-    end_encoded.buffer as u64);
-  logging.log("iterator_id " + iterator_id.toString());
-  runtime_api.storage_iter_next(iterator_id, 0, 1);
-  //const keyRange = storage.keyRange("someKey", "someKey3");
-  // assert(keyRange.length == 2, "Incorrect keys length");
-  // assert(keyRange[0] == "someKey", "Incorrect keys contents");
-  // assert(keyRange[1] == "someKey2", "Incorrect keys contents");
-  // const keyRangeWithLimit = storage.keyRange("someKey", "someKey3", 1);
-  // assert(keyRangeWithLimit.length == 1, "Incorrect keys length");
-  // assert(keyRangeWithLimit[0] == "someKey", "Incorrect keys contents");
+  const keyRange = storage.keyRange("someKey", "someKey3");
+  assert(keyRange.length == 2, "Incorrect keys length");
+  assert(keyRange[0] == "someKey", "Incorrect keys contents");
+  assert(keyRange[1] == "someKey2", "Incorrect keys contents");
+  const keyRangeWithLimit = storage.keyRange("someKey", "someKey3", 1);
+  assert(keyRangeWithLimit.length == 1, "Incorrect keys length");
+  assert(keyRangeWithLimit[0] == "someKey", "Incorrect keys contents");
 
-  // const keys = storage.keys("someKey");
-  // assert(keys.length == 3, "Incorrect keys length");
-  // assert(keys[0] == "someKey", "Incorrect keys contents");
-  // assert(keys[1] == "someKey2", "Incorrect keys contents");
-  // assert(keys[2] == "someKey6", "Incorrect keys contents");
-  // const keysWithLimit = storage.keys("someKey", 1);
-  // assert(keysWithLimit.length == 1, "Incorrect keys length");
-  // assert(keys[0] == "someKey", "Incorrect keys contents")
-  //
-  // assert(storage.contains("someApple"), "Storage does not contain key");
-  // assert(storage.contains("someKey"), "Storage does not contain key");
-  // assert(storage.contains("someKey2"), "Storage does not contain key");
-  // assert(storage.contains("someKey6"), "Storage does not contain key");
-  // assert(!storage.contains("nonexisting"), "Storage has unexpected key");
-  //
-  // // remove a key and retry some of the api calls
-  // storage.delete("someKey");
-  // const keyswithdelete = storage.keys("someKey");  BUG HAPPENS HERE
-  //assert(!storage.contains("someKey"), "Storage does not contain key");
-  //return storage.keys("someKey");
-  //assert(storage.keys("someKey").length == 2, "Incorrect keys length after removing a key")
-  //return keysWithLimit;
-  return null;
+  const keys = storage.keys("someKey");
+  assert(keys.length == 3, "Incorrect keys length");
+  assert(keys[0] == "someKey", "Incorrect keys contents");
+  assert(keys[1] == "someKey2", "Incorrect keys contents");
+  assert(keys[2] == "someKey6", "Incorrect keys contents");
+  const keysWithLimit = storage.keys("someKey", 1);
+  assert(keysWithLimit.length == 1, "Incorrect keys length");
+  assert(keys[0] == "someKey", "Incorrect keys contents")
+
+  assert(storage.contains("someApple"), "Storage does not contain key");
+  assert(storage.contains("someKey"), "Storage does not contain key");
+  assert(storage.contains("someKey2"), "Storage does not contain key");
+  assert(storage.contains("someKey6"), "Storage does not contain key");
+  assert(!storage.contains("nonexisting"), "Storage has unexpected key");
+
+  // remove a key and retry some of the api calls
+  storage.delete("someKey");
+  assert(!storage.contains("someKey"), "Storage contains key that was deleted");
+  assert(storage.contains("someKey2"), "Some other key got deleted");
+  const keyswithdelete = storage.keys("someKey");
+  assert(keyswithdelete.length == 2, "Incorrect keys length after removing a key")
+  assert(keyswithdelete[0] == "someKey2", "Incorrect keyswithdelete contents");
+  assert(keyswithdelete[1] == "someKey6", "Incorrect keyswithdelete contents");
+  return keyswithdelete;
 }
 
 
-
+// Testing helper functions
 export function _testBytes(): Uint8Array {
   const array = new Uint8Array(4);
   array[0] = 0;
