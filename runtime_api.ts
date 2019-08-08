@@ -1,4 +1,7 @@
 
+// TODO
+/* Some of the API is already imported by the injection done in the compiler: https://github.com/nearprotocol/assemblyscript/compare/master...nearprotocol:runtime-rework?expand=1#diff-aa4c926de515a12e288da77300083aacR687 Do not re-import or remove it from compiler injection (if latter then compiler would not work without near.ts) */
+
 export namespace runtime_api {
     // #############
     // # Registers #

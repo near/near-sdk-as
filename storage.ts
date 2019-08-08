@@ -32,31 +32,22 @@ export class Storage {
             end_encoded.buffer.byteLength,
             end_encoded.buffer as u64);
 
-        let result: string[] = new Array<string>();
-
-        while (limit-- != 0 && runtime_api.storage_iter_next(iterator_id, 0, 1) == 1) {
-            let key_len = runtime_api.register_len(0);
-            let key_data = new Uint8Array(key_len as i32);
-            runtime_api.read_register(0, key_data.buffer as u64);
-            if (key_data.buffer != null) {
-                result.push(near.bytesToString(key_data));
-            }
-        }
-        return result;
+        return this._fetchIter(iterator_id, limit);
     }
-  
-    // /**
-    //  * Returns list of keys starting with given prefix.
-    //  * NOTE: Must be very careful to avoid exploding amount of compute with this method.
-    //  * @param prefix The key prefix.
-    //  * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
-    //  */
-    // keys(prefix: string, limit: i32 = -1): string[] {
-    //   return this._fetchIter(
-    //     storage_iter(prefix.lengthUTF8 - 1, prefix.toUTF8()),
-    //     limit,
-    //   );
-    // }
+
+    /**
+     * Returns list of keys starting with given prefix.
+     * NOTE: Must be very careful to avoid exploding amount of compute with this method.
+     * @param prefix The key prefix.
+     * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
+     */
+    keys(prefix: string, limit: i32 = -1): string[] {
+        let prefix_encoded = near.stringToBytes(prefix);
+        const iterator_id = runtime_api.storage_iter_prefix(
+            prefix_encoded.buffer.byteLength,
+            prefix_encoded.buffer as u64);
+        return this._fetchIter(iterator_id, limit);
+    }
   
     /**
      * Store string value under given key. Both key and value are encoded as UTF-8 strings.
@@ -73,53 +64,53 @@ export class Storage {
      * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
      */
     getString(key: string): string {
-        let key_encoded = near.stringToBytes(key);
-        let res = runtime_api.storage_read(key_encoded.buffer.byteLength, key_encoded.buffer as u64, 0);
-        if (res == 1) {
-            let value_len = runtime_api.register_len(0);
-            let value = new Uint8Array(value_len as i32);
-            runtime_api.read_register(0, value.buffer as u64);
-            return near.bytesToString(value);
-        } else {
-            throw 'Key does not exist';
-        }
+        return near.bytesToString(this._internalReadBytes(key));
     }
   
-    // /**
-    //  * Store byte array under given key. Key is encoded as UTF-8 strings.
-    //  * Byte array stored as is.
-    //  *
-    //  * It's convenient to use this together with `domainObject.encode()`.
-    //  */
-    // setBytes(key: string, value: Uint8Array): void {
-    //   //storage_write(key.lengthUTF8 - 1, key.toUTF8(), value.byteLength, value.dataStart, 0);
-    // }
+    /**
+     * Store byte array under given key. Key is encoded as UTF-8 strings.
+     * Byte array stored as is.
+     *
+     * It's convenient to use this together with `domainObject.encode()`.
+     */
+    setBytes(key: string, value: Uint8Array): void {
+        let key_encoded = near.stringToBytes(key);
+        const storage_write_result =
+            runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.buffer as u64, value.buffer.byteLength, value.buffer as u64, 0);
+        // TODO: handle return value?
+    }
   
-    // /**
-    //  * Get byte array stored under given key. Key is encoded as UTF-8 strings.
-    //  * Byte array stored as is.
-    //  *
-    //  * It's convenient to use this together with `DomainObject.decode()`.
-    //  */
-    // getBytes(key: string): Uint8Array {
-    //   return this._internalReadBytes(DATA_TYPE_STORAGE, key.lengthUTF8 - 1, key.toUTF8());
-    // }
+    /**
+     * Get byte array stored under given key. Key is encoded as UTF-8 strings.
+     * Byte array stored as is.
+     *
+     * It's convenient to use this together with `DomainObject.decode()`.
+     */
+    getBytes(key: string): Uint8Array {
+        return this._internalReadBytes(key);
+    }
+
+    /**
+     * Returns true if the given key is present in the storage.
+     */
+    contains(key: string): bool {
+        let key_encoded = near.stringToBytes(key);
+        return (bool)(runtime_api.storage_has_key(key_encoded.buffer.byteLength, key_encoded.buffer as u64));
+    }
   
-    // /**
-    //  * Returns true if the given key is present in the storage.
-    //  */
-    // contains(key: string): bool {
-    //   return storage_has_key(key.lengthUTF8 - 1, key.toUTF8());
-    // }
-  
+    // TODO: test
     // @inline
     // hasKey(key: string): bool {
     //   return this.contains(key);
     // }
   
-    // delete(key: string): void {
-    //   storage_remove(key.lengthUTF8 - 1, key.toUTF8());
-    // }
+    /**
+     * Deletes a given key from the storage.
+     */
+    delete(key: string): void {
+        let key_encoded = near.stringToBytes(key);
+        runtime_api.storage_remove(key_encoded.buffer.byteLength, key_encoded.buffer as u64, 0);
+    }
   
     // /**
     //  * Store 64-bit unsigned int under given key. Key is encoded as UTF-8 strings.
@@ -220,21 +211,34 @@ export class Storage {
     //   return res;
     // }
 
+    private _internalReadBytes(key: string): Uint8Array{
+        let key_encoded = near.stringToBytes(key);
+        let res = runtime_api.storage_read(key_encoded.buffer.byteLength, key_encoded.buffer as u64, 0);
+        if (res == 1) {
+            let value_len = runtime_api.register_len(0);
+            let value = new Uint8Array(value_len as i32);
+            runtime_api.read_register(0, value.buffer as u64);
+            return value;
+        } else {
+            throw 'Key does not exist';
+        }
+    }
+
     /**
      * @hidden
      * Internal method to fetch list of keys from the given iterator up the limit.
      */
-    // private _fetchIter(iterId: u32, limit: i32 = -1): string[] {
-    //   let result: string[] = new Array<string>();
-    //   while (limit-- != 0) {
-    //     let key = this._internalReadString(DATA_TYPE_STORAGE_ITER, 0, iterId);
-    //     if (key != null) {
-    //       result.push(key);
-    //     }
-    //     if (!storage_iter_next(iterId)) {
-    //       break;
-    //     }
-    //   }
-    //   return result;
-    // }
+    private _fetchIter(iterId: u64, limit: i32 = -1): string[] {
+        let result: string[] = new Array<string>();
+
+        while (limit-- != 0 && runtime_api.storage_iter_next(iterId, 0, 1) == 1) {
+            let key_len = runtime_api.register_len(0);
+            let key_data = new Uint8Array(key_len as i32);
+            runtime_api.read_register(0, key_data.buffer as u64);
+            if (key_data.buffer != null) {
+                result.push(near.bytesToString(key_data));
+            }
+        }
+        return result;
+    }
   }
