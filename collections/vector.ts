@@ -1,5 +1,5 @@
 import { collections } from "../collections";
-import { near, storage } from "../near";
+import { storage } from "../storage";
 
     /**
      * A vector class that implements a persistent array.

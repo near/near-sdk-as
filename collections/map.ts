@@ -1,5 +1,5 @@
      import { collections } from "../collections";
-     import { storage } from "../near";
+     import { storage } from "../storage";
 
     /**
      * A map class that implements a persistent unordered map.
