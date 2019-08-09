@@ -1,11 +1,14 @@
-import { context, storage, near } from "./near";
+import { storage, near } from "./near";
 import { base64 } from "./base64";
 import { base58 } from "./base58";
 import { collections } from "./collections";
 import { logging } from "./logging";
 import { runtime_api } from "./runtime_api";
+import { context } from "./contract";
 import { TextMessage } from "./model.near";
-import { Map } from "./collections/map"
+import { Map } from "./collections/map";
+import { Vector } from "./collections/vector";
+import { u128 } from "./bignum/integer/u128";
 
 export function hello(): string {
   return "hello".concat("alice");
@@ -119,7 +122,7 @@ export function storageKeysTest(): string[] {
   return keyswithdelete;
 }
 
-export function mapTest(): void {
+export function mapTests(): void {
   // empty map
   const map = new Map<string, TextMessage>("mapId");
   const valuesEmpty = map.values();
@@ -156,13 +159,82 @@ export function mapTest(): void {
   assert(map.get("mapKey3") == null, "Incorrect result from map get on a deleted key");
 }
 
-export function vectorOperations(): void {
-  const vector = new collections.Vector<String>("vector1");
+export function vectorTests(): void {
+  const vector = new Vector<String>("vector1");
   assert(vector != null, "Vector not initialized");
   assert(vector.length == 0, "Empty vector has incorrect length");
+  assert(!vector.containsIndex(0), "Empty vector incorrectly has index 0");
+  assert(vector.isEmpty, "isEmpty incorrect on empty vector");
+  //try { assert(vector[0] == null, "");} catch (e) {} not possible to test due to lack of try catch
+
+  vector.push("bb");
+  assert(vector.length == 1, "Vector has incorrect length");
+  assert(vector.containsIndex(0), "Non empty vector does not have index 0");
+  assert(!vector.containsIndex(1), "Vector size 1 incorrectly has index 1");
+  assert(!vector.isEmpty, "isEmpty incorrect on non-empty vector");
+  assert(vector.back == "bb", "Incorrect back entry")
+  assert(vector.last == "bb", "Incorrect last entry")
+  assert(vector.front == "bb", "Incorrect front entry")
+  assert(vector.first == "bb", "Incorrect first entry")
+  assert(vector[0] == "bb", "incorrect vector contents");
+  assert(_vectorHasContents(vector, ["bb"]), "Unexpected vector contents. Expected [bb]");
+
+  vector.pushBack("bc");
+  assert(vector.length == 2, "Vector has incorrect length");
+  assert(vector.containsIndex(0), "Non empty vector does not have index 0");
+  assert(vector.containsIndex(1), "Vector size 2 does not have index 1");
+  assert(!vector.containsIndex(2), "Vector size 2 incorrectly has index 2");
+  assert(!vector.isEmpty, "isEmpty incorrect on non-empty vector");
+  assert(_vectorHasContents(vector, ["bb", "bc"]), "Unexpected vector contents. Expected [ba, bb]");
+  vector[1] = "bd";
+  assert(_vectorHasContents(vector, ["bb", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
+
+  // Delete an entry and then try various other methods
+  vector.delete(0);
+  assert(_vectorHasContents(vector, [null, "bd"]), "Unexpected vector contents. Expected [null, bd]");
+  assert(vector.length == 2, "Vector has incorrect length after delete")
+  assert(vector.containsIndex(0), "Does not contain index 0 after delete")
+  assert(vector.back == "bd", "Incorrect back entry")
+  assert(vector.last == "bd", "Incorrect last entry")
+  assert(vector.front == null, "Incorrect front entry")
+  assert(vector.first == null, "Incorrect first entry")
+  vector[0] = "aa";
+  assert(_vectorHasContents(vector, ["aa", "bd"]), "Unexpected vector contents. Expected [aa, bd]");
+  assert(vector.length == 2, "Vector has incorrect length")
+  vector.pushBack("be");
+  assert(_vectorHasContents(vector, ["aa", "bd", "be"]), "Unexpected vector contents. Expected [aa, bd, be]");
+  assert(vector.length == 3, "Vector has incorrect length")
+  assert(vector.back == "be", "Incorrect back entry")
+  assert(vector.last == "be", "Incorrect last entry")
+  assert(vector.front == "aa", "Incorrect front entry")
+  assert(vector.first == "aa", "Incorrect first entry")
+
+  // pop an entry and then try various other methods
+  vector.pop();
+  assert(_vectorHasContents(vector, ["aa", "bd"]), "Unexpected vector contents. Expected [aa, bd]");
+  assert(vector.length == 2, "Vector has incorrect length after delete")
+  vector[0] = "ba";
+  assert(_vectorHasContents(vector, ["ba", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
+  assert(vector.length == 2, "Vector has incorrect length")
+  vector.pushBack("bf");
+  assert(_vectorHasContents(vector, ["ba", "bd", "bf"]), "Unexpected vector contents. Expected [ba, bd, bf]");
+  assert(vector.length == 3, "Vector has incorrect length")
+  vector.popBack();
+  assert(_vectorHasContents(vector, ["ba", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
+  assert(vector.length == 2, "Vector has incorrect length")
 }
 
-
+export function contextTests(): void {
+  assert(context.sender == "bob", "Wrong sender");
+  assert(context.contractName == "contractaccount", "Wrong contract name");
+  assert(context.blockIndex == 113, "Wrong contract name");
+  assert(context.attachedDeposit == u128.fromU64(7), "Wrong receivedAmount");
+  assert(context.accountBalance == u128.fromU64(14), "Wrong receivedAmount");
+  assert(context.prepaidGas == 1000000000, "Wrong prepaid gas");
+  assert(context.usedGas <= 1000000000, "Wrong used gas");
+  assert(context.usedGas > 0, "Wrong used gas");
+  //assert(context.storageUsage == 0, "Wrong storage usage"); TODO: test when enabled
+}
 
 // Testing helper functions
 export function _testBytes(): Uint8Array {
@@ -191,7 +263,7 @@ export function _testTextMessage(): TextMessage {
 }
 
 // cruft to compare test objects. TODO: use something standard
-export function _arrayEqual(first: Uint8Array, second: Uint8Array) : bool {
+export function _arrayEqual(first: Uint8Array, second: Uint8Array): bool {
   if (first.length != second.length) {
     return false;
   }
@@ -212,6 +284,19 @@ export function _modelObjectEqual(first: TextMessage, second: TextMessage): bool
   }
   if (first.number != second.number) {
     return false;
+  }
+  return true;
+}
+
+function _vectorHasContents(vector: Vector<string>, expectedContents: Array<string>): bool {
+  if (vector.length != expectedContents.length) {
+    return false;
+  }
+  for (let i = 0; i < expectedContents.length; i++) {
+    if (expectedContents[i] != vector[i]) {
+      //return false;
+      logging.log("wrong" + expectedContents[i] + "," + vector[i]);
+    }
   }
   return true;
 }
