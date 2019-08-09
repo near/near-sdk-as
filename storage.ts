@@ -2,6 +2,7 @@ import { runtime_api } from './runtime_api';
 import { near } from "./near";
 import { logging } from "./logging";
 
+
 /**
  * Represents contract storage.
  */
