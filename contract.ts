@@ -146,11 +146,44 @@ export class ContractPromise {
         contractName: string,
         methodName: string,
         args: Uint8Array,
-        amount: u64 = 0
+        amount: u128 = u128.fromU64(0),
+        gas: u64 = 0
     ): ContractPromise {
         const contract_name_encoded = util.stringToBytes(contractName);
         const method_name_encoded = util.stringToBytes(methodName);
         const id = runtime_api.promise_create(
+            contract_name_encoded.buffer.byteLength, 
+            contract_name_encoded.buffer as u64,
+            method_name_encoded.buffer.byteLength,
+            method_name_encoded.buffer as u64,
+            args.byteLength,
+            args as u64,
+            0, // TODO: do this properly toUint8Array
+            gas);
+        return {
+            id
+        };
+    }
+
+    /**
+     * Creating a callback for the AsyncCall Promise created with `create` method.
+     * @param methodName Method name on your contract to be called to receive the callback.
+     *     NOTE: Your callback method name can start with `_`, which would prevent other
+     *     contracts from calling it directly. Only callbacks can call methods with `_` prefix.
+     * @param args Serialized arguments on your callback method, see `create` for details.
+     * @param amount The amount of tokens from the called contract to be sent to the current contract with this call.
+     */
+    then(
+        contractName: string,
+        methodName: string,
+        args: Uint8Array,
+        amount: u128 = u128.fromU64(0),
+        gas: u64 = 0
+    ): ContractPromise {
+        const contract_name_encoded = util.stringToBytes(contractName);
+        const method_name_encoded = util.stringToBytes(methodName);
+        const r = runtime_api.promise_then(
+            this.id, 
             contract_name_encoded.buffer.byteLength,
             contract_name_encoded.buffer as u64,
             method_name_encoded.buffer.byteLength,
@@ -158,83 +191,60 @@ export class ContractPromise {
             args.byteLength,
             args as u64,
             0,
-            0);
-        return {
-            id
-        };
-    };
-  
-    // /**
-    //  * Creating a callback for the AsyncCall Promise created with `create` method.
-    //  * @param methodName Method name on your contract to be called to receive the callback.
-    //  *     NOTE: Your callback method name can start with `_`, which would prevent other
-    //  *     contracts from calling it directly. Only callbacks can call methods with `_` prefix.
-    //  * @param args Serialized arguments on your callback method, see `create` for details.
-    //  * @param amount The amount of tokens from the called contract to be sent to the current contract with this call.
-    //  */
-    // then(
-    //     methodName: string,
-    //     args: Uint8Array,
-    //     amount: u128
-    // ): ContractPromise {
-    //   return {
-    //     id: promise_then(
-    //       this.id,
-    //       methodName.lengthUTF8 - 1, methodName.toUTF8(),
-    //       args.byteLength, args.dataStart,
-    //       amount.toUint8Array().dataStart)
-    //   };
-    // }
-  
-    // /**
-    //  * Returns the promise as a result of your function. Don't return any other results from the function.
-    //  * Your current function should be `void` and shouldn't return anything else. E.g.
-    //  * ```
-    //  * export function callMetaNear(): void {
-    //  *   let itemArgs: AddItemArgs = {
-    //  *     accountId: "alice.near",
-    //  *     itemId: "Sword +9000",
-    //  *   };
-    //  *   let promise = ContractPromise.create(
-    //  *     "metanear",
-    //  *     "addItem",
-    //  *     itemArgs.encode(),
-    //  *     0,
-    //  *     0,
-    //  *   );
-    //  *   promise.returnAsResult();
-    //  * }
-    //  * ```
-    //  *
-    //  * Now when you call `callMetaNear` method, it creates new promise to `metanear` contract.
-    //  * And saying that the result of the current execution depends on the result `addItem`.
-    //  * Even though this contract is not going to be called with a callback, the contract which
-    //  * calling `callMetaNear` would receive the result from `addItem`. This call essentially acts
-    //  * as a proxy.
-    //  *
-    //  * You can also attach a callback on top of the promise before returning it, e.g.
-    //  *
-    //  * ```
-    //  *   ...
-    //  *   let promise = ContractPromise.create(
-    //  *      ...
-    //  *   );
-    //  *   // Setting up args for the callback
-    //  *   let requestArgs: OnItemAddedArgs = {
-    //  *     "itemAddedRequestId": "UNIQUE_REQUEST_ID",
-    //  *   };
-    //  *   let callbackPromise = promise.then(
-    //  *      "_onItemAdded",
-    //  *      requestArgs.encode(),
-    //  *      2,  // Attaching 2 additional requests, in case we need to do another call
-    //  *   );
-    //  *   callbackPromise.returnAsResult();
-    //  * }
-    //  * ```
-    //  */
-    // returnAsResult(): void {
-    //   return_promise(this.id);
-    // }
+            gas);
+        return null;
+    }
+
+    /**
+     * Returns the promise as a result of your function. Don't return any other results from the function.
+     * Your current function should be `void` and shouldn't return anything else. E.g.
+     * ```
+     * export function callMetaNear(): void {
+     *   let itemArgs: AddItemArgs = {
+     *     accountId: "alice.near",
+     *     itemId: "Sword +9000",
+     *   };
+     *   let promise = ContractPromise.create(
+     *     "metanear",
+     *     "addItem",
+     *     itemArgs.encode(),
+     *     0,
+     *     0,
+     *   );
+     *   promise.returnAsResult();
+     * }
+     * ```
+     *
+     * Now when you call `callMetaNear` method, it creates new promise to `metanear` contract.
+     * And saying that the result of the current execution depends on the result `addItem`.
+     * Even though this contract is not going to be called with a callback, the contract which
+     * calling `callMetaNear` would receive the result from `addItem`. This call essentially acts
+     * as a proxy.
+     *
+     * You can also attach a callback on top of the promise before returning it, e.g.
+     *
+     * ```
+     *   ...
+     *   let promise = ContractPromise.create(
+     *      ...
+     *   );
+     *   // Setting up args for the callback
+     *   let requestArgs: OnItemAddedArgs = {
+     *     "itemAddedRequestId": "UNIQUE_REQUEST_ID",
+     *   };
+     *   let callbackPromise = promise.then(
+     *      "_onItemAdded",
+     *      requestArgs.encode(),
+     *      2,  // Attaching 2 additional requests, in case we need to do another call
+     *   );
+     *   callbackPromise.returnAsResult();
+     * }
+     * ```
+     */
+    returnAsResult(): void {
+        const r = runtime_api.promise_return(
+            this.id);
+    }
   
     // /**
     //  * Joins multiple async call promises into one, to aggregate results before the callback.
@@ -250,7 +260,7 @@ export class ContractPromise {
     //   }
     //   return { id };
     // }
-  
+
     // /**
     //  * Method to receive async (one or multiple) results from the remote contract in the callback.
     //  * Example of using it.
