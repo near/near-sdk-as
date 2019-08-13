@@ -182,7 +182,7 @@ export class ContractPromise {
     ): ContractPromise {
         const contract_name_encoded = util.stringToBytes(contractName);
         const method_name_encoded = util.stringToBytes(methodName);
-        const r = runtime_api.promise_then(
+        const id = runtime_api.promise_then(
             this.id, 
             contract_name_encoded.buffer.byteLength,
             contract_name_encoded.buffer as u64,
@@ -192,7 +192,9 @@ export class ContractPromise {
             args as u64,
             0,
             gas);
-        return null;
+        return {
+            id
+        };
     }
 
     /**
