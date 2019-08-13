@@ -13,6 +13,7 @@ import { Deque } from "./collections/deque";
 import { TopN } from "./collections/topn";
 import { u128 } from "./bignum/integer/u128";
 import { util } from "./util";
+import { math } from "./math";
 
 export function hello(): string {
   return "hello".concat("alice");
@@ -232,9 +233,15 @@ export function dequeTests(): void {
   const deque = new Deque<string>("dequeid");
   assert(!deque.containsIndex(0), "empty deque contains index 0");
 
-  // empty deque
+  const keys = storage.keys("");
+  logging.log("KEYS")
+  for (let i = 0; i < keys.length; i++) {
+    logging.log(keys[i]);
+  }
+
+  // empty deque - bugged
   //assert(deque.frontIndex == -1, "Wrong front index for an empty deque");
-  logging.log("Dq 1 " + u128.fromU64(deque.frontIndex).toString() + ", " + u128.fromU64(deque.backIndex).toString()); //??
+  logging.log("Dq 1 " + u128.fromU64(deque.frontIndex).toString() + ", " + u128.fromU64(deque.backIndex).toString() + u128.fromU64(deque.length).toString()); //??
 }
 
 export function topnTests(): void {
@@ -323,16 +330,14 @@ export function contextTests(): void {
 export function promiseTests(): void {
   const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0));
   const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0));
-  //promise2.returnAsResult();
+  promise2.returnAsResult();
   //assert(context.storageUsage == 0, "Wrong storage usage"); TODO: test when enabled
 }
 
 export function mathTests(): void {
-  const data = _testBytes();
-  runtime_api.sha256(data.byteLength, data as u64, 0);
-  const registerContents = new Uint8Array((i32)(runtime_api.register_len(0)));
-  runtime_api.read_register(0, registerContents.buffer as u64);
-  logging.log("math" + u128.fromU32(registerContents.length).toString());
+  const array = _testBytes();
+  const hash = math.hash32(array);
+  assert(hash == 1216172190, "wrong hash")
 }
 
 // Testing helper functions

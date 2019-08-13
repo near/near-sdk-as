@@ -244,10 +244,9 @@ export class ContractPromise {
      * ```
      */
     returnAsResult(): void {
-        const r = runtime_api.promise_return(
-            this.id);
+        runtime_api.promise_return(this.id);
     }
-  
+
     // /**
     //  * Joins multiple async call promises into one, to aggregate results before the callback.
     //  * NOTE: Given promises can only be new async calls and can't be callbacks.

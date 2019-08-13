@@ -19,19 +19,6 @@ export namespace near {
     return result;
   }
 
-  /**
-   * Hash given data. Returns hash as 32-bit integer.
-   * @param data data can be passed as either Uint8Array or anything with .toString (hashed as UTF-8 string).
-   */
-  export function hash32<T>(data: T): u32 {
-    let dataToHash : Uint8Array;
-    if (data instanceof Uint8Array) {
-      return _near_hash32(data.byteLength, data.dataStart);
-    } else {
-      let str = data.toString();
-      return _near_hash32(str.lengthUTF8 - 1, str.toUTF8());
-    }
-  }
 
   /**
    * Returns random byte buffer of given length.
@@ -49,10 +36,6 @@ export namespace near {
     return random32();
   }
 
-  export function str<T>(value: T): string {
-    let arr: Array<T> = [value];
-    return arr.toString();
-  }
 }
 
 

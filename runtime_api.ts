@@ -44,6 +44,8 @@ export namespace runtime_api {
     // ############
     // # Math API #
     // ############
+    @external("env", "random_seed")
+    declare function random_seed(register_id: u64): void;
     @external("env", "sha256")
     declare function sha256(value_len: u64, value_ptr: u64, register_id: u64) : void;
 
