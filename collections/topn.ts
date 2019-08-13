@@ -1,7 +1,6 @@
 import { collections } from "../collections";
 import { Map } from "./map";
 import { storage } from "../storage";
-import { logging } from "../logging";
 
     /**
      * A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32.
@@ -56,7 +55,6 @@ import { logging } from "../logging";
          * Creates an internal key from a given rating and a given external key.
          */
         private _orderKey(rating: i32, key: K): string {
-            logging.log(this._orderPrefix + this._ratingKey(rating) + this._keySuffix(key));
             return this._orderPrefix + this._ratingKey(rating) + this._keySuffix(key);
         }
 
@@ -124,13 +122,7 @@ import { logging } from "../logging";
          * @returns The array of top rated keys.
          */
         getTop(limit: i32): K[] {
-            logging.log("BEFORE " + this._orderPrefix);
             let orderKeys = storage.keys(this._orderPrefix, limit);
-              // const keys = storage.keys("topnid");
-            for (let j = 0; j < orderKeys.length; j++) {
-              logging.log(orderKeys[j]);
-            }
-            logging.log("OK")
             return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
         }
 
@@ -141,11 +133,13 @@ import { logging } from "../logging";
          * @returns The array of top rated keys starting from the given key.
          */
         getTopFromKey(limit: i32, fromKey: K): K[] {
+            assert(this.contains(fromKey), 'getTopFromKey: key' + fromKey + ' does not exist');
+           
             let rating = this.getRating(fromKey, 0);
             let orderKeys = storage.keyRange(
-            this._orderKey(rating, fromKey) + String.fromCharCode(0),
-            this._orderPrefix + String.fromCharCode(255),
-            limit);
+                this._orderKey(rating, fromKey) + String.fromCharCode(0),
+                this._orderPrefix + String.fromCharCode(255),
+                limit);
             return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
         }
 
@@ -193,21 +187,21 @@ import { logging } from "../logging";
             storage.set<K>(this._orderKey(rating, key), key);
         }
 
-    //   /**
-    //    * Increments rating of the given key by the given increment (1 by default).
-    //    * @param key The key to update.
-    //    * @param increment The increment value for the rating (1 by default).
-    //    */
-    //   incrementRating(key: K, increment: i32 = 1): void {
-    //     let oldRating = 0;
-    //     if (this.contains(key)) {
-    //       oldRating = this.getRating(key);
-    //       storage.delete(this._orderKey(oldRating, key));
-    //     } else {
-    //       this.length += 1;
-    //     }
-    //     let rating = oldRating + increment;
-    //     this._ratings.set(key, rating);
-    //     storage.set<K>(this._orderKey(rating, key), key);
-    //   }
+        /**
+         * Increments rating of the given key by the given increment (1 by default).
+         * @param key The key to update.
+         * @param increment The increment value for the rating (1 by default).
+         */
+        incrementRating(key: K, increment: i32 = 1): void {
+            let oldRating = 0;
+            if (this.contains(key)) {
+            oldRating = this.getRating(key);
+            storage.delete(this._orderKey(oldRating, key));
+            } else {
+            this.length += 1;
+            }
+            let rating = oldRating + increment;
+            this._ratings.set(key, rating);
+            storage.set<K>(this._orderKey(rating, key), key);
+        }
     }

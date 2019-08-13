@@ -45,7 +45,7 @@ export class Storage {
             prefix_encoded.buffer as u64);
         return this._fetchIter(iterator_id, limit);
     }
-  
+
     /**
      * Store string value under given key. Both key and value are encoded as UTF-8 strings.
      */
@@ -56,14 +56,14 @@ export class Storage {
             runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.buffer as u64, value_encoded.buffer.byteLength, value_encoded.buffer as u64, 0);
         // TODO: handle return value?
     }
-  
+
     /**
      * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
      */
     getString(key: string): string {
         return util.bytesToString(this._internalReadBytes(key));
     }
-  
+
     /**
      * Store byte array under given key. Key is encoded as UTF-8 strings.
      * Byte array stored as is.
@@ -76,7 +76,7 @@ export class Storage {
             runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.buffer as u64, value.buffer.byteLength, value.buffer as u64, 0);
         // TODO: handle return value?
     }
-  
+
     /**
      * Get byte array stored under given key. Key is encoded as UTF-8 strings.
      * Byte array stored as is.
@@ -102,7 +102,7 @@ export class Storage {
         let key_encoded = util.stringToBytes(key);
         runtime_api.storage_remove(key_encoded.buffer.byteLength, key_encoded.buffer as u64, 0);
     }
-  
+
     /**
      * Stores given generic value under the key. Key is encoded as UTF-8 strings.
      * Supported types: bool, integer, string and data objects defined in model.ts.
@@ -119,7 +119,7 @@ export class Storage {
             this.setBytes(key, value.encode());
         }
     }
-  
+
     /**
      * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
      * Supported types: bool, integer, string and data objects defined in model.ts.
@@ -167,7 +167,6 @@ export class Storage {
         return result;
     }
 
-      
     // TODO: test and improve the u64 handling
     // @inline
     // hasKey(key: string): bool {

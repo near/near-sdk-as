@@ -1,14 +1,18 @@
-import { storage, near } from "./near";
+import { near } from "./near";
+import { storage } from "./storage"
 import { base64 } from "./base64";
 import { base58 } from "./base58";
 import { collections } from "./collections";
 import { logging } from "./logging";
 import { runtime_api } from "./runtime_api";
-import { context } from "./contract";
+import { context, ContractPromise } from "./contract";
 import { TextMessage } from "./model.near";
 import { Map } from "./collections/map";
 import { Vector } from "./collections/vector";
+import { Deque } from "./collections/deque";
+import { TopN } from "./collections/topn";
 import { u128 } from "./bignum/integer/u128";
+import { util } from "./util";
 
 export function hello(): string {
   return "hello".concat("alice");
@@ -224,6 +228,86 @@ export function vectorTests(): void {
   assert(vector.length == 2, "Vector has incorrect length")
 }
 
+export function dequeTests(): void {
+  const deque = new Deque<string>("dequeid");
+  assert(!deque.containsIndex(0), "empty deque contains index 0");
+
+  // empty deque
+  //assert(deque.frontIndex == -1, "Wrong front index for an empty deque");
+  logging.log("Dq 1 " + u128.fromU64(deque.frontIndex).toString() + ", " + u128.fromU64(deque.backIndex).toString()); //??
+}
+
+export function topnTests(): void {
+  // empty topn cases
+  const topn = new TopN<string>("topnid");
+  assert(topn != null, "topn is null");
+  assert(topn.isEmpty, "empty topn - wrong result for isEmpty");
+  assert(topn.length == 0, "empty topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "empty topn - contains nonexistent key");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(new Array<string>(0)).length == 0, "keys to ratings for empty topn is not empty");
+  assert(topn.getTop(10).length == 0, "get top for empty topn returned non empty list")
+  //assert(topn.getTopFromKey(10, "somekey").length == 0, "getTopFromKey for empty topn returned non empty list")
+  // The line above would trigger an assert and fail
+  assert(topn.getTopWithRating(10).length == 0, "getTopWithRating for empty topn is not empty");
+  //assert(topn.getTopWithRatingFromKey(10, "somekey").length == 0, "getTopWithRatingFromKey for empty topn is not empty");
+  // The line above would trigger an assert and fail
+
+  topn.setRating("k1", 5);
+  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
+  assert(topn.length == 1, "topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
+  assert(topn.contains("k1"), "topn - does not contain a key that should be there");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1"])[0].value == 5, "keys to ratings wrong for topn");
+  assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
+  assert(topn.getTop(10)[0] == "k1", "wrong key in getTop")
+  assert(topn.getTopFromKey(10, "k1").length == 0, "getTopFromKey for topn wrong result");
+  assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRatingFromKey(10, "k1").length == 0, "getTopWithRatingFromKey for topn is not empty");
+
+  // Tests with 2 entries --  k1: 6, k: 5
+  topn.setRating("k", 5);
+  topn.incrementRating("k1");
+  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
+  assert(topn.length == 2, "topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
+  assert(topn.contains("k"), "topn - does not contain a key that should be there");
+  assert(topn.contains("k1"), "topn - does not contain a key that should be there");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1", "k"]).length == 2, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1", "k"])[0].value == 6, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1", "k"])[1].value == 5, "keys to ratings wrong for topn");
+  assert(topn.getTop(10).length == 2, "get top for topn is wrong");
+  assert(topn.getTop(10)[0] == "k1", "wrong key in getTop");
+  assert(topn.getTop(10)[1] == "k", "wrong key in getTop");
+  assert(topn.getTop(1).length == 1, "get top for topn is wrong when limit is applied");
+  assert(topn.getTop(1)[0] == "k1", "wrong key in getTop");
+  assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
+  assert(topn.getTopFromKey(10, "k1").length == 1, "getTopFromKey for topn wrong result");
+  assert(topn.getTopFromKey(10, "k1")[0] == "k", "getTopFromKey for topn wrong result");
+  assert(topn.getTopWithRating(10).length == 2, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRating(10)[0].value == 6, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRating(10)[1].value == 5, "getTopWithRating for topn with 1 element is wrong size");
+
+  topn.delete("k1");
+  topn.incrementRating("k");
+  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
+  assert(topn.length == 1, "topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
+  assert(topn.contains("k"), "topn - does not contain a key that should be there");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(["k"]).length == 1, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k"])[0].value == 6, "keys to ratings wrong for topn");
+  assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
+  assert(topn.getTop(10)[0] == "k", "wrong key in getTop")
+  assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
+  assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRatingFromKey(10, "k").length == 0, "getTopWithRatingFromKey for topn is not empty");
+}
+
 export function contextTests(): void {
   assert(context.sender == "bob", "Wrong sender");
   assert(context.contractName == "contractaccount", "Wrong contract name");
@@ -233,7 +317,22 @@ export function contextTests(): void {
   assert(context.prepaidGas == 1000000000, "Wrong prepaid gas");
   assert(context.usedGas <= 1000000000, "Wrong used gas");
   assert(context.usedGas > 0, "Wrong used gas");
+  //assert(context.storageUsage == 0, "Wrong storage usage"); TODO: test when implemented
+}
+
+export function promiseTests(): void {
+  const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0));
+  const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0));
+  //promise2.returnAsResult();
   //assert(context.storageUsage == 0, "Wrong storage usage"); TODO: test when enabled
+}
+
+export function mathTests(): void {
+  const data = _testBytes();
+  runtime_api.sha256(data.byteLength, data as u64, 0);
+  const registerContents = new Uint8Array((i32)(runtime_api.register_len(0)));
+  runtime_api.read_register(0, registerContents.buffer as u64);
+  logging.log("math" + u128.fromU32(registerContents.length).toString());
 }
 
 // Testing helper functions
