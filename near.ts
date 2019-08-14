@@ -1194,7 +1194,7 @@ export namespace near {
    * Returns random 32-bit integer.
    */
   export function random32(): u32 {
-    return random32();
+    return _near_random32();
   }
 
   export function log(msg: string): void {
@@ -1539,7 +1539,7 @@ declare function _near_random_buf(buf_len: u32, buf_ptr: usize): void
  * @hidden
  */
 @external("env", "random32")
-declare function random32(): u32;
+declare function _near_random32(): u32;
 
 /**
  * @hidden
