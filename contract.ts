@@ -83,7 +83,7 @@ class Context {
 
   private _readRegisterContentsAsString(registerId: u64): string {
     const registerContents = new Uint8Array((i32)(runtime_api.register_len(registerId)));
-    runtime_api.read_register(registerId, registerContents.buffer as u64);
+    runtime_api.read_register(registerId, registerContents.dataStart);
     return util.bytesToString(registerContents);
   }
 }
@@ -153,11 +153,11 @@ class Context {
                 const method_name_encoded = util.stringToBytes(methodName);
                 const id = runtime_api.promise_create(
                   contract_name_encoded.buffer.byteLength,
-                  contract_name_encoded.buffer as u64,
+                  contract_name_encoded.dataStart,
                   method_name_encoded.buffer.byteLength,
-                  method_name_encoded.buffer as u64,
-                  args.byteLength,
-                  args as u64,
+                  method_name_encoded.dataStart,
+                  args.buffer.byteLength,
+                  args.dataStart,
                   0, // TODO: do this properly toUint8Array
                   gas);
                   return {
@@ -185,11 +185,11 @@ class Context {
                   const id = runtime_api.promise_then(
                     this.id,
                     contract_name_encoded.buffer.byteLength,
-                    contract_name_encoded.buffer as u64,
+                    contract_name_encoded.dataStart,
                     method_name_encoded.buffer.byteLength,
-                    method_name_encoded.buffer as u64,
-                    args.byteLength,
-                    args as u64,
+                    method_name_encoded.dataStart,
+                    args.buffer.byteLength,
+                    args.dataStart,
                     0,
                     gas);
                     return {

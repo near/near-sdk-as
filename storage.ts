@@ -25,9 +25,9 @@ export class Storage {
 
     const iterator_id = runtime_api.storage_iter_range(
       start_encoded.buffer.byteLength,
-      start_encoded.buffer as u64,
+      start_encoded.dataStart,
       end_encoded.buffer.byteLength,
-      end_encoded.buffer as u64);
+      end_encoded.dataStart);
 
       return this._fetchIter(iterator_id, limit);
     }
@@ -42,7 +42,7 @@ export class Storage {
       let prefix_encoded = util.stringToBytes(prefix);
       const iterator_id = runtime_api.storage_iter_prefix(
         prefix_encoded.buffer.byteLength,
-        prefix_encoded.buffer as u64);
+        prefix_encoded.dataStart);
         return this._fetchIter(iterator_id, limit);
       }
 
@@ -53,7 +53,7 @@ export class Storage {
         let key_encoded = util.stringToBytes(key);
         let value_encoded = util.stringToBytes(value);
         const storage_write_result =
-        runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.buffer as u64, value_encoded.buffer.byteLength, value_encoded.buffer as u64, 0);
+        runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value_encoded.buffer.byteLength, value_encoded.dataStart, 0);
         // TODO: handle return value?
       }
 
@@ -73,7 +73,7 @@ export class Storage {
       setBytes(key: string, value: Uint8Array): void {
         let key_encoded = util.stringToBytes(key);
         const storage_write_result =
-        runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.buffer as u64, value.buffer.byteLength, value.buffer as u64, 0);
+        runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value.buffer.byteLength, value.dataStart, 0);
         // TODO: handle return value?
       }
 
@@ -92,7 +92,7 @@ export class Storage {
       */
       contains(key: string): bool {
         let key_encoded = util.stringToBytes(key);
-        return (bool)(runtime_api.storage_has_key(key_encoded.buffer.byteLength, key_encoded.buffer as u64));
+        return (bool)(runtime_api.storage_has_key(key_encoded.buffer.byteLength, key_encoded.dataStart));
       }
 
       /**
@@ -100,7 +100,7 @@ export class Storage {
       */
       delete(key: string): void {
         let key_encoded = util.stringToBytes(key);
-        runtime_api.storage_remove(key_encoded.buffer.byteLength, key_encoded.buffer as u64, 0);
+        runtime_api.storage_remove(key_encoded.buffer.byteLength, key_encoded.dataStart, 0);
       }
 
       /**
@@ -138,11 +138,11 @@ export class Storage {
 
       private _internalReadBytes(key: string): Uint8Array{
         let key_encoded = util.stringToBytes(key);
-        let res = runtime_api.storage_read(key_encoded.buffer.byteLength, key_encoded.buffer as u64, 0);
+        let res = runtime_api.storage_read(key_encoded.buffer.byteLength, key_encoded.dataStart, 0);
         if (res == 1) {
           let value_len = runtime_api.register_len(0);
           let value = new Uint8Array(value_len as i32);
-          runtime_api.read_register(0, value.buffer as u64);
+          runtime_api.read_register(0, value.dataStart);
           return value;
         } else {
           return null;
@@ -159,7 +159,7 @@ export class Storage {
         while(limit-- != 0 && runtime_api.storage_iter_next(iterId, 0, 1) == 1) {
           let key_len = runtime_api.register_len(0);
           let key_data = new Uint8Array(key_len as i32);
-          runtime_api.read_register(0, key_data.buffer as u64);
+          runtime_api.read_register(0, key_data.dataStart);
           if (key_data.buffer != null) {
             result.push(util.bytesToString(key_data));
           }

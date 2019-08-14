@@ -7,6 +7,6 @@ export namespace logging {
   */
   export function log(msg: string): void {
     let msg_encoded = util.stringToBytes(msg);
-    runtime_api.log_utf8(msg_encoded.buffer.byteLength, msg_encoded.buffer as u64);
+    runtime_api.log_utf8(msg_encoded.buffer.byteLength, msg_encoded.dataStart);
   }
 }
