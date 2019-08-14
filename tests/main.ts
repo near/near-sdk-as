@@ -336,8 +336,15 @@ export function promiseTests(): void {
 
 export function mathTests(): void {
   const array = _testBytes();
-  const hash = math.hash32(array);
-  assert(hash == 1216172190, "wrong hash")
+  const hash = math.hash32Bytes(array);
+  assert(hash == 3593695342, "wrong hash")
+
+  const stringValue = "toHash";
+  const hashOfString = math.hash32(stringValue);
+  assert(hashOfString == 3394043202, "wrong hash of the string")
+
+  const random = math.random32();
+  assert(random == 88676, "wrong random");
 }
 
 // Testing helper functions
