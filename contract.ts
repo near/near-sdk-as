@@ -82,7 +82,7 @@ class Context {
   }
 
   private _readRegisterContentsAsString(registerId: u64): string {
-    const registerContents = new Uint8Array((i32)(runtime_api.register_len(registerId)));
+    const registerContents = new Uint8Array(runtime_api.register_len(registerId) as i32);
     runtime_api.read_register(registerId, registerContents.dataStart);
     return util.bytesToString(registerContents);
   }
