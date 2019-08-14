@@ -12,6 +12,7 @@
   "dependencies": {},
   "devDependencies": {
     "as-pect": "github:jtenner/as-pect",
+    "@as-pect/cli": "^2.2.0",
     "bignum": "MaxGraey/bignum.wasm",
     "typedoc": "^0.14.2",
     "typedoc-plugin-markdown": "^1.2.1"
