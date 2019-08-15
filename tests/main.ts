@@ -11,7 +11,7 @@ import { Map } from "./collections/map";
 import { Vector } from "./collections/vector";
 import { Deque } from "./collections/deque";
 import { TopN } from "./collections/topn";
-import { u128 } from "./bignum/integer/u128";
+import { u128 } from "bignum";
 import { util } from "./util";
 import { math } from "./math";
 

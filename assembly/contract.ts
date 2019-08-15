@@ -1,6 +1,6 @@
 import { util } from "./util";
 import { runtime_api } from './runtime_api';
-import { u128 } from "./bignum/integer/u128";
+import { u128 } from "bignum";
 import { logging } from "./logging";
 
 export let context: Context = new Context();

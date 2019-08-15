@@ -3,6 +3,8 @@
   "version": "0.0.2",
   "description": "Near smart contract runtime library for typescript",
   "main": "index.js",
+  "types": "assembly/index.ts",
+  "ascMain": "assembly/index.ts",
   "scripts": {
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
     "test": "asp --types && asp"

@@ -1,19 +1,27 @@
 export namespace util {
 
   export function stringToBytes(s: string): Uint8Array {
-    let len = s.lengthUTF8 - 1;
+    let len = String.UTF8.byteLength(s, true) - 1;
     let bytes = new Uint8Array(len);
-    memory.copy(bytes.dataStart, s.toUTF8(), len);
+    const utf8 = String.UTF8.encode(s, true);
+    memory.copy(bytes.dataStart, this.toUTF8(s), len);
     return bytes;
   }
 
   export function bytesToString(bytes: Uint8Array): string {
     if (bytes == null) {
-      return null;
+      return "";
     }
-    return String.fromUTF8(bytes.dataStart, bytes.byteLength)
+    return String.UTF8.decode(bytes.buffer, true)
   }
 
+  export function UTF8Length(str: string, nullTerminated: boolean = false): usize {
+    return String.UTF8.byteLength(str, nullTerminated);
+  }
+
+  export function toUTF8(str: string, nullTerminated: boolean = false): usize {
+    return changetype<usize>(String.UTF8.encode(str, nullTerminated));
+  }
 
   /**
   * Parses the given bytes array to return a value of the given generic type.

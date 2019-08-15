@@ -150,7 +150,7 @@ export class Storage {
       runtime_api.read_register(0, value.dataStart);
       return value;
     } else {
-      return null;
+      return new Uint8Array(0);
     }
   }
 
