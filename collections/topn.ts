@@ -140,68 +140,68 @@ export class TopN<K> {
       this._orderKey(rating, fromKey) + String.fromCharCode(0),
       this._orderPrefix + String.fromCharCode(255),
       limit);
-      return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
-    }
-
-    /**
-    * @param limit The maximum limit of keys to return.
-    * @returns The array of top rated keys with their corresponding rating.
-    */
-    getTopWithRating(limit: i32): collections.MapEntry<K, i32>[] {
-      return this.keysToRatings(this.getTop(limit));
-    }
-
-    /**
-    * Returns a top list with rating starting from the given key (exclusive).
-    * It's useful for pagination.
-    * @param limit The maximum limit of keys to return.
-    * @param fromKey The key from which return top list (exclisive).
-    * @returns The array of top rated keys with their rating starting from the given key.
-    */
-    getTopWithRatingFromKey(limit: i32, fromKey: K): collections.MapEntry<K, i32>[] {
-      return this.keysToRatings(this.getTopFromKey(limit, fromKey));
-    }
-
-    /**
-    * @param key Key of the element.
-    * @param defaultRating The default rating to return if the key is not present.
-    * @returns Value for the given key or the defaultRating.
-    */
-    getRating(key: K, defaultRating: i32 = 0): i32 {
-      return this._ratings.get(key, defaultRating);
-    }
-
-    /**
-    * Sets the new rating for the given key.
-    * @param key The key to update.
-    * @param rating The new rating of the key.
-    */
-    setRating(key: K, rating: i32): void {
-      if (this.contains(key)) {
-        let oldRating = this.getRating(key);
-        storage.delete(this._orderKey(oldRating, key));
-      } else {
-        this.length += 1;
-      }
-      this._ratings.set(key, rating);
-      storage.set<K>(this._orderKey(rating, key), key);
-    }
-
-    /**
-    * Increments rating of the given key by the given increment (1 by default).
-    * @param key The key to update.
-    * @param increment The increment value for the rating (1 by default).
-    */
-    incrementRating(key: K, increment: i32 = 1): void {
-      let oldRating = 0;
-      if (this.contains(key)) {
-        oldRating = this.getRating(key);
-        storage.delete(this._orderKey(oldRating, key));
-      } else {
-        this.length += 1;
-      }
-      let rating = oldRating + increment;
-      this._ratings.set(key, rating);
-      storage.set<K>(this._orderKey(rating, key), key);
-    }
+    return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
   }
+
+  /**
+  * @param limit The maximum limit of keys to return.
+  * @returns The array of top rated keys with their corresponding rating.
+  */
+  getTopWithRating(limit: i32): collections.MapEntry<K, i32>[] {
+    return this.keysToRatings(this.getTop(limit));
+  }
+
+  /**
+  * Returns a top list with rating starting from the given key (exclusive).
+  * It's useful for pagination.
+  * @param limit The maximum limit of keys to return.
+  * @param fromKey The key from which return top list (exclisive).
+  * @returns The array of top rated keys with their rating starting from the given key.
+  */
+  getTopWithRatingFromKey(limit: i32, fromKey: K): collections.MapEntry<K, i32>[] {
+    return this.keysToRatings(this.getTopFromKey(limit, fromKey));
+  }
+
+  /**
+  * @param key Key of the element.
+  * @param defaultRating The default rating to return if the key is not present.
+  * @returns Value for the given key or the defaultRating.
+  */
+  getRating(key: K, defaultRating: i32 = 0): i32 {
+    return this._ratings.get(key, defaultRating);
+  }
+
+  /**
+  * Sets the new rating for the given key.
+  * @param key The key to update.
+  * @param rating The new rating of the key.
+  */
+  setRating(key: K, rating: i32): void {
+    if (this.contains(key)) {
+      let oldRating = this.getRating(key);
+      storage.delete(this._orderKey(oldRating, key));
+    } else {
+      this.length += 1;
+    }
+    this._ratings.set(key, rating);
+    storage.set<K>(this._orderKey(rating, key), key);
+  }
+
+  /**
+  * Increments rating of the given key by the given increment (1 by default).
+  * @param key The key to update.
+  * @param increment The increment value for the rating (1 by default).
+  */
+  incrementRating(key: K, increment: i32 = 1): void {
+    let oldRating = 0;
+    if (this.contains(key)) {
+      oldRating = this.getRating(key);
+      storage.delete(this._orderKey(oldRating, key));
+    } else {
+      this.length += 1;
+    }
+    let rating = oldRating + increment;
+    this._ratings.set(key, rating);
+    storage.set<K>(this._orderKey(rating, key), key);
+  }
+}
