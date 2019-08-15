@@ -4,14 +4,17 @@
   "description": "Near smart contract runtime library for typescript",
   "main": "index.js",
   "scripts": {
-    "doc": "rm -rf apidoc; mkdir apidoc; node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "asp --types; asp"
+    "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
+    "test": "asp --types && asp"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "as-pect": "github:jtenner/as-pect",
+    "@as-pect/assembly": "^2.3.1",
+    "@as-pect/cli": "^2.3.1",
+    "@as-pect/core": "^2.3.1",
+    "assemblyscript": "github:nearprotocol/assemblyscript",
     "bignum": "MaxGraey/bignum.wasm",
     "typedoc": "^0.14.2",
     "typedoc-plugin-markdown": "^1.2.1"
