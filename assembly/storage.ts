@@ -60,7 +60,7 @@ export class Storage {
   /**
   * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
   */
-  getString(key: string): string {
+  getString(key: string): string | null {
     return util.bytesToString(this._internalReadBytes(key));
   }
 
@@ -83,7 +83,7 @@ export class Storage {
   *
   * It's convenient to use this together with `DomainObject.decode()`.
   */
-  getBytes(key: string): Uint8Array {
+  getBytes(key: string): Uint8Array | null {
     return this._internalReadBytes(key);
   }
 
@@ -121,6 +121,7 @@ export class Storage {
     } else if (isInteger<T>()) {
       this.setString(key, value.toString());
     } else {
+       //@ts-ignore
       this.setBytes(key, value.encode());
     }
   }
@@ -141,7 +142,7 @@ export class Storage {
     }
   }
 
-  private _internalReadBytes(key: string): Uint8Array{
+  private _internalReadBytes(key: string): Uint8Array | null {
     let key_encoded = util.stringToBytes(key);
     let res = runtime_api.storage_read(key_encoded.buffer.byteLength, key_encoded.dataStart, 0);
     if (res == 1) {
@@ -150,7 +151,7 @@ export class Storage {
       runtime_api.read_register(0, value.dataStart);
       return value;
     } else {
-      return new Uint8Array(0);
+      return null;
     }
   }
 

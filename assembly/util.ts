@@ -8,9 +8,9 @@ export namespace util {
     return bytes;
   }
 
-  export function bytesToString(bytes: Uint8Array): string {
+  export function bytesToString(bytes: Uint8Array): string | null {
     if (bytes == null) {
-      return "";
+      return null;
     }
     return String.UTF8.decode(bytes.buffer, true)
   }
