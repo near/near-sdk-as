@@ -90,8 +90,8 @@ export class TopN<K> {
   /**
   * Internally sets the length of the collection.
   */
- //Never used 
- //@ts-ignore: Typescript doesn't like property accessors to have different levels of visability.
+  //Never used 
+  //@ts-ignore: Typescript doesn't like property accessors to have different levels of visability.
   private set length(value: i32) {
     this._length = value;
     storage.set<i32>(this._lengthKey, value);
