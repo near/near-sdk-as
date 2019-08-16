@@ -53,7 +53,7 @@ export class Storage {
     let key_encoded = util.stringToBytes(key);
     let value_encoded = util.stringToBytes(value);
     const storage_write_result =
-    runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value_encoded.buffer.byteLength, value_encoded.dataStart, 0);
+      runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value_encoded.buffer.byteLength, value_encoded.dataStart, 0);
     // TODO: handle return value?
   }
 
@@ -73,7 +73,7 @@ export class Storage {
   setBytes(key: string, value: Uint8Array): void {
     let key_encoded = util.stringToBytes(key);
     const storage_write_result =
-    runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value.buffer.byteLength, value.dataStart, 0);
+      runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value.buffer.byteLength, value.dataStart, 0);
     // TODO: handle return value?
   }
 

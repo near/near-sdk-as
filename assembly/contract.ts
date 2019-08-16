@@ -1,7 +1,6 @@
 import { util } from "./util";
 import { runtime_api } from './runtime_api';
 import { u128 } from "bignum";
-import { logging } from "./logging";
 
 export let context: Context = new Context();
 
@@ -84,7 +83,7 @@ class Context {
   private _readRegisterContentsAsString(registerId: u64): string {
     const registerContents = new Uint8Array(runtime_api.register_len(registerId) as i32);
     runtime_api.read_register(registerId, registerContents.dataStart);
-    return util.bytesToString(registerContents);
+    return util.bytesToString(registerContents)!;
   }
 }
 
