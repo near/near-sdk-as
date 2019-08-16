@@ -11,7 +11,7 @@ export namespace math {
     runtime_api.sha256(data.buffer.byteLength, data.dataStart, 0);
     const registerContents = new Uint8Array((i32)(runtime_api.register_len(0)));
     runtime_api.read_register(0, registerContents.dataStart);
-    return this._uint8ArrayToU32(registerContents);
+    return _uint8ArrayToU32(registerContents);
   }
 
   /**
@@ -19,11 +19,12 @@ export namespace math {
   * @param data data can be passed as anything with .toString (hashed as UTF-8 string).
   */
   export function hash32<T>(data: T): u32 {
+    //@ts-ignore
     const dataAsBytes = util.stringToBytes(data.toString());
     runtime_api.sha256(dataAsBytes.buffer.byteLength, dataAsBytes.dataStart, 0);
     const registerContents = new Uint8Array((i32)(runtime_api.register_len(0)));
     runtime_api.read_register(0, registerContents.dataStart);
-    return this._uint8ArrayToU32(registerContents);
+    return _uint8ArrayToU32(registerContents);
   }
 
   /**
@@ -31,6 +32,7 @@ export namespace math {
    * @param data data can be passed as anything with .toString (hashed as UTF-8 string).
    */
   export function hash<T>(data: T): Uint8Array {
+    //@ts-ignore
     const dataAsBytes = util.stringToBytes(data.toString());
     runtime_api.sha256(dataAsBytes.buffer.byteLength, dataAsBytes.dataStart, 0);
     const registerContents = new Uint8Array(runtime_api.register_len(0) as i32);

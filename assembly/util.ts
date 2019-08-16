@@ -3,8 +3,7 @@ export namespace util {
   export function stringToBytes(s: string): Uint8Array {
     let len = String.UTF8.byteLength(s, true) - 1;
     let bytes = new Uint8Array(len);
-    const utf8 = String.UTF8.encode(s, true);
-    memory.copy(bytes.dataStart, this.toUTF8(s), len);
+    memory.copy(bytes.dataStart, toUTF8(s), len);
     return bytes;
   }
 
@@ -31,15 +30,16 @@ export namespace util {
   * @param defaultValue The default value if the bytes are null
   * @returns A parsed value of type T.
   */
-  export function parseFromBytes<T>(bytes: Uint8Array, defaultValue: T = null): T {
+  export function parseFromBytes<T>(bytes: Uint8Array, defaultValue: T | null = null): T | null {
     if (bytes == null) {
       return defaultValue;
     }
     if (isString<T>() || isInteger<T>()) {
-      return parseFromString<T>(bytesToString(bytes), defaultValue);
+      return parseFromString<T>(bytesToString(bytes)!, defaultValue);
     } else {
       let v = instantiate<T>();
-      return v.decode(bytes);
+      //@ts-ignore v will have decode. Although second parameter is optional it causes compile error
+      return v.decode(bytes, null);
     }
   }
 
@@ -51,22 +51,27 @@ export namespace util {
   * @param defaultValue The default value if the string is null
   * @returns A parsed value of type T.
   */
-  export function parseFromString<T>(s: string, defaultValue: T = null): T {
+  export function parseFromString<T>(s: string, defaultValue: T | null = null): T | null {
     if (s == null) {
       return defaultValue;
     }
     if (isString<T>()) {
+      //@ts-ignore
       return s;
     } else if (isInteger<T>()) {
       if (defaultValue instanceof bool) {
+        //@ts-ignore
         return <T>(s == "true");
       } else if (isSigned<T>()) {
+        //@ts-ignore
         return <T>I64.parseInt(s);
       } else {
+        //@ts-ignore
         return <T>U64.parseInt(s);
       }
     } else {
       let v = instantiate<T>();
+      //@ts-ignore v will have decode method
       return v.decode(stringToBytes(s));
     }
   }

@@ -19,9 +19,9 @@ export namespace base64 {
       return new Uint8Array(0);
     }
 
-    if (s.charAt(imax - 1) == this.PADCHAR) {
+    if (s.charAt(imax - 1) == PADCHAR) {
       pads = 1;
-      if (s.charAt(imax - 2) == this.PADCHAR) {
+      if (s.charAt(imax - 2) == PADCHAR) {
         pads = 2;
       }
       imax -= 4;
@@ -35,19 +35,19 @@ export namespace base64 {
     index = 0;
 
     for (i = 0; i < imax; i += 4) {
-      b10 = (this.getByte64(s, i) << 18) | (this.getByte64(s, i + 1) << 12) | (this.getByte64(s, i + 2) << 6) | this.getByte64(s, i + 3);
+      b10 = (getByte64(s, i) << 18) | (getByte64(s, i + 1) << 12) | (getByte64(s, i + 2) << 6) | getByte64(s, i + 3);
       x[index++] = b10 >> 16;
       x[index++] = (b10 >> 8) & 255;
       x[index++] = b10 & 255;
     }
     switch (pads) {
       case 1:
-      b10 = (this.getByte64(s, i) << 18) | (this.getByte64(s, i + 1) << 12) | (this.getByte64(s, i + 2) << 6);
+      b10 = (getByte64(s, i) << 18) | (getByte64(s, i + 1) << 12) | (getByte64(s, i + 2) << 6);
       x[index++] = b10 >> 16;
       x[index++] = (b10 >> 8) & 255;
       break;
       case 2:
-      b10 = (this.getByte64(s, i) << 18) | (this.getByte64(s, i + 1) << 12);
+      b10 = (getByte64(s, i) << 18) | (getByte64(s, i + 1) << 12);
       x[index++] = b10 >> 16;
       break;
     }
@@ -69,27 +69,27 @@ export namespace base64 {
     }
 
     for (i = 0; i < imax; i += 3) {
-      b10 = (bytes[i] as u32 << 16) | (bytes[i+1] as u32 << 8) | bytes[i+2] as u32;
-      x.push(this.ALPHA.charAt(b10 >> 18));
-      x.push(this.ALPHA.charAt((b10 >> 12) & 63));
-      x.push(this.ALPHA.charAt((b10 >> 6) & 63));
-      x.push(this.ALPHA.charAt(b10 & 63));
+      b10 = ((bytes[i] as u32) << 16) | ((bytes[i+1] as u32) << 8) | bytes[i+2] as u32;
+      x.push(ALPHA.charAt(b10 >> 18));
+      x.push(ALPHA.charAt((b10 >> 12) & 63));
+      x.push(ALPHA.charAt((b10 >> 6) & 63));
+      x.push(ALPHA.charAt(b10 & 63));
     }
 
     switch (bytes.length - imax) {
       case 1:
-      b10 = bytes[i] as u32 << 16;
-      x.push(this.ALPHA.charAt(b10 >> 18));
-      x.push(this.ALPHA.charAt((b10 >> 12) & 63));
-      x.push(this.PADCHAR);
-      x.push(this.PADCHAR);
+      b10 = (bytes[i] as u32) << 16;
+      x.push(ALPHA.charAt(b10 >> 18));
+      x.push(ALPHA.charAt((b10 >> 12) & 63));
+      x.push(PADCHAR);
+      x.push(PADCHAR);
       break;
       case 2:
-      b10 = (bytes[i] as u32 << 16) | (bytes[i+1] as u32 << 8);
-      x.push(this.ALPHA.charAt(b10 >> 18));
-      x.push(this.ALPHA.charAt((b10 >> 12) & 63));
-      x.push(this.ALPHA.charAt((b10 >> 6) & 63));
-      x.push(this.PADCHAR);
+      b10 = ((bytes[i] as u32) << 16) | ((bytes[i+1] as u32) << 8);
+      x.push(ALPHA.charAt(b10 >> 18));
+      x.push(ALPHA.charAt((b10 >> 12) & 63));
+      x.push(ALPHA.charAt((b10 >> 6) & 63));
+      x.push(PADCHAR);
       break;
     }
 
@@ -97,6 +97,6 @@ export namespace base64 {
   }
 
   function getByte64(s: string, i: u32): u32 {
-    return this.ALPHA.indexOf(s.charAt(i));
+    return ALPHA.indexOf(s.charAt(i));
   }
 }

@@ -13,11 +13,12 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "bignum": "MaxGraey/bignum.wasm",
+    "assemblyscript-json": "github:WebAssemblyOS/assemblyscript-json#near_dist",
     "@as-pect/assembly": "^2.3.1",
     "@as-pect/cli": "^2.3.1",
     "@as-pect/core": "^2.3.1",
-    "assemblyscript": "github:nearprotocol/assemblyscript",
-    "bignum": "MaxGraey/bignum.wasm",
+    "assemblyscript": "github:nearprotocol/assemblyscript#staging",
     "typedoc": "^0.14.2",
     "typedoc-plugin-markdown": "^1.2.1"
   }

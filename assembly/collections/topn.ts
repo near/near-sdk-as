@@ -2,6 +2,15 @@ import { collections } from "../collections";
 import { Map } from "./map";
 import { storage } from "../storage";
 
+/*
+
+This class is not going to compile currently because i32 is a non-nullable type, 
+and the Map assumes that the V type can be null (e.g. the default value is null).
+So There needs to be a box type for i32 that can be null.
+
+*/
+
+
 /**
 * A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32.
 * Default sort order is descending (highest rated keys), but can be changed to ascending (lowest rated keys).
@@ -37,6 +46,7 @@ export class TopN<K> {
   * @returns A suffix for an internal key for a given external key of type K.
   */
   private _keySuffix(key: K): string {
+    //@ts-ignore: TODO: add interface to ensure K to have toString method.
     return collections._KEY_ELEMENT_SUFFIX + key.toString();
   }
 
@@ -48,6 +58,7 @@ export class TopN<K> {
     if (this._descending) {
       r = u32.MAX_VALUE - r;
     }
+    //@ts-ignore
     return r.toString().padStart(10, "0");
   }
 
@@ -68,9 +79,10 @@ export class TopN<K> {
   /**
   * @returns The number of unique elements in the TopN collection.
   */
+ //@ts-ignore
   get length(): i32 {
     if (this._length < 0) {
-      this._length = storage.get<i32>(this._lengthKey, 0);
+      this._length = storage.get<i32>(this._lengthKey, 0)!;
     }
     return this._length;
   }
@@ -78,6 +90,8 @@ export class TopN<K> {
   /**
   * Internally sets the length of the collection.
   */
+ //Never used 
+ //@ts-ignore: Typescript doesn't like property accessors to have different levels of visability.
   private set length(value: i32) {
     this._length = value;
     storage.set<i32>(this._lengthKey, value);
@@ -97,7 +111,7 @@ export class TopN<K> {
   */
   delete(key: K): void {
     if (this.contains(key)) {
-      let rating = this._ratings.get(key);
+      let rating = this._ratings.get(key)!;
       this._ratings.delete(key);
       storage.delete(this._orderKey(rating, key));
       this.length -= 1;
@@ -112,7 +126,7 @@ export class TopN<K> {
     let result = Array.create<collections.MapEntry<K, i32>>(keys.length);
     for (let index = 0; index < keys.length; ++index) {
       let key = keys[index];
-      result[index] = new collections.MapEntry<K, i32>(key, this._ratings.get(key));
+      result[index] = new collections.MapEntry<K, i32>(key, this._ratings.get(key)!);
     }
     return result;
   }
@@ -123,7 +137,7 @@ export class TopN<K> {
   */
   getTop(limit: i32): K[] {
     let orderKeys = storage.keys(this._orderPrefix, limit);
-    return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
+    return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey)!);
   }
 
   /**
@@ -140,7 +154,7 @@ export class TopN<K> {
       this._orderKey(rating, fromKey) + String.fromCharCode(0),
       this._orderPrefix + String.fromCharCode(255),
       limit);
-    return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey));
+    return orderKeys.map<K>((orderKey: string) => storage.get<K>(orderKey)!);
   }
 
   /**
@@ -168,7 +182,7 @@ export class TopN<K> {
   * @returns Value for the given key or the defaultRating.
   */
   getRating(key: K, defaultRating: i32 = 0): i32 {
-    return this._ratings.get(key, defaultRating);
+    return this._ratings.get(key, defaultRating)!;
   }
 
   /**

@@ -2,8 +2,6 @@ import { util } from "./util";
 import { runtime_api } from './runtime_api';
 import { u128 } from "bignum";
 
-export let context: Context = new Context();
-
 /**
 * Provides context for contract execution, including information about transaction sender, etc.
 */
@@ -150,7 +148,7 @@ export class ContractPromise {
   ): ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
-    const id = runtime_api.promise_create(
+    const id: u64 = runtime_api.promise_create(
       contract_name_encoded.buffer.byteLength,
       contract_name_encoded.dataStart,
       method_name_encoded.buffer.byteLength,
@@ -159,6 +157,8 @@ export class ContractPromise {
       args.dataStart,
       0, // TODO: do this properly toUint8Array
       gas);
+      //@ts-ignore: Typescript expects the object to have a function to match the type
+      // Wheras as only cares about the fields.
     return {
       id
     };
@@ -191,6 +191,7 @@ export class ContractPromise {
       args.dataStart,
       0,
       gas);
+      //@ts-ignore: See above ignore comment
     return {
       id
     };
@@ -311,3 +312,5 @@ export class ContractPromise {
   //     buffer: Uint8Array;
   //   }
 }
+
+export let context: Context = new Context();

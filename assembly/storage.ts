@@ -3,17 +3,13 @@ import { util } from "./util";
 import { logging } from "./logging";
 
 
-/**
-* An instance of a Storage class that is used for working with contract storage on the blockchain.
-*/
-export let storage: Storage = new Storage();
 
 /**
-* Represents contract storage.
-*/
+ * Represents contract storage.
+ */
 export class Storage {
   /**
-  * Returns list of keys between the given start key and the end key. Both inclusive.
+   * Returns list of keys between the given start key and the end key. Both inclusive.
   * NOTE: Must be very careful to avoid exploding amount of compute with this method.
   * @param start The start key used as a lower bound in lexicographical order. Inclusive.
   * @param end The end key used as a upper bound in lexicographical order. Inclusive.
@@ -61,6 +57,7 @@ export class Storage {
   * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
   */
   getString(key: string): string | null {
+    //@ts-ignore: Compiler says this is never null TODO
     return util.bytesToString(this._internalReadBytes(key));
   }
 
@@ -117,12 +114,14 @@ export class Storage {
   */
   set<T>(key: string, value: T): void {
     if (isString<T>()) {
+      //@ts-ignore
       this.setString(key, value);
     } else if (isInteger<T>()) {
+      //@ts-ignore
       this.setString(key, value.toString());
     } else {
        //@ts-ignore
-      this.setBytes(key, value.encode());
+      this.setBytes(key, value.serialize());
     }
   }
 
@@ -134,10 +133,11 @@ export class Storage {
   * @param defaultValue The default value if the key is not available
   * @returns A value of type T stored under the given key.
   */
-  get<T>(key: string, defaultValue: T = null): T {
+  get<T>(key: string, defaultValue: T | null = null): T | null {
     if (isString<T>() || isInteger<T>()) {
-      return util.parseFromString<T>(this.getString(key), defaultValue);
+      return util.parseFromString<T>(this.getString(key)!, defaultValue);
     } else {
+      //@ts-ignore TODO: compiler says that getBytes is never null...
       return util.parseFromBytes<T>(this.getBytes(key), defaultValue);
     }
   }
@@ -167,6 +167,7 @@ export class Storage {
       let key_data = new Uint8Array(key_len as i32);
       runtime_api.read_register(0, key_data.dataStart);
       if (key_data.buffer != null) {
+        //@ts-ignore: Compiler says this is never null TODO
         result.push(util.bytesToString(key_data));
       }
     }
@@ -191,3 +192,8 @@ export class Storage {
   //   return U64.parseInt(this.getItem(key) || "0");
   // }
 }
+
+/**
+* An instance of a Storage class that is used for working with contract storage on the blockchain.
+*/
+export const storage: Storage = new Storage();

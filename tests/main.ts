@@ -1,6 +1,7 @@
 //@nearfile
-import { near, context, storage, logging, base58 } from "near-runtime-ts";
+import { context, storage, logging, base58, base64, Vector } from "near-runtime-ts";
 import { TextMessage } from "./model";
+
 // import { storage } from "./storage"
 // import { base64 } from "./base64";
 // import { base58 } from "./base58";
@@ -22,7 +23,7 @@ export function hello(): string {
 }
 
 export function base58Test(): void {
-  const array = this._testBytes();
+  const array = _testBytes();
   const encoded = base58.encode(array);
   logging.log("base58 encoded value " + encoded);
   assert(encoded == "1TMu", "Wrong encoded value for base58 encoding")
@@ -68,10 +69,10 @@ export function storageGenericGetSetRoundtripTest(): TextMessage {
   const message = _testTextMessage();
   storage.set<TextMessage>("message1", message);
 
-  // const messageFromStorage = storage.get<TextMessage>("message1");
-  // assert(messageFromStorage.sender == "mysteriousStranger", "Incorrect data value (sender) for retrieved object");
-  // assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
-  // assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
+  const messageFromStorage = storage.get<TextMessage>("message1")!;
+  assert(messageFromStorage.sender == "mysteriousStranger", "Incorrect data value (sender) for retrieved object");
+  assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
+  assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
   // 
   // storage.set<u64>("u64key", 20);
   // const u64get = storage.get<u64>("u64key");
@@ -80,7 +81,7 @@ export function storageGenericGetSetRoundtripTest(): TextMessage {
   // storage.set<String>("stringkey", "StringValue");
   // const stringGet = storage.get<String>("stringkey");
   // assert(stringGet == "StringValue", "Incorrect data value for string roundtrip");
-  // return messageFromStorage;
+  return messageFromStorage;
 }
 
 export function storageKeysTest(): string[] {
@@ -409,8 +410,10 @@ function _vectorHasContents(vector: Vector<string>, expectedContents: Array<stri
     return false;
   }
   for (let i = 0; i < expectedContents.length; i++) {
+    //@ts-ignore Can use number index
     if (expectedContents[i] != vector[i]) {
       //return false;
+      //@ts-ignore  Can use number index
       logging.log("wrong" + expectedContents[i] + "," + vector[i]);
     }
   }
