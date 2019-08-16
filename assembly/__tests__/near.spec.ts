@@ -1,11 +1,11 @@
-import { base64, near } from '../../near';
+import { base64, util } from '..';
 
 function testBase64(original: string, expectedEncoding: string): void {
-    let bytes = near.stringToBytes(original);
+    let bytes = util.stringToBytes(original);
     let encoded = base64.encode(bytes);
     expect<string>(encoded).toBe(expectedEncoding);
     let decoded = base64.decode(encoded);
-    expect<string>(near.bytesToString(decoded)).toBe(original);
+    expect<string>(util.bytesToString(decoded)).toBe(original);
 }
 
 describe('utils', (): void => {
@@ -16,7 +16,7 @@ describe('utils', (): void => {
         byteArray[2] = 111;
         byteArray[3] = 103;
         let bytes = byteArray.subarray(1);
-        let s = near.bytesToString(bytes);
+        let s = util.bytesToString(bytes);
         expect<string>(s).toBe('dog');
     });
 });

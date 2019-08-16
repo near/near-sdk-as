@@ -21,6 +21,7 @@ export class Map<K, V> {
   * @returns An interal string key for a given key of type K.
   */
   private _key(key: K): string {
+    //@ts-ignore: TODO: Add interface that forces all K types to have toString
     return this._elementPrefix + key.toString();
   }
 
@@ -32,14 +33,14 @@ export class Map<K, V> {
   * @param startInclusive Whether the start key is inclusive. Default is `true`, means include start key.
   *     It's useful to set it to false for pagination.
   */
-  values(start: K = null, end: K = null, limit: i32 = -1, startInclusive: bool = true): V[] {
+  values(start: K | null = null, end: K | null = null, limit: i32 = -1, startInclusive: bool = true): V[] {
     let startKey = (start != null) ? this._key(start) : this._elementPrefix;
     if (!startInclusive) {
       startKey += String.fromCharCode(0);
     }
     let endKey = (end != null) ? this._key(end) : (this._elementPrefix + String.fromCharCode(255));
     let keys = storage.keyRange(startKey, endKey, limit);
-    return keys.map<V>((key: string) => storage.get<V>(key));
+    return keys.map<V>((key: string) => storage.get<V>(key)!);
   }
 
   /**
@@ -63,7 +64,7 @@ export class Map<K, V> {
   * @param defaultValue The default value if the key is not present.
   * @returns Value for the given key or the default value.
   */
-  get(key: K, defaultValue: V = null): V {
+  get(key: K, defaultValue: V | null = null): V | null {
     return storage.get<V>(this._key(key), defaultValue);
   }
 

@@ -37,7 +37,7 @@ export class Deque<T> {
   */
   private get frontIndex(): i32 {
     if (this._frontIndex == i32.MIN_VALUE) {
-      this._frontIndex = storage.get<i32>(this._frontIndexKey, 0);
+      this._frontIndex = storage.get<i32>(this._frontIndexKey, 0)!;
     }
     return this._frontIndex;
   }
@@ -55,7 +55,7 @@ export class Deque<T> {
   */
   private get backIndex(): i32 {
     if (this._backIndex == i32.MAX_VALUE) {
-      this._backIndex = storage.get<i32>(this._backIndexKey, -1);
+      this._backIndex = storage.get<i32>(this._backIndexKey, -1)!;
     }
     return this._backIndex;
   }

@@ -25,6 +25,7 @@ export class Vector<T> {
   */
   @inline
   private _key(index: i32): string {
+    //@ts-ignore
     return this._elementPrefix + index.toString();
   }
 
@@ -55,6 +56,7 @@ export class Vector<T> {
   /**
   * @returns The length of the vector.
   */
+ //@ts-ignore
   get length(): i32 {
     if (this._length < 0) {
       this._length = 0;
@@ -66,6 +68,7 @@ export class Vector<T> {
   /**
   * Internally sets the length of the vector
   */
+ //@ts-ignore TS doesn't like property accessors with different levels of visability
   private set length(value: i32) {
     this._length = value;
     storage.set<i32>(this._lengthKey, value);
@@ -90,7 +93,8 @@ export class Vector<T> {
   */
   @operator("{}")
   private __unchecked_get(index: i32): T {
-    return storage.get<T>(this._key(index));
+    //TODO: Should this potentially return null?
+    return storage.get<T>(this._key(index))!;
   }
 
   /**
