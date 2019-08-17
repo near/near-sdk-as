@@ -58,7 +58,6 @@ export class TopN<K> {
     if (this._descending) {
       r = u32.MAX_VALUE - r;
     }
-    //@ts-ignore
     return r.toString().padStart(10, "0");
   }
 

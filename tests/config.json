@@ -1,1 +1,23 @@
-{"grow_mem_cost":1,"regular_op_cost":1,"max_gas_burnt":1000000000,"max_stack_height":65536,"initial_memory_pages":17,"max_memory_pages":32,"registers_memory_limit":1073741824,"max_register_size":104857600,"max_number_registers":100,"max_number_logs":100,"max_log_len":500}
+{"runtime_fees":{
+  "action_receipt_creation_config": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+  "data_receipt_creation_config": {
+      "base_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "cost_per_byte": { "send_sir": 1, "send_not_sir": 1, "execution": 1 }
+  },
+  "action_creation_config": {
+      "create_account_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "deploy_contract_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "deploy_contract_cost_per_byte": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "function_call_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "function_call_cost_per_byte": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "transfer_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "stake_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "add_key_cost": {
+          "full_access_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+          "function_call_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+          "function_call_cost_per_byte": { "send_sir": 1, "send_not_sir": 1, "execution": 1 }
+      },
+      "delete_key_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 },
+      "delete_account_cost": { "send_sir": 1, "send_not_sir": 1, "execution": 1 }
+  }
+},"grow_mem_cost":1,"regular_op_cost":1,"max_gas_burnt":1000000000,"max_stack_height":65536,"initial_memory_pages":17,"max_memory_pages":32,"registers_memory_limit":1073741824,"max_register_size":104857600,"max_number_registers":100,"max_number_logs":100,"max_log_len":500}

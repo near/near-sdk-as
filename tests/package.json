@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "../node_modules/.bin/asc main.ts --binaryFile out/main.wasm --textFile out/main.wat"
+    "build": "../node_modules/.bin/asc main.ts --runtime stub --binaryFile out/main.wasm --textFile out/main.wat"
   },
   "dependencies": {
     "near-runtime-ts": "file:.."
