@@ -135,7 +135,7 @@ export class Storage {
   */
   get<T>(key: string, defaultValue: T | null = null): T | null {
     if (isString<T>() || isInteger<T>()) {
-      return util.parseFromString<T>(this.getString(key)!, defaultValue);
+      return util.parseFromString<T>(this.getString(key), defaultValue);
     } else {
       //@ts-ignore TODO: compiler says that getBytes is never null...
       return util.parseFromBytes<T>(this.getBytes(key), defaultValue);

@@ -1,0 +1,1 @@
+{"grow_mem_cost":1,"regular_op_cost":1,"max_gas_burnt":1000000000,"max_stack_height":65536,"initial_memory_pages":17,"max_memory_pages":32,"registers_memory_limit":1073741824,"max_register_size":104857600,"max_number_registers":100,"max_number_logs":100,"max_log_len":500}
