@@ -209,24 +209,6 @@ export class Storage {
     }
     return result;
   }
-
-  // /**
-  //  * Store 64-bit unsigned int under given key. Key is encoded as UTF-8 strings.
-  //  * Number is encoded as decimal string.
-  //  */
-  // setU64(key: string, value: u64): void {
-  //   this.setItem(key, value.toString());
-  // }
-
-  // /**
-  //  * Get 64-bit unsigned int stored under given key. Key is encoded as UTF-8 strings.
-  //  * Number is encoded as decimal string.
-  //  *
-  //  * @returns int value or 0 if value is not found
-  //  */
-  // getU64(key: string): u64 {
-  //   return U64.parseInt(this.getItem(key) || "0");
-  // }
 }
 
 /**

@@ -263,77 +263,70 @@ export function topnTests(): void {
   logging.log("topnTests");
   // empty topn cases
   const topn = new TopN<string>("topnid");
-  // assert(topn != null, "topn is null");
-  // assert(topn.isEmpty, "empty topn - wrong result for isEmpty");
-  // assert(topn.length == 0, "empty topn - wrong length");
-  // assert(!topn.contains("nonexistentKey"), "empty topn - contains nonexistent key");
-  // topn.delete("nonexistentKey"); // this should not crash
-  // assert(topn.keysToRatings(new Array<string>(0)).length == 0, "keys to ratings for empty topn is not empty");
-  // assert(topn.getTop(10).length == 0, "get top for empty topn returned non empty list")
-  // //assert(topn.getTopFromKey(10, "somekey").length == 0, "getTopFromKey for empty topn returned non empty list")
-  // // The line above would trigger an assert and fail
-  // assert(topn.getTopWithRating(10).length == 0, "getTopWithRating for empty topn is not empty");
-  //assert(topn.getTopWithRatingFromKey(10, "somekey").length == 0, "getTopWithRatingFromKey for empty topn is not empty");
-  // The line above would trigger an assert and fail
+  assert(topn != null, "topn is null");
+  assert(topn.isEmpty, "empty topn - wrong result for isEmpty");
+  assert(topn.length == 0, "empty topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "empty topn - contains nonexistent key");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(new Array<string>(0)).length == 0, "keys to ratings for empty topn is not empty");
+  assert(topn.getTop(10).length == 0, "get top for empty topn returned non empty list")
+  //assert(topn.getTopFromKey(10, "somekey").length == 0, "getTopFromKey for empty topn returned non empty list") // fails due to key doesn't exist
+  assert(topn.getTopWithRating(10).length == 0, "getTopWithRating for empty topn is not empty");
+  //assert(topn.getTopWithRatingFromKey(10, "somekey").length == 0, "getTopWithRatingFromKey for empty topn is not empty"); // fails due to key doesn't exist
 
-  // topn.setRating("k1", 5);
-  // assert(!topn.isEmpty, "topn - wrong result for isEmpty");
-  // assert(topn.length == 1, "topn - wrong length");
-  // assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
-  // assert(topn.contains("k1"), "topn - does not contain a key that should be there");
-  // topn.delete("nonexistentKey"); // this should not crash
-  // assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
-  // assert(topn.keysToRatings(["k1"])[0].value == 5, "keys to ratings wrong for topn");
-  // assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
-  // assert(topn.getTop(10)[0] == "k1", "wrong key in getTop")
-  // assert(topn.getTopFromKey(10, "k1").length == 0, "getTopFromKey for topn wrong result");
-  // assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
-  // assert(topn.getTopWithRatingFromKey(10, "k1").length == 0, "getTopWithRatingFromKey for topn is not empty");
-  //
-  // // Tests with 2 entries --  k1: 6, k: 5
-  // topn.setRating("k", 5);
-  // topn.incrementRating("k1");
-  // assert(!topn.isEmpty, "topn - wrong result for isEmpty");
-  // assert(topn.length == 2, "topn - wrong length");
-  // assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
-  // assert(topn.contains("k"), "topn - does not contain a key that should be there");
-  // assert(topn.contains("k1"), "topn - does not contain a key that should be there");
-  // topn.delete("nonexistentKey"); // this should not crash
-  // assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
-  // assert(topn.keysToRatings(["k1", "k"]).length == 2, "keys to ratings wrong for topn");
-  // assert(topn.keysToRatings(["k1", "k"])[0].value == 6, "keys to ratings wrong for topn");
-  // assert(topn.keysToRatings(["k1", "k"])[1].value == 5, "keys to ratings wrong for topn");
-  // assert(topn.getTop(10).length == 2, "get top for topn is wrong");
-  // assert(topn.getTop(10)[0] == "k1", "wrong key in getTop");
-  // assert(topn.getTop(10)[1] == "k", "wrong key in getTop");
-  // assert(topn.getTop(1).length == 1, "get top for topn is wrong when limit is applied");
-  // assert(topn.getTop(1)[0] == "k1", "wrong key in getTop");
-  // assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
-  // assert(topn.getTopFromKey(10, "k1").length == 1, "getTopFromKey for topn wrong result");
-  // assert(topn.getTopFromKey(10, "k1")[0] == "k", "getTopFromKey for topn wrong result");
-  // assert(topn.getTopWithRating(10).length == 2, "getTopWithRating for topn with 1 element is wrong size");
-  // assert(topn.getTopWithRating(10)[0].value == 6, "getTopWithRating for topn with 1 element is wrong size");
-  // assert(topn.getTopWithRating(10)[1].value == 5, "getTopWithRating for topn with 1 element is wrong size");
-  //
-  // const keys = storage.keys("");
-  // for (let i = 0; i < keys.length; i++) {
-  //   logging.log(keys[i]);
-  // }
-  //
-  // topn.delete("k1");
-  // topn.incrementRating("k");
-  // assert(!topn.isEmpty, "topn - wrong result for isEmpty");
-  // assert(topn.length == 1, "topn - wrong length");
-  // assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
-  // assert(topn.contains("k"), "topn - does not contain a key that should be there");
-  // topn.delete("nonexistentKey"); // this should not crash
-  // assert(topn.keysToRatings(["k"]).length == 1, "keys to ratings wrong for topn");
-  // assert(topn.keysToRatings(["k"])[0].value == 6, "keys to ratings wrong for topn");
-  // assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
-  // assert(topn.getTop(10)[0] == "k", "wrong key in getTop")
-  // assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
-  // assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
-  // assert(topn.getTopWithRatingFromKey(10, "k").length == 0, "getTopWithRatingFromKey for topn is not empty");
+  topn.setRating("k1", 5);
+  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
+  assert(topn.length == 1, "topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
+  assert(topn.contains("k1"), "topn - does not contain a key that should be there");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1"])[0].value == 5, "keys to ratings wrong for topn");
+  assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
+  assert(topn.getTop(10)[0] == "k1", "wrong key in getTop")
+  assert(topn.getTopFromKey(10, "k1").length == 0, "getTopFromKey for topn wrong result");
+  assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRatingFromKey(10, "k1").length == 0, "getTopWithRatingFromKey for topn is not empty");
+
+  // Tests with 2 entries --  k1: 6, k: 5
+  topn.setRating("k", 5);
+  topn.incrementRating("k1");
+  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
+  assert(topn.length == 2, "topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
+  assert(topn.contains("k"), "topn - does not contain a key that should be there");
+  assert(topn.contains("k1"), "topn - does not contain a key that should be there");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1", "k"]).length == 2, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1", "k"])[0].value == 6, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k1", "k"])[1].value == 5, "keys to ratings wrong for topn");
+  assert(topn.getTop(10).length == 2, "get top for topn is wrong");
+  assert(topn.getTop(10)[0] == "k1", "wrong key in getTop");
+  assert(topn.getTop(10)[1] == "k", "wrong key in getTop");
+  assert(topn.getTop(1).length == 1, "get top for topn is wrong when limit is applied");
+  assert(topn.getTop(1)[0] == "k1", "wrong key in getTop");
+  assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
+  assert(topn.getTopFromKey(10, "k1").length == 1, "getTopFromKey for topn wrong result");
+  assert(topn.getTopFromKey(10, "k1")[0] == "k", "getTopFromKey for topn wrong result");
+  assert(topn.getTopWithRating(10).length == 2, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRating(10)[0].value == 6, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRating(10)[1].value == 5, "getTopWithRating for topn with 1 element is wrong size");
+
+  topn.delete("k1");
+  topn.incrementRating("k");
+  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
+  assert(topn.length == 1, "topn - wrong length");
+  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
+  assert(topn.contains("k"), "topn - does not contain a key that should be there");
+  topn.delete("nonexistentKey"); // this should not crash
+  assert(topn.keysToRatings(["k"]).length == 1, "keys to ratings wrong for topn");
+  assert(topn.keysToRatings(["k"])[0].value == 6, "keys to ratings wrong for topn");
+  assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
+  assert(topn.getTop(10)[0] == "k", "wrong key in getTop")
+  assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
+  assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
+  assert(topn.getTopWithRatingFromKey(10, "k").length == 0, "getTopWithRatingFromKey for topn is not empty");
 }
 
 export function contextTests(): void {

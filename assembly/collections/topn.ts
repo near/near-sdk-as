@@ -151,7 +151,7 @@ export class TopN<K> {
 
     let rating = this.getRating(fromKey, 0);
     let orderKeys = storage.keyRange(
-      this._orderKey(rating, fromKey) + String.fromCharCode(0),
+      this._orderKey(rating, fromKey) + String.fromCharCode(1),
       this._orderPrefix + String.fromCharCode(255),
       limit);
     return orderKeys.map<K>((orderKey: string) => storage.getSome<K>(orderKey));

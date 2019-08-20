@@ -36,7 +36,7 @@ export class Map<K, V> {
   values(start: K | null = null, end: K | null = null, limit: i32 = -1, startInclusive: bool = true): V[] {
     let startKey = (start != null) ? this._key(start!) : this._elementPrefix;
     if (!startInclusive) {
-      startKey += String.fromCharCode(0);
+      startKey += String.fromCharCode(1);
     }
     let endKey = (end != null) ? this._key(end!) : (this._elementPrefix + String.fromCharCode(255));
     let keys = storage.keyRange(startKey, endKey, limit);
