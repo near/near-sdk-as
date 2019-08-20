@@ -56,24 +56,37 @@ export function storageBytesRoundtripTest(): void {
   assert(storage.getBytes("nonexistentKey") == null, "Unexpectd value on getting bytes with a nonexistent key");
 }
 
-export function storageGenericGetSetRoundtripTest(): TextMessage {
+export function storageGenericGetSetRoundtripTest(): void {
   logging.log("storageGenericGetSetRoundtripTest");
   const message = _testTextMessage();
   storage.set<TextMessage>("message1", message);
 
   const messageFromStorage = storage.get<TextMessage>("message1");
-  // assert(messageFromStorage.sender == "mysteriousStranger", "Incorrect data value (sender) for retrieved object");
-  // assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
-  // assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
+  assert(messageFromStorage.sender == "mysteriousStranger", "Incorrect data value (sender) for retrieved object");
+  assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
+  assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
+  assert(storage.get<TextMessage>("nonexistent", null) == null, "Incorrect data value for get<T> nonexistent key");
+
+  storage.set<u64>("u64key", 20);
+  assert(storage.getPrimitive<u64>("u64key", 0) == 20, "Incorrect data value for u64 roundtrip");
+  assert(storage.getPrimitive<u64>("nonexistent", 1) == 1, "Incorrect data value for u64 get nonexistent key");
+
+  storage.set<u32>("u32key", 12);
+  assert(storage.getPrimitive<u32>("u32key", 0) == 12, "Incorrect data value for u32 roundtrip");
+  assert(storage.getPrimitive<u32>("nonexistent", 2) == 2, "Incorrect data value for u32 get nonexistent key");
+
+  storage.set<i32>("i32key", -5);
+  assert(storage.getPrimitive<i32>("i32key", 0) == -5, "Incorrect data value for i32 roundtrip");
+  assert(storage.getPrimitive<i32>("nonexistent", -10) == -10, "Incorrect data value for i32 get nonexistent key");
   //
-  // storage.set<u64>("u64key", 20);
-  // const u64get = storage.get<u64>("u64key");
-  // assert(u64get == 20, "Incorrect data value for u64 roundtrip");
-  //
-  // storage.set<String>("stringkey", "StringValue");
-  // const stringGet = storage.get<String>("stringkey");
-  // assert(stringGet == "StringValue", "Incorrect data value for string roundtrip");
-  return messageFromStorage!;
+  storage.set<bool>("boolkey", true);
+  assert(storage.getPrimitive<bool>("boolkey", 0) == true, "Incorrect data value for bool roundtrip");
+  assert(storage.getPrimitive<bool>("nonexistent", true) == true, "Incorrect data value for u64 get nonexistent key");
+
+  storage.set<String>("stringkey", "StringValue");
+  const stringGet = storage.get<String>("stringkey");
+  assert(stringGet == "StringValue", "Incorrect data value for string roundtrip");
+  assert(storage.get<string>("nonexistent", null) == null, "Incorrect data value for get<T> nonexistent key");
 }
 
 export function storageKeysTest(): string[] {
@@ -164,9 +177,6 @@ export function mapTests(): void {
 }
 
 export function vectorTests(): void {
-
-  storage.get<string>("a");
-
   logging.log("vectorTests");
   const vector = new Vector<string>("vector1");
   assert(vector != null, "Vector not initialized");
@@ -197,17 +207,6 @@ export function vectorTests(): void {
   vector[1] = "bd";
   assert(_vectorHasContents(vector, ["bb", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
 
-  // Delete an entry and then try various other methods
-  vector.delete(0);
-//  assert(_vectorHasContents(vector, expectedVector), "Unexpected vector contents. Expected [null, bd]");
-  assert(vector[0] == null, "a");
-  assert(vector[1] == "bd", "vector[1] is incorrect (expected bd)");
-  assert(vector.length == 2, "Vector has incorrect length after delete")
-  assert(vector.containsIndex(0), "Does not contain index 0 after delete")
-  assert(vector.back == "bd", "Incorrect back entry")
-  assert(vector.last == "bd", "Incorrect last entry")
-  assert(vector.front == null, "Incorrect front entry")
-  assert(vector.first == null, "Incorrect first entry")
   vector[0] = "aa";
   assert(_vectorHasContents(vector, ["aa", "bd"]), "Unexpected vector contents. Expected [aa, bd]");
   assert(vector.length == 2, "Vector has incorrect length")
@@ -219,7 +218,7 @@ export function vectorTests(): void {
   assert(vector.front == "aa", "Incorrect front entry")
   assert(vector.first == "aa", "Incorrect first entry")
 
-  // pop an entry and then try various other methods
+  //pop an entry and then try various other methods
   vector.pop();
   assert(_vectorHasContents(vector, ["aa", "bd"]), "Unexpected vector contents. Expected [aa, bd]");
   assert(vector.length == 2, "Vector has incorrect length after delete")
@@ -231,9 +230,18 @@ export function vectorTests(): void {
   assert(vector.length == 3, "Vector has incorrect length")
   vector.popBack();
   assert(_vectorHasContents(vector, ["ba", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
-  assert(vector.length == 2, "Vector has incorrect length")
-}
+  assert(vector.length == 2, "Vector has incorrect length");
 
+  // same id but different object.
+  const vectorReread = new Vector<string>("vector1");
+  assert(vectorReread != null, "Vector not initialized");
+  assert(vectorReread.length == 2, "Vector has incorrect length");
+
+  // vector with primitives
+  const vectorI32 = new Vector<i32>("vectori32");
+  vectorI32.pushBack(2);
+  assert(vectorI32.length == 1, "Vector i32 has incorrect length");
+}
 
 export function dequeTests(): void {
   logging.log("dequeTests");

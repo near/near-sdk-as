@@ -127,18 +127,54 @@ export class Storage {
 
   /**
   * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
-  * Supported types: bool, integer, string and data objects defined in model.ts.
+  * Supported types: string and data objects defined in model.ts.
   *
   * @param key A key to read from storage.
   * @param defaultValue The default value if the key is not available
   * @returns A value of type T stored under the given key.
   */
   get<T>(key: string, defaultValue: T | null = null): T | null {
-    if (isString<T>() || isInteger<T>()) {
-      return util.parseFromString<T>(this.getString(key), defaultValue);
+    if (isString<T>()) {
+      const strValue = this.getString(key);
+      return strValue == null ? defaultValue : util.parseFromString<T>(this.getString(key));
     } else {
-      //@ts-ignore TODO: compiler says that getBytes is never null...
-      return util.parseFromBytes<T>(this.getBytes(key), defaultValue);
+      const byteValue = this.getBytes(key);
+      return byteValue == null ? defaultValue : util.parseFromBytes<T>(byteValue!);
+    }
+  }
+
+  /**
+  * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+  * Supported types: bool, integer.
+  *
+  * @param key A key to read from storage.
+  * @param defaultValue The default value if the key is not available
+  * @returns A value of type T stored under the given key.
+  */
+  getPrimitive<T>(key: string, defaultValue: T): T {
+    if (isInteger<T>()) {
+      const strValue = this.getString(key);
+      return strValue == null ? defaultValue : util.parseFromString<T>(this.getString(key));
+    } else {
+      throw "Operation not supported. Please use storage.get<T> for non-primitives";
+    }
+  }
+
+  /**
+  * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+  * Supported types: bool, integer, string and data objects defined in model.ts.
+  * This function will throw if throw if the key does not exist in the storage.
+  *
+  * @param key A key to read from storage.
+  * @param defaultValue The default value if the key is not available
+  * @returns A value of type T stored under the given key.
+  */
+  getSome<T>(key: string): T {
+    assert(this.hasKey(key), "Key is not present in the storage");
+    if (isString<T>() || isInteger<T>()) {
+      return util.parseFromString<T>(this.getString(key));
+    } else {
+      return util.parseFromBytes<T>(this.getBytes(key));
     }
   }
 
