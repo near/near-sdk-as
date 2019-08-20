@@ -81,12 +81,12 @@ export function storageGenericGetSetRoundtripTest(): void {
   //
   storage.set<bool>("boolkey", true);
   assert(storage.getPrimitive<bool>("boolkey", 0) == true, "Incorrect data value for bool roundtrip");
-  assert(storage.getPrimitive<bool>("nonexistent", true) == true, "Incorrect data value for u64 get nonexistent key");
+  assert(storage.getPrimitive<bool>("nonexistent", true) == true, "Incorrect data value for bool get nonexistent key");
 
   storage.set<String>("stringkey", "StringValue");
   const stringGet = storage.get<String>("stringkey");
   assert(stringGet == "StringValue", "Incorrect data value for string roundtrip");
-  assert(storage.get<string>("nonexistent", null) == null, "Incorrect data value for get<T> nonexistent key");
+  assert(storage.get<string>("nonexistent", null) == null, "Incorrect data value for get<T> string nonexistent key");
 }
 
 export function storageKeysTest(): string[] {
