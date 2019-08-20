@@ -7,19 +7,20 @@
   "ascMain": "assembly/index.ts",
   "scripts": {
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "asp --types && asp"
+    "test": "cd tests && npm run test",
+    "postinstall": "cd tests && npm install"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "bignum": "MaxGraey/bignum.wasm",
-    "assemblyscript-json": "github:WebAssemblyOS/assemblyscript-json#near_dist",
     "@as-pect/assembly": "^2.3.1",
     "@as-pect/cli": "^2.3.1",
     "@as-pect/core": "^2.3.1",
     "assemblyscript": "github:nearprotocol/assemblyscript#staging",
-    "typedoc": "^0.14.2",
+    "assemblyscript-json": "github:WebAssemblyOS/assemblyscript-json#near_dist",
+    "bignum": "MaxGraey/bignum.wasm",
+    "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^1.2.1"
   }
 }

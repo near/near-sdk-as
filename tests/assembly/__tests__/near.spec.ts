@@ -1,4 +1,4 @@
-import { base64, util } from '..';
+import { base64, util } from 'near-runtime-ts';
 
 function testBase64(original: string, expectedEncoding: string): void {
     let bytes = util.stringToBytes(original);
@@ -16,7 +16,7 @@ describe('utils', (): void => {
         byteArray[2] = 111;
         byteArray[3] = 103;
         let bytes = byteArray.subarray(1);
-        let s = util.bytesToString(bytes);
+        let s = util.bytesToString(bytes)!;
         expect<string>(s).toBe('dog');
     });
 });

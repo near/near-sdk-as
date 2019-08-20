@@ -1,1 +1,1 @@
-{"current_account_id":"contractaccount","signer_account_id":"bob","signer_account_pk":"15T","predecessor_account_id":"carol","input":"{}","block_index":113,"account_balance":14,"attached_deposit":7,"prepaid_gas":1000000000,"random_seed":"1TMu","free_of_charge":false}
+{"current_account_id":"contractaccount","signer_account_id":"bob","signer_account_pk":"15T","predecessor_account_id":"carol","input":"{}","block_index":113,"account_balance":14,"attached_deposit":7,"prepaid_gas":1000000000,"random_seed":"1TMu","free_of_charge":false, "output_data_receivers":[]}

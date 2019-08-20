@@ -16,9 +16,11 @@ module.exports = {
     /** This is required. Do not change this. The filename is ignored, but required by the compiler. */
     "--binaryFile": ["output.wasm"],
     /** To enable wat file output, use the following flag. The filename is ignored, but required by the compiler. */
-    // "--textFile": ["output.wat"],
+    "--textFile": ["output.wat"],
     /** To select an appropriate runtime, use the --runtime compiler flag. */
-    "--runtime": ["stub"] // Acceptable values are: full, half, stub (arena), and none
+    "--runtime": ["stub"], // Acceptable values are: full, half, stub (arena), and none,
+    "--baseDir": __dirname,
+    "--runPasses": ["inlining,dce"]
   },
   /**
    * A set of regexp that will disclude source files from testing.
@@ -69,5 +71,5 @@ module.exports = {
   /**
    * Specify if the binary wasm file should be written to the file system.
    */
-  outputBinary: false,
+  outputBinary: false
 };
