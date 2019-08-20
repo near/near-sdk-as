@@ -9,7 +9,6 @@ export class PersistentVector<T> {
   private _lengthKey: string;
   private _length: i32;
 
-  [key: string]: T;
   [key: number]: T;
   
   /**
