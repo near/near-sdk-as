@@ -81,7 +81,6 @@ export class Vector<T> {
   */
   @operator("{}")
   private __unchecked_get(index: i32): T {
-    //TODO: Should this potentially return null?
     return storage.getSome<T>(this._key(index));
   }
 
