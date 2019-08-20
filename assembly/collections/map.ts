@@ -69,6 +69,14 @@ export class Map<K, V> {
   }
 
   /**
+  * @param key Key of the element.
+  * @returns Value for the given key or the default value.
+  */
+  getSome(key: K): V {
+    return storage.getSome<V>(this._key(key));
+  }
+
+  /**
   * Sets the new value for the given key.
   * @param key Key of the element.
   * @param value The new value of the element.
