@@ -11,7 +11,7 @@ export namespace util {
     if (bytes == null) {
       return null;
     }
-    return String.UTF8.decode(uint8ArrayyToBuffer(bytes), true)
+    return String.UTF8.decode(uint8ArrayToBuffer(bytes), true)
   }
 
   export function UTF8Length(str: string, nullTerminated: boolean = false): usize {
@@ -22,7 +22,7 @@ export namespace util {
     return changetype<usize>(String.UTF8.encode(str, nullTerminated));
   }
 
-  function uint8ArrayyToBuffer(array: Uint8Array): ArrayBuffer {
+  function uint8ArrayToBuffer(array: Uint8Array): ArrayBuffer {
     return array.buffer.slice(array.byteOffset, array.byteLength + array.byteOffset)
   }
 

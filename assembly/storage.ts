@@ -128,6 +128,8 @@ export class Storage {
   /**
   * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
   * Supported types: string and data objects defined in model.ts.
+  * Please use getPrimitive<T> for getting primitives with a default value, and
+  * getSome<T> for primitives and non-primitives in case it's known that a particular key exists.
   *
   * @param key A key to read from storage.
   * @param defaultValue The default value if the key is not available
