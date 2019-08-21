@@ -2,6 +2,10 @@
   "name": "near-runtime-ts",
   "version": "0.0.2",
   "description": "Near smart contract runtime library for typescript",
+  "repository": {
+    "type": "git",
+    "url": "git@:nearprotocol/near-runtime-ts.git"
+  },
   "main": "index.js",
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",
