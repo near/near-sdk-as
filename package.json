@@ -2,13 +2,16 @@
   "name": "near-runtime-ts",
   "version": "0.0.2",
   "description": "Near smart contract runtime library for typescript",
+  "repository": {
+    "type": "git",
+    "url": "git@:nearprotocol/near-runtime-ts.git"
+  },
   "main": "index.js",
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",
   "scripts": {
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "cd tests && npm run test",
-    "postinstall": "cd tests && npm install"
+    "test": "cd tests && npm run test"
   },
   "author": "",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "asp --compiler ../node_modules/assemblyscript",
+    "test": "npm install && asp --compiler ../node_modules/assemblyscript",
     "build": "../node_modules/.bin/asc assembly/main.ts --binaryFile out/main.wasm --textFile out/main.wat"
   },
   "dependencies": {

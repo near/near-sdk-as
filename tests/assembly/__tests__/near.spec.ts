@@ -8,18 +8,18 @@ function testBase64(original: string, expectedEncoding: string): void {
     expect<string>(util.bytesToString(decoded)).toBe(original);
 }
 
-describe('utils', (): void => {
-    it('bytesToString', (): void => {
-        let byteArray = new Uint8Array(4);
-        byteArray[0] = 131;
-        byteArray[1] = 100;
-        byteArray[2] = 111;
-        byteArray[3] = 103;
-        let bytes = byteArray.subarray(1);
-        let s = util.bytesToString(bytes)!;
-        expect<string>(s).toBe('dog');
-    });
-});
+// describe('utils', (): void => {
+//     it('bytesToString', (): void => {
+//         let byteArray = new Uint8Array(4);
+//         byteArray[0] = 131;
+//         byteArray[1] = 100;
+//         byteArray[2] = 111;
+//         byteArray[3] = 103;
+//         let bytes = byteArray.subarray(1);
+//         let s = util.bytesToString(bytes)!;
+//         expect<string>(s).toBe('dog');
+//     });
+// });
 
 describe('base64 encoding/decoding', (): void => {
     it('hello world', (): void => {
