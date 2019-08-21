@@ -149,11 +149,11 @@ export class ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
     const id: u64 = runtime_api.promise_create(
-      contract_name_encoded.buffer.byteLength,
+      contract_name_encoded.byteLength,
       contract_name_encoded.dataStart,
-      method_name_encoded.buffer.byteLength,
+      method_name_encoded.byteLength,
       method_name_encoded.dataStart,
-      args.buffer.byteLength,
+      args.byteLength,
       args.dataStart,
       0, // TODO: do this properly toUint8Array
       gas);
@@ -183,11 +183,11 @@ export class ContractPromise {
     const method_name_encoded = util.stringToBytes(methodName);
     const id = runtime_api.promise_then(
       this.id,
-      contract_name_encoded.buffer.byteLength,
+      contract_name_encoded.byteLength,
       contract_name_encoded.dataStart,
-      method_name_encoded.buffer.byteLength,
+      method_name_encoded.byteLength,
       method_name_encoded.dataStart,
-      args.buffer.byteLength,
+      args.byteLength,
       args.dataStart,
       0,
       gas);

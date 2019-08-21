@@ -10,11 +10,13 @@ function testBase64(original: string, expectedEncoding: string): void {
 
 describe('utils', (): void => {
     it('bytesToString', (): void => {
-        let byteArray = new Uint8Array(3);
-        byteArray[0] = 100;
-        byteArray[1] = 111;
-        byteArray[2] = 103;
-        let s = util.bytesToString(byteArray)!;
+        let byteArray = new Uint8Array(4);
+        byteArray[0] = 131;
+        byteArray[1] = 100;
+        byteArray[2] = 111;
+        byteArray[3] = 103;
+        let bytes = byteArray.subarray(1);
+        let s = util.bytesToString(bytes)!;
         expect<string>(s).toBe('dog');
     });
 });
