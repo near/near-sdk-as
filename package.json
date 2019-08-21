@@ -7,7 +7,7 @@
   "ascMain": "assembly/index.ts",
   "scripts": {
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "cd tests && npm run test",
+    "test": "npm install && cd tests && npm run test",
     "postinstall": "cd tests && npm install"
   },
   "author": "",
