@@ -11,7 +11,7 @@ export namespace util {
     if (bytes == null) {
       return null;
     }
-    return String.UTF8.decode(bytes.buffer, true)
+    return String.UTF8.decode(uint8ArrayToBuffer(bytes), true)
   }
 
   export function UTF8Length(str: string, nullTerminated: boolean = false): usize {
@@ -22,20 +22,20 @@ export namespace util {
     return changetype<usize>(String.UTF8.encode(str, nullTerminated));
   }
 
+  function uint8ArrayToBuffer(array: Uint8Array): ArrayBuffer {
+    return array.buffer.slice(array.byteOffset, array.byteLength + array.byteOffset)
+  }
+
   /**
   * Parses the given bytes array to return a value of the given generic type.
   * Supported types: bool, integer, string and data objects defined in model.ts.
   *
-  * @param bytes Bytes to parse.
-  * @param defaultValue The default value if the bytes are null
+  * @param bytes Bytes to parse. Bytes must be not null.
   * @returns A parsed value of type T.
   */
-  export function parseFromBytes<T>(bytes: Uint8Array, defaultValue: T | null = null): T | null {
-    if (bytes == null) {
-      return defaultValue;
-    }
+  export function parseFromBytes<T>(bytes: Uint8Array): T {
     if (isString<T>() || isInteger<T>()) {
-      return parseFromString<T>(bytesToString(bytes)!, defaultValue);
+      return parseFromString<T>(bytesToString(bytes));
     } else {
       let v = instantiate<T>();
       //@ts-ignore v will have decode. Although second parameter is optional it causes compile error
@@ -47,19 +47,15 @@ export namespace util {
   * Parses the given string to return a value of the given generic type.
   * Supported types: bool, integer, string and data objects defined in model.ts.
   *
-  * @param s String to parse.
-  * @param defaultValue The default value if the string is null
+  * @param s String to parse. Must be not null.
   * @returns A parsed value of type T.
   */
-  export function parseFromString<T>(s: string, defaultValue: T | null = null): T | null {
-    if (s == null) {
-      return defaultValue;
-    }
+  export function parseFromString<T>(s: string): T {
     if (isString<T>()) {
       //@ts-ignore
       return s;
     } else if (isInteger<T>()) {
-      if (defaultValue instanceof bool) {
+      if (isBoolean<T>()) {
         //@ts-ignore
         return <T>(s == "true");
       } else if (isSigned<T>()) {

@@ -20,9 +20,9 @@ export class Storage {
     let end_encoded = util.stringToBytes(end);
 
     const iterator_id = runtime_api.storage_iter_range(
-      start_encoded.buffer.byteLength,
+      start_encoded.byteLength,
       start_encoded.dataStart,
-      end_encoded.buffer.byteLength,
+      end_encoded.byteLength,
       end_encoded.dataStart);
 
     return this._fetchIter(iterator_id, limit);
@@ -37,7 +37,7 @@ export class Storage {
   keys(prefix: string, limit: i32 = -1): string[] {
     let prefix_encoded = util.stringToBytes(prefix);
     const iterator_id = runtime_api.storage_iter_prefix(
-      prefix_encoded.buffer.byteLength,
+      prefix_encoded.byteLength,
       prefix_encoded.dataStart);
     return this._fetchIter(iterator_id, limit);
   }
@@ -49,7 +49,7 @@ export class Storage {
     let key_encoded = util.stringToBytes(key);
     let value_encoded = util.stringToBytes(value);
     const storage_write_result =
-      runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value_encoded.buffer.byteLength, value_encoded.dataStart, 0);
+      runtime_api.storage_write(key_encoded.byteLength, key_encoded.dataStart, value_encoded.byteLength, value_encoded.dataStart, 0);
     // TODO: handle return value?
   }
 
@@ -70,7 +70,7 @@ export class Storage {
   setBytes(key: string, value: Uint8Array): void {
     let key_encoded = util.stringToBytes(key);
     const storage_write_result =
-      runtime_api.storage_write(key_encoded.buffer.byteLength, key_encoded.dataStart, value.buffer.byteLength, value.dataStart, 0);
+      runtime_api.storage_write(key_encoded.byteLength, key_encoded.dataStart, value.byteLength, value.dataStart, 0);
     // TODO: handle return value?
   }
 
@@ -89,7 +89,7 @@ export class Storage {
   */
   contains(key: string): bool {
     let key_encoded = util.stringToBytes(key);
-    return (bool)(runtime_api.storage_has_key(key_encoded.buffer.byteLength, key_encoded.dataStart));
+    return (bool)(runtime_api.storage_has_key(key_encoded.byteLength, key_encoded.dataStart));
   }
 
   @inline
@@ -102,7 +102,7 @@ export class Storage {
   */
   delete(key: string): void {
     let key_encoded = util.stringToBytes(key);
-    runtime_api.storage_remove(key_encoded.buffer.byteLength, key_encoded.dataStart, 0);
+    runtime_api.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
   }
 
   /**
@@ -127,24 +127,62 @@ export class Storage {
 
   /**
   * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
-  * Supported types: bool, integer, string and data objects defined in model.ts.
+  * Supported types: string and data objects defined in model.ts.
+  * Please use getPrimitive<T> for getting primitives with a default value, and
+  * getSome<T> for primitives and non-primitives in case it's known that a particular key exists.
   *
   * @param key A key to read from storage.
   * @param defaultValue The default value if the key is not available
   * @returns A value of type T stored under the given key.
   */
   get<T>(key: string, defaultValue: T | null = null): T | null {
-    if (isString<T>() || isInteger<T>()) {
-      return util.parseFromString<T>(this.getString(key), defaultValue);
+    if (isString<T>()) {
+      const strValue = this.getString(key);
+      return strValue == null ? defaultValue : util.parseFromString<T>(this.getString(key));
     } else {
-      //@ts-ignore TODO: compiler says that getBytes is never null...
-      return util.parseFromBytes<T>(this.getBytes(key), defaultValue);
+      const byteValue = this.getBytes(key);
+      return byteValue == null ? defaultValue : util.parseFromBytes<T>(byteValue!);
+    }
+  }
+
+  /**
+  * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+  * Supported types: bool, integer.
+  *
+  * @param key A key to read from storage.
+  * @param defaultValue The default value if the key is not available
+  * @returns A value of type T stored under the given key.
+  */
+  getPrimitive<T>(key: string, defaultValue: T): T {
+    if (isInteger<T>()) {
+      const strValue = this.getString(key);
+      return strValue == null ? defaultValue : util.parseFromString<T>(this.getString(key));
+    } else {
+      throw "Operation not supported. Please use storage.get<T> for non-primitives";
+    }
+  }
+
+  /**
+  * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+  * Supported types: bool, integer, string and data objects defined in model.ts.
+  * This function will throw if throw if the key does not exist in the storage.
+  *
+  * @param key A key to read from storage.
+  * @param defaultValue The default value if the key is not available
+  * @returns A value of type T stored under the given key.
+  */
+  getSome<T>(key: string): T {
+    assert(this.hasKey(key), "Key is not present in the storage");
+    if (isString<T>() || isInteger<T>()) {
+      return util.parseFromString<T>(this.getString(key));
+    } else {
+      return util.parseFromBytes<T>(this.getBytes(key));
     }
   }
 
   private _internalReadBytes(key: string): Uint8Array | null {
     let key_encoded = util.stringToBytes(key);
-    let res = runtime_api.storage_read(key_encoded.buffer.byteLength, key_encoded.dataStart, 0);
+    let res = runtime_api.storage_read(key_encoded.byteLength, key_encoded.dataStart, 0);
     if (res == 1) {
       let value_len = runtime_api.register_len(0);
       let value = new Uint8Array(value_len as i32);
@@ -166,31 +204,13 @@ export class Storage {
       let key_len = runtime_api.register_len(0);
       let key_data = new Uint8Array(key_len as i32);
       runtime_api.read_register(0, key_data.dataStart);
-      if (key_data.buffer != null) {
+      if (key_data != null) {
         //@ts-ignore: Compiler says this is never null TODO
         result.push(util.bytesToString(key_data));
       }
     }
     return result;
   }
-
-  // /**
-  //  * Store 64-bit unsigned int under given key. Key is encoded as UTF-8 strings.
-  //  * Number is encoded as decimal string.
-  //  */
-  // setU64(key: string, value: u64): void {
-  //   this.setItem(key, value.toString());
-  // }
-
-  // /**
-  //  * Get 64-bit unsigned int stored under given key. Key is encoded as UTF-8 strings.
-  //  * Number is encoded as decimal string.
-  //  *
-  //  * @returns int value or 0 if value is not found
-  //  */
-  // getU64(key: string): u64 {
-  //   return U64.parseInt(this.getItem(key) || "0");
-  // }
 }
 
 /**

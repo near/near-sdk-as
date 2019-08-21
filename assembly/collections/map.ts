@@ -35,12 +35,10 @@ export class Map<K, V> {
   */
   values(start: K | null = null, end: K | null = null, limit: i32 = -1, startInclusive: bool = true): V[] {
     let startKey = (start != null) ? this._key(start!) : this._elementPrefix;
-    if (!startInclusive) {
-      startKey += String.fromCharCode(0);
-    }
     let endKey = (end != null) ? this._key(end!) : (this._elementPrefix + String.fromCharCode(255));
     let keys = storage.keyRange(startKey, endKey, limit);
-    return keys.map<V>((key: string) => storage.get<V>(key));
+    let startKeyIndex = keys.length > 0 && !startInclusive && keys[0] == startKey ? 1 : 0;
+    return keys.slice(startKeyIndex).map<V>((key: string) => storage.get<V>(key));
   }
 
   /**
@@ -66,6 +64,14 @@ export class Map<K, V> {
   */
   get(key: K, defaultValue: V | null = null): V | null {
     return storage.get<V>(this._key(key), defaultValue);
+  }
+
+  /**
+  * @param key Key of the element.
+  * @returns Value for the given key or the default value.
+  */
+  getSome(key: K): V {
+    return storage.getSome<V>(this._key(key));
   }
 
   /**

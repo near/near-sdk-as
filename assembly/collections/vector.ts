@@ -25,17 +25,7 @@ export class Vector<T> {
   */
   @inline
   private _key(index: i32): string {
-    //@ts-ignore
     return this._elementPrefix + index.toString();
-  }
-
-  /**
-  * Removes the content of the element from storage without changing length of the vector.
-  * @param index The index of the element to remove.
-  */
-  delete(index: i32): void {
-    assert(this.containsIndex(index), "Index out of range");
-    storage.delete(this._key(index));
   }
 
   /**
@@ -56,11 +46,9 @@ export class Vector<T> {
   /**
   * @returns The length of the vector.
   */
- //@ts-ignore
   get length(): i32 {
     if (this._length < 0) {
-      this._length = 0;
-      // TODO: unhardcode this._length = storage.get<i32>(this._lengthKey.buffer, this._lengthKey.byteLength, this._registerId);
+      this._length = storage.getPrimitive<i32>(this._lengthKey, 0);
     }
     return this._length;
   }
@@ -68,7 +56,7 @@ export class Vector<T> {
   /**
   * Internally sets the length of the vector
   */
- //@ts-ignore TS doesn't like property accessors with different levels of visability
+  //@ts-ignore TS doesn't like property accessors with different levels of visability
   private set length(value: i32) {
     this._length = value;
     storage.set<i32>(this._lengthKey, value);
@@ -81,7 +69,7 @@ export class Vector<T> {
   * @returns The element at the given index.
   */
   @operator("[]")
-  private __get(index: i32): T | null {
+  private __get(index: i32): T {
     assert(this.containsIndex(index), "Index out of range");
     return this.__unchecked_get(index);
   }
@@ -92,9 +80,8 @@ export class Vector<T> {
   * @returns The element at the given index.
   */
   @operator("{}")
-  private __unchecked_get(index: i32): T | null {
-    //TODO: Should this potentially return null?
-    return storage.get<T>(this._key(index));
+  private __unchecked_get(index: i32): T {
+    return storage.getSome<T>(this._key(index));
   }
 
   /**
@@ -146,7 +133,7 @@ export class Vector<T> {
   * Decreases the length of the vector.
   * @returns The removed last element of the vector.
   */
-  pop(): T | null {
+  pop(): T {
     assert(this.length > 0, "Vector is empty");
     let index = this.length - 1;
     this.length = index;
@@ -161,14 +148,14 @@ export class Vector<T> {
   * @returns The removed last element of the vector.
   */
   @inline
-  popBack(): T | null {
+  popBack(): T {
     return this.pop();
   }
 
   /**
   * @returns The last element of the vector. Asserts that the vector is not empty.
   */
-  get back(): T | null {
+  get back(): T {
     return this.__get(this.length - 1);
   }
 
@@ -176,14 +163,14 @@ export class Vector<T> {
   * @returns The last element of the vector. Asserts that the vector is not empty.
   */
   @inline
-  get last(): T | null {
+  get last(): T {
     return this.back;
   }
 
   /**
   * @returns The first element of the vector. Asserts that the vector is not empty.
   */
-  get front(): T | null {
+  get front(): T {
     return this.__get(0);
   }
 
@@ -191,7 +178,7 @@ export class Vector<T> {
   * @returns The first element of the vector. Asserts that the vector is not empty.
   */
   @inline
-  get first(): T | null {
+  get first(): T  {
     return this.front;
   }
 }
