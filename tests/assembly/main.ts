@@ -6,9 +6,7 @@ import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from
 
 export function hello(): string {
   logging.log("hello test");
-  //TODO: fix this
-  //const s = simple("a");
-  const s = "a";
+  const s = simple("a");
   return "hello".concat(s);
 }
 
