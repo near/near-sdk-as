@@ -22,7 +22,7 @@ export namespace collections {
     }
   }
 }
-export * from "./deque";
-export * from "./map";
-export * from "./topn";
-export * from "./vector";
+export * from "./persistentDeque";
+export * from "./persistentMap";
+export * from "./persistentTopn";
+export * from "./persistentVector";
