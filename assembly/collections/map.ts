@@ -5,7 +5,7 @@ import { storage } from "../storage";
 * A map class that implements a persistent unordered map.
 * NOTE: The Map doesn't store keys, so if you need to retrive them, include keys in the values.
 */
-export class Map<K, V> {
+export class PersistentMap<K, V> {
   private _elementPrefix: string;
 
   /**

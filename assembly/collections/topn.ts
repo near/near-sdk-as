@@ -1,5 +1,5 @@
 import { collections } from "../collections";
-import { Map } from "./map";
+import { PersistentMap } from "./map";
 import { storage } from "../storage";
 import { logging } from "../logging";
 
@@ -27,7 +27,7 @@ export class TopN<K> {
   private _lengthKey: string;
 
   // A map to store rating by key
-  private _ratings: Map<K, i32>;
+  private _ratings: PersistentMap<K, i32>;
 
   /**
   * Creates or restores a persistent top N collection with a given storage prefix.
@@ -36,7 +36,7 @@ export class TopN<K> {
   * @param descending Sorting order of keys for rating. Default is descending (the highest rated keys).
   */
   constructor(prefix: string, descending: bool = true) {
-    this._ratings = new Map<K, i32>(prefix + collections._KEY_RATING_SUFFIX);
+    this._ratings = new PersistentMap<K, i32>(prefix + collections._KEY_RATING_SUFFIX);
     this._orderPrefix = prefix + collections._KEY_ELEMENT_SUFFIX;
     this._descending = descending;
     this._lengthKey = prefix + collections._KEY_LENGTH_SUFFIX;
