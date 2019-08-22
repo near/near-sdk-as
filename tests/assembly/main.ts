@@ -1,12 +1,15 @@
 //@nearfile
-import { near, context, storage, logging, base58, base64, Map, Vector, Deque, TopN, ContractPromise, math } from "near-runtime-ts";
+import { near, context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, PersistentTopN, ContractPromise, math } from "near-runtime-ts";
 import { u128 } from "bignum";
 import { TextMessage } from "./model";
-import { _testTextMessage, _testBytes, _testBytesTwo } from "./util";
+import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 
 export function hello(): string {
   logging.log("hello test");
-  return "hello".concat("alice");
+  //TODO: fix this
+  //const s = simple("a");
+  const s = "a";
+  return "hello".concat(s);
 }
 
 export function base58Test(): void {
@@ -66,6 +69,10 @@ export function storageGenericGetSetRoundtripTest(): void {
   assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
   assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
   assert(storage.get<TextMessage>("nonexistent", null) == null, "Incorrect data value for get<T> nonexistent key");
+
+  storage.set<TextMessage>("message2", new TextMessage());
+  // TODO: fix this
+  //assert(_modelObjectEqual(storage.get<TextMessage>("message2"), new TextMessage()), "Incorrect empty message on storage roundtrip");
 
   storage.set<u64>("u64key", 20);
   assert(storage.getPrimitive<u64>("u64key", 0) == 20, "Incorrect data value for u64 roundtrip");
@@ -141,8 +148,8 @@ export function storageKeysTest(): string[] {
 export function mapTests(): void {
   logging.log("mapTests");
   // empty map
-  const map = new Map<string, TextMessage>("mapId");
-  const valuesEmpty = map.values();
+  const map = new PersistentMap<string, TextMessage>("mapId");
+  const valuesEmpty = map.values("", "zzz");
   assert(valuesEmpty.length == 0, "Unexpected values in empty map");
   assert(!map.contains("nonexistentkey"), "Map contains a non existent key");
   assert(map.get("nonexistentkey") == null, "Incorrect result on get with nonexistent key");
@@ -150,35 +157,39 @@ export function mapTests(): void {
   // add some entries to the map
   const message = _testTextMessage();
   map.set("mapKey1", message);
-  map.set("mapKey3", new TextMessage());
-  //const values = map.values();
-  //  assert(values.length == 2, "Unexpected values size in map with 2 entries");
-  // assert(_modelObjectEqual(values[0], message), "Unexpected values contents in map with 2 entries");
-  // assert(_modelObjectEqual(values[1], new TextMessage()), "Unexpected values contents in map with 2 entries");
-  // assert(map.values("mapKey3").length == 1, "Unexpected values size in map with 2 entries");
-  // assert(map.values(null, "mapKey2").length == 1, "Unexpected values size in map with 2 entries");
-  // assert(map.values(null, null, 1).length == 1, "Unexpected values size in map with 2 entries");
-  // assert(map.values("mapKey1", null, -1, false).length == 1, "Unexpected values size in map with 2 entries");
-  // assert(!map.contains("nonexistentkey"), "Map contains a non existent key");
-  // assert(map.contains("mapKey1"), "Map does not contain a key that was added (mapKey1)");
-  // assert(map.contains("mapKey3"), "Map does not contain a key that was added (mapKey3)");
-  // assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get");
-  // assert(_modelObjectEqual(map.get("mapKey3"), new TextMessage()), "Incorrect result from map get");
-  //
-  // // delete an entry and retry api calls
-  // map.delete("mapKey3");
-  // assert(map.values().length == 1, "Unexpected values size in map after delete");
-  // assert(_modelObjectEqual(map.values()[0], message), "Unexpected values contents in map after delete");
-  // assert(map.values("mapKey1").length == 1, "Unexpected values size in map after delete");
-  // assert(!map.contains("mapKey3"), "Map contains a key that was deleted");
-  // assert(map.contains("mapKey1"), "Map does not contain a key that should be there after deletion of another key");
-  // assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get after delete");
-  // assert(map.get("mapKey3") == null, "Incorrect result from map get on a deleted key");
+  map.set("mapKey3", _testTextMessageTwo());
+  const values = map.values("", "zzz");
+   assert(values.length == 2, "Unexpected values size in map with 2 entries");
+  assert(_modelObjectEqual(values[0], message), "Unexpected values contents in map with 2 entries");
+  assert(_modelObjectEqual(values[1], _testTextMessageTwo()), "Unexpected values contents in map with 2 entries");
+  assert(map.values("mapKey3", "zzz").length == 1, "Unexpected values size in map with 2 entries");
+  assert(map.values("mapKey1", "mapKey2").length == 1, "Unexpected values size in map with 2 entries");
+  assert(map.values("mapKey1", "mapKey4", -1, false).length == 1, "Unexpected values size in map with 2 entries");
+  assert(!map.contains("nonexistentkey"), "Map contains a non existent key");
+  assert(map.contains("mapKey1"), "Map does not contain a key that was added (mapKey1)");
+  assert(map.contains("mapKey3"), "Map does not contain a key that was added (mapKey3)");
+  assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get");
+  assert(_modelObjectEqual(map.get("mapKey3"), _testTextMessageTwo()), "Incorrect result from map get");
+
+  // delete an entry and retry api calls
+  map.delete("mapKey3");
+  assert(map.values("", "zzz").length == 1, "Unexpected values size in map after delete");
+  assert(_modelObjectEqual(map.values("", "zzz")[0], message), "Unexpected values contents in map after delete");
+  assert(map.values("mapKey1", "zzz").length == 1, "Unexpected values size in map after delete");
+  assert(!map.contains("mapKey3"), "Map contains a key that was deleted");
+  assert(map.contains("mapKey1"), "Map does not contain a key that should be there after deletion of another key");
+  assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get after delete");
+  assert(map.get("mapKey3") == null, "Incorrect result from map get on a deleted key");
+
+  // map with primitives
+  const mapTwo = new PersistentMap<i32, i32>("mapId2");
+  mapTwo.set(1, -20);
+  assert(mapTwo.getSome(1) == -20, "wrong value on map get for i32");
 }
 
 export function vectorTests(): void {
   logging.log("vectorTests");
-  const vector = new Vector<string>("vector1");
+  const vector = new PersistentVector<string>("vector1");
   assert(vector != null, "Vector not initialized");
   assert(vector.length == 0, "Empty vector has incorrect length");
   assert(!vector.containsIndex(0), "Empty vector incorrectly has index 0");
@@ -233,19 +244,19 @@ export function vectorTests(): void {
   assert(vector.length == 2, "Vector has incorrect length");
 
   // same id but different object.
-  const vectorReread = new Vector<string>("vector1");
+  const vectorReread = new PersistentVector<string>("vector1");
   assert(vectorReread != null, "Vector not initialized");
   assert(vectorReread.length == 2, "Vector has incorrect length");
 
   // vector with primitives
-  const vectorI32 = new Vector<i32>("vectori32");
+  const vectorI32 = new PersistentVector<i32>("vectori32");
   vectorI32.pushBack(2);
   assert(vectorI32.length == 1, "Vector i32 has incorrect length");
 }
 
 export function dequeTests(): void {
   logging.log("dequeTests");
-  const deque = new Deque<string>("dequeid");
+  const deque = new PersistentDeque<string>("dequeid");
   //assert(!deque.containsIndex(0), "empty deque contains index 0");
   //
   // const keys = storage.keys("");
@@ -262,7 +273,7 @@ export function dequeTests(): void {
 export function topnTests(): void {
   logging.log("topnTests");
   // empty topn cases
-  const topn = new TopN<string>("topnid");
+  const topn = new PersistentTopN<string>("topnid");
   assert(topn != null, "topn is null");
   assert(topn.isEmpty, "empty topn - wrong result for isEmpty");
   assert(topn.length == 0, "empty topn - wrong length");
@@ -398,7 +409,7 @@ function _modelObjectEqual(first: TextMessage, second: TextMessage): bool {
   return true;
 }
 
-function _vectorHasContents(vector: Vector<string>, expectedContents: Array<string>): bool {
+function _vectorHasContents(vector: PersistentVector<string>, expectedContents: Array<string>): bool {
   if (vector.length != expectedContents.length) {
     return false;
   }
@@ -409,4 +420,9 @@ function _vectorHasContents(vector: Vector<string>, expectedContents: Array<stri
     }
   }
   return true;
+}
+
+
+export function simple(s: string): string {
+  return s;
 }
