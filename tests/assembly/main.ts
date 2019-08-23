@@ -159,7 +159,7 @@ export function mapTests(): void {
   map.set("mapKey1", message);
   map.set("mapKey3", _testTextMessageTwo());
   const values = map.values("", "zzz");
-   assert(values.length == 2, "Unexpected values size in map with 2 entries");
+  assert(values.length == 2, "Unexpected values size in map with 2 entries");
   assert(_modelObjectEqual(values[0], message), "Unexpected values contents in map with 2 entries");
   assert(_modelObjectEqual(values[1], _testTextMessageTwo()), "Unexpected values contents in map with 2 entries");
   assert(map.values("mapKey3", "zzz").length == 1, "Unexpected values size in map with 2 entries");
@@ -180,11 +180,13 @@ export function mapTests(): void {
   assert(map.contains("mapKey1"), "Map does not contain a key that should be there after deletion of another key");
   assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get after delete");
   assert(map.get("mapKey3") == null, "Incorrect result from map get on a deleted key");
+}
 
+export function mapTestsWithPrimitices(): void{
   // map with primitives
-  const mapTwo = new PersistentMap<i32, i32>("mapId2");
-  mapTwo.set(1, -20);
-  assert(mapTwo.getSome(1) == -20, "wrong value on map get for i32");
+  const map = new PersistentMap<i32, i32>("mapPrimitives");
+  map.set(1, -20);
+  assert(map.getSome(1) == -20, "wrong value on map get for i32");
 }
 
 export function vectorTests(): void {
