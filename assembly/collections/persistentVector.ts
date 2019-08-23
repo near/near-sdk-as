@@ -4,7 +4,7 @@ import { storage } from "../storage";
 /**
 * A vector class that implements a persistent array.
 */
-export class Vector<T> {
+export class PersistentVector<T> {
   private _elementPrefix: string;
   private _lengthKey: string;
   private _length: i32;
