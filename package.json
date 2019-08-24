@@ -11,15 +11,14 @@
   "ascMain": "assembly/index.ts",
   "scripts": {
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "cd tests && npm run test"
+    "test": "cd tests/ && npm run test",
+    "postinstall": "cd tests/ && npm install"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@as-pect/assembly": "^2.3.1",
-    "@as-pect/cli": "^2.3.1",
-    "@as-pect/core": "^2.3.1",
+    "@as-pect/cli": "^2.4.0",
     "assemblyscript": "github:nearprotocol/assemblyscript#staging",
     "assemblyscript-json": "github:WebAssemblyOS/assemblyscript-json#near_dist",
     "bignum": "MaxGraey/bignum.wasm",
