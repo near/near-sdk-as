@@ -464,3 +464,21 @@ function _vectorHasContents(vector: PersistentVector<string>, expectedContents: 
 export function simple(s: string): string {
   return s;
 }
+
+
+export function setKeyValue(key: string, value: string): void {
+  storage.set<string>(key!, value!);
+}
+
+export function getValueByKey(key: string): string | null {
+  return storage.get<string>(key!);
+}
+
+export function setValue(value: string): string {
+  storage.set<string>("name", value!);
+  return value!;
+}
+
+export function getValue(): string | null {
+  return storage.get<string>("name");
+}
