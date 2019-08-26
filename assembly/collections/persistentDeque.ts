@@ -4,7 +4,7 @@ import { storage } from "../storage";
 /**
 * A deque class that implements a persistent bidirectional queue.
 */
-export class Deque<T> {
+export class PersistentDeque<T> {
   private _elementPrefix: string;
   private _frontIndexKey: string;
   private _backIndexKey: string;

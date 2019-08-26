@@ -1,5 +1,5 @@
 import { collections } from "../collections";
-import { Map } from "./map";
+import { PersistentMap } from "./persistentMap";
 import { storage } from "../storage";
 import { logging } from "../logging";
 
@@ -16,7 +16,7 @@ So There needs to be a box type for i32 that can be null.
 * A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32.
 * Default sort order is descending (highest rated keys), but can be changed to ascending (lowest rated keys).
 */
-export class TopN<K> {
+export class PersistentTopN<K> {
   // Internally, this prefix is used for storing padded ratings
   private _orderPrefix: string;
   // Whether the order is descending
@@ -27,7 +27,7 @@ export class TopN<K> {
   private _lengthKey: string;
 
   // A map to store rating by key
-  private _ratings: Map<K, i32>;
+  private _ratings: PersistentMap<K, i32>;
 
   /**
   * Creates or restores a persistent top N collection with a given storage prefix.
@@ -36,7 +36,7 @@ export class TopN<K> {
   * @param descending Sorting order of keys for rating. Default is descending (the highest rated keys).
   */
   constructor(prefix: string, descending: bool = true) {
-    this._ratings = new Map<K, i32>(prefix + collections._KEY_RATING_SUFFIX);
+    this._ratings = new PersistentMap<K, i32>(prefix + collections._KEY_RATING_SUFFIX);
     this._orderPrefix = prefix + collections._KEY_ELEMENT_SUFFIX;
     this._descending = descending;
     this._lengthKey = prefix + collections._KEY_LENGTH_SUFFIX;

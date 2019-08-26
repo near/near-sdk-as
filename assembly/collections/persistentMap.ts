@@ -5,7 +5,7 @@ import { storage } from "../storage";
 * A map class that implements a persistent unordered map.
 * NOTE: The Map doesn't store keys, so if you need to retrive them, include keys in the values.
 */
-export class Map<K, V> {
+export class PersistentMap<K, V> {
   private _elementPrefix: string;
 
   /**
@@ -33,9 +33,9 @@ export class Map<K, V> {
   * @param startInclusive Whether the start key is inclusive. Default is `true`, means include start key.
   *     It's useful to set it to false for pagination.
   */
-  values(start: K | null = null, end: K | null = null, limit: i32 = -1, startInclusive: bool = true): V[] {
-    let startKey = (start != null) ? this._key(start!) : this._elementPrefix;
-    let endKey = (end != null) ? this._key(end!) : (this._elementPrefix + String.fromCharCode(255));
+  values(start: K, end: K, limit: i32 = -1, startInclusive: bool = true): V[] {
+    let startKey =  this._key(start);
+    let endKey = this._key(end);
     let keys = storage.keyRange(startKey, endKey, limit);
     let startKeyIndex = keys.length > 0 && !startInclusive && keys[0] == startKey ? 1 : 0;
     return keys.slice(startKeyIndex).map<V>((key: string) => storage.get<V>(key));
