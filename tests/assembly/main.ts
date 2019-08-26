@@ -393,10 +393,11 @@ export function contextTests(): void {
 
 export function promiseTests(): void {
   logging.log("promiseTests");
+  const emptyResults = ContractPromise.getResults();
+  assert(emptyResults.length == 0, "wrong length for results");
   const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0));
   const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0));
   promise2.returnAsResult();
-  //assert(context.storageUsage == 0, "Wrong storage usage"); TODO: test when enabled
 }
 
 export function mathTests(): void {

@@ -262,55 +262,56 @@ export class ContractPromise {
   //   return { id };
   // }
 
-  // /**
-  //  * Method to receive async (one or multiple) results from the remote contract in the callback.
-  //  * Example of using it.
-  //  * ```
-  //  * // This function is prefixed with `_`, so other contracts or people can't call it directly.
-  //  * export function _onItemAdded(itemAddedRequestId: string): bool {
-  //  *   // Get all results
-  //  *   let results = ContractPromise.getResults();
-  //  *   let addItemResult = results[0];
-  //  *   // Verifying the remote contract call succeeded.
-  //  *   if (addItemResult.success) {
-  //  *     // Decoding data from the bytes buffer into the local object.
-  //  *     let data = AddItemResult.decode(addItemResult.buffer);
-  //  *     if (data.itemPower > 9000) {
-  //  *       return true;
-  //  *     }
-  //  *   }
-  //  *   return false;
-  //  * }
-  //  * ```
-  //  * @returns An array of results based on the number of promises the callback was created on.
-  //  *     If the callback using `then` was scheduled only on one result, then one result will be returned.
-  //  */
-  // static getResults() : ContractPromiseResult[] {
-  //   let count = <i32>result_count();
-  //   let results = Array.create<ContractPromiseResult>(count);
-  //   for (let i = 0; i < count; i++) {
-  //     let isOk = result_is_ok(i);
-  //     if (!isOk) {
-  //       results[i] = { success: false }
-  //       continue;
-  //     }
-  //     let buffer = storage._internalReadBytes(DATA_TYPE_RESULT, 0, i);
-  //     results[i] = { success: isOk, buffer: buffer };
-  //   }
-  //   return results;
-  // }
+/**
+ * Method to receive async (one or multiple) results from the remote contract in the callback.
+ * Example of using it.
+ * ```
+ * // This function is prefixed with `_`, so other contracts or people can't call it directly.
+ * export function _onItemAdded(itemAddedRequestId: string): bool {
+ *   // Get all results
+ *   let results = ContractPromise.getResults();
+ *   let addItemResult = results[0];
+ *   // Verifying the remote contract call succeeded.
+ *   if (addItemResult.success) {
+ *     // Decoding data from the bytes buffer into the local object.
+ *     let data = AddItemResult.decode(addItemResult.buffer);
+ *     if (data.itemPower > 9000) {
+ *       return true;
+ *     }
+ *   }
+ *   return false;
+ * }
+ * ```
+ * @returns An array of results based on the number of promises the callback was created on.
+ *     If the callback using `then` was scheduled only on one result, then one result will be returned.
+ */
+  static getResults(): ContractPromiseResult[] {
+    let count = <i64>runtime_api.promise_results_count();
+    let results = Array.create<ContractPromiseResult>(count as i32);
+    for (let i = 0; i < count; i++) {
+      const promise_result = runtime_api.promise_result(i, 0);
+      let isOk = promise_result == 1;
+      if (!isOk) {
+        results[i] = { success: false }
+        continue;
+      }
+      const buffer = new Uint8Array(runtime_api.register_len(0) as i32);
+      runtime_api.read_register(0, buffer.dataStart);
+      results[i] = { success: isOk, buffer: buffer };
+    }
+    return results;
+  }
+}
 
-
-  //     /**
-  //  * Class to store results of the async calls on the remote contracts.
-  //  */
-  // export class ContractPromiseResult {
-  //     // Whether the execution of the remote call succeeded.
-  //     success: bool;
-  //     // Bytes data returned by the remote contract. Can be empty or null, if the remote
-  //     // method returns `void`.
-  //     buffer: Uint8Array;
-  //   }
+/**
+ * Class to store results of the async calls on the remote contracts.
+ */
+export class ContractPromiseResult {
+  // Whether the execution of the remote call succeeded.
+  success: bool;
+  // Bytes data returned by the remote contract. Can be empty or null, if the remote
+  // method returns `void`.
+  buffer: Uint8Array;
 }
 
 export let context: Context = new Context();
