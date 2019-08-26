@@ -6,9 +6,7 @@ import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from
 
 export function hello(): string {
   logging.log("hello test");
-  //TODO: fix this
-  //const s = simple("a");
-  const s = "a";
+  const s = simple("a"); // Test that we can call other export functions
   return "hello".concat(s);
 }
 
@@ -41,7 +39,6 @@ export function storageStringRoundtripTest(): void {
   assert(getValueResult == "myValue1", "Incorrect value from storage");
   const otherValueResult = storage.getString("someOtherKey");
   assert(otherValueResult == "otherValue", "Incorrect value2 from storage");
-
   assert(storage.getString("nonexistentKey") == null, "Unexpectd value on getting string with a nonexistent key");
 }
 
@@ -85,7 +82,7 @@ export function storageGenericGetSetRoundtripTest(): void {
   storage.set<i32>("i32key", -5);
   assert(storage.getPrimitive<i32>("i32key", 0) == -5, "Incorrect data value for i32 roundtrip");
   assert(storage.getPrimitive<i32>("nonexistent", -10) == -10, "Incorrect data value for i32 get nonexistent key");
-  //
+
   storage.set<bool>("boolkey", true);
   assert(storage.getPrimitive<bool>("boolkey", 0) == true, "Incorrect data value for bool roundtrip");
   assert(storage.getPrimitive<bool>("nonexistent", true) == true, "Incorrect data value for bool get nonexistent key");
@@ -258,7 +255,7 @@ export function vectorTests(): void {
 
 export function dequeTests(): void {
   logging.log("dequeTests");
-  const deque = new Deque<string>("dequeid");
+  const deque = new PersistentDeque<string>("dequeid");
 
   assert(deque.length == 0, "empty deque length is wrong");
   assert(!deque.containsIndex(0), "empty deque contains index 0");
