@@ -1,4 +1,4 @@
-//@nearfile out
+//@nearfile
 import { logging, base64, util } from 'near-runtime-ts';
 
 
