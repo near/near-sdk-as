@@ -289,15 +289,15 @@ export class ContractPromise {
     let count = <i64>runtime_api.promise_results_count();
     let results = Array.create<ContractPromiseResult>(count as i32);
     for (let i = 0; i < count; i++) {
-      const promise_result = runtime_api.promise_result(i, 0);
-      let isOk = promise_result == 1;
+      const promise_status = runtime_api.promise_result(i, 0) as i32;
+      let isOk = promise_status == 1;
       if (!isOk) {
-        results[i] = { success: false }
+        results[i] = { status: promise_status }
         continue;
       }
       const buffer = new Uint8Array(runtime_api.register_len(0) as i32);
       runtime_api.read_register(0, buffer.dataStart);
-      results[i] = { success: isOk, buffer: buffer };
+      results[i] = { status: promise_status, buffer: buffer };
     }
     return results;
   }
@@ -308,7 +308,7 @@ export class ContractPromise {
  */
 export class ContractPromiseResult {
   // Whether the execution of the remote call succeeded.
-  success: bool;
+  status: i32;
   // Bytes data returned by the remote contract. Can be empty or null, if the remote
   // method returns `void`.
   buffer: Uint8Array;
