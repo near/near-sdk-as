@@ -6,7 +6,7 @@ import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from
 
 export function hello(): string {
   logging.log("hello test");
-  const s = simple("a");
+  const s = simple("a"); // Test that we can call other export functions
   return "hello".concat(s);
 }
 
@@ -39,7 +39,6 @@ export function storageStringRoundtripTest(): void {
   assert(getValueResult == "myValue1", "Incorrect value from storage");
   const otherValueResult = storage.getString("someOtherKey");
   assert(otherValueResult == "otherValue", "Incorrect value2 from storage");
-
   assert(storage.getString("nonexistentKey") == null, "Unexpectd value on getting string with a nonexistent key");
 }
 
@@ -83,7 +82,7 @@ export function storageGenericGetSetRoundtripTest(): void {
   storage.set<i32>("i32key", -5);
   assert(storage.getPrimitive<i32>("i32key", 0) == -5, "Incorrect data value for i32 roundtrip");
   assert(storage.getPrimitive<i32>("nonexistent", -10) == -10, "Incorrect data value for i32 get nonexistent key");
-  //
+
   storage.set<bool>("boolkey", true);
   assert(storage.getPrimitive<bool>("boolkey", 0) == true, "Incorrect data value for bool roundtrip");
   assert(storage.getPrimitive<bool>("nonexistent", true) == true, "Incorrect data value for bool get nonexistent key");
@@ -257,17 +256,56 @@ export function vectorTests(): void {
 export function dequeTests(): void {
   logging.log("dequeTests");
   const deque = new PersistentDeque<string>("dequeid");
-  //assert(!deque.containsIndex(0), "empty deque contains index 0");
-  //
-  // const keys = storage.keys("");
-  // logging.log("KEYS")
-  // for (let i = 0; i < keys.length; i++) {
-  //   logging.log(keys[i]);
-  // }
-  //
-  // // empty deque - bugged
-  // //assert(deque.frontIndex == -1, "Wrong front index for an empty deque");
-  // logging.log("Dq 1 " + u128.fromU64(deque.frontIndex).toString() + ", " + u128.fromU64(deque.backIndex).toString() + u128.fromU64(deque.length).toString()); //??
+
+  assert(deque.length == 0, "empty deque length is wrong");
+  assert(!deque.containsIndex(0), "empty deque contains index 0");
+  assert(deque.isEmpty == true, "empty deque returns false for isEmpty");
+
+  deque.pushBack("1");
+  assert(deque.length == 1, "deque length is wrong");
+  assert(deque.containsIndex(0), "deque does not contain index 0");
+  assert(!deque.containsIndex(-1), "deque does not contain index 0");
+  assert(deque.isEmpty == false, "deque returns true for isEmpty");
+  assert(deque[0] == "1", "wrong element value using []");
+  assert(deque.back == "1", "wrong back element");
+  assert(deque.front == "1", "wrong front element");
+  assert(deque.first == "1", "wrong first element");
+  assert(deque.last == "1", "wrong last element");
+
+  deque.pushFront("-2");
+  assert(deque.length == 2, "deque length is wrong");
+  assert(deque.containsIndex(0), "deque does not contain index 0");
+  assert(deque.containsIndex(1), "deque does not contain index 1");
+  assert(deque.isEmpty == false, "deque returns true for isEmpty");
+  assert(deque[1] == "1", "wrong element value using []");
+  assert(deque[0] == "-2", "wrong element value using []");
+  assert(deque.back == "1", "wrong back element");
+  assert(deque.front == "-2", "wrong front element");
+  assert(deque.first == "-2", "wrong first element");
+  assert(deque.last == "1", "wrong last element");
+
+  deque.popFront();
+  assert(deque.length == 1, "deque length is wrong");
+  assert(deque.containsIndex(0), "deque does not contain index 0");
+  assert(!deque.containsIndex(1), "deque of length 1 contains index 1");
+  assert(deque.isEmpty == false, "deque returns true for isEmpty");
+  assert(deque[0] == "1", "wrong element value using []");
+  assert(deque.back == "1", "wrong back element");
+  assert(deque.front == "1", "wrong front element");
+  assert(deque.first == "1", "wrong first element");
+  assert(deque.last == "1", "wrong last element");
+
+  deque.pushFront("-2");
+  deque.popBack();
+  assert(deque.length == 1, "deque length is wrong");
+  assert(deque.containsIndex(0), "deque does not contain index 0");
+  assert(!deque.containsIndex(1), "deque of length 1 contains index 1");
+  assert(deque.isEmpty == false, "deque returns true for isEmpty");
+  assert(deque[0] == "-2", "wrong element value using []");
+  assert(deque.back == "-2", "wrong back element");
+  assert(deque.front == "-2", "wrong front element");
+  assert(deque.first == "-2", "wrong first element");
+  assert(deque.last == "-2", "wrong last element");
 }
 
 export function topnTests(): void {
