@@ -3,5 +3,5 @@
 export class TextMessage {
   sender: string;
   text: string;
-  number: u64;
+  number: u64 = 0;
 }
