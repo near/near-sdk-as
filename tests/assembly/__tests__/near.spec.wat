@@ -8340,561 +8340,7 @@
   drop
   local.get $0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<~lib/string/String>>#constructor (; 153 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $1
-  local.set $4
-  local.get $4
-  drop
-  local.get $0
-  i32.eqz
-  if
-   i32.const 8
-   i32.const 19
-   call $~lib/rt/stub/__alloc
-   local.set $5
-   local.get $5
-   local.set $0
-  end
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   local.set $6
-   local.get $6
-   drop
-   local.get $2
-   local.set $7
-   nop
-  end
-  local.get $3
-  i32.store
-  local.get $1
-  local.set $8
-  nop
-  local.get $0
- )
- (func $~lib/nearEntry/PrimitiveHandler<~lib/string/String>#constructor (; 154 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else   
-   i32.const 8
-   i32.const 18
-   call $~lib/rt/stub/__alloc
-   local.set $3
-   local.get $3
-  end
-  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
-  local.set $0
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $1
-  i32.const 0
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<~lib/string/String>>#constructor
-  local.set $2
-  local.get $1
-  i32.load offset=4
-  local.set $4
-  nop
-  local.get $2
-  i32.store offset=4
-  local.get $0
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<bool>>#constructor (; 155 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $1
-  local.set $4
-  local.get $4
-  drop
-  local.get $0
-  i32.eqz
-  if
-   i32.const 8
-   i32.const 21
-   call $~lib/rt/stub/__alloc
-   local.set $5
-   local.get $5
-   local.set $0
-  end
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   local.set $6
-   local.get $6
-   drop
-   local.get $2
-   local.set $7
-   nop
-  end
-  local.get $3
-  i32.store
-  local.get $1
-  local.set $8
-  nop
-  local.get $0
- )
- (func $~lib/nearEntry/PrimitiveHandler<bool>#constructor (; 156 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else   
-   i32.const 8
-   i32.const 20
-   call $~lib/rt/stub/__alloc
-   local.set $3
-   local.get $3
-  end
-  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
-  local.set $0
-  local.get $0
-  i32.const 0
-  i32.store8
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $1
-  i32.const 0
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<bool>>#constructor
-  local.set $2
-  local.get $1
-  i32.load offset=4
-  local.set $4
-  nop
-  local.get $2
-  i32.store offset=4
-  local.get $0
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u64>>#constructor (; 157 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $1
-  local.set $4
-  local.get $4
-  drop
-  local.get $0
-  i32.eqz
-  if
-   i32.const 8
-   i32.const 23
-   call $~lib/rt/stub/__alloc
-   local.set $5
-   local.get $5
-   local.set $0
-  end
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   local.set $6
-   local.get $6
-   drop
-   local.get $2
-   local.set $7
-   nop
-  end
-  local.get $3
-  i32.store
-  local.get $1
-  local.set $8
-  nop
-  local.get $0
- )
- (func $~lib/nearEntry/PrimitiveHandler<u64>#constructor (; 158 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else   
-   i32.const 12
-   i32.const 22
-   call $~lib/rt/stub/__alloc
-   local.set $3
-   local.get $3
-  end
-  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
-  local.set $0
-  local.get $0
-  i64.const 0
-  i64.store
-  local.get $0
-  i32.const 0
-  i32.store offset=8
-  local.get $0
-  local.tee $1
-  i32.const 0
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u64>>#constructor
-  local.set $2
-  local.get $1
-  i32.load offset=8
-  local.set $4
-  nop
-  local.get $2
-  i32.store offset=8
-  local.get $0
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i64>>#constructor (; 159 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $1
-  local.set $4
-  local.get $4
-  drop
-  local.get $0
-  i32.eqz
-  if
-   i32.const 8
-   i32.const 25
-   call $~lib/rt/stub/__alloc
-   local.set $5
-   local.get $5
-   local.set $0
-  end
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   local.set $6
-   local.get $6
-   drop
-   local.get $2
-   local.set $7
-   nop
-  end
-  local.get $3
-  i32.store
-  local.get $1
-  local.set $8
-  nop
-  local.get $0
- )
- (func $~lib/nearEntry/PrimitiveHandler<i64>#constructor (; 160 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else   
-   i32.const 12
-   i32.const 24
-   call $~lib/rt/stub/__alloc
-   local.set $3
-   local.get $3
-  end
-  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
-  local.set $0
-  local.get $0
-  i64.const 0
-  i64.store
-  local.get $0
-  i32.const 0
-  i32.store offset=8
-  local.get $0
-  local.tee $1
-  i32.const 0
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i64>>#constructor
-  local.set $2
-  local.get $1
-  i32.load offset=8
-  local.set $4
-  nop
-  local.get $2
-  i32.store offset=8
-  local.get $0
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#constructor (; 161 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $1
-  local.set $4
-  local.get $4
-  drop
-  local.get $0
-  i32.eqz
-  if
-   i32.const 8
-   i32.const 27
-   call $~lib/rt/stub/__alloc
-   local.set $5
-   local.get $5
-   local.set $0
-  end
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   local.set $6
-   local.get $6
-   drop
-   local.get $2
-   local.set $7
-   nop
-  end
-  local.get $3
-  i32.store
-  local.get $1
-  local.set $8
-  nop
-  local.get $0
- )
- (func $~lib/nearEntry/PrimitiveHandler<u32>#constructor (; 162 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else   
-   i32.const 8
-   i32.const 26
-   call $~lib/rt/stub/__alloc
-   local.set $3
-   local.get $3
-  end
-  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
-  local.set $0
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $1
-  i32.const 0
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#constructor
-  local.set $2
-  local.get $1
-  i32.load offset=4
-  local.set $4
-  nop
-  local.get $2
-  i32.store offset=4
-  local.get $0
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i32>>#constructor (; 163 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $1
-  local.set $4
-  local.get $4
-  drop
-  local.get $0
-  i32.eqz
-  if
-   i32.const 8
-   i32.const 29
-   call $~lib/rt/stub/__alloc
-   local.set $5
-   local.get $5
-   local.set $0
-  end
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   local.set $6
-   local.get $6
-   drop
-   local.get $2
-   local.set $7
-   nop
-  end
-  local.get $3
-  i32.store
-  local.get $1
-  local.set $8
-  nop
-  local.get $0
- )
- (func $~lib/nearEntry/PrimitiveHandler<i32>#constructor (; 164 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else   
-   i32.const 8
-   i32.const 28
-   call $~lib/rt/stub/__alloc
-   local.set $3
-   local.get $3
-  end
-  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
-  local.set $0
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.const 0
-  i32.store offset=4
-  local.get $0
-  local.tee $1
-  i32.const 0
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i32>>#constructor
-  local.set $2
-  local.get $1
-  i32.load offset=4
-  local.set $4
-  nop
-  local.get $2
-  i32.store offset=4
-  local.get $0
- )
- (func $start:~lib/nearEntry (; 165 ;) (type $FUNCSIG$v)
-  i32.const 0
-  call $~lib/nearEntry/PrimitiveHandler<~lib/string/String>#constructor
-  global.set $~lib/nearEntry/PrimitiveHandler.String
-  i32.const 0
-  call $~lib/nearEntry/PrimitiveHandler<bool>#constructor
-  global.set $~lib/nearEntry/PrimitiveHandler.Boolean
-  i32.const 0
-  call $~lib/nearEntry/PrimitiveHandler<u64>#constructor
-  global.set $~lib/nearEntry/PrimitiveHandler.U64
-  i32.const 0
-  call $~lib/nearEntry/PrimitiveHandler<i64>#constructor
-  global.set $~lib/nearEntry/PrimitiveHandler.I64
-  i32.const 0
-  call $~lib/nearEntry/PrimitiveHandler<u32>#constructor
-  global.set $~lib/nearEntry/PrimitiveHandler.U32
-  i32.const 0
-  call $~lib/nearEntry/PrimitiveHandler<i32>#constructor
-  global.set $~lib/nearEntry/PrimitiveHandler.I32
- )
- (func $~lib/array/Array<i32>#__get (; 166 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<i32>#__get (; 153 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $1
@@ -8923,7 +8369,7 @@
   i32.add
   i32.load
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#write (; 167 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#write (; 154 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   local.get $1
@@ -8939,7 +8385,7 @@
   local.set $3
   nop
  )
- (func $~lib/array/Array<i32>#__set (; 168 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/array/Array<i32>#__set (; 155 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -8978,7 +8424,7 @@
    i32.store offset=12
   end
  )
- (func $~lib/string/String#substring (; 169 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/string/String#substring (; 156 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -9091,7 +8537,7 @@
   local.set $13
   local.get $13
  )
- (func $~lib/util/number/itoa32 (; 170 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/util/number/itoa32 (; 157 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -9150,7 +8596,7 @@
   local.set $8
   local.get $8
  )
- (func $~lib/number/I32#toString (; 171 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/number/I32#toString (; 158 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -9172,7 +8618,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeString (; 172 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeString (; 159 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -9363,7 +8809,7 @@
   local.set $14
   nop
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey (; 173 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey (; 160 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -9437,7 +8883,7 @@
   local.set $5
   nop
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#setNull (; 174 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#setNull (; 161 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   local.get $1
@@ -9453,6 +8899,560 @@
   local.get $1
   local.set $3
   nop
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<~lib/string/String>>#constructor (; 162 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $1
+  local.set $4
+  local.get $4
+  drop
+  local.get $0
+  i32.eqz
+  if
+   i32.const 8
+   i32.const 19
+   call $~lib/rt/stub/__alloc
+   local.set $5
+   local.get $5
+   local.set $0
+  end
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $2
+  local.get $1
+  local.tee $3
+  local.get $2
+  i32.load
+  local.tee $2
+  i32.ne
+  if
+   local.get $3
+   local.set $6
+   local.get $6
+   drop
+   local.get $2
+   local.set $7
+   nop
+  end
+  local.get $3
+  i32.store
+  local.get $1
+  local.set $8
+  nop
+  local.get $0
+ )
+ (func $~lib/nearEntry/PrimitiveHandler<~lib/string/String>#constructor (; 163 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  if (result i32)
+   local.get $0
+  else   
+   i32.const 8
+   i32.const 18
+   call $~lib/rt/stub/__alloc
+   local.set $3
+   local.get $3
+  end
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
+  local.set $0
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $1
+  i32.const 0
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<~lib/string/String>>#constructor
+  local.set $2
+  local.get $1
+  i32.load offset=4
+  local.set $4
+  nop
+  local.get $2
+  i32.store offset=4
+  local.get $0
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<bool>>#constructor (; 164 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $1
+  local.set $4
+  local.get $4
+  drop
+  local.get $0
+  i32.eqz
+  if
+   i32.const 8
+   i32.const 21
+   call $~lib/rt/stub/__alloc
+   local.set $5
+   local.get $5
+   local.set $0
+  end
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $2
+  local.get $1
+  local.tee $3
+  local.get $2
+  i32.load
+  local.tee $2
+  i32.ne
+  if
+   local.get $3
+   local.set $6
+   local.get $6
+   drop
+   local.get $2
+   local.set $7
+   nop
+  end
+  local.get $3
+  i32.store
+  local.get $1
+  local.set $8
+  nop
+  local.get $0
+ )
+ (func $~lib/nearEntry/PrimitiveHandler<bool>#constructor (; 165 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  if (result i32)
+   local.get $0
+  else   
+   i32.const 8
+   i32.const 20
+   call $~lib/rt/stub/__alloc
+   local.set $3
+   local.get $3
+  end
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
+  local.set $0
+  local.get $0
+  i32.const 0
+  i32.store8
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $1
+  i32.const 0
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<bool>>#constructor
+  local.set $2
+  local.get $1
+  i32.load offset=4
+  local.set $4
+  nop
+  local.get $2
+  i32.store offset=4
+  local.get $0
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u64>>#constructor (; 166 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $1
+  local.set $4
+  local.get $4
+  drop
+  local.get $0
+  i32.eqz
+  if
+   i32.const 8
+   i32.const 23
+   call $~lib/rt/stub/__alloc
+   local.set $5
+   local.get $5
+   local.set $0
+  end
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $2
+  local.get $1
+  local.tee $3
+  local.get $2
+  i32.load
+  local.tee $2
+  i32.ne
+  if
+   local.get $3
+   local.set $6
+   local.get $6
+   drop
+   local.get $2
+   local.set $7
+   nop
+  end
+  local.get $3
+  i32.store
+  local.get $1
+  local.set $8
+  nop
+  local.get $0
+ )
+ (func $~lib/nearEntry/PrimitiveHandler<u64>#constructor (; 167 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  if (result i32)
+   local.get $0
+  else   
+   i32.const 12
+   i32.const 22
+   call $~lib/rt/stub/__alloc
+   local.set $3
+   local.get $3
+  end
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
+  local.set $0
+  local.get $0
+  i64.const 0
+  i64.store
+  local.get $0
+  i32.const 0
+  i32.store offset=8
+  local.get $0
+  local.tee $1
+  i32.const 0
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u64>>#constructor
+  local.set $2
+  local.get $1
+  i32.load offset=8
+  local.set $4
+  nop
+  local.get $2
+  i32.store offset=8
+  local.get $0
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i64>>#constructor (; 168 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $1
+  local.set $4
+  local.get $4
+  drop
+  local.get $0
+  i32.eqz
+  if
+   i32.const 8
+   i32.const 25
+   call $~lib/rt/stub/__alloc
+   local.set $5
+   local.get $5
+   local.set $0
+  end
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $2
+  local.get $1
+  local.tee $3
+  local.get $2
+  i32.load
+  local.tee $2
+  i32.ne
+  if
+   local.get $3
+   local.set $6
+   local.get $6
+   drop
+   local.get $2
+   local.set $7
+   nop
+  end
+  local.get $3
+  i32.store
+  local.get $1
+  local.set $8
+  nop
+  local.get $0
+ )
+ (func $~lib/nearEntry/PrimitiveHandler<i64>#constructor (; 169 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  if (result i32)
+   local.get $0
+  else   
+   i32.const 12
+   i32.const 24
+   call $~lib/rt/stub/__alloc
+   local.set $3
+   local.get $3
+  end
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
+  local.set $0
+  local.get $0
+  i64.const 0
+  i64.store
+  local.get $0
+  i32.const 0
+  i32.store offset=8
+  local.get $0
+  local.tee $1
+  i32.const 0
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i64>>#constructor
+  local.set $2
+  local.get $1
+  i32.load offset=8
+  local.set $4
+  nop
+  local.get $2
+  i32.store offset=8
+  local.get $0
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#constructor (; 170 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $1
+  local.set $4
+  local.get $4
+  drop
+  local.get $0
+  i32.eqz
+  if
+   i32.const 8
+   i32.const 27
+   call $~lib/rt/stub/__alloc
+   local.set $5
+   local.get $5
+   local.set $0
+  end
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $2
+  local.get $1
+  local.tee $3
+  local.get $2
+  i32.load
+  local.tee $2
+  i32.ne
+  if
+   local.get $3
+   local.set $6
+   local.get $6
+   drop
+   local.get $2
+   local.set $7
+   nop
+  end
+  local.get $3
+  i32.store
+  local.get $1
+  local.set $8
+  nop
+  local.get $0
+ )
+ (func $~lib/nearEntry/PrimitiveHandler<u32>#constructor (; 171 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  if (result i32)
+   local.get $0
+  else   
+   i32.const 8
+   i32.const 26
+   call $~lib/rt/stub/__alloc
+   local.set $3
+   local.get $3
+  end
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
+  local.set $0
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $1
+  i32.const 0
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#constructor
+  local.set $2
+  local.get $1
+  i32.load offset=4
+  local.set $4
+  nop
+  local.get $2
+  i32.store offset=4
+  local.get $0
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i32>>#constructor (; 172 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $1
+  local.set $4
+  local.get $4
+  drop
+  local.get $0
+  i32.eqz
+  if
+   i32.const 8
+   i32.const 29
+   call $~lib/rt/stub/__alloc
+   local.set $5
+   local.get $5
+   local.set $0
+  end
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $2
+  local.get $1
+  local.tee $3
+  local.get $2
+  i32.load
+  local.tee $2
+  i32.ne
+  if
+   local.get $3
+   local.set $6
+   local.get $6
+   drop
+   local.get $2
+   local.set $7
+   nop
+  end
+  local.get $3
+  i32.store
+  local.get $1
+  local.set $8
+  nop
+  local.get $0
+ )
+ (func $~lib/nearEntry/PrimitiveHandler<i32>#constructor (; 173 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  if (result i32)
+   local.get $0
+  else   
+   i32.const 8
+   i32.const 28
+   call $~lib/rt/stub/__alloc
+   local.set $3
+   local.get $3
+  end
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
+  local.set $0
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  local.tee $1
+  i32.const 0
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<i32>>#constructor
+  local.set $2
+  local.get $1
+  i32.load offset=4
+  local.set $4
+  nop
+  local.get $2
+  i32.store offset=4
+  local.get $0
+ )
+ (func $start:~lib/nearEntry (; 174 ;) (type $FUNCSIG$v)
+  i32.const 0
+  call $~lib/nearEntry/PrimitiveHandler<~lib/string/String>#constructor
+  global.set $~lib/nearEntry/PrimitiveHandler.String
+  i32.const 0
+  call $~lib/nearEntry/PrimitiveHandler<bool>#constructor
+  global.set $~lib/nearEntry/PrimitiveHandler.Boolean
+  i32.const 0
+  call $~lib/nearEntry/PrimitiveHandler<u64>#constructor
+  global.set $~lib/nearEntry/PrimitiveHandler.U64
+  i32.const 0
+  call $~lib/nearEntry/PrimitiveHandler<i64>#constructor
+  global.set $~lib/nearEntry/PrimitiveHandler.I64
+  i32.const 0
+  call $~lib/nearEntry/PrimitiveHandler<u32>#constructor
+  global.set $~lib/nearEntry/PrimitiveHandler.U32
+  i32.const 0
+  call $~lib/nearEntry/PrimitiveHandler<i32>#constructor
+  global.set $~lib/nearEntry/PrimitiveHandler.I32
  )
  (func $~lib/assemblyscript-json/encoder/JSONEncoder#setString (; 175 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
@@ -9602,7 +9602,6 @@
   (local $17 i32)
   (local $18 i32)
   (local $19 i32)
-  (local $20 i32)
   i64.const 0
   call $~lib/nearEntry/input
   i64.const 0
@@ -9638,11 +9637,11 @@
   i32.ne
   if
    local.get $5
-   local.set $9
-   local.get $9
+   local.set $8
+   local.get $8
    drop
    local.get $4
-   local.set $10
+   local.set $9
    nop
   end
   local.get $5
@@ -9655,7 +9654,7 @@
   local.set $4
   local.get $5
   i32.load offset=4
-  local.set $11
+  local.set $10
   nop
   local.get $4
   i32.store offset=4
@@ -9671,21 +9670,32 @@
   i32.const 0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
   local.set $5
-  local.get $5
   local.get $4
-  i32.const 1080
-  call $~lib/nearEntry/encode<~lib/string/String>
-  local.tee $6
+  i32.const 0
+  call $~lib/string/String.__eq
+  if
+   local.get $5
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+  else   
+   local.get $5
+   local.get $4
+   i32.const 0
+   call $~lib/nearEntry/encode<~lib/string/String>
+   local.set $11
+   nop
+  end
+  local.get $5
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $7
-  local.get $7
+  local.set $6
+  local.get $6
   local.set $12
   local.get $12
   i32.load offset=8
   i64.extend_i32_s
-  local.get $7
+  local.get $6
   call $~lib/typedarray/Uint8Array#get:buffer
-  local.tee $8
+  local.tee $7
   i64.extend_i32_u
   call $~lib/nearEntry/value_return
   local.get $1
@@ -9708,9 +9718,6 @@
   nop
   local.get $7
   local.set $19
-  nop
-  local.get $8
-  local.set $20
   nop
  )
  (func $start (; 180 ;) (type $FUNCSIG$v)
