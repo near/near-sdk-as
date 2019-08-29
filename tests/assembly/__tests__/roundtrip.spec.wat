@@ -1,8 +1,8 @@
 (module
  (type $FUNCSIG$iii (func (param i32 i32) (result i32)))
  (type $FUNCSIG$ii (func (param i32) (result i32)))
- (type $FUNCSIG$vi (func (param i32)))
  (type $FUNCSIG$v (func))
+ (type $FUNCSIG$vi (func (param i32)))
  (type $FUNCSIG$i (func (result i32)))
  (type $FUNCSIG$iiii (func (param i32 i32 i32) (result i32)))
  (type $FUNCSIG$viiii (func (param i32 i32 i32 i32)))
@@ -144,7 +144,8 @@
  (data (i32.const 4760) "8\00\00\00\01\00\00\00\01\00\00\008\00\00\00c\00a\00n\00 \00h\00a\00v\00e\00 \00a\00n\00 \00i\00t\00e\00m\00 \00a\00d\00d\00e\00d\00 \00t\00o\00 \00i\00t\00")
  (data (i32.const 4832) "\1e\00\00\00\01\00\00\00\01\00\00\00\1e\00\00\00G\00e\00n\00e\00r\00i\00c\00 \00c\00l\00a\00s\00s\00e\00s\00")
  (data (i32.const 4880) "$\00\00\00\01\00\00\00\01\00\00\00$\00\00\00c\00a\00n\00 \00u\00s\00e\00 \00i\00n\00s\00t\00a\00n\00c\00e\00o\00f\00")
- (data (i32.const 4936) "*\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\93\04\00\00\02\00\00\00\93 \00\00\02\00\00\00\93\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\0c\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\93\00\00\00\02\00\00\00")
+ (data (i32.const 4936) "H\00\00\00\01\00\00\00\01\00\00\00H\00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00_\00_\00t\00e\00s\00t\00s\00_\00_\00/\00r\00o\00u\00n\00d\00t\00r\00i\00p\00.\00s\00p\00e\00c\00.\00t\00s\00")
+ (data (i32.const 5024) ",\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\93\04\00\00\02\00\00\00\93 \00\00\02\00\00\00\93\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\0c\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00\93\00\00\00\02\00\00\00")
  (table $0 11 funcref)
  (elem (i32.const 0) $null $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|0 $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|1 $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|2 $start:assembly/__tests__/roundtrip.spec~anonymous|0 $start:../node_modules/@as-pect/assembly/assembly/internal/noOp~anonymous|0 $start:assembly/__tests__/roundtrip.spec~anonymous|1~anonymous|0 $start:assembly/__tests__/roundtrip.spec~anonymous|1~anonymous|1 $start:assembly/__tests__/roundtrip.spec~anonymous|1 $start:assembly/__tests__/roundtrip.spec~anonymous|2~anonymous|0 $start:assembly/__tests__/roundtrip.spec~anonymous|2)
  (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
@@ -208,8 +209,9 @@
  (global $../node_modules/@as-pect/assembly/assembly/internal/log/ignoreLogs (mut i32) (i32.const 0))
  (global $../node_modules/@as-pect/assembly/assembly/internal/RTrace/RTrace.enabled (mut i32) (i32.const 1))
  (global $~lib/started (mut i32) (i32.const 0))
- (global $~lib/rt/__rtti_base i32 (i32.const 4936))
- (global $~lib/heap/__heap_base i32 (i32.const 5276))
+ (global $~lib/rt/__rtti_base i32 (i32.const 5024))
+ (global $~lib/heap/__heap_base i32 (i32.const 5380))
+ (global $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo i32 (i32.const 41))
  (export "__start" (func $start))
  (export "memory" (memory $0))
  (export "__alloc" (func $~lib/rt/stub/__alloc))
@@ -217,6 +219,24 @@
  (export "__release" (func $~lib/rt/stub/__release))
  (export "__collect" (func $~lib/rt/stub/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
+ (export "__near_JSONHandler_Foo" (global $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo))
+ (export "__near_JSONHandler_Foo#setString" (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setString))
+ (export "__near_JSONHandler_Foo#setBoolean" (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setBoolean))
+ (export "__near_JSONHandler_Foo#setNull" (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#setNull))
+ (export "__near_JSONHandler_Foo#setInteger" (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setInteger))
+ (export "__near_JSONHandler_Foo#pushArray" (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#pushArray))
+ (export "__near_JSONHandler_Foo#popArray" (func $~lib/assemblyscript-json/decoder/JSONHandler#popArray))
+ (export "__near_JSONHandler_Foo#pushObject" (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#pushObject))
+ (export "__near_JSONHandler_Foo#popObject" (func $~lib/assemblyscript-json/decoder/JSONHandler#popObject))
+ (export "__near_JSONHandler_Foo#get:buffer" (func $__near_JSONHandler_Foo#get:buffer))
+ (export "__near_JSONHandler_Foo#set:buffer" (func $__near_JSONHandler_Foo#set:buffer))
+ (export "__near_JSONHandler_Foo#get:decoder" (func $__near_JSONHandler_Foo#get:decoder))
+ (export "__near_JSONHandler_Foo#set:decoder" (func $__near_JSONHandler_Foo#set:decoder))
+ (export "__near_JSONHandler_Foo#get:handledRoot" (func $__near_JSONHandler_Foo#get:handledRoot))
+ (export "__near_JSONHandler_Foo#set:handledRoot" (func $__near_JSONHandler_Foo#set:handledRoot))
+ (export "__near_JSONHandler_Foo#get:value" (func $__near_JSONHandler_Foo#get:value))
+ (export "__near_JSONHandler_Foo#set:value" (func $__near_JSONHandler_Foo#set:value))
+ (export "__near_JSONHandler_Foo#constructor" (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#constructor))
  (export "Foo_ID" (global $assembly/__tests__/roundtrip.spec/Foo_ID))
  (export "Generic_i32_ID" (global $assembly/__tests__/roundtrip.spec/Generic_i32_ID))
  (export "Generic_Foo_ID" (global $assembly/__tests__/roundtrip.spec/Generic_Foo_ID))
@@ -323,17 +343,21 @@
  (func $~lib/rt/stub/__retain (; 27 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
  )
- (func $~lib/rt/stub/__release (; 28 ;) (type $FUNCSIG$vi) (param $0 i32)
-  nop
- )
- (func $~lib/rt/stub/__collect (; 29 ;) (type $FUNCSIG$v)
-  nop
- )
- (func $start:~lib/near-runtime-ts/index (; 30 ;) (type $FUNCSIG$v)
+ (func $start:~lib/near-runtime-ts/index (; 28 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
+  global.get $~lib/heap/__heap_base
+  i32.const 15
+  i32.add
+  i32.const 15
+  i32.const -1
+  i32.xor
+  i32.and
+  global.set $~lib/rt/stub/startOffset
+  global.get $~lib/rt/stub/startOffset
+  global.set $~lib/rt/stub/offset
   i32.const 0
   local.set $0
   i32.const 0
@@ -367,7 +391,7 @@
   local.get $2
   global.set $~lib/near-runtime-ts/contract/context
  )
- (func $~lib/string/String#get:length (; 31 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/string/String#get:length (; 29 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.const 16
   i32.sub
@@ -375,7 +399,7 @@
   i32.const 1
   i32.shr_u
  )
- (func $~lib/string/String#charCodeAt (; 32 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String#charCodeAt (; 30 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   call $~lib/string/String#get:length
@@ -391,7 +415,7 @@
   i32.add
   i32.load16_u
  )
- (func $start:~lib/assemblyscript-json/decoder (; 33 ;) (type $FUNCSIG$v)
+ (func $start:~lib/assemblyscript-json/decoder (; 31 ;) (type $FUNCSIG$v)
   i32.const 456
   i32.const 0
   call $~lib/string/String#charCodeAt
@@ -408,6 +432,12 @@
   i32.const 0
   call $~lib/string/String#charCodeAt
   global.set $~lib/assemblyscript-json/decoder/CHAR_A_LOWER
+ )
+ (func $~lib/rt/stub/__release (; 32 ;) (type $FUNCSIG$vi) (param $0 i32)
+  nop
+ )
+ (func $~lib/rt/stub/__collect (; 33 ;) (type $FUNCSIG$v)
+  nop
  )
  (func $assembly/model/TextMessage#constructor (; 34 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
@@ -6585,7 +6615,10 @@
    unreachable
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseObject (; 119 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONHandler#popObject (; 119 ;) (type $FUNCSIG$vi) (param $0 i32)
+  nop
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseObject (; 120 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -6710,7 +6743,7 @@
   nop
   local.get $3
  )
- (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#pushArray (; 120 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#pushArray (; 121 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -6743,7 +6776,7 @@
   nop
   local.get $3
  )
- (func $assembly/model/__near_JSONHandler_TextMessage#pushArray (; 121 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/model/__near_JSONHandler_TextMessage#pushArray (; 122 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -6760,7 +6793,10 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseArray (; 122 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONHandler#popArray (; 123 ;) (type $FUNCSIG$vi) (param $0 i32)
+  nop
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseArray (; 124 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -6883,7 +6919,7 @@
   nop
   local.get $3
  )
- (func $~lib/util/string/isSpace (; 123 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/util/string/isSpace (; 125 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   i32.const 255
@@ -7006,7 +7042,7 @@
   end
   i32.const 0
  )
- (func $~lib/util/string/strtol<i64> (; 124 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+ (func $~lib/util/string/strtol<i64> (; 126 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
   (local $3 i64)
   (local $4 i32)
@@ -7340,7 +7376,7 @@
   nop
   local.get $3
  )
- (func $~lib/number/U64.parseInt (; 125 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+ (func $~lib/number/U64.parseInt (; 127 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i64)
   (local $3 i32)
   (local $4 i32)
@@ -7357,7 +7393,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setString (; 126 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setString (; 128 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -7419,7 +7455,7 @@
   local.set $14
   nop
  )
- (func $assembly/model/__near_JSONHandler_TextMessage#setString (; 127 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $assembly/model/__near_JSONHandler_TextMessage#setString (; 129 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -7537,7 +7573,7 @@
   local.set $18
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseString (; 128 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseString (; 130 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -7567,7 +7603,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#readAndAssert (; 129 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#readAndAssert (; 131 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -7628,7 +7664,7 @@
   local.set $8
   nop
  )
- (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setBoolean (; 130 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setBoolean (; 132 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -7688,7 +7724,7 @@
   local.set $14
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseBoolean (; 131 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseBoolean (; 133 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#peekChar
   i32.const 400
@@ -7731,7 +7767,7 @@
   end
   i32.const 0
  )
- (func $~lib/util/number/itoa64 (; 132 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
+ (func $~lib/util/number/itoa64 (; 134 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -7822,7 +7858,7 @@
   local.set $10
   local.get $10
  )
- (func $~lib/number/I64#toString (; 133 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
+ (func $~lib/number/I64#toString (; 135 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i64)
@@ -7844,7 +7880,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setInteger (; 134 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
+ (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setInteger (; 136 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -7896,7 +7932,7 @@
   local.set $12
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseNumber (; 135 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseNumber (; 137 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i64)
   (local $2 i64)
   (local $3 i32)
@@ -7976,7 +8012,7 @@
   end
   i32.const 0
  )
- (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setNull (; 136 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setNull (; 138 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -8005,7 +8041,7 @@
   local.set $5
   nop
  )
- (func $assembly/model/__near_JSONHandler_TextMessage#setNull (; 137 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/model/__near_JSONHandler_TextMessage#setNull (; 139 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -8085,7 +8121,7 @@
   local.set $11
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseNull (; 138 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseNull (; 140 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#peekChar
   i32.const 432
@@ -8107,7 +8143,7 @@
   end
   i32.const 0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseValue (; 139 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#parseValue (; 141 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#skipWhitespace
@@ -8153,7 +8189,7 @@
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#skipWhitespace
   local.get $1
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#deserialize (; 140 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/model/__near_JSONHandler_TextMessage>#deserialize (; 142 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -8228,7 +8264,7 @@
   local.set $11
   nop
  )
- (func $assembly/model/TextMessage#decode (; 141 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $assembly/model/TextMessage#decode (; 143 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -8320,7 +8356,7 @@
   nop
   local.get $6
  )
- (func $~lib/near-runtime-ts/util/util.parseFromBytes<assembly/model/TextMessage> (; 142 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/near-runtime-ts/util/util.parseFromBytes<assembly/model/TextMessage> (; 144 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -8356,7 +8392,7 @@
   local.get $3
   return
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<~lib/string/String>#constructor (; 143 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<~lib/string/String>#constructor (; 145 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -8408,7 +8444,7 @@
   nop
   local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/expect<~lib/string/String> (; 144 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/expect<~lib/string/String> (; 146 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -8425,7 +8461,7 @@
   nop
   local.get $1
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<~lib/string/String> (; 145 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<~lib/string/String> (; 147 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -8459,7 +8495,7 @@
   local.set $5
   nop
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<~lib/string/String> (; 146 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<~lib/string/String> (; 148 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -8505,7 +8541,7 @@
   local.set $7
   nop
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.clear (; 147 ;) (type $FUNCSIG$v)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.clear (; 149 ;) (type $FUNCSIG$v)
   (local $0 i32)
   i32.const 0
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.type
@@ -8527,7 +8563,7 @@
   i32.const -1
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.stackTrace
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.clear (; 148 ;) (type $FUNCSIG$v)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.clear (; 150 ;) (type $FUNCSIG$v)
   (local $0 i32)
   i32.const 0
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.type
@@ -8547,7 +8583,7 @@
    global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.isManaged
   end
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<~lib/string/String>#toStrictEqual (; 149 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<~lib/string/String>#toStrictEqual (; 151 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -8892,7 +8928,7 @@
   nop
   return
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u64>#constructor (; 150 ;) (type $FUNCSIG$iij) (param $0 i32) (param $1 i64) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u64>#constructor (; 152 ;) (type $FUNCSIG$iij) (param $0 i32) (param $1 i64) (result i32)
   (local $2 i32)
   local.get $0
   i32.eqz
@@ -8915,12 +8951,12 @@
   i64.store offset=8
   local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/expect<u64> (; 151 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/expect<u64> (; 153 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
   i32.const 0
   local.get $0
   call $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u64>#constructor
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Box/Box<u64>#constructor (; 152 ;) (type $FUNCSIG$iij) (param $0 i32) (param $1 i64) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Box/Box<u64>#constructor (; 154 ;) (type $FUNCSIG$iij) (param $0 i32) (param $1 i64) (result i32)
   (local $2 i32)
   local.get $0
   i32.eqz
@@ -8937,7 +8973,7 @@
   i64.store
   local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<u64> (; 153 ;) (type $FUNCSIG$vj) (param $0 i64)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<u64> (; 155 ;) (type $FUNCSIG$vj) (param $0 i64)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -8972,7 +9008,7 @@
   local.set $5
   nop
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<u64> (; 154 ;) (type $FUNCSIG$vji) (param $0 i64) (param $1 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<u64> (; 156 ;) (type $FUNCSIG$vji) (param $0 i64) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -9013,7 +9049,7 @@
   local.set $6
   nop
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u64>#toBe (; 155 ;) (type $FUNCSIG$viji) (param $0 i32) (param $1 i64) (param $2 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u64>#toBe (; 157 ;) (type $FUNCSIG$viji) (param $0 i32) (param $1 i64) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i64)
@@ -9083,7 +9119,7 @@
   local.set $15
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|0 (; 156 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|0 (; 158 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -9143,7 +9179,7 @@
   local.set $11
   nop
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Test/it (; 157 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Test/it (; 159 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -9157,7 +9193,7 @@
   local.set $3
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|1 (; 158 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|1 (; 160 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -9221,7 +9257,7 @@
   local.set $11
   nop
  )
- (func $assembly/generic/Box<u32>#constructor (; 159 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/generic/Box<u32>#constructor (; 161 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   i32.eqz
@@ -9238,7 +9274,7 @@
   i32.store
   local.get $0
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger (; 160 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger (; 162 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -9272,7 +9308,7 @@
   local.set $4
   nop
  )
- (func $~lib/nearEntry/encode<u32> (; 161 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/nearEntry/encode<u32> (; 163 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -9297,7 +9333,7 @@
   nop
   local.get $3
  )
- (func $assembly/generic/Box<u32>#encode (; 162 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $assembly/generic/Box<u32>#encode (; 164 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -9358,7 +9394,7 @@
   nop
   local.get $4
  )
- (func $assembly/generic/__near_JSONHandler_Box<u32>#constructor (; 163 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/generic/__near_JSONHandler_Box<u32>#constructor (; 165 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -9418,7 +9454,7 @@
   nop
   local.get $0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#constructor (; 164 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#constructor (; 166 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -9470,7 +9506,7 @@
   nop
   local.get $0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#peekChar (; 165 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#peekChar (; 167 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.load offset=4
   i32.load offset=4
@@ -9491,7 +9527,7 @@
   i32.load offset=4
   call $~lib/typedarray/Uint8Array#__get
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#isWhitespace (; 166 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#isWhitespace (; 168 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   i32.const 9
   i32.eq
@@ -9517,7 +9553,7 @@
    i32.eq
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readChar (; 167 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readChar (; 169 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   i32.load offset=4
@@ -9551,7 +9587,7 @@
   local.get $1
   call $~lib/typedarray/Uint8Array#__get
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#skipWhitespace (; 168 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#skipWhitespace (; 170 ;) (type $FUNCSIG$vi) (param $0 i32)
   block $break|0
    loop $continue|0
     local.get $0
@@ -9568,7 +9604,7 @@
    unreachable
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#peekChar (; 169 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#peekChar (; 171 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.load offset=4
   i32.load offset=4
@@ -9589,7 +9625,7 @@
   i32.load offset=4
   call $~lib/typedarray/Uint8Array#__get
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#isWhitespace (; 170 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#isWhitespace (; 172 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   i32.const 9
   i32.eq
@@ -9615,7 +9651,7 @@
    i32.eq
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readChar (; 171 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readChar (; 173 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   i32.load offset=4
@@ -9649,7 +9685,7 @@
   local.get $1
   call $~lib/typedarray/Uint8Array#__get
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#skipWhitespace (; 172 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#skipWhitespace (; 174 ;) (type $FUNCSIG$vi) (param $0 i32)
   block $break|0
    loop $continue|0
     local.get $0
@@ -9666,7 +9702,7 @@
    unreachable
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readHexDigit (; 173 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readHexDigit (; 175 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -9754,7 +9790,7 @@
   nop
   local.get $3
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readEscapedChar (; 174 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readEscapedChar (; 176 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -9917,7 +9953,7 @@
   nop
   local.get $4
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readString (; 175 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readString (; 177 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -10064,7 +10100,7 @@
   end
   unreachable
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseKey (; 176 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseKey (; 178 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -10100,7 +10136,7 @@
    unreachable
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseObject (; 177 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseObject (; 179 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -10225,7 +10261,7 @@
   nop
   local.get $3
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseArray (; 178 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseArray (; 180 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -10348,7 +10384,7 @@
   nop
   local.get $3
  )
- (func $~lib/number/I64.parseInt (; 179 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+ (func $~lib/number/I64.parseInt (; 181 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i64)
   (local $3 i32)
   (local $4 i32)
@@ -10365,7 +10401,7 @@
   nop
   local.get $2
  )
- (func $~lib/nearEntry/PrimitiveHandler<u32>#setString (; 180 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/nearEntry/PrimitiveHandler<u32>#setString (; 182 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -10431,7 +10467,7 @@
   local.set $10
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseString (; 181 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseString (; 183 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -10461,7 +10497,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readAndAssert (; 182 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#readAndAssert (; 184 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -10522,7 +10558,7 @@
   local.set $8
   nop
  )
- (func $~lib/nearEntry/PrimitiveHandler<u32>#setBoolean (; 183 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/nearEntry/PrimitiveHandler<u32>#setBoolean (; 185 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   local.get $1
@@ -10537,7 +10573,7 @@
   local.set $4
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseBoolean (; 184 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseBoolean (; 186 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#peekChar
   i32.const 400
@@ -10580,7 +10616,7 @@
   end
   i32.const 0
  )
- (func $~lib/nearEntry/PrimitiveHandler<u32>#setInteger (; 185 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
+ (func $~lib/nearEntry/PrimitiveHandler<u32>#setInteger (; 187 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
   (local $3 i32)
   (local $4 i32)
   local.get $1
@@ -10596,7 +10632,7 @@
   nop
   return
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseNumber (; 186 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseNumber (; 188 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i64)
   (local $2 i64)
   (local $3 i32)
@@ -10676,7 +10712,7 @@
   end
   i32.const 0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseNull (; 187 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseNull (; 189 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -10717,7 +10753,7 @@
   end
   i32.const 0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseValue (; 188 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#parseValue (; 190 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#skipWhitespace
@@ -10763,7 +10799,7 @@
   call $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#skipWhitespace
   local.get $1
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#deserialize (; 189 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<~lib/nearEntry/PrimitiveHandler<u32>>#deserialize (; 191 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -10838,7 +10874,7 @@
   local.set $11
   nop
  )
- (func $~lib/nearEntry/PrimitiveHandler<u32>#decode (; 190 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/nearEntry/PrimitiveHandler<u32>#decode (; 192 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -10868,7 +10904,7 @@
   nop
   local.get $3
  )
- (func $~lib/nearEntry/decodeInt<u32> (; 191 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/nearEntry/decodeInt<u32> (; 193 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -10897,7 +10933,7 @@
   local.get $3
   return
  )
- (func $~lib/nearEntry/decode<u32> (; 192 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/nearEntry/decode<u32> (; 194 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -10924,7 +10960,7 @@
   local.get $2
   return
  )
- (func $assembly/generic/__near_JSONHandler_Box<u32>#pushObject (; 193 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/generic/__near_JSONHandler_Box<u32>#pushObject (; 195 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -11027,7 +11063,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readHexDigit (; 194 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readHexDigit (; 196 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -11115,7 +11151,7 @@
   nop
   local.get $3
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readEscapedChar (; 195 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readEscapedChar (; 197 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -11278,7 +11314,7 @@
   nop
   local.get $4
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readString (; 196 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readString (; 198 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -11425,7 +11461,7 @@
   end
   unreachable
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseKey (; 197 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseKey (; 199 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -11461,7 +11497,7 @@
    unreachable
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseObject (; 198 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseObject (; 200 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -11586,7 +11622,7 @@
   nop
   local.get $3
  )
- (func $assembly/generic/__near_JSONHandler_Box<u32>#pushArray (; 199 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/generic/__near_JSONHandler_Box<u32>#pushArray (; 201 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -11603,7 +11639,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseArray (; 200 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseArray (; 202 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -11726,7 +11762,7 @@
   nop
   local.get $3
  )
- (func $assembly/generic/__near_JSONHandler_Box<u32>#setString (; 201 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $assembly/generic/__near_JSONHandler_Box<u32>#setString (; 203 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -11781,7 +11817,7 @@
   local.set $8
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseString (; 202 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseString (; 204 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -11811,7 +11847,7 @@
   nop
   local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readAndAssert (; 203 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#readAndAssert (; 205 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -11872,7 +11908,7 @@
   local.set $8
   nop
  )
- (func $assembly/generic/__near_JSONHandler_Box<u32>#setBoolean (; 204 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $assembly/generic/__near_JSONHandler_Box<u32>#setBoolean (; 206 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -11913,7 +11949,7 @@
   local.set $5
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseBoolean (; 205 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseBoolean (; 207 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#peekChar
   i32.const 400
@@ -11956,7 +11992,7 @@
   end
   i32.const 0
  )
- (func $assembly/generic/__near_JSONHandler_Box<u32>#setInteger (; 206 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
+ (func $assembly/generic/__near_JSONHandler_Box<u32>#setInteger (; 208 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -11986,7 +12022,7 @@
   local.set $5
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseNumber (; 207 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseNumber (; 209 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i64)
   (local $2 i64)
   (local $3 i32)
@@ -12066,7 +12102,7 @@
   end
   i32.const 0
  )
- (func $assembly/generic/__near_JSONHandler_Box<u32>#setNull (; 208 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/generic/__near_JSONHandler_Box<u32>#setNull (; 210 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   local.get $1
@@ -12086,7 +12122,7 @@
   local.set $3
   nop
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseNull (; 209 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseNull (; 211 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#peekChar
   i32.const 432
@@ -12108,7 +12144,7 @@
   end
   i32.const 0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseValue (; 210 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#parseValue (; 212 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#skipWhitespace
@@ -12154,7 +12190,7 @@
   call $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#skipWhitespace
   local.get $1
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#deserialize (; 211 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<assembly/generic/__near_JSONHandler_Box<u32>>#deserialize (; 213 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -12229,7 +12265,7 @@
   local.set $11
   nop
  )
- (func $assembly/generic/Box<u32>#decode (; 212 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $assembly/generic/Box<u32>#decode (; 214 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -12321,7 +12357,7 @@
   nop
   local.get $6
  )
- (func $~lib/near-runtime-ts/util/util.parseFromBytes<assembly/generic/Box<u32>> (; 213 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/near-runtime-ts/util/util.parseFromBytes<assembly/generic/Box<u32>> (; 215 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -12357,7 +12393,7 @@
   local.get $3
   return
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u32>#constructor (; 214 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u32>#constructor (; 216 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   i32.eqz
@@ -12380,12 +12416,12 @@
   i32.store offset=4
   local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/expect<u32> (; 215 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/expect<u32> (; 217 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   i32.const 0
   local.get $0
   call $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u32>#constructor
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<u32> (; 216 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<u32> (; 218 ;) (type $FUNCSIG$vi) (param $0 i32)
   call $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/getStackTrace
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.stackTrace
   i32.const 3
@@ -12411,7 +12447,7 @@
   local.get $0
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.integer
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<u32> (; 217 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<u32> (; 219 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   global.get $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.ready
   i32.eqz
   if
@@ -12445,7 +12481,7 @@
   local.get $0
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.integer
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u32>#toBe (; 218 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<u32>#toBe (; 220 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -12515,7 +12551,7 @@
   local.set $15
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|2 (; 219 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|0~anonymous|2 (; 221 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -12577,7 +12613,7 @@
   local.set $7
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|0 (; 220 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|0 (; 222 ;) (type $FUNCSIG$v)
   i32.const 592
   i32.const 1
   call $../node_modules/@as-pect/assembly/assembly/internal/Test/it
@@ -12588,10 +12624,10 @@
   i32.const 3
   call $../node_modules/@as-pect/assembly/assembly/internal/Test/it
  )
- (func $start:../node_modules/@as-pect/assembly/assembly/internal/noOp~anonymous|0 (; 221 ;) (type $FUNCSIG$v)
+ (func $start:../node_modules/@as-pect/assembly/assembly/internal/noOp~anonymous|0 (; 223 ;) (type $FUNCSIG$v)
   nop
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe (; 222 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe (; 224 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -12609,7 +12645,7 @@
   local.set $3
   nop
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<i32>#constructor (; 223 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<i32>#constructor (; 225 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   i32.eqz
@@ -12632,7 +12668,7 @@
   i32.store offset=4
   local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<i32> (; 224 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.report<i32> (; 226 ;) (type $FUNCSIG$vi) (param $0 i32)
   call $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/getStackTrace
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.stackTrace
   i32.const 3
@@ -12658,7 +12694,7 @@
   local.get $0
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.integer
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<i32> (; 225 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<i32> (; 227 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   global.get $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.ready
   i32.eqz
   if
@@ -12692,7 +12728,7 @@
   local.get $0
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.integer
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<i32>#toBe (; 226 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<i32>#toBe (; 228 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -12762,7 +12798,7 @@
   local.set $15
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|1~anonymous|0 (; 227 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|1~anonymous|0 (; 229 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -12801,7 +12837,7 @@
   local.set $8
   nop
  )
- (func $~lib/array/Array<u32>#constructor (; 228 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u32>#constructor (; 230 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   if (result i32)
@@ -12825,7 +12861,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $~lib/array/Array<u32>#push (; 229 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u32>#push (; 231 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -12852,7 +12888,7 @@
   i32.store offset=12
   local.get $3
  )
- (func $assembly/__tests__/roundtrip.spec/makeArray<~lib/array/Array<u32>> (; 230 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/__tests__/roundtrip.spec/makeArray<~lib/array/Array<u32>> (; 232 ;) (type $FUNCSIG$i) (result i32)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -12876,7 +12912,7 @@
   nop
   local.get $2
  )
- (func $~lib/array/Array<u32>#__get (; 231 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u32>#__get (; 233 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $1
@@ -12905,7 +12941,7 @@
   i32.add
   i32.load
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|1~anonymous|1 (; 232 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|1~anonymous|1 (; 234 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -12927,7 +12963,7 @@
   local.set $3
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|1 (; 233 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|1 (; 235 ;) (type $FUNCSIG$v)
   i32.const 4704
   i32.const 6
   call $../node_modules/@as-pect/assembly/assembly/internal/Test/it
@@ -12935,7 +12971,7 @@
   i32.const 7
   call $../node_modules/@as-pect/assembly/assembly/internal/Test/it
  )
- (func $assembly/__tests__/roundtrip.spec/Generic<assembly/__tests__/roundtrip.spec/Foo>#constructor (; 234 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/__tests__/roundtrip.spec/Generic<assembly/__tests__/roundtrip.spec/Foo>#constructor (; 236 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -12964,7 +13000,7 @@
   nop
   local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<bool>#constructor (; 235 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<bool>#constructor (; 237 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   i32.eqz
@@ -12987,7 +13023,7 @@
   i32.store8 offset=4
   local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<bool> (; 236 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.report<bool> (; 238 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   global.get $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.ready
   i32.eqz
   if
@@ -13005,7 +13041,7 @@
   i32.ne
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.integer
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<bool>#toBe (; 237 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/Expectation<bool>#toBe (; 239 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -13088,7 +13124,7 @@
   local.set $16
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|2~anonymous|0 (; 238 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|2~anonymous|0 (; 240 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -13138,36 +13174,189 @@
   local.set $6
   nop
  )
- (func $start:assembly/__tests__/roundtrip.spec~anonymous|2 (; 239 ;) (type $FUNCSIG$v)
+ (func $start:assembly/__tests__/roundtrip.spec~anonymous|2 (; 241 ;) (type $FUNCSIG$v)
   i32.const 4896
   i32.const 9
   call $../node_modules/@as-pect/assembly/assembly/internal/Test/it
  )
- (func $start:assembly/__tests__/roundtrip.spec (; 240 ;) (type $FUNCSIG$v)
-  call $start:~lib/near-runtime-ts/index
-  call $start:~lib/assemblyscript-json/decoder
-  call $start:~lib/nearEntry
-  i32.const 552
-  i32.const 4
-  call $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe
-  i32.const 4648
-  i32.const 8
-  call $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe
-  i32.const 4848
-  i32.const 10
-  call $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe
+ (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#constructor (; 242 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $1
+  local.set $4
+  local.get $4
+  drop
+  local.get $0
+  if (result i32)
+   local.get $0
+  else   
+   i32.const 16
+   i32.const 41
+   call $~lib/rt/stub/__alloc
+   local.set $5
+   local.get $5
+  end
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
+  local.set $0
+  local.get $0
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 0
+  i32.store offset=4
+  local.get $0
+  i32.const 0
+  i32.store8 offset=8
+  local.get $0
+  i32.const 0
+  i32.store offset=12
+  local.get $0
+  local.tee $2
+  local.get $1
+  local.tee $3
+  local.get $2
+  i32.load offset=12
+  local.tee $2
+  i32.ne
+  if
+   local.get $3
+   local.set $6
+   local.get $6
+   drop
+   local.get $2
+   local.set $7
+   nop
+  end
+  local.get $3
+  i32.store offset=12
+  local.get $1
+  local.set $8
+  nop
+  local.get $0
  )
- (func $../node_modules/@as-pect/assembly/assembly/index/__ready (; 241 ;) (type $FUNCSIG$v)
+ (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#setNull (; 243 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $1
+  local.set $2
+  local.get $2
+  drop
+  local.get $0
+  local.get $1
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#setNull
+  local.get $1
+  local.set $3
+  nop
+ )
+ (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#pushArray (; 244 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $1
+  local.set $3
+  local.get $3
+  drop
+  local.get $0
+  local.get $1
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#pushArray
+  local.set $2
+  local.get $1
+  local.set $4
+  nop
+  local.get $2
+ )
+ (func $assembly/__tests__/roundtrip.spec/__near_JSONHandler_Foo#pushObject (; 245 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  local.get $1
+  local.set $3
+  local.get $3
+  drop
+  local.get $0
+  i32.load8_u offset=8
+  i32.const 0
+  i32.ne
+  i32.eqz
+  if
+   local.get $1
+   i32.const 0
+   call $~lib/string/String.__eq
+   if (result i32)
+    i32.const 1
+   else    
+    local.get $1
+    call $~lib/string/String#get:length
+    i32.const 0
+    i32.eq
+   end
+   i32.eqz
+   if
+    i32.const 0
+    i32.const 4952
+    i32.const 91
+    i32.const 6
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $0
+   i32.const 1
+   i32.store8 offset=8
+   i32.const 1
+   local.set $2
+   local.get $1
+   local.set $4
+   nop
+   local.get $2
+   return
+  else   
+   local.get $1
+   i32.const 0
+   call $~lib/string/String.__ne
+   if (result i32)
+    i32.const 1
+   else    
+    local.get $1
+    call $~lib/string/String#get:length
+    i32.const 0
+    i32.ne
+   end
+   i32.eqz
+   if
+    i32.const 0
+    i32.const 4952
+    i32.const 95
+    i32.const 6
+    call $~lib/builtins/abort
+    unreachable
+   end
+  end
+  local.get $0
+  local.get $1
+  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#pushObject
+  local.set $2
+  local.get $1
+  local.set $5
+  nop
+  local.get $2
+ )
+ (func $../node_modules/@as-pect/assembly/assembly/index/__ready (; 246 ;) (type $FUNCSIG$v)
   i32.const 1
   global.set $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.ready
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/call/__call (; 242 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/call/__call (; 247 ;) (type $FUNCSIG$vi) (param $0 i32)
   i32.const 0
   global.set $~lib/argc
   local.get $0
   call_indirect (type $FUNCSIG$v)
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/__sendActual (; 243 ;) (type $FUNCSIG$v)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/__sendActual (; 248 ;) (type $FUNCSIG$v)
   (local $0 i32)
   block $break|0
    block $case8|0
@@ -13265,7 +13454,7 @@
    br $break|0
   end
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/__sendExpected (; 244 ;) (type $FUNCSIG$v)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/__sendExpected (; 249 ;) (type $FUNCSIG$v)
   (local $0 i32)
   block $break|0
    block $case10|0
@@ -13394,24 +13583,24 @@
    br $break|0
   end
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/log/__ignoreLogs (; 245 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/log/__ignoreLogs (; 250 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   i32.const 0
   i32.ne
   global.set $../node_modules/@as-pect/assembly/assembly/internal/log/ignoreLogs
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/RTrace/__disableRTrace (; 246 ;) (type $FUNCSIG$v)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/RTrace/__disableRTrace (; 251 ;) (type $FUNCSIG$v)
   i32.const 0
   global.set $../node_modules/@as-pect/assembly/assembly/internal/RTrace/RTrace.enabled
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/RTrace/__getUsizeArrayId (; 247 ;) (type $FUNCSIG$i) (result i32)
-  i32.const 41
+ (func $../node_modules/@as-pect/assembly/assembly/internal/RTrace/__getUsizeArrayId (; 252 ;) (type $FUNCSIG$i) (result i32)
+  i32.const 43
  )
- (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/__cleanup (; 248 ;) (type $FUNCSIG$v)
+ (func $../node_modules/@as-pect/assembly/assembly/internal/Expectation/__cleanup (; 253 ;) (type $FUNCSIG$v)
   call $../node_modules/@as-pect/assembly/assembly/internal/report/Expected/Expected.clear
   call $../node_modules/@as-pect/assembly/assembly/internal/report/Actual/Actual.clear
  )
- (func $start (; 249 ;) (type $FUNCSIG$v)
+ (func $start (; 254 ;) (type $FUNCSIG$v)
   global.get $~lib/started
   if
    return
@@ -13419,18 +13608,115 @@
    i32.const 1
    global.set $~lib/started
   end
-  global.get $~lib/heap/__heap_base
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  global.set $~lib/rt/stub/startOffset
-  global.get $~lib/rt/stub/startOffset
-  global.set $~lib/rt/stub/offset
-  call $start:assembly/__tests__/roundtrip.spec
+  call $start:~lib/near-runtime-ts/index
+  call $start:~lib/assemblyscript-json/decoder
+  call $start:~lib/nearEntry
+  i32.const 552
+  i32.const 4
+  call $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe
+  i32.const 4648
+  i32.const 8
+  call $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe
+  i32.const 4848
+  i32.const 10
+  call $../node_modules/@as-pect/assembly/assembly/internal/Describe/describe
  )
- (func $null (; 250 ;) (type $FUNCSIG$v)
+ (func $null (; 255 ;) (type $FUNCSIG$v)
+ )
+ (func $__near_JSONHandler_Foo#get:buffer (; 256 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  local.get $0
+  i32.load
+  local.set $1
+  local.get $1
+ )
+ (func $__near_JSONHandler_Foo#set:buffer (; 257 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  local.get $1
+  local.tee $0
+  local.get $0
+  i32.load
+  local.tee $1
+  i32.ne
+  if
+   local.get $0
+   local.set $2
+   local.get $2
+   drop
+   local.get $1
+   local.set $3
+   nop
+  end
+  local.get $0
+  i32.store
+ )
+ (func $__near_JSONHandler_Foo#get:decoder (; 258 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.set $1
+  local.get $1
+ )
+ (func $__near_JSONHandler_Foo#set:decoder (; 259 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  local.get $1
+  local.tee $1
+  local.get $0
+  i32.load offset=4
+  local.tee $0
+  i32.ne
+  if
+   local.get $1
+   local.set $2
+   local.get $2
+   drop
+   local.get $0
+   local.set $3
+   nop
+  end
+  local.get $1
+  i32.store offset=4
+ )
+ (func $__near_JSONHandler_Foo#get:handledRoot (; 260 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  local.get $0
+  i32.load8_u offset=8
+ )
+ (func $__near_JSONHandler_Foo#set:handledRoot (; 261 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store8 offset=8
+ )
+ (func $__near_JSONHandler_Foo#get:value (; 262 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  local.get $0
+  i32.load offset=12
+  local.set $1
+  local.get $1
+ )
+ (func $__near_JSONHandler_Foo#set:value (; 263 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  local.get $1
+  local.tee $1
+  local.get $0
+  i32.load offset=12
+  local.tee $0
+  i32.ne
+  if
+   local.get $1
+   local.set $2
+   local.get $2
+   drop
+   local.get $0
+   local.set $3
+   nop
+  end
+  local.get $1
+  i32.store offset=12
  )
 )
