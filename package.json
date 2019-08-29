@@ -11,7 +11,7 @@
   "ascMain": "assembly/index.ts",
   "scripts": {
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "cd tests/ && npm install && npm run test -- --verbose"
+    "test": "cd tests/ && npm install && npm run-script build && npm run test -- --verbose"
   },
   "author": "",
   "license": "MIT",

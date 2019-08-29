@@ -18,4 +18,5 @@ install_dependencies:
 
 run_tests:
   stage: test
-  script: npm run test
+  script:
+    - npm run test
