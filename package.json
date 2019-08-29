@@ -1,6 +1,6 @@
 {
   "name": "near-runtime-ts",
-  "version": "0.0.2",
+  "version": "0.1.0-preview1",
   "description": "Near smart contract runtime library for typescript",
   "repository": {
     "type": "git",
@@ -11,14 +11,13 @@
   "ascMain": "assembly/index.ts",
   "scripts": {
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "cd tests/ && npm install && asp",
-    "postinstall": "cd tests/ && npm install"
+    "test": "cd tests/ && npm install && npm run-script build && npm run test -- --verbose"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bignum": "github:MaxGraey/bignum.wasm",
-    "assemblyscript-json": "github:nearprotocol/assemblyscript-json#staging"
+    "assemblyscript-json": "github:nearprotocol/assemblyscript-json#staging",
+    "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
     "@as-pect/cli": "^2.4.0",

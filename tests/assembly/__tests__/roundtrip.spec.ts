@@ -13,6 +13,16 @@ describe("Round Trip", () => {
   expect<u64>(messageFromStorage.number).toBe(415, "Incorrect data value (number) for retrieved object");
   });
 
+  it("should handle empty Message", () => {
+    const message = new TextMessage();
+    //@ts-ignore
+    const messageFromStorage = util.parseFromBytes<TextMessage>(message.serialize());
+    expect<string>(messageFromStorage.sender).toStrictEqual(message.sender, "Incorrect data value (sender) for retrieved object");
+    expect<string>(messageFromStorage.text).toStrictEqual(message.text, "Incorrect data value (text) for retrieved object");
+    expect<u64>(messageFromStorage.number).toBe(message.number, "Incorrect data value (number) for retrieved object");
+
+  });
+
   it("should handle generics", () => {
     const u32 = new Box<u32>();
     u32.t = 42;

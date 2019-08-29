@@ -1,4 +1,4 @@
-image: node:10
+image: node:12
 
 stages:
   - build
@@ -18,4 +18,5 @@ install_dependencies:
 
 run_tests:
   stage: test
-  script: npm run test
+  script:
+    - npm run test

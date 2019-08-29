@@ -393,10 +393,11 @@ export function contextTests(): void {
 
 export function promiseTests(): void {
   logging.log("promiseTests");
+  const emptyResults = ContractPromise.getResults();
+  assert(emptyResults.length == 0, "wrong length for results");
   const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0));
   const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0));
   promise2.returnAsResult();
-  //assert(context.storageUsage == 0, "Wrong storage usage"); TODO: test when enabled
 }
 
 export function mathTests(): void {
@@ -460,23 +461,21 @@ function _vectorHasContents(vector: PersistentVector<string>, expectedContents: 
   return true;
 }
 
-
 export function simple(s: string): string {
   return s;
 }
 
-
 export function setKeyValue(key: string, value: string): void {
-  storage.set<string>(key!, value!);
+  storage.set<string>(key, value);
 }
 
 export function getValueByKey(key: string): string | null {
-  return storage.get<string>(key!);
+  return storage.get<string>(key);
 }
 
 export function setValue(value: string): string {
-  storage.set<string>("name", value!);
-  return value!;
+  storage.set<string>("name", value);
+  return value;
 }
 
 export function getValue(): string | null {
