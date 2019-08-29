@@ -23,3 +23,10 @@ export function _testTextMessage(): TextMessage {
   message.number = 415;
   return message;
 }
+export function _testTextMessageTwo(): TextMessage {
+  const message = new TextMessage();
+  message.sender = "joe";
+  message.text = "Howdy";
+  message.number = 20;
+  return message;
+}
