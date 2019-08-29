@@ -137,14 +137,15 @@ export class ContractPromise {
   *     // Serialize args
   *     let args = itemArgs.encode();
   *     ```
+  * @param gas The amount of gas attached to the call
   * @param amount The amount of tokens from your contract to be sent to the remote contract with this call.
   */
   static create(
     contractName: string,
     methodName: string,
     args: Uint8Array,
-    amount: u128 = u128.fromU64(0),
-    gas: u64 = 0
+    gas: u64,
+    amount: u128 = u128.fromU64(0)
   ): ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
@@ -166,18 +167,20 @@ export class ContractPromise {
 
   /**
   * Creating a callback for the AsyncCall Promise created with `create` method.
+  * @param contractName Name of your contract.
   * @param methodName Method name on your contract to be called to receive the callback.
   *     NOTE: Your callback method name can start with `_`, which would prevent other
   *     contracts from calling it directly. Only callbacks can call methods with `_` prefix.
   * @param args Serialized arguments on your callback method, see `create` for details.
+  * @param gas The amount of gas attached to the call.
   * @param amount The amount of tokens from the called contract to be sent to the current contract with this call.
   */
   then(
     contractName: string,
     methodName: string,
     args: Uint8Array,
-    amount: u128 = u128.fromU64(0),
-    gas: u64 = 0
+    gas: u64,
+    amount: u128 = u128.fromU64(0)
   ): ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
