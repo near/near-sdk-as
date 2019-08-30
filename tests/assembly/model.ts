@@ -3,5 +3,6 @@
 export class TextMessage {
   sender: string;
   text: string;
-  number: u64 = 0;
+  number: u64;
+  isRead: bool;
 }
