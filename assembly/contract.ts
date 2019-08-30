@@ -149,6 +149,7 @@ export class ContractPromise {
   ): ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
+    let amount_arr = amount.toUint8Array();
     const id: u64 = runtime_api.promise_create(
       contract_name_encoded.byteLength,
       contract_name_encoded.dataStart,
@@ -156,7 +157,7 @@ export class ContractPromise {
       method_name_encoded.dataStart,
       args.byteLength,
       args.dataStart,
-      0, // TODO: do this properly toUint8Array
+      amount_arr.dataStart,
       gas);
       //@ts-ignore: Typescript expects the object to have a function to match the type
       // Wheras as only cares about the fields.
@@ -184,6 +185,7 @@ export class ContractPromise {
   ): ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
+    let amount_arr = amount.toUint8Array();
     const id = runtime_api.promise_then(
       this.id,
       contract_name_encoded.byteLength,
@@ -192,7 +194,7 @@ export class ContractPromise {
       method_name_encoded.dataStart,
       args.byteLength,
       args.dataStart,
-      0,
+      amount_arr.dataStart,
       gas);
       //@ts-ignore: See above ignore comment
     return {

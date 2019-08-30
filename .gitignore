@@ -5,3 +5,8 @@ assembly/__tests__/as-pect.d.ts
 *.wasm
 
 tests/out/
+
+package-lock.json
+tests/package-lock.json
+yarn-error.log
+yarn.lock
