@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "node   --experimental-wasm-bigint ../node_modules/.bin/asp",
+    "build": "../node_modules/.bin/asc assembly/main.ts --binaryFile out/main.wasm --textFile out/main.wat"
+  },
+  "dependencies": {
+    "near-runtime-ts": "file:.."
+  }
+}

@@ -1,4 +1,4 @@
-[near-runtime-ts](../README.md) > ["near"](../modules/_near_.md) > [base64](../modules/_near_.base64.md)
+[near-runtime-ts](../README.md) > ["base64"](../modules/_base64_.md) > [base64](../modules/_base64_.base64.md)
 
 # Module: base64
 
@@ -8,14 +8,14 @@ base64 encoding/decoding
 
 ### Variables
 
-* [ALPHA](_near_.base64.md#alpha)
-* [PADCHAR](_near_.base64.md#padchar)
+* [ALPHA](_base64_.base64.md#alpha)
+* [PADCHAR](_base64_.base64.md#padchar)
 
 ### Functions
 
-* [decode](_near_.base64.md#decode)
-* [encode](_near_.base64.md#encode)
-* [getByte64](_near_.base64.md#getbyte64)
+* [decode](_base64_.base64.md#decode)
+* [encode](_base64_.base64.md#encode)
+* [getByte64](_base64_.base64.md#getbyte64)
 
 ---
 
@@ -27,7 +27,7 @@ base64 encoding/decoding
 
 **● ALPHA**: *`string`* = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-*Defined in [near.ts:1585](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1585)*
+*Defined in [base64.ts:7](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/base64.ts#L7)*
 
 ___
 <a id="padchar"></a>
@@ -36,7 +36,7 @@ ___
 
 **● PADCHAR**: *`string`* = "="
 
-*Defined in [near.ts:1584](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1584)*
+*Defined in [base64.ts:6](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/base64.ts#L6)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 ▸ **decode**(s: *`string`*): `Uint8Array`
 
-*Defined in [near.ts:1595](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1595)*
+*Defined in [base64.ts:13](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/base64.ts#L13)*
 
 Decode base64-encoded string and return a Uint8Array.
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **encode**(bytes: *`Uint8Array`*): `string`
 
-*Defined in [near.ts:1644](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1644)*
+*Defined in [base64.ts:62](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/base64.ts#L62)*
 
 Encode Uint8Array in base64.
 
@@ -86,7 +86,7 @@ ___
 
 ▸ **getByte64**(s: *`string`*, i: *`u32`*): `u32`
 
-*Defined in [near.ts:1587](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1587)*
+*Defined in [base64.ts:99](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/base64.ts#L99)*
 
 **Parameters:**
 

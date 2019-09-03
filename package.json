@@ -1,22 +1,28 @@
 {
   "name": "near-runtime-ts",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "description": "Near smart contract runtime library for typescript",
+  "repository": {
+    "type": "git",
+    "url": "git@:nearprotocol/near-runtime-ts.git"
+  },
   "main": "index.js",
+  "types": "assembly/index.ts",
+  "ascMain": "assembly/index.ts",
   "scripts": {
-    "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc near.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "asp --types && asp"
+    "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc assembly/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
+    "test": "cd tests/ && npm install && npm run-script build && npm run test -- --verbose"
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "assemblyscript-json": "github:nearprotocol/assemblyscript-json",
+    "bignum": "github:MaxGraey/bignum.wasm"
+  },
   "devDependencies": {
-    "@as-pect/assembly": "^2.3.1",
-    "@as-pect/cli": "^2.3.1",
-    "@as-pect/core": "^2.3.1",
+    "@as-pect/cli": "^2.4.0",
     "assemblyscript": "github:nearprotocol/assemblyscript",
-    "bignum": "MaxGraey/bignum.wasm",
-    "typedoc": "^0.14.2",
+    "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^1.2.1"
   }
 }

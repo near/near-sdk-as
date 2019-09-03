@@ -1,4 +1,4 @@
-[near-runtime-ts](../README.md) > ["near"](../modules/_near_.md) > [ContractPromise](../classes/_near_.contractpromise.md)
+[near-runtime-ts](../README.md) > ["contract"](../modules/_contract_.md) > [ContractPromise](../classes/_contract_.contractpromise.md)
 
 # Class: ContractPromise
 
@@ -39,15 +39,14 @@ See docs on used methods for more details.
 
 ### Properties
 
-* [id](_near_.contractpromise.md#id)
+* [id](_contract_.contractpromise.md#id)
 
 ### Methods
 
-* [returnAsResult](_near_.contractpromise.md#returnasresult)
-* [then](_near_.contractpromise.md#then)
-* [all](_near_.contractpromise.md#all)
-* [create](_near_.contractpromise.md#create)
-* [getResults](_near_.contractpromise.md#getresults)
+* [returnAsResult](_contract_.contractpromise.md#returnasresult)
+* [then](_contract_.contractpromise.md#then)
+* [create](_contract_.contractpromise.md#create)
+* [getResults](_contract_.contractpromise.md#getresults)
 
 ---
 
@@ -57,9 +56,9 @@ See docs on used methods for more details.
 
 ###  id
 
-**● id**: *`i32`*
+**● id**: *`u64`*
 
-*Defined in [near.ts:1280](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1280)*
+*Defined in [contract.ts:121](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L121)*
 
 ___
 
@@ -71,7 +70,7 @@ ___
 
 ▸ **returnAsResult**(): `void`
 
-*Defined in [near.ts:1384](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1384)*
+*Defined in [contract.ts:251](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L251)*
 
 Returns the promise as a result of your function. Don't return any other results from the function. Your current function should be `void` and shouldn't return anything else. E.g.
 
@@ -121,49 +120,32 @@ ___
 
 ###  then
 
-▸ **then**(methodName: *`string`*, args: *`Uint8Array`*, amount: *`u128`*): [ContractPromise](_near_.contractpromise.md)
+▸ **then**(contractName: *`string`*, methodName: *`string`*, args: *`Uint8Array`*, gas: *`u64`*, amount?: *`u128`*): [ContractPromise](_contract_.contractpromise.md)
 
-*Defined in [near.ts:1324](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1324)*
+*Defined in [contract.ts:179](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L179)*
 
 Creating a callback for the AsyncCall Promise created with `create` method.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| methodName | `string` |  Method name on your contract to be called to receive the callback. NOTE: Your callback method name can start with \`_\`, which would prevent other contracts from calling it directly. Only callbacks can call methods with \`_\` prefix. |
-| args | `Uint8Array` |  Serialized arguments on your callback method, see \`create\` for details. |
-| amount | `u128` |  The amount of tokens from the called contract to be sent to the current contract with this call. |
+| Name | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| contractName | `string` | - |  Name of your contract. |
+| methodName | `string` | - |  Method name on your contract to be called to receive the callback. NOTE: Your callback method name can start with \`_\`, which would prevent other contracts from calling it directly. Only callbacks can call methods with \`_\` prefix. |
+| args | `Uint8Array` | - |  Serialized arguments on your callback method, see \`create\` for details. |
+| gas | `u64` | - |  The amount of gas attached to the call. |
+| `Default value` amount | `u128` |  u128.fromU64(0) |  The amount of tokens from the called contract to be sent to the current contract with this call. |
 
-**Returns:** [ContractPromise](_near_.contractpromise.md)
-
-___
-<a id="all"></a>
-
-### `<Static>` all
-
-▸ **all**(promises: *[ContractPromise](_near_.contractpromise.md)[]*): [ContractPromise](_near_.contractpromise.md)
-
-*Defined in [near.ts:1394](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1394)*
-
-Joins multiple async call promises into one, to aggregate results before the callback. NOTE: Given promises can only be new async calls and can't be callbacks. Joined promise can't be returned as a result
-
-**Parameters:**
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| promises | [ContractPromise](_near_.contractpromise.md)[] |  List of async call promises to join. |
-
-**Returns:** [ContractPromise](_near_.contractpromise.md)
+**Returns:** [ContractPromise](_contract_.contractpromise.md)
 
 ___
 <a id="create"></a>
 
 ### `<Static>` create
 
-▸ **create**(contractName: *`string`*, methodName: *`string`*, args: *`Uint8Array`*, amount?: *`u128`*): [ContractPromise](_near_.contractpromise.md)
+▸ **create**(contractName: *`string`*, methodName: *`string`*, args: *`Uint8Array`*, gas: *`u64`*, amount?: *`u128`*): [ContractPromise](_contract_.contractpromise.md)
 
-*Defined in [near.ts:1301](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1301)*
+*Defined in [contract.ts:143](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L143)*
 
 Creates a new async call promise. Returns an instance of `ContractPromise`. The call would be scheduled if the this current execution of the contract succeeds without errors or failed asserts.
 
@@ -174,18 +156,19 @@ Creates a new async call promise. Returns an instance of `ContractPromise`. The 
 | contractName | `string` | - |  Account ID of the remote contract to call. E.g. \`metanear\`. |
 | methodName | `string` | - |  Method name on the remote contract to call. E.g. \`addItem\`. |
 | args | `Uint8Array` | - |  Serialized arguments to pass into the method. To get them create a new model specific for the method you calling, e.g. \`AddItemArgs\`. Then create an instance of it and populate arguments. After this, serialize it into bytes. E.g. ``` let itemArgs: AddItemArgs = { accountId: "alice.near", itemId: "Sword +9000", }; // Serialize args let args = itemArgs.encode(); ``` |
-| `Default value` amount | `u128` | 0 |  The amount of tokens from your contract to be sent to the remote contract with this call. |
+| gas | `u64` | - |  The amount of gas attached to the call |
+| `Default value` amount | `u128` |  u128.fromU64(0) |  The amount of tokens from your contract to be sent to the remote contract with this call. |
 
-**Returns:** [ContractPromise](_near_.contractpromise.md)
+**Returns:** [ContractPromise](_contract_.contractpromise.md)
 
 ___
 <a id="getresults"></a>
 
 ### `<Static>` getResults
 
-▸ **getResults**(): [ContractPromiseResult](_near_.contractpromiseresult.md)[]
+▸ **getResults**(): [ContractPromiseResult](_contract_.contractpromiseresult.md)[]
 
-*Defined in [near.ts:1426](https://github.com/nearprotocol/near-runtime-ts/blob/5196cd6/near.ts#L1426)*
+*Defined in [contract.ts:293](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L293)*
 
 Method to receive async (one or multiple) results from the remote contract in the callback. Example of using it.
 
@@ -207,7 +190,7 @@ export function _onItemAdded(itemAddedRequestId: string): bool {
 }
 ```
 
-**Returns:** [ContractPromiseResult](_near_.contractpromiseresult.md)[]
+**Returns:** [ContractPromiseResult](_contract_.contractpromiseresult.md)[]
 An array of results based on the number of promises the callback was created on. If the callback using `then` was scheduled only on one result, then one result will be returned.
 
 ___
