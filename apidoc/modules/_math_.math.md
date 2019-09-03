@@ -21,7 +21,7 @@
 
 ▸ **_uint8ArrayToU32**(data: *`Uint8Array`*): `u32`
 
-*Defined in [math.ts:43](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/math.ts#L43)*
+*Defined in [math.ts:43](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/math.ts#L43)*
 
 **Parameters:**
 
@@ -38,7 +38,7 @@ ___
 
 ▸ **hash**<`T`>(data: *`T`*): `Uint8Array`
 
-*Defined in [math.ts:34](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/math.ts#L34)*
+*Defined in [math.ts:34](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/math.ts#L34)*
 
 Hash given data. Returns hash as 32-byte array.
 
@@ -60,7 +60,7 @@ ___
 
 ▸ **hash32**<`T`>(data: *`T`*): `u32`
 
-*Defined in [math.ts:21](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/math.ts#L21)*
+*Defined in [math.ts:21](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/math.ts#L21)*
 
 Hash given data. Returns hash as 32-bit integer.
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **hash32Bytes**(data: *`Uint8Array`*): `u32`
 
-*Defined in [math.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/math.ts#L10)*
+*Defined in [math.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/math.ts#L10)*
 
 Hash a given Uint8Array. Returns hash as 32-bit integer.
 

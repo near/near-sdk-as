@@ -10,8 +10,7 @@
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",
   "scripts": {
-    "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc assembly/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/",
-    "test": "cd tests/ && npm install && npm run-script build && npm run test -- --verbose"
+    "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc assembly/*.ts assembly/collections/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/"
   },
   "author": "",
   "license": "MIT",
