@@ -51,7 +51,7 @@
 
 ▸ **abort**(msg_ptr: *`u32`*, filename_ptr: *`u32`*, line: *`u32`*, col: *`u32`*): `void`
 
-*Defined in [runtime_api.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L83)*
+*Defined in [runtime_api.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L83)*
 
 **Parameters:**
 
@@ -71,7 +71,7 @@ ___
 
 ▸ **account_balance**(balance_ptr: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:45](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L45)*
+*Defined in [runtime_api.ts:45](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L45)*
 
 **Parameters:**
 
@@ -88,7 +88,7 @@ ___
 
 ▸ **attached_deposit**(balance_ptr: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L48)*
+*Defined in [runtime_api.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L48)*
 
 **Parameters:**
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **block_index**(): `u64`
 
-*Defined in [runtime_api.ts:35](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L35)*
+*Defined in [runtime_api.ts:35](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L35)*
 
 **Returns:** `u64`
 
@@ -116,7 +116,7 @@ ___
 
 ▸ **current_account_id**(register_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:20](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L20)*
+*Defined in [runtime_api.ts:20](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L20)*
 
 **Parameters:**
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **gas**(gas_amount: *`u32`*): `void`
 
-*Defined in [runtime_api.ts:134](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L134)*
+*Defined in [runtime_api.ts:134](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L134)*
 
 **Parameters:**
 
@@ -150,7 +150,7 @@ ___
 
 ▸ **input**(register_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:32](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L32)*
+*Defined in [runtime_api.ts:32](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L32)*
 
 **Parameters:**
 
@@ -167,7 +167,7 @@ ___
 
 ▸ **log_utf16**(len: *`u64`*, ptr: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:80](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L80)*
+*Defined in [runtime_api.ts:80](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L80)*
 
 **Parameters:**
 
@@ -185,7 +185,7 @@ ___
 
 ▸ **log_utf8**(len: *`u64`*, ptr: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:77](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L77)*
+*Defined in [runtime_api.ts:77](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L77)*
 
 **Parameters:**
 
@@ -203,7 +203,7 @@ ___
 
 ▸ **panic**(): `void`
 
-*Defined in [runtime_api.ts:74](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L74)*
+*Defined in [runtime_api.ts:74](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L74)*
 
 **Returns:** `void`
 
@@ -214,7 +214,7 @@ ___
 
 ▸ **predecessor_account_id**(register_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:29](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L29)*
+*Defined in [runtime_api.ts:29](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L29)*
 
 **Parameters:**
 
@@ -231,7 +231,7 @@ ___
 
 ▸ **prepaid_gas**(): `u64`
 
-*Defined in [runtime_api.ts:51](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L51)*
+*Defined in [runtime_api.ts:51](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L51)*
 
 **Returns:** `u64`
 
@@ -242,7 +242,7 @@ ___
 
 ▸ **promise_and**(promise_idx_ptr: *`u64`*, promise_idx_count: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:96](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L96)*
+*Defined in [runtime_api.ts:96](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L96)*
 
 **Parameters:**
 
@@ -260,7 +260,7 @@ ___
 
 ▸ **promise_create**(account_id_len: *`u64`*, account_id_ptr: *`u64`*, method_name_len: *`u64`*, method_name_ptr: *`u64`*, arguments_len: *`u64`*, arguments_ptr: *`u64`*, amount_ptr: *`u64`*, gas: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:90](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L90)*
+*Defined in [runtime_api.ts:90](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L90)*
 
 **Parameters:**
 
@@ -284,7 +284,7 @@ ___
 
 ▸ **promise_result**(result_idx: *`u64`*, register_id: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:102](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L102)*
+*Defined in [runtime_api.ts:102](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L102)*
 
 **Parameters:**
 
@@ -302,7 +302,7 @@ ___
 
 ▸ **promise_results_count**(): `u64`
 
-*Defined in [runtime_api.ts:99](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L99)*
+*Defined in [runtime_api.ts:99](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L99)*
 
 **Returns:** `u64`
 
@@ -313,7 +313,7 @@ ___
 
 ▸ **promise_return**(promise_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:105](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L105)*
+*Defined in [runtime_api.ts:105](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L105)*
 
 **Parameters:**
 
@@ -330,7 +330,7 @@ ___
 
 ▸ **promise_then**(promise_index: *`u64`*, account_id_len: *`u64`*, account_id_ptr: *`u64`*, method_name_len: *`u64`*, method_name_ptr: *`u64`*, arguments_len: *`u64`*, arguments_ptr: *`u64`*, amount_ptr: *`u64`*, gas: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:93](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L93)*
+*Defined in [runtime_api.ts:93](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L93)*
 
 **Parameters:**
 
@@ -355,7 +355,7 @@ ___
 
 ▸ **random_seed**(register_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:61](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L61)*
+*Defined in [runtime_api.ts:61](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L61)*
 
 **Parameters:**
 
@@ -372,7 +372,7 @@ ___
 
 ▸ **read_register**(register_id: *`u64`*, ptr: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L10)*
+*Defined in [runtime_api.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L10)*
 
 **Parameters:**
 
@@ -390,7 +390,7 @@ ___
 
 ▸ **register_len**(register_id: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:13](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L13)*
+*Defined in [runtime_api.ts:13](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L13)*
 
 **Parameters:**
 
@@ -407,7 +407,7 @@ ___
 
 ▸ **sha256**(value_len: *`u64`*, value_ptr: *`u64`*, register_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:64](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L64)*
+*Defined in [runtime_api.ts:64](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L64)*
 
 **Parameters:**
 
@@ -426,7 +426,7 @@ ___
 
 ▸ **signer_account_id**(register_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:23](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L23)*
+*Defined in [runtime_api.ts:23](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L23)*
 
 **Parameters:**
 
@@ -443,7 +443,7 @@ ___
 
 ▸ **signer_account_pk**(register_id: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:26](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L26)*
+*Defined in [runtime_api.ts:26](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L26)*
 
 **Parameters:**
 
@@ -460,7 +460,7 @@ ___
 
 ▸ **storage_has_key**(key_len: *`u64`*, key_ptr: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:121](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L121)*
+*Defined in [runtime_api.ts:121](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L121)*
 
 **Parameters:**
 
@@ -478,7 +478,7 @@ ___
 
 ▸ **storage_iter_next**(iterator_id: *`u64`*, key_register_id: *`u64`*, value_register_id: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:130](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L130)*
+*Defined in [runtime_api.ts:130](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L130)*
 
 **Parameters:**
 
@@ -497,7 +497,7 @@ ___
 
 ▸ **storage_iter_prefix**(prefix_len: *`u64`*, prefix_ptr: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:124](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L124)*
+*Defined in [runtime_api.ts:124](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L124)*
 
 **Parameters:**
 
@@ -515,7 +515,7 @@ ___
 
 ▸ **storage_iter_range**(start_len: *`u64`*, start_ptr: *`u64`*, end_len: *`u64`*, end_ptr: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:127](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L127)*
+*Defined in [runtime_api.ts:127](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L127)*
 
 **Parameters:**
 
@@ -535,7 +535,7 @@ ___
 
 ▸ **storage_read**(key_len: *`u64`*, key_ptr: *`u64`*, register_id: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:115](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L115)*
+*Defined in [runtime_api.ts:115](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L115)*
 
 **Parameters:**
 
@@ -554,7 +554,7 @@ ___
 
 ▸ **storage_remove**(key_len: *`u64`*, key_ptr: *`u64`*, register_id: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:118](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L118)*
+*Defined in [runtime_api.ts:118](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L118)*
 
 **Parameters:**
 
@@ -573,7 +573,7 @@ ___
 
 ▸ **storage_usage**(): `u64`
 
-*Defined in [runtime_api.ts:38](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L38)*
+*Defined in [runtime_api.ts:38](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L38)*
 
 **Returns:** `u64`
 
@@ -584,7 +584,7 @@ ___
 
 ▸ **storage_write**(key_len: *`u64`*, key_ptr: *`u64`*, value_len: *`u64`*, value_ptr: *`u64`*, register_id: *`u64`*): `u64`
 
-*Defined in [runtime_api.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L112)*
+*Defined in [runtime_api.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L112)*
 
 **Parameters:**
 
@@ -605,7 +605,7 @@ ___
 
 ▸ **used_gas**(): `u64`
 
-*Defined in [runtime_api.ts:54](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L54)*
+*Defined in [runtime_api.ts:54](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L54)*
 
 **Returns:** `u64`
 
@@ -616,7 +616,7 @@ ___
 
 ▸ **value_return**(value_len: *`u64`*, value_ptr: *`u64`*): `void`
 
-*Defined in [runtime_api.ts:71](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/runtime_api.ts#L71)*
+*Defined in [runtime_api.ts:71](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/runtime_api.ts#L71)*
 
 **Parameters:**
 
