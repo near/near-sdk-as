@@ -33,7 +33,7 @@ testcase vectorTests
 testcase topnTests
 testcase contextTests
 
-echo -e "$(expr passed + errors) Total, \e[92m${passed} Passed\e[0m, \e[91m${errors} Failed"
+echo -e "$(expr ${passed} + ${errors}) Total, \e[92m${passed} Passed\e[0m, \e[91m${errors} Failed"
 
 if [[ "$errors" -gt 0 ]]; then
     exit 1
