@@ -1,120 +1,40 @@
 #!/bin/bash
-rm /tmp/main.wasm
-cp ./out/main.wasm /tmp/
-errormsg='WasmerCallError("Call error: unknown error")'
+[[ -e /tmp/main.wasm ]] && rm /tmp/main.wasm
+cp $(dirname "$0")/out/main.wasm /tmp/
+cp $(dirname "$0")/*.json /tmp/
+errormsg="WasmerCallError"
+errors=0
+passed=0
 
+testcase () {
 
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=promiseTests --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
+    res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=$1 --wasm-file=/tmp/main.wasm`
+    if [[ "$res" =~ "$errormsg" ]]; then
+        echo -e "\e[91m[FAIL] \e[0m$res"
+        errors=`expr $errors + 1`
+    else
+        echo -e "\e[92m[PASS] \e[0m$res"
+        passed=`expr $passed + 1`
+    fi
+}
+
+testcase promiseTests
+testcase dequeTests
+testcase mathTests
+testcase storageGenericGetSetRoundtripTest
+testcase storageKeysTest
+testcase logTest
+testcase base64Test
+testcase base58Test
+testcase storageStringRoundtripTest
+testcase storageBytesRoundtripTest
+testcase mapTests
+testcase vectorTests
+testcase topnTests
+testcase contextTests
+
+echo -e "$(expr passed + errors) Total, \e[92m${passed} Passed\e[0m, \e[91m${errors} Failed"
+
+if [[ "$errors" -gt 0 ]]; then
     exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=dequeTests --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=mathTests --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-
-
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=storageGenericGetSetRoundtripTest --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=storageKeysTest --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=logTest --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=base64Test --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=base58Test --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=storageStringRoundtripTest --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=storageBytesRoundtripTest --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=mapTests --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=vectorTests --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=topnTests --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
-fi
-
-res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=contextTests --wasm-file=/tmp/main.wasm`
-if [ "$res" == "$errormsg" ]; then
-    echo "failure"
-    exit 1
-else
-    echo $res
 fi
