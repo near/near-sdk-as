@@ -1,4 +1,7 @@
 #!/bin/bash
+TESTS=(base58Test base64Test logTest storageStringRoundtripTest storageBytesRoundtripTest storageGenericGetSetRoundtripTest storageKeysTest mapTests mapTestsWithPrimitices vectorTests dequeTests topnTests promiseTests mathTests)
+DISABLED_TESTS=(contextTests)
+
 [[ -e /tmp/main.wasm ]] && rm /tmp/main.wasm
 cp $(dirname "$0")/out/main.wasm /tmp/
 cp $(dirname "$0")/*.json /tmp/
@@ -18,22 +21,17 @@ testcase () {
     fi
 }
 
-testcase promiseTests
-testcase dequeTests
-testcase mathTests
-testcase storageGenericGetSetRoundtripTest
-testcase storageKeysTest
-testcase logTest
-testcase base64Test
-testcase base58Test
-testcase storageStringRoundtripTest
-testcase storageBytesRoundtripTest
-testcase mapTests
-testcase vectorTests
-testcase topnTests
-testcase contextTests
+for i in "${TESTS[@]}"
+do
+    # access each element  
+    # as $i
+    echo
+    echo "Running $i" 
+    testcase $i
+done
 
-echo -e "$(expr ${passed} + ${errors}) Total, \e[92m${passed} Passed\e[0m, \e[91m${errors} Failed"
+echo
+echo -e "$(expr ${passed} + ${errors} + ${#DISABLED_TESTS[@]}) Total, \e[92m${passed} Passed\e[0m, \e[91m${errors} Failed\e[0m, ${#DISABLED_TESTS[@]} Ignored."
 
 if [[ "$errors" -gt 0 ]]; then
     exit 1
