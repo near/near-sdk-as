@@ -11,7 +11,7 @@ passed=0
 
 testcase () {
 
-    res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=$1 --wasm-file=/tmp/main.wasm`
+    res=`cargo run --package near-vm-runner-standalone --bin near-vm-runner-standalone -- --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=$1 --wasm-file=/tmp/main.wasm --input="{}"`
     if [[ "$res" =~ "$errormsg" ]]; then
         echo -e "\e[91m[FAIL] \e[0m$res"
         errors=`expr $errors + 1`
