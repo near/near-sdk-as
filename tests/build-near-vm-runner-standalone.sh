@@ -7,7 +7,7 @@ cd nearcore
 curl https://sh.rustup.rs -sSf | \
      sh -s -- -y --no-modify-path --default-toolchain $RUST_VERSION
 
-cargo build -p near-vm-runner-standalone
+$HOME/.cargo/bin/cargo build -p near-vm-runner-standalone
 
 # RUN apt-get update -qq && apt-get install -y \
 #     git \
