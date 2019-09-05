@@ -4,6 +4,7 @@ RUST_VERSION=nightly
 git clone https://github.com/nearprotocol/nearcore
 cd nearcore
 
+echo $HOME
 curl https://sh.rustup.rs -sSf | \
      sh -s -- -y --no-modify-path --default-toolchain $RUST_VERSION
 
