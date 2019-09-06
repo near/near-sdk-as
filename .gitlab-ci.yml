@@ -1,22 +1,45 @@
 image: node:12
 
-stages:
-  - build
-  - test
-
 cache:
   paths:
     - node_modules/
+    - tests/node_modules/
+    - tests/nearcore/
+    - /root/.cargo/
+    - tests/out/
+
+stages:
+  - install
+  - install_test
+  - build
+  - test
 
 install_dependencies:
-  stage: build
+  stage: install
   script:
     - npm install
-  artifacts:
-    paths:
-      - node_modules/
 
-run_tests:
+install_test_dependencies:
+  stage: install_test
+  script:
+    - cd tests && npm install
+
+build_test_wasm:
+  stage: build
+  script:
+    - cd tests && npm run build
+
+build_near_vm_runner_standalone:
+  stage: build
+  script:
+    - cd tests && ./build-near-vm-runner-standalone.sh
+
+run_aspect_tests:
   stage: test
   script:
-    - npm run test
+    - cd tests && npm run test
+
+run_assembly_test:
+  stage: test
+  script:
+    - cd tests && ./test.sh
