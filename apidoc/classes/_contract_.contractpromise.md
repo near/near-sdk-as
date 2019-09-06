@@ -58,7 +58,7 @@ See docs on used methods for more details.
 
 **● id**: *`u64`*
 
-*Defined in [contract.ts:121](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L121)*
+*Defined in [contract.ts:121](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L121)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 ▸ **returnAsResult**(): `void`
 
-*Defined in [contract.ts:251](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L251)*
+*Defined in [contract.ts:251](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L251)*
 
 Returns the promise as a result of your function. Don't return any other results from the function. Your current function should be `void` and shouldn't return anything else. E.g.
 
@@ -122,7 +122,7 @@ ___
 
 ▸ **then**(contractName: *`string`*, methodName: *`string`*, args: *`Uint8Array`*, gas: *`u64`*, amount?: *`u128`*): [ContractPromise](_contract_.contractpromise.md)
 
-*Defined in [contract.ts:179](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L179)*
+*Defined in [contract.ts:179](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L179)*
 
 Creating a callback for the AsyncCall Promise created with `create` method.
 
@@ -145,7 +145,7 @@ ___
 
 ▸ **create**(contractName: *`string`*, methodName: *`string`*, args: *`Uint8Array`*, gas: *`u64`*, amount?: *`u128`*): [ContractPromise](_contract_.contractpromise.md)
 
-*Defined in [contract.ts:143](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L143)*
+*Defined in [contract.ts:143](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L143)*
 
 Creates a new async call promise. Returns an instance of `ContractPromise`. The call would be scheduled if the this current execution of the contract succeeds without errors or failed asserts.
 
@@ -168,7 +168,7 @@ ___
 
 ▸ **getResults**(): [ContractPromiseResult](_contract_.contractpromiseresult.md)[]
 
-*Defined in [contract.ts:293](https://github.com/nearprotocol/near-runtime-ts/blob/4babdd3/assembly/contract.ts#L293)*
+*Defined in [contract.ts:293](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L293)*
 
 Method to receive async (one or multiple) results from the remote contract in the callback. Example of using it.
 

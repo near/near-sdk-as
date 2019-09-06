@@ -8,6 +8,8 @@ export class PersistentVector<T> {
   private _elementPrefix: string;
   private _lengthKey: string;
   private _length: i32;
+
+  [key: number]: T;
   
   /**
   * Creates or restores a persistent vector with a given storage prefix.
