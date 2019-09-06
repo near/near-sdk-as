@@ -13,12 +13,10 @@ export namespace collections {
   * Helper class to store key->value pairs.
   */
   export class MapEntry<K, V> {
-    key: K;
-    value: V;
-
-    constructor(key: K, value: V) {
-      this.key = key;
-      this.value = value;
+    constructor(
+      public key: K,
+      public value: V
+    ) {
     }
   }
 }
