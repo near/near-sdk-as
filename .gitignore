@@ -5,6 +5,7 @@ assembly/__tests__/as-pect.d.ts
 *.wasm
 
 tests/out/
+tests/nearcore/
 
 package-lock.json
 tests/package-lock.json
