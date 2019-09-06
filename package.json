@@ -15,12 +15,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "assemblyscript-json": "github:nearprotocol/assemblyscript-json#staging",
+    "assemblyscript-json": "github:nearprotocol/assemblyscript-json",
     "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
     "@as-pect/cli": "^2.4.0",
-    "assemblyscript": "github:nearprotocol/assemblyscript#staging",
+    "assemblyscript": "github:nearprotocol/assemblyscript",
     "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^1.2.1"
   }
