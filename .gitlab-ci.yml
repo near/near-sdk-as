@@ -5,7 +5,7 @@ cache:
     - node_modules/
     - tests/node_modules/
     - tests/nearcore/
-    - /root/.cargo/
+    # - /root/.cargo/ gitlab does not cache out of repo
     - tests/out/
 
 stages:
@@ -30,7 +30,7 @@ build_test_wasm:
     - cd tests && npm run build
 
 build_near_vm_runner_standalone:
-  stage: build
+  stage: install
   script:
     - cd tests && ./build-near-vm-runner-standalone.sh
 
