@@ -11,6 +11,7 @@ cache:
 stages:
   - install
   - install_test
+  - build_near_vm
   - build
   - test
 
@@ -30,7 +31,7 @@ build_test_wasm:
     - cd tests && npm run build
 
 build_near_vm_runner_standalone:
-  stage: install
+  stage: build_near_vm
   script:
     - cd tests && ./build-near-vm-runner-standalone.sh
 
