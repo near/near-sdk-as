@@ -258,14 +258,15 @@ export class ContractPromise {
   //  * Joined promise can't be returned as a result
   //  * @param promises List of async call promises to join.
   //  */
-  // static all(promises: ContractPromise[]): ContractPromise {
-  //   assert(promises.length > 0);
-  //   let id = promises[0].id;
-  //   for (let i = 1; i < promises.length; i++) {
-  //     id = promise_and(id, promises[i].id);
-  //   }
-  //   return { id };
-  // }
+  static all(promises: ContractPromise[]): ContractPromise {
+    assert(promises.length > 0);
+    const ids = new Array<u64>(promises.length);
+    for (let i = 1; i < promises.length; i++) {
+      ids[i] = promises[i].id;
+    }
+    const id = runtime_api.promise_and(ids as i64, ids.length);
+    return { id };
+  }
 
 /**
  * Method to receive async (one or multiple) results from the remote contract in the callback.
