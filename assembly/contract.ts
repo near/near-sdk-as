@@ -261,7 +261,7 @@ export class ContractPromise {
   static all(promises: ContractPromise[]): ContractPromise {
     assert(promises.length > 0);
     const ids = new Array<u64>(promises.length);
-    for (let i = 1; i < promises.length; i++) {
+    for (let i = 0; i < promises.length; i++) {
       ids[i] = promises[i].id;
     }
     const id = runtime_api.promise_and(ids as i64, ids.length);
