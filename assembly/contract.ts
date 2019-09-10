@@ -264,7 +264,7 @@ export class ContractPromise {
     for (let i = 0; i < promises.length; i++) {
       ids[i] = promises[i].id;
     }
-    const id = runtime_api.promise_and(ids as i64, ids.length);
+    const id = runtime_api.promise_and(ids.dataStart, ids.length);
     return { id };
   }
 
