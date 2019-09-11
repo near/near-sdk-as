@@ -397,7 +397,8 @@ export function promiseTests(): void {
   assert(emptyResults.length == 0, "wrong length for results");
   const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 100);
   const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 100);
-  promise2.returnAsResult();
+  const promise3 = ContractPromise.all([promise2]);
+  promise3.returnAsResult();
 }
 
 export function mathTests(): void {
