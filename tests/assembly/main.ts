@@ -417,6 +417,12 @@ export function mathTests(): void {
   assert(hash256[0] == 202, "wrong contents of hash256");
   assert(hash256[1] == 76, "wrong contents of hash256");
   assert(hash256[31] == 184, "wrong contents of hash256");
+
+  const randBuf = math.randomBuffer(14);
+  const randBuf2 = math.randomBuffer(14);
+  const randBuf3 = math.randomBuffer(14);
+  const randBuf4 = math.randomBuffer(32);
+  const randBuf5 = math.randomBuffer(35);
 }
 
 
