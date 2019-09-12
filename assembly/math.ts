@@ -1,6 +1,7 @@
 import { runtime_api } from './runtime_api';
 import { util } from "./util";
 import { logging } from "./logging";
+import { storage } from "./storage";
 
 export namespace math {
 
@@ -50,29 +51,60 @@ export namespace math {
     );
   }
 
-  // /**
-  //  * Returns random byte buffer of given length.
-  //  */
-  // export function randomBuffer(len: u32): Uint8Array {
-  //     // simple approach: random seed
-  //     let result = new Uint8Array(len);
-  //     _near_random_buf(len, result.dataStart);
-  //     return result;
-  // }
+  const _LAST_RANDOM_VALUE_KEY = "lr";
+  /**
+   * Returns random byte buffer of given length.
+   */
+  export function randomBuffer(len: u32): Uint8Array {
+      let result = new Uint8Array(len);
+      let currentRandomBufferIndex = -1;
+      let randomBuffer: Uint8Array | null = null;
+      const lenAsI32 = len as i32;
+      for (let i = 0; i < lenAsI32; i++) {
+        if (randomBuffer == null || currentRandomBufferIndex >= randomBuffer.length) {
+          randomBuffer = getRandomBuffer();
+          currentRandomBufferIndex = 0;
+        }
 
+        result[i] = randomBuffer![currentRandomBufferIndex];
+        currentRandomBufferIndex++;
+      }
 
-  //const _LAST_RANDOM_VALUE_KEY = "_lr";
-  // /**
-  // * Returns random 32-bit integer.
-  // */
-  // export function random32(): u32 {
-  //   const lastValue = storage.contains(this._LAST_RANDOM_VALUE_KEY) ? storage.get<u32>(this._LAST_RANDOM_VALUE_KEY) : 0;
-  //   runtime_api.random_seed(0);
+      return result;
+  }
 
-  //   const registerLength = runtime_api.register_len(0) as i32;
-  //   assert(registerLength >= 4, "Random seed is not long enough");
-  //   const registerContents = new Uint8Array(runtime_api.register_len(0) as i32);
-  //   runtime_api.read_register(0, registerContents.dataStart);
-  //   return _uint8ArrayToU32(registerContents);
-  // }
+  /**
+  * Returns random buffer.
+  */
+  export function getRandomBuffer(): Uint8Array {
+    let resultValue : Uint8Array;
+    if (storage.contains(_LAST_RANDOM_VALUE_KEY)) {
+      resultValue = storage.getBytes(_LAST_RANDOM_VALUE_KEY)!;
+    } else {
+      resultValue = randomSeed();
+    }
+
+    // add random seed to last random value
+    const randomSeed = randomSeed();
+    for (let i = 0; i < randomSeed.length && i < resultValue.length; i++) {
+      resultValue[i] = resultValue[i] + randomSeed[i];
+    }
+
+    runtime_api.sha256(resultValue.byteLength, resultValue.dataStart, 0);
+    const hashedBytes = new Uint8Array(runtime_api.register_len(0) as i32);
+    runtime_api.read_register(0, hashedBytes.dataStart);
+
+    storage.setBytes(_LAST_RANDOM_VALUE_KEY, hashedBytes);
+    return hashedBytes;
+  }
+
+  /**
+  * Returns a random seed.
+  */
+  export function randomSeed(): Uint8Array {
+    runtime_api.random_seed(0);
+    const returnValue = new Uint8Array(runtime_api.register_len(0) as i32);
+    runtime_api.read_register(0, returnValue.dataStart);
+    return returnValue;
+  }
 }
