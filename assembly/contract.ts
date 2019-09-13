@@ -265,6 +265,7 @@ export class ContractPromise {
       ids[i] = promises[i].id;
     }
     const id = runtime_api.promise_and(ids.dataStart, ids.length);
+    //@ts-ignore doesn't need methods
     return { id };
   }
 
@@ -298,7 +299,8 @@ export class ContractPromise {
       const promise_status = runtime_api.promise_result(i, 0) as i32;
       let isOk = promise_status == 1;
       if (!isOk) {
-        results[i] = { status: promise_status }
+        results[i] = new ContractPromiseResult();
+        results[i].status = promise_status;
         continue;
       }
       const buffer = new Uint8Array(runtime_api.register_len(0) as i32);

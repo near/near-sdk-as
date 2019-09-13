@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "test": "node --experimental-wasm-bigint ../node_modules/.bin/asp",
+    "build:hello": "../node_modules/.bin/asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
+    "test": "npm run build:hello && npm run asp",
+    "asp": "node --experimental-wasm-bigint ../node_modules/.bin/asp",
     "build": "mkdir -p out && gulp"
   },
   "dependencies": {
