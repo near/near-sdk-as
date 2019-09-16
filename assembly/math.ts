@@ -52,6 +52,7 @@ export namespace math {
   }
 
   const _LAST_RANDOM_VALUE_KEY = "lr";
+  const _RANDOM_BUFFER_LENGTH = 32;
   /**
    * Returns random byte buffer of given length.
    */
@@ -81,7 +82,7 @@ export namespace math {
     if (storage.contains(_LAST_RANDOM_VALUE_KEY)) {
       resultValue = storage.getBytes(_LAST_RANDOM_VALUE_KEY)!;
     } else {
-      resultValue = randomSeed();
+      resultValue = new Uint8Array(_RANDOM_BUFFER_LENGTH);
     }
 
     // add random seed to last random value
