@@ -18,7 +18,7 @@ stages:
 install_dependencies:
   stage: install
   script:
-    - npm install
+    - npm install && npm install nearprotocol/assemblyscript
 
 install_test_dependencies:
   stage: install_test

@@ -37,9 +37,8 @@ export namespace util {
     if (isString<T>() || isInteger<T>()) {
       return parseFromString<T>(bytesToString(bytes));
     } else {
-      let v = instantiate<T>();
       //@ts-ignore v will have decode. Although second parameter is optional it causes compile error
-      return v.decode(bytes, null);
+      return decode<T>(bytes);
     }
   }
 
@@ -66,9 +65,8 @@ export namespace util {
         return <T>U64.parseInt(s);
       }
     } else {
-      let v = instantiate<T>();
       //@ts-ignore v will have decode method
-      return v.decode(stringToBytes(s));
+      return decode<T>(stringToBytes(s));
     }
   }
 }

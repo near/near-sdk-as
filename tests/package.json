@@ -1,13 +1,11 @@
 {
   "scripts": {
-    "test": "node --experimental-wasm-bigint ../node_modules/.bin/asp",
-    "build": "mkdir -p out && gulp"
+    "build:hello": "../node_modules/.bin/asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
+    "test": "npm run build:hello && npm run asp",
+    "asp": "node --experimental-wasm-bigint ../node_modules/.bin/asp",
+    "build": "../node_modules/.bin/asc --runtime stub assembly/main.ts --textFile out/main.wat --binaryFile out/main.wasm --validate --debug"
   },
   "dependencies": {
     "near-runtime-ts": "file:.."
-  },
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "near-shell": "^0.10.4"
   }
 }
