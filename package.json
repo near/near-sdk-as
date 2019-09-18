@@ -1,6 +1,6 @@
 {
   "name": "near-runtime-ts",
-  "version": "0.2.0",
+  "version": "0.2.9",
   "description": "Near smart contract runtime library for typescript",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
-    "@as-pect/cli": "^2.4.0",
+    "@as-pect/cli": "^2.5.0",
     "assemblyscript": "github:nearprotocol/assemblyscript",
     "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^1.2.1"
