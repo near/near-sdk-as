@@ -44,61 +44,59 @@ export namespace math {
   function _uint8ArrayToU32(data: Uint8Array): u32 {
     assert(data != null && data.length >= 4, "Cannot convert input Uint8Array to u32");
     return (
-      (0xff & data[0]) << 24  |
-      (0xff & data[1]) << 16  |
-      (0xff & data[2]) << 8   |
+      (0xff & data[0]) << 24 |
+      (0xff & data[1]) << 16 |
+      (0xff & data[2]) << 8 |
       (0xff & data[3]) << 0
     );
   }
 
-  const _LAST_RANDOM_VALUE_KEY = "lr";
-  const _RANDOM_BUFFER_LENGTH = 32;
-  /**
-   * Returns random byte buffer of given length.
-   */
+
+  const _BLOCK_INDEX_SEED_AT_KEY = "block_index_seeded_at";
+  const _RANDOM_BUFFER_KEY = "random_buffer_key";
+  const _RANDOM_BUFFER_INDEX_KEY = "random_buffer_index_key";
+
   export function randomBuffer(len: u32): Uint8Array {
-      let result = new Uint8Array(len);
-      let currentRandomBufferIndex = -1;
-      let randomBuffer: Uint8Array | null = null;
-      const lenAsI32 = len as i32;
-      for (let i = 0; i < lenAsI32; i++) {
-        if (randomBuffer == null || currentRandomBufferIndex >= randomBuffer.length) {
-          randomBuffer = getRandomBuffer();
-          currentRandomBufferIndex = 0;
-        }
+    let block_index_seeded_at: u64;
+    let random_buffer: Uint8Array;
+    let random_buffer_index_key: i32;
+    let len_i32 = len as i32;
 
-        result[i] = randomBuffer![currentRandomBufferIndex];
-        currentRandomBufferIndex++;
+    // Reseed if it was not seeded at all, or was seeded more than one block ago.
+    if (!storage.contains(_BLOCK_INDEX_SEED_AT_KEY) || storage.getSome<i32>(_BLOCK_INDEX_SEED_AT_KEY) != runtime_api.block_index()) {
+      block_index_seeded_at = runtime_api.block_index() as i32;
+      storage.set<u64>(_BLOCK_INDEX_SEED_AT_KEY, block_index_seeded_at); 
+      random_buffer = randomSeed();
+      storage.setBytes(_RANDOM_BUFFER_KEY, random_buffer);
+      random_buffer_index_key = 0;
+      storage.set<i32>(_RANDOM_BUFFER_INDEX_KEY, random_buffer_index_key);
+    } else {
+      random_buffer = storage.getBytes(_RANDOM_BUFFER_KEY)!;
+      random_buffer_index_key = storage.getPrimitive<i32>(_RANDOM_BUFFER_INDEX_KEY, 0);
+    }
+
+    let result: Uint8Array = new Uint8Array(len);
+    for (let i = 0; i < len_i32; i++) {
+      result[i] = random_buffer[random_buffer_index_key];
+      if (random_buffer_index_key == random_buffer.length - 1) {
+        random_buffer = sha256(random_buffer);
+        storage.setBytes(_RANDOM_BUFFER_KEY, random_buffer);
+        random_buffer_index_key = 0;
+        storage.set<i32>(_RANDOM_BUFFER_INDEX_KEY, random_buffer_index_key);
+      } else {
+        random_buffer_index_key += 1;
       }
-
-      return result;
+    }
+    storage.set<i32>(_RANDOM_BUFFER_INDEX_KEY, random_buffer_index_key);
+    return result;
   }
 
-  /**
-  * Returns random buffer.
-  */
-  export function getRandomBuffer(): Uint8Array {
-    let resultValue : Uint8Array;
-    if (storage.contains(_LAST_RANDOM_VALUE_KEY)) {
-      resultValue = storage.getBytes(_LAST_RANDOM_VALUE_KEY)!;
-    } else {
-      resultValue = new Uint8Array(_RANDOM_BUFFER_LENGTH);
-    }
-
-    // add random seed to last random value
-    const randomSeed = randomSeed();
-    for (let i = 0; i < randomSeed.length && i < resultValue.length; i++) {
-      resultValue[i] = resultValue[i] + randomSeed[i];
-    }
-
-    runtime_api.sha256(resultValue.byteLength, resultValue.dataStart, 0);
+  export function sha256(inp: Uint8Array): Uint8Array {
+    runtime_api.sha256(inp.byteLength, inp.dataStart, 0);
     const hashedBytes = new Uint8Array(runtime_api.register_len(0) as i32);
     runtime_api.read_register(0, hashedBytes.dataStart);
-
-    storage.setBytes(_LAST_RANDOM_VALUE_KEY, hashedBytes);
     return hashedBytes;
   }
-
   /**
   * Returns a random seed.
   */
