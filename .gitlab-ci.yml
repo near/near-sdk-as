@@ -10,8 +10,6 @@ cache:
 
 stages:
   - install
-  - install_test
-  - build_near_vm
   - build
   - test
 
@@ -21,7 +19,7 @@ install_dependencies:
     - yarn && yarn nearprotocol/assemblyscript
 
 install_test_dependencies:
-  stage: install_test
+  stage: install
   script:
     - cd tests && yarn
 
@@ -31,7 +29,7 @@ build_test_wasm:
     - cd tests && yarn build
 
 build_near_vm_runner_standalone:
-  stage: build_near_vm
+  stage: build
   script:
     - cd tests && ./build-near-vm-runner-standalone.sh
 
