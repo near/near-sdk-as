@@ -13,10 +13,10 @@ testcase () {
 
     res=`nearcore/target/debug/near-vm-runner-standalone --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name=$1 --wasm-file=/tmp/main.wasm --input="{}"`
     if [[ "$res" =~ "$errormsg" ]]; then
-        echo -e "\e[91m[FAIL] \e[0m$res"
+        echo -e "\033[91m[FAIL] \033[0m$res"
         errors=`expr $errors + 1`
     else
-        echo -e "\e[92m[PASS] \e[0m$res"
+        echo -e "\033[92m[PASS] \033[0m$res"
         passed=`expr $passed + 1`
     fi
 }
@@ -31,7 +31,7 @@ do
 done
 
 echo
-echo -e "$(expr ${passed} + ${errors} + ${#DISABLED_TESTS[@]}) Total, \e[92m${passed} Passed\e[0m, \e[91m${errors} Failed\e[0m, ${#DISABLED_TESTS[@]} Ignored."
+echo -e "$(expr ${passed} + ${errors} + ${#DISABLED_TESTS[@]}) Total, \033[92m${passed} Passed\033[0m, \033[91m${errors} Failed\033[0m, ${#DISABLED_TESTS[@]} Ignored."
 
 if [[ "$errors" -gt 0 ]]; then
     exit 1
