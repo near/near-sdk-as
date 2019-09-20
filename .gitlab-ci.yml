@@ -1,11 +1,14 @@
 image: node:12
 
+variables:
+    CARGO_HOME: "$CI_PROJECT_DIR/.cargo/"
+
 cache:
   paths:
     - node_modules/
     - tests/node_modules/
     - tests/nearcore/
-    # - /root/.cargo/ gitlab does not cache out of repo
+    - .cargo/
     - tests/out/
 
 stages:
