@@ -10,7 +10,6 @@ cache:
     - tests/node_modules/
     - tests/nearcore/
     - .cargo/
-    - .rustup/
     - tests/out/
 
 stages:
