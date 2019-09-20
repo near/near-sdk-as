@@ -17,4 +17,4 @@ yarn doc
 
 ## Run tests
 
-Please see tests/README.md for more details
+yarn test
