@@ -10,12 +10,13 @@
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",
   "scripts": {
+    "test": "cd tests/ && yarn && yarn test",
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc assembly/*.ts assembly/collections/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "assemblyscript-json": "github:nearprotocol/assemblyscript-json",
+    "assemblyscript-json": "0.2.0",
     "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
