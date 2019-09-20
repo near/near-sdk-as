@@ -39,7 +39,7 @@ build_near_vm_runner_standalone:
 run_aspect_tests:
   stage: test
   script:
-    - cd tests && yarn test
+    - cd tests && yarn asp
 
 run_assembly_test:
   stage: test
