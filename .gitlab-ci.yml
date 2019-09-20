@@ -18,17 +18,17 @@ stages:
 install_dependencies:
   stage: install
   script:
-    - npm install && npm install nearprotocol/assemblyscript
+    - yarn && yarn nearprotocol/assemblyscript
 
 install_test_dependencies:
   stage: install_test
   script:
-    - cd tests && npm install
+    - cd tests && yarn
 
 build_test_wasm:
   stage: build
   script:
-    - cd tests && npm run build
+    - cd tests && yarn build
 
 build_near_vm_runner_standalone:
   stage: build_near_vm
@@ -38,7 +38,7 @@ build_near_vm_runner_standalone:
 run_aspect_tests:
   stage: test
   script:
-    - cd tests && npm run test
+    - cd tests && yarn test
 
 run_assembly_test:
   stage: test

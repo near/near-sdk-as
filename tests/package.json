@@ -1,8 +1,8 @@
 {
   "scripts": {
     "build:hello": "../node_modules/.bin/asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
-    "pretest": "npm run build:hello && npm run build && ./build-near-vm-runner-standalone.sh",
-    "test": "npm run build:hello && npm run asp",
+    "pretest": "yarn build:hello && yarn build && ./build-near-vm-runner-standalone.sh",
+    "test": "yarn build:hello && yarn asp",
     "asp": "node --experimental-wasm-bigint ../node_modules/.bin/asp",
     "build": "../node_modules/.bin/asc --runtime stub assembly/main.ts --textFile out/main.wat --binaryFile out/main.wasm --validate --debug"
   },

@@ -6,13 +6,13 @@ Typescript library for writing near smart contracts
 API docs are produced using typedoc. To run, first install dependencies:
 
 ```
-npm install
+yarn
 ```
 
 After installing dependencies, run
 
 ```
-npm run doc
+yarn doc
 ```
 
 ## Run tests
