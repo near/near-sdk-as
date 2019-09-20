@@ -2,7 +2,6 @@ image: node:12
 
 variables:
     CARGO_HOME: "$CI_PROJECT_DIR/.cargo"
-    PATH: "$PATH:$CARGO_HOME/bin"
 
 cache:
   paths:
@@ -35,6 +34,7 @@ build_test_wasm:
 build_near_vm_runner_standalone:
   stage: build
   script:
+    - export PATH="$PATH:$CARGO_HOME/bin"
     - cd tests && ./build-near-vm-runner-standalone.sh
 
 run_aspect_tests:
