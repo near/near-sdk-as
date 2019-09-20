@@ -1,4 +1,5 @@
 #!/bin/bash
+CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
 RUST_VERSION=nightly
 if [[ -e nearcore ]]; then
     cd nearcore
