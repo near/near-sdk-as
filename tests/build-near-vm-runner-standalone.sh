@@ -8,9 +8,8 @@ else
     cd nearcore
 fi
 
-if [[ ! -e $HOME/.cargo ]]; then
-curl https://sh.rustup.rs -sSf | \
-     sh -s -- -y --no-modify-path --default-toolchain $RUST_VERSION
+if [[ ! -e $CARGO_HOME ]]; then
+    curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain $RUST_VERSION
 fi
 
-$HOME/.cargo/bin/cargo build -p near-vm-runner-standalone
+cargo build -p near-vm-runner-standalone

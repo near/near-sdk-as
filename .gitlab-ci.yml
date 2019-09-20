@@ -2,6 +2,7 @@ image: node:12
 
 variables:
     CARGO_HOME: "$CI_PROJECT_DIR/.cargo"
+    RUSTUP_HOME: "$CI_PROJECT_DIR/.rustup"
 
 cache:
   paths:
@@ -9,6 +10,7 @@ cache:
     - tests/node_modules/
     - tests/nearcore/
     - .cargo/
+    - .rustup/
     - tests/out/
 
 stages:
