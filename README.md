@@ -17,6 +17,4 @@ npm run doc
 
 ## Run tests
 
-```
-npm test
-```
+Please see tests/README.md for more details

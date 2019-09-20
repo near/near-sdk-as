@@ -1,22 +1,46 @@
 image: node:12
 
-stages:
-  - build
-  - test
-
 cache:
   paths:
     - node_modules/
+    - tests/node_modules/
+    - tests/nearcore/
+    # - /root/.cargo/ gitlab does not cache out of repo
+    - tests/out/
+
+stages:
+  - install
+  - install_test
+  - build_near_vm
+  - build
+  - test
 
 install_dependencies:
+  stage: install
+  script:
+    - npm install && npm install nearprotocol/assemblyscript
+
+install_test_dependencies:
+  stage: install_test
+  script:
+    - cd tests && npm install
+
+build_test_wasm:
   stage: build
   script:
-    - npm install
-  artifacts:
-    paths:
-      - node_modules/
+    - cd tests && npm run build
 
-run_tests:
+build_near_vm_runner_standalone:
+  stage: build_near_vm
+  script:
+    - cd tests && ./build-near-vm-runner-standalone.sh
+
+run_aspect_tests:
   stage: test
   script:
-    - npm run test
+    - cd tests && npm run test
+
+run_assembly_test:
+  stage: test
+  script:
+    - cd tests && ./test.sh

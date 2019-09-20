@@ -258,14 +258,16 @@ export class ContractPromise {
   //  * Joined promise can't be returned as a result
   //  * @param promises List of async call promises to join.
   //  */
-  // static all(promises: ContractPromise[]): ContractPromise {
-  //   assert(promises.length > 0);
-  //   let id = promises[0].id;
-  //   for (let i = 1; i < promises.length; i++) {
-  //     id = promise_and(id, promises[i].id);
-  //   }
-  //   return { id };
-  // }
+  static all(promises: ContractPromise[]): ContractPromise {
+    assert(promises.length > 0);
+    const ids = new Array<u64>(promises.length);
+    for (let i = 0; i < promises.length; i++) {
+      ids[i] = promises[i].id;
+    }
+    const id = runtime_api.promise_and(ids.dataStart, ids.length);
+    //@ts-ignore doesn't need methods
+    return { id };
+  }
 
 /**
  * Method to receive async (one or multiple) results from the remote contract in the callback.
@@ -297,7 +299,8 @@ export class ContractPromise {
       const promise_status = runtime_api.promise_result(i, 0) as i32;
       let isOk = promise_status == 1;
       if (!isOk) {
-        results[i] = { status: promise_status }
+        results[i] = new ContractPromiseResult();
+        results[i].status = promise_status;
         continue;
       }
       const buffer = new Uint8Array(runtime_api.register_len(0) as i32);
