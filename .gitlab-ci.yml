@@ -30,7 +30,7 @@ install_test_dependencies:
 build_test_wasm:
   stage: build
   script:
-    - cd tests && yarn build
+    - cd tests && yarn && yarn build
 
 build_near_vm_runner_standalone:
   stage: build
