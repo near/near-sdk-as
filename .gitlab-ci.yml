@@ -6,7 +6,6 @@ variables:
 
 cache:
   paths:
-    - node_modules/
     - tests/node_modules/
     - tests/nearcore/
     - .cargo/
