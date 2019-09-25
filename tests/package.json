@@ -3,10 +3,11 @@
     "build:hello": "near-asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
     "pretest": "yarn build:hello && yarn build && ./build-near-vm-runner-standalone.sh",
     "test": "yarn build:hello && yarn asp",
-    "asp": "node --experimental-wasm-bigint ../node_modules/.bin/asp",
+    "asp": "node --experimental-wasm-bigint ./node_modules/.bin/asp",
     "build": "node asconfig.js"
   },
   "dependencies": {
+    "@as-pect/cli": "^2.5.0",
     "near-runtime-ts": "file:.."
   }
 }
