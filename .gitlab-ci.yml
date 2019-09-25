@@ -13,6 +13,7 @@ cache:
 
 stages:
   - install
+  - install-tests
   - build
   - test
 
@@ -22,7 +23,7 @@ install_dependencies:
     - yarn
 
 install_test_dependencies:
-  stage: install
+  stage: install-tests
   script:
     - cd tests && yarn && yarn remove near-runtime-ts && yarn add ../
 
