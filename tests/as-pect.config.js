@@ -124,8 +124,8 @@ module.exports = {
     "--baseDir": __dirname,
     "--notNear":[],
     "--runPasses": ["inlining,dce"],
-    "--transform": ["./node_modules/assemblyscript/bindings/dist/transformerBundle.js"],
-    "--lib": ["./node_modules/assemblyscript/bindings/assembly/nearEntry.js"]
+    "--transform": ["./node_modules/near-assemblyscript/bindings/dist/transformerBundle.js"],
+    "--lib": ["./node_modules/near-assemblyscript/bindings/assembly/nearEntry.js"]
   },
   /**
    * A set of regexp that will disclude source files from testing.
