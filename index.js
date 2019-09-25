@@ -10,9 +10,9 @@ function getAsc() {
     return asc;
   }
   try {
-    asc = require("assemblyscript/cli/asc");
+    asc = require("near-assemblyscript/cli/asc");
   } catch (e) {
-    asc= require("assemblyscript/dist/asc")
+    asc= require("near-assemblyscript/dist/asc")
     
   }
   asc.main = (main => (args, options, fn) => {

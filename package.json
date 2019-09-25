@@ -16,13 +16,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "assemblyscript": "github:nearprotocol/assemblyscript#fixFloatingPoint",
+    "near-assemblyscript": "github:nearprotocol/assemblyscript#fixFloatingPoint",
     "assemblyscript-json": "0.2.0",
     "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
     "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^1.2.1"
-
   }
 }
