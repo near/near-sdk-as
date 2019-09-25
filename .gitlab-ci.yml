@@ -6,6 +6,7 @@ variables:
 
 cache:
   paths:
+    - node_modules/
     - tests/node_modules/
     - tests/nearcore/
     - .cargo/
@@ -20,7 +21,7 @@ stages:
 install_dependencies:
   stage: install
   script:
-    - yarn
+    - yarn --force
 
 install_test_dependencies:
   stage: install-tests
