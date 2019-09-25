@@ -1,6 +1,6 @@
 {
   "name": "near-runtime-ts",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Near smart contract runtime library for typescript",
   "repository": {
     "type": "git",
@@ -16,13 +16,18 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "assemblyscript": "github:nearprotocol/assemblyscript#fixFloatingPoint",
     "assemblyscript-json": "0.2.0",
     "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
     "@as-pect/cli": "^2.5.0",
-    "assemblyscript": "github:nearprotocol/assemblyscript",
+    "ts-loader": "^6.1.2",
+    "ts-node": "^8.4.1",
     "typedoc": "^0.15.0",
-    "typedoc-plugin-markdown": "^1.2.1"
+    "typedoc-plugin-markdown": "^1.2.1",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
   }
 }
