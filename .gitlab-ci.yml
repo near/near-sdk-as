@@ -14,18 +14,19 @@ cache:
 
 stages:
   - install
+  - install-tests
   - build
   - test
 
 install_dependencies:
   stage: install
   script:
-    - yarn && yarn add nearprotocol/assemblyscript
+    - yarn --force
 
 install_test_dependencies:
-  stage: install
+  stage: install-tests
   script:
-    - cd tests && yarn
+    - cd tests && yarn && yarn remove near-runtime-ts && yarn add ../
 
 build_test_wasm:
   stage: build
