@@ -16,7 +16,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "near-assemblyscript": "github:nearprotocol/assemblyscript#fixFloatingPoint",
+    "near-assemblyscript": "github:nearprotocol/assemblyscript#v0.7.2",
     "assemblyscript-json": "0.2.0",
     "bignum": "github:MaxGraey/bignum.wasm"
   },
