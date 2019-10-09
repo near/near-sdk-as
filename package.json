@@ -1,0 +1,35 @@
+{
+  "name": "near-bindgen-as",
+  "version": "1.0.0",
+  "description": "Bindings for serializing contract functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd tests; npm run test",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nearprotocol/near-bindgen-as.git"
+  },
+  "keywords": [
+    "near",
+    "assemblyscript",
+    "json",
+    "blockchain",
+    "crypto"
+  ],
+  "author": "Willem Wyndham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nearprotocol/near-bindgen/issues"
+  },
+  "homepage": "https://github.com/nearprotocol/near-bindgen#readme",
+  "devDependencies": {
+    "assemblyscript": "github:AssemblyScript/assemblyscript",
+    "near-runtime-ts": "^0.5.1",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}

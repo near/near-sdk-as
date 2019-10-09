@@ -1,0 +1,4 @@
+{
+  "extends": "./node_modules/assemblyscript/lib/transformer/tsconfig.json",
+  "include": ["src/**/*.ts"]
+}
