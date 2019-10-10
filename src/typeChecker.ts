@@ -13,7 +13,7 @@ export class TypeChecker extends BaseVisitor {
     }
   }
   static checkTypes(node: Node): void {
-    const typeChecker = new TypeChecker();
-    typeChecker.visit(node);
+    // const typeChecker = new TypeChecker();
+    // typeChecker.visit(node);
   }
 }
