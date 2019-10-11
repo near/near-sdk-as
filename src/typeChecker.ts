@@ -1,4 +1,5 @@
-import { BaseVisitor, TypeName, Node } from './as-transformer';
+import { TypeName, Node } from './ast';
+import { BaseVisitor } from './base';
 
 export class TypeChecker extends BaseVisitor {
 

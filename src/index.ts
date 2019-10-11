@@ -1,7 +1,6 @@
 import {
   Node,
   FunctionDeclaration,
-  ASTBuilder,
   Statement,
   NodeKind,
   Source,
@@ -10,15 +9,16 @@ import {
   ClassDeclaration,
   NamedTypeNode,
   DeclarationStatement,
-  BaseVisitor,
   Parser,
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
-  Transformer,
-  TypeName
-} from "./as-transformer";
+  Program,
+  Transform
+} from "./ast";
 import { TypeChecker } from "./typeChecker";
+import { ASTBuilder } from "./ASTBuilder";
+import { BaseVisitor } from "./base";
 
 
 
@@ -42,7 +42,7 @@ function toString(node: Node): string {
   return ASTBuilder.build(node);
 }
 
-export function isEntry(source: Source | Node): boolean {
+function isEntry(source: Source | Node): boolean {
   let _source = <Source>(
     (source.kind == NodeKind.SOURCE ? source : source.range.source)
   );
@@ -288,9 +288,15 @@ function isGeneric(_class: ClassDeclaration, field: FieldDeclaration): boolean {
 }
 declare var __dirname: string;
 
-export default class JSONTransformer extends Transformer {
-  afterParse(): void {
-    const parser = this.parser;
+class JSONTransformer extends Transform {
+  parser: Parser;
+
+  get program(): Program {
+    return this.parser.program;
+  }
+
+  afterParse(parser: Parser): void {
+    this.parser = parser;
     const writeFile = this.writeFile;
     const baseDir = this.baseDir;
 
@@ -332,5 +338,6 @@ export default class JSONTransformer extends Transformer {
     }
   }
 }
+const preamble = `import { JSONEncoder } from "assemblyscript-json";`;
 
-export const preamble = `import { JSONEncoder } from "assemblyscript-json";`;
+export = JSONTransformer;

@@ -1,4 +1,22 @@
 {
-  "extends": "./node_modules/assemblyscript/lib/transformer/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "noLib": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "target": "es5",
+    "module": "commonjs",
+    "downlevelIteration": true,
+    "preserveConstEnums": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noEmitOnError": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["./node_modules/assemblyscript/std/types"],
+    "types": ["portable" ]
+  },
   "include": ["src/**/*.ts"]
 }

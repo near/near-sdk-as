@@ -16,14 +16,16 @@ function _config(files, outfolder, toBundle) {
       rules: [
         {
           test: /\.ts$/,
-          loader: "ts-loader",
-          options: { allowTsInNodeModules: true }
+          loader: "ts-loader"
         }
       ]
     },
     resolve: {
       extensions: [ ".ts", ".js" ]
     },
+    externals: [
+      "assemblyscript"
+    ],
     output: {
       filename: "[name].js",
       path: outfolder,
