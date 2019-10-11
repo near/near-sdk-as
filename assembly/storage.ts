@@ -172,7 +172,9 @@ export class Storage {
   * @returns A value of type T stored under the given key.
   */
   getSome<T>(key: string): T {
-    assert(this.hasKey(key), "Key is not present in the storage");
+    if (!this.hasKey(key)) {
+      assert(false, "Key '" + key + "' is not present in the storage");
+    }
     if (isString<T>() || isInteger<T>()) {
       return util.parseFromString<T>(this.getString(key));
     } else {
