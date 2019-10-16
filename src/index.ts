@@ -14,9 +14,10 @@ import {
   FieldDeclaration,
   ParameterNode,
   Program,
-  Transform
+  Transform,
+  Module
 } from "./ast";
-import { TypeChecker } from "./typeChecker";
+import { TypeChecker } from './typeChecker';
 import { ASTBuilder } from "./ASTBuilder";
 import { BaseVisitor } from "./base";
 
@@ -300,9 +301,6 @@ class JSONTransformer extends Transform {
     const writeFile = this.writeFile;
     const baseDir = this.baseDir;
 
-    // Check for floats
-    this.program.sources.forEach(TypeChecker.checkTypes);
-
     // Filter for near files
     let files = JSONBindingsBuilder.nearFiles(parser);
 
@@ -336,6 +334,11 @@ class JSONTransformer extends Transform {
       const libSource = BUNDLE["nearEntry"];
       this.parser.parseFile(libSource, "nearFile", true);
     }
+  }
+  
+  /** Check for floats */
+  afterCompile(module: Module): void {
+    TypeChecker.check(module);
   }
 }
 const preamble = `import { JSONEncoder } from "assemblyscript-json";`;

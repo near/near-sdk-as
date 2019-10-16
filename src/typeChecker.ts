@@ -1,20 +1,18 @@
-import { TypeName, Node } from './ast';
+import { TypeName, Module } from './ast';
 import { BaseVisitor } from './base';
+
+
+declare interface RegExp {
+  test(s: string): bool;
+}
 
 export class TypeChecker extends BaseVisitor {
 
-  visitTypeName(node: TypeName): void {
-    const name = node.identifier.text;
-    if (name === "f32" || name === "f64"){
-      // TODO: Add back when no floats in std
-      // throw new Error("Floating point numbers are not allowed in smart contracts");
+  static check(node: Module): void {
+    const wat = node.toText();
+    const regex: RegExp = <RegExp> /f32|f64/;
+    if (regex.test(wat))
+      throw new Error("Floating point numbers are not allowed in smart contracts");    
     }
-    if (node.next != null){
-      this.visitTypeName(node.next);
-    }
-  }
-  static checkTypes(node: Node): void {
-    // const typeChecker = new TypeChecker();
-    // typeChecker.visit(node);
-  }
+    
 }

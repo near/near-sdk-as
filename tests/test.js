@@ -48,6 +48,7 @@ function UTF8toStr(array) {
 
     return out;
 }
+
 async function loadModule(path) {
     let inputJson = null;
     let outputJson = null;
@@ -136,8 +137,8 @@ async function testFloatDetection(file){
     asc.main([file, "--runtime", "none", "--noEmit", "--transform", "../dist/nearBindings.js"], error => {
       if (error == null || !/Floating point numbers are not allowed/g.test(error.message)) {
         if (error == null){
-          error = "Couldn't find float";
-        }
+            error = "Couldn't find float";
+            }
         reject(file + error);
       }
       resolve()
@@ -164,9 +165,8 @@ async function testFloatDetection(file){
     assert.deepEqual(await module.stringOrNull(), null);
     assert.deepStrictEqual(await module.stringAliasTest({str:"Hello"}), "Hello World");
     
-    // TODO ADD back once std's Map has no floats
-    // await testFloatDetection("assembly/f32.ts");
-    // await testFloatDetection("assembly/f64.ts");
+    await testFloatDetection("assembly/f32.ts");
+    await testFloatDetection("assembly/f64.ts");
 
 })().catch(e => {
     console.error('Error during test execution:', e);
