@@ -149,22 +149,111 @@ async function testFloatDetection(file){
     const module = await loadModule('./out/test.wasm');
     await module.runTest();
     assert.deepEqual(await module.convertFoobars({ foobars: [] }), []);
-    assert.deepEqual(await module.convertFoobars({
-        foobars: [{ foo: -12345, bar: 123, flag: true, baz: "bazinga" }] }),
-        [{ foobar: { foo: -12345, bar: 123, u64Val: (2**32 + 1).toString(),
-             i64Val: "-64", flag: true, baz: "bazinga", uint8array: null, arr: null, 
-             u32Arr: null, i32Arr: null, uint8arrays: null, u64Arr: null, u64_zero:"0"}}]);
-    assert.deepEqual(await module.convertFoobars({
-        foobars: [{ arr: [["1", "2"], ["3"]]  }] }),
-        [{ foobar: { foo: 0, bar: 1, u64Val: "4294967297", i64Val: "-64", flag: false, baz: '123', uint8array: null, arr: [["1", "2"], ["3"]], u32Arr: null, i32Arr: null, uint8arrays: null, u64Arr: null, u64_zero:"0"}}]);
-    assert.equal(await module.getStringArrayLength({ arr: ["1", "2", "3"] }), 3);
-    assert.deepEqual(await module.rewrapFoobar({ container: { foobar: { foo: 123 } } }),
-        {"foobars":[[{"foo":123,"bar":1,"u64Val":"4294967297","i64Val":"-64","flag":false,"baz":"123","uint8array":null,"arr":null,"u32Arr":null,"i32Arr":null, "uint8arrays":null, "u64Arr":null, u64_zero:"0"}]]});
-    assert.deepEqual(await module.unwrapFoobar({ container: { foobars: [[{ foo: 123 }]] } }),
-        {"foo":123,"bar":1,"u64Val":"4294967297","i64Val":"-64","flag":false,"baz":"123","uint8array":null,"arr":null,"u32Arr":null,"i32Arr":null, "uint8arrays":null, u64Arr: null, u64_zero:"0"});
+    assert.deepEqual(
+      await module.convertFoobars({
+        foobars: [{ foo: -12345, bar: 123, flag: true, baz: "bazinga" }]
+      }),
+      [
+        {
+          foobar: {
+            foo: -12345,
+            bar: 123,
+            u64Val: (2 ** 32 + 1).toString(),
+            i64Val: "-64",
+            flag: true,
+            baz: "bazinga",
+            uint8array: null,
+            arr: null,
+            u32Arr: null,
+            i32Arr: null,
+            u128Val: null,
+            uint8arrays: null,
+            u64Arr: null,
+            u64_zero: "0"
+          }
+        }
+      ]
+    );
+    assert.deepEqual(
+      await module.convertFoobars({
+        foobars: [{ arr: [["1", "2"], ["3"]] }]
+      }),
+      [
+        {
+          foobar: {
+            foo: 0,
+            bar: 1,
+            u64Val: "4294967297",
+            i64Val: "-64",
+            flag: false,
+            baz: "123",
+            uint8array: null,
+            u128Val: null,
+            arr: [["1", "2"], ["3"]],
+            u32Arr: null,
+            i32Arr: null,
+            uint8arrays: null,
+            u64Arr: null,
+            u64_zero: "0"
+          }
+        }
+      ]
+    );
+    assert.equal(
+      await module.getStringArrayLength({ arr: ["1", "2", "3"] }),
+      3
+    );
+    assert.deepEqual(
+      await module.rewrapFoobar({ container: { foobar: { foo: 123 } } }),
+      {
+        foobars: [
+          [
+            {
+              foo: 123,
+              bar: 1,
+              u64Val: "4294967297",
+              i64Val: "-64",
+              flag: false,
+              baz: "123",
+              uint8array: null,
+              arr: null,
+              u32Arr: null,
+              i32Arr: null,
+              uint8arrays: null,
+              u128Val: null,
+              u64Arr: null,
+              u64_zero: "0"
+            }
+          ]
+        ]
+      }
+    );
+    assert.deepEqual(
+      await module.unwrapFoobar({ container: { foobars: [[{ foo: 123 }]] } }),
+      {
+        foo: 123,
+        bar: 1,
+        u64Val: "4294967297",
+        i64Val: "-64",
+        u128Val: null,
+        flag: false,
+        baz: "123",
+        uint8array: null,
+        arr: null,
+        u32Arr: null,
+        i32Arr: null,
+        uint8arrays: null,
+        u64Arr: null,
+        u64_zero: "0"
+      }
+    );
     assert.deepEqual(await module.stringOrNull(), null);
-    assert.deepStrictEqual(await module.stringAliasTest({str:"Hello"}), "Hello World");
-    
+    assert.deepStrictEqual(
+      await module.stringAliasTest({ str: "Hello" }),
+      "Hello World"
+    );
+
+
     await testFloatDetection("assembly/f32.ts");
     await testFloatDetection("assembly/f64.ts");
 

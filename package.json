@@ -7,6 +7,9 @@
     "test": "cd tests; yarn install && yarn test",
     "build": "webpack"
   },
+  "bin": {
+    "near-asc": "./bin/near-asc"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/nearprotocol/near-bindgen-as.git"

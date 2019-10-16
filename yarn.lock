@@ -265,12 +265,12 @@ asn1.js@^4.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
-"assemblyscript@github:willemneal/assemblyscript#transform-class-dist":
+"assemblyscript@github:AssemblyScript/assemblyscript":
   version "0.7.0"
-  resolved "https://codeload.github.com/willemneal/assemblyscript/tar.gz/d60014af2b1b5b8130ee6e87b3def26d3588ad62"
+  resolved "https://codeload.github.com/AssemblyScript/assemblyscript/tar.gz/4f13a737c2d3445ba37d2917e7c3a32bb30dde3f"
   dependencies:
     "@protobufjs/utf8" "^1.1.0"
-    binaryen "89.0.0-nightly.20190918"
+    binaryen "89.0.0-nightly.20191012"
     glob "^7.1.4"
     long "^4.0.0"
     opencollective-postinstall "^2.0.0"
@@ -332,10 +332,10 @@ binary-extensions@^1.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.13.1.tgz#598afe54755b2868a5330d2aff9d4ebb53209b65"
   integrity sha512-Un7MIEDdUC5gNpcGDV97op1Ywk748MpHcFTHoYs6qnj1Z3j7I53VG3nwZhKzoBZmbdRNnb6WRdFlwl7tSDuZGw==
 
-binaryen@89.0.0-nightly.20190918:
-  version "89.0.0-nightly.20190918"
-  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-89.0.0-nightly.20190918.tgz#5bdc37f07fe89cc16ea0e64e24d99555cdf6996c"
-  integrity sha512-3ToFheQo+qOg3N8IFArHqLEcKljmTA++DQxcyLAvMYvc0GsTlPWdXAj4BAndi1IngQqAXUQRx8LdIxPAddTxww==
+binaryen@89.0.0-nightly.20191012:
+  version "89.0.0-nightly.20191012"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-89.0.0-nightly.20191012.tgz#4079f4399cd3961f876aa1c913c0c9546f1c23f8"
+  integrity sha512-ipKFZEyrMnFuEPCzEsXZ80DwZhGzrPldQ+vtcyCfdr8O75PKawfll1gmdWg4sUtzjSnfdvK9NiYfzm021lDNUg==
 
 bluebird@^3.5.5:
   version "3.7.0"

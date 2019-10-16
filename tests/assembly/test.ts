@@ -13,7 +13,7 @@ export function runTest(): void {
     original.flag = true;
     original.baz = "foo";
     original.uint8array = base64.decode("aGVsbG8sIHdvcmxkIQ==");
-    // original.u128Val = new u128(128);
+    original.u128Val = new u128(128);
     original.arr = [["Hello"], ["World"]];
     original.uint8arrays = Array.create<Uint8Array>(2);
     original.uint8arrays[0] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
@@ -38,7 +38,7 @@ export function runTest(): void {
     //@ts-ignore
     const nullable2 = decode<Nullables>(nullable.encode());
     assert(nullable2.str == null);
-    // assert(nullable2.u128 == <u128> null);
+    assert(nullable2.u128 == <u128> null);
     assert(nullable2.uint8Array == null);
     logging.log("Test Passed");
 }
