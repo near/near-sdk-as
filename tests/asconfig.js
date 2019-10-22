@@ -1,4 +1,4 @@
-const compile = require("near-runtime-ts").compile;
+const compile = require("near-bindgen-as").compile;
 
 
 compile("assembly/main.ts", // input file

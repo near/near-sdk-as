@@ -6,7 +6,6 @@
     "type": "git",
     "url": "git@:nearprotocol/near-runtime-ts.git"
   },
-  "main": "index.js",
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",
   "scripts": {
@@ -16,11 +15,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "near-assemblyscript": "^0.7.4",
-    "assemblyscript-json": "^0.2.0",
+    "assemblyscript-json": "0.2.0",
     "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
+    "assemblyscript": "AssemblyScript/assemblyscript",
+    "near-bindgen-as": "file:../near-bindgen-as",
+    "ts-node": "^8.4.1",
     "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^1.2.1"
   }
