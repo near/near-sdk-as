@@ -123,7 +123,7 @@ module.exports = {
     "--runtime": ["stub"], // Acceptable values are: full, half, stub (arena), and none,
     "--baseDir": __dirname,
     "--runPasses": ["inlining,dce"],
-    "--transform": ["../node_modules/near-bindgen-as/dist/nearBindings.js"]
+    "--transform": ["./node_modules/near-bindgen-as/dist/nearBindings.js"]
   },
   /**
    * A set of regexp that will disclude source files from testing.

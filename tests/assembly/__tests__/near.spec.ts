@@ -17,7 +17,7 @@ describe('utils', (): void => {
         byteArray[1] = 100;
         byteArray[2] = 111;
         byteArray[3] = 103;
-        let bytes = byteArray.subarray(1);
+        let bytes = <Uint8Array> byteArray.subarray(1);
         let s = util.bytesToString(bytes)!;
         expect<string>(s).toBe('dog');
     });

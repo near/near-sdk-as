@@ -7,7 +7,7 @@ describe("Round Trip", () => {
   it("should return the same TextMessage", () => {
   const message = _testTextMessage();
   //@ts-ignore
-  const messageFromStorage = util.parseFromBytes<TextMessage>(encode(message));
+  const messageFromStorage = util.parseFromBytes<TextMessage>(encode<TextMessage>(message));
   expect<string>(messageFromStorage.sender).toStrictEqual("mysteriousStranger", "Incorrect data value (sender) for retrieved object");
   expect<string>(messageFromStorage.text).toStrictEqual("Hello world", "Incorrect data value (text) for retrieved object");
   expect<u64>(messageFromStorage.number).toBe(415, "Incorrect data value (number) for retrieved object");
@@ -16,7 +16,7 @@ describe("Round Trip", () => {
   it("should handle empty Message", () => {
     const message = new TextMessage();
     //@ts-ignore
-    const messageFromStorage = util.parseFromBytes<TextMessage>(encode(message));
+    const messageFromStorage = util.parseFromBytes<TextMessage>(encode<TextMessage>(message));
     expect<string>(messageFromStorage.sender).toStrictEqual(message.sender, "Incorrect data value (sender) for retrieved object");
     expect<string>(messageFromStorage.text).toStrictEqual(message.text, "Incorrect data value (text) for retrieved object");
     expect<u64>(messageFromStorage.number).toBe(message.number, "Incorrect data value (number) for retrieved object");
@@ -27,7 +27,7 @@ describe("Round Trip", () => {
     const u32 = new Box<u32>();
     u32.t = 42;
     //@ts-ignore
-    const u32_2 = util.parseFromBytes<Box<u32>>(encode(u32));
+    const u32_2 = util.parseFromBytes<Box<u32>>(encode<Box<u32>>(u32));
     expect<u32>(u32.t).toBe(u32_2.t);
   })
 })
@@ -77,6 +77,7 @@ function isBox<T>(): bool {
 describe("Generic classes",() => {
   it("can use instanceof", () => {
     let genericFoo = new Generic<Foo>(new Foo());
+    //@ts-ignore
     expect<boolean>(genericFoo instanceof Generic<Foo>).toBe(true);
   });
 });
