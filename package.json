@@ -19,7 +19,8 @@
     "bignum": "github:MaxGraey/bignum.wasm"
   },
   "devDependencies": {
-    "assemblyscript": "AssemblyScript/assemblyscript",
+    "assemblyscript": "^0.8.0",
+    "near-bindgen-as": "nearprotocol/near-bindgen-as",
     "ts-node": "^8.4.1",
     "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^1.2.1"
