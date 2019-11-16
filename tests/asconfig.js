@@ -1,4 +1,4 @@
-const compile = require("..").compile;
+const compile = require("../compiler").compile;
 
 
 compile("assembly/test.ts", // input file
@@ -7,6 +7,6 @@ compile("assembly/test.ts", // input file
         //   "-O1",            // Optional arguments
         "--debug",
         "--measure"
-        ]);
+        ], {verbose: true});
 
 

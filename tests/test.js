@@ -2,7 +2,7 @@
 const fs = require('fs');
 const assert = require('assert');
 let asc = require("assemblyscript/cli/asc");
-const loader = require('../node_modules/assemblyscript/lib/loader');
+const loader = require('assemblyscript/lib/loader');
 
 function toNum(x) { return parseInt(x.toString());}
 // http://www.onicos.com/staff/iz/amuse/javascript/expert/utf.txt
@@ -56,7 +56,7 @@ async function loadModule(path) {
     let mem = { get U8() {
                   return new Uint8Array(module.memory.buffer);
     }}
-    module = loader.instantiateBuffer(fs.readFileSync(path), {
+    module = loader.instantiateSync(fs.readFileSync(path), {
         env: {
             abort(msg, file, line, column) {
                 if (module) {
@@ -134,14 +134,15 @@ async function loadModule(path) {
 
 async function testFloatDetection(file){
   return new Promise( (resolve, reject)=>
-    asc.main([file, "--runtime", "none", "--noEmit", "--transform", "../dist/nearBindings.js"], error => {
+    asc.main([file, "--runtime", "none", "--noEmit", "--transform", "../"], error => {
       if (error == null || !/Floating point numbers are not allowed/g.test(error.message)) {
         if (error == null){
             error = "Couldn't find float";
             }
         reject(file + error);
       }
-      resolve()
+      console.error(error.message);
+      resolve();
     }));
 }
 

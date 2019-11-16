@@ -9,7 +9,7 @@ assemblyscript-json@0.2.0:
 
 "bignum@github:MaxGraey/bignum.wasm":
   version "0.1.1"
-  resolved "https://codeload.github.com/MaxGraey/bignum.wasm/tar.gz/5403267df2d9a6792fdc6d34f4f11854ccf49719"
+  resolved "https://codeload.github.com/MaxGraey/bignum.wasm/tar.gz/2cb97539d8a92e3b82ad8aec2c5159d3d86d2578"
 
 near-runtime-ts@^0.3.1:
   version "0.3.1"

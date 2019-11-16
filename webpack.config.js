@@ -4,6 +4,6 @@ const files = {
   nearBindings:"./src/index.ts"
  };
 
-const outfolder = path.resolve(__dirname, "dist");
+const outfolder = path.resolve(__dirname);
 
 module.exports = config(files, outfolder,  ["./assembly/nearEntry.ts"]);

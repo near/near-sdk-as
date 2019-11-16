@@ -291,6 +291,7 @@ declare var __dirname: string;
 
 class JSONTransformer extends Transform {
   parser: Parser;
+  static isTest: boolean = false;
 
   get program(): Program {
     return this.parser.program;
@@ -303,7 +304,7 @@ class JSONTransformer extends Transform {
 
     // Filter for near files
     let files = JSONBindingsBuilder.nearFiles(parser);
-
+    JSONTransformer.isTest = files.map(source => source.normalizedPath).some(path => path.includes("spec"));
     // Visit each file
     files.forEach(source => {
       let writeOut = source.text
@@ -334,11 +335,16 @@ class JSONTransformer extends Transform {
       const libSource = BUNDLE["nearEntry"];
       this.parser.parseFile(libSource, "nearFile", true);
     }
+    if (!JSONTransformer.isTest){
+      TypeChecker.check(parser);
+    }
   }
   
   /** Check for floats */
   afterCompile(module: Module): void {
-    TypeChecker.check(module);
+    if (!JSONTransformer.isTest){
+      TypeChecker.checkBinary(module);
+    }
   }
 }
 const preamble = `import { JSONEncoder } from "assemblyscript-json";`;

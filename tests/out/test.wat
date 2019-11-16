@@ -1109,7 +1109,7 @@
   if
    i32.const 552
    i32.const 600
-   i32.const 53
+   i32.const 54
    i32.const 42
    call $~lib/builtins/abort
    unreachable
@@ -2565,6 +2565,8 @@
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
   local.get $0
   i32.const 0
   i32.ne
@@ -2605,15 +2607,25 @@
    call $~lib/builtins/abort
    unreachable
   end
+  local.get $0
+  local.get $3
+  i32.add
+  global.get $~lib/rt/stub/offset
+  i32.eq
+  local.set $4
+  local.get $1
+  i32.const 15
+  i32.add
+  i32.const 15
+  i32.const -1
+  i32.xor
+  i32.and
+  local.set $5
   local.get $1
   local.get $3
   i32.gt_u
   if
-   local.get $0
-   local.get $3
-   i32.add
-   global.get $~lib/rt/stub/offset
-   i32.eq
+   local.get $4
    if
     local.get $1
     i32.const 1073741808
@@ -2621,76 +2633,48 @@
     if
      unreachable
     end
-    local.get $1
-    i32.const 15
-    i32.add
-    i32.const 15
-    i32.const -1
-    i32.xor
-    i32.and
-    local.set $3
     local.get $0
-    local.get $3
+    local.get $5
     i32.add
     call $~lib/rt/stub/maybeGrowMemory
     local.get $2
-    local.get $3
+    local.get $5
     i32.store
    else
-    local.get $1
-    i32.const 15
-    i32.add
-    i32.const 15
-    i32.const -1
-    i32.xor
-    i32.and
-    local.tee $4
+    local.get $5
+    local.tee $6
     local.get $3
     i32.const 1
     i32.shl
-    local.tee $5
-    local.get $4
-    local.get $5
+    local.tee $7
+    local.get $6
+    local.get $7
     i32.gt_u
     select
-    local.set $3
-    local.get $3
     local.get $2
     i32.load offset=8
     call $~lib/rt/stub/__alloc
-    local.set $4
-    local.get $4
+    local.set $6
+    local.get $6
     local.get $0
     local.get $2
     i32.load offset=12
     call $~lib/memory/memory.copy
-    local.get $4
+    local.get $6
     local.tee $0
     i32.const 16
     i32.sub
     local.set $2
    end
   else
-   local.get $0
-   local.get $3
-   i32.add
-   global.get $~lib/rt/stub/offset
-   i32.eq
+   local.get $4
    if
-    local.get $1
-    i32.const 15
-    i32.add
-    i32.const 15
-    i32.const -1
-    i32.xor
-    i32.and
-    local.set $3
     local.get $0
-    local.get $3
+    local.get $5
     i32.add
     global.set $~lib/rt/stub/offset
     local.get $2
-    local.get $3
+    local.get $5
     i32.store
    end
   end
@@ -2817,7 +2801,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -2833,7 +2817,7 @@
    call $~lib/rt/stub/__release
    i32.const 1048
    i32.const 952
-   i32.const 96
+   i32.const 97
    i32.const 39
    call $~lib/builtins/abort
    unreachable
@@ -4872,7 +4856,7 @@
   if
    i32.const 2000
    i32.const 952
-   i32.const 270
+   i32.const 285
    i32.const 20
    call $~lib/builtins/abort
    unreachable
@@ -5331,14 +5315,14 @@
      call $~lib/builtins/abort
      unreachable
     end
-    local.get $2
-    i32.const 1
-    i32.add
-    local.set $2
     local.get $3
     call $~lib/rt/stub/__release
     local.get $4
     call $~lib/rt/stub/__release
+    local.get $2
+    i32.const 1
+    i32.add
+    local.set $2
     br $loop|0
    end
    unreachable
@@ -8757,20 +8741,20 @@
     local.get $8
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
     local.get $7
     call $~lib/rt/stub/__release
     local.get $8
     call $~lib/rt/stub/__release
+    local.get $6
+    i32.const 1
+    i32.add
+    local.set $6
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $8
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -8781,7 +8765,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $8
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Value> (; 152 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -9062,20 +9046,20 @@
     local.get $8
     call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#push
     drop
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
     local.get $7
     call $~lib/rt/stub/__release
     local.get $8
     call $~lib/rt/stub/__release
+    local.get $6
+    i32.const 1
+    i32.add
+    local.set $6
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $8
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -9086,7 +9070,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $8
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,nearFile/Obj> (; 155 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -9606,18 +9590,18 @@
     local.get $8
     call $~lib/array/Array<u32>#push
     drop
+    local.get $7
+    call $~lib/rt/stub/__release
     local.get $6
     i32.const 1
     i32.add
     local.set $6
-    local.get $7
-    call $~lib/rt/stub/__release
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $8
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -9628,7 +9612,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $8
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<u32>,nearFile/Obj> (; 161 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -10148,18 +10132,18 @@
     local.get $8
     call $~lib/array/Array<i32>#push
     drop
+    local.get $7
+    call $~lib/rt/stub/__release
     local.get $6
     i32.const 1
     i32.add
     local.set $6
-    local.get $7
-    call $~lib/rt/stub/__release
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $8
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -10170,7 +10154,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $8
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<i32>,nearFile/Obj> (; 167 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -10401,7 +10385,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -10869,6 +10853,12 @@
         end
         local.get $20
         local.set $8
+        local.get $11
+        call $~lib/rt/stub/__release
+        local.get $18
+        call $~lib/rt/stub/__release
+        local.get $19
+        call $~lib/rt/stub/__release
         local.get $7
         i32.const 1
         i32.add
@@ -11147,6 +11137,16 @@
        end
        local.get $22
        local.set $8
+       local.get $20
+       call $~lib/rt/stub/__release
+       local.get $11
+       call $~lib/rt/stub/__release
+       local.get $21
+       call $~lib/rt/stub/__release
+       local.get $10
+       call $~lib/rt/stub/__release
+       local.get $18
+       call $~lib/rt/stub/__release
        local.get $7
        i32.const 1
        i32.add
@@ -11315,6 +11315,12 @@
       end
       local.get $21
       local.set $8
+      local.get $22
+      call $~lib/rt/stub/__release
+      local.get $19
+      call $~lib/rt/stub/__release
+      local.get $11
+      call $~lib/rt/stub/__release
       local.get $7
       i32.const 1
       i32.add
@@ -11456,6 +11462,12 @@
      end
      local.get $4
      local.set $8
+     local.get $20
+     call $~lib/rt/stub/__release
+     local.get $21
+     call $~lib/rt/stub/__release
+     local.get $10
+     call $~lib/rt/stub/__release
      local.get $7
      i32.const 1
      i32.add
@@ -12129,20 +12141,20 @@
     local.get $8
     call $~lib/array/Array<~lib/typedarray/Uint8Array>#push
     drop
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
     local.get $7
     call $~lib/rt/stub/__release
     local.get $8
     call $~lib/rt/stub/__release
+    local.get $6
+    i32.const 1
+    i32.add
+    local.set $6
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $8
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -12153,7 +12165,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $8
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<~lib/typedarray/Uint8Array>,nearFile/Obj> (; 180 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -12682,18 +12694,18 @@
     local.get $8
     call $~lib/array/Array<u64>#push
     drop
+    local.get $7
+    call $~lib/rt/stub/__release
     local.get $6
     i32.const 1
     i32.add
     local.set $6
-    local.get $7
-    call $~lib/rt/stub/__release
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $7
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -12704,7 +12716,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $7
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<u64>,nearFile/Obj> (; 186 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -13502,20 +13514,20 @@
     local.get $8
     call $~lib/array/Array<assembly/model/FooBar>#push
     drop
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
     local.get $7
     call $~lib/rt/stub/__release
     local.get $8
     call $~lib/rt/stub/__release
+    local.get $6
+    i32.const 1
+    i32.add
+    local.set $6
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $8
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -13526,7 +13538,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $8
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Obj> (; 192 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -13791,14 +13803,14 @@
     local.get $7
     call $~lib/rt/stub/__retain
     i32.store
-    local.get $5
-    i32.const 1
-    i32.add
-    local.set $5
     local.get $6
     call $~lib/rt/stub/__release
     local.get $7
     call $~lib/rt/stub/__release
+    local.get $5
+    i32.const 1
+    i32.add
+    local.set $5
     br $loop|0
    end
    unreachable
@@ -13899,7 +13911,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -14513,12 +14525,12 @@
   local.get $1
   call $~lib/string/String#get:length
   call $~lib/string/String#substring
-  local.tee $5
+  local.tee $3
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
   local.get $0
   i32.const 1248
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
-  local.get $5
+  local.get $3
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
@@ -14530,8 +14542,6 @@
   drop
   local.get $0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#get:isFirstKey
-  i32.const 0
-  i32.ne
   i32.eqz
   if
    local.get $0
@@ -14634,7 +14644,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -14650,7 +14660,7 @@
    call $~lib/rt/stub/__release
    i32.const 1048
    i32.const 952
-   i32.const 96
+   i32.const 97
    i32.const 39
    call $~lib/builtins/abort
    unreachable
@@ -14889,7 +14899,9 @@
   (local $7 i32)
   (local $8 i64)
   local.get $0
-  i64.eqz
+  i64.const 0
+  i64.ne
+  i32.eqz
   if
    i32.const 104
    call $~lib/rt/stub/__retain
@@ -15055,7 +15067,9 @@
   (local $6 i32)
   (local $7 i64)
   local.get $0
-  i64.eqz
+  i64.const 0
+  i64.ne
+  i32.eqz
   if
    i32.const 104
    call $~lib/rt/stub/__retain
@@ -15389,10 +15403,6 @@
     local.tee $8
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $1
-    i32.const 3
-    i32.add
-    local.set $1
     local.get $5
     call $~lib/rt/stub/__release
     local.get $6
@@ -15401,6 +15411,10 @@
     call $~lib/rt/stub/__release
     local.get $8
     call $~lib/rt/stub/__release
+    local.get $1
+    i32.const 3
+    i32.add
+    local.set $1
     br $loop|0
    end
    unreachable
@@ -15594,7 +15608,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -15610,7 +15624,7 @@
    call $~lib/rt/stub/__release
    i32.const 1048
    i32.const 952
-   i32.const 96
+   i32.const 97
    i32.const 39
    call $~lib/builtins/abort
    unreachable
@@ -15636,7 +15650,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -15652,7 +15666,7 @@
    call $~lib/rt/stub/__release
    i32.const 1048
    i32.const 952
-   i32.const 96
+   i32.const 97
    i32.const 39
    call $~lib/builtins/abort
    unreachable
@@ -15671,7 +15685,7 @@
   if
    i32.const 2000
    i32.const 952
-   i32.const 270
+   i32.const 285
    i32.const 20
    call $~lib/builtins/abort
    unreachable
@@ -15744,12 +15758,12 @@
      local.get $2
      call $nearFile/encode<~lib/string/String,~lib/assemblyscript-json/encoder/JSONEncoder>
      call $~lib/rt/stub/__release
+     local.get $4
+     call $~lib/rt/stub/__release
      local.get $3
      i32.const 1
      i32.add
      local.set $3
-     local.get $4
-     call $~lib/rt/stub/__release
      br $loop|0
     end
     unreachable
@@ -15760,14 +15774,14 @@
   i32.const 0
   local.set $5
   local.get $2
-  local.set $4
+  local.set $3
   local.get $0
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
   local.get $5
   call $~lib/rt/stub/__release
-  local.get $4
+  local.get $3
  )
  (func $nearFile/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 248 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
@@ -15812,12 +15826,12 @@
      local.get $2
      call $nearFile/encode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/encoder/JSONEncoder>
      call $~lib/rt/stub/__release
+     local.get $4
+     call $~lib/rt/stub/__release
      local.get $3
      i32.const 1
      i32.add
      local.set $3
-     local.get $4
-     call $~lib/rt/stub/__release
      br $loop|0
     end
     unreachable
@@ -15828,14 +15842,14 @@
   i32.const 0
   local.set $5
   local.get $2
-  local.set $4
+  local.set $3
   local.get $0
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
   local.get $5
   call $~lib/rt/stub/__release
-  local.get $4
+  local.get $3
  )
  (func $~lib/array/Array<u32>#get:length (; 249 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
@@ -15859,7 +15873,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -16100,6 +16114,10 @@
       i32.const 3
       i32.mul
       i32.add
+      i32.const 24
+      i32.shl
+      i32.const 24
+      i32.shr_s
       call $~lib/typedarray/Int8Array#__set
       local.get $4
       i32.const 1
@@ -16125,6 +16143,10 @@
       call $~lib/typedarray/Int8Array#__get
       i32.const 1
       i32.shl
+      i32.const 24
+      i32.shl
+      i32.const 24
+      i32.shr_s
       call $~lib/typedarray/Int8Array#__set
       local.get $4
       local.get $2
@@ -16145,6 +16167,10 @@
        i32.const 15
        i32.gt_s
        i32.or
+       i32.const 24
+       i32.shl
+       i32.const 24
+       i32.shr_s
        call $~lib/typedarray/Int8Array#__set
       end
       local.get $0
@@ -16177,6 +16203,10 @@
     i64.const 0
     i64.ne
     i32.add
+    i32.const 24
+    i32.shl
+    i32.const 24
+    i32.shr_s
     call $~lib/typedarray/Int8Array#__set
     local.get $3
     i32.const 1
@@ -16324,7 +16354,9 @@
   local.get $2
   i64.load offset=8
   i64.or
-  i64.eqz
+  i64.const 0
+  i64.ne
+  i32.eqz
   if
    i32.const 104
    call $~lib/rt/stub/__retain
@@ -16633,7 +16665,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -16649,7 +16681,7 @@
    call $~lib/rt/stub/__release
    i32.const 1048
    i32.const 952
-   i32.const 96
+   i32.const 97
    i32.const 39
    call $~lib/builtins/abort
    unreachable
@@ -16699,12 +16731,12 @@
      local.get $2
      call $nearFile/encode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/encoder/JSONEncoder>
      call $~lib/rt/stub/__release
+     local.get $4
+     call $~lib/rt/stub/__release
      local.get $3
      i32.const 1
      i32.add
      local.set $3
-     local.get $4
-     call $~lib/rt/stub/__release
      br $loop|0
     end
     unreachable
@@ -16715,14 +16747,14 @@
   i32.const 0
   local.set $5
   local.get $2
-  local.set $4
+  local.set $3
   local.get $0
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
   local.get $5
   call $~lib/rt/stub/__release
-  local.get $4
+  local.get $3
  )
  (func $~lib/array/Array<u64>#get:length (; 266 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
@@ -16746,7 +16778,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -17548,12 +17580,12 @@
      local.get $2
      call $nearFile/encode<assembly/model/ContainerClass,~lib/assemblyscript-json/encoder/JSONEncoder>
      call $~lib/rt/stub/__release
+     local.get $4
+     call $~lib/rt/stub/__release
      local.get $3
      i32.const 1
      i32.add
      local.set $3
-     local.get $4
-     call $~lib/rt/stub/__release
      br $loop|0
     end
     unreachable
@@ -17565,7 +17597,7 @@
   local.set $5
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $4
+  local.set $3
   local.get $0
   call $~lib/rt/stub/__release
   local.get $1
@@ -17574,7 +17606,7 @@
   call $~lib/rt/stub/__release
   local.get $5
   call $~lib/rt/stub/__release
-  local.get $4
+  local.get $3
   return
  )
  (func $assembly/test/__wrapper_convertFoobars (; 281 ;) (type $FUNCSIG$v)
@@ -18679,7 +18711,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -18695,7 +18727,7 @@
    call $~lib/rt/stub/__release
    i32.const 1048
    i32.const 952
-   i32.const 96
+   i32.const 97
    i32.const 39
    call $~lib/builtins/abort
    unreachable
@@ -18725,7 +18757,7 @@
   if
    i32.const 672
    i32.const 952
-   i32.const 92
+   i32.const 93
    i32.const 41
    call $~lib/builtins/abort
    unreachable
@@ -18741,7 +18773,7 @@
    call $~lib/rt/stub/__release
    i32.const 1048
    i32.const 952
-   i32.const 96
+   i32.const 97
    i32.const 39
    call $~lib/builtins/abort
    unreachable
@@ -18791,12 +18823,12 @@
      local.get $2
      call $nearFile/encode<assembly/model/FooBar,~lib/assemblyscript-json/encoder/JSONEncoder>
      call $~lib/rt/stub/__release
+     local.get $4
+     call $~lib/rt/stub/__release
      local.get $3
      i32.const 1
      i32.add
      local.set $3
-     local.get $4
-     call $~lib/rt/stub/__release
      br $loop|0
     end
     unreachable
@@ -18807,14 +18839,14 @@
   i32.const 0
   local.set $5
   local.get $2
-  local.set $4
+  local.set $3
   local.get $0
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
   local.get $5
   call $~lib/rt/stub/__release
-  local.get $4
+  local.get $3
  )
  (func $nearFile/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 306 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
@@ -18859,12 +18891,12 @@
      local.get $2
      call $nearFile/encode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/encoder/JSONEncoder>
      call $~lib/rt/stub/__release
+     local.get $4
+     call $~lib/rt/stub/__release
      local.get $3
      i32.const 1
      i32.add
      local.set $3
-     local.get $4
-     call $~lib/rt/stub/__release
      br $loop|0
     end
     unreachable
@@ -18875,14 +18907,14 @@
   i32.const 0
   local.set $5
   local.get $2
-  local.set $4
+  local.set $3
   local.get $0
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
   local.get $5
   call $~lib/rt/stub/__release
-  local.get $4
+  local.get $3
  )
  (func $assembly/model/AnotherContainerClass#_encode (; 307 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
@@ -19368,20 +19400,20 @@
     local.get $8
     call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#push
     drop
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
     local.get $7
     call $~lib/rt/stub/__release
     local.get $8
     call $~lib/rt/stub/__release
+    local.get $6
+    i32.const 1
+    i32.add
+    local.set $6
     br $loop|0
    end
    unreachable
   end
   local.get $4
-  local.set $8
+  local.set $6
   local.get $2
   call $~lib/rt/stub/__release
   local.get $3
@@ -19392,7 +19424,7 @@
   call $~lib/rt/stub/__release
   local.get $1
   call $~lib/rt/stub/__release
-  local.get $8
+  local.get $6
  )
  (func $nearFile/decode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,nearFile/Obj> (; 316 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -20201,6 +20233,7 @@
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
+  (local $5 i32)
   local.get $0
   i32.load offset=12
   local.set $2
@@ -20208,23 +20241,30 @@
   local.get $1
   i32.gt_s
   if
+   local.get $0
+   i32.load offset=4
+   local.set $3
+   local.get $3
    local.get $1
    i32.const 2
    i32.shl
-   local.set $3
+   i32.add
+   local.set $4
+   local.get $3
    local.get $2
    i32.const 2
    i32.shl
-   local.set $4
+   i32.add
+   local.set $5
    loop $continue|0
-    local.get $3
+    local.get $4
     i32.load
     call $~lib/rt/stub/__release
-    local.get $3
+    local.get $4
     i32.const 4
     i32.add
-    local.tee $3
-    local.get $4
+    local.tee $4
+    local.get $5
     i32.lt_u
     br_if $continue|0
    end
