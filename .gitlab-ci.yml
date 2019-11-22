@@ -19,32 +19,38 @@ stages:
   - test
 
 install_dependencies:
+  tags: docker
   stage: install
   script:
     - yarn --force
 
 install_test_dependencies:
+  tags: docker
   stage: install-tests
   script:
     - cd tests && yarn && yarn remove near-runtime-ts && yarn add ../
 
 build_test_wasm:
+  tags: docker
   stage: build
   script:
     - cd tests && yarn build
 
 build_near_vm_runner_standalone:
+  tags: docker
   stage: build
   script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cd tests && ./build-near-vm-runner-standalone.sh
 
 run_aspect_tests:
+  tags: docker
   stage: test
   script:
     - cd tests && yarn asp
 
 run_assembly_test:
+  tags: docker
   stage: test
   script:
     - cd tests && ./test.sh
