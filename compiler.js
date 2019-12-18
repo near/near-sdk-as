@@ -20,6 +20,13 @@ function getAsc(config) {
     asc = require("assemblyscript/dist/asc");
     
   }
+  const mainVersion = parseInt(asc.version.replace(/(\d+)\.\d+\.\d+/, "$1"));
+  if (mainVersion == 0) {
+    const version = parseInt(asc.version.replace(/\d+\.(\d+)\.\d+/, "$1"));
+    if (version < 8) {
+      throw Error("Requires a version of AssemblyScript greater than 0.8.0")
+    }
+  }
   asc.main = (main => (args, options, fn) => {
     if (typeof options === "function") {
       fn = options;
