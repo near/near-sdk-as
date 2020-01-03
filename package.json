@@ -1,6 +1,6 @@
 {
   "name": "near-bindgen-as",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Bindings for serializing contract functions.",
   "main": "index.js",
   "scripts": {
