@@ -22,6 +22,7 @@ export abstract class AbstractVisitor<T> {
       //@ts-ignore Need a better way to test type
     } else if (isIterable(node)) {
         //TODO: Find better way to test if iterable
+      //@ts-ignore is iterable
       for (let _node of node) {
           this.visit(_node);
       }

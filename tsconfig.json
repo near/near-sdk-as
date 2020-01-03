@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "noLib": true,
     "inlineSourceMap": true,
     "inlineSources": true,
-    "target": "es5",
+    "target": "esnext",
     "module": "commonjs",
     "downlevelIteration": true,
     "preserveConstEnums": true,

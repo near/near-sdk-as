@@ -8,5 +8,7 @@
     "test": "npm run build:asconfig && npm run build && node --experimental-wasm-bigint ./test.js",
     "build:asconfig": "node asconfig.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "near-bindgen-as": "../"
+  }
 }

@@ -4,7 +4,7 @@
   "description": "Bindings for serializing contract functions.",
   "main": "index.js",
   "scripts": {
-    "test": "cd tests && yarn test",
+    "test": "cd tests && yarn add ../ --no-lockfile && yarn test",
     "build": "webpack",
     "test:ci": "yarn run build && yarn run test"
   },
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/nearprotocol/near-bindgen#readme",
   "devDependencies": {
-    "assemblyscript": "^0.8.0",
+    "assemblyscript": "^0.8.1",
     "near-runtime-ts": "^0.5.1",
     "ts-loader": "^6.2.0",
     "typescript": "^3.6.4",

@@ -4862,7 +4862,7 @@
   if
    i32.const 2184
    i32.const 1136
-   i32.const 285
+   i32.const 288
    i32.const 20
    call $~lib/builtins/abort
    unreachable
@@ -13961,27 +13961,38 @@
   i32.store
  )
  (func $~lib/array/Array<i32>#__set (; 204 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  local.get $0
-  local.get $1
-  i32.const 1
-  i32.add
-  i32.const 2
-  call $~lib/array/ensureSize
-  local.get $0
-  local.get $1
-  local.get $2
-  call $~lib/array/Array<i32>#__unchecked_set
   local.get $1
   local.get $0
   i32.load offset=12
-  i32.ge_s
+  i32.ge_u
   if
+   local.get $1
+   i32.const 0
+   i32.lt_s
+   if
+    i32.const 856
+    i32.const 1136
+    i32.const 109
+    i32.const 21
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $0
+   local.get $1
+   i32.const 1
+   i32.add
+   i32.const 2
+   call $~lib/array/ensureSize
    local.get $0
    local.get $1
    i32.const 1
    i32.add
    i32.store offset=12
   end
+  local.get $0
+  local.get $1
+  local.get $2
+  call $~lib/array/Array<i32>#__unchecked_set
  )
  (func $~lib/string/String#substring (; 205 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
@@ -15691,7 +15702,7 @@
   if
    i32.const 2184
    i32.const 1136
-   i32.const 285
+   i32.const 288
    i32.const 20
    call $~lib/builtins/abort
    unreachable
@@ -20329,27 +20340,40 @@
   local.get $2
   call $~lib/rt/stub/__retain
   drop
-  local.get $0
-  local.get $1
-  i32.const 1
-  i32.add
-  i32.const 2
-  call $~lib/array/ensureSize
-  local.get $0
-  local.get $1
-  local.get $2
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__unchecked_set
   local.get $1
   local.get $0
   i32.load offset=12
-  i32.ge_s
+  i32.ge_u
   if
+   local.get $1
+   i32.const 0
+   i32.lt_s
+   if
+    local.get $2
+    call $~lib/rt/stub/__release
+    i32.const 856
+    i32.const 1136
+    i32.const 109
+    i32.const 21
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $0
+   local.get $1
+   i32.const 1
+   i32.add
+   i32.const 2
+   call $~lib/array/ensureSize
    local.get $0
    local.get $1
    i32.const 1
    i32.add
    i32.store offset=12
   end
+  local.get $0
+  local.get $1
+  local.get $2
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__unchecked_set
   local.get $2
   call $~lib/rt/stub/__release
  )
