@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "build:hello": "asc --runtime stub assembly/main.ts --textFile out/main.wat --outFile out/main.wasm --validate --debug --transform near-bindgen-as",
+    "build:hello": "asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug --transform near-bindgen-as",
     "pretest": "yarn build:hello && yarn build && ./build-near-vm-runner-standalone.sh",
     "test": "yarn build:hello && yarn asp",
     "asp": "node --experimental-wasm-bigint ./node_modules/.bin/asp --compiler ./node_modules/near-assemblyscript",
-    "build": "node asconfig.js"
+    "build": "asc --runtime stub assembly/main.ts --textFile out/main.wat --outFile out/main.wasm --validate --debug --transform near-bindgen-as"
   },
   "dependencies": {
     "@as-pect/cli": "^2.5.0",
