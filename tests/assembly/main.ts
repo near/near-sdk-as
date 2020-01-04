@@ -395,8 +395,8 @@ export function promiseTests(): void {
   logging.log("promiseTests");
   const emptyResults = ContractPromise.getResults();
   assert(emptyResults.length == 0, "wrong length for results");
-  const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 100);
-  const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 100);
+  const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
+  const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
   const promise3 = ContractPromise.all([promise2]);
 }
 
