@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "assemblyscript": "^0.8.1",
-    "near-bindgen-as": "^1.0.1",
+    "near-bindgen-as": "1.1.1",
     "assemblyscript-json": "^0.2.0",
     "bignum": "github:MaxGraey/bignum.wasm"
   },
