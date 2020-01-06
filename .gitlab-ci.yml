@@ -47,12 +47,12 @@ build_near_vm_runner_standalone:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cd tests && ./build-near-vm-runner-standalone.sh
 
-run_aspect_tests:
-  tags:
-    - docker
-  stage: test
-  script:
-    - cd tests && yarn asp
+#run_aspect_tests:
+#  tags:
+#    - docker
+#  stage: test
+#  script:
+#    - cd tests && yarn asp
 
 run_assembly_test:
   tags:
