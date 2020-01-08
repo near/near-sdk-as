@@ -173,8 +173,13 @@
  (data (i32.const 6368) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00t\00e\00s\00t\00.\00t\00s\00")
  (data (i32.const 6416) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00u\00i\00n\00t\008\00A\00r\00r\00a\00y\00")
  (data (i32.const 6456) "\12\00\00\00\01\00\00\00\01\00\00\00\12\00\00\00N\00u\00l\00l\00a\00b\00l\00e\00s\00")
- (data (i32.const 6496) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00T\00e\00s\00t\00 \00P\00a\00s\00s\00e\00d\00")
- (data (i32.const 6536) "%\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\07\00\00\00\10\00\00\00\08\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\n\00\00\00\98 A\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\n\00\00\00\93\04\00\00\02\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\93\00\00\00\02\00\00\00\93 \00\00\02\00\00\00\13\01\00\00\02\00\00\00\93 \00\00\02\00\00\00\93 \00\00\02\00\00\003\00\00\00\02\00\00\00\10\00\00\00\00\00\00\001\04\00\00\02\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00")
+ (data (i32.const 6496) "\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6512) "\08\00\00\00\01\00\00\00\00\00\00\00\08\00\00\00\15\cd[\07\00\00\00\00")
+ (data (i32.const 6536) "\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6552) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00h\00e\00l\00l\00o\00 \00w\00o\00r\00l\00d\00")
+ (data (i32.const 6592) ",\00\00\00\01\00\00\00\01\00\00\00,\00\00\00e\00x\00p\00e\00c\00t\00e\00d\00 \00\"\00h\00e\00l\00l\00o\00 \00w\00o\00r\00l\00d\00\"\00")
+ (data (i32.const 6656) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00T\00e\00s\00t\00 \00P\00a\00s\00s\00e\00d\00")
+ (data (i32.const 6696) "%\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\07\00\00\00\10\00\00\00\08\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\n\00\00\00\98 A\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\n\00\00\00\93\04\00\00\02\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\n\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\93\00\00\00\02\00\00\00\93 \00\00\02\00\00\00\13\01\00\00\02\00\00\00\93 \00\00\02\00\00\00\93 \00\00\02\00\00\003\00\00\00\02\00\00\00\10\00\00\00\00\00\00\001\04\00\00\02\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00")
  (table $0 2 funcref)
  (elem (i32.const 0) $null $assembly/main/convertFoobars~anonymous|0)
  (global $~lib/assemblyscript-json/decoder/TRUE_STR i32 (i32.const 24))
@@ -215,8 +220,8 @@
  (global $~lib/argc (mut i32) (i32.const 0))
  (global $~lib/bignum/utils/RadixCharsTable i32 (i32.const 4424))
  (global $~lib/bignum/integer/u128/HEX_CHARS i32 (i32.const 336))
- (global $~lib/rt/__rtti_base i32 (i32.const 6536))
- (global $~lib/heap/__heap_base i32 (i32.const 6836))
+ (global $~lib/rt/__rtti_base i32 (i32.const 6696))
+ (global $~lib/heap/__heap_base i32 (i32.const 6996))
  (export "memory" (memory $0))
  (export "__alloc" (func $~lib/rt/stub/__alloc))
  (export "__retain" (func $~lib/rt/stub/__retain))
@@ -273,13 +278,7 @@
   call $~lib/string/String#charCodeAt
   global.set $~lib/assemblyscript-json/decoder/CHAR_A_LOWER
  )
- (func $start:~lib/assemblyscript-json/index (; 10 ;) (type $FUNCSIG$v)
-  call $start:~lib/assemblyscript-json/decoder
- )
- (func $start:~lib/rt/index-stub (; 11 ;) (type $FUNCSIG$v)
-  call $start:~lib/assemblyscript-json/index
- )
- (func $~lib/rt/stub/maybeGrowMemory (; 12 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/rt/stub/maybeGrowMemory (; 10 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -333,7 +332,7 @@
   local.get $0
   global.set $~lib/rt/stub/offset
  )
- (func $~lib/rt/stub/__alloc (; 13 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/rt/stub/__alloc (; 11 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -386,87 +385,16 @@
   i32.store offset=12
   local.get $2
  )
- (func $~lib/rt/stub/__retain (; 14 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/rt/stub/__retain (; 12 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
  )
- (func $~lib/rt/stub/__release (; 15 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/rt/stub/__release (; 13 ;) (type $FUNCSIG$vi) (param $0 i32)
   nop
  )
- (func $~lib/rt/stub/__collect (; 16 ;) (type $FUNCSIG$v)
+ (func $~lib/rt/stub/__collect (; 14 ;) (type $FUNCSIG$v)
   nop
  )
- (func $~lib/near-runtime-ts/storage/Storage#constructor (; 17 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 3
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-   local.set $0
-  end
-  local.get $0
- )
- (func $start:~lib/near-runtime-ts/storage (; 18 ;) (type $FUNCSIG$v)
-  i32.const 0
-  call $~lib/near-runtime-ts/storage/Storage#constructor
-  global.set $~lib/near-runtime-ts/storage/storage
- )
- (func $~lib/near-runtime-ts/contract/Context#constructor (; 19 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 4
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-   local.set $0
-  end
-  local.get $0
- )
- (func $start:~lib/near-runtime-ts/contract (; 20 ;) (type $FUNCSIG$v)
-  i32.const 0
-  call $~lib/near-runtime-ts/contract/Context#constructor
-  global.set $~lib/near-runtime-ts/contract/context
- )
- (func $start:~lib/near-runtime-ts/index (; 21 ;) (type $FUNCSIG$v)
-  call $start:~lib/near-runtime-ts/storage
-  call $start:~lib/near-runtime-ts/contract
- )
- (func $start:assembly/main (; 22 ;) (type $FUNCSIG$v)
-  call $start:~lib/near-runtime-ts/index
- )
- (func $start:assembly/test (; 23 ;) (type $FUNCSIG$v)
-  call $start:assembly/main
- )
- (func $~lib/assemblyscript-json/decoder/JSONHandler#constructor (; 24 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 7
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-   local.set $0
-  end
-  local.get $0
- )
- (func $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor (; 25 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 8
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-   local.set $0
-  end
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONHandler#constructor
-  local.set $0
-  local.get $0
- )
- (func $~lib/memory/memory.fill (; 26 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/memory/memory.fill (; 15 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -730,10 +658,8 @@
    end
   end
  )
- (func $~lib/arraybuffer/ArrayBufferView#constructor (; 27 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/arraybuffer/ArrayBufferView#constructor (; 16 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
   local.get $1
   i32.const 1073741808
   local.get $2
@@ -753,8 +679,7 @@
   local.tee $1
   i32.const 0
   call $~lib/rt/stub/__alloc
-  local.set $3
-  local.get $3
+  local.tee $2
   i32.const 0
   local.get $1
   call $~lib/memory/memory.fill
@@ -764,7 +689,6 @@
    i32.const 12
    i32.const 2
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -777,31 +701,21 @@
   i32.const 0
   i32.store offset=8
   local.get $0
-  local.tee $4
+  local.tee $3
   local.get $3
-  local.tee $5
-  local.get $4
   i32.load
-  local.tee $4
-  i32.ne
-  if
-   local.get $5
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $4
-   call $~lib/rt/stub/__release
-  end
-  local.get $5
+  drop
+  local.get $2
   i32.store
   local.get $0
-  local.get $3
+  local.get $2
   i32.store offset=4
   local.get $0
   local.get $1
   i32.store offset=8
   local.get $0
  )
- (func $~lib/array/Array<nearFile/Value>#constructor (; 28 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<nearFile/Value>#constructor (; 17 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -809,13 +723,11 @@
    i32.const 16
    i32.const 11
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -823,49 +735,55 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/Handler#constructor (; 29 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $nearFile/Handler#constructor (; 18 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
-  (local $2 i32)
   local.get $0
-  if (result i32)
-   local.get $0
-  else
+  i32.eqz
+  if
    i32.const 4
    i32.const 9
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
+   local.set $0
   end
-  call $~lib/assemblyscript-json/decoder/ThrowingJSONHandler#constructor
-  local.set $0
+  local.get $0
+  i32.eqz
+  if
+   i32.const 0
+   i32.const 8
+   call $~lib/rt/stub/__alloc
+   local.set $0
+  end
+  local.get $0
+  i32.eqz
+  if
+   i32.const 0
+   i32.const 7
+   call $~lib/rt/stub/__alloc
+   local.set $0
+  end
   local.get $0
   i32.const 0
   i32.store
-  local.get $0
-  local.tee $1
   i32.const 0
   i32.const 0
   call $~lib/array/Array<nearFile/Value>#constructor
-  local.set $2
-  local.get $1
+  local.set $1
+  local.get $0
   i32.load
-  call $~lib/rt/stub/__release
-  local.get $2
+  drop
+  local.get $0
+  local.get $1
   i32.store
   local.get $0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#constructor (; 30 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#constructor (; 19 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   i32.eqz
   if
    i32.const 8
    i32.const 12
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -876,35 +794,14 @@
   i32.store offset=4
   local.get $0
   local.tee $2
-  local.get $1
-  local.tee $3
   local.get $2
   i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $2
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
-  i32.store
+  drop
   local.get $1
-  call $~lib/rt/stub/__release
+  i32.store
   local.get $0
  )
- (func $start:nearFile (; 31 ;) (type $FUNCSIG$v)
-  i32.const 0
-  call $nearFile/Handler#constructor
-  global.set $nearFile/JSON.handler
-  i32.const 0
-  global.get $nearFile/JSON.handler
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#constructor
-  global.set $nearFile/JSON.decoder
- )
- (func $~lib/typedarray/Uint8Array#constructor (; 32 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/typedarray/Uint8Array#constructor (; 20 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -912,15 +809,12 @@
    i32.const 12
    i32.const 6
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 0
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
  )
- (func $nearFile/getInput (; 33 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/getInput (; 21 ;) (type $FUNCSIG$i) (result i32)
   (local $0 i64)
   (local $1 i32)
   i64.const 0
@@ -946,39 +840,27 @@
   call $nearFile/read_register
   local.get $1
  )
- (func $~lib/assemblyscript-json/decoder/DecoderState#constructor (; 34 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/assemblyscript-json/decoder/DecoderState#constructor (; 22 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   i32.eqz
   if
    i32.const 12
    i32.const 13
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
   i32.const 840
-  call $~lib/rt/stub/__retain
   i32.store
   local.get $0
   i32.const 0
   i32.store offset=4
   local.get $0
   local.get $1
-  call $~lib/rt/stub/__retain
   i32.store offset=8
-  local.get $1
-  call $~lib/rt/stub/__release
   local.get $0
  )
- (func $~lib/typedarray/Uint8Array#get:length (; 35 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=8
- )
- (func $~lib/typedarray/Uint8Array#__get (; 36 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/typedarray/Uint8Array#__get (; 23 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=8
@@ -997,14 +879,14 @@
   i32.add
   i32.load8_u
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar (; 37 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar (; 24 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.load offset=4
   i32.load offset=4
   local.get $0
   i32.load offset=4
   i32.load offset=8
-  call $~lib/typedarray/Uint8Array#get:length
+  i32.load offset=8
   i32.ge_s
   if
    i32.const -1
@@ -1018,7 +900,7 @@
   i32.load offset=4
   call $~lib/typedarray/Uint8Array#__get
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#isWhitespace (; 38 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#isWhitespace (; 25 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   i32.const 9
   i32.eq
@@ -1044,17 +926,15 @@
    i32.eq
   end
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar (; 39 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar (; 26 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.load offset=4
   i32.load offset=4
   local.get $0
   i32.load offset=4
   i32.load offset=8
-  call $~lib/typedarray/Uint8Array#get:length
-  i32.lt_s
-  i32.eqz
+  i32.load offset=8
+  i32.ge_s
   if
    i32.const 968
    i32.const 1024
@@ -1071,14 +951,14 @@
   local.get $0
   i32.load offset=4
   i32.load offset=4
-  local.tee $1
+  local.tee $0
   i32.const 1
   i32.add
   i32.store offset=4
-  local.get $1
+  local.get $0
   call $~lib/typedarray/Uint8Array#__get
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#skipWhitespace (; 40 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#skipWhitespace (; 27 ;) (type $FUNCSIG$vi) (param $0 i32)
   block $break|0
    loop $continue|0
     local.get $0
@@ -1095,20 +975,17 @@
    unreachable
   end
  )
- (func $nearFile/Value#constructor (; 41 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $nearFile/Value#constructor (; 28 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
-  i32.eqz
-  if
+  if (result i32)
+   local.get $0
+  else
    i32.const 0
    i32.const 10
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-   local.set $0
   end
-  local.get $0
  )
- (func $~lib/arraybuffer/ArrayBuffer#constructor (; 42 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/arraybuffer/ArrayBuffer#constructor (; 29 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   i32.const 1073741808
   i32.gt_u
@@ -1123,42 +1000,35 @@
   local.get $1
   i32.const 0
   call $~lib/rt/stub/__alloc
-  local.set $2
-  local.get $2
+  local.tee $0
   i32.const 0
   local.get $1
   call $~lib/memory/memory.fill
-  local.get $2
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/map/Map<~lib/string/String,nearFile/Value>#clear (; 43 ;) (type $FUNCSIG$vi) (param $0 i32)
-  (local $1 i32)
-  (local $2 i32)
   local.get $0
-  local.tee $1
+ )
+ (func $~lib/map/Map<~lib/string/String,nearFile/Value>#clear (; 30 ;) (type $FUNCSIG$vi) (param $0 i32)
+  (local $1 i32)
   i32.const 0
   i32.const 16
   call $~lib/arraybuffer/ArrayBuffer#constructor
-  local.set $2
-  local.get $1
+  local.set $1
+  local.get $0
   i32.load
-  call $~lib/rt/stub/__release
-  local.get $2
+  drop
+  local.get $0
+  local.get $1
   i32.store
   local.get $0
-  i32.const 4
-  i32.const 1
-  i32.sub
+  i32.const 3
   i32.store offset=4
-  local.get $0
-  local.tee $2
   i32.const 0
   i32.const 48
   call $~lib/arraybuffer/ArrayBuffer#constructor
   local.set $1
-  local.get $2
+  local.get $0
   i32.load offset=8
-  call $~lib/rt/stub/__release
+  drop
+  local.get $0
   local.get $1
   i32.store offset=8
   local.get $0
@@ -1171,14 +1041,13 @@
   i32.const 0
   i32.store offset=20
  )
- (func $~lib/map/Map<~lib/string/String,nearFile/Value>#constructor (; 44 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/map/Map<~lib/string/String,nearFile/Value>#constructor (; 31 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.eqz
   if
    i32.const 24
    i32.const 15
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -1203,7 +1072,7 @@
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#clear
   local.get $0
  )
- (func $~lib/array/Array<~lib/string/String>#constructor (; 45 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/string/String>#constructor (; 32 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -1211,13 +1080,11 @@
    i32.const 16
    i32.const 16
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -1225,9 +1092,8 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/Obj#constructor (; 46 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $nearFile/Obj#constructor (; 33 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
-  (local $2 i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -1235,85 +1101,36 @@
    i32.const 8
    i32.const 14
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   call $nearFile/Value#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store
   local.get $0
   i32.const 0
   i32.store offset=4
-  local.get $0
-  local.tee $1
   i32.const 0
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#constructor
-  local.set $2
-  local.get $1
-  i32.load
-  call $~lib/rt/stub/__release
-  local.get $2
-  i32.store
+  local.set $1
   local.get $0
-  local.tee $2
+  i32.load
+  drop
+  local.get $0
+  local.get $1
+  i32.store
   i32.const 0
   i32.const 0
   call $~lib/array/Array<~lib/string/String>#constructor
   local.set $1
-  local.get $2
+  local.get $0
   i32.load offset=4
-  call $~lib/rt/stub/__release
+  drop
+  local.get $0
   local.get $1
   i32.store offset=4
   local.get $0
  )
- (func $nearFile/Value.Object (; 47 ;) (type $FUNCSIG$i) (result i32)
-  i32.const 0
-  call $nearFile/Obj#constructor
- )
- (func $~lib/rt/__instanceof (; 48 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  i32.const 16
-  i32.sub
-  i32.load offset=8
-  local.set $2
-  global.get $~lib/rt/__rtti_base
-  local.set $3
-  local.get $2
-  local.get $3
-  i32.load
-  i32.le_u
-  if
-   loop $continue|0
-    local.get $2
-    local.get $1
-    i32.eq
-    if
-     i32.const 1
-     return
-    end
-    local.get $3
-    i32.const 4
-    i32.add
-    local.get $2
-    i32.const 8
-    i32.mul
-    i32.add
-    i32.load offset=4
-    local.tee $2
-    br_if $continue|0
-   end
-  end
-  i32.const 0
- )
- (func $~lib/array/Array<nearFile/Value>#get:length (; 49 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=12
- )
- (func $~lib/util/memory/memcpy (; 50 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/util/memory/memcpy (; 34 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -2341,7 +2158,7 @@
    i32.store8
   end
  )
- (func $~lib/memory/memory.copy (; 51 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/memory/memory.copy (; 35 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -2566,7 +2383,7 @@
    end
   end
  )
- (func $~lib/rt/stub/__realloc (; 52 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/rt/stub/__realloc (; 36 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -2689,16 +2506,13 @@
   i32.store offset=12
   local.get $0
  )
- (func $~lib/array/ensureSize (; 53 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/array/ensureSize (; 37 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
+  local.get $1
   local.get $0
   i32.load offset=8
-  local.set $3
-  local.get $1
-  local.get $3
+  local.tee $3
   local.get $2
   i32.shr_u
   i32.gt_u
@@ -2718,88 +2532,62 @@
    end
    local.get $0
    i32.load
-   local.set $4
+   local.tee $4
    local.get $1
    local.get $2
    i32.shl
-   local.set $5
-   local.get $4
-   local.get $5
+   local.tee $2
    call $~lib/rt/stub/__realloc
-   local.set $6
-   local.get $6
+   local.tee $1
    local.get $3
    i32.add
    i32.const 0
-   local.get $5
+   local.get $2
    local.get $3
    i32.sub
    call $~lib/memory/memory.fill
-   local.get $6
+   local.get $1
    local.get $4
    i32.ne
    if
     local.get $0
-    local.get $6
-    call $~lib/rt/stub/__retain
+    local.get $1
     i32.store
     local.get $0
-    local.get $6
+    local.get $1
     i32.store offset=4
    end
    local.get $0
-   local.get $5
+   local.get $2
    i32.store offset=8
   end
  )
- (func $~lib/array/Array<nearFile/Value>#push (; 54 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<nearFile/Value>#push (; 38 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+  local.get $0
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 1
   i32.add
-  local.set $3
-  local.get $0
-  local.get $3
+  local.tee $2
   i32.const 2
   call $~lib/array/ensureSize
   local.get $0
   i32.load offset=4
-  local.get $2
+  local.get $3
   i32.const 2
   i32.shl
   i32.add
   local.get $1
-  call $~lib/rt/stub/__retain
   i32.store
   local.get $0
-  local.get $3
+  local.get $2
   i32.store offset=12
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $2
  )
- (func $~lib/array/Array<nearFile/Value>#__unchecked_get (; 55 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/array/Array<nearFile/Value>#__get (; 56 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<nearFile/Value>#__get (; 39 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -2813,14 +2601,15 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<nearFile/Value>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $0
   i32.eqz
   if
-   local.get $2
-   call $~lib/rt/stub/__release
    i32.const 1232
    i32.const 1136
    i32.const 97
@@ -2828,101 +2617,117 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
+  local.get $0
  )
- (func $nearFile/Handler#get:peek (; 57 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $nearFile/Handler#get:peek (; 40 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.load
   local.get $0
   i32.load
-  call $~lib/array/Array<nearFile/Value>#get:length
+  i32.load offset=12
   i32.const 1
   i32.sub
   call $~lib/array/Array<nearFile/Value>#__get
  )
- (func $~lib/util/hash/hashStr (; 58 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
+ (func $~lib/rt/__instanceof (; 41 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  i32.const -2128831035
-  local.set $1
-  local.get $0
+  i32.const 16
+  i32.sub
+  i32.load offset=8
+  local.set $2
+  global.get $~lib/rt/__rtti_base
+  local.set $3
+  local.get $2
+  local.get $3
+  i32.load
+  i32.le_u
+  if
+   loop $continue|0
+    local.get $2
+    local.get $1
+    i32.eq
+    if
+     i32.const 1
+     return
+    end
+    local.get $3
+    i32.const 4
+    i32.add
+    local.get $2
+    i32.const 8
+    i32.mul
+    i32.add
+    i32.load offset=4
+    local.tee $2
+    br_if $continue|0
+   end
+  end
   i32.const 0
-  i32.ne
+ )
+ (func $~lib/util/hash/hashStr (; 42 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  i32.const -2128831035
+  local.set $2
+  local.get $0
   if
    block $break|0
     i32.const 0
-    local.set $2
+    local.set $1
     local.get $0
     call $~lib/string/String#get:length
     i32.const 1
     i32.shl
     local.set $3
     loop $loop|0
-     local.get $2
-     local.get $3
-     i32.lt_u
-     i32.eqz
-     br_if $break|0
      local.get $1
-     local.get $0
+     local.get $3
+     i32.ge_u
+     br_if $break|0
      local.get $2
+     local.get $0
+     local.get $1
      i32.add
      i32.load8_u
      i32.xor
      i32.const 16777619
      i32.mul
-     local.set $1
-     local.get $2
+     local.set $2
+     local.get $1
      i32.const 1
      i32.add
-     local.set $2
+     local.set $1
      br $loop|0
     end
     unreachable
    end
   end
-  local.get $1
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $3
+  local.get $2
  )
- (func $~lib/util/string/compareImpl (; 59 ;) (type $FUNCSIG$iiiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/util/string/compareImpl (; 43 ;) (type $FUNCSIG$iiiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
   local.get $0
   local.get $1
   i32.const 1
   i32.shl
   i32.add
-  local.set $5
+  local.set $1
   local.get $2
   local.get $3
   i32.const 1
   i32.shl
   i32.add
-  local.set $6
+  local.set $2
   local.get $4
   i32.const 4
   i32.ge_u
   if (result i32)
-   local.get $5
+   local.get $1
    i32.const 7
    i32.and
-   local.get $6
+   local.get $2
    i32.const 7
    i32.and
    i32.or
@@ -2931,284 +2736,184 @@
    i32.const 0
   end
   if
-   block $break|0
-    loop $continue|0
-     local.get $5
-     i64.load
-     local.get $6
-     i64.load
-     i64.ne
-     if
-      br $break|0
-     end
-     local.get $5
+   loop $continue|0
+    local.get $1
+    i64.load
+    local.get $2
+    i64.load
+    i64.eq
+    if
+     local.get $1
      i32.const 8
      i32.add
-     local.set $5
-     local.get $6
+     local.set $1
+     local.get $2
      i32.const 8
      i32.add
-     local.set $6
+     local.set $2
      local.get $4
      i32.const 4
      i32.sub
-     local.set $4
-     local.get $4
+     local.tee $4
      i32.const 4
      i32.ge_u
      br_if $continue|0
     end
    end
   end
-  block $break|1
-   loop $continue|1
+  loop $continue|1
+   block $break|1
     local.get $4
-    local.tee $7
+    local.tee $0
     i32.const 1
     i32.sub
     local.set $4
-    local.get $7
+    local.get $0
     i32.eqz
     br_if $break|1
-    local.get $5
+    local.get $1
     i32.load16_u
-    local.set $7
-    local.get $6
+    local.tee $0
+    local.get $2
     i32.load16_u
-    local.set $8
-    local.get $7
-    local.get $8
+    local.tee $3
     i32.ne
     if
-     local.get $7
-     local.get $8
-     i32.sub
-     local.set $9
      local.get $0
-     call $~lib/rt/stub/__release
-     local.get $2
-     call $~lib/rt/stub/__release
-     local.get $9
+     local.get $3
+     i32.sub
      return
+    else
+     local.get $1
+     i32.const 2
+     i32.add
+     local.set $1
+     local.get $2
+     i32.const 2
+     i32.add
+     local.set $2
+     br $continue|1
     end
-    local.get $5
-    i32.const 2
-    i32.add
-    local.set $5
-    local.get $6
-    i32.const 2
-    i32.add
-    local.set $6
-    br $continue|1
+    unreachable
    end
-   unreachable
   end
   i32.const 0
-  local.set $8
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $8
  )
- (func $~lib/string/String.__eq (; 60 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String.__eq (; 44 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.get $1
   i32.eq
   if
    i32.const 1
-   local.set $2
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
    return
   end
+  local.get $1
+  i32.eqz
+  i32.const 1
   local.get $0
-  i32.const 0
-  i32.eq
-  if (result i32)
-   i32.const 1
-  else
-   local.get $1
-   i32.const 0
-   i32.eq
-  end
+  select
   if
    i32.const 0
-   local.set $2
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
    return
   end
   local.get $0
   call $~lib/string/String#get:length
-  local.set $3
-  local.get $3
+  local.set $2
   local.get $1
   call $~lib/string/String#get:length
+  local.get $2
   i32.ne
   if
    i32.const 0
-   local.set $2
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
    return
   end
   local.get $0
   i32.const 0
   local.get $1
   i32.const 0
-  local.get $3
+  local.get $2
   call $~lib/util/string/compareImpl
   i32.eqz
-  local.set $2
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $~lib/map/Map<~lib/string/String,nearFile/Value>#find (; 61 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/map/Map<~lib/string/String,nearFile/Value>#find (; 45 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   i32.load
   local.get $2
   local.get $0
   i32.load offset=4
   i32.and
-  i32.const 4
-  i32.mul
+  i32.const 2
+  i32.shl
   i32.add
   i32.load
-  local.set $3
-  block $break|0
-   loop $continue|0
-    local.get $3
-    i32.eqz
-    br_if $break|0
-    local.get $3
+  local.set $0
+  loop $continue|0
+   local.get $0
+   if
+    local.get $0
     i32.load offset=8
     i32.const 1
     i32.and
-    i32.eqz
     if (result i32)
-     local.get $3
+     i32.const 0
+    else
+     local.get $0
      i32.load
      local.get $1
      call $~lib/string/String.__eq
-    else
-     i32.const 0
     end
     if
-     local.get $3
-     local.set $4
-     local.get $1
-     call $~lib/rt/stub/__release
-     local.get $4
+     local.get $0
      return
+    else
+     local.get $0
+     i32.load offset=8
+     i32.const -2
+     i32.and
+     local.set $0
+     br $continue|0
     end
-    local.get $3
-    i32.load offset=8
-    i32.const 1
-    i32.const -1
-    i32.xor
-    i32.and
-    local.set $3
-    br $continue|0
+    unreachable
    end
-   unreachable
   end
   i32.const 0
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $~lib/map/Map<~lib/string/String,nearFile/Value>#has (; 62 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/map/Map<~lib/string/String,nearFile/Value>#has (; 46 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
-  block $~lib/util/hash/HASH<~lib/string/String>|inlined.0 (result i32)
-   local.get $1
-   call $~lib/rt/stub/__retain
-   local.set $2
-   local.get $2
-   call $~lib/util/hash/hashStr
-   local.set $3
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   br $~lib/util/hash/HASH<~lib/string/String>|inlined.0
-  end
+  local.get $1
+  call $~lib/util/hash/hashStr
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#find
   i32.const 0
   i32.ne
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $~lib/array/Array<~lib/string/String>#push (; 63 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/string/String>#push (; 47 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+  local.get $0
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 1
   i32.add
-  local.set $3
-  local.get $0
-  local.get $3
+  local.tee $2
   i32.const 2
   call $~lib/array/ensureSize
   local.get $0
   i32.load offset=4
-  local.get $2
+  local.get $3
   i32.const 2
   i32.shl
   i32.add
   local.get $1
-  call $~lib/rt/stub/__retain
   i32.store
   local.get $0
-  local.get $3
+  local.get $2
   i32.store offset=12
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $2
  )
- (func $~lib/map/Map<~lib/string/String,nearFile/Value>#rehash (; 64 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/map/Map<~lib/string/String,nearFile/Value>#rehash (; 48 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -3216,204 +2921,131 @@
   (local $6 i32)
   (local $7 i32)
   (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  (local $12 i32)
+  i32.const 0
   local.get $1
   i32.const 1
   i32.add
-  local.set $2
+  local.tee $2
+  i32.const 2
+  i32.shl
+  call $~lib/arraybuffer/ArrayBuffer#constructor
+  local.set $5
   i32.const 0
   local.get $2
-  i32.const 4
-  i32.mul
-  call $~lib/arraybuffer/ArrayBuffer#constructor
-  local.set $3
-  local.get $2
-  i32.const 8
-  i32.mul
+  i32.const 3
+  i32.shl
   i32.const 3
   i32.div_s
-  local.set $4
-  i32.const 0
-  local.get $4
+  local.tee $7
   i32.const 12
   i32.mul
   call $~lib/arraybuffer/ArrayBuffer#constructor
-  local.set $5
+  local.set $6
   local.get $0
   i32.load offset=8
-  local.set $6
-  local.get $6
+  local.tee $4
   local.get $0
   i32.load offset=16
   i32.const 12
   i32.mul
   i32.add
-  local.set $7
-  local.get $5
   local.set $8
-  block $break|0
-   loop $continue|0
-    local.get $6
-    local.get $7
-    i32.ne
-    i32.eqz
-    br_if $break|0
-    local.get $6
-    local.set $9
-    local.get $9
+  local.get $6
+  local.set $2
+  loop $continue|0
+   local.get $4
+   local.get $8
+   i32.ne
+   if
+    local.get $4
+    local.tee $3
     i32.load offset=8
     i32.const 1
     i32.and
     i32.eqz
     if
-     local.get $8
-     local.set $10
-     local.get $10
-     local.get $9
+     local.get $2
+     local.get $3
      i32.load
      i32.store
-     local.get $10
-     local.get $9
+     local.get $2
+     local.get $3
      i32.load offset=4
      i32.store offset=4
-     block $~lib/util/hash/HASH<~lib/string/String>|inlined.2 (result i32)
-      local.get $9
-      i32.load
-      call $~lib/rt/stub/__retain
-      local.set $11
-      local.get $11
-      call $~lib/util/hash/hashStr
-      local.set $12
-      local.get $11
-      call $~lib/rt/stub/__release
-      local.get $12
-      br $~lib/util/hash/HASH<~lib/string/String>|inlined.2
-     end
+     local.get $2
+     local.get $5
+     local.get $3
+     i32.load
+     call $~lib/util/hash/hashStr
      local.get $1
      i32.and
-     local.set $11
-     local.get $3
-     local.get $11
-     i32.const 4
-     i32.mul
+     i32.const 2
+     i32.shl
      i32.add
-     local.set $12
-     local.get $10
-     local.get $12
+     local.tee $3
      i32.load
      i32.store offset=8
-     local.get $12
-     local.get $8
+     local.get $3
+     local.get $2
      i32.store
-     local.get $8
+     local.get $2
      i32.const 12
      i32.add
-     local.set $8
+     local.set $2
     end
-    local.get $6
+    local.get $4
     i32.const 12
     i32.add
-    local.set $6
+    local.set $4
     br $continue|0
    end
-   unreachable
   end
+  local.get $5
+  local.tee $2
   local.get $0
-  local.tee $9
-  local.get $3
-  local.tee $10
-  local.get $9
   i32.load
-  local.tee $9
   i32.ne
-  if
-   local.get $10
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $9
-   call $~lib/rt/stub/__release
-  end
-  local.get $10
+  drop
+  local.get $0
+  local.get $2
   i32.store
   local.get $0
   local.get $1
   i32.store offset=4
   local.get $0
-  local.tee $10
-  local.get $5
-  local.tee $11
-  local.get $10
   i32.load offset=8
-  local.tee $10
-  i32.ne
-  if
-   local.get $11
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $10
-   call $~lib/rt/stub/__release
-  end
-  local.get $11
+  drop
+  local.get $0
+  local.get $6
   i32.store offset=8
   local.get $0
-  local.get $4
+  local.get $7
   i32.store offset=12
   local.get $0
   local.get $0
   i32.load offset=20
   i32.store offset=16
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
  )
- (func $~lib/map/Map<~lib/string/String,nearFile/Value>#set (; 65 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/map/Map<~lib/string/String,nearFile/Value>#set (; 49 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
-  (local $6 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  block $~lib/util/hash/HASH<~lib/string/String>|inlined.1 (result i32)
-   local.get $1
-   call $~lib/rt/stub/__retain
-   local.set $3
-   local.get $3
-   call $~lib/util/hash/hashStr
-   local.set $4
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $4
-   br $~lib/util/hash/HASH<~lib/string/String>|inlined.1
-  end
-  local.set $5
   local.get $0
   local.get $1
-  local.get $5
+  local.get $1
+  call $~lib/util/hash/hashStr
+  local.tee $5
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#find
-  local.set $6
-  local.get $6
+  local.tee $3
   if
-   local.get $6
-   i32.load offset=4
-   local.set $3
-   local.get $2
    local.get $3
+   i32.load offset=4
+   local.get $2
    i32.ne
    if
-    local.get $6
-    local.get $2
-    call $~lib/rt/stub/__retain
-    i32.store offset=4
     local.get $3
-    call $~lib/rt/stub/__release
+    local.get $2
+    i32.store offset=4
    end
   else
    local.get $0
@@ -3447,9 +3079,7 @@
    end
    local.get $0
    i32.load offset=8
-   call $~lib/rt/stub/__retain
    local.set $3
-   local.get $3
    local.get $0
    local.get $0
    i32.load offset=16
@@ -3457,18 +3087,16 @@
    i32.const 1
    i32.add
    i32.store offset=16
+   local.get $3
    local.get $4
    i32.const 12
    i32.mul
    i32.add
-   local.set $6
-   local.get $6
+   local.tee $3
    local.get $1
-   call $~lib/rt/stub/__retain
    i32.store
-   local.get $6
+   local.get $3
    local.get $2
-   call $~lib/rt/stub/__retain
    i32.store offset=4
    local.get $0
    local.get $0
@@ -3476,38 +3104,25 @@
    i32.const 1
    i32.add
    i32.store offset=20
+   local.get $3
    local.get $0
    i32.load
    local.get $5
    local.get $0
    i32.load offset=4
    i32.and
-   i32.const 4
-   i32.mul
+   i32.const 2
+   i32.shl
    i32.add
-   local.set $4
-   local.get $6
-   local.get $4
+   local.tee $4
    i32.load
    i32.store offset=8
    local.get $4
-   local.get $6
-   i32.store
    local.get $3
-   call $~lib/rt/stub/__release
+   i32.store
   end
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/Obj#set (; 66 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/Obj#set (; 50 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $0
   i32.load
   local.get $1
@@ -3525,59 +3140,18 @@
   local.get $1
   local.get $2
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#set
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/Arr#push (; 67 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.load
-  local.get $1
-  call $~lib/array/Array<nearFile/Value>#push
-  drop
-  local.get $1
-  call $~lib/rt/stub/__release
- )
- (func $nearFile/Handler#addValue (; 68 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $nearFile/Handler#addValue (; 51 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
   local.get $1
   call $~lib/string/String#get:length
-  i32.const 0
-  i32.eq
   if (result i32)
-   local.get $2
-   local.tee $3
-   i32.eqz
-   if (result i32)
-    i32.const 0
-   else
-    local.get $3
-    i32.const 14
-    call $~lib/rt/__instanceof
-   end
-  else
    i32.const 0
-  end
-  if (result i32)
+  else
    local.get $0
    i32.load
-   call $~lib/array/Array<nearFile/Value>#get:length
-   i32.const 0
-   i32.eq
-  else
-   i32.const 0
+   i32.load offset=12
+   i32.eqz
   end
   if
    local.get $0
@@ -3585,119 +3159,56 @@
    local.get $2
    call $~lib/array/Array<nearFile/Value>#push
    drop
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
    return
   end
   local.get $0
   call $nearFile/Handler#get:peek
   local.tee $3
-  local.tee $4
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $3
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    local.get $0
    call $nearFile/Handler#get:peek
-   local.tee $4
    local.get $1
    local.get $2
    call $nearFile/Obj#set
-   local.get $4
-   call $~lib/rt/stub/__release
   else
    local.get $0
    call $nearFile/Handler#get:peek
-   local.tee $4
-   local.tee $5
-   i32.eqz
+   local.tee $1
    if (result i32)
-    i32.const 0
-   else
-    local.get $5
+    local.get $1
     i32.const 17
     call $~lib/rt/__instanceof
+   else
+    i32.const 0
    end
    if
     local.get $0
     call $nearFile/Handler#get:peek
-    local.tee $5
+    i32.load
     local.get $2
-    call $nearFile/Arr#push
-    local.get $5
-    call $~lib/rt/stub/__release
+    call $~lib/array/Array<nearFile/Value>#push
+    drop
    end
-   local.get $4
-   call $~lib/rt/stub/__release
   end
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/Handler#pushObject (; 69 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  call $nearFile/Value.Object
-  local.set $2
-  local.get $0
-  local.get $1
-  local.get $2
-  call $nearFile/Handler#addValue
-  local.get $0
-  i32.load
-  local.get $2
-  call $~lib/array/Array<nearFile/Value>#push
-  drop
-  i32.const 1
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $~lib/assemblyscript-json/util/index/Buffer.getPtr (; 70 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.load offset=4
-  local.set $1
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
- )
- (func $~lib/string/String.UTF8.decodeUnsafe (; 71 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/string/String.UTF8.decodeUnsafe (; 52 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  local.set $3
   local.get $0
   local.get $1
   i32.add
-  local.set $4
-  local.get $4
-  local.get $3
-  i32.ge_u
-  i32.eqz
+  local.tee $4
+  local.get $0
+  i32.lt_u
   if
    i32.const 0
    i32.const 1608
@@ -3711,234 +3222,185 @@
   i32.shl
   i32.const 1
   call $~lib/rt/stub/__alloc
-  local.set $5
-  local.get $5
-  local.set $6
-  block $break|0
-   loop $continue|0
-    local.get $3
+  local.tee $5
+  local.set $3
+  loop $continue|0
+   block $break|0
+    local.get $0
     local.get $4
-    i32.lt_u
-    i32.eqz
+    i32.ge_u
     br_if $break|0
-    local.get $3
-    local.tee $7
+    local.get $0
+    local.tee $1
     i32.const 1
     i32.add
-    local.set $3
-    local.get $7
+    local.set $0
+    local.get $1
     i32.load8_u
-    local.set $7
-    local.get $7
+    local.tee $1
     i32.const 128
     i32.lt_u
     if
+     local.get $1
+     i32.eqz
+     i32.const 0
      local.get $2
-     if (result i32)
-      local.get $7
-      i32.eqz
-     else
-      i32.const 0
-     end
-     if
-      br $break|0
-     end
-     local.get $6
-     local.get $7
+     select
+     br_if $break|0
+     local.get $3
+     local.get $1
      i32.store16
-     local.get $6
+     local.get $3
      i32.const 2
      i32.add
-     local.set $6
+     local.set $3
     else
-     local.get $7
+     local.get $1
+     i32.const 224
+     i32.lt_u
+     i32.const 0
+     local.get $1
      i32.const 191
      i32.gt_u
-     if (result i32)
-      local.get $7
-      i32.const 224
-      i32.lt_u
-     else
-      i32.const 0
-     end
+     select
      if
       local.get $4
-      local.get $3
+      local.get $0
       i32.sub
       i32.const 1
       i32.lt_u
-      if
-       br $break|0
-      end
+      br_if $break|0
+      local.get $0
+      local.tee $6
+      i32.const 1
+      i32.add
+      local.set $0
+      local.get $3
       local.get $6
-      local.get $7
+      i32.load8_u
+      i32.const 63
+      i32.and
+      local.get $1
       i32.const 31
       i32.and
       i32.const 6
       i32.shl
-      local.get $3
-      local.tee $8
-      i32.const 1
-      i32.add
-      local.set $3
-      local.get $8
-      i32.load8_u
-      i32.const 63
-      i32.and
       i32.or
       i32.store16
-      local.get $6
+      local.get $3
       i32.const 2
       i32.add
-      local.set $6
+      local.set $3
      else
-      local.get $7
+      local.get $1
+      i32.const 365
+      i32.lt_u
+      i32.const 0
+      local.get $1
       i32.const 239
       i32.gt_u
+      select
       if (result i32)
-       local.get $7
-       i32.const 365
-       i32.lt_u
-      else
-       i32.const 0
-      end
-      if
        local.get $4
-       local.get $3
+       local.get $0
        i32.sub
        i32.const 3
        i32.lt_u
-       if
-        br $break|0
-       end
-       local.get $7
+       br_if $break|0
+       local.get $3
+       local.get $0
+       i32.load8_u offset=2
+       i32.const 63
+       i32.and
+       local.get $1
        i32.const 7
        i32.and
        i32.const 18
        i32.shl
-       local.get $3
+       local.get $0
        i32.load8_u
        i32.const 63
        i32.and
        i32.const 12
        i32.shl
        i32.or
-       local.get $3
+       local.get $0
        i32.load8_u offset=1
        i32.const 63
        i32.and
        i32.const 6
        i32.shl
        i32.or
-       local.get $3
-       i32.load8_u offset=2
-       i32.const 63
-       i32.and
        i32.or
        i32.const 65536
        i32.sub
-       local.set $7
-       local.get $3
-       i32.const 3
-       i32.add
-       local.set $3
-       local.get $6
-       i32.const 55296
-       local.get $7
+       local.tee $1
        i32.const 10
        i32.shr_u
+       i32.const 55296
        i32.add
        i32.store16
-       local.get $6
-       i32.const 56320
-       local.get $7
+       local.get $3
+       local.get $1
        i32.const 1023
        i32.and
+       i32.const 56320
        i32.add
        i32.store16 offset=2
-       local.get $6
+       local.get $3
        i32.const 4
        i32.add
-       local.set $6
+       local.set $3
+       local.get $0
+       i32.const 3
+       i32.add
       else
        local.get $4
-       local.get $3
+       local.get $0
        i32.sub
        i32.const 2
        i32.lt_u
-       if
-        br $break|0
-       end
-       local.get $6
-       local.get $7
+       br_if $break|0
+       local.get $3
+       local.get $0
+       i32.load8_u offset=1
+       i32.const 63
+       i32.and
+       local.get $1
        i32.const 15
        i32.and
        i32.const 12
        i32.shl
-       local.get $3
+       local.get $0
        i32.load8_u
        i32.const 63
        i32.and
        i32.const 6
        i32.shl
        i32.or
-       local.get $3
-       i32.load8_u offset=1
-       i32.const 63
-       i32.and
        i32.or
        i32.store16
        local.get $3
        i32.const 2
        i32.add
        local.set $3
-       local.get $6
+       local.get $0
        i32.const 2
        i32.add
-       local.set $6
       end
+      local.set $0
      end
     end
     br $continue|0
    end
-   unreachable
   end
   local.get $5
-  local.get $6
+  local.get $3
   local.get $5
   i32.sub
   call $~lib/rt/stub/__realloc
-  call $~lib/rt/stub/__retain
  )
- (func $~lib/assemblyscript-json/util/index/Buffer.readString (; 72 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/assemblyscript-json/util/index/Buffer.getPtr
-  local.get $1
-  i32.add
-  local.get $2
-  local.get $1
-  i32.sub
-  i32.const 0
-  call $~lib/string/String.UTF8.decodeUnsafe
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $~lib/assemblyscript-json/decoder/DecoderState#readString (; 73 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  local.get $0
-  i32.load offset=8
-  local.get $1
-  local.get $2
-  i32.const 1
-  i32.sub
-  call $~lib/assemblyscript-json/util/index/Buffer.readString
- )
- (func $~lib/assemblyscript-json/decoder/DecoderState#readString|trampoline (; 74 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/DecoderState#readString|trampoline (; 53 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $1of1
    block $0of1
     block $outOfRange
@@ -3953,346 +3415,251 @@
    i32.load offset=4
    local.set $2
   end
-  local.get $0
   local.get $1
-  local.get $2
-  call $~lib/assemblyscript-json/decoder/DecoderState#readString
- )
- (func $~lib/array/Array<~lib/string/String>#get:length (; 75 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
-  i32.load offset=12
+  i32.load offset=8
+  i32.load offset=4
+  i32.add
+  local.get $2
+  i32.const 1
+  i32.sub
+  local.get $1
+  i32.sub
+  i32.const 0
+  call $~lib/string/String.UTF8.decodeUnsafe
  )
- (func $~lib/util/string/joinStringArray (; 76 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/util/string/joinStringArray (; 54 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
   (local $7 i32)
   (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
   local.get $1
   i32.const 1
   i32.sub
-  local.set $3
-  local.get $3
+  local.tee $8
   i32.const 0
   i32.lt_s
   if
    i32.const 840
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $4
    return
   end
-  local.get $3
+  local.get $8
   i32.eqz
   if
    local.get $0
    i32.load
-   local.tee $4
+   local.tee $3
    if (result i32)
-    local.get $4
+    local.get $3
    else
     i32.const 840
    end
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $4
    return
   end
   i32.const 0
-  local.set $5
+  local.set $4
   i32.const 0
-  local.set $6
-  block $break|0
-   i32.const 0
-   local.set $4
-   loop $loop|0
-    local.get $4
+  local.set $3
+  loop $loop|0
+   block $break|0
+    local.get $3
     local.get $1
-    i32.lt_s
-    i32.eqz
+    i32.ge_s
     br_if $break|0
     local.get $0
-    local.get $4
+    local.get $3
     i32.const 2
     i32.shl
     i32.add
     i32.load
-    local.tee $7
-    local.get $6
-    local.tee $8
-    i32.ne
-    if
-     local.get $7
-     call $~lib/rt/stub/__retain
-     drop
-     local.get $8
-     call $~lib/rt/stub/__release
-    end
-    local.get $7
     local.set $6
     local.get $6
-    i32.const 0
-    i32.ne
+    local.tee $7
     if
-     local.get $5
-     local.get $6
+     local.get $7
      call $~lib/string/String#get:length
+     local.get $4
      i32.add
-     local.set $5
+     local.set $4
     end
-    local.get $4
+    local.get $3
     i32.const 1
     i32.add
-    local.set $4
+    local.set $3
     br $loop|0
    end
-   unreachable
   end
   i32.const 0
-  local.set $9
+  local.set $5
+  local.get $4
   local.get $2
   call $~lib/string/String#get:length
-  local.set $10
-  local.get $5
-  local.get $10
-  local.get $3
+  local.tee $6
+  local.get $8
   i32.mul
   i32.add
   i32.const 1
   i32.shl
   i32.const 1
   call $~lib/rt/stub/__alloc
-  local.set $11
-  block $break|1
-   i32.const 0
-   local.set $4
-   loop $loop|1
-    local.get $4
+  local.set $4
+  i32.const 0
+  local.set $3
+  loop $loop|1
+   block $break|1
     local.get $3
-    i32.lt_s
-    i32.eqz
+    local.get $8
+    i32.ge_s
     br_if $break|1
     local.get $0
-    local.get $4
+    local.get $3
     i32.const 2
     i32.shl
     i32.add
     i32.load
-    local.tee $8
-    local.get $6
+    local.set $1
+    local.get $1
     local.tee $7
-    i32.ne
     if
-     local.get $8
-     call $~lib/rt/stub/__retain
-     drop
-     local.get $7
-     call $~lib/rt/stub/__release
-    end
-    local.get $8
-    local.set $6
-    local.get $6
-    i32.const 0
-    i32.ne
-    if
-     local.get $6
-     call $~lib/string/String#get:length
-     local.set $8
-     local.get $11
-     local.get $9
+     local.get $4
+     local.get $5
      i32.const 1
      i32.shl
      i32.add
-     local.get $6
-     local.get $8
+     local.get $7
+     local.get $7
+     call $~lib/string/String#get:length
+     local.tee $1
      i32.const 1
      i32.shl
      call $~lib/memory/memory.copy
-     local.get $9
-     local.get $8
+     local.get $1
+     local.get $5
      i32.add
-     local.set $9
+     local.set $5
     end
-    local.get $10
+    local.get $6
     if
-     local.get $11
-     local.get $9
+     local.get $4
+     local.get $5
      i32.const 1
      i32.shl
      i32.add
      local.get $2
-     local.get $10
+     local.get $6
      i32.const 1
      i32.shl
      call $~lib/memory/memory.copy
-     local.get $9
-     local.get $10
+     local.get $5
+     local.get $6
      i32.add
-     local.set $9
+     local.set $5
     end
-    local.get $4
+    local.get $3
     i32.const 1
     i32.add
-    local.set $4
+    local.set $3
     br $loop|1
    end
-   unreachable
   end
   local.get $0
-  local.get $3
+  local.get $8
   i32.const 2
   i32.shl
   i32.add
   i32.load
-  local.tee $7
-  local.get $6
-  local.tee $4
-  i32.ne
-  if
-   local.get $7
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $4
-   call $~lib/rt/stub/__release
-  end
-  local.get $7
   local.set $6
   local.get $6
-  i32.const 0
-  i32.ne
+  local.tee $7
   if
-   local.get $11
-   local.get $9
+   local.get $4
+   local.get $5
    i32.const 1
    i32.shl
    i32.add
-   local.get $6
-   local.get $6
+   local.get $7
+   local.get $7
    call $~lib/string/String#get:length
    i32.const 1
    i32.shl
    call $~lib/memory/memory.copy
   end
-  local.get $11
-  call $~lib/rt/stub/__retain
-  local.set $7
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $7
+  local.get $4
  )
- (func $~lib/array/Array<~lib/string/String>#join (; 77 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/array/Array<~lib/string/String>#join (; 55 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   i32.load offset=4
-  local.set $2
   local.get $0
   i32.load offset=12
-  local.set $3
-  local.get $2
-  local.get $3
   local.get $1
   call $~lib/util/string/joinStringArray
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
  )
- (func $~lib/rt/__allocArray (; 78 ;) (type $FUNCSIG$iiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
+ (func $~lib/rt/__allocArray (; 56 ;) (type $FUNCSIG$iiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
   (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
   i32.const 16
   local.get $2
   call $~lib/rt/stub/__alloc
-  local.set $4
+  local.tee $2
   local.get $0
   local.get $1
   i32.shl
-  local.set $5
-  local.get $5
+  local.tee $1
   i32.const 0
   call $~lib/rt/stub/__alloc
-  local.set $6
-  local.get $4
-  local.get $6
-  call $~lib/rt/stub/__retain
+  local.tee $4
   i32.store
+  local.get $2
   local.get $4
-  local.get $6
   i32.store offset=4
-  local.get $4
-  local.get $5
+  local.get $2
+  local.get $1
   i32.store offset=8
-  local.get $4
+  local.get $2
   local.get $0
   i32.store offset=12
   local.get $3
   if
-   local.get $6
+   local.get $4
    local.get $3
-   local.get $5
+   local.get $1
    call $~lib/memory/memory.copy
   end
-  local.get $4
+  local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit (; 79 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit (; 57 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
-  local.set $1
-  local.get $1
+  local.tee $1
   global.get $~lib/assemblyscript-json/decoder/CHAR_0
   i32.sub
-  local.set $2
-  local.get $2
+  local.tee $0
   i32.const 9
   i32.gt_s
   if
+   i32.const 1
    local.get $1
    global.get $~lib/assemblyscript-json/decoder/CHAR_A
    i32.sub
    i32.const 10
    i32.add
-   local.set $2
-   local.get $2
+   local.tee $0
+   i32.const 15
+   i32.gt_s
+   local.get $0
    i32.const 10
    i32.lt_s
-   if (result i32)
-    i32.const 1
-   else
-    local.get $2
-    i32.const 15
-    i32.gt_s
-   end
+   select
    if
     local.get $1
     global.get $~lib/assemblyscript-json/decoder/CHAR_A_LOWER
     i32.sub
     i32.const 10
     i32.add
-    local.set $2
+    local.set $0
    end
   end
   i32.const 2
@@ -4300,29 +3667,21 @@
   i32.const 18
   i32.const 0
   call $~lib/rt/__allocArray
-  local.set $3
-  local.get $3
   i32.load offset=4
-  local.set $4
-  local.get $4
+  local.tee $2
   local.get $1
   i32.store
-  local.get $4
   local.get $2
+  local.get $0
   i32.store offset=4
-  local.get $3
-  call $~lib/rt/stub/__retain
-  local.set $4
-  local.get $2
+  local.get $0
+  i32.const 16
+  i32.lt_s
+  i32.const 0
+  local.get $0
   i32.const 0
   i32.ge_s
-  if (result i32)
-   local.get $2
-   i32.const 16
-   i32.lt_s
-  else
-   i32.const 0
-  end
+  select
   i32.eqz
   if
    i32.const 1920
@@ -4332,21 +3691,14 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
-  local.set $3
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $3
+  local.get $0
  )
- (func $~lib/string/String.fromCodePoint (; 80 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/string/String.fromCodePoint (; 58 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
   local.get $0
   i32.const 1114111
-  i32.le_u
-  i32.eqz
+  i32.gt_u
   if
    i32.const 0
    i32.const 1608
@@ -4355,76 +3707,220 @@
    call $~lib/builtins/abort
    unreachable
   end
+  i32.const 2
   local.get $0
   i32.const 65535
   i32.gt_s
-  local.set $1
-  i32.const 2
-  local.get $1
+  local.tee $2
   i32.shl
   i32.const 1
   call $~lib/rt/stub/__alloc
-  local.set $2
-  local.get $1
-  i32.eqz
+  local.set $1
+  local.get $2
   if
-   local.get $2
-   local.get $0
-   i32.store16
-  else
+   local.get $1
    local.get $0
    i32.const 65536
    i32.sub
-   local.set $0
-   local.get $0
+   local.tee $0
    i32.const 1023
    i32.and
    i32.const 56320
    i32.add
-   local.set $3
+   i32.const 16
+   i32.shl
    local.get $0
    i32.const 10
    i32.shr_u
    i32.const 55296
    i32.add
-   local.set $4
-   local.get $2
-   local.get $4
-   local.get $3
-   i32.const 16
-   i32.shl
    i32.or
    i32.store
+  else
+   local.get $1
+   local.get $0
+   i32.store16
   end
-  local.get $2
-  call $~lib/rt/stub/__retain
+  local.get $1
  )
- (func $~lib/string/String.fromCharCode (; 81 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String.fromCharCode (; 59 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
+  i32.const 2
   local.get $1
   i32.const 0
   i32.gt_s
-  local.set $2
-  i32.const 2
-  local.get $2
+  local.tee $3
   i32.shl
   i32.const 1
   call $~lib/rt/stub/__alloc
-  local.set $3
-  local.get $3
+  local.tee $2
   local.get $0
   i32.store16
-  local.get $2
+  local.get $3
   if
-   local.get $3
+   local.get $2
    local.get $1
    i32.store16 offset=2
   end
-  local.get $3
-  call $~lib/rt/stub/__retain
+  local.get $2
  )
- (func $~lib/string/String.fromCharCode|trampoline (; 82 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String#concat (; 60 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $1
+  i32.const 80
+  local.get $1
+  select
+  local.set $1
+  local.get $0
+  call $~lib/string/String#get:length
+  i32.const 1
+  i32.shl
+  local.tee $3
+  local.get $1
+  call $~lib/string/String#get:length
+  i32.const 1
+  i32.shl
+  local.tee $4
+  i32.add
+  local.tee $2
+  i32.eqz
+  if
+   i32.const 840
+   return
+  end
+  local.get $2
+  i32.const 1
+  call $~lib/rt/stub/__alloc
+  local.tee $2
+  local.get $0
+  local.get $3
+  call $~lib/memory/memory.copy
+  local.get $2
+  local.get $3
+  i32.add
+  local.get $1
+  local.get $4
+  call $~lib/memory/memory.copy
+  local.get $2
+ )
+ (func $~lib/string/String.__concat (; 61 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  i32.const 80
+  local.get $0
+  select
+  local.get $1
+  call $~lib/string/String#concat
+ )
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readEscapedChar (; 62 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
+  local.set $1
+  i32.const 1432
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   i32.const 1432
+   return
+  end
+  i32.const 1656
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   i32.const 1656
+   return
+  end
+  i32.const 1680
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   i32.const 1680
+   return
+  end
+  i32.const 1704
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   i32.const 1728
+   return
+  end
+  i32.const 1752
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   i32.const 1776
+   return
+  end
+  i32.const 1800
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   i32.const 1824
+   return
+  end
+  i32.const 1848
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   i32.const 1872
+   return
+  end
+  i32.const 1896
+  i32.const 0
+  call $~lib/string/String#charCodeAt
+  local.get $1
+  i32.eq
+  if
+   local.get $0
+   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
+   local.set $1
+   local.get $0
+   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
+   local.set $2
+   local.get $0
+   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
+   local.set $3
+   local.get $0
+   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
+   local.get $1
+   i32.const 12
+   i32.shl
+   local.get $2
+   i32.const 8
+   i32.shl
+   i32.add
+   local.get $3
+   i32.const 4
+   i32.shl
+   i32.add
+   i32.add
+   call $~lib/string/String.fromCodePoint
+   return
+  end
+  i32.const 1976
+  i32.const 1
+  global.set $~lib/argc
+  i32.const 0
+  local.set $0
   block $1of1
    block $0of1
     block $outOfRange
@@ -4436,267 +3932,28 @@
     unreachable
    end
    i32.const -1
-   local.set $1
+   local.set $0
   end
-  local.get $0
   local.get $1
+  local.get $0
   call $~lib/string/String.fromCharCode
+  call $~lib/string/String.__concat
+  i32.const 1024
+  i32.const 255
+  i32.const 4
+  call $~lib/builtins/abort
+  unreachable
  )
- (func $~lib/string/String#concat (; 83 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readString (; 63 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
+  local.get $0
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
+  i32.const 1432
   i32.const 0
-  i32.eq
-  if
-   i32.const 80
-   local.tee $2
-   local.get $1
-   local.tee $3
-   i32.ne
-   if
-    local.get $2
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $3
-    call $~lib/rt/stub/__release
-   end
-   local.get $2
-   local.set $1
-  end
-  local.get $0
-  call $~lib/string/String#get:length
-  i32.const 1
-  i32.shl
-  local.set $4
-  local.get $1
-  call $~lib/string/String#get:length
-  i32.const 1
-  i32.shl
-  local.set $5
-  local.get $4
-  local.get $5
-  i32.add
-  local.set $6
-  local.get $6
-  i32.const 0
-  i32.eq
-  if
-   i32.const 840
-   call $~lib/rt/stub/__retain
-   local.set $2
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   return
-  end
-  local.get $6
-  i32.const 1
-  call $~lib/rt/stub/__alloc
-  call $~lib/rt/stub/__retain
-  local.set $7
-  local.get $7
-  local.get $0
-  local.get $4
-  call $~lib/memory/memory.copy
-  local.get $7
-  local.get $4
-  i32.add
-  local.get $1
-  local.get $5
-  call $~lib/memory/memory.copy
-  local.get $7
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
- )
- (func $~lib/string/String.__concat (; 84 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 80
-  local.get $0
-  i32.const 0
+  call $~lib/string/String#charCodeAt
   i32.ne
-  select
-  local.get $1
-  call $~lib/string/String#concat
-  local.set $2
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readEscapedChar (; 85 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
-  local.set $1
-  local.get $1
-  i32.const 1432
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   i32.const 1432
-   call $~lib/rt/stub/__retain
-   return
-  end
-  local.get $1
-  i32.const 1656
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   i32.const 1656
-   call $~lib/rt/stub/__retain
-   return
-  end
-  local.get $1
-  i32.const 1680
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   i32.const 1680
-   call $~lib/rt/stub/__retain
-   return
-  end
-  local.get $1
-  i32.const 1704
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   i32.const 1728
-   call $~lib/rt/stub/__retain
-   return
-  end
-  local.get $1
-  i32.const 1752
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   i32.const 1776
-   call $~lib/rt/stub/__retain
-   return
-  end
-  local.get $1
-  i32.const 1800
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   i32.const 1824
-   call $~lib/rt/stub/__retain
-   return
-  end
-  local.get $1
-  i32.const 1848
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   i32.const 1872
-   call $~lib/rt/stub/__retain
-   return
-  end
-  local.get $1
-  i32.const 1896
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  if
-   local.get $0
-   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
-   local.set $2
-   local.get $0
-   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
-   local.set $3
-   local.get $0
-   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
-   local.set $4
-   local.get $0
-   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readHexDigit
-   local.set $5
-   local.get $2
-   i32.const 4096
-   i32.mul
-   local.get $3
-   i32.const 256
-   i32.mul
-   i32.add
-   local.get $4
-   i32.const 16
-   i32.mul
-   i32.add
-   local.get $5
-   i32.add
-   local.set $6
-   local.get $6
-   call $~lib/string/String.fromCodePoint
-   return
-  end
-  i32.const 0
-  i32.eqz
-  if
-   i32.const 1976
-   i32.const 1
-   global.set $~lib/argc
-   local.get $1
-   i32.const 0
-   call $~lib/string/String.fromCharCode|trampoline
-   local.tee $6
-   call $~lib/string/String.__concat
-   local.tee $5
-   i32.const 1024
-   i32.const 255
-   i32.const 4
-   call $~lib/builtins/abort
-   unreachable
-  end
-  i32.const 840
-  call $~lib/rt/stub/__retain
-  local.set $4
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $4
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readString (; 86 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  local.get $0
-  call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
-  i32.const 1432
-  i32.const 0
-  call $~lib/string/String#charCodeAt
-  i32.eq
-  i32.eqz
   if
    i32.const 1456
    i32.const 1024
@@ -4713,14 +3970,12 @@
   i32.const 0
   call $~lib/array/Array<~lib/string/String>#constructor
   local.set $2
-  loop $loop|0
+  loop $loop|0 (result i32)
    local.get $0
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
-   local.set $3
-   local.get $3
+   local.tee $3
    i32.const 32
-   i32.ge_s
-   i32.eqz
+   i32.lt_s
    if
     i32.const 1536
     i32.const 1024
@@ -4729,12 +3984,12 @@
     call $~lib/builtins/abort
     unreachable
    end
-   local.get $3
    i32.const 1432
    i32.const 0
    call $~lib/string/String#charCodeAt
+   local.get $3
    i32.eq
-   if
+   if (result i32)
     i32.const 1
     global.set $~lib/argc
     local.get $0
@@ -4742,38 +3997,26 @@
     local.get $1
     i32.const 0
     call $~lib/assemblyscript-json/decoder/DecoderState#readString|trampoline
-    local.set $4
+    local.set $0
     local.get $2
-    call $~lib/array/Array<~lib/string/String>#get:length
-    i32.const 0
-    i32.eq
+    i32.load offset=12
+    i32.eqz
     if
-     local.get $4
-     local.set $5
-     local.get $2
-     call $~lib/rt/stub/__release
-     local.get $5
+     local.get $0
      return
     end
     local.get $2
-    local.get $4
+    local.get $0
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $2
     i32.const 840
     call $~lib/array/Array<~lib/string/String>#join
-    local.set $5
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $5
-    return
    else
-    local.get $3
     i32.const 1656
     i32.const 0
     call $~lib/string/String#charCodeAt
+    local.get $3
     i32.eq
     if
      local.get $0
@@ -4792,31 +4035,24 @@
       local.get $1
       i32.const 0
       call $~lib/assemblyscript-json/decoder/DecoderState#readString|trampoline
-      local.tee $4
       call $~lib/array/Array<~lib/string/String>#push
       drop
-      local.get $4
-      call $~lib/rt/stub/__release
      end
      local.get $2
      local.get $0
      call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readEscapedChar
-     local.tee $4
      call $~lib/array/Array<~lib/string/String>#push
      drop
      local.get $0
      i32.load offset=4
      i32.load offset=4
      local.set $1
-     local.get $4
-     call $~lib/rt/stub/__release
     end
+    br $loop|0
    end
-   br $loop|0
   end
-  unreachable
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseKey (; 87 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseKey (; 64 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   local.get $0
@@ -4829,7 +4065,7 @@
   local.set $2
   local.get $1
   i32.load
-  call $~lib/rt/stub/__release
+  drop
   local.get $2
   i32.store
   local.get $0
@@ -4839,8 +4075,7 @@
   i32.const 2056
   i32.const 0
   call $~lib/string/String#charCodeAt
-  i32.eq
-  i32.eqz
+  i32.ne
   if
    i32.const 2080
    i32.const 1024
@@ -4850,13 +4085,12 @@
    unreachable
   end
  )
- (func $~lib/array/Array<nearFile/Value>#pop (; 88 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/array/Array<nearFile/Value>#pop (; 65 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   local.get $0
   i32.load offset=12
-  local.set $1
-  local.get $1
+  local.tee $1
   i32.const 1
   i32.lt_s
   if
@@ -4877,30 +4111,15 @@
   i32.shl
   i32.add
   i32.load
-  call $~lib/rt/stub/__retain
   local.set $2
   local.get $0
   local.get $1
   i32.store offset=12
   local.get $2
  )
- (func $nearFile/Handler#popObject (; 89 ;) (type $FUNCSIG$vi) (param $0 i32)
-  local.get $0
-  i32.load
-  call $~lib/array/Array<nearFile/Value>#get:length
-  i32.const 1
-  i32.gt_s
-  if
-   local.get $0
-   i32.load
-   call $~lib/array/Array<nearFile/Value>#pop
-   call $~lib/rt/stub/__release
-  end
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseObject (; 90 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseObject (; 66 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
   i32.const 1112
@@ -4914,30 +4133,29 @@
   local.get $0
   i32.load offset=4
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $1
+  local.set $2
   local.get $0
   i32.load offset=4
-  local.tee $2
-  i32.const 840
-  local.tee $3
-  local.get $2
+  local.tee $1
+  local.get $1
   i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $2
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
+  drop
+  i32.const 840
   i32.store
   local.get $0
   i32.load
+  local.tee $1
+  local.get $2
+  i32.const 0
+  call $nearFile/Obj#constructor
+  local.tee $2
+  call $nearFile/Handler#addValue
   local.get $1
-  call $nearFile/Handler#pushObject
+  i32.load
+  local.get $2
+  call $~lib/array/Array<nearFile/Value>#push
+  drop
+  i32.const 1
   if
    local.get $0
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
@@ -4945,27 +4163,26 @@
    local.get $0
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#skipWhitespace
    i32.const 1
-   local.set $3
-   block $break|0
-    loop $continue|0
-     local.get $0
-     call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
-     i32.const 1344
-     i32.const 0
-     call $~lib/string/String#charCodeAt
-     i32.ne
-     i32.eqz
-     br_if $break|0
-     local.get $3
-     i32.eqz
+   local.set $1
+   loop $continue|0
+    local.get $0
+    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
+    i32.const 1344
+    i32.const 0
+    call $~lib/string/String#charCodeAt
+    i32.ne
+    if
+     local.get $1
      if
+      i32.const 0
+      local.set $1
+     else
       local.get $0
       call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
       i32.const 1368
       i32.const 0
       call $~lib/string/String#charCodeAt
-      i32.eq
-      i32.eqz
+      i32.ne
       if
        i32.const 1392
        i32.const 1024
@@ -4974,9 +4191,6 @@
        call $~lib/builtins/abort
        unreachable
       end
-     else
-      i32.const 0
-      local.set $3
      end
      local.get $0
      call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseKey
@@ -4985,15 +4199,13 @@
      drop
      br $continue|0
     end
-    unreachable
    end
    local.get $0
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
    i32.const 1344
    i32.const 0
    call $~lib/string/String#charCodeAt
-   i32.eq
-   i32.eqz
+   i32.ne
    if
     i32.const 2120
     i32.const 1024
@@ -5005,16 +4217,21 @@
   end
   local.get $0
   i32.load
-  call $nearFile/Handler#popObject
+  local.tee $0
+  i32.load
+  i32.load offset=12
   i32.const 1
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
+  i32.gt_s
+  if
+   local.get $0
+   i32.load
+   call $~lib/array/Array<nearFile/Value>#pop
+   drop
+  end
+  i32.const 1
  )
- (func $nearFile/Arr#constructor (; 91 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $nearFile/Arr#constructor (; 67 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
-  (local $2 i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -5022,72 +4239,53 @@
    i32.const 4
    i32.const 17
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   call $nearFile/Value#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store
-  local.get $0
-  local.tee $1
   i32.const 0
   i32.const 0
   call $~lib/array/Array<nearFile/Value>#constructor
-  local.set $2
-  local.get $1
+  local.set $1
+  local.get $0
   i32.load
-  call $~lib/rt/stub/__release
-  local.get $2
+  drop
+  local.get $0
+  local.get $1
   i32.store
   local.get $0
  )
- (func $nearFile/Value.Array (; 92 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/Handler#pushArray (; 68 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
   i32.const 0
   call $nearFile/Arr#constructor
- )
- (func $nearFile/Handler#pushArray (; 93 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  call $nearFile/Value.Array
   local.set $2
   local.get $0
-  local.get $1
-  local.get $2
-  call $nearFile/Handler#addValue
-  local.get $0
   i32.load
-  local.get $2
-  call $~lib/array/Array<nearFile/Value>#push
-  drop
-  i32.const 1
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/Handler#popArray (; 94 ;) (type $FUNCSIG$vi) (param $0 i32)
-  local.get $0
-  i32.load
-  call $~lib/array/Array<nearFile/Value>#get:length
-  i32.const 1
-  i32.gt_s
+  i32.load offset=12
   if
    local.get $0
+   local.get $1
+   local.get $2
+   call $nearFile/Handler#addValue
+   local.get $0
    i32.load
-   call $~lib/array/Array<nearFile/Value>#pop
-   call $~lib/rt/stub/__release
+   local.get $2
+   call $~lib/array/Array<nearFile/Value>#push
+   drop
+  else
+   local.get $0
+   i32.load
+   local.get $2
+   call $~lib/array/Array<nearFile/Value>#push
+   drop
   end
+  i32.const 1
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseArray (; 95 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseArray (; 69 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
   i32.const 2232
@@ -5101,29 +4299,18 @@
   local.get $0
   i32.load offset=4
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $1
+  local.set $2
   local.get $0
   i32.load offset=4
-  local.tee $2
-  i32.const 840
-  local.tee $3
-  local.get $2
+  local.tee $1
+  local.get $1
   i32.load
-  local.tee $2
-  i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $2
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
+  drop
+  i32.const 840
   i32.store
   local.get $0
   i32.load
-  local.get $1
+  local.get $2
   call $nearFile/Handler#pushArray
   if
    local.get $0
@@ -5132,27 +4319,26 @@
    local.get $0
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#skipWhitespace
    i32.const 1
-   local.set $3
-   block $break|0
-    loop $continue|0
-     local.get $0
-     call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
-     i32.const 2256
-     i32.const 0
-     call $~lib/string/String#charCodeAt
-     i32.ne
-     i32.eqz
-     br_if $break|0
-     local.get $3
-     i32.eqz
+   local.set $1
+   loop $continue|0
+    local.get $0
+    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
+    i32.const 2256
+    i32.const 0
+    call $~lib/string/String#charCodeAt
+    i32.ne
+    if
+     local.get $1
      if
+      i32.const 0
+      local.set $1
+     else
       local.get $0
       call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
       i32.const 1368
       i32.const 0
       call $~lib/string/String#charCodeAt
-      i32.eq
-      i32.eqz
+      i32.ne
       if
        i32.const 1392
        i32.const 1024
@@ -5161,24 +4347,19 @@
        call $~lib/builtins/abort
        unreachable
       end
-     else
-      i32.const 0
-      local.set $3
      end
      local.get $0
      call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseValue
      drop
      br $continue|0
     end
-    unreachable
    end
    local.get $0
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
    i32.const 2256
    i32.const 0
    call $~lib/string/String#charCodeAt
-   i32.eq
-   i32.eqz
+   i32.ne
    if
     i32.const 2280
     i32.const 1024
@@ -5190,74 +4371,21 @@
   end
   local.get $0
   i32.load
-  call $nearFile/Handler#popArray
+  local.tee $0
+  i32.load
+  i32.load offset=12
   i32.const 1
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/Str#constructor (; 96 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  if (result i32)
+  i32.gt_s
+  if
    local.get $0
-  else
-   i32.const 4
-   i32.const 19
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
+   i32.load
+   call $~lib/array/Array<nearFile/Value>#pop
+   drop
   end
-  call $nearFile/Value#constructor
-  local.set $0
-  local.get $0
-  local.get $1
-  call $~lib/rt/stub/__retain
-  i32.store
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $0
+  i32.const 1
  )
- (func $nearFile/Value.String (; 97 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseString (; 70 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  i32.const 0
-  local.get $0
-  call $nearFile/Str#constructor
-  local.set $1
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
- )
- (func $nearFile/Handler#setString (; 98 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $nearFile/Value.String
-  local.set $3
-  local.get $0
-  local.get $1
-  local.get $3
-  call $nearFile/Handler#addValue
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseString (; 99 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
   i32.const 1432
@@ -5275,21 +4403,20 @@
   i32.load
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readString
-  local.tee $1
-  call $nearFile/Handler#setString
+  local.set $1
+  i32.const 4
+  i32.const 19
+  call $~lib/rt/stub/__alloc
+  call $nearFile/Value#constructor
+  local.tee $0
+  local.get $1
+  i32.store
+  local.get $0
+  call $nearFile/Handler#addValue
   i32.const 1
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readAndAssert (; 100 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readAndAssert (; 71 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   block $break|0
    i32.const 0
    local.set $2
@@ -5297,85 +4424,51 @@
     local.get $2
     local.get $1
     call $~lib/string/String#get:length
-    i32.lt_s
-    i32.eqz
+    i32.ge_s
     br_if $break|0
     local.get $1
     local.get $2
     call $~lib/string/String#charCodeAt
     local.get $0
     call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
-    i32.eq
-    i32.eqz
+    i32.ne
     if
      i32.const 2344
      local.get $1
      call $~lib/string/String.__concat
-     local.tee $3
      i32.const 2384
      call $~lib/string/String.__concat
-     local.tee $4
      i32.const 1024
      i32.const 321
      i32.const 6
      call $~lib/builtins/abort
      unreachable
+    else
+     local.get $2
+     i32.const 1
+     i32.add
+     local.set $2
+     br $loop|0
     end
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $2
-    i32.const 1
-    i32.add
-    local.set $2
-    br $loop|0
+    unreachable
    end
    unreachable
   end
-  local.get $1
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/Bools#constructor (; 101 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else
-   i32.const 1
-   i32.const 20
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-  end
-  call $nearFile/Value#constructor
-  local.set $0
+ (func $nearFile/Handler#setBoolean (; 72 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $0
   local.get $1
+  i32.const 1
+  i32.const 20
+  call $~lib/rt/stub/__alloc
+  call $nearFile/Value#constructor
+  local.tee $0
+  local.get $2
   i32.store8
   local.get $0
- )
- (func $nearFile/Value.Bool (; 102 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  i32.const 0
-  local.get $0
-  call $nearFile/Bools#constructor
- )
- (func $nearFile/Handler#setBoolean (; 103 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $nearFile/Value.Bool
-  local.set $3
-  local.get $0
-  local.get $1
-  local.get $3
   call $nearFile/Handler#addValue
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseBoolean (; 104 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseBoolean (; 73 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
   i32.const 48
@@ -5418,54 +4511,14 @@
   end
   i32.const 0
  )
- (func $nearFile/Num#constructor (; 105 ;) (type $FUNCSIG$iij) (param $0 i32) (param $1 i64) (result i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else
-   i32.const 8
-   i32.const 21
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-  end
-  call $nearFile/Value#constructor
-  local.set $0
-  local.get $0
-  local.get $1
-  i64.store
-  local.get $0
- )
- (func $nearFile/Value.Number (; 106 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
-  i32.const 0
-  local.get $0
-  call $nearFile/Num#constructor
- )
- (func $nearFile/Handler#setInteger (; 107 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $nearFile/Value.Number
-  local.set $3
-  local.get $0
-  local.get $1
-  local.get $3
-  call $nearFile/Handler#addValue
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseNumber (; 108 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseNumber (; 74 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i64)
-  (local $2 i64)
-  (local $3 i32)
-  (local $4 i32)
+  (local $2 i32)
+  (local $3 i64)
   i64.const 0
   local.set $1
   i64.const 1
-  local.set $2
+  local.set $3
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
   i32.const 2408
@@ -5474,104 +4527,72 @@
   i32.eq
   if
    i64.const -1
-   local.set $2
+   local.set $3
    local.get $0
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
    drop
   end
   i32.const 0
-  local.set $3
-  block $break|0
-   loop $continue|0
-    global.get $~lib/assemblyscript-json/decoder/CHAR_0
+  local.set $2
+  loop $continue|0
+   global.get $~lib/assemblyscript-json/decoder/CHAR_0
+   local.get $0
+   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
+   i32.le_s
+   if (result i32)
     local.get $0
     call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
+    global.get $~lib/assemblyscript-json/decoder/CHAR_9
     i32.le_s
-    if (result i32)
-     local.get $0
-     call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
-     global.get $~lib/assemblyscript-json/decoder/CHAR_9
-     i32.le_s
-    else
-     i32.const 0
-    end
-    i32.eqz
-    br_if $break|0
+   else
+    i32.const 0
+   end
+   if
     local.get $0
     call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readChar
-    local.set $4
-    local.get $1
-    i64.const 10
-    i64.mul
-    local.set $1
-    local.get $1
-    local.get $4
     global.get $~lib/assemblyscript-json/decoder/CHAR_0
     i32.sub
     i64.extend_i32_s
+    local.get $1
+    i64.const 10
+    i64.mul
     i64.add
     local.set $1
-    local.get $3
+    local.get $2
     i32.const 1
     i32.add
-    local.set $3
+    local.set $2
     br $continue|0
    end
-   unreachable
   end
-  local.get $3
+  local.get $2
   i32.const 0
   i32.gt_s
   if
+   local.get $1
+   local.get $3
+   i64.mul
+   local.set $1
    local.get $0
    i32.load
    local.get $0
    i32.load offset=4
    i32.load
+   i32.const 8
+   i32.const 21
+   call $~lib/rt/stub/__alloc
+   call $nearFile/Value#constructor
+   local.tee $0
    local.get $1
-   local.get $2
-   i64.mul
-   call $nearFile/Handler#setInteger
+   i64.store
+   local.get $0
+   call $nearFile/Handler#addValue
    i32.const 1
    return
   end
   i32.const 0
  )
- (func $nearFile/Null#constructor (; 109 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  if (result i32)
-   local.get $0
-  else
-   i32.const 0
-   i32.const 22
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-  end
-  call $nearFile/Value#constructor
-  local.set $0
-  local.get $0
- )
- (func $nearFile/Value.Null (; 110 ;) (type $FUNCSIG$i) (result i32)
-  i32.const 0
-  call $nearFile/Null#constructor
- )
- (func $nearFile/Handler#setNull (; 111 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  call $nearFile/Value.Null
-  local.set $2
-  local.get $0
-  local.get $1
-  local.get $2
-  call $nearFile/Handler#addValue
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
- )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseNull (; 112 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseNull (; 75 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#peekChar
   i32.const 80
@@ -5580,20 +4601,24 @@
   i32.eq
   if
    local.get $0
-   global.get $~lib/assemblyscript-json/decoder/NULL_STR
+   i32.const 80
    call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#readAndAssert
    local.get $0
    i32.load
    local.get $0
    i32.load offset=4
    i32.load
-   call $nearFile/Handler#setNull
+   i32.const 0
+   i32.const 22
+   call $~lib/rt/stub/__alloc
+   call $nearFile/Value#constructor
+   call $nearFile/Handler#addValue
    i32.const 1
    return
   end
   i32.const 0
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseValue (; 113 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseValue (; 76 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#skipWhitespace
@@ -5639,53 +4664,29 @@
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#skipWhitespace
   local.get $1
  )
- (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#deserialize (; 114 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#deserialize (; 77 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  i32.const 0
-  i32.ne
   if
    local.get $0
-   local.tee $3
-   local.get $2
-   local.tee $4
-   local.get $3
    i32.load offset=4
-   local.tee $3
-   i32.ne
-   if
-    local.get $4
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $3
-    call $~lib/rt/stub/__release
-   end
-   local.get $4
+   drop
+   local.get $0
+   local.get $2
    i32.store offset=4
   else
-   local.get $0
-   local.tee $4
    i32.const 0
    local.get $1
    call $~lib/assemblyscript-json/decoder/DecoderState#constructor
-   local.set $3
-   local.get $4
+   local.set $1
+   local.get $0
    i32.load offset=4
-   call $~lib/rt/stub/__release
-   local.get $3
+   drop
+   local.get $0
+   local.get $1
    i32.store offset=4
   end
   local.get $0
   call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#parseValue
-  i32.const 0
-  i32.ne
   i32.eqz
   if
    i32.const 2432
@@ -5695,37 +4696,9 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/Handler#reset (; 115 ;) (type $FUNCSIG$vi) (param $0 i32)
-  block $break|0
-   loop $continue|0
-    local.get $0
-    i32.load
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.const 0
-    i32.gt_s
-    i32.eqz
-    br_if $break|0
-    local.get $0
-    i32.load
-    call $~lib/array/Array<nearFile/Value>#pop
-    call $~lib/rt/stub/__release
-    br $continue|0
-   end
-   unreachable
-  end
- )
- (func $nearFile/JSON.parse (; 116 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $nearFile/JSON.parse (; 78 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
   global.get $nearFile/JSON.decoder
   local.get $0
   i32.const 0
@@ -5733,67 +4706,41 @@
   global.get $nearFile/JSON.decoder
   i32.load
   call $nearFile/Handler#get:peek
-  local.tee $1
-  call $~lib/rt/stub/__retain
-  local.set $2
+  local.set $0
   global.get $nearFile/JSON.decoder
   i32.load
-  call $nearFile/Handler#reset
-  local.get $2
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
+  local.set $1
+  loop $continue|0
+   local.get $1
+   i32.load
+   i32.load offset=12
+   i32.const 0
+   i32.gt_s
+   if
+    local.get $1
+    i32.load
+    call $~lib/array/Array<nearFile/Value>#pop
+    drop
+    br $continue|0
+   end
+  end
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/string/String.__ne (; 117 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/string/String.__ne (; 79 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
   call $~lib/string/String.__eq
   i32.eqz
-  local.set $2
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $~lib/map/Map<~lib/string/String,nearFile/Value>#get (; 118 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/map/Map<~lib/string/String,nearFile/Value>#get (; 80 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
-  block $~lib/util/hash/HASH<~lib/string/String>|inlined.3 (result i32)
-   local.get $1
-   call $~lib/rt/stub/__retain
-   local.set $2
-   local.get $2
-   call $~lib/util/hash/hashStr
-   local.set $3
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   br $~lib/util/hash/HASH<~lib/string/String>|inlined.3
-  end
+  local.get $1
+  call $~lib/util/hash/hashStr
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#find
-  local.set $4
-  local.get $4
+  local.tee $0
   i32.eqz
   if
-   local.get $1
-   call $~lib/rt/stub/__release
    i32.const 2520
    i32.const 2576
    i32.const 111
@@ -5801,19 +4748,10 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $4
+  local.get $0
   i32.load offset=4
-  call $~lib/rt/stub/__retain
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $nearFile/Obj#get (; 119 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/Obj#get (; 81 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   i32.load
   local.get $1
@@ -5821,23 +4759,14 @@
   i32.eqz
   if
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $2
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
    return
   end
   local.get $0
   i32.load
   local.get $1
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#get
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $nearFile/isNullable<~lib/array/Array<assembly/model/FooBar>> (; 120 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<assembly/model/FooBar>> (; 82 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -5855,7 +4784,7 @@
    i32.const 0
   end
  )
- (func $~lib/array/Array<assembly/model/FooBar>#constructor (; 121 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<assembly/model/FooBar>#constructor (; 83 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -5863,13 +4792,11 @@
    i32.const 16
    i32.const 30
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -5877,7 +4804,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/isNullable<assembly/model/FooBar> (; 122 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<assembly/model/FooBar> (; 84 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -5895,14 +4822,13 @@
    i32.const 0
   end
  )
- (func $assembly/model/FooBar#constructor (; 123 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/model/FooBar#constructor (; 85 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.eqz
   if
    i32.const 68
    i32.const 24
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -5925,7 +4851,6 @@
   i32.store8 offset=32
   local.get $0
   i32.const 3064
-  call $~lib/rt/stub/__retain
   i32.store offset=36
   local.get $0
   i32.const 0
@@ -5950,21 +4875,13 @@
   i32.store offset=64
   local.get $0
  )
- (func $nearFile/Obj#has (; 124 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/Obj#has (; 86 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   i32.load
   local.get $1
   call $~lib/map/Map<~lib/string/String,nearFile/Value>#has
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $nearFile/isNullable<i32> (; 125 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<i32> (; 87 ;) (type $FUNCSIG$i) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -5982,35 +4899,16 @@
    i32.const 0
   end
  )
- (func $nearFile/decode<i32,nearFile/Obj> (; 126 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<i32,nearFile/Obj> (; 88 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -6019,78 +4917,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<i32>
@@ -6099,98 +4947,52 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3112
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 21
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3112
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3136
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 396
+   i32.const 400
    i32.const 4
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
+  local.get $2
   i64.load
   i32.wrap_i64
-  local.set $8
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $8
-  return
  )
- (func $nearFile/isNullable<u32> (; 127 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<u32> (; 89 ;) (type $FUNCSIG$i) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -6208,35 +5010,16 @@
    i32.const 0
   end
  )
- (func $nearFile/decode<u32,nearFile/Obj> (; 128 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<u32,nearFile/Obj> (; 90 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -6245,78 +5028,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<u32>
@@ -6325,98 +5058,52 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3216
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 21
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3216
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3136
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 396
+   i32.const 400
    i32.const 4
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
+  local.get $2
   i64.load
   i32.wrap_i64
-  local.set $8
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $8
-  return
  )
- (func $nearFile/isNullable<u64> (; 129 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<u64> (; 91 ;) (type $FUNCSIG$i) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -6434,7 +5121,7 @@
    i32.const 0
   end
  )
- (func $~lib/util/string/isSpace (; 130 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/util/string/isSpace (; 92 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   i32.const 255
@@ -6523,340 +5210,259 @@
   end
   i32.const 0
  )
- (func $~lib/util/string/strtol<i64> (; 131 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+ (func $~lib/util/string/strtol<i64> (; 93 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
-  (local $3 i64)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i64)
-  (local $7 i32)
-  (local $8 i64)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
+  (local $3 i32)
+  (local $4 i64)
+  (local $5 i64)
   local.get $0
   call $~lib/string/String#get:length
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.eqz
   if
    i64.const 0
-   local.set $3
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $3
    return
   end
   local.get $0
-  local.set $4
-  local.get $4
   i32.load16_u
-  local.set $5
+  local.set $2
   i64.const 1
-  local.set $6
-  block $break|0
-   loop $continue|0
-    local.get $5
-    call $~lib/util/string/isSpace
-    i32.eqz
-    br_if $break|0
-    local.get $4
+  local.set $5
+  loop $continue|0
+   local.get $2
+   call $~lib/util/string/isSpace
+   if
+    local.get $0
     i32.const 2
     i32.add
-    local.tee $4
+    local.tee $0
     i32.load16_u
-    local.set $5
-    local.get $2
+    local.set $2
+    local.get $3
     i32.const 1
     i32.sub
-    local.set $2
+    local.set $3
     br $continue|0
    end
-   unreachable
   end
-  local.get $5
+  local.get $2
   i32.const 45
   i32.eq
-  if
-   local.get $2
+  if (result i32)
+   local.get $3
    i32.const 1
    i32.sub
-   local.tee $2
+   local.tee $3
    i32.eqz
    if
     i64.const 0
-    local.set $3
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $3
     return
    end
-   local.get $4
+   i64.const -1
+   local.set $5
+   local.get $0
    i32.const 2
    i32.add
-   local.tee $4
+   local.tee $0
    i32.load16_u
-   local.set $5
-   i64.const -1
-   local.set $6
   else
-   local.get $5
+   local.get $2
    i32.const 43
    i32.eq
-   if
-    local.get $2
+   if (result i32)
+    local.get $3
     i32.const 1
     i32.sub
-    local.tee $2
+    local.tee $3
     i32.eqz
     if
      i64.const 0
-     local.set $3
-     local.get $0
-     call $~lib/rt/stub/__release
-     local.get $3
      return
     end
-    local.get $4
+    local.get $0
     i32.const 2
     i32.add
-    local.tee $4
+    local.tee $0
     i32.load16_u
-    local.set $5
+   else
+    local.get $2
    end
   end
+  local.set $2
   local.get $1
-  i32.eqz
   if
-   local.get $5
+   i32.const 1
+   local.get $1
+   i32.const 36
+   i32.gt_s
+   local.get $1
+   i32.const 2
+   i32.lt_s
+   select
+   if
+    i64.const 0
+    return
+   end
+  else
+   local.get $3
+   i32.const 2
+   i32.gt_s
+   i32.const 0
+   local.get $2
    i32.const 48
    i32.eq
+   select
    if (result i32)
-    local.get $2
-    i32.const 2
-    i32.gt_s
-   else
-    i32.const 0
-   end
-   if
-    block $break|1
+    block $break|1 (result i32)
      block $case3|1
       block $case2|1
        block $case1|1
-        block $case0|1
-         local.get $4
-         i32.const 2
-         i32.add
-         i32.load16_u
-         i32.const 32
-         i32.or
-         local.set $7
-         local.get $7
-         i32.const 98
-         i32.eq
-         br_if $case0|1
-         local.get $7
+        local.get $0
+        i32.const 2
+        i32.add
+        i32.load16_u
+        i32.const 32
+        i32.or
+        local.tee $2
+        i32.const 98
+        i32.ne
+        if
+         local.get $2
          i32.const 111
          i32.eq
          br_if $case1|1
-         local.get $7
+         local.get $2
          i32.const 120
          i32.eq
          br_if $case2|1
          br $case3|1
         end
-        local.get $4
+        local.get $0
         i32.const 4
         i32.add
-        local.set $4
-        local.get $2
+        local.set $0
+        local.get $3
         i32.const 2
         i32.sub
-        local.set $2
+        local.set $3
         i32.const 2
-        local.set $1
         br $break|1
        end
-       local.get $4
+       local.get $0
        i32.const 4
        i32.add
-       local.set $4
-       local.get $2
+       local.set $0
+       local.get $3
        i32.const 2
        i32.sub
-       local.set $2
+       local.set $3
        i32.const 8
-       local.set $1
        br $break|1
       end
-      local.get $4
+      local.get $0
       i32.const 4
       i32.add
-      local.set $4
-      local.get $2
+      local.set $0
+      local.get $3
       i32.const 2
       i32.sub
-      local.set $2
+      local.set $3
       i32.const 16
-      local.set $1
       br $break|1
      end
      i32.const 10
-     local.set $1
     end
    else
     i32.const 10
-    local.set $1
    end
-  else
-   local.get $1
-   i32.const 2
-   i32.lt_s
-   if (result i32)
-    i32.const 1
-   else
-    local.get $1
-    i32.const 36
-    i32.gt_s
-   end
-   if
-    i64.const 0
-    local.set $3
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $3
-    return
-   end
+   local.set $1
   end
   i64.const 0
-  local.set $8
-  block $break|2
-   loop $continue|2
-    local.get $2
-    local.tee $7
+  local.set $4
+  loop $continue|2
+   block $break|2
+    local.get $3
+    local.tee $2
     i32.const 1
     i32.sub
-    local.set $2
-    local.get $7
+    local.set $3
+    local.get $2
     i32.eqz
     br_if $break|2
-    local.get $4
+    local.get $0
     i32.load16_u
-    local.set $5
-    local.get $5
+    local.tee $2
     i32.const 48
     i32.sub
     i32.const 10
     i32.lt_u
-    if
-     local.get $5
+    if (result i32)
+     local.get $2
      i32.const 48
      i32.sub
-     local.set $5
     else
-     local.get $5
+     local.get $2
      i32.const 65
      i32.sub
      i32.const 25
      i32.le_u
-     if
-      local.get $5
-      i32.const 65
-      i32.const 10
+     if (result i32)
+      local.get $2
+      i32.const 55
       i32.sub
-      i32.sub
-      local.set $5
      else
-      local.get $5
+      local.get $2
       i32.const 97
       i32.sub
       i32.const 25
       i32.le_u
-      if
-       local.get $5
-       i32.const 97
-       i32.const 10
+      if (result i32)
+       local.get $2
+       i32.const 87
        i32.sub
-       i32.sub
-       local.set $5
       else
        br $break|2
       end
      end
     end
-    local.get $5
+    local.tee $2
     local.get $1
     i32.ge_u
-    if
-     br $break|2
-    end
-    local.get $8
+    br_if $break|2
+    local.get $2
+    i64.extend_i32_u
+    local.get $4
     local.get $1
     i64.extend_i32_s
     i64.mul
-    local.get $5
-    i64.extend_i32_u
     i64.add
-    local.set $8
-    local.get $4
+    local.set $4
+    local.get $0
     i32.const 2
     i32.add
-    local.set $4
+    local.set $0
     br $continue|2
    end
-   unreachable
   end
-  local.get $6
-  local.get $8
+  local.get $4
+  local.get $5
   i64.mul
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/number/I64.parseInt (; 132 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
-  (local $2 i64)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/number/I64.parseInt (; 94 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   local.get $0
   local.get $1
   call $~lib/util/string/strtol<i64>
-  local.set $2
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $nearFile/decode<u64,nearFile/Obj> (; 133 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+ (func $nearFile/decode<u64,nearFile/Obj> (; 95 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i64)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i64)
-  (local $10 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -6865,79 +5471,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
-    i32.const 0
-    i64.extend_i32_u
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
+    i64.const 0
     return
    end
-   local.get $5
-   local.tee $7
-   local.get $3
-   local.tee $8
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $8
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $8
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $8
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $8
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $8
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $8
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<u64>
@@ -6946,105 +5501,53 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $8
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3272
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
-   i32.const 0
-   i64.extend_i32_u
-   local.set $6
-   local.get $8
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $6
+   i64.const 0
    return
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3272
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3296
    call $~lib/string/String.__concat
-   local.tee $8
    i32.const 2808
-   i32.const 391
+   i32.const 395
    i32.const 6
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
+  local.get $2
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $10
-  local.get $10
   i32.const 0
   call $~lib/number/I64.parseInt
-  local.set $6
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $10
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $nearFile/isNullable<i64> (; 134 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<i64> (; 96 ;) (type $FUNCSIG$i) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -7062,36 +5565,16 @@
    i32.const 0
   end
  )
- (func $nearFile/decode<i64,nearFile/Obj> (; 135 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+ (func $nearFile/decode<i64,nearFile/Obj> (; 97 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i64)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i64)
-  (local $10 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -7100,79 +5583,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
-    i32.const 0
-    i64.extend_i32_u
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
+    i64.const 0
     return
    end
-   local.get $5
-   local.tee $7
-   local.get $3
-   local.tee $8
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $8
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $8
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $8
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $8
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $8
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $8
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<i64>
@@ -7181,105 +5613,53 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $8
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3504
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
-   i32.const 0
-   i64.extend_i32_u
-   local.set $6
-   local.get $8
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $6
+   i64.const 0
    return
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3504
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3296
    call $~lib/string/String.__concat
-   local.tee $8
    i32.const 2808
-   i32.const 391
+   i32.const 395
    i32.const 6
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
+  local.get $2
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $10
-  local.get $10
   i32.const 0
   call $~lib/number/I64.parseInt
-  local.set $6
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $10
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $nearFile/isNullable<bool> (; 136 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<bool> (; 98 ;) (type $FUNCSIG$i) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -7297,34 +5677,16 @@
    i32.const 0
   end
  )
- (func $nearFile/decode<bool,nearFile/Obj> (; 137 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<bool,nearFile/Obj> (; 99 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -7333,78 +5695,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<bool>
@@ -7413,97 +5725,51 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3552
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 20
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3552
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3576
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 383
+   i32.const 387
    i32.const 4
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
-  i32.load8_u
-  local.set $8
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
   local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $8
-  return
+  i32.load8_u
  )
- (func $nearFile/isNullable<~lib/string/String> (; 138 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/string/String> (; 100 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -7521,34 +5787,16 @@
    i32.const 1
   end
  )
- (func $nearFile/decode<~lib/string/String,nearFile/Obj> (; 139 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/string/String,nearFile/Obj> (; 101 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -7557,79 +5805,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $2
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-  else
    local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-  end
-  local.get $3
-  local.tee $7
-  i32.eqz
-  if (result i32)
-   i32.const 0
   else
-   local.get $7
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/string/String>
@@ -7638,101 +5835,47 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3648
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  local.get $3
-  call $~lib/rt/stub/__retain
-  local.set $7
-  local.get $1
-  call $~lib/rt/stub/__retain
-  local.set $8
-  local.get $7
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $2
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
-   local.get $8
+   local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 3680
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 2808
-   i32.const 338
+   i32.const 342
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $7
-  i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  local.set $4
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
+  i32.load
  )
- (func $nearFile/isNullable<~lib/typedarray/Uint8Array> (; 140 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/typedarray/Uint8Array> (; 102 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -7750,7 +5893,7 @@
    i32.const 0
   end
  )
- (func $~lib/string/String#charAt (; 141 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String#charAt (; 103 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $1
   local.get $0
@@ -7758,14 +5901,12 @@
   i32.ge_u
   if
    i32.const 840
-   call $~lib/rt/stub/__retain
    return
   end
   i32.const 2
   i32.const 1
   call $~lib/rt/stub/__alloc
-  local.set $2
-  local.get $2
+  local.tee $2
   local.get $0
   local.get $1
   i32.const 1
@@ -7774,120 +5915,79 @@
   i32.load16_u
   i32.store16
   local.get $2
-  call $~lib/rt/stub/__retain
  )
- (func $~lib/string/String#indexOf (; 142 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/string/String#indexOf (; 104 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $1
   call $~lib/string/String#get:length
-  local.set $3
-  local.get $3
+  local.tee $4
   i32.eqz
   if
    i32.const 0
-   local.set $4
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $4
    return
   end
   local.get $0
   call $~lib/string/String#get:length
-  local.set $5
-  local.get $5
+  local.tee $3
   i32.eqz
   if
    i32.const -1
-   local.set $4
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $4
    return
   end
   local.get $2
-  local.tee $4
   i32.const 0
-  local.tee $6
-  local.get $4
-  local.get $6
+  local.get $2
+  i32.const 0
   i32.gt_s
   select
-  local.tee $4
-  local.get $5
-  local.tee $6
-  local.get $4
-  local.get $6
+  local.tee $2
+  local.get $3
+  local.get $2
+  local.get $3
   i32.lt_s
   select
-  local.set $7
-  block $break|0
-   local.get $5
-   local.get $3
-   i32.sub
-   local.set $5
-   loop $loop|0
-    local.get $7
-    local.get $5
-    i32.le_s
-    i32.eqz
+  local.set $2
+  local.get $3
+  local.get $4
+  i32.sub
+  local.set $3
+  loop $loop|0
+   block $break|0
+    local.get $2
+    local.get $3
+    i32.gt_s
     br_if $break|0
     local.get $0
-    local.get $7
+    local.get $2
     local.get $1
     i32.const 0
-    local.get $3
+    local.get $4
     call $~lib/util/string/compareImpl
-    i32.eqz
     if
-     local.get $7
-     local.set $4
-     local.get $1
-     call $~lib/rt/stub/__release
-     local.get $4
+     local.get $2
+     i32.const 1
+     i32.add
+     local.set $2
+     br $loop|0
+    else
+     local.get $2
      return
     end
-    local.get $7
-    i32.const 1
-    i32.add
-    local.set $7
-    br $loop|0
+    unreachable
    end
-   unreachable
   end
   i32.const -1
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $~lib/near-runtime-ts/base64/base64.getByte64 (; 143 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  global.get $~lib/near-runtime-ts/base64/base64.ALPHA
+ (func $~lib/near-runtime-ts/base64/base64.getByte64 (; 105 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  i32.const 408
   local.get $0
   local.get $1
   call $~lib/string/String#charAt
-  local.tee $2
   i32.const 0
   call $~lib/string/String#indexOf
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/typedarray/Uint8Array#__set (; 144 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/typedarray/Uint8Array#__set (; 106 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $1
   local.get $0
   i32.load offset=8
@@ -7907,7 +6007,7 @@
   local.get $2
   i32.store8
  )
- (func $~lib/near-runtime-ts/base64/base64.decode (; 145 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/near-runtime-ts/base64/base64.decode (; 107 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -7915,73 +6015,49 @@
   (local $5 i32)
   (local $6 i32)
   (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
   i32.const 0
-  local.set $3
+  local.set $7
   local.get $0
   call $~lib/string/String#get:length
-  local.set $4
-  local.get $4
-  i32.const 0
-  i32.eq
+  local.tee $4
+  i32.eqz
   if
    i32.const 0
    i32.const 0
    call $~lib/typedarray/Uint8Array#constructor
-   local.set $5
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $5
    return
   end
+  i32.const 0
   local.get $0
   local.get $4
   i32.const 1
   i32.sub
   call $~lib/string/String#charAt
-  local.tee $5
   i32.const 384
   call $~lib/string/String.__eq
   if
    i32.const 1
-   local.set $3
+   local.set $7
    local.get $0
    local.get $4
    i32.const 2
    i32.sub
    call $~lib/string/String#charAt
-   local.tee $6
    i32.const 384
    call $~lib/string/String.__eq
    if
     i32.const 2
-    local.set $3
+    local.set $7
    end
    local.get $4
    i32.const 4
    i32.sub
    local.set $4
-   local.get $6
-   call $~lib/rt/stub/__release
   end
   local.get $4
-  i32.const 4
-  i32.rem_u
-  i32.const 0
-  i32.eq
+  i32.const 3
+  i32.and
   if (result i32)
-   local.get $4
-   i32.const 4
-   i32.div_u
-   i32.const 3
-   i32.mul
-  else
    local.get $4
    i32.const 4
    i32.div_u
@@ -7989,45 +6065,41 @@
    i32.add
    i32.const 3
    i32.mul
+  else
+   local.get $4
+   i32.const 4
+   i32.div_u
+   i32.const 3
+   i32.mul
   end
-  local.set $6
-  local.get $3
+  i32.const 3
+  local.get $7
+  i32.sub
+  i32.const 0
+  local.get $7
   i32.const 0
   i32.gt_s
-  if (result i32)
-   i32.const 3
-   local.get $3
-   i32.sub
-  else
-   i32.const 0
-  end
-  local.set $7
-  local.get $6
-  local.get $7
+  select
   i32.add
-  local.set $8
-  i32.const 0
-  local.get $8
   call $~lib/typedarray/Uint8Array#constructor
-  local.set $9
+  local.set $6
   i32.const 0
-  local.set $10
-  block $break|0
-   i32.const 0
-   local.set $1
-   loop $loop|0
-    local.get $1
+  local.set $3
+  i32.const 0
+  local.set $2
+  loop $loop|0
+   block $break|0
+    local.get $2
     local.get $4
-    i32.lt_u
-    i32.eqz
+    i32.ge_u
     br_if $break|0
     local.get $0
-    local.get $1
+    local.get $2
     call $~lib/near-runtime-ts/base64/base64.getByte64
     i32.const 18
     i32.shl
     local.get $0
-    local.get $1
+    local.get $2
     i32.const 1
     i32.add
     call $~lib/near-runtime-ts/base64/base64.getByte64
@@ -8035,7 +6107,7 @@
     i32.shl
     i32.or
     local.get $0
-    local.get $1
+    local.get $2
     i32.const 2
     i32.add
     call $~lib/near-runtime-ts/base64/base64.getByte64
@@ -8043,77 +6115,74 @@
     i32.shl
     i32.or
     local.get $0
-    local.get $1
+    local.get $2
     i32.const 3
     i32.add
     call $~lib/near-runtime-ts/base64/base64.getByte64
     i32.or
-    local.set $2
-    local.get $9
-    local.get $10
-    local.tee $11
+    local.set $5
+    local.get $6
+    local.get $3
+    local.tee $1
     i32.const 1
     i32.add
-    local.set $10
-    local.get $11
-    local.get $2
+    local.set $3
+    local.get $1
+    local.get $5
     i32.const 16
     i32.shr_u
     call $~lib/typedarray/Uint8Array#__set
-    local.get $9
-    local.get $10
-    local.tee $11
+    local.get $6
+    local.get $3
+    local.tee $1
     i32.const 1
     i32.add
-    local.set $10
-    local.get $11
-    local.get $2
+    local.set $3
+    local.get $1
+    local.get $5
     i32.const 8
     i32.shr_u
     i32.const 255
     i32.and
     call $~lib/typedarray/Uint8Array#__set
-    local.get $9
-    local.get $10
-    local.tee $11
+    local.get $6
+    local.get $3
+    local.tee $1
     i32.const 1
     i32.add
-    local.set $10
-    local.get $11
-    local.get $2
+    local.set $3
+    local.get $1
+    local.get $5
     i32.const 255
     i32.and
     call $~lib/typedarray/Uint8Array#__set
-    local.get $1
+    local.get $2
     i32.const 4
     i32.add
-    local.set $1
+    local.set $2
     br $loop|0
    end
-   unreachable
   end
   block $break|1
    block $case1|1
-    block $case0|1
-     local.get $3
-     local.set $11
-     local.get $11
-     i32.const 1
-     i32.eq
-     br_if $case0|1
-     local.get $11
+    local.get $7
+    local.tee $1
+    i32.const 1
+    i32.ne
+    if
+     local.get $1
      i32.const 2
      i32.eq
      br_if $case1|1
      br $break|1
     end
     local.get $0
-    local.get $1
+    local.get $2
     call $~lib/near-runtime-ts/base64/base64.getByte64
     i32.const 18
     i32.shl
     local.get $0
-    local.get $1
+    local.get $2
     i32.const 1
     i32.add
     call $~lib/near-runtime-ts/base64/base64.getByte64
@@ -8121,33 +6190,30 @@
     i32.shl
     i32.or
     local.get $0
-    local.get $1
+    local.get $2
     i32.const 2
     i32.add
     call $~lib/near-runtime-ts/base64/base64.getByte64
     i32.const 6
     i32.shl
     i32.or
-    local.set $2
-    local.get $9
-    local.get $10
-    local.tee $11
+    local.set $5
+    local.get $6
+    local.get $3
+    local.tee $1
     i32.const 1
     i32.add
-    local.set $10
-    local.get $11
-    local.get $2
+    local.set $3
+    local.get $1
+    local.get $5
     i32.const 16
     i32.shr_u
     call $~lib/typedarray/Uint8Array#__set
-    local.get $9
-    local.get $10
-    local.tee $11
-    i32.const 1
-    i32.add
-    local.set $10
-    local.get $11
-    local.get $2
+    local.get $6
+    local.get $3
+    local.set $1
+    local.get $1
+    local.get $5
     i32.const 8
     i32.shr_u
     i32.const 255
@@ -8156,69 +6222,40 @@
     br $break|1
    end
    local.get $0
-   local.get $1
+   local.get $2
    call $~lib/near-runtime-ts/base64/base64.getByte64
    i32.const 18
    i32.shl
    local.get $0
-   local.get $1
+   local.get $2
    i32.const 1
    i32.add
    call $~lib/near-runtime-ts/base64/base64.getByte64
    i32.const 12
    i32.shl
    i32.or
-   local.set $2
-   local.get $9
-   local.get $10
-   local.tee $11
-   i32.const 1
-   i32.add
-   local.set $10
-   local.get $11
-   local.get $2
+   local.set $5
+   local.get $6
+   local.get $3
+   local.set $1
+   local.get $1
+   local.get $5
    i32.const 16
    i32.shr_u
    call $~lib/typedarray/Uint8Array#__set
-   br $break|1
   end
-  local.get $9
-  local.set $11
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $11
+  local.get $6
  )
- (func $nearFile/decode<~lib/typedarray/Uint8Array,nearFile/Obj> (; 146 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/typedarray/Uint8Array,nearFile/Obj> (; 108 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -8227,79 +6264,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $2
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-  else
    local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-  end
-  local.get $3
-  local.tee $7
-  i32.eqz
-  if (result i32)
-   i32.const 0
   else
-   local.get $7
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/typedarray/Uint8Array>
@@ -8308,109 +6294,48 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3784
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
-  call $~lib/rt/stub/__retain
-  local.set $7
-  local.get $1
-  call $~lib/rt/stub/__retain
-  local.set $8
-  local.get $7
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $2
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
-   local.get $8
+   local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 3680
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 2808
-   i32.const 338
+   i32.const 342
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $7
-  i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  local.tee $4
-  call $~lib/near-runtime-ts/base64/base64.decode
-  local.set $6
-  local.get $4
-  call $~lib/rt/stub/__release
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
+  i32.load
+  call $~lib/near-runtime-ts/base64/base64.decode
  )
- (func $nearFile/isNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>> (; 147 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>> (; 109 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -8428,7 +6353,7 @@
    i32.const 0
   end
  )
- (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#constructor (; 148 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#constructor (; 110 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -8436,13 +6361,11 @@
    i32.const 16
    i32.const 25
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -8450,7 +6373,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/isNullable<~lib/array/Array<~lib/string/String>> (; 149 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<~lib/string/String>> (; 111 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -8468,34 +6391,16 @@
    i32.const 0
   end
  )
- (func $nearFile/decode<~lib/string/String,nearFile/Value> (; 150 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/string/String,nearFile/Value> (; 112 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -8504,79 +6409,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $2
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-  else
    local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-  end
-  local.get $3
-  local.tee $7
-  i32.eqz
-  if (result i32)
-   i32.const 0
   else
-   local.get $7
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/string/String>
@@ -8585,135 +6439,66 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3648
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  local.get $3
-  call $~lib/rt/stub/__retain
-  local.set $7
-  local.get $1
-  call $~lib/rt/stub/__retain
-  local.set $8
-  local.get $7
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $2
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
-   local.get $8
+   local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 3680
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 2808
-   i32.const 338
+   i32.const 342
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $7
+  local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
  )
- (func $nearFile/decodeArray<~lib/string/String> (; 151 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/string/String> (; 113 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -8721,87 +6506,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<~lib/string/String>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<~lib/string/String,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<~lib/string/String>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $8
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Value> (; 152 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<~lib/string/String,nearFile/Value>
+    call $~lib/array/Array<~lib/string/String>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Value> (; 114 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -8810,79 +6554,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<~lib/string/String>>
@@ -8891,134 +6584,70 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3952
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<~lib/string/String>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#push (; 153 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#push (; 115 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+  local.get $0
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 1
   i32.add
-  local.set $3
-  local.get $0
-  local.get $3
+  local.tee $2
   i32.const 2
   call $~lib/array/ensureSize
   local.get $0
   i32.load offset=4
-  local.get $2
+  local.get $3
   i32.const 2
   i32.shl
   i32.add
   local.get $1
-  call $~lib/rt/stub/__retain
   i32.store
   local.get $0
-  local.get $3
+  local.get $2
   i32.store offset=12
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $2
  )
- (func $nearFile/decodeArray<~lib/array/Array<~lib/string/String>> (; 154 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/array/Array<~lib/string/String>> (; 116 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -9026,87 +6655,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $8
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,nearFile/Obj> (; 155 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Value>
+    call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,nearFile/Obj> (; 117 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -9115,79 +6703,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>>
@@ -9196,64 +6733,26 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3848
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<~lib/array/Array<~lib/string/String>>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $nearFile/isNullable<~lib/array/Array<u32>> (; 156 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<u32>> (; 118 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -9271,7 +6770,7 @@
    i32.const 0
   end
  )
- (func $~lib/array/Array<u32>#constructor (; 157 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u32>#constructor (; 119 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -9279,13 +6778,11 @@
    i32.const 16
    i32.const 26
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -9293,35 +6790,16 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/decode<u32,nearFile/Value> (; 158 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<u32,nearFile/Value> (; 120 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -9330,78 +6808,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<u32>
@@ -9410,98 +6838,52 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3216
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 21
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3216
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3136
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 396
+   i32.const 400
    i32.const 4
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
+  local.get $2
   i64.load
   i32.wrap_i64
-  local.set $8
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $8
-  return
  )
- (func $~lib/array/Array<u32>#push (; 159 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u32>#push (; 121 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -9528,41 +6910,26 @@
   i32.store offset=12
   local.get $3
  )
- (func $nearFile/decodeArray<u32> (; 160 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<u32> (; 122 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -9570,85 +6937,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<u32>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<u32,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<u32>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<u32>,nearFile/Obj> (; 161 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<u32,nearFile/Value>
+    call $~lib/array/Array<u32>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<u32>,nearFile/Obj> (; 123 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -9657,79 +6985,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<u32>>
@@ -9738,64 +7015,26 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 4056
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<u32>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $nearFile/isNullable<~lib/array/Array<i32>> (; 162 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<i32>> (; 124 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -9813,7 +7052,7 @@
    i32.const 0
   end
  )
- (func $~lib/array/Array<i32>#constructor (; 163 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<i32>#constructor (; 125 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -9821,13 +7060,11 @@
    i32.const 16
    i32.const 18
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -9835,35 +7072,16 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/decode<i32,nearFile/Value> (; 164 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<i32,nearFile/Value> (; 126 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -9872,78 +7090,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<i32>
@@ -9952,98 +7120,52 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3112
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 21
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3112
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3136
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 396
+   i32.const 400
    i32.const 4
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
+  local.get $2
   i64.load
   i32.wrap_i64
-  local.set $8
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $8
-  return
  )
- (func $~lib/array/Array<i32>#push (; 165 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<i32>#push (; 127 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -10070,41 +7192,26 @@
   i32.store offset=12
   local.get $3
  )
- (func $nearFile/decodeArray<i32> (; 166 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<i32> (; 128 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -10112,85 +7219,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<i32>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<i32,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<i32>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<i32>,nearFile/Obj> (; 167 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<i32,nearFile/Value>
+    call $~lib/array/Array<i32>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<i32>,nearFile/Obj> (; 129 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -10199,79 +7267,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<i32>>
@@ -10280,64 +7297,26 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 4128
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<i32>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $nearFile/isNullable<~lib/bignum/integer/u128/u128> (; 168 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/bignum/integer/u128/u128> (; 130 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -10355,14 +7334,13 @@
    i32.const 0
   end
  )
- (func $~lib/bignum/integer/u128/u128#constructor (; 169 ;) (type $FUNCSIG$iijj) (param $0 i32) (param $1 i64) (param $2 i64) (result i32)
+ (func $~lib/bignum/integer/u128/u128#constructor (; 131 ;) (type $FUNCSIG$iijj) (param $0 i32) (param $1 i64) (param $2 i64) (result i32)
   local.get $0
   i32.eqz
   if
    i32.const 16
    i32.const 5
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -10373,17 +7351,7 @@
   i64.store offset=8
   local.get $0
  )
- (func $~lib/array/Array<u8>#__unchecked_get (; 170 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 0
-  i32.shl
-  i32.add
-  i32.load8_u
- )
- (func $~lib/array/Array<u8>#__get (; 171 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<u8>#__get (; 132 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -10397,12 +7365,12 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<u8>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.add
+  i32.load8_u
  )
- (func $~lib/bignum/globals/__multi3 (; 172 ;) (type $FUNCSIG$vijjjj) (param $0 i32) (param $1 i64) (param $2 i64) (param $3 i64) (param $4 i64)
+ (func $~lib/bignum/globals/__multi3 (; 133 ;) (type $FUNCSIG$vijjjj) (param $0 i32) (param $1 i64) (param $2 i64) (param $3 i64) (param $4 i64)
   (local $5 i64)
   (local $6 i64)
   (local $7 i64)
@@ -10498,50 +7466,31 @@
   local.get $14
   global.set $~lib/bignum/globals/__res128_hi
  )
- (func $~lib/bignum/utils/atou128 (; 173 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/bignum/utils/atou128 (; 134 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
+  (local $5 i64)
   (local $6 i32)
-  (local $7 i32)
+  (local $7 i64)
   (local $8 i32)
   (local $9 i32)
   (local $10 i32)
   (local $11 i32)
-  (local $12 i64)
-  (local $13 i64)
-  (local $14 i64)
-  (local $15 i64)
-  (local $16 i64)
-  (local $17 i64)
-  (local $18 i32)
-  (local $19 i32)
-  (local $20 i32)
-  (local $21 i32)
-  (local $22 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
+  (local $12 i32)
+  i32.const 1
   local.get $1
-  i32.eqz
-  if
-   i32.const 10
-   local.set $1
-  end
+  i32.const 10
+  local.get $1
+  select
+  local.tee $1
+  i32.const 36
+  i32.gt_s
   local.get $1
   i32.const 2
   i32.lt_s
-  if (result i32)
-   i32.const 1
-  else
-   local.get $1
-   i32.const 36
-   i32.gt_s
-  end
+  select
   if
-   local.get $0
-   call $~lib/rt/stub/__release
    i32.const 4224
    i32.const 4272
    i32.const 133
@@ -10551,1022 +7500,487 @@
   end
   local.get $0
   call $~lib/string/String#get:length
-  local.set $2
-  local.get $2
+  local.tee $9
   i32.eqz
   if
    i32.const 0
    i64.const 0
    i64.const 0
    call $~lib/bignum/integer/u128/u128#constructor
-   local.tee $3
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $4
    return
   end
   local.get $0
   i32.const 0
   call $~lib/string/String#charCodeAt
-  local.set $5
-  local.get $2
+  local.tee $3
+  i32.const 48
+  i32.eq
+  i32.const 0
+  local.get $9
   i32.const 1
   i32.eq
-  if (result i32)
-   local.get $5
-   i32.const 48
-   i32.eq
-  else
-   i32.const 0
-  end
+  select
   if
    i32.const 0
    i64.const 0
    i64.const 0
    call $~lib/bignum/integer/u128/u128#constructor
-   local.tee $3
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $4
    return
   end
-  local.get $5
+  local.get $0
+  local.get $3
   i32.const 45
   i32.eq
-  local.set $6
-  local.get $6
-  if (result i32)
-   local.get $6
-  else
-   local.get $5
-   i32.const 43
-   i32.eq
-  end
-  local.set $7
-  local.get $0
-  local.get $7
+  local.tee $11
+  local.get $3
+  i32.const 43
+  i32.eq
+  local.get $11
+  select
+  local.tee $4
   call $~lib/string/String#charCodeAt
   i32.const 48
   i32.eq
   if
+   i32.const 1
    local.get $0
-   local.get $7
+   local.get $4
    i32.const 1
    i32.add
-   local.tee $7
+   local.tee $4
    call $~lib/string/String#charCodeAt
-   local.set $3
+   local.tee $3
+   i32.const 88
+   i32.eq
    local.get $3
    i32.const 120
    i32.eq
+   select
    if (result i32)
-    i32.const 1
-   else
-    local.get $3
-    i32.const 88
-    i32.eq
-   end
-   if
-    i32.const 16
-    local.set $1
-    local.get $7
+    local.get $4
     i32.const 1
     i32.add
-    local.set $7
+    local.set $4
+    i32.const 16
    else
+    i32.const 1
+    local.get $3
+    i32.const 79
+    i32.eq
     local.get $3
     i32.const 111
     i32.eq
+    select
     if (result i32)
-     i32.const 1
-    else
-     local.get $3
-     i32.const 79
-     i32.eq
-    end
-    if
-     i32.const 8
-     local.set $1
-     local.get $7
+     local.get $4
      i32.const 1
      i32.add
-     local.set $7
+     local.set $4
+     i32.const 8
     else
+     i32.const 1
+     local.get $3
+     i32.const 66
+     i32.eq
      local.get $3
      i32.const 98
      i32.eq
+     select
      if (result i32)
-      i32.const 1
-     else
-      local.get $3
-      i32.const 66
-      i32.eq
-     end
-     if
-      i32.const 2
-      local.set $1
-      local.get $7
+      local.get $4
       i32.const 1
       i32.add
-      local.set $7
+      local.set $4
+      i32.const 2
+     else
+      local.get $1
      end
     end
    end
+   local.set $1
   end
   i32.const 0
   i64.const 0
   i64.const 0
   call $~lib/bignum/integer/u128/u128#constructor
-  local.tee $3
-  call $~lib/rt/stub/__retain
-  local.set $8
-  global.get $~lib/bignum/utils/RadixCharsTable
-  call $~lib/rt/stub/__retain
-  local.set $9
+  local.set $3
+  i32.const 4424
+  local.set $12
   block $break|0
    block $case3|0
     block $case2|0
      block $case1|0
-      block $case0|0
-       local.get $1
-       local.set $4
-       local.get $4
-       i32.const 2
-       i32.eq
-       br_if $case0|0
-       local.get $4
+      local.get $1
+      local.tee $2
+      i32.const 2
+      i32.ne
+      if
+       local.get $2
        i32.const 10
        i32.eq
        br_if $case1|0
-       local.get $4
+       local.get $2
        i32.const 16
        i32.eq
        br_if $case2|0
        br $case3|0
       end
-      block $break|1
-       loop $continue|1
-        local.get $0
-        local.get $7
-        call $~lib/string/String#charCodeAt
-        i32.const 48
-        i32.sub
-        local.set $4
-        local.get $4
-        i32.const 2
-        i32.ge_u
-        if
-         br $break|1
-        end
-        local.get $8
-        call $~lib/rt/stub/__retain
-        local.set $11
-        i32.const 1
-        local.set $10
-        local.get $10
-        i32.const 127
-        i32.and
-        local.set $10
-        local.get $10
-        i64.extend_i32_s
-        local.set $12
-        local.get $12
-        i64.const 127
-        i64.add
-        local.get $12
-        i64.or
-        i64.const 64
-        i64.and
-        i64.const 6
-        i64.shr_u
-        i64.const 1
-        i64.sub
-        local.set $13
-        local.get $12
-        i64.const 6
-        i64.shr_u
-        i64.const 1
-        i64.sub
-        local.set $14
-        local.get $12
-        i64.const 63
-        i64.and
-        local.set $12
-        local.get $11
+      loop $continue|1
+       local.get $0
+       local.get $4
+       call $~lib/string/String#charCodeAt
+       i32.const 48
+       i32.sub
+       local.tee $2
+       i32.const 2
+       i32.lt_u
+       if
+        i32.const 0
+        local.get $3
         i64.load
-        local.set $15
-        local.get $15
-        local.get $12
+        local.tee $5
+        i64.const 1
         i64.shl
-        local.set $16
-        local.get $16
-        local.get $14
-        i64.const -1
-        i64.xor
-        i64.and
-        local.set $17
-        local.get $17
-        local.get $11
+        local.get $3
         i64.load offset=8
-        local.get $12
+        i64.const 1
         i64.shl
-        local.get $15
-        i64.const 64
-        local.get $12
-        i64.sub
+        local.get $5
+        i64.const 63
         i64.shr_u
-        local.get $13
-        i64.and
         i64.or
-        local.get $14
-        i64.and
-        i64.or
-        local.set $17
-        i32.const 0
-        local.get $16
-        local.get $14
-        i64.and
-        local.get $17
         call $~lib/bignum/integer/u128/u128#constructor
-        local.set $18
-        local.get $11
-        call $~lib/rt/stub/__release
-        local.get $18
-        local.tee $11
-        local.tee $18
-        local.get $8
-        local.tee $10
-        i32.ne
-        if
-         local.get $18
-         call $~lib/rt/stub/__retain
-         drop
-         local.get $10
-         call $~lib/rt/stub/__release
-        end
-        local.get $18
+        local.set $6
+        local.get $6
         local.set $8
-        local.get $8
-        call $~lib/rt/stub/__retain
-        local.set $19
-        local.get $4
-        i64.extend_i32_u
-        local.set $12
         i32.const 0
-        local.get $12
+        local.get $2
+        i64.extend_i32_u
         i64.const 0
         call $~lib/bignum/integer/u128/u128#constructor
-        local.tee $18
-        call $~lib/rt/stub/__retain
-        local.set $10
+        local.set $2
         i32.const 0
-        local.get $19
+        local.get $8
         i64.load
-        local.get $10
+        local.get $2
         i64.load
         i64.or
-        local.get $19
+        local.get $8
         i64.load offset=8
-        local.get $10
+        local.get $2
         i64.load offset=8
         i64.or
         call $~lib/bignum/integer/u128/u128#constructor
-        local.set $20
-        local.get $10
-        call $~lib/rt/stub/__release
-        local.get $19
-        call $~lib/rt/stub/__release
-        local.get $20
-        local.tee $19
-        local.tee $20
-        local.get $8
-        local.tee $10
-        i32.ne
-        if
-         local.get $20
-         call $~lib/rt/stub/__retain
-         drop
-         local.get $10
-         call $~lib/rt/stub/__release
-        end
-        local.get $20
-        local.set $8
-        local.get $11
-        call $~lib/rt/stub/__release
-        local.get $18
-        call $~lib/rt/stub/__release
-        local.get $19
-        call $~lib/rt/stub/__release
-        local.get $7
+        local.set $2
+        local.get $2
+        local.set $3
+        local.get $4
         i32.const 1
         i32.add
-        local.tee $7
-        local.get $2
+        local.tee $4
+        local.get $9
         i32.lt_s
         br_if $continue|1
        end
       end
       br $break|0
      end
-     block $break|2
-      loop $continue|2
-       local.get $0
+     loop $continue|2
+      local.get $0
+      local.get $4
+      call $~lib/string/String#charCodeAt
+      i32.const 48
+      i32.sub
+      local.tee $8
+      i32.const 10
+      i32.lt_u
+      if
+       i32.const 0
+       local.get $3
+       i64.load
+       local.tee $5
+       i64.const 3
+       i64.shl
+       local.get $3
+       i64.load offset=8
+       i64.const 3
+       i64.shl
+       local.get $5
+       i64.const 61
+       i64.shr_u
+       i64.or
+       call $~lib/bignum/integer/u128/u128#constructor
+       local.set $2
+       i32.const 0
+       local.get $3
+       i64.load
+       local.tee $7
+       i64.const 1
+       i64.shl
+       local.get $3
+       i64.load offset=8
+       i64.const 1
+       i64.shl
        local.get $7
-       call $~lib/string/String#charCodeAt
-       i32.const 48
-       i32.sub
-       local.set $19
-       local.get $19
-       i32.const 10
-       i32.ge_u
-       if
-        br $break|2
-       end
-       local.get $8
-       call $~lib/rt/stub/__retain
-       local.set $20
-       i32.const 3
-       local.set $10
-       local.get $10
-       i32.const 127
-       i32.and
-       local.set $10
-       local.get $10
-       i64.extend_i32_s
-       local.set $12
-       local.get $12
-       i64.const 127
-       i64.add
-       local.get $12
-       i64.or
-       i64.const 64
-       i64.and
-       i64.const 6
-       i64.shr_u
-       i64.const 1
-       i64.sub
-       local.set $17
-       local.get $12
-       i64.const 6
-       i64.shr_u
-       i64.const 1
-       i64.sub
-       local.set $16
-       local.get $12
        i64.const 63
-       i64.and
-       local.set $12
-       local.get $20
-       i64.load
-       local.set $15
-       local.get $15
-       local.get $12
-       i64.shl
-       local.set $14
-       local.get $14
-       local.get $16
-       i64.const -1
-       i64.xor
-       i64.and
-       local.set $13
-       local.get $13
-       local.get $20
-       i64.load offset=8
-       local.get $12
-       i64.shl
-       local.get $15
-       i64.const 64
-       local.get $12
-       i64.sub
        i64.shr_u
-       local.get $17
-       i64.and
        i64.or
-       local.get $16
-       i64.and
-       i64.or
-       local.set $13
-       i32.const 0
-       local.get $14
-       local.get $16
-       i64.and
-       local.get $13
        call $~lib/bignum/integer/u128/u128#constructor
-       local.set $18
-       local.get $20
-       call $~lib/rt/stub/__release
-       local.get $18
-       local.tee $20
-       call $~lib/rt/stub/__retain
-       local.set $21
-       local.get $8
-       call $~lib/rt/stub/__retain
-       local.set $11
-       i32.const 1
-       local.set $4
-       local.get $4
-       i32.const 127
-       i32.and
-       local.set $4
-       local.get $4
-       i64.extend_i32_s
-       local.set $13
-       local.get $13
-       i64.const 127
-       i64.add
-       local.get $13
-       i64.or
-       i64.const 64
-       i64.and
-       i64.const 6
-       i64.shr_u
-       i64.const 1
-       i64.sub
-       local.set $14
-       local.get $13
-       i64.const 6
-       i64.shr_u
-       i64.const 1
-       i64.sub
-       local.set $15
-       local.get $13
-       i64.const 63
-       i64.and
-       local.set $13
-       local.get $11
+       local.tee $6
        i64.load
-       local.set $16
-       local.get $16
-       local.get $13
-       i64.shl
-       local.set $17
-       local.get $17
-       local.get $15
-       i64.const -1
-       i64.xor
-       i64.and
-       local.set $12
-       local.get $12
-       local.get $11
-       i64.load offset=8
-       local.get $13
-       i64.shl
-       local.get $16
-       i64.const 64
-       local.get $13
-       i64.sub
-       i64.shr_u
-       local.get $14
-       i64.and
-       i64.or
-       local.get $15
-       i64.and
-       i64.or
-       local.set $12
-       i32.const 0
-       local.get $17
-       local.get $15
-       i64.and
-       local.get $12
-       call $~lib/bignum/integer/u128/u128#constructor
-       local.set $10
-       local.get $11
-       call $~lib/rt/stub/__release
-       local.get $10
-       local.tee $11
-       call $~lib/rt/stub/__retain
-       local.set $18
-       local.get $18
-       i64.load
-       local.set $12
-       local.get $21
-       i64.load
-       local.get $12
-       i64.add
-       local.set $17
-       local.get $21
-       i64.load offset=8
-       local.get $18
-       i64.load offset=8
-       i64.add
-       local.get $17
-       local.get $12
-       i64.lt_u
-       i64.extend_i32_u
-       i64.add
-       local.set $16
-       i32.const 0
-       local.get $17
-       local.get $16
-       call $~lib/bignum/integer/u128/u128#constructor
-       local.set $4
-       local.get $18
-       call $~lib/rt/stub/__release
-       local.get $21
-       call $~lib/rt/stub/__release
-       local.get $4
-       local.tee $21
-       local.tee $10
-       local.get $8
-       local.tee $18
-       i32.ne
-       if
-        local.get $10
-        call $~lib/rt/stub/__retain
-        drop
-        local.get $18
-        call $~lib/rt/stub/__release
-       end
-       local.get $10
-       local.set $8
-       local.get $8
-       call $~lib/rt/stub/__retain
-       local.set $18
-       local.get $19
-       i64.extend_i32_u
-       local.set $13
-       i32.const 0
-       local.get $13
-       i64.const 0
-       call $~lib/bignum/integer/u128/u128#constructor
-       local.tee $10
-       call $~lib/rt/stub/__retain
-       local.set $4
-       local.get $4
-       i64.load
-       local.set $13
-       local.get $18
-       i64.load
-       local.get $13
-       i64.add
-       local.set $16
-       local.get $18
-       i64.load offset=8
-       local.get $4
-       i64.load offset=8
-       i64.add
-       local.get $16
-       local.get $13
-       i64.lt_u
-       i64.extend_i32_u
-       i64.add
-       local.set $17
-       i32.const 0
-       local.get $16
-       local.get $17
-       call $~lib/bignum/integer/u128/u128#constructor
-       local.set $22
-       local.get $4
-       call $~lib/rt/stub/__release
-       local.get $18
-       call $~lib/rt/stub/__release
-       local.get $22
-       local.tee $18
-       local.tee $22
-       local.get $8
-       local.tee $4
-       i32.ne
-       if
-        local.get $22
-        call $~lib/rt/stub/__retain
-        drop
-        local.get $4
-        call $~lib/rt/stub/__release
-       end
-       local.get $22
-       local.set $8
-       local.get $20
-       call $~lib/rt/stub/__release
-       local.get $11
-       call $~lib/rt/stub/__release
-       local.get $21
-       call $~lib/rt/stub/__release
-       local.get $10
-       call $~lib/rt/stub/__release
-       local.get $18
-       call $~lib/rt/stub/__release
-       local.get $7
-       i32.const 1
-       i32.add
        local.tee $7
        local.get $2
+       i64.load
+       i64.add
+       local.tee $5
+       local.get $7
+       i64.lt_u
+       i64.extend_i32_u
+       local.get $2
+       i64.load offset=8
+       local.get $6
+       i64.load offset=8
+       i64.add
+       i64.add
+       local.set $7
+       i32.const 0
+       local.get $5
+       local.get $7
+       call $~lib/bignum/integer/u128/u128#constructor
+       local.set $2
+       local.get $2
+       local.set $6
+       i32.const 0
+       local.get $8
+       i64.extend_i32_u
+       i64.const 0
+       call $~lib/bignum/integer/u128/u128#constructor
+       local.tee $2
+       i64.load
+       local.tee $5
+       local.get $6
+       i64.load
+       i64.add
+       local.tee $7
+       local.get $5
+       i64.lt_u
+       i64.extend_i32_u
+       local.get $6
+       i64.load offset=8
+       local.get $2
+       i64.load offset=8
+       i64.add
+       i64.add
+       local.set $5
+       i32.const 0
+       local.get $7
+       local.get $5
+       call $~lib/bignum/integer/u128/u128#constructor
+       local.set $6
+       local.get $6
+       local.set $3
+       local.get $4
+       i32.const 1
+       i32.add
+       local.tee $4
+       local.get $9
        i32.lt_s
        br_if $continue|2
       end
      end
      br $break|0
     end
-    block $break|3
-     loop $continue|3
+    loop $continue|3
+     block $break|3
       local.get $0
-      local.get $7
+      local.get $4
       call $~lib/string/String#charCodeAt
       i32.const 48
       i32.sub
-      local.set $18
-      local.get $18
+      local.tee $6
       i32.const 74
       i32.gt_u
-      if
-       br $break|3
-      end
-      local.get $9
-      local.get $18
+      br_if $break|3
+      local.get $12
+      local.get $6
       call $~lib/array/Array<u8>#__get
-      local.set $10
-      local.get $10
+      local.tee $2
       i32.const 16
       i32.ge_u
-      if
-       br $break|3
-      end
-      local.get $8
-      call $~lib/rt/stub/__retain
-      local.set $22
-      i32.const 4
-      local.set $4
-      local.get $4
-      i32.const 127
-      i32.and
-      local.set $4
-      local.get $4
-      i64.extend_i32_s
-      local.set $17
-      local.get $17
-      i64.const 127
-      i64.add
-      local.get $17
-      i64.or
-      i64.const 64
-      i64.and
-      i64.const 6
-      i64.shr_u
-      i64.const 1
-      i64.sub
-      local.set $16
-      local.get $17
-      i64.const 6
-      i64.shr_u
-      i64.const 1
-      i64.sub
-      local.set $13
-      local.get $17
-      i64.const 63
-      i64.and
-      local.set $17
-      local.get $22
-      i64.load
-      local.set $12
-      local.get $12
-      local.get $17
-      i64.shl
-      local.set $15
-      local.get $15
-      local.get $13
-      i64.const -1
-      i64.xor
-      i64.and
-      local.set $14
-      local.get $14
-      local.get $22
-      i64.load offset=8
-      local.get $17
-      i64.shl
-      local.get $12
-      i64.const 64
-      local.get $17
-      i64.sub
-      i64.shr_u
-      local.get $16
-      i64.and
-      i64.or
-      local.get $13
-      i64.and
-      i64.or
-      local.set $14
+      br_if $break|3
       i32.const 0
-      local.get $15
-      local.get $13
-      i64.and
-      local.get $14
+      local.get $3
+      i64.load
+      local.tee $7
+      i64.const 4
+      i64.shl
+      local.get $3
+      i64.load offset=8
+      i64.const 4
+      i64.shl
+      local.get $7
+      i64.const 60
+      i64.shr_u
+      i64.or
       call $~lib/bignum/integer/u128/u128#constructor
-      local.set $21
-      local.get $22
-      call $~lib/rt/stub/__release
-      local.get $21
-      local.tee $22
-      local.tee $19
-      local.get $8
-      local.tee $4
-      i32.ne
-      if
-       local.get $19
-       call $~lib/rt/stub/__retain
-       drop
-       local.get $4
-       call $~lib/rt/stub/__release
-      end
-      local.get $19
       local.set $8
       local.get $8
-      call $~lib/rt/stub/__retain
-      local.set $11
-      local.get $10
-      i64.extend_i32_u
-      local.set $17
+      local.set $10
       i32.const 0
-      local.get $17
+      local.get $2
+      i64.extend_i32_u
       i64.const 0
       call $~lib/bignum/integer/u128/u128#constructor
-      local.tee $19
-      call $~lib/rt/stub/__retain
-      local.set $20
+      local.set $2
       i32.const 0
-      local.get $11
+      local.get $10
       i64.load
-      local.get $20
+      local.get $2
       i64.load
       i64.or
-      local.get $11
+      local.get $10
       i64.load offset=8
-      local.get $20
+      local.get $2
       i64.load offset=8
       i64.or
       call $~lib/bignum/integer/u128/u128#constructor
-      local.set $4
-      local.get $20
-      call $~lib/rt/stub/__release
-      local.get $11
-      call $~lib/rt/stub/__release
+      local.set $2
+      local.get $2
+      local.set $3
       local.get $4
-      local.tee $11
-      local.tee $21
-      local.get $8
-      local.tee $20
-      i32.ne
-      if
-       local.get $21
-       call $~lib/rt/stub/__retain
-       drop
-       local.get $20
-       call $~lib/rt/stub/__release
-      end
-      local.get $21
-      local.set $8
-      local.get $22
-      call $~lib/rt/stub/__release
-      local.get $19
-      call $~lib/rt/stub/__release
-      local.get $11
-      call $~lib/rt/stub/__release
-      local.get $7
       i32.const 1
       i32.add
-      local.tee $7
-      local.get $2
+      local.tee $4
+      local.get $9
       i32.lt_s
       br_if $continue|3
      end
     end
     br $break|0
    end
+   i32.const 0
    local.get $1
    i64.extend_i32_s
-   local.set $16
-   i32.const 0
-   local.get $16
    i64.const 0
    call $~lib/bignum/integer/u128/u128#constructor
-   local.set $11
-   block $break|4
-    loop $continue|4
+   local.set $10
+   loop $continue|4
+    block $break|4
      local.get $0
-     local.get $7
+     local.get $4
      call $~lib/string/String#charCodeAt
      i32.const 48
      i32.sub
-     local.set $19
-     local.get $19
+     local.tee $8
      i32.const 74
      i32.gt_u
-     if
-      br $break|4
-     end
-     local.get $9
-     local.get $19
+     br_if $break|4
+     local.get $12
+     local.get $8
      call $~lib/array/Array<u8>#__get
-     local.set $22
-     local.get $22
+     local.tee $6
      local.get $1
      i32.const 255
      i32.and
      i32.ge_u
-     if
-      br $break|4
-     end
-     local.get $8
-     call $~lib/rt/stub/__retain
-     local.set $20
-     local.get $11
-     call $~lib/rt/stub/__retain
-     local.set $4
+     br_if $break|4
      i32.const 0
-     local.get $20
+     local.get $3
      i64.load
-     local.get $20
+     local.get $3
      i64.load offset=8
-     local.get $4
+     local.get $10
+     local.tee $2
      i64.load
-     local.get $4
+     local.get $2
      i64.load offset=8
      call $~lib/bignum/globals/__multi3
      i32.const 0
      global.get $~lib/bignum/globals/__res128_lo
      global.get $~lib/bignum/globals/__res128_hi
      call $~lib/bignum/integer/u128/u128#constructor
-     local.set $10
-     local.get $4
-     call $~lib/rt/stub/__release
-     local.get $20
-     call $~lib/rt/stub/__release
-     local.get $10
-     local.tee $20
-     local.tee $21
-     local.get $8
-     local.tee $4
-     i32.ne
-     if
-      local.get $21
-      call $~lib/rt/stub/__retain
-      drop
-      local.get $4
-      call $~lib/rt/stub/__release
-     end
-     local.get $21
-     local.set $8
-     local.get $8
-     call $~lib/rt/stub/__retain
-     local.set $10
-     local.get $22
-     i64.extend_i32_u
-     local.set $13
+     local.set $2
+     local.get $2
+     local.set $2
      i32.const 0
-     local.get $13
+     local.get $6
+     i64.extend_i32_u
      i64.const 0
      call $~lib/bignum/integer/u128/u128#constructor
-     local.tee $21
-     call $~lib/rt/stub/__retain
-     local.set $18
-     local.get $18
+     local.tee $6
      i64.load
-     local.set $13
-     local.get $10
+     local.tee $5
+     local.get $2
      i64.load
-     local.get $13
      i64.add
-     local.set $16
-     local.get $10
-     i64.load offset=8
-     local.get $18
-     i64.load offset=8
-     i64.add
-     local.get $16
-     local.get $13
+     local.tee $7
+     local.get $5
      i64.lt_u
      i64.extend_i32_u
+     local.get $2
+     i64.load offset=8
+     local.get $6
+     i64.load offset=8
      i64.add
-     local.set $17
+     i64.add
+     local.set $5
      i32.const 0
-     local.get $16
-     local.get $17
-     call $~lib/bignum/integer/u128/u128#constructor
-     local.set $4
-     local.get $18
-     call $~lib/rt/stub/__release
-     local.get $10
-     call $~lib/rt/stub/__release
-     local.get $4
-     local.tee $10
-     local.tee $4
-     local.get $8
-     local.tee $18
-     i32.ne
-     if
-      local.get $4
-      call $~lib/rt/stub/__retain
-      drop
-      local.get $18
-      call $~lib/rt/stub/__release
-     end
-     local.get $4
-     local.set $8
-     local.get $20
-     call $~lib/rt/stub/__release
-     local.get $21
-     call $~lib/rt/stub/__release
-     local.get $10
-     call $~lib/rt/stub/__release
      local.get $7
+     local.get $5
+     call $~lib/bignum/integer/u128/u128#constructor
+     local.set $2
+     local.get $2
+     local.set $3
+     local.get $4
      i32.const 1
      i32.add
-     local.tee $7
-     local.get $2
+     local.tee $4
+     local.get $9
      i32.lt_s
      br_if $continue|4
     end
    end
-   local.get $11
-   call $~lib/rt/stub/__release
-   br $break|0
   end
-  local.get $6
+  local.get $11
   if (result i32)
-   local.get $8
-   local.set $18
-   local.get $18
+   i32.const 0
+   local.get $3
    i64.load
    i64.const -1
    i64.xor
-   local.set $17
-   local.get $18
+   local.tee $5
+   i64.const 1
+   i64.add
+   local.get $3
    i64.load offset=8
    i64.const -1
    i64.xor
-   local.set $16
-   local.get $17
+   local.get $5
    i64.const 1
    i64.and
-   local.get $17
+   local.get $5
    i64.const 1
    i64.shr_u
    i64.add
    i64.const 63
    i64.shr_u
-   local.set $13
-   i32.const 0
-   local.get $17
-   i64.const 1
-   i64.add
-   local.get $16
-   local.get $13
    i64.add
    call $~lib/bignum/integer/u128/u128#constructor
-   local.tee $18
-   local.tee $11
   else
-   local.get $8
-   call $~lib/rt/stub/__retain
-   local.tee $10
+   local.get $3
   end
-  call $~lib/rt/stub/__retain
-  local.set $18
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $18
  )
- (func $nearFile/decode<~lib/bignum/integer/u128/u128,nearFile/Obj> (; 174 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/bignum/integer/u128/u128,nearFile/Obj> (; 135 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $3
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $3
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -11575,79 +7989,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $2
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-  else
    local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-  end
-  local.get $3
-  local.tee $7
-  i32.eqz
-  if (result i32)
-   i32.const 0
   else
-   local.get $7
+   local.get $0
+  end
+  local.tee $3
+  local.tee $0
+  if (result i32)
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/bignum/integer/u128/u128>
@@ -11656,134 +8019,68 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 4200
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
   local.get $3
-  local.tee $6
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $2
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 0
    i32.const 2808
-   i32.const 414
+   i32.const 418
    i32.const 4
    call $~lib/builtins/abort
    unreachable
   end
   local.get $3
-  call $~lib/rt/stub/__retain
-  local.set $7
-  local.get $1
-  call $~lib/rt/stub/__retain
-  local.set $8
-  local.get $7
-  local.tee $6
-  i32.eqz
+  local.tee $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $2
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
-   local.get $8
+   local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 3680
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 2808
-   i32.const 338
+   i32.const 342
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $7
-  i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  local.set $5
-  i32.const 0
-  local.set $4
-  local.get $5
-  local.get $4
-  call $~lib/bignum/utils/atou128
-  local.set $6
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  local.set $4
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
+  i32.load
+  i32.const 0
+  call $~lib/bignum/utils/atou128
  )
- (func $nearFile/isNullable<~lib/array/Array<~lib/typedarray/Uint8Array>> (; 175 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<~lib/typedarray/Uint8Array>> (; 136 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -11801,7 +8098,7 @@
    i32.const 0
   end
  )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#constructor (; 176 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#constructor (; 137 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -11809,13 +8106,11 @@
    i32.const 16
    i32.const 27
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -11823,35 +8118,16 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/decode<~lib/typedarray/Uint8Array,nearFile/Value> (; 177 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/typedarray/Uint8Array,nearFile/Value> (; 138 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -11860,79 +8136,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $2
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-  else
    local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-  end
-  local.get $3
-  local.tee $7
-  i32.eqz
-  if (result i32)
-   i32.const 0
   else
-   local.get $7
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/typedarray/Uint8Array>
@@ -11941,179 +8166,92 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3784
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
-  call $~lib/rt/stub/__retain
-  local.set $7
-  local.get $1
-  call $~lib/rt/stub/__retain
-  local.set $8
-  local.get $7
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $2
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
-   local.get $8
+   local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 3680
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 2808
-   i32.const 338
+   i32.const 342
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $7
-  i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  local.tee $4
-  call $~lib/near-runtime-ts/base64/base64.decode
-  local.set $6
-  local.get $4
-  call $~lib/rt/stub/__release
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
+  i32.load
+  call $~lib/near-runtime-ts/base64/base64.decode
  )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#push (; 178 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#push (; 139 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+  local.get $0
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 1
   i32.add
-  local.set $3
-  local.get $0
-  local.get $3
+  local.tee $2
   i32.const 2
   call $~lib/array/ensureSize
   local.get $0
   i32.load offset=4
-  local.get $2
+  local.get $3
   i32.const 2
   i32.shl
   i32.add
   local.get $1
-  call $~lib/rt/stub/__retain
   i32.store
   local.get $0
-  local.get $3
+  local.get $2
   i32.store offset=12
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $2
  )
- (func $nearFile/decodeArray<~lib/typedarray/Uint8Array> (; 179 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/typedarray/Uint8Array> (; 140 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12121,87 +8259,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<~lib/typedarray/Uint8Array>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<~lib/typedarray/Uint8Array,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<~lib/typedarray/Uint8Array>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $8
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<~lib/typedarray/Uint8Array>,nearFile/Obj> (; 180 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<~lib/typedarray/Uint8Array,nearFile/Value>
+    call $~lib/array/Array<~lib/typedarray/Uint8Array>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<~lib/typedarray/Uint8Array>,nearFile/Obj> (; 141 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -12210,79 +8307,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<~lib/typedarray/Uint8Array>>
@@ -12291,64 +8337,26 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 4496
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<~lib/typedarray/Uint8Array>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $nearFile/isNullable<~lib/array/Array<u64>> (; 181 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<u64>> (; 142 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -12366,7 +8374,7 @@
    i32.const 0
   end
  )
- (func $~lib/array/Array<u64>#constructor (; 182 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u64>#constructor (; 143 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -12374,13 +8382,11 @@
    i32.const 16
    i32.const 28
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 3
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -12388,36 +8394,16 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/decode<u64,nearFile/Value> (; 183 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+ (func $nearFile/decode<u64,nearFile/Value> (; 144 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i64)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i64)
-  (local $10 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -12426,79 +8412,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
-    i32.const 0
-    i64.extend_i32_u
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
+    i64.const 0
     return
    end
-   local.get $5
-   local.tee $7
-   local.get $3
-   local.tee $8
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $8
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $8
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $8
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $8
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $8
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $8
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<u64>
@@ -12507,105 +8442,53 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $8
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3272
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
-   i32.const 0
-   i64.extend_i32_u
-   local.set $6
-   local.get $8
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $6
+   i64.const 0
    return
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 19
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 3272
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 3296
    call $~lib/string/String.__concat
-   local.tee $8
    i32.const 2808
-   i32.const 391
+   i32.const 395
    i32.const 6
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $3
+  local.get $2
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $10
-  local.get $10
   i32.const 0
   call $~lib/number/I64.parseInt
-  local.set $6
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $10
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $~lib/array/Array<u64>#push (; 184 ;) (type $FUNCSIG$iij) (param $0 i32) (param $1 i64) (result i32)
+ (func $~lib/array/Array<u64>#push (; 145 ;) (type $FUNCSIG$iij) (param $0 i32) (param $1 i64) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -12632,41 +8515,26 @@
   i32.store offset=12
   local.get $3
  )
- (func $nearFile/decodeArray<u64> (; 185 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<u64> (; 146 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i64)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12674,85 +8542,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<u64>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<u64,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<u64>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<u64>,nearFile/Obj> (; 186 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<u64,nearFile/Value>
+    call $~lib/array/Array<u64>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<u64>,nearFile/Obj> (; 147 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -12761,79 +8590,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<u64>>
@@ -12842,69 +8620,28 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 4616
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<u64>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $assembly/model/FooBar#_decode (; 187 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/model/FooBar#_decode (; 148 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.get $1
   i32.const 3088
@@ -12995,12 +8732,11 @@
   else
    local.get $0
    i32.load offset=36
-   call $~lib/rt/stub/__retain
   end
   local.set $3
   local.get $2
   i32.load offset=36
-  call $~lib/rt/stub/__release
+  drop
   local.get $3
   i32.store offset=36
   local.get $0
@@ -13015,12 +8751,11 @@
   else
    local.get $0
    i32.load offset=40
-   call $~lib/rt/stub/__retain
   end
   local.set $2
   local.get $3
   i32.load offset=40
-  call $~lib/rt/stub/__release
+  drop
   local.get $2
   i32.store offset=40
   local.get $0
@@ -13035,12 +8770,11 @@
   else
    local.get $0
    i32.load offset=44
-   call $~lib/rt/stub/__retain
   end
   local.set $3
   local.get $2
   i32.load offset=44
-  call $~lib/rt/stub/__release
+  drop
   local.get $3
   i32.store offset=44
   local.get $0
@@ -13055,12 +8789,11 @@
   else
    local.get $0
    i32.load offset=48
-   call $~lib/rt/stub/__retain
   end
   local.set $2
   local.get $3
   i32.load offset=48
-  call $~lib/rt/stub/__release
+  drop
   local.get $2
   i32.store offset=48
   local.get $0
@@ -13075,12 +8808,11 @@
   else
    local.get $0
    i32.load offset=52
-   call $~lib/rt/stub/__retain
   end
   local.set $3
   local.get $2
   i32.load offset=52
-  call $~lib/rt/stub/__release
+  drop
   local.get $3
   i32.store offset=52
   local.get $0
@@ -13095,12 +8827,11 @@
   else
    local.get $0
    i32.load offset=56
-   call $~lib/rt/stub/__retain
   end
   local.set $2
   local.get $3
   i32.load offset=56
-  call $~lib/rt/stub/__release
+  drop
   local.get $2
   i32.store offset=56
   local.get $0
@@ -13115,12 +8846,11 @@
   else
    local.get $0
    i32.load offset=60
-   call $~lib/rt/stub/__retain
   end
   local.set $3
   local.get $2
   i32.load offset=60
-  call $~lib/rt/stub/__release
+  drop
   local.get $3
   i32.store offset=60
   local.get $0
@@ -13135,85 +8865,30 @@
   else
    local.get $0
    i32.load offset=64
-   call $~lib/rt/stub/__retain
   end
   local.set $2
   local.get $3
   i32.load offset=64
-  call $~lib/rt/stub/__release
+  drop
   local.get $2
   i32.store offset=64
   local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $assembly/model/FooBar#decode<nearFile/Obj> (; 188 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  i32.const 0
-  local.set $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  local.tee $4
-  i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $4
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
-  local.set $2
+ (func $assembly/model/FooBar#decode<nearFile/Obj> (; 149 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
-  local.get $2
+  local.get $1
   call $assembly/model/FooBar#_decode
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $nearFile/decode<assembly/model/FooBar,nearFile/Value> (; 189 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/FooBar,nearFile/Value> (; 150 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -13222,79 +8897,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<assembly/model/FooBar>
@@ -13303,190 +8927,99 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 2960
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 2960
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 2992
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 418
+   i32.const 422
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
   i32.const 0
   call $assembly/model/FooBar#constructor
-  local.tee $8
-  local.tee $10
-  local.get $9
-  local.tee $11
-  i32.ne
-  if
-   local.get $10
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $11
-   call $~lib/rt/stub/__release
-  end
-  local.get $10
-  local.set $9
-  local.get $9
-  local.get $3
-  call $assembly/model/FooBar#decode<nearFile/Obj>
-  local.set $10
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
+  local.set $0
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $10
+  local.get $2
+  call $assembly/model/FooBar#decode<nearFile/Obj>
  )
- (func $~lib/array/Array<assembly/model/FooBar>#push (; 190 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<assembly/model/FooBar>#push (; 151 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+  local.get $0
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 1
   i32.add
-  local.set $3
-  local.get $0
-  local.get $3
+  local.tee $2
   i32.const 2
   call $~lib/array/ensureSize
   local.get $0
   i32.load offset=4
-  local.get $2
+  local.get $3
   i32.const 2
   i32.shl
   i32.add
   local.get $1
-  call $~lib/rt/stub/__retain
   i32.store
   local.get $0
-  local.get $3
+  local.get $2
   i32.store offset=12
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $2
  )
- (func $nearFile/decodeArray<assembly/model/FooBar> (; 191 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<assembly/model/FooBar> (; 152 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13494,87 +9027,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<assembly/model/FooBar>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<assembly/model/FooBar,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<assembly/model/FooBar>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $8
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Obj> (; 192 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<assembly/model/FooBar,nearFile/Value>
+    call $~lib/array/Array<assembly/model/FooBar>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Obj> (; 153 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -13583,79 +9075,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<assembly/model/FooBar>>
@@ -13664,191 +9105,94 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 2688
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<assembly/model/FooBar>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $assembly/main/convertFoobars~anonymous|0 (; 193 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $assembly/main/convertFoobars~anonymous|0 (; 154 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   i32.const 4
   i32.const 23
   call $~lib/rt/stub/__alloc
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $3
+  local.tee $1
   local.get $0
   i32.store
-  local.get $3
-  local.set $4
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $1
  )
- (func $~lib/array/Array<assembly/model/FooBar>#map<assembly/model/ContainerClass> (; 194 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<assembly/model/FooBar>#map<assembly/model/ContainerClass> (; 155 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
-  (local $7 i32)
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 2
   i32.const 29
   i32.const 0
   call $~lib/rt/__allocArray
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $3
+  local.tee $4
   i32.load offset=4
-  local.set $4
-  block $break|0
-   i32.const 0
-   local.set $5
-   loop $loop|0
-    local.get $5
+  local.set $5
+  i32.const 0
+  local.set $2
+  loop $loop|0
+   block $break|0
     local.get $2
-    local.tee $6
+    local.get $3
     local.get $0
     i32.load offset=12
-    local.tee $7
+    local.tee $6
+    local.get $3
     local.get $6
-    local.get $7
     i32.lt_s
     select
-    i32.lt_s
-    i32.eqz
+    i32.ge_s
     br_if $break|0
     i32.const 3
     global.set $~lib/argc
+    local.get $5
+    local.get $2
+    i32.const 2
+    i32.shl
+    i32.add
     local.get $0
     i32.load offset=4
-    local.get $5
+    local.get $2
     i32.const 2
     i32.shl
     i32.add
     i32.load
-    local.get $5
+    local.get $2
     local.get $0
     local.get $1
     call_indirect (type $FUNCSIG$iiii)
-    local.tee $6
-    call $~lib/rt/stub/__retain
-    local.set $7
-    local.get $4
-    local.get $5
-    i32.const 2
-    i32.shl
-    i32.add
-    local.get $7
-    call $~lib/rt/stub/__retain
     i32.store
-    local.get $6
-    call $~lib/rt/stub/__release
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $5
+    local.get $2
     i32.const 1
     i32.add
-    local.set $5
+    local.set $2
     br $loop|0
    end
-   unreachable
   end
-  local.get $3
+  local.get $4
  )
- (func $assembly/main/convertFoobars (; 195 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 1
-  call $~lib/array/Array<assembly/model/FooBar>#map<assembly/model/ContainerClass>
-  local.set $1
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
- )
- (func $assembly/test/convertFoobars (; 196 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $assembly/main/convertFoobars
-  local.set $1
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#constructor (; 197 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#constructor (; 156 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   local.get $0
@@ -13857,7 +9201,6 @@
    i32.const 8
    i32.const 32
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -13874,18 +9217,17 @@
   local.set $2
   local.get $1
   i32.load
-  call $~lib/rt/stub/__release
+  drop
   local.get $2
   i32.store
-  local.get $0
-  local.tee $2
   i32.const 0
   i32.const 0
   call $~lib/array/Array<~lib/string/String>#constructor
   local.set $1
-  local.get $2
+  local.get $0
   i32.load offset=4
-  call $~lib/rt/stub/__release
+  drop
+  local.get $0
   local.get $1
   i32.store offset=4
   local.get $0
@@ -13895,21 +9237,7 @@
   drop
   local.get $0
  )
- (func $~lib/array/Array<i32>#get:length (; 198 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=12
- )
- (func $~lib/array/Array<i32>#__unchecked_get (; 199 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
- )
- (func $~lib/array/Array<i32>#__get (; 200 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<i32>#__get (; 157 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -13923,44 +9251,21 @@
    unreachable
   end
   local.get $0
-  local.get $1
-  call $~lib/array/Array<i32>#__unchecked_get
-  local.set $2
-  local.get $2
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#get:isFirstKey (; 201 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load
-  local.get $0
-  i32.load
-  call $~lib/array/Array<i32>#get:length
-  i32.const 1
-  i32.sub
-  call $~lib/array/Array<i32>#__get
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#write (; 202 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  call $~lib/array/Array<~lib/string/String>#push
-  drop
-  local.get $1
-  call $~lib/rt/stub/__release
- )
- (func $~lib/array/Array<i32>#__unchecked_set (; 203 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  local.get $0
   i32.load offset=4
   local.get $1
   i32.const 2
   i32.shl
   i32.add
-  local.get $2
-  i32.store
+  i32.load
  )
- (func $~lib/array/Array<i32>#__set (; 204 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#write (; 158 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/array/Array<~lib/string/String>#push
+  drop
+ )
+ (func $~lib/array/Array<i32>#__set (; 159 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -13990,118 +9295,101 @@
    i32.store offset=12
   end
   local.get $0
+  i32.load offset=4
   local.get $1
+  i32.const 2
+  i32.shl
+  i32.add
   local.get $2
-  call $~lib/array/Array<i32>#__unchecked_set
+  i32.store
  )
- (func $~lib/string/String#substring (; 205 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/string/String#substring (; 160 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
   local.get $0
   call $~lib/string/String#get:length
   local.set $3
   local.get $1
-  local.tee $4
   i32.const 0
-  local.tee $5
-  local.get $4
-  local.get $5
+  local.get $1
+  i32.const 0
   i32.gt_s
   select
-  local.tee $4
+  local.tee $1
   local.get $3
-  local.tee $5
-  local.get $4
-  local.get $5
+  local.get $1
+  local.get $3
   i32.lt_s
   select
-  local.set $6
+  local.set $4
   local.get $2
-  local.tee $4
+  local.tee $1
   i32.const 0
-  local.tee $5
-  local.get $4
-  local.get $5
+  local.get $1
+  i32.const 0
   i32.gt_s
   select
-  local.tee $4
+  local.tee $1
   local.get $3
-  local.tee $5
-  local.get $4
-  local.get $5
+  local.get $1
+  local.get $3
   i32.lt_s
   select
-  local.set $7
-  local.get $6
-  local.tee $4
-  local.get $7
-  local.tee $5
+  local.set $2
   local.get $4
-  local.get $5
+  local.tee $1
+  local.get $2
+  local.get $1
+  local.get $2
   i32.lt_s
   select
   i32.const 1
   i32.shl
-  local.set $8
-  local.get $6
-  local.tee $4
-  local.get $7
-  local.tee $5
-  local.get $4
-  local.get $5
+  local.set $4
+  local.get $1
+  local.get $2
+  local.get $1
+  local.get $2
   i32.gt_s
   select
   i32.const 1
   i32.shl
-  local.set $9
-  local.get $9
-  local.get $8
+  local.tee $1
+  local.get $4
   i32.sub
-  local.set $3
-  local.get $3
+  local.tee $3
   i32.eqz
   if
    i32.const 840
-   call $~lib/rt/stub/__retain
    return
   end
-  local.get $8
-  i32.eqz
+  local.get $4
   if (result i32)
-   local.get $9
+   i32.const 0
+  else
+   local.get $1
    local.get $0
    call $~lib/string/String#get:length
    i32.const 1
    i32.shl
    i32.eq
-  else
-   i32.const 0
   end
   if
    local.get $0
-   call $~lib/rt/stub/__retain
    return
   end
   local.get $3
   i32.const 1
   call $~lib/rt/stub/__alloc
-  local.set $10
-  local.get $10
+  local.tee $1
   local.get $0
-  local.get $8
+  local.get $4
   i32.add
   local.get $3
   call $~lib/memory/memory.copy
-  local.get $10
-  call $~lib/rt/stub/__retain
+  local.get $1
  )
- (func $~lib/util/number/decimalCount32 (; 206 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/util/number/decimalCount32 (; 161 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   i32.const 100000
@@ -14167,7 +9455,7 @@
   end
   unreachable
  )
- (func $~lib/util/number/utoa32_lut (; 207 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/util/number/utoa32_lut (; 162 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -14309,25 +9597,20 @@
    i32.store16
   end
  )
- (func $~lib/util/number/itoa32 (; 208 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/util/number/itoa32 (; 163 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
   local.get $0
   i32.eqz
   if
    i32.const 104
-   call $~lib/rt/stub/__retain
    return
   end
   local.get $0
   i32.const 0
   i32.lt_s
-  local.set $1
-  local.get $1
+  local.tee $1
   if
    i32.const 0
    local.get $0
@@ -14338,195 +9621,154 @@
   call $~lib/util/number/decimalCount32
   local.get $1
   i32.add
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 1
   i32.shl
   i32.const 1
   call $~lib/rt/stub/__alloc
-  local.set $3
-  local.get $3
-  local.set $6
+  local.tee $2
   local.get $0
-  local.set $5
-  local.get $2
-  local.set $4
-  local.get $6
-  local.get $5
-  local.get $4
+  local.get $3
   call $~lib/util/number/utoa32_lut
   local.get $1
   if
-   local.get $3
+   local.get $2
    i32.const 45
    i32.store16
   end
-  local.get $3
-  call $~lib/rt/stub/__retain
+  local.get $2
  )
- (func $~lib/util/number/itoa<i32> (; 209 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  call $~lib/util/number/itoa32
-  return
- )
- (func $~lib/number/I32#toString (; 210 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  call $~lib/util/number/itoa<i32>
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeString (; 211 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeString (; 164 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   i32.const 1432
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
   i32.const 0
-  local.set $2
-  block $break|0
-   i32.const 0
-   local.set $3
-   loop $loop|0
-    local.get $3
-    local.get $1
-    call $~lib/string/String#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
+  local.set $4
+  i32.const 0
+  local.set $3
+  loop $loop|0
+   local.get $3
+   local.get $1
+   call $~lib/string/String#get:length
+   i32.lt_s
+   if
     local.get $1
     local.get $3
     call $~lib/string/String#charCodeAt
-    local.set $4
-    local.get $4
+    local.tee $2
     i32.const 32
     i32.lt_s
     local.tee $5
-    if (result i32)
-     local.get $5
-    else
-     local.get $4
+    i32.eqz
+    if
      i32.const 1432
      i32.const 0
      call $~lib/string/String#charCodeAt
+     local.get $2
      i32.eq
+     local.set $5
     end
-    local.tee $5
+    local.get $5
+    i32.eqz
     if (result i32)
-     local.get $5
-    else
-     local.get $4
      i32.const 1656
      i32.const 0
      call $~lib/string/String#charCodeAt
+     local.get $2
      i32.eq
+    else
+     local.get $5
     end
-    local.set $5
-    local.get $5
     if
      local.get $0
      local.get $1
-     local.get $2
+     local.get $4
      local.get $3
      call $~lib/string/String#substring
-     local.tee $6
      call $~lib/assemblyscript-json/encoder/JSONEncoder#write
      local.get $3
      i32.const 1
      i32.add
-     local.set $2
-     local.get $4
+     local.set $4
      i32.const 1432
      i32.const 0
      call $~lib/string/String#charCodeAt
+     local.get $2
      i32.eq
      if
       local.get $0
       i32.const 4656
       call $~lib/assemblyscript-json/encoder/JSONEncoder#write
      else
-      local.get $4
       i32.const 1656
       i32.const 0
       call $~lib/string/String#charCodeAt
+      local.get $2
       i32.eq
       if
        local.get $0
        i32.const 4680
        call $~lib/assemblyscript-json/encoder/JSONEncoder#write
       else
-       local.get $4
        i32.const 1728
        i32.const 0
        call $~lib/string/String#charCodeAt
+       local.get $2
        i32.eq
        if
         local.get $0
         i32.const 4704
         call $~lib/assemblyscript-json/encoder/JSONEncoder#write
        else
-        local.get $4
         i32.const 1776
         i32.const 0
         call $~lib/string/String#charCodeAt
+        local.get $2
         i32.eq
         if
          local.get $0
          i32.const 4728
          call $~lib/assemblyscript-json/encoder/JSONEncoder#write
         else
-         local.get $4
          i32.const 1824
          i32.const 0
          call $~lib/string/String#charCodeAt
+         local.get $2
          i32.eq
          if
           local.get $0
           i32.const 4752
           call $~lib/assemblyscript-json/encoder/JSONEncoder#write
          else
-          local.get $4
           i32.const 1872
           i32.const 0
           call $~lib/string/String#charCodeAt
+          local.get $2
           i32.eq
           if
            local.get $0
            i32.const 4776
            call $~lib/assemblyscript-json/encoder/JSONEncoder#write
           else
-           i32.const 0
-           i32.eqz
-           if
-            i32.const 4800
-            local.get $4
-            call $~lib/number/I32#toString
-            local.tee $7
-            call $~lib/string/String.__concat
-            local.tee $8
-            i32.const 5336
-            i32.const 108
-            i32.const 20
-            call $~lib/builtins/abort
-            unreachable
-           end
-           local.get $7
-           call $~lib/rt/stub/__release
-           local.get $8
-           call $~lib/rt/stub/__release
+           i32.const 4800
+           local.get $2
+           call $~lib/util/number/itoa32
+           call $~lib/string/String.__concat
+           i32.const 5336
+           i32.const 108
+           i32.const 20
+           call $~lib/builtins/abort
+           unreachable
           end
          end
         end
        end
       end
      end
-     local.get $6
-     call $~lib/rt/stub/__release
     end
     local.get $3
     i32.const 1
@@ -14534,46 +9776,41 @@
     local.set $3
     br $loop|0
    end
-   unreachable
   end
   local.get $0
   local.get $1
-  local.get $2
+  local.get $4
   local.get $1
   call $~lib/string/String#get:length
   call $~lib/string/String#substring
-  local.tee $3
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
   local.get $0
   i32.const 1432
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey (; 212 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey (; 165 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   local.get $0
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#get:isFirstKey
-  i32.eqz
+  i32.load
+  local.get $0
+  i32.load
+  i32.load offset=12
+  i32.const 1
+  i32.sub
+  call $~lib/array/Array<i32>#__get
   if
    local.get $0
-   i32.const 1368
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
-  else
-   local.get $0
    i32.load
    local.get $0
    i32.load
-   call $~lib/array/Array<i32>#get:length
+   i32.load offset=12
    i32.const 1
    i32.sub
    i32.const 0
    call $~lib/array/Array<i32>#__set
+  else
+   local.get $0
+   i32.const 1368
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
   end
   local.get $1
   i32.const 0
@@ -14589,9 +9826,8 @@
   if
    local.get $0
    local.get $1
-   local.tee $2
    if (result i32)
-    local.get $2
+    local.get $1
    else
     unreachable
    end
@@ -14600,27 +9836,16 @@
    i32.const 2056
    call $~lib/assemblyscript-json/encoder/JSONEncoder#write
   end
-  local.get $1
-  call $~lib/rt/stub/__release
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#setNull (; 213 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#setNull (; 166 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey
   local.get $0
   i32.const 80
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
-  local.get $1
-  call $~lib/rt/stub/__release
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray (; 214 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray (; 167 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey
@@ -14633,27 +9858,8 @@
   call $~lib/array/Array<i32>#push
   drop
   i32.const 1
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $~lib/array/Array<assembly/model/ContainerClass>#get:length (; 215 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=12
- )
- (func $~lib/array/Array<assembly/model/ContainerClass>#__unchecked_get (; 216 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/array/Array<assembly/model/ContainerClass>#__get (; 217 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<assembly/model/ContainerClass>#__get (; 168 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -14667,14 +9873,15 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<assembly/model/ContainerClass>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $0
   i32.eqz
   if
-   local.get $2
-   call $~lib/rt/stub/__release
    i32.const 1232
    i32.const 1136
    i32.const 97
@@ -14682,13 +9889,9 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
+  local.get $0
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#pushObject (; 218 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#pushObject (; 169 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey
@@ -14701,12 +9904,8 @@
   call $~lib/array/Array<i32>#push
   drop
   i32.const 1
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $~lib/util/number/decimalCount64 (; 219 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
+ (func $~lib/util/number/decimalCount64 (; 170 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
   (local $1 i32)
   local.get $0
   i64.const 1000000000000000
@@ -14779,7 +9978,7 @@
   end
   unreachable
  )
- (func $~lib/util/number/utoa64_lut (; 220 ;) (type $FUNCSIG$viji) (param $0 i32) (param $1 i64) (param $2 i32)
+ (func $~lib/util/number/utoa64_lut (; 171 ;) (type $FUNCSIG$viji) (param $0 i32) (param $1 i64) (param $2 i32)
   (local $3 i32)
   (local $4 i64)
   (local $5 i32)
@@ -14906,29 +10105,21 @@
   local.get $2
   call $~lib/util/number/utoa32_lut
  )
- (func $~lib/util/number/itoa64 (; 221 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
+ (func $~lib/util/number/itoa64 (; 172 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i64)
   local.get $0
-  i64.const 0
-  i64.ne
-  i32.eqz
+  i64.eqz
   if
    i32.const 104
-   call $~lib/rt/stub/__retain
    return
   end
   local.get $0
   i64.const 0
   i64.lt_s
-  local.set $1
-  local.get $1
+  local.tee $1
   if
    i64.const 0
    local.get $0
@@ -14941,155 +10132,75 @@
   if
    local.get $0
    i32.wrap_i64
-   local.set $3
-   local.get $3
+   local.tee $4
    call $~lib/util/number/decimalCount32
    local.get $1
    i32.add
-   local.set $4
-   local.get $4
+   local.tee $2
    i32.const 1
    i32.shl
    i32.const 1
    call $~lib/rt/stub/__alloc
-   local.set $2
-   local.get $2
-   local.set $7
-   local.get $3
-   local.set $6
+   local.tee $3
    local.get $4
-   local.set $5
-   local.get $7
-   local.get $6
-   local.get $5
+   local.get $2
    call $~lib/util/number/utoa32_lut
   else
    local.get $0
    call $~lib/util/number/decimalCount64
    local.get $1
    i32.add
-   local.set $4
-   local.get $4
+   local.tee $2
    i32.const 1
    i32.shl
    i32.const 1
    call $~lib/rt/stub/__alloc
-   local.set $2
-   local.get $2
-   local.set $6
+   local.tee $3
    local.get $0
-   local.set $8
-   local.get $4
-   local.set $5
-   local.get $6
-   local.get $8
-   local.get $5
+   local.get $2
    call $~lib/util/number/utoa64_lut
   end
   local.get $1
   if
-   local.get $2
+   local.get $3
    i32.const 45
    i32.store16
   end
-  local.get $2
-  call $~lib/rt/stub/__retain
+  local.get $3
  )
- (func $~lib/util/number/itoa<i64> (; 222 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
-  local.get $0
-  call $~lib/util/number/itoa64
-  return
- )
- (func $~lib/number/I64#toString (; 223 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
-  local.get $0
-  call $~lib/util/number/itoa<i64>
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeInteger (; 224 ;) (type $FUNCSIG$vij) (param $0 i32) (param $1 i64)
-  (local $2 i32)
-  local.get $0
-  local.get $1
-  call $~lib/number/I64#toString
-  local.tee $2
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#write
-  local.get $2
-  call $~lib/rt/stub/__release
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger (; 225 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger (; 173 ;) (type $FUNCSIG$viij) (param $0 i32) (param $1 i32) (param $2 i64)
   local.get $0
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey
   local.get $0
   local.get $2
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#writeInteger
-  local.get $1
-  call $~lib/rt/stub/__release
+  call $~lib/util/number/itoa64
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#write
  )
- (func $nearFile/encode<i32,~lib/assemblyscript-json/encoder/JSONEncoder> (; 226 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/encode<i32,~lib/assemblyscript-json/encoder/JSONEncoder> (; 174 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
   local.get $1
   local.get $0
   i64.extend_i32_s
   call $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger
-  i32.const 0
-  local.set $3
   local.get $2
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $nearFile/encode<u32,~lib/assemblyscript-json/encoder/JSONEncoder> (; 227 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/encode<u32,~lib/assemblyscript-json/encoder/JSONEncoder> (; 175 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
   local.get $1
   local.get $0
   i64.extend_i32_u
   call $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger
-  i32.const 0
-  local.set $3
   local.get $2
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $~lib/util/number/utoa64 (; 228 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
+ (func $~lib/util/number/utoa64 (; 176 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i64)
   local.get $0
-  i64.const 0
-  i64.ne
-  i32.eqz
+  i64.eqz
   if
    i32.const 104
-   call $~lib/rt/stub/__retain
    return
   end
   local.get $0
@@ -15098,195 +10209,49 @@
   if
    local.get $0
    i32.wrap_i64
-   local.set $2
-   local.get $2
+   local.tee $3
    call $~lib/util/number/decimalCount32
-   local.set $3
-   local.get $3
+   local.tee $1
    i32.const 1
    i32.shl
    i32.const 1
    call $~lib/rt/stub/__alloc
-   local.set $1
-   local.get $1
-   local.set $6
-   local.get $2
-   local.set $5
+   local.tee $2
    local.get $3
-   local.set $4
-   local.get $6
-   local.get $5
-   local.get $4
+   local.get $1
    call $~lib/util/number/utoa32_lut
   else
    local.get $0
    call $~lib/util/number/decimalCount64
-   local.set $3
-   local.get $3
+   local.tee $1
    i32.const 1
    i32.shl
    i32.const 1
    call $~lib/rt/stub/__alloc
-   local.set $1
-   local.get $1
-   local.set $5
+   local.tee $2
    local.get $0
-   local.set $7
-   local.get $3
-   local.set $4
-   local.get $5
-   local.get $7
-   local.get $4
+   local.get $1
    call $~lib/util/number/utoa64_lut
   end
-  local.get $1
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/util/number/itoa<u64> (; 229 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
-  local.get $0
-  call $~lib/util/number/utoa64
-  return
- )
- (func $~lib/number/U64#toString (; 230 ;) (type $FUNCSIG$ij) (param $0 i64) (result i32)
-  local.get $0
-  call $~lib/util/number/itoa<u64>
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#setString (; 231 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ )
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#setString (; 177 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $0
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey
   local.get $0
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#writeString
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/encode<u64,~lib/assemblyscript-json/encoder/JSONEncoder> (; 232 ;) (type $FUNCSIG$ijii) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/encode<u64,~lib/assemblyscript-json/encoder/JSONEncoder> (; 178 ;) (type $FUNCSIG$ijii) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
   local.get $1
   local.get $0
-  call $~lib/number/U64#toString
-  local.tee $3
+  call $~lib/util/number/utoa64
   call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
-  local.get $3
-  call $~lib/rt/stub/__release
-  i32.const 0
-  local.set $4
   local.get $2
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $nearFile/encode<i64,~lib/assemblyscript-json/encoder/JSONEncoder> (; 233 ;) (type $FUNCSIG$ijii) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  local.get $1
-  local.get $0
-  call $~lib/number/I64#toString
-  local.tee $3
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
-  local.get $3
-  call $~lib/rt/stub/__release
-  i32.const 0
-  local.set $4
-  local.get $2
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#writeBoolean (; 234 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  local.get $1
-  if (result i32)
-   i32.const 24
-   call $~lib/rt/stub/__retain
-   local.tee $2
-  else
-   i32.const 48
-   call $~lib/rt/stub/__retain
-   local.tee $3
-  end
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#write
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#setBoolean (; 235 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  local.get $1
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey
-  local.get $0
-  local.get $2
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#writeBoolean
-  local.get $1
-  call $~lib/rt/stub/__release
- )
- (func $nearFile/encode<bool,~lib/assemblyscript-json/encoder/JSONEncoder> (; 236 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  local.get $1
-  local.get $0
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#setBoolean
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
- )
- (func $nearFile/encode<~lib/string/String,~lib/assemblyscript-json/encoder/JSONEncoder> (; 237 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/encode<~lib/string/String,~lib/assemblyscript-json/encoder/JSONEncoder> (; 179 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   i32.const 0
   call $~lib/string/String.__eq
@@ -15300,73 +10265,49 @@
    local.get $0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
   end
-  i32.const 0
-  local.set $3
   local.get $2
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $~lib/near-runtime-ts/base64/base64.encode (; 238 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/near-runtime-ts/base64/base64.encode (; 180 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
   i32.const 0
   i32.const 0
   call $~lib/array/Array<~lib/string/String>#constructor
-  local.set $3
+  local.set $1
   local.get $0
-  call $~lib/typedarray/Uint8Array#get:length
+  i32.load offset=8
   local.get $0
-  call $~lib/typedarray/Uint8Array#get:length
+  i32.load offset=8
   i32.const 3
   i32.rem_s
   i32.sub
   local.set $4
   local.get $0
-  call $~lib/typedarray/Uint8Array#get:length
-  i32.const 0
-  i32.eq
+  i32.load offset=8
+  i32.eqz
   if
    i32.const 840
-   call $~lib/rt/stub/__retain
-   local.set $5
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $5
    return
   end
-  block $break|0
-   i32.const 0
-   local.set $1
-   loop $loop|0
-    local.get $1
+  i32.const 0
+  local.set $3
+  loop $loop|0
+   block $break|0
+    local.get $3
     local.get $4
-    i32.lt_s
-    i32.eqz
+    i32.ge_s
     br_if $break|0
-    local.get $0
     local.get $1
+    i32.const 408
+    local.get $0
+    local.get $3
     call $~lib/typedarray/Uint8Array#__get
     i32.const 16
     i32.shl
     local.get $0
-    local.get $1
+    local.get $3
     i32.const 1
     i32.add
     call $~lib/typedarray/Uint8Array#__get
@@ -15374,250 +10315,167 @@
     i32.shl
     i32.or
     local.get $0
-    local.get $1
+    local.get $3
     i32.const 2
     i32.add
     call $~lib/typedarray/Uint8Array#__get
     i32.or
-    local.set $2
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.ALPHA
-    local.get $2
+    local.tee $2
     i32.const 18
     i32.shr_u
     call $~lib/string/String#charAt
-    local.tee $5
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.ALPHA
+    local.get $1
+    i32.const 408
     local.get $2
     i32.const 12
     i32.shr_u
     i32.const 63
     i32.and
     call $~lib/string/String#charAt
-    local.tee $6
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.ALPHA
+    local.get $1
+    i32.const 408
     local.get $2
     i32.const 6
     i32.shr_u
     i32.const 63
     i32.and
     call $~lib/string/String#charAt
-    local.tee $7
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.ALPHA
+    local.get $1
+    i32.const 408
     local.get $2
     i32.const 63
     i32.and
     call $~lib/string/String#charAt
-    local.tee $8
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
-    call $~lib/rt/stub/__release
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $8
-    call $~lib/rt/stub/__release
-    local.get $1
+    local.get $3
     i32.const 3
     i32.add
-    local.set $1
+    local.set $3
     br $loop|0
    end
-   unreachable
   end
   block $break|1
    block $case1|1
-    block $case0|1
-     local.get $0
-     call $~lib/typedarray/Uint8Array#get:length
-     local.get $4
-     i32.sub
-     local.set $8
-     local.get $8
-     i32.const 1
-     i32.eq
-     br_if $case0|1
-     local.get $8
+    local.get $0
+    i32.load offset=8
+    local.get $4
+    i32.sub
+    local.tee $2
+    i32.const 1
+    i32.ne
+    if
+     local.get $2
      i32.const 2
      i32.eq
      br_if $case1|1
      br $break|1
     end
-    local.get $0
     local.get $1
+    i32.const 408
+    local.get $0
+    local.get $3
     call $~lib/typedarray/Uint8Array#__get
     i32.const 16
     i32.shl
-    local.set $2
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.ALPHA
-    local.get $2
+    local.tee $2
     i32.const 18
     i32.shr_u
     call $~lib/string/String#charAt
-    local.tee $8
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.ALPHA
+    local.get $1
+    i32.const 408
     local.get $2
     i32.const 12
     i32.shr_u
     i32.const 63
     i32.and
     call $~lib/string/String#charAt
-    local.tee $7
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.PADCHAR
+    local.get $1
+    i32.const 384
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $3
-    global.get $~lib/near-runtime-ts/base64/base64.PADCHAR
+    local.get $1
+    i32.const 384
     call $~lib/array/Array<~lib/string/String>#push
     drop
-    local.get $8
-    call $~lib/rt/stub/__release
-    local.get $7
-    call $~lib/rt/stub/__release
     br $break|1
    end
-   local.get $0
    local.get $1
+   i32.const 408
+   local.get $0
+   local.get $3
    call $~lib/typedarray/Uint8Array#__get
    i32.const 16
    i32.shl
    local.get $0
-   local.get $1
+   local.get $3
    i32.const 1
    i32.add
    call $~lib/typedarray/Uint8Array#__get
    i32.const 8
    i32.shl
    i32.or
-   local.set $2
-   local.get $3
-   global.get $~lib/near-runtime-ts/base64/base64.ALPHA
-   local.get $2
+   local.tee $2
    i32.const 18
    i32.shr_u
    call $~lib/string/String#charAt
-   local.tee $7
    call $~lib/array/Array<~lib/string/String>#push
    drop
-   local.get $3
-   global.get $~lib/near-runtime-ts/base64/base64.ALPHA
+   local.get $1
+   i32.const 408
    local.get $2
    i32.const 12
    i32.shr_u
    i32.const 63
    i32.and
    call $~lib/string/String#charAt
-   local.tee $8
    call $~lib/array/Array<~lib/string/String>#push
    drop
-   local.get $3
-   global.get $~lib/near-runtime-ts/base64/base64.ALPHA
+   local.get $1
+   i32.const 408
    local.get $2
    i32.const 6
    i32.shr_u
    i32.const 63
    i32.and
    call $~lib/string/String#charAt
-   local.tee $6
    call $~lib/array/Array<~lib/string/String>#push
    drop
-   local.get $3
-   global.get $~lib/near-runtime-ts/base64/base64.PADCHAR
+   local.get $1
+   i32.const 384
    call $~lib/array/Array<~lib/string/String>#push
    drop
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $8
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   br $break|1
   end
-  local.get $3
+  local.get $1
   i32.const 840
   call $~lib/array/Array<~lib/string/String>#join
-  local.set $6
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $6
  )
- (func $nearFile/encode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/encoder/JSONEncoder> (; 239 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
+ (func $nearFile/encode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/encoder/JSONEncoder> (; 181 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
   if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $2
    local.get $1
    local.get $0
    call $~lib/near-runtime-ts/base64/base64.encode
-   local.tee $3
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
-   local.get $3
-   call $~lib/rt/stub/__release
+  else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
   end
-  i32.const 0
-  local.set $4
   local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#get:length (; 240 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=12
- )
- (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__unchecked_get (; 241 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__get (; 242 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__get (; 182 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -15631,14 +10489,15 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $0
   i32.eqz
   if
-   local.get $2
-   call $~lib/rt/stub/__release
    i32.const 1232
    i32.const 1136
    i32.const 97
@@ -15646,20 +10505,9 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
- )
- (func $~lib/array/Array<~lib/string/String>#__unchecked_get (; 243 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  call $~lib/rt/stub/__retain
  )
- (func $~lib/array/Array<~lib/string/String>#__get (; 244 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<~lib/string/String>#__get (; 183 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -15673,14 +10521,15 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<~lib/string/String>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $0
   i32.eqz
   if
-   local.get $2
-   call $~lib/rt/stub/__release
    i32.const 1232
    i32.const 1136
    i32.const 97
@@ -15688,9 +10537,9 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
+  local.get $0
  )
- (func $~lib/array/Array<i32>#pop (; 245 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/array/Array<i32>#pop (; 184 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   local.get $0
@@ -15723,7 +10572,7 @@
   i32.store offset=12
   local.get $2
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#popArray (; 246 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#popArray (; 185 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   i32.const 2256
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
@@ -15732,157 +10581,85 @@
   call $~lib/array/Array<i32>#pop
   drop
  )
- (func $nearFile/encode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 247 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
+ (func $nearFile/encode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 186 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
   if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<~lib/string/String>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<~lib/string/String>#__get
-     local.tee $4
      i32.const 0
      local.get $2
      call $nearFile/encode<~lib/string/String,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $4
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
-  end
-  i32.const 0
-  local.set $5
-  local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 248 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
-  if
+  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
+  end
+  local.get $2
+ )
+ (func $nearFile/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 187 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  local.get $0
+  if
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__get
-     local.tee $4
      i32.const 0
      local.get $2
      call $nearFile/encode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $4
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
+  else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
   end
-  i32.const 0
-  local.set $5
   local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/array/Array<u32>#get:length (; 249 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=12
- )
- (func $~lib/array/Array<u32>#__unchecked_get (; 250 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
- )
- (func $~lib/array/Array<u32>#__get (; 251 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<u32>#__get (; 188 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -15896,160 +10673,92 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<u32>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
  )
- (func $nearFile/encode<~lib/array/Array<u32>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 252 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
+ (func $nearFile/encode<~lib/array/Array<u32>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 189 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
   if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<u32>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<u32>#__get
      i32.const 0
      local.get $2
      call $nearFile/encode<u32,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
-  end
-  i32.const 0
-  local.set $4
-  local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/encode<~lib/array/Array<i32>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 253 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
-  if
+  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
+  end
+  local.get $2
+ )
+ (func $nearFile/encode<~lib/array/Array<i32>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 190 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  local.get $0
+  if
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<i32>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<i32>#__get
      i32.const 0
      local.get $2
      call $nearFile/encode<i32,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
-  end
-  i32.const 0
-  local.set $4
-  local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $~lib/typedarray/Int8Array#constructor (; 254 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  if (result i32)
-   local.get $0
   else
-   i32.const 12
-   i32.const 33
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
   end
-  local.get $1
-  i32.const 0
-  call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.get $2
  )
- (func $~lib/typedarray/Int8Array#get:length (; 255 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=8
- )
- (func $~lib/typedarray/Int8Array#__get (; 256 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/typedarray/Int8Array#__get (; 191 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=8
@@ -16068,7 +10777,7 @@
   i32.add
   i32.load8_s
  )
- (func $~lib/typedarray/Int8Array#__set (; 257 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/typedarray/Int8Array#__set (; 192 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $1
   local.get $0
   i32.load offset=8
@@ -16088,43 +10797,38 @@
   local.get $2
   i32.store8
  )
- (func $~lib/bignum/utils/processU64 (; 258 ;) (type $FUNCSIG$vij) (param $0 i32) (param $1 i64)
+ (func $~lib/bignum/utils/processU64 (; 193 ;) (type $FUNCSIG$vij) (param $0 i32) (param $1 i64)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/typedarray/Int8Array#get:length
+  i32.load offset=8
   i32.const 1
   i32.sub
-  local.set $2
-  block $break|0
-   i32.const 63
-   local.set $3
-   loop $loop|0
+  local.set $4
+  i32.const 63
+  local.set $3
+  loop $loop|0
+   block $break|0
     local.get $3
     i32.const -1
-    i32.ne
-    i32.eqz
+    i32.eq
     br_if $break|0
-    block $break|1
-     i32.const 0
-     local.set $4
-     loop $loop|1
-      local.get $4
+    i32.const 0
+    local.set $2
+    loop $loop|1
+     block $break|1
       local.get $2
-      i32.le_s
-      i32.eqz
+      local.get $4
+      i32.gt_s
       br_if $break|1
       local.get $0
-      local.get $4
+      local.get $2
       local.get $0
-      local.get $4
+      local.get $2
       call $~lib/typedarray/Int8Array#__get
       local.get $0
-      local.get $4
+      local.get $2
       call $~lib/typedarray/Int8Array#__get
       i32.const 5
       i32.ge_s
@@ -16136,50 +10840,46 @@
       i32.const 24
       i32.shr_s
       call $~lib/typedarray/Int8Array#__set
-      local.get $4
+      local.get $2
       i32.const 1
       i32.add
-      local.set $4
+      local.set $2
       br $loop|1
      end
-     unreachable
     end
-    block $break|2
-     local.get $2
-     local.set $4
-     loop $loop|2
-      local.get $4
+    local.get $4
+    local.set $2
+    loop $loop|2
+     block $break|2
+      local.get $2
       i32.const -1
-      i32.ne
-      i32.eqz
+      i32.eq
       br_if $break|2
       local.get $0
-      local.get $4
+      local.get $2
       local.get $0
-      local.get $4
+      local.get $2
       call $~lib/typedarray/Int8Array#__get
-      i32.const 1
-      i32.shl
-      i32.const 24
+      i32.const 25
       i32.shl
       i32.const 24
       i32.shr_s
       call $~lib/typedarray/Int8Array#__set
-      local.get $4
       local.get $2
+      local.get $4
       i32.lt_s
       if
        local.get $0
-       local.get $4
+       local.get $2
        i32.const 1
        i32.add
        local.get $0
-       local.get $4
+       local.get $2
        i32.const 1
        i32.add
        call $~lib/typedarray/Int8Array#__get
        local.get $0
-       local.get $4
+       local.get $2
        call $~lib/typedarray/Int8Array#__get
        i32.const 15
        i32.gt_s
@@ -16191,20 +10891,19 @@
        call $~lib/typedarray/Int8Array#__set
       end
       local.get $0
-      local.get $4
+      local.get $2
       local.get $0
-      local.get $4
+      local.get $2
       call $~lib/typedarray/Int8Array#__get
       i32.const 15
       i32.and
       call $~lib/typedarray/Int8Array#__set
-      local.get $4
+      local.get $2
       i32.const 1
       i32.sub
-      local.set $4
+      local.set $2
       br $loop|2
      end
-     unreachable
     end
     local.get $0
     i32.const 0
@@ -16231,29 +10930,19 @@
     local.set $3
     br $loop|0
    end
-   unreachable
   end
-  local.get $0
-  call $~lib/rt/stub/__release
  )
- (func $~lib/bignum/utils/u128toa10 (; 259 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/bignum/utils/u128toa10 (; 194 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
+  i32.const 12
+  i32.const 33
+  call $~lib/rt/stub/__alloc
   i32.const 40
-  local.set $1
   i32.const 0
-  local.get $1
-  call $~lib/typedarray/Int8Array#constructor
-  local.set $2
-  local.get $2
+  call $~lib/arraybuffer/ArrayBufferView#constructor
+  local.tee $2
   local.get $0
   i64.load offset=8
   call $~lib/bignum/utils/processU64
@@ -16262,99 +10951,72 @@
   i64.load
   call $~lib/bignum/utils/processU64
   i32.const 840
-  call $~lib/rt/stub/__retain
-  local.set $3
+  local.set $1
   i32.const 0
-  local.set $4
-  block $break|0
-   local.get $1
-   i32.const 1
-   i32.sub
-   local.set $5
-   loop $loop|0
-    local.get $5
-    i32.const -1
-    i32.ne
-    i32.eqz
-    br_if $break|0
-    local.get $4
-    i32.eqz
+  local.set $3
+  i32.const 39
+  local.set $0
+  loop $loop|0
+   local.get $0
+   i32.const -1
+   i32.ne
+   if
+    local.get $3
     if (result i32)
+     i32.const 0
+    else
      local.get $2
-     local.get $5
+     local.get $0
      call $~lib/typedarray/Int8Array#__get
      i32.const 0
      i32.gt_s
-    else
-     i32.const 0
     end
     if
      i32.const 1
-     local.set $4
+     local.set $3
     end
-    local.get $4
+    local.get $3
     if
-     local.get $3
-     global.get $~lib/bignum/utils/HEX_CHARS
+     local.get $1
+     i32.const 336
      local.get $2
-     local.get $5
+     local.get $0
      call $~lib/typedarray/Int8Array#__get
      call $~lib/string/String#charAt
-     local.tee $6
      call $~lib/string/String#concat
-     local.set $7
-     local.get $3
-     call $~lib/rt/stub/__release
-     local.get $7
-     local.set $3
-     local.get $6
-     call $~lib/rt/stub/__release
+     local.set $1
     end
-    local.get $5
+    local.get $0
     i32.const 1
     i32.sub
-    local.set $5
+    local.set $0
     br $loop|0
    end
-   unreachable
   end
-  local.get $3
-  local.set $5
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $5
+  local.get $1
  )
- (func $~lib/bignum/integer/u128/u128#toString (; 260 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/bignum/integer/u128/u128#toString (; 195 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
+  (local $3 i64)
   (local $4 i32)
   (local $5 i64)
-  (local $6 i64)
+  (local $6 i32)
   (local $7 i64)
-  (local $8 i32)
-  (local $9 i32)
+  (local $8 i64)
+  (local $9 i64)
   (local $10 i64)
-  (local $11 i64)
-  (local $12 i64)
-  (local $13 i32)
+  i32.const 1
   local.get $1
-  i32.eqz
-  if
-   i32.const 10
-   local.set $1
-  end
+  i32.const 10
+  local.get $1
+  select
+  local.tee $1
+  i32.const 16
+  i32.eq
   local.get $1
   i32.const 10
   i32.eq
-  if (result i32)
-   i32.const 1
-  else
-   local.get $1
-   i32.const 16
-   i32.eq
-  end
+  select
   i32.eqz
   if
    i32.const 5456
@@ -16365,103 +11027,79 @@
    unreachable
   end
   local.get $0
-  local.set $2
-  local.get $2
+  local.tee $2
   i64.load
   local.get $2
   i64.load offset=8
   i64.or
-  i64.const 0
-  i64.ne
-  i32.eqz
+  i64.eqz
   if
    i32.const 104
-   call $~lib/rt/stub/__retain
    return
   end
   i32.const 840
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $0
-  local.set $2
+  local.set $4
   i32.const 0
-  local.get $2
+  local.get $0
+  local.tee $2
   i64.load
   local.get $2
   i64.load offset=8
   call $~lib/bignum/integer/u128/u128#constructor
-  local.set $4
+  local.set $6
   local.get $1
   i32.const 16
   i32.eq
   if
-   i32.const 124
-   local.get $4
-   call $~lib/rt/stub/__retain
-   local.set $2
-   local.get $2
+   local.get $6
+   local.tee $2
    i64.load
-   local.set $6
+   local.set $7
+   i32.const 124
    local.get $2
    i64.load offset=8
-   local.set $5
-   local.get $5
-   local.get $5
+   local.tee $5
    i64.const 1
    i64.sub
+   local.get $5
    i64.xor
    i64.const 63
    i64.shr_s
-   local.set $7
-   local.get $5
-   local.get $7
+   local.tee $3
    i64.const -1
    i64.xor
+   local.get $5
    i64.and
-   local.get $6
+   local.get $3
    local.get $7
    i64.and
    i64.or
    i64.clz
    i32.wrap_i64
-   local.get $7
+   local.get $3
    i32.wrap_i64
    i32.const 64
    i32.and
    i32.add
-   local.set $8
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $8
-   i32.const 3
-   i32.const -1
-   i32.xor
+   i32.const -4
    i32.and
    i32.sub
    local.set $2
-   block $break|0
-    loop $continue|0
-     local.get $2
-     i32.const 0
-     i32.ge_s
-     i32.eqz
-     br_if $break|0
+   loop $continue|0
+    local.get $2
+    i32.const 0
+    i32.ge_s
+    if
      local.get $4
-     call $~lib/rt/stub/__retain
-     local.set $9
+     i32.const 336
      local.get $2
-     local.set $8
-     local.get $8
      i32.const 127
      i32.and
-     local.set $8
-     local.get $8
      i64.extend_i32_s
-     local.set $7
-     local.get $7
+     local.tee $3
+     local.get $3
      i64.const 127
      i64.add
-     local.get $7
      i64.or
      i64.const 64
      i64.and
@@ -16469,103 +11107,66 @@
      i64.shr_u
      i64.const 1
      i64.sub
-     local.set $6
-     local.get $7
+     local.set $7
+     local.get $3
      i64.const 6
      i64.shr_u
      i64.const 1
      i64.sub
-     local.set $5
-     local.get $7
-     i64.const 63
-     i64.and
-     local.set $7
-     local.get $9
-     i64.load offset=8
-     local.set $10
-     local.get $10
-     local.get $7
-     i64.shr_u
-     local.set $11
-     local.get $11
-     local.get $5
+     local.tee $5
      i64.const -1
      i64.xor
+     local.get $6
+     local.tee $0
+     i64.load offset=8
+     local.tee $8
+     local.get $3
+     i64.const 63
      i64.and
-     local.set $12
-     local.get $12
-     local.get $9
-     i64.load
-     local.get $7
+     local.tee $3
      i64.shr_u
+     local.tee $9
+     i64.and
+     local.set $10
+     i32.const 0
      local.get $10
+     local.get $8
      i64.const 64
-     local.get $7
+     local.get $3
      i64.sub
      i64.shl
-     local.get $6
+     local.get $7
      i64.and
+     local.get $0
+     i64.load
+     local.get $3
+     i64.shr_u
      i64.or
      local.get $5
      i64.and
      i64.or
-     local.set $12
-     i32.const 0
-     local.get $12
-     local.get $11
      local.get $5
+     local.get $9
      i64.and
      call $~lib/bignum/integer/u128/u128#constructor
-     local.set $13
-     local.get $9
-     call $~lib/rt/stub/__release
-     local.get $13
-     local.tee $9
-     local.tee $13
-     local.get $4
-     local.tee $8
-     i32.ne
-     if
-      local.get $13
-      call $~lib/rt/stub/__retain
-      drop
-      local.get $8
-      call $~lib/rt/stub/__release
-     end
-     local.get $13
      local.set $4
-     local.get $3
-     global.get $~lib/bignum/integer/u128/HEX_CHARS
      local.get $4
+     local.tee $6
      i64.load
      i64.const 15
      i64.and
      i32.wrap_i64
      call $~lib/string/String#charAt
-     local.tee $13
      call $~lib/string/String#concat
-     local.set $8
-     local.get $3
-     call $~lib/rt/stub/__release
-     local.get $8
-     local.set $3
+     local.set $4
      local.get $2
      i32.const 4
      i32.sub
      local.set $2
-     local.get $9
-     call $~lib/rt/stub/__release
-     local.get $13
-     call $~lib/rt/stub/__release
      br $continue|0
     end
-    unreachable
    end
-   local.get $3
-   local.set $13
    local.get $4
-   call $~lib/rt/stub/__release
-   local.get $13
    return
   else
    local.get $1
@@ -16574,64 +11175,30 @@
    if
     local.get $0
     call $~lib/bignum/utils/u128toa10
-    local.set $2
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $2
     return
    end
   end
   i32.const 5624
-  call $~lib/rt/stub/__retain
-  local.set $2
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/assemblyscript-json/encoder/JSONEncoder> (; 261 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/assemblyscript-json/encoder/JSONEncoder> (; 196 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $4
-  i32.const 0
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $4
+  local.tee $3
   i64.load offset=8
-  local.get $3
+  i32.const 0
+  local.tee $4
   i64.load offset=8
   i64.eq
   if (result i32)
-   local.get $4
-   i64.load
    local.get $3
+   i64.load
+   local.get $4
    i64.load
    i64.eq
   else
    i32.const 0
   end
-  local.set $5
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
   if
    local.get $2
    local.get $1
@@ -16642,39 +11209,11 @@
    local.get $0
    i32.const 0
    call $~lib/bignum/integer/u128/u128#toString
-   local.tee $4
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
-   local.get $4
-   call $~lib/rt/stub/__release
   end
-  i32.const 0
-  local.set $6
   local.get $2
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#get:length (; 262 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=12
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__unchecked_get (; 263 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__get (; 264 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__get (; 197 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -16688,14 +11227,15 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $0
   i32.eqz
   if
-   local.get $2
-   call $~lib/rt/stub/__release
    i32.const 1232
    i32.const 1136
    i32.const 97
@@ -16703,81 +11243,60 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
+  local.get $0
  )
- (func $nearFile/encode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 265 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
+ (func $nearFile/encode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 198 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
   if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<~lib/typedarray/Uint8Array>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
-     local.tee $4
      i32.const 0
      local.get $2
      call $nearFile/encode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $4
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
+  else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
   end
-  i32.const 0
-  local.set $5
   local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/array/Array<u64>#get:length (; 266 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/array/Array<u64>#__get (; 199 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+  local.get $1
   local.get $0
   i32.load offset=12
- )
- (func $~lib/array/Array<u64>#__unchecked_get (; 267 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+  i32.ge_u
+  if
+   i32.const 856
+   i32.const 1136
+   i32.const 93
+   i32.const 41
+   call $~lib/builtins/abort
+   unreachable
+  end
   local.get $0
   i32.load offset=4
   local.get $1
@@ -16786,91 +11305,46 @@
   i32.add
   i64.load
  )
- (func $~lib/array/Array<u64>#__get (; 268 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
-  (local $2 i64)
-  local.get $1
+ (func $nearFile/encode<~lib/array/Array<u64>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 200 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
-  i32.load offset=12
-  i32.ge_u
   if
-   i32.const 856
-   i32.const 1136
-   i32.const 93
-   i32.const 41
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  local.get $1
-  call $~lib/array/Array<u64>#__unchecked_get
-  local.set $2
-  local.get $2
- )
- (func $nearFile/encode<~lib/array/Array<u64>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 269 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
-  if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<u64>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<u64>#__get
      i32.const 0
      local.get $2
      call $nearFile/encode<u64,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
+  else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
   end
-  i32.const 0
-  local.set $4
   local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#popObject (; 270 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#popObject (; 201 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   i32.const 1344
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
@@ -16879,518 +11353,381 @@
   call $~lib/array/Array<i32>#pop
   drop
  )
- (func $assembly/model/FooBar#_encode (; 271 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $assembly/model/FooBar#_encode (; 202 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  i32.const 0
-  i32.ne
-  if (result i32)
-   local.get $2
-   call $~lib/rt/stub/__retain
-  else
+  i32.eqz
+  if
    i32.const 0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
   end
-  local.tee $3
-  if (result i32)
-   local.get $3
-  else
+  local.get $2
+  i32.eqz
+  if
    unreachable
   end
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $3
+  local.get $2
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#pushObject
   drop
   local.get $0
   i32.load
   i32.const 3088
-  local.get $3
+  local.get $2
   call $nearFile/encode<i32,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=4
   i32.const 3192
-  local.get $3
+  local.get $2
   call $nearFile/encode<u32,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i64.load offset=8
   i32.const 3240
-  local.get $3
+  local.get $2
   call $nearFile/encode<u64,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i64.load offset=16
   i32.const 3440
-  local.get $3
+  local.get $2
   call $nearFile/encode<u64,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
+  local.get $2
+  i32.const 3472
   local.get $0
   i64.load offset=24
-  i32.const 3472
-  local.get $3
-  call $nearFile/encode<i64,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  call $~lib/util/number/itoa64
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
   local.get $0
   i32.load8_u offset=32
+  local.set $1
+  local.get $2
   i32.const 3528
-  local.get $3
-  call $nearFile/encode<bool,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#writeKey
+  local.get $2
+  i32.const 24
+  i32.const 48
+  local.get $1
+  select
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#write
   local.get $0
   i32.load offset=36
   i32.const 3624
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/string/String,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=40
   i32.const 3744
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=44
   i32.const 3824
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=48
   i32.const 4024
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/array/Array<u32>,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=52
   i32.const 4096
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/array/Array<i32>,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=56
   i32.const 4168
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=60
   i32.const 4456
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=64
   i32.const 4584
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/array/Array<u64>,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
-  local.get $3
+  drop
+  local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
   local.get $2
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $nearFile/encode<assembly/model/FooBar,~lib/assemblyscript-json/encoder/JSONEncoder> (; 272 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
+ (func $nearFile/encode<assembly/model/FooBar,~lib/assemblyscript-json/encoder/JSONEncoder> (; 203 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
   if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $0
    local.get $1
    local.get $2
    call $assembly/model/FooBar#_encode
-   call $~lib/rt/stub/__release
-  end
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
- )
- (func $assembly/model/ContainerClass#_encode (; 273 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  i32.const 0
-  i32.ne
-  if (result i32)
-   local.get $2
-   call $~lib/rt/stub/__retain
+   drop
   else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+  end
+  local.get $2
+ )
+ (func $assembly/model/ContainerClass#_encode (; 204 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  local.get $2
+  i32.eqz
+  if
    i32.const 0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
   end
-  local.tee $3
-  if (result i32)
-   local.get $3
-  else
+  local.get $2
+  i32.eqz
+  if
    unreachable
   end
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $3
+  local.get $2
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#pushObject
   drop
   local.get $0
   i32.load
   i32.const 5424
-  local.get $3
+  local.get $2
   call $nearFile/encode<assembly/model/FooBar,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
-  local.get $3
+  drop
+  local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
   local.get $2
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $nearFile/encode<assembly/model/ContainerClass,~lib/assemblyscript-json/encoder/JSONEncoder> (; 274 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
-  if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
-   local.get $0
-   local.get $1
-   local.get $2
-   call $assembly/model/ContainerClass#_encode
-   call $~lib/rt/stub/__release
-  end
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
- )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#toString (; 275 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#toString (; 205 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.load offset=4
   i32.const 840
   call $~lib/array/Array<~lib/string/String>#join
  )
- (func $~lib/string/String.UTF8.byteLength (; 276 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String.UTF8.byteLength (; 206 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  local.set $2
-  local.get $2
   local.get $0
   i32.const 16
   i32.sub
   i32.load offset=12
   i32.add
-  local.set $3
-  local.get $1
-  if (result i32)
-   i32.const 1
-  else
-   i32.const 0
-  end
   local.set $4
-  block $break|0
-   loop $continue|0
-    local.get $2
-    local.get $3
-    i32.lt_u
-    i32.eqz
+  i32.const 1
+  i32.const 0
+  local.get $1
+  select
+  local.set $2
+  loop $continue|0
+   block $break|0
+    local.get $0
+    local.get $4
+    i32.ge_u
     br_if $break|0
-    local.get $2
+    local.get $0
     i32.load16_u
-    local.set $5
-    local.get $5
+    local.tee $3
     i32.const 128
     i32.lt_u
-    if
+    if (result i32)
+     local.get $3
+     i32.eqz
+     i32.const 0
      local.get $1
-     if (result i32)
-      local.get $5
-      i32.eqz
-     else
-      i32.const 0
-     end
-     if
-      br $break|0
-     end
-     local.get $4
+     select
+     br_if $break|0
+     local.get $2
      i32.const 1
      i32.add
-     local.set $4
-     local.get $2
+     local.set $2
+     local.get $0
      i32.const 2
      i32.add
-     local.set $2
     else
-     local.get $5
+     local.get $3
      i32.const 2048
      i32.lt_u
-     if
-      local.get $4
-      i32.const 2
-      i32.add
-      local.set $4
+     if (result i32)
       local.get $2
       i32.const 2
       i32.add
       local.set $2
+      local.get $0
+      i32.const 2
+      i32.add
      else
-      local.get $5
+      local.get $0
+      i32.const 2
+      i32.add
+      local.get $4
+      i32.lt_u
+      i32.const 0
+      local.get $3
       i32.const 64512
       i32.and
       i32.const 55296
       i32.eq
-      if (result i32)
-       local.get $2
-       i32.const 2
-       i32.add
-       local.get $3
-       i32.lt_u
-      else
-       i32.const 0
-      end
+      select
       if
-       local.get $2
+       local.get $0
        i32.load16_u offset=2
+       i32.const 64512
+       i32.and
+       i32.const 56320
+       i32.eq
+       if
+        local.get $0
+        i32.const 4
+        i32.add
+        local.set $0
+        local.get $2
+        i32.const 4
+        i32.add
+        local.set $2
+        br $continue|0
+       end
+      end
+      local.get $2
+      i32.const 3
+      i32.add
+      local.set $2
+      local.get $0
+      i32.const 2
+      i32.add
+     end
+    end
+    local.set $0
+    br $continue|0
+   end
+  end
+  local.get $2
+ )
+ (func $~lib/string/String.UTF8.encode (; 207 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  local.get $0
+  local.get $0
+  i32.const 16
+  i32.sub
+  i32.load offset=12
+  i32.add
+  local.set $4
+  local.get $0
+  local.get $1
+  call $~lib/string/String.UTF8.byteLength
+  i32.const 0
+  call $~lib/rt/stub/__alloc
+  local.tee $5
+  local.set $2
+  loop $continue|0
+   block $break|0
+    local.get $0
+    local.get $4
+    i32.ge_u
+    br_if $break|0
+    local.get $0
+    i32.load16_u
+    local.tee $3
+    i32.const 128
+    i32.lt_u
+    if (result i32)
+     local.get $3
+     i32.eqz
+     i32.const 0
+     local.get $1
+     select
+     br_if $break|0
+     local.get $2
+     local.get $3
+     i32.store8
+     local.get $2
+     i32.const 1
+     i32.add
+     local.set $2
+     local.get $0
+     i32.const 2
+     i32.add
+    else
+     local.get $3
+     i32.const 2048
+     i32.lt_u
+     if (result i32)
+      local.get $2
+      local.get $3
+      i32.const 6
+      i32.shr_u
+      i32.const 192
+      i32.or
+      i32.store8
+      local.get $2
+      local.get $3
+      i32.const 63
+      i32.and
+      i32.const 128
+      i32.or
+      i32.store8 offset=1
+      local.get $2
+      i32.const 2
+      i32.add
+      local.set $2
+      local.get $0
+      i32.const 2
+      i32.add
+     else
+      local.get $0
+      i32.const 2
+      i32.add
+      local.get $4
+      i32.lt_u
+      i32.const 0
+      local.get $3
+      i32.const 64512
+      i32.and
+      i32.const 55296
+      i32.eq
+      select
+      if
+       local.get $0
+       i32.load16_u offset=2
+       local.tee $6
        i32.const 64512
        i32.and
        i32.const 56320
        i32.eq
        if
         local.get $2
-        i32.const 4
-        i32.add
-        local.set $2
-        local.get $4
-        i32.const 4
-        i32.add
-        local.set $4
-        br $continue|0
-       end
-      end
-      local.get $2
-      i32.const 2
-      i32.add
-      local.set $2
-      local.get $4
-      i32.const 3
-      i32.add
-      local.set $4
-     end
-    end
-    br $continue|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $5
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $5
- )
- (func $~lib/string/String.UTF8.encode (; 277 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  local.set $2
-  local.get $0
-  local.get $0
-  i32.const 16
-  i32.sub
-  i32.load offset=12
-  i32.add
-  local.set $3
-  local.get $0
-  local.get $1
-  call $~lib/string/String.UTF8.byteLength
-  i32.const 0
-  call $~lib/rt/stub/__alloc
-  local.set $4
-  local.get $4
-  local.set $5
-  block $break|0
-   loop $continue|0
-    local.get $2
-    local.get $3
-    i32.lt_u
-    i32.eqz
-    br_if $break|0
-    local.get $2
-    i32.load16_u
-    local.set $6
-    local.get $6
-    i32.const 128
-    i32.lt_u
-    if
-     local.get $1
-     if (result i32)
-      local.get $6
-      i32.eqz
-     else
-      i32.const 0
-     end
-     if
-      br $break|0
-     end
-     local.get $5
-     local.get $6
-     i32.store8
-     local.get $5
-     i32.const 1
-     i32.add
-     local.set $5
-     local.get $2
-     i32.const 2
-     i32.add
-     local.set $2
-    else
-     local.get $6
-     i32.const 2048
-     i32.lt_u
-     if
-      local.get $5
-      local.get $6
-      i32.const 6
-      i32.shr_u
-      i32.const 192
-      i32.or
-      i32.store8
-      local.get $5
-      local.get $6
-      i32.const 63
-      i32.and
-      i32.const 128
-      i32.or
-      i32.store8 offset=1
-      local.get $5
-      i32.const 2
-      i32.add
-      local.set $5
-      local.get $2
-      i32.const 2
-      i32.add
-      local.set $2
-     else
-      local.get $6
-      i32.const 64512
-      i32.and
-      i32.const 55296
-      i32.eq
-      if (result i32)
-       local.get $2
-       i32.const 2
-       i32.add
-       local.get $3
-       i32.lt_u
-      else
-       i32.const 0
-      end
-      if
-       local.get $2
-       i32.load16_u offset=2
-       local.set $7
-       local.get $7
-       i32.const 64512
-       i32.and
-       i32.const 56320
-       i32.eq
-       if
-        i32.const 65536
-        local.get $6
+        local.get $3
         i32.const 1023
         i32.and
         i32.const 10
         i32.shl
+        i32.const 65536
         i32.add
-        local.get $7
+        local.get $6
         i32.const 1023
         i32.and
         i32.add
-        local.set $6
-        local.get $5
-        local.get $6
+        local.tee $3
         i32.const 18
         i32.shr_u
         i32.const 240
         i32.or
         i32.store8
-        local.get $5
-        local.get $6
+        local.get $2
+        local.get $3
         i32.const 12
         i32.shr_u
         i32.const 63
@@ -17398,8 +11735,8 @@
         i32.const 128
         i32.or
         i32.store8 offset=1
-        local.get $5
-        local.get $6
+        local.get $2
+        local.get $3
         i32.const 6
         i32.shr_u
         i32.const 63
@@ -17407,33 +11744,33 @@
         i32.const 128
         i32.or
         i32.store8 offset=2
-        local.get $5
-        local.get $6
+        local.get $2
+        local.get $3
         i32.const 63
         i32.and
         i32.const 128
         i32.or
         i32.store8 offset=3
+        local.get $0
+        i32.const 4
+        i32.add
+        local.set $0
         local.get $2
         i32.const 4
         i32.add
         local.set $2
-        local.get $5
-        i32.const 4
-        i32.add
-        local.set $5
         br $continue|0
        end
       end
-      local.get $5
-      local.get $6
+      local.get $2
+      local.get $3
       i32.const 12
       i32.shr_u
       i32.const 224
       i32.or
       i32.store8
-      local.get $5
-      local.get $6
+      local.get $2
+      local.get $3
       i32.const 6
       i32.shr_u
       i32.const 63
@@ -17441,33 +11778,31 @@
       i32.const 128
       i32.or
       i32.store8 offset=1
-      local.get $5
-      local.get $6
+      local.get $2
+      local.get $3
       i32.const 63
       i32.and
       i32.const 128
       i32.or
       i32.store8 offset=2
       local.get $2
-      i32.const 2
-      i32.add
-      local.set $2
-      local.get $5
       i32.const 3
       i32.add
-      local.set $5
+      local.set $2
+      local.get $0
+      i32.const 2
+      i32.add
      end
     end
+    local.set $0
     br $continue|0
    end
-   unreachable
   end
   local.get $1
   if
-   local.get $2
-   local.get $3
-   i32.le_u
-   i32.eqz
+   local.get $0
+   local.get $4
+   i32.gt_u
    if
     i32.const 0
     i32.const 1608
@@ -17476,22 +11811,21 @@
     call $~lib/builtins/abort
     unreachable
    end
-   local.get $4
    local.get $5
-   local.get $4
+   local.get $2
+   local.get $5
    i32.sub
    i32.const 1
    i32.add
    call $~lib/rt/stub/__realloc
-   local.set $4
-   local.get $5
+   local.set $5
+   local.get $2
    i32.const 0
    i32.store8
   else
-   local.get $2
-   local.get $3
-   i32.eq
-   i32.eqz
+   local.get $0
+   local.get $4
+   i32.ne
    if
     i32.const 0
     i32.const 1608
@@ -17501,21 +11835,11 @@
     unreachable
    end
   end
-  local.get $4
-  call $~lib/rt/stub/__retain
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $6
+  local.get $5
  )
- (func $~lib/assemblyscript-json/util/index/Buffer.fromString (; 278 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/assemblyscript-json/util/index/Buffer.fromString (; 208 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
   i32.const 0
   local.get $0
   i32.const 0
@@ -17525,194 +11849,109 @@
   local.get $0
   i32.const 0
   call $~lib/string/String.UTF8.encode
-  local.tee $2
-  local.set $3
+  local.set $2
   local.get $1
-  call $~lib/assemblyscript-json/util/index/Buffer.getPtr
-  local.get $3
+  i32.load offset=4
+  local.get $2
   local.get $0
   i32.const 0
   call $~lib/string/String.UTF8.byteLength
   call $~lib/memory/memory.copy
   local.get $1
-  local.set $4
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $~lib/assemblyscript-json/encoder/JSONEncoder#serialize (; 279 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
+ (func $~lib/assemblyscript-json/encoder/JSONEncoder#serialize (; 209 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#toString
-  local.tee $1
   call $~lib/assemblyscript-json/util/index/Buffer.fromString
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $nearFile/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array> (; 280 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array> (; 210 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
   if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    local.get $1
+    local.get $0
+    i32.load offset=12
+    i32.lt_s
+    if
      local.get $0
-     call $~lib/array/Array<assembly/model/ContainerClass>#get:length
-     i32.lt_s
-     i32.eqz
-     br_if $break|0
-     local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<assembly/model/ContainerClass>#__get
-     local.tee $4
-     i32.const 0
+     local.set $3
      local.get $2
-     call $nearFile/encode<assembly/model/ContainerClass,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $4
-     call $~lib/rt/stub/__release
+     local.set $4
      local.get $3
+     if
+      local.get $3
+      i32.const 0
+      local.get $4
+      call $assembly/model/ContainerClass#_encode
+      drop
+     else
+      local.get $4
+      i32.const 0
+      call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+     end
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
+  else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
   end
-  i32.const 0
-  local.set $5
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $3
-  return
  )
- (func $assembly/test/__wrapper_convertFoobars (; 281 ;) (type $FUNCSIG$v)
+ (func $assembly/test/__wrapper_convertFoobars (; 211 ;) (type $FUNCSIG$v)
   (local $0 i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  call $nearFile/getInput
-  local.set $0
   i64.const 0
-  local.get $0
+  call $nearFile/getInput
+  local.tee $0
   i32.load
   i64.extend_i32_u
   call $nearFile/read_register
   local.get $0
   call $nearFile/JSON.parse
-  local.set $1
-  local.get $1
   i32.const 2488
   call $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Obj>
-  local.tee $2
-  call $assembly/test/convertFoobars
-  local.set $3
+  i32.const 1
+  call $~lib/array/Array<assembly/model/FooBar>#map<assembly/model/ContainerClass>
+  i32.const 0
   i32.const 0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
-  local.set $4
-  i32.const 0
-  local.set $5
-  local.get $3
-  i32.const 0
-  local.get $4
   call $nearFile/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array>
-  local.set $6
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  local.set $5
-  local.get $5
+  local.tee $0
   i32.load offset=8
   i64.extend_i32_s
-  local.get $5
+  local.get $0
   i32.load
   i64.extend_i32_u
   call $nearFile/value_return
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Obj> (; 282 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Obj> (; 212 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -17721,79 +11960,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<~lib/string/String>>
@@ -17802,256 +11990,98 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 3952
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<~lib/string/String>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $~lib/near-runtime-ts/util/util.toUTF8 (; 283 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  local.get $1
-  call $~lib/string/String.UTF8.encode
-  local.tee $2
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $~lib/near-runtime-ts/util/util.stringToBytes (; 284 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/near-runtime-ts/util/util.stringToBytes (; 213 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
+  i32.const 0
   local.get $0
   i32.const 1
   call $~lib/string/String.UTF8.byteLength
   i32.const 1
   i32.sub
-  local.set $1
-  i32.const 0
-  local.get $1
+  local.tee $1
   call $~lib/typedarray/Uint8Array#constructor
-  local.set $2
-  local.get $2
+  local.tee $2
   i32.load offset=4
   local.get $0
   i32.const 0
-  call $~lib/near-runtime-ts/util/util.toUTF8
+  call $~lib/string/String.UTF8.encode
   local.get $1
   call $~lib/memory/memory.copy
   local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $~lib/near-runtime-ts/logging/logging.log (; 285 ;) (type $FUNCSIG$vi) (param $0 i32)
-  (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/near-runtime-ts/logging/logging.log (; 214 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   call $~lib/near-runtime-ts/util/util.stringToBytes
-  local.set $1
-  local.get $1
+  local.tee $0
   i32.load offset=8
   i64.extend_i32_s
-  local.get $1
+  local.get $0
   i32.load offset=4
   i64.extend_i32_u
   call $~lib/near-runtime-ts/runtime_api/runtime_api.log_utf8
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
  )
- (func $assembly/main/getStringArrayLength (; 286 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/array/Array<~lib/string/String>#get:length
-  local.set $1
-  i32.const 5664
-  local.get $1
-  call $~lib/number/I32#toString
-  local.tee $2
-  call $~lib/string/String.__concat
-  local.tee $3
-  call $~lib/near-runtime-ts/logging/logging.log
-  local.get $0
-  call $~lib/array/Array<~lib/string/String>#get:length
-  local.set $4
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $4
- )
- (func $assembly/test/getStringArrayLength (; 287 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $assembly/main/getStringArrayLength
-  local.set $1
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
- )
- (func $nearFile/encode<i32,~lib/typedarray/Uint8Array> (; 288 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/encode<i32,~lib/typedarray/Uint8Array> (; 215 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
   local.get $1
   local.get $0
   i64.extend_i32_s
   call $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger
-  i32.const 0
-  local.set $3
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
  )
- (func $assembly/test/__wrapper_getStringArrayLength (; 289 ;) (type $FUNCSIG$v)
+ (func $assembly/test/__wrapper_getStringArrayLength (; 216 ;) (type $FUNCSIG$v)
   (local $0 i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  call $nearFile/getInput
-  local.set $0
   i64.const 0
-  local.get $0
+  call $nearFile/getInput
+  local.tee $0
   i32.load
   i64.extend_i32_u
   call $nearFile/read_register
+  i32.const 5664
   local.get $0
   call $nearFile/JSON.parse
-  local.set $1
-  local.get $1
   i32.const 3824
   call $nearFile/decode<~lib/array/Array<~lib/string/String>,nearFile/Obj>
-  local.tee $2
-  call $assembly/test/getStringArrayLength
-  local.set $3
+  local.tee $0
+  i32.load offset=12
+  call $~lib/util/number/itoa32
+  call $~lib/string/String.__concat
+  call $~lib/near-runtime-ts/logging/logging.log
+  local.get $0
+  i32.load offset=12
+  i32.const 0
   i32.const 0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
-  local.set $4
-  i32.const 0
-  local.set $5
-  local.get $3
-  i32.const 0
-  local.get $4
   call $nearFile/encode<i32,~lib/typedarray/Uint8Array>
-  local.set $6
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  local.set $5
-  local.get $5
+  local.tee $0
   i32.load offset=8
   i64.extend_i32_s
-  local.get $5
+  local.get $0
   i32.load
   i64.extend_i32_u
   call $nearFile/value_return
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/isNullable<assembly/model/ContainerClass> (; 290 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<assembly/model/ContainerClass> (; 217 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -18069,52 +12099,16 @@
    i32.const 0
   end
  )
- (func $assembly/model/ContainerClass#constructor (; 291 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.eqz
-  if
-   i32.const 4
-   i32.const 23
-   call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
-   local.set $0
-  end
-  local.get $0
-  i32.const 0
-  i32.store
-  local.get $0
- )
- (func $nearFile/decode<assembly/model/FooBar,nearFile/Obj> (; 292 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/FooBar,nearFile/Obj> (; 218 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -18123,79 +12117,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<assembly/model/FooBar>
@@ -18204,125 +12147,56 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 2960
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 2960
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 2992
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 418
+   i32.const 422
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
   i32.const 0
   call $assembly/model/FooBar#constructor
-  local.tee $8
-  local.tee $10
-  local.get $9
-  local.tee $11
-  i32.ne
-  if
-   local.get $10
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $11
-   call $~lib/rt/stub/__release
-  end
-  local.get $10
-  local.set $9
-  local.get $9
-  local.get $3
-  call $assembly/model/FooBar#decode<nearFile/Obj>
-  local.set $10
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
+  local.set $0
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $10
+  local.get $2
+  call $assembly/model/FooBar#decode<nearFile/Obj>
  )
- (func $assembly/model/ContainerClass#_decode (; 293 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/model/ContainerClass#_decode (; 219 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
   local.get $1
@@ -18335,85 +12209,25 @@
   else
    local.get $0
    i32.load
-   call $~lib/rt/stub/__retain
   end
-  local.set $3
+  local.set $1
   local.get $2
   i32.load
-  call $~lib/rt/stub/__release
-  local.get $3
+  drop
+  local.get $1
   i32.store
   local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $assembly/model/ContainerClass#decode<nearFile/Obj> (; 294 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/ContainerClass,nearFile/Obj> (; 220 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  i32.const 0
-  local.set $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  local.tee $4
-  i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $4
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
-  local.set $2
   local.get $0
-  local.get $2
-  call $assembly/model/ContainerClass#_decode
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/decode<assembly/model/ContainerClass,nearFile/Obj> (; 295 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -18422,79 +12236,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<assembly/model/ContainerClass>
@@ -18503,127 +12266,64 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 5768
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 5768
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 2992
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 418
+   i32.const 422
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
+  i32.const 4
+  i32.const 23
+  call $~lib/rt/stub/__alloc
+  local.tee $0
   i32.const 0
-  call $assembly/model/ContainerClass#constructor
-  local.tee $8
-  local.tee $10
-  local.get $9
-  local.tee $11
-  i32.ne
-  if
-   local.get $10
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $11
-   call $~lib/rt/stub/__release
-  end
-  local.get $10
-  local.set $9
-  local.get $9
-  local.get $3
-  call $assembly/model/ContainerClass#decode<nearFile/Obj>
-  local.set $10
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
+  i32.store
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $10
+  local.get $2
+  call $assembly/model/ContainerClass#_decode
  )
- (func $assembly/model/AnotherContainerClass#constructor (; 296 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/model/AnotherContainerClass#constructor (; 221 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.eqz
   if
    i32.const 4
    i32.const 34
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -18631,96 +12331,45 @@
   i32.store
   local.get $0
  )
- (func $assembly/main/rewrapFoobar (; 297 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/main/rewrapFoobar (; 222 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
   i32.const 0
   call $assembly/model/AnotherContainerClass#constructor
-  local.set $1
-  local.get $1
-  local.tee $3
+  local.tee $2
   i32.const 1
   i32.const 2
   i32.const 35
   i32.const 0
   call $~lib/rt/__allocArray
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.load offset=4
-  local.set $3
-  local.get $3
+  local.tee $4
   i32.const 1
   i32.const 2
   i32.const 30
   i32.const 0
   call $~lib/rt/__allocArray
-  local.set $4
-  local.get $4
+  local.tee $1
   i32.load offset=4
-  local.set $5
-  local.get $5
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
   i32.store
-  local.get $4
-  call $~lib/rt/stub/__retain
+  local.get $1
   i32.store
-  local.get $2
-  local.tee $4
   local.get $3
+  local.tee $1
+  local.get $4
   i32.load
-  local.tee $3
   i32.ne
-  if
-   local.get $4
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $3
-   call $~lib/rt/stub/__release
-  end
-  local.get $4
+  drop
+  local.get $1
   i32.store
-  local.get $1
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $2
  )
- (func $assembly/test/rewrapFoobar (; 298 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $assembly/main/rewrapFoobar
-  local.set $1
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
- )
- (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#get:length (; 299 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  i32.load offset=12
- )
- (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__unchecked_get (; 300 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__get (; 301 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__get (; 223 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -18734,14 +12383,15 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $0
   i32.eqz
   if
-   local.get $2
-   call $~lib/rt/stub/__release
    i32.const 1232
    i32.const 1136
    i32.const 97
@@ -18749,24 +12399,9 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
- )
- (func $~lib/array/Array<assembly/model/FooBar>#get:length (; 302 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
-  i32.load offset=12
  )
- (func $~lib/array/Array<assembly/model/FooBar>#__unchecked_get (; 303 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  call $~lib/rt/stub/__retain
- )
- (func $~lib/array/Array<assembly/model/FooBar>#__get (; 304 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<assembly/model/FooBar>#__get (; 224 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -18780,14 +12415,15 @@
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
-  call $~lib/array/Array<assembly/model/FooBar>#__unchecked_get
-  local.set $2
-  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $0
   i32.eqz
   if
-   local.get $2
-   call $~lib/rt/stub/__release
    i32.const 1232
    i32.const 1136
    i32.const 97
@@ -18795,292 +12431,154 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $2
+  local.get $0
  )
- (func $nearFile/encode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 305 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
+ (func $nearFile/encode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 225 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
   if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<assembly/model/FooBar>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<assembly/model/FooBar>#__get
-     local.tee $4
      i32.const 0
      local.get $2
      call $nearFile/encode<assembly/model/FooBar,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $4
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
-  end
-  i32.const 0
-  local.set $5
-  local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 306 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
-  if
+  else
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
+  end
+  local.get $2
+ )
+ (func $nearFile/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/encoder/JSONEncoder> (; 226 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  local.get $0
+  if
    local.get $2
    local.get $1
    call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
    drop
-   block $break|0
-    i32.const 0
-    local.set $3
-    loop $loop|0
-     local.get $3
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
      local.get $0
-     call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#get:length
-     i32.lt_s
-     i32.eqz
+     i32.load offset=12
+     i32.ge_s
      br_if $break|0
      local.get $0
-     local.get $3
+     local.get $1
      call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__get
-     local.tee $4
      i32.const 0
      local.get $2
      call $nearFile/encode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/encoder/JSONEncoder>
-     call $~lib/rt/stub/__release
-     local.get $4
-     call $~lib/rt/stub/__release
-     local.get $3
+     drop
+     local.get $1
      i32.const 1
      i32.add
-     local.set $3
+     local.set $1
      br $loop|0
     end
-    unreachable
    end
    local.get $2
    call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
-  end
-  i32.const 0
-  local.set $5
-  local.get $2
-  local.set $3
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $assembly/model/AnotherContainerClass#_encode (; 307 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  i32.const 0
-  i32.ne
-  if (result i32)
-   local.get $2
-   call $~lib/rt/stub/__retain
   else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+  end
+  local.get $2
+ )
+ (func $assembly/model/AnotherContainerClass#_encode (; 227 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  local.get $2
+  i32.eqz
+  if
    i32.const 0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
   end
-  local.tee $3
-  if (result i32)
-   local.get $3
-  else
+  local.get $2
+  i32.eqz
+  if
    unreachable
   end
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $3
+  local.get $2
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#pushObject
   drop
   local.get $0
   i32.load
   i32.const 2488
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
-  local.get $3
+  drop
+  local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
   local.get $2
-  call $~lib/rt/stub/__release
-  local.get $4
  )
- (func $nearFile/encode<assembly/model/AnotherContainerClass,~lib/typedarray/Uint8Array> (; 308 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
-  if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
-   local.get $0
-   local.get $1
-   local.get $2
-   call $assembly/model/AnotherContainerClass#_encode
-   call $~lib/rt/stub/__release
-  end
-  i32.const 0
-  local.set $3
-  local.get $2
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
- )
- (func $assembly/test/__wrapper_rewrapFoobar (; 309 ;) (type $FUNCSIG$v)
+ (func $assembly/test/__wrapper_rewrapFoobar (; 228 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  call $nearFile/getInput
-  local.set $0
   i64.const 0
-  local.get $0
+  call $nearFile/getInput
+  local.tee $0
   i32.load
   i64.extend_i32_u
   call $nearFile/read_register
   local.get $0
   call $nearFile/JSON.parse
-  local.set $1
-  local.get $1
   i32.const 5728
   call $nearFile/decode<assembly/model/ContainerClass,nearFile/Obj>
-  local.tee $2
-  call $assembly/test/rewrapFoobar
-  local.set $3
+  call $assembly/main/rewrapFoobar
+  local.set $1
   i32.const 0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
-  local.set $4
-  i32.const 0
-  local.set $5
-  local.get $3
-  i32.const 0
-  local.get $4
-  call $nearFile/encode<assembly/model/AnotherContainerClass,~lib/typedarray/Uint8Array>
-  local.set $6
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  local.set $5
-  local.get $5
+  local.set $0
+  local.get $1
+  if
+   local.get $1
+   i32.const 0
+   local.get $0
+   call $assembly/model/AnotherContainerClass#_encode
+   drop
+  else
+   local.get $0
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+  end
+  local.get $0
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
+  local.tee $0
   i32.load offset=8
   i64.extend_i32_s
-  local.get $5
+  local.get $0
   i32.load
   i64.extend_i32_u
   call $nearFile/value_return
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
  )
- (func $nearFile/isNullable<assembly/model/AnotherContainerClass> (; 310 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<assembly/model/AnotherContainerClass> (; 229 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -19098,7 +12596,7 @@
    i32.const 0
   end
  )
- (func $nearFile/isNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>> (; 311 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>> (; 230 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -19116,7 +12614,7 @@
    i32.const 0
   end
  )
- (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#constructor (; 312 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#constructor (; 231 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -19124,13 +12622,11 @@
    i32.const 16
    i32.const 35
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
   end
   local.get $1
   i32.const 2
   call $~lib/arraybuffer/ArrayBufferView#constructor
-  local.set $0
-  local.get $0
+  local.tee $0
   i32.const 0
   i32.store offset=12
   local.get $0
@@ -19138,35 +12634,16 @@
   i32.store offset=12
   local.get $0
  )
- (func $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Value> (; 313 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Value> (; 232 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
   local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -19175,79 +12652,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<assembly/model/FooBar>>
@@ -19256,134 +12682,70 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 2688
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<assembly/model/FooBar>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#push (; 314 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#push (; 233 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+  local.get $0
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $3
   i32.const 1
   i32.add
-  local.set $3
-  local.get $0
-  local.get $3
+  local.tee $2
   i32.const 2
   call $~lib/array/ensureSize
   local.get $0
   i32.load offset=4
-  local.get $2
+  local.get $3
   i32.const 2
   i32.shl
   i32.add
   local.get $1
-  call $~lib/rt/stub/__retain
   i32.store
   local.get $0
-  local.get $3
+  local.get $2
   i32.store offset=12
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
+  local.get $2
  )
- (func $nearFile/decodeArray<~lib/array/Array<assembly/model/FooBar>> (; 315 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/array/Array<assembly/model/FooBar>> (; 234 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
    local.get $2
    i32.const 17
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $2
    i32.const 2888
    call $~lib/string/String.__concat
-   local.tee $3
    i32.const 2808
-   i32.const 343
+   i32.const 347
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -19391,87 +12753,46 @@
   i32.const 0
   i32.const 0
   call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#constructor
-  local.set $4
+  local.set $1
   local.get $0
   i32.load
-  call $~lib/rt/stub/__retain
-  local.set $5
-  block $break|0
-   i32.const 0
-   local.set $6
-   loop $loop|0
-    local.get $6
-    local.get $5
-    call $~lib/array/Array<nearFile/Value>#get:length
-    i32.lt_s
-    i32.eqz
-    br_if $break|0
-    local.get $5
-    local.get $6
-    call $~lib/array/Array<nearFile/Value>#__get
-    local.tee $7
-    i32.const 840
-    call $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Value>
-    local.set $8
-    local.get $4
-    local.get $8
-    call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#push
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-    local.get $8
-    call $~lib/rt/stub/__release
-    local.get $6
-    i32.const 1
-    i32.add
-    local.set $6
-    br $loop|0
-   end
-   unreachable
-  end
-  local.get $4
-  local.set $6
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $6
- )
- (func $nearFile/decode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,nearFile/Obj> (; 316 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
   local.set $2
   i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.set $0
+  loop $loop|0
+   block $break|0
+    local.get $0
+    local.get $2
+    i32.load offset=12
+    i32.ge_s
+    br_if $break|0
+    local.get $1
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<nearFile/Value>#__get
+    i32.const 840
+    call $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,nearFile/Value>
+    call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#push
+    drop
+    local.get $0
+    i32.const 1
+    i32.add
+    local.set $0
+    br $loop|0
+   end
+  end
+  local.get $1
+ )
+ (func $nearFile/decode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,nearFile/Obj> (; 235 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -19480,79 +12801,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>>
@@ -19561,69 +12831,27 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 5880
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
+  local.get $2
   local.get $1
   call $nearFile/decodeArray<~lib/array/Array<assembly/model/FooBar>>
-  local.set $6
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $6
-  return
  )
- (func $assembly/model/AnotherContainerClass#_decode (; 317 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/model/AnotherContainerClass#_decode (; 236 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
   local.get $1
@@ -19636,85 +12864,25 @@
   else
    local.get $0
    i32.load
-   call $~lib/rt/stub/__retain
   end
-  local.set $3
+  local.set $1
   local.get $2
   i32.load
-  call $~lib/rt/stub/__release
-  local.get $3
+  drop
+  local.get $1
   i32.store
   local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $assembly/model/AnotherContainerClass#decode<nearFile/Obj> (; 318 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/AnotherContainerClass,nearFile/Obj> (; 237 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  i32.const 0
-  local.set $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  local.tee $4
-  i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $4
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
-  local.set $2
   local.get $0
-  local.get $2
-  call $assembly/model/AnotherContainerClass#_decode
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/decode<assembly/model/AnotherContainerClass,nearFile/Obj> (; 319 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $2
-  i32.const 0
-  local.set $3
-  local.get $2
-  local.tee $4
-  i32.eqz
+  local.tee $2
   if (result i32)
-   i32.const 0
-  else
-   local.get $4
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -19723,79 +12891,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $2
-   call $~lib/rt/stub/__retain
-   local.set $4
-   local.get $4
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $5
-   local.get $5
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $6
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
     return
    end
-   local.get $5
-   local.tee $6
-   local.get $3
-   local.tee $7
-   i32.ne
-   if
-    local.get $6
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $7
-    call $~lib/rt/stub/__release
-   end
-   local.get $6
-   local.set $3
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $2
-   local.tee $7
-   local.get $3
-   local.tee $5
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $5
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $3
+   local.get $0
   end
-  local.get $3
-  local.tee $7
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<assembly/model/AnotherContainerClass>
@@ -19804,270 +12921,97 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 5816
     call $~lib/string/String.__concat
-    local.tee $4
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $8
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $8
    return
   end
-  i32.const 0
-  local.set $9
-  local.get $3
-  local.tee $6
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $6
+   local.get $0
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $4
    i32.const 5816
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 2992
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2808
-   i32.const 418
+   i32.const 422
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
   i32.const 0
   call $assembly/model/AnotherContainerClass#constructor
-  local.tee $8
-  local.tee $10
-  local.get $9
-  local.tee $11
-  i32.ne
-  if
-   local.get $10
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $11
-   call $~lib/rt/stub/__release
-  end
-  local.get $10
-  local.set $9
-  local.get $9
-  local.get $3
-  call $assembly/model/AnotherContainerClass#decode<nearFile/Obj>
-  local.set $10
   local.get $2
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $10
+  call $assembly/model/AnotherContainerClass#_decode
  )
- (func $assembly/main/unwrapFoobar (; 320 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.load
-  i32.const 0
-  call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__get
-  local.tee $1
-  i32.const 0
-  call $~lib/array/Array<assembly/model/FooBar>#__get
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $2
- )
- (func $assembly/test/unwrapFoobar (; 321 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  call $assembly/main/unwrapFoobar
-  local.set $1
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
- )
- (func $nearFile/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array> (; 322 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 0
-  i32.eq
-  if
-   local.get $2
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-  else
-   local.get $0
-   local.get $1
-   local.get $2
-   call $assembly/model/FooBar#_encode
-   call $~lib/rt/stub/__release
-  end
-  i32.const 0
-  local.set $3
-  local.get $2
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
- )
- (func $assembly/test/__wrapper_unwrapFoobar (; 323 ;) (type $FUNCSIG$v)
+ (func $assembly/test/__wrapper_unwrapFoobar (; 238 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  call $nearFile/getInput
-  local.set $0
   i64.const 0
-  local.get $0
+  call $nearFile/getInput
+  local.tee $0
   i32.load
   i64.extend_i32_u
   call $nearFile/read_register
   local.get $0
   call $nearFile/JSON.parse
-  local.set $1
-  local.get $1
   i32.const 5728
   call $nearFile/decode<assembly/model/AnotherContainerClass,nearFile/Obj>
-  local.tee $2
-  call $assembly/test/unwrapFoobar
-  local.set $3
+  i32.load
+  i32.const 0
+  call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__get
+  i32.const 0
+  call $~lib/array/Array<assembly/model/FooBar>#__get
+  local.set $1
   i32.const 0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
-  local.set $4
-  i32.const 0
-  local.set $5
-  local.get $3
-  i32.const 0
-  local.get $4
-  call $nearFile/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
-  local.set $6
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  local.set $5
-  local.get $5
+  local.set $0
+  local.get $1
+  if
+   local.get $1
+   i32.const 0
+   local.get $0
+   call $assembly/model/FooBar#_encode
+   drop
+  else
+   local.get $0
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+  end
+  local.get $0
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
+  local.tee $0
   i32.load offset=8
   i64.extend_i32_s
-  local.get $5
+  local.get $0
   i32.load
   i64.extend_i32_u
   call $nearFile/value_return
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
  )
- (func $assembly/main/stringOrNull (; 324 ;) (type $FUNCSIG$i) (result i32)
-  i32.const 0
-  call $~lib/rt/stub/__retain
- )
- (func $assembly/test/stringOrNull (; 325 ;) (type $FUNCSIG$i) (result i32)
-  call $assembly/main/stringOrNull
- )
- (func $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array> (; 326 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array> (; 239 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   i32.const 0
   call $~lib/string/String.__eq
@@ -20081,207 +13025,109 @@
    local.get $0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
   end
-  i32.const 0
-  local.set $3
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $4
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  return
  )
- (func $assembly/test/__wrapper_stringOrNull (; 327 ;) (type $FUNCSIG$v)
+ (func $assembly/test/__wrapper_stringOrNull (; 240 ;) (type $FUNCSIG$v)
   (local $0 i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  call $assembly/test/stringOrNull
-  local.set $0
   i32.const 0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
-  local.set $1
+  local.set $0
   i32.const 0
-  local.set $2
-  local.get $0
   i32.const 0
   call $~lib/string/String.__eq
-  if
-   local.get $1
+  if (result i32)
+   local.get $0
    i32.const 0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-   local.get $1
-   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-   local.set $3
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   local.set $2
-  else
    local.get $0
-   local.tee $3
-   if (result i32)
-    local.get $3
-   else
-    unreachable
-   end
-   i32.const 0
-   local.get $1
-   call $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>
-   local.set $3
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   local.set $2
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
+  else
+   unreachable
   end
-  local.get $2
+  local.tee $0
   i32.load offset=8
   i64.extend_i32_s
-  local.get $2
+  local.get $0
   i32.load
   i64.extend_i32_u
   call $nearFile/value_return
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
  )
- (func $assembly/test/stringAliasTest (; 328 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.const 6016
-  call $~lib/string/String.__concat
-  local.tee $1
-  call $~lib/rt/stub/__retain
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $2
- )
- (func $assembly/test/__wrapper_stringAliasTest (; 329 ;) (type $FUNCSIG$v)
+ (func $assembly/test/__wrapper_stringAliasTest (; 241 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  call $nearFile/getInput
-  local.set $0
   i64.const 0
-  local.get $0
+  call $nearFile/getInput
+  local.tee $0
   i32.load
   i64.extend_i32_u
   call $nearFile/read_register
   local.get $0
   call $nearFile/JSON.parse
-  local.set $1
-  local.get $1
   i32.const 5992
   call $nearFile/decode<~lib/string/String,nearFile/Obj>
-  local.tee $2
-  call $assembly/test/stringAliasTest
-  local.set $3
+  i32.const 6016
+  call $~lib/string/String.__concat
+  local.set $1
   i32.const 0
   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
-  local.set $4
-  i32.const 0
-  local.set $5
-  local.get $3
+  local.set $0
+  local.get $1
   i32.const 0
   call $~lib/string/String.__eq
-  if
-   local.get $4
+  if (result i32)
+   local.get $0
    i32.const 0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
-   local.get $4
+   local.get $0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-   local.set $6
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $6
-   local.set $5
   else
-   local.get $3
+   local.get $1
    i32.const 0
-   local.get $4
+   local.get $0
    call $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>
-   local.set $6
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $6
-   local.set $5
   end
-  local.get $5
+  local.tee $0
   i32.load offset=8
   i64.extend_i32_s
-  local.get $5
+  local.get $0
   i32.load
   i64.extend_i32_u
   call $nearFile/value_return
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
  )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#set:length (; 330 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#set:length (; 242 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
   local.get $0
   i32.load offset=12
-  local.set $2
-  local.get $2
+  local.tee $2
   local.get $1
   i32.gt_s
   if
    local.get $0
    i32.load offset=4
-   local.set $3
-   local.get $3
+   local.tee $4
    local.get $1
    i32.const 2
    i32.shl
    i32.add
-   local.set $4
-   local.get $3
+   local.set $3
+   local.get $4
    local.get $2
    i32.const 2
    i32.shl
    i32.add
-   local.set $5
+   local.set $2
    loop $continue|0
-    local.get $4
+    local.get $3
     i32.load
-    call $~lib/rt/stub/__release
-    local.get $4
+    drop
+    local.get $3
     i32.const 4
     i32.add
-    local.tee $4
-    local.get $5
+    local.tee $3
+    local.get $2
     i32.lt_u
     br_if $continue|0
    end
@@ -20295,51 +13141,7 @@
   local.get $1
   i32.store offset=12
  )
- (func $~lib/array/Array.create<~lib/typedarray/Uint8Array> (; 331 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  i32.const 0
-  local.get $0
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#constructor
-  local.set $1
-  local.get $1
-  i32.const 0
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#set:length
-  local.get $1
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__unchecked_set (; 332 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  local.set $3
-  local.get $3
-  i32.load
-  local.set $4
-  local.get $2
-  local.get $4
-  i32.ne
-  if
-   local.get $3
-   local.get $2
-   call $~lib/rt/stub/__retain
-   i32.store
-   local.get $4
-   call $~lib/rt/stub/__release
-  end
-  local.get $2
-  call $~lib/rt/stub/__release
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__set (; 333 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  local.get $2
-  call $~lib/rt/stub/__retain
-  drop
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__set (; 243 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $1
   local.get $0
   i32.load offset=12
@@ -20349,8 +13151,6 @@
    i32.const 0
    i32.lt_s
    if
-    local.get $2
-    call $~lib/rt/stub/__release
     i32.const 856
     i32.const 1136
     i32.const 109
@@ -20371,74 +13171,47 @@
    i32.store offset=12
   end
   local.get $0
+  i32.load offset=4
   local.get $1
+  i32.const 2
+  i32.shl
+  i32.add
+  local.tee $0
+  i32.load
   local.get $2
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__unchecked_set
-  local.get $2
-  call $~lib/rt/stub/__release
+  i32.ne
+  if
+   local.get $0
+   local.get $2
+   i32.store
+  end
  )
- (func $assembly/model/FooBar#toJSON (; 334 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
+ (func $assembly/model/FooBar#toJSON (; 244 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.const 840
   i32.const 0
   call $assembly/model/FooBar#_encode
-  local.tee $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#toString
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $assembly/model/FooBar#encode (; 335 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
+ (func $assembly/model/FooBar#encode (; 245 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.const 840
   i32.const 0
   call $assembly/model/FooBar#_encode
-  local.tee $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
  )
- (func $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array> (; 336 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array> (; 246 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  (local $12 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   call $nearFile/JSON.parse
+  local.tee $0
   local.tee $2
-  call $~lib/rt/stub/__retain
-  local.set $3
-  i32.const 0
-  local.set $4
-  local.get $3
-  local.tee $5
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
-   local.get $5
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -20447,81 +13220,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   local.set $5
-   local.get $5
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $6
-   local.get $6
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $7
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
-    call $~lib/rt/stub/__release
-    local.get $7
     return
    end
-   local.get $6
-   local.tee $7
-   local.get $4
-   local.tee $8
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $8
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $4
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $3
-   local.tee $8
-   local.get $4
-   local.tee $6
-   i32.ne
-   if
-    local.get $8
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $6
-    call $~lib/rt/stub/__release
-   end
-   local.get $8
-   local.set $4
+   local.get $0
   end
-  local.get $4
-  local.tee $8
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $8
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<assembly/model/FooBar>
@@ -20530,131 +13250,61 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $8
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 2960
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $9
-   local.get $8
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $9
    return
   end
-  i32.const 0
-  local.set $10
-  local.get $4
-  local.tee $7
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 2960
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2992
    call $~lib/string/String.__concat
-   local.tee $8
    i32.const 2808
-   i32.const 418
+   i32.const 422
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
   i32.const 0
   call $assembly/model/FooBar#constructor
-  local.tee $9
-  local.tee $11
-  local.get $10
-  local.tee $12
-  i32.ne
-  if
-   local.get $11
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $12
-   call $~lib/rt/stub/__release
-  end
-  local.get $11
-  local.set $10
-  local.get $10
-  local.get $4
-  call $assembly/model/FooBar#decode<nearFile/Obj>
-  local.set $11
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
+  local.set $0
   local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $10
-  call $~lib/rt/stub/__release
-  local.get $11
+  local.get $2
+  call $assembly/model/FooBar#decode<nearFile/Obj>
  )
- (func $assembly/model/Nullables#constructor (; 337 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/model/Nullables#constructor (; 247 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.eqz
   if
    i32.const 12
    i32.const 36
    call $~lib/rt/stub/__alloc
-   call $~lib/rt/stub/__retain
    local.set $0
   end
   local.get $0
@@ -20668,80 +13318,46 @@
   i32.store offset=8
   local.get $0
  )
- (func $assembly/model/Nullables#_encode (; 338 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
+ (func $assembly/model/Nullables#_encode (; 248 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $2
-  i32.const 0
-  i32.ne
-  if (result i32)
-   local.get $2
-   call $~lib/rt/stub/__retain
-  else
+  i32.eqz
+  if
    i32.const 0
    call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
   end
-  local.tee $3
-  if (result i32)
-   local.get $3
-  else
+  local.get $2
+  i32.eqz
+  if
    unreachable
   end
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $3
+  local.get $2
   local.get $1
   call $~lib/assemblyscript-json/encoder/JSONEncoder#pushObject
   drop
   local.get $0
   i32.load
   i32.const 5992
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/string/String,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=4
   i32.const 4200
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
+  drop
   local.get $0
   i32.load offset=8
   i32.const 6432
-  local.get $3
+  local.get $2
   call $nearFile/encode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/encoder/JSONEncoder>
-  call $~lib/rt/stub/__release
-  local.get $3
+  drop
+  local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
-  local.get $3
-  local.set $4
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $4
- )
- (func $assembly/model/Nullables#encode (; 339 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  local.get $0
-  i32.const 840
-  i32.const 0
-  call $assembly/model/Nullables#_encode
-  local.tee $1
-  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
-  local.set $2
-  local.get $1
-  call $~lib/rt/stub/__release
   local.get $2
  )
- (func $nearFile/isNullable<assembly/model/Nullables> (; 340 ;) (type $FUNCSIG$i) (result i32)
+ (func $nearFile/isNullable<assembly/model/Nullables> (; 249 ;) (type $FUNCSIG$i) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -20759,12 +13375,9 @@
    i32.const 0
   end
  )
- (func $assembly/model/Nullables#_decode (; 341 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/model/Nullables#_decode (; 250 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   local.tee $2
   local.get $1
@@ -20777,12 +13390,11 @@
   else
    local.get $0
    i32.load
-   call $~lib/rt/stub/__retain
   end
   local.set $3
   local.get $2
   i32.load
-  call $~lib/rt/stub/__release
+  drop
   local.get $3
   i32.store
   local.get $0
@@ -20797,12 +13409,11 @@
   else
    local.get $0
    i32.load offset=4
-   call $~lib/rt/stub/__retain
   end
   local.set $2
   local.get $3
   i32.load offset=4
-  call $~lib/rt/stub/__release
+  drop
   local.get $2
   i32.store offset=4
   local.get $0
@@ -20817,88 +13428,27 @@
   else
    local.get $0
    i32.load offset=8
-   call $~lib/rt/stub/__retain
   end
   local.set $3
   local.get $2
   i32.load offset=8
-  call $~lib/rt/stub/__release
+  drop
   local.get $3
   i32.store offset=8
   local.get $0
-  call $~lib/rt/stub/__retain
-  local.set $3
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
  )
- (func $assembly/model/Nullables#decode<nearFile/Obj> (; 342 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array> (; 251 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
-  i32.const 0
-  local.set $2
-  local.get $1
-  local.tee $3
-  local.get $2
-  local.tee $4
-  i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $4
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
-  local.set $2
-  local.get $0
-  local.get $2
-  call $assembly/model/Nullables#_decode
-  local.set $3
-  local.get $2
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $3
- )
- (func $nearFile/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array> (; 343 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  (local $12 i32)
-  local.get $0
-  call $~lib/rt/stub/__retain
-  drop
-  local.get $1
-  call $~lib/rt/stub/__retain
-  drop
   local.get $0
   call $nearFile/JSON.parse
+  local.tee $0
   local.tee $2
-  call $~lib/rt/stub/__retain
-  local.set $3
-  i32.const 0
-  local.set $4
-  local.get $3
-  local.tee $5
-  i32.eqz
   if (result i32)
-   i32.const 0
-  else
-   local.get $5
+   local.get $2
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if (result i32)
    local.get $1
@@ -20907,81 +13457,28 @@
   else
    i32.const 0
   end
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   local.set $5
-   local.get $5
+  if (result i32)
+   local.get $0
    local.get $1
    call $nearFile/Obj#get
-   local.set $6
-   local.get $6
-   i32.const 0
-   i32.eq
+   local.tee $0
+   i32.eqz
    if
     i32.const 0
-    call $~lib/rt/stub/__retain
-    local.set $7
-    local.get $0
-    call $~lib/rt/stub/__release
-    local.get $1
-    call $~lib/rt/stub/__release
-    local.get $2
-    call $~lib/rt/stub/__release
-    local.get $3
-    call $~lib/rt/stub/__release
-    local.get $4
-    call $~lib/rt/stub/__release
-    local.get $5
-    call $~lib/rt/stub/__release
-    local.get $6
-    call $~lib/rt/stub/__release
-    local.get $7
     return
    end
-   local.get $6
-   local.tee $7
-   local.get $4
-   local.tee $8
-   i32.ne
-   if
-    local.get $7
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $8
-    call $~lib/rt/stub/__release
-   end
-   local.get $7
-   local.set $4
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
+   local.get $0
   else
-   local.get $3
-   local.tee $8
-   local.get $4
-   local.tee $6
-   i32.ne
-   if
-    local.get $8
-    call $~lib/rt/stub/__retain
-    drop
-    local.get $6
-    call $~lib/rt/stub/__release
-   end
-   local.get $8
-   local.set $4
+   local.get $0
   end
-  local.get $4
-  local.tee $8
-  i32.eqz
+  local.tee $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $8
+   local.get $0
    i32.const 22
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   if
    call $nearFile/isNullable<assembly/model/Nullables>
@@ -20990,178 +13487,732 @@
     i32.const 2616
     local.get $1
     call $~lib/string/String.__concat
-    local.tee $8
     i32.const 2648
     call $~lib/string/String.__concat
-    local.tee $6
     i32.const 6472
     call $~lib/string/String.__concat
-    local.tee $5
     i32.const 2760
     call $~lib/string/String.__concat
-    local.tee $7
     i32.const 2808
-    i32.const 374
+    i32.const 378
     i32.const 4
     call $~lib/builtins/abort
     unreachable
    end
    i32.const 0
-   call $~lib/rt/stub/__retain
-   local.set $9
-   local.get $8
-   call $~lib/rt/stub/__release
-   local.get $6
-   call $~lib/rt/stub/__release
-   local.get $5
-   call $~lib/rt/stub/__release
-   local.get $7
-   call $~lib/rt/stub/__release
-   local.get $0
-   call $~lib/rt/stub/__release
-   local.get $1
-   call $~lib/rt/stub/__release
-   local.get $2
-   call $~lib/rt/stub/__release
-   local.get $3
-   call $~lib/rt/stub/__release
-   local.get $4
-   call $~lib/rt/stub/__release
-   local.get $9
    return
   end
-  i32.const 0
-  local.set $10
-  local.get $4
-  local.tee $7
-  i32.eqz
+  local.get $2
+  local.tee $0
   if (result i32)
-   i32.const 0
-  else
-   local.get $7
+   local.get $0
    i32.const 14
    call $~lib/rt/__instanceof
+  else
+   i32.const 0
   end
   i32.eqz
   if
    i32.const 2840
    local.get $1
    call $~lib/string/String.__concat
-   local.tee $7
    i32.const 2648
    call $~lib/string/String.__concat
-   local.tee $5
    i32.const 6472
    call $~lib/string/String.__concat
-   local.tee $6
    i32.const 2992
    call $~lib/string/String.__concat
-   local.tee $8
    i32.const 2808
-   i32.const 418
+   i32.const 422
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
   i32.const 0
   call $assembly/model/Nullables#constructor
-  local.tee $9
-  local.tee $11
-  local.get $10
-  local.tee $12
-  i32.ne
-  if
-   local.get $11
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $12
-   call $~lib/rt/stub/__release
-  end
-  local.get $11
-  local.set $10
-  local.get $10
-  local.get $4
-  call $assembly/model/Nullables#decode<nearFile/Obj>
-  local.set $11
   local.get $2
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $0
-  call $~lib/rt/stub/__release
-  local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $10
-  call $~lib/rt/stub/__release
-  local.get $11
+  call $assembly/model/Nullables#_decode
  )
- (func $assembly/test/runTest (; 344 ;) (type $FUNCSIG$v)
+ (func $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array> (; 252 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  local.get $0
+  if
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#pushArray
+   drop
+   i32.const 0
+   local.set $1
+   loop $loop|0
+    block $break|0
+     local.get $1
+     local.get $0
+     i32.load offset=12
+     i32.ge_s
+     br_if $break|0
+     local.get $0
+     local.get $1
+     call $~lib/array/Array<u64>#__get
+     i32.const 0
+     local.get $2
+     call $nearFile/encode<u64,~lib/assemblyscript-json/encoder/JSONEncoder>
+     drop
+     local.get $1
+     i32.const 1
+     i32.add
+     local.set $1
+     br $loop|0
+    end
+   end
+   local.get $2
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#popArray
+  else
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+  end
+  local.get $2
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
+ )
+ (func $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline (; 253 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~lib/argc
+      i32.const 1
+      i32.sub
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 840
+    local.set $1
+   end
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
+  end
+  local.get $0
+  local.get $1
+  local.get $2
+  call $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
+ )
+ (func $nearFile/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array> (; 254 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  call $nearFile/JSON.parse
+  local.tee $0
+  local.tee $2
+  if (result i32)
+   local.get $2
+   i32.const 14
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $1
+   i32.const 840
+   call $~lib/string/String.__ne
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $0
+   local.get $1
+   call $nearFile/Obj#get
+   local.tee $0
+   i32.eqz
+   if
+    i32.const 0
+    return
+   end
+   local.get $0
+  else
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
+   i32.const 22
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if
+   call $nearFile/isNullable<~lib/array/Array<u64>>
+   i32.eqz
+   if
+    i32.const 2616
+    local.get $1
+    call $~lib/string/String.__concat
+    i32.const 2648
+    call $~lib/string/String.__concat
+    i32.const 4616
+    call $~lib/string/String.__concat
+    i32.const 2760
+    call $~lib/string/String.__concat
+    i32.const 2808
+    i32.const 378
+    i32.const 4
+    call $~lib/builtins/abort
+    unreachable
+   end
+   i32.const 0
+   return
+  end
+  local.get $2
+  local.get $1
+  call $nearFile/decodeArray<u64>
+ )
+ (func $nearFile/encode<i32,~lib/typedarray/Uint8Array>|trampoline (; 255 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~lib/argc
+      i32.const 1
+      i32.sub
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 840
+    local.set $1
+   end
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
+  end
+  local.get $0
+  local.get $1
+  local.get $2
+  call $nearFile/encode<i32,~lib/typedarray/Uint8Array>
+ )
+ (func $nearFile/decode<i32,~lib/typedarray/Uint8Array> (; 256 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  call $nearFile/JSON.parse
+  local.tee $0
+  local.tee $2
+  if (result i32)
+   local.get $2
+   i32.const 14
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $1
+   i32.const 840
+   call $~lib/string/String.__ne
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $0
+   local.get $1
+   call $nearFile/Obj#get
+   local.tee $0
+   i32.eqz
+   if
+    i32.const 0
+    return
+   end
+   local.get $0
+  else
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
+   i32.const 22
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if
+   call $nearFile/isNullable<i32>
+   i32.eqz
+   if
+    i32.const 2616
+    local.get $1
+    call $~lib/string/String.__concat
+    i32.const 2648
+    call $~lib/string/String.__concat
+    i32.const 3112
+    call $~lib/string/String.__concat
+    i32.const 2760
+    call $~lib/string/String.__concat
+    i32.const 2808
+    i32.const 378
+    i32.const 4
+    call $~lib/builtins/abort
+    unreachable
+   end
+   i32.const 0
+   return
+  end
+  local.get $2
+  local.tee $0
+  if (result i32)
+   local.get $0
+   i32.const 21
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  i32.eqz
+  if
+   i32.const 2840
+   local.get $1
+   call $~lib/string/String.__concat
+   i32.const 2648
+   call $~lib/string/String.__concat
+   i32.const 3112
+   call $~lib/string/String.__concat
+   i32.const 3136
+   call $~lib/string/String.__concat
+   i32.const 2808
+   i32.const 400
+   i32.const 4
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $2
+  i64.load
+  i32.wrap_i64
+ )
+ (func $nearFile/encode<i64,~lib/typedarray/Uint8Array>|trampoline (; 257 ;) (type $FUNCSIG$ijii) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~lib/argc
+      i32.const 1
+      i32.sub
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 840
+    local.set $1
+   end
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
+  end
+  local.get $2
+  local.get $1
+  local.get $0
+  call $~lib/util/number/itoa64
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
+  local.get $2
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
+ )
+ (func $nearFile/decode<i64,~lib/typedarray/Uint8Array> (; 258 ;) (type $FUNCSIG$jii) (param $0 i32) (param $1 i32) (result i64)
+  (local $2 i32)
+  local.get $0
+  call $nearFile/JSON.parse
+  local.tee $0
+  local.tee $2
+  if (result i32)
+   local.get $2
+   i32.const 14
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $1
+   i32.const 840
+   call $~lib/string/String.__ne
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $0
+   local.get $1
+   call $nearFile/Obj#get
+   local.tee $0
+   i32.eqz
+   if
+    i64.const 0
+    return
+   end
+   local.get $0
+  else
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
+   i32.const 22
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if
+   call $nearFile/isNullable<i64>
+   i32.eqz
+   if
+    i32.const 2616
+    local.get $1
+    call $~lib/string/String.__concat
+    i32.const 2648
+    call $~lib/string/String.__concat
+    i32.const 3504
+    call $~lib/string/String.__concat
+    i32.const 2760
+    call $~lib/string/String.__concat
+    i32.const 2808
+    i32.const 378
+    i32.const 4
+    call $~lib/builtins/abort
+    unreachable
+   end
+   i64.const 0
+   return
+  end
+  local.get $2
+  local.tee $0
+  if (result i32)
+   local.get $0
+   i32.const 19
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  i32.eqz
+  if
+   i32.const 2840
+   local.get $1
+   call $~lib/string/String.__concat
+   i32.const 2648
+   call $~lib/string/String.__concat
+   i32.const 3504
+   call $~lib/string/String.__concat
+   i32.const 3296
+   call $~lib/string/String.__concat
+   i32.const 2808
+   i32.const 395
+   i32.const 6
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $2
+  i32.load
+  i32.const 0
+  call $~lib/number/I64.parseInt
+ )
+ (func $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline (; 259 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~lib/argc
+      i32.const 1
+      i32.sub
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 840
+    local.set $1
+   end
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
+  end
+  local.get $0
+  local.get $1
+  local.get $2
+  call $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>
+ )
+ (func $nearFile/decode<~lib/string/String,~lib/typedarray/Uint8Array> (; 260 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  call $nearFile/JSON.parse
+  local.tee $0
+  local.tee $2
+  if (result i32)
+   local.get $2
+   i32.const 14
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $1
+   i32.const 840
+   call $~lib/string/String.__ne
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $0
+   local.get $1
+   call $nearFile/Obj#get
+   local.tee $0
+   i32.eqz
+   if
+    i32.const 0
+    return
+   end
+   local.get $0
+  else
+   local.get $0
+  end
+  local.tee $2
+  local.tee $0
+  if (result i32)
+   local.get $0
+   i32.const 22
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if
+   call $nearFile/isNullable<~lib/string/String>
+   i32.eqz
+   if
+    i32.const 2616
+    local.get $1
+    call $~lib/string/String.__concat
+    i32.const 2648
+    call $~lib/string/String.__concat
+    i32.const 3648
+    call $~lib/string/String.__concat
+    i32.const 2760
+    call $~lib/string/String.__concat
+    i32.const 2808
+    i32.const 378
+    i32.const 4
+    call $~lib/builtins/abort
+    unreachable
+   end
+   i32.const 0
+   return
+  end
+  local.get $2
+  local.tee $0
+  if (result i32)
+   local.get $2
+   i32.const 19
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  i32.eqz
+  if
+   i32.const 2840
+   local.get $1
+   call $~lib/string/String.__concat
+   i32.const 3680
+   call $~lib/string/String.__concat
+   i32.const 2808
+   i32.const 342
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load
+ )
+ (func $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array> (; 261 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  local.tee $3
+  i64.load offset=8
+  i32.const 0
+  local.tee $4
+  i64.load offset=8
+  i64.eq
+  if (result i32)
+   local.get $3
+   i64.load
+   local.get $4
+   i64.load
+   i64.eq
+  else
+   i32.const 0
+  end
+  if
+   local.get $2
+   local.get $1
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setNull
+  else
+   local.get $2
+   local.get $1
+   local.get $0
+   i32.const 0
+   call $~lib/bignum/integer/u128/u128#toString
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
+  end
+  local.get $2
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
+ )
+ (func $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline (; 262 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~lib/argc
+      i32.const 1
+      i32.sub
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 840
+    local.set $1
+   end
+   i32.const 0
+   call $~lib/assemblyscript-json/encoder/JSONEncoder#constructor
+   local.set $2
+  end
+  local.get $0
+  local.get $1
+  local.get $2
+  call $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array>
+ )
+ (func $nearFile/decode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array> (; 263 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  call $nearFile/JSON.parse
+  local.tee $0
+  local.tee $3
+  if (result i32)
+   local.get $3
+   i32.const 14
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $1
+   i32.const 840
+   call $~lib/string/String.__ne
+  else
+   i32.const 0
+  end
+  if (result i32)
+   local.get $0
+   local.get $1
+   call $nearFile/Obj#get
+   local.tee $2
+   i32.eqz
+   if
+    i32.const 0
+    return
+   end
+   local.get $2
+  else
+   local.get $0
+  end
+  local.tee $3
+  local.tee $0
+  if (result i32)
+   local.get $0
+   i32.const 22
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  if
+   call $nearFile/isNullable<~lib/bignum/integer/u128/u128>
+   i32.eqz
+   if
+    i32.const 2616
+    local.get $1
+    call $~lib/string/String.__concat
+    i32.const 2648
+    call $~lib/string/String.__concat
+    i32.const 4200
+    call $~lib/string/String.__concat
+    i32.const 2760
+    call $~lib/string/String.__concat
+    i32.const 2808
+    i32.const 378
+    i32.const 4
+    call $~lib/builtins/abort
+    unreachable
+   end
+   i32.const 0
+   return
+  end
+  local.get $3
+  local.tee $2
+  if (result i32)
+   local.get $2
+   i32.const 19
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  i32.eqz
+  if
+   i32.const 0
+   i32.const 2808
+   i32.const 418
+   i32.const 4
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $3
+  local.tee $0
+  local.tee $2
+  if (result i32)
+   local.get $2
+   i32.const 19
+   call $~lib/rt/__instanceof
+  else
+   i32.const 0
+  end
+  i32.eqz
+  if
+   i32.const 2840
+   local.get $1
+   call $~lib/string/String.__concat
+   i32.const 3680
+   call $~lib/string/String.__concat
+   i32.const 2808
+   i32.const 342
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load
+  i32.const 0
+  call $~lib/bignum/utils/atou128
+ )
+ (func $assembly/test/runTest (; 264 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $11 i32)
-  (local $12 i32)
-  (local $13 i32)
-  (local $14 i32)
-  (local $15 i32)
-  (local $16 i32)
-  (local $17 i32)
-  (local $18 i32)
-  (local $19 i32)
-  (local $20 i32)
-  (local $21 i32)
-  (local $22 i32)
-  (local $23 i32)
-  (local $24 i32)
-  (local $25 i32)
-  (local $26 i32)
   i32.const 6048
   call $~lib/near-runtime-ts/logging/logging.log
   i32.const 0
   call $assembly/model/FooBar#constructor
-  local.set $0
-  local.get $0
-  local.tee $1
+  local.tee $0
+  local.tee $2
   i32.const 2
   i32.const 2
   i32.const 26
   i32.const 6096
   call $~lib/rt/__allocArray
-  call $~lib/rt/stub/__retain
-  local.tee $2
-  local.tee $3
-  local.get $1
-  i32.load offset=48
   local.tee $1
+  local.get $2
+  i32.load offset=48
   i32.ne
-  if
-   local.get $3
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $1
-   call $~lib/rt/stub/__release
-  end
-  local.get $3
+  drop
+  local.get $1
   i32.store offset=48
   local.get $0
   i32.const 321
@@ -21173,98 +14224,68 @@
   i32.const 1
   i32.store8 offset=32
   local.get $0
-  local.tee $3
-  i32.const 3088
-  local.tee $1
-  local.get $3
   i32.load offset=36
-  local.tee $3
-  i32.ne
-  if
-   local.get $1
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $3
-   call $~lib/rt/stub/__release
-  end
-  local.get $1
-  i32.store offset=36
+  drop
   local.get $0
-  local.tee $1
+  i32.const 3088
+  i32.store offset=36
   i32.const 6120
   call $~lib/near-runtime-ts/base64/base64.decode
-  local.set $3
-  local.get $1
-  i32.load offset=40
-  call $~lib/rt/stub/__release
-  local.get $3
-  i32.store offset=40
+  local.set $1
   local.get $0
-  local.tee $3
+  i32.load offset=40
+  drop
+  local.get $0
+  local.get $1
+  i32.store offset=40
   i32.const 0
   i64.const 128
   i64.const 0
   call $~lib/bignum/integer/u128/u128#constructor
-  local.set $1
-  local.get $3
-  i32.load offset=56
-  call $~lib/rt/stub/__release
-  local.get $1
-  i32.store offset=56
+  local.set $2
   local.get $0
-  local.tee $3
+  i32.load offset=56
+  drop
+  local.get $0
+  local.get $2
+  i32.store offset=56
   i32.const 2
   i32.const 2
   i32.const 25
   i32.const 0
   call $~lib/rt/__allocArray
-  local.set $1
-  local.get $1
+  local.tee $2
   i32.load offset=4
-  local.set $3
-  local.get $3
+  local.tee $1
   i32.const 1
   i32.const 2
   i32.const 16
   i32.const 6208
   call $~lib/rt/__allocArray
-  call $~lib/rt/stub/__retain
-  local.tee $5
-  call $~lib/rt/stub/__retain
   i32.store
-  local.get $3
+  local.get $1
   i32.const 1
   i32.const 2
   i32.const 16
   i32.const 6264
   call $~lib/rt/__allocArray
-  call $~lib/rt/stub/__retain
-  local.tee $6
-  call $~lib/rt/stub/__retain
   i32.store offset=4
   local.get $1
-  local.tee $4
-  local.get $3
   i32.load offset=44
-  local.tee $3
-  i32.ne
-  if
-   local.get $4
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $3
-   call $~lib/rt/stub/__release
-  end
-  local.get $4
-  i32.store offset=44
+  drop
   local.get $0
-  local.tee $4
+  local.get $2
+  i32.store offset=44
+  i32.const 0
   i32.const 2
-  call $~lib/array/Array.create<~lib/typedarray/Uint8Array>
-  local.set $1
-  local.get $4
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#constructor
+  local.tee $1
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#set:length
+  local.get $0
   i32.load offset=60
-  call $~lib/rt/stub/__release
+  drop
+  local.get $0
   local.get $1
   i32.store offset=60
   local.get $0
@@ -21272,121 +14293,45 @@
   i32.const 0
   i32.const 6120
   call $~lib/near-runtime-ts/base64/base64.decode
-  local.tee $1
   call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
   local.get $0
   i32.load offset=60
   i32.const 1
   i32.const 6120
   call $~lib/near-runtime-ts/base64/base64.decode
-  local.tee $4
   call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-  local.get $0
-  local.tee $3
   i32.const 2
   i32.const 3
   i32.const 28
   i32.const 6288
   call $~lib/rt/__allocArray
-  call $~lib/rt/stub/__retain
-  local.tee $7
-  local.tee $8
-  local.get $3
+  local.tee $1
+  local.get $0
   i32.load offset=64
-  local.tee $3
   i32.ne
-  if
-   local.get $8
-   call $~lib/rt/stub/__retain
-   drop
-   local.get $3
-   call $~lib/rt/stub/__release
-  end
-  local.get $8
+  drop
+  local.get $0
+  local.get $1
   i32.store offset=64
   i32.const 6320
   local.get $0
   call $assembly/model/FooBar#toJSON
-  local.tee $8
   call $~lib/string/String.__concat
-  local.tee $3
   call $~lib/near-runtime-ts/logging/logging.log
+  i32.const 6352
   local.get $0
   call $assembly/model/FooBar#encode
-  local.set $9
-  local.get $9
   i32.const 840
   call $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
-  local.set $10
-  i32.const 6352
-  local.get $10
+  local.tee $1
   call $assembly/model/FooBar#toJSON
-  local.tee $11
   call $~lib/string/String.__concat
-  local.tee $12
   call $~lib/near-runtime-ts/logging/logging.log
   local.get $0
   i32.load
-  local.get $10
+  local.get $1
   i32.load
-  i32.eq
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 6384
-   i32.const 158
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=4
-  local.get $10
-  i32.load offset=4
-  i32.eq
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 6384
-   i32.const 159
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=40
-  call $~lib/near-runtime-ts/base64/base64.encode
-  local.tee $13
-  local.get $10
-  i32.load offset=40
-  call $~lib/near-runtime-ts/base64/base64.encode
-  local.tee $14
-  call $~lib/string/String.__eq
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 6384
-   i32.const 160
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=60
-  i32.const 0
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
-  local.tee $15
-  call $~lib/near-runtime-ts/base64/base64.encode
-  local.tee $16
-  local.get $10
-  i32.load offset=60
-  i32.const 0
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
-  local.tee $17
-  call $~lib/near-runtime-ts/base64/base64.encode
-  local.tee $18
-  call $~lib/string/String.__eq
-  i32.eqz
+  i32.ne
   if
    i32.const 0
    i32.const 6384
@@ -21396,16 +14341,10 @@
    unreachable
   end
   local.get $0
-  i32.load offset=44
-  i32.const 0
-  call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__get
-  local.tee $19
-  i32.const 0
-  call $~lib/array/Array<~lib/string/String>#__get
-  local.tee $20
-  i32.const 6176
-  call $~lib/string/String.__eq
-  i32.eqz
+  i32.load offset=4
+  local.get $1
+  i32.load offset=4
+  i32.ne
   if
    i32.const 0
    i32.const 6384
@@ -21415,14 +14354,12 @@
    unreachable
   end
   local.get $0
-  i32.load offset=64
-  i32.const 0
-  call $~lib/array/Array<u64>#__get
-  local.get $10
-  i32.load offset=64
-  i32.const 0
-  call $~lib/array/Array<u64>#__get
-  i64.eq
+  i32.load offset=40
+  call $~lib/near-runtime-ts/base64/base64.encode
+  local.get $1
+  i32.load offset=40
+  call $~lib/near-runtime-ts/base64/base64.encode
+  call $~lib/string/String.__eq
   i32.eqz
   if
    i32.const 0
@@ -21433,10 +14370,16 @@
    unreachable
   end
   local.get $0
-  i64.load offset=16
-  local.get $10
-  i64.load offset=16
-  i64.eq
+  i32.load offset=60
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
+  call $~lib/near-runtime-ts/base64/base64.encode
+  local.get $1
+  i32.load offset=60
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
+  call $~lib/near-runtime-ts/base64/base64.encode
+  call $~lib/string/String.__eq
   i32.eqz
   if
    i32.const 0
@@ -21446,20 +14389,45 @@
    call $~lib/builtins/abort
    unreachable
   end
+  local.get $0
+  i32.load offset=44
   i32.const 0
-  call $assembly/model/Nullables#constructor
-  local.set $21
-  local.get $21
-  call $assembly/model/Nullables#encode
-  local.tee $22
-  i32.const 840
-  call $nearFile/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array>
-  local.set $23
-  local.get $23
-  i32.load
+  call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__get
   i32.const 0
+  call $~lib/array/Array<~lib/string/String>#__get
+  i32.const 6176
   call $~lib/string/String.__eq
   i32.eqz
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 165
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load offset=64
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  local.get $1
+  i32.load offset=64
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  i64.ne
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 166
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i64.load offset=16
+  local.get $1
+  i64.load offset=16
+  i64.ne
   if
    i32.const 0
    i32.const 6384
@@ -21468,123 +14436,253 @@
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $23
-  i32.load offset=4
-  call $~lib/rt/stub/__retain
-  local.set $25
   i32.const 0
-  call $~lib/rt/stub/__retain
-  local.set $24
-  local.get $25
+  call $assembly/model/Nullables#constructor
+  i32.const 840
+  i32.const 0
+  call $assembly/model/Nullables#_encode
+  call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
+  i32.const 840
+  call $nearFile/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array>
+  local.tee $2
+  i32.load
+  i32.const 0
+  call $~lib/string/String.__eq
+  i32.eqz
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 170
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $2
+  i32.load offset=4
+  local.tee $1
   i64.load offset=8
-  local.get $24
-  i64.load offset=8
+  i32.const 8
+  i64.load
   i64.eq
   if (result i32)
-   local.get $25
+   local.get $1
    i64.load
-   local.get $24
+   i32.const 0
    i64.load
    i64.eq
   else
    i32.const 0
   end
-  local.set $26
-  local.get $24
-  call $~lib/rt/stub/__release
-  local.get $25
-  call $~lib/rt/stub/__release
-  local.get $26
-  i32.const 0
-  i32.ne
   i32.eqz
   if
    i32.const 0
    i32.const 6384
-   i32.const 168
+   i32.const 171
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
-  local.get $23
-  i32.load offset=8
-  i32.const 0
-  i32.eq
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 6384
-   i32.const 169
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  i32.const 6512
-  call $~lib/near-runtime-ts/logging/logging.log
-  local.get $0
-  call $~lib/rt/stub/__release
   local.get $2
-  call $~lib/rt/stub/__release
-  local.get $5
-  call $~lib/rt/stub/__release
-  local.get $6
-  call $~lib/rt/stub/__release
+  i32.load offset=8
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 172
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 0
+  call $assembly/model/FooBar#constructor
+  local.tee $1
+  local.tee $0
+  i32.const 0
+  i32.const 2
+  i32.const 25
+  i32.const 6512
+  call $~lib/rt/__allocArray
+  local.tee $2
+  local.get $0
+  i32.load offset=44
+  i32.ne
+  drop
+  local.get $2
+  i32.store offset=44
   local.get $1
-  call $~lib/rt/stub/__release
-  local.get $4
-  call $~lib/rt/stub/__release
-  local.get $7
-  call $~lib/rt/stub/__release
-  local.get $8
-  call $~lib/rt/stub/__release
-  local.get $3
-  call $~lib/rt/stub/__release
-  local.get $9
-  call $~lib/rt/stub/__release
-  local.get $10
-  call $~lib/rt/stub/__release
-  local.get $11
-  call $~lib/rt/stub/__release
-  local.get $12
-  call $~lib/rt/stub/__release
-  local.get $13
-  call $~lib/rt/stub/__release
-  local.get $14
-  call $~lib/rt/stub/__release
-  local.get $15
-  call $~lib/rt/stub/__release
-  local.get $16
-  call $~lib/rt/stub/__release
-  local.get $17
-  call $~lib/rt/stub/__release
-  local.get $18
-  call $~lib/rt/stub/__release
-  local.get $19
-  call $~lib/rt/stub/__release
-  local.get $20
-  call $~lib/rt/stub/__release
-  local.get $21
-  call $~lib/rt/stub/__release
-  local.get $22
-  call $~lib/rt/stub/__release
-  local.get $23
-  call $~lib/rt/stub/__release
+  call $assembly/model/FooBar#encode
+  i32.const 840
+  call $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
+  i32.load offset=44
+  i32.load offset=12
+  local.get $1
+  i32.load offset=44
+  i32.load offset=12
+  i32.ne
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 176
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 1
+  i32.const 3
+  i32.const 28
+  i32.const 6528
+  call $~lib/rt/__allocArray
+  local.set $0
+  i32.const 1
+  global.set $~lib/argc
+  local.get $0
+  i32.const 840
+  i32.const 0
+  call $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline
+  i32.const 840
+  call $nearFile/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
+  local.set $1
+  local.get $0
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  local.get $1
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  i64.ne
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 180
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 0
+  i32.const 3
+  i32.const 28
+  i32.const 6552
+  call $~lib/rt/__allocArray
+  local.set $1
+  i32.const 1
+  global.set $~lib/argc
+  local.get $1
+  i32.const 840
+  i32.const 0
+  call $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline
+  i32.const 840
+  call $nearFile/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
+  i32.load offset=12
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 181
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 1
+  global.set $~lib/argc
+  i32.const 42
+  i32.const 840
+  i32.const 0
+  call $nearFile/encode<i32,~lib/typedarray/Uint8Array>|trampoline
+  i32.const 840
+  call $nearFile/decode<i32,~lib/typedarray/Uint8Array>
+  i32.const 42
+  i32.ne
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 182
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 1
+  global.set $~lib/argc
+  i64.const 42
+  i32.const 840
+  i32.const 0
+  call $nearFile/encode<i64,~lib/typedarray/Uint8Array>|trampoline
+  i32.const 840
+  call $nearFile/decode<i64,~lib/typedarray/Uint8Array>
+  i64.const 42
+  i64.ne
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 183
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 1
+  global.set $~lib/argc
+  i32.const 6568
+  i32.const 840
+  i32.const 0
+  call $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline
+  i32.const 840
+  call $nearFile/decode<~lib/string/String,~lib/typedarray/Uint8Array>
+  i32.const 6568
+  call $~lib/string/String.__eq
+  i32.eqz
+  if
+   i32.const 6608
+   i32.const 6384
+   i32.const 184
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 0
+  i64.const 42
+  i64.const 42
+  call $~lib/bignum/integer/u128/u128#constructor
+  local.set $1
+  i32.const 1
+  global.set $~lib/argc
+  local.get $1
+  i32.const 840
+  i32.const 0
+  call $nearFile/encode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline
+  i32.const 840
+  call $nearFile/decode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array>
+  i64.load
+  i64.const 42
+  i64.ne
+  if
+   i32.const 0
+   i32.const 6384
+   i32.const 185
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  i32.const 6672
+  call $~lib/near-runtime-ts/logging/logging.log
  )
- (func $start (; 345 ;) (type $FUNCSIG$v)
-  call $start:~lib/rt/index-stub
-  global.get $~lib/heap/__heap_base
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
+ (func $start (; 265 ;) (type $FUNCSIG$v)
+  call $start:~lib/assemblyscript-json/decoder
+  i32.const 7008
   global.set $~lib/rt/stub/startOffset
   global.get $~lib/rt/stub/startOffset
   global.set $~lib/rt/stub/offset
-  call $start:assembly/test
-  call $start:nearFile
+  i32.const 0
+  i32.const 3
+  call $~lib/rt/stub/__alloc
+  global.set $~lib/near-runtime-ts/storage/storage
+  i32.const 0
+  i32.const 4
+  call $~lib/rt/stub/__alloc
+  global.set $~lib/near-runtime-ts/contract/context
+  i32.const 0
+  call $nearFile/Handler#constructor
+  global.set $nearFile/JSON.handler
+  i32.const 0
+  global.get $nearFile/JSON.handler
+  call $~lib/assemblyscript-json/decoder/JSONDecoder<nearFile/Handler>#constructor
+  global.set $nearFile/JSON.decoder
  )
- (func $null (; 346 ;) (type $FUNCSIG$v)
+ (func $null (; 266 ;) (type $FUNCSIG$v)
  )
 )

@@ -4,6 +4,10 @@ import { base64, logging } from "near-runtime-ts";
 import { FooBar, Nullables, ContainerClass, AnotherContainerClass } from './model';
 import { u128 } from "bignum";
 
+function roundtrip<T>(obj: T): T {
+    return decode<T>(encode<T>(obj));
+}
+
 export function runTest(): void {
     logging.log("starting test");
     const original = new FooBar();
@@ -40,6 +44,25 @@ export function runTest(): void {
     assert(nullable2.str == null);
     assert(nullable2.u128 == <u128> null);
     assert(nullable2.uint8Array == null);
+
+    const foobar2 = new FooBar();
+    foobar2.arr  = [];
+    const foobar2_ = decode<FooBar>(foobar2.encode());
+    assert(foobar2_.arr.length == foobar2.arr.length);
+
+    // Handle arrays without field;
+    const arr: u64[] = [123456789];
+    const encodedArr: Uint8Array = encode<u64[]>(arr);
+    const arr2: u64[] = decode<u64[]>(encodedArr);
+    assert(arr[0] == arr2[0]);
+
+    assert(roundtrip<u64[]>([]).length == 0);
+    assert(roundtrip<i32>(42) == 42);
+    assert(roundtrip<i64>(42) == 42);
+    assert(roundtrip<string>("hello world") == "hello world", "expected \"hello world\"");
+    assert(roundtrip<u128>(new u128(42,42)).lo == 42);
+
+
     logging.log("Test Passed");
 }
 

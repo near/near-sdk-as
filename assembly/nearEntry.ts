@@ -225,8 +225,12 @@ class Handler extends ThrowingJSONHandler {
 
   pushArray(name: string): bool {
     const obj: Value = Value.Array();
-    this.addValue(name, obj);
-    this.stack.push(obj);
+    if (this.stack.length == 0) {
+      this.stack.push(obj);
+    } else {
+      this.addValue(name, obj)
+      this.stack.push(obj);
+    }
     return true;
   }
 
@@ -250,7 +254,7 @@ class Handler extends ThrowingJSONHandler {
   }
 
   addValue(name: string, obj: Value): void {
-    if (name.length == 0 && obj instanceof Obj && this.stack.length == 0) {
+    if (name.length == 0 && this.stack.length == 0) {
       this.stack.push(obj);
       return;
     }
@@ -268,9 +272,9 @@ class Handler extends ThrowingJSONHandler {
 class JSON {
   private static handler: Handler = new Handler();
   private static decoder: JSONDecoder<Handler> = new JSONDecoder<Handler>(JSON.handler);
-  static parse(str: Uint8Array ): Obj {
+  static parse(str: Uint8Array ): Value {
     JSON.decoder.deserialize(str);
-    const res = JSON.decoder.handler.peek as Obj;
+    const res = JSON.decoder.handler.peek;
     JSON.decoder.handler.reset();
     return res;
   }

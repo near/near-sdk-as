@@ -4,7 +4,7 @@ import { JSONEncoder } from "assemblyscript-json";
 function __wrapper_convertFoobars(): void {
  const json = getInput();
   read_register(0, <usize>json.buffer);
-  const obj: Obj = JSON.parse(json);
+  const obj: Obj = <Obj> JSON.parse(json);
   let result: Array<ContainerClass> = convertFoobars(decode<Array<FooBar>, Obj>(obj, "foobars"));
 
   let encoder = new JSONEncoder();
@@ -25,7 +25,7 @@ export { __wrapper_convertFoobars as convertFoobars }
 function __wrapper_getStringArrayLength(): void {
  const json = getInput();
   read_register(0, <usize>json.buffer);
-  const obj: Obj = JSON.parse(json);
+  const obj: Obj = <Obj> JSON.parse(json);
   let result: i32 = getStringArrayLength(decode<Array<string>, Obj>(obj, "arr"));
 
   let encoder = new JSONEncoder();
@@ -46,7 +46,7 @@ export { __wrapper_getStringArrayLength as getStringArrayLength }
 function __wrapper_rewrapFoobar(): void {
  const json = getInput();
   read_register(0, <usize>json.buffer);
-  const obj: Obj = JSON.parse(json);
+  const obj: Obj = <Obj> JSON.parse(json);
   let result: AnotherContainerClass = rewrapFoobar(decode<ContainerClass, Obj>(obj, "container"));
 
   let encoder = new JSONEncoder();
@@ -67,7 +67,7 @@ export { __wrapper_rewrapFoobar as rewrapFoobar }
 function __wrapper_unwrapFoobar(): void {
  const json = getInput();
   read_register(0, <usize>json.buffer);
-  const obj: Obj = JSON.parse(json);
+  const obj: Obj = <Obj> JSON.parse(json);
   let result: FooBar = unwrapFoobar(decode<AnotherContainerClass, Obj>(obj, "container"));
 
   let encoder = new JSONEncoder();
@@ -106,7 +106,7 @@ export { __wrapper_stringOrNull as stringOrNull }
 function __wrapper_stringAliasTest(): void {
  const json = getInput();
   read_register(0, <usize>json.buffer);
-  const obj: Obj = JSON.parse(json);
+  const obj: Obj = <Obj> JSON.parse(json);
   let result: StringAlias = stringAliasTest(decode<StringAlias, Obj>(obj, "str"));
 
   let encoder = new JSONEncoder();
@@ -136,6 +136,9 @@ import {
 import {
   u128
 } from "bignum"
+function roundtrip<T>(obj: T): T {
+  return decode<T>(encode<T>(obj));
+}
 export function runTest(): void {
   logging.log("starting test");
   const original = new FooBar();
@@ -167,6 +170,19 @@ export function runTest(): void {
   assert(nullable2.str == null);
   assert(nullable2.u128 == <u128>null);
   assert(nullable2.uint8Array == null);
+  const foobar2 = new FooBar();
+  foobar2.arr = [];
+  const foobar2_ = decode<FooBar>(foobar2.encode());
+  assert(foobar2_.arr.length == foobar2.arr.length);
+  const arr: Array<u64> = [123456789];
+  const encodedArr: Uint8Array = encode<Array<u64>>(arr);
+  const arr2: Array<u64> = decode<Array<u64>>(encodedArr);
+  assert(arr[0] == arr2[0]);
+  assert(roundtrip<Array<u64>>([]).length == 0);
+  assert(roundtrip<i32>(42) == 42);
+  assert(roundtrip<i64>(42) == 42);
+  assert(roundtrip<string>("hello world") == "hello world", "expected \"hello world\"");
+  assert(roundtrip<u128>(new u128(42, 42)).lo == 42);
   logging.log("Test Passed");
 }
 function convertFoobars(foobars: Array<FooBar>): Array<ContainerClass> {
