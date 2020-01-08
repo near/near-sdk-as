@@ -254,6 +254,25 @@ async function testFloatDetection(file){
       "Hello World"
     );
 
+    assert.deepStrictEqual(await module.classOrNull(),
+      {
+        foo: 0,
+        bar: 1,
+        u64Val: "4294967297",
+        i64Val: "-64",
+        flag: false,
+        baz: "123",
+        uint8array: null,
+        arr: null,
+        u32Arr: null,
+        i32Arr: null,
+        uint8arrays: null,
+        u128Val: null,
+        u64Arr: null,
+        u64_zero: "0"
+      }
+    );
+    assert.deepEqual(await module.classAndNull(), null);
 
     await testFloatDetection("assembly/f32.ts");
     await testFloatDetection("assembly/f64.ts");

@@ -55,3 +55,8 @@ export function callbackWithName(args: PromiseArgs): MyCallbackResult {
 export function stringOrNull(): string | null {
     return null;
 }
+
+export function classOrNull():  FooBar | null {
+    return new FooBar();
+    
+}

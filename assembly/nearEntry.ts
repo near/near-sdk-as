@@ -1,9 +1,12 @@
 
 import { base64 } from "near-runtime-ts";
-import { JSONEncoder, JSONDecoder, ThrowingJSONHandler } from "assemblyscript-json";
+import { JSONEncoder as _JSONEncoder, JSONDecoder, ThrowingJSONHandler } from "assemblyscript-json";
 import { u128 } from "bignum";
 // Runtime functions
 // tslint:disable: no-unsafe-any
+
+@global
+class JSONEncoder extends _JSONEncoder {}
 
 type Usize = u64;
 //@ts-ignore
@@ -29,7 +32,7 @@ declare function value_return(value_len: Usize, value_ptr: Usize): void;
 declare function panic(): void;
 //@ts-ignore
 @global
-function getInput(): Uint8Array { 
+function getInput(): Obj { 
   // Reading input bytes.
   input(0);
   let json_len = register_len(0);
@@ -39,7 +42,7 @@ function getInput(): Uint8Array {
   let json = new Uint8Array(json_len as u32);
   //@ts-ignore
   read_register(0, <usize>json.buffer);
-  return json;
+  return <Obj> JSON.parse(json);
 }
 
 abstract class Value {
@@ -354,7 +357,7 @@ function decodeArray<T>(val: Value, name: string): Array<T> {
   return res;
 }
 
-function isNullable<T>(): bool {
+function isReallyNullable<T>(): bool {
   return isReference<T>() || isArrayLike<T>() || isNullable<T>() || isString<T>();
 }
 
@@ -375,7 +378,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     val = <Value> buffer;
   }
   if (val instanceof Null) {
-    assert(isNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable.");
+    assert(isReallyNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable.");
     //@ts-ignore
     return <T>null;
   }

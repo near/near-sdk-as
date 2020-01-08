@@ -1,127 +1,3 @@
-import { JSONEncoder } from "assemblyscript-json";
-
-//@ts-ignore
-function __wrapper_convertFoobars(): void {
- const json = getInput();
-  read_register(0, <usize>json.buffer);
-  const obj: Obj = <Obj> JSON.parse(json);
-  let result: Array<ContainerClass> = convertFoobars(decode<Array<FooBar>, Obj>(obj, "foobars"));
-
-  let encoder = new JSONEncoder();
-  let val: Uint8Array;
-  if ((isString<Array<ContainerClass>>() || isNullable<Array<ContainerClass>>()) && result == null) {
-    encoder.setNull(null);
-    val = encoder.serialize();
-  } else {
-    val = encode<Array<ContainerClass>>(result, null, encoder);
-  }
-  value_return(val.byteLength, <usize>val.buffer);
-}
-
-export { __wrapper_convertFoobars as convertFoobars }
-
-
-//@ts-ignore
-function __wrapper_getStringArrayLength(): void {
- const json = getInput();
-  read_register(0, <usize>json.buffer);
-  const obj: Obj = <Obj> JSON.parse(json);
-  let result: i32 = getStringArrayLength(decode<Array<string>, Obj>(obj, "arr"));
-
-  let encoder = new JSONEncoder();
-  let val: Uint8Array;
-  if ((isString<i32>() || isNullable<i32>()) && result == null) {
-    encoder.setNull(null);
-    val = encoder.serialize();
-  } else {
-    val = encode<i32>(result, null, encoder);
-  }
-  value_return(val.byteLength, <usize>val.buffer);
-}
-
-export { __wrapper_getStringArrayLength as getStringArrayLength }
-
-
-//@ts-ignore
-function __wrapper_rewrapFoobar(): void {
- const json = getInput();
-  read_register(0, <usize>json.buffer);
-  const obj: Obj = <Obj> JSON.parse(json);
-  let result: AnotherContainerClass = rewrapFoobar(decode<ContainerClass, Obj>(obj, "container"));
-
-  let encoder = new JSONEncoder();
-  let val: Uint8Array;
-  if ((isString<AnotherContainerClass>() || isNullable<AnotherContainerClass>()) && result == null) {
-    encoder.setNull(null);
-    val = encoder.serialize();
-  } else {
-    val = encode<AnotherContainerClass>(result, null, encoder);
-  }
-  value_return(val.byteLength, <usize>val.buffer);
-}
-
-export { __wrapper_rewrapFoobar as rewrapFoobar }
-
-
-//@ts-ignore
-function __wrapper_unwrapFoobar(): void {
- const json = getInput();
-  read_register(0, <usize>json.buffer);
-  const obj: Obj = <Obj> JSON.parse(json);
-  let result: FooBar = unwrapFoobar(decode<AnotherContainerClass, Obj>(obj, "container"));
-
-  let encoder = new JSONEncoder();
-  let val: Uint8Array;
-  if ((isString<FooBar>() || isNullable<FooBar>()) && result == null) {
-    encoder.setNull(null);
-    val = encoder.serialize();
-  } else {
-    val = encode<FooBar>(result, null, encoder);
-  }
-  value_return(val.byteLength, <usize>val.buffer);
-}
-
-export { __wrapper_unwrapFoobar as unwrapFoobar }
-
-
-//@ts-ignore
-function __wrapper_stringOrNull(): void {
-  let result: string | null = stringOrNull();
-
-  let encoder = new JSONEncoder();
-  let val: Uint8Array;
-  if ((isString<string >() || isNullable<string >()) && result == null) {
-    encoder.setNull(null);
-    val = encoder.serialize();
-  } else {
-    val = encode<string >(result!, null, encoder);
-  }
-  value_return(val.byteLength, <usize>val.buffer);
-}
-
-export { __wrapper_stringOrNull as stringOrNull }
-
-
-//@ts-ignore
-function __wrapper_stringAliasTest(): void {
- const json = getInput();
-  read_register(0, <usize>json.buffer);
-  const obj: Obj = <Obj> JSON.parse(json);
-  let result: StringAlias = stringAliasTest(decode<StringAlias, Obj>(obj, "str"));
-
-  let encoder = new JSONEncoder();
-  let val: Uint8Array;
-  if ((isString<StringAlias>() || isNullable<StringAlias>()) && result == null) {
-    encoder.setNull(null);
-    val = encoder.serialize();
-  } else {
-    val = encode<StringAlias>(result, null, encoder);
-  }
-  value_return(val.byteLength, <usize>val.buffer);
-}
-
-export { __wrapper_stringAliasTest as stringAliasTest }
-
 import * as main from "./main"
 import {
   base64,
@@ -204,3 +80,62 @@ type StringAlias = string
 function stringAliasTest(str: StringAlias): StringAlias {
   return str + " World";
 }
+function classOrNull(): FooBar | null {
+  return main.classOrNull();
+}
+function classAndNull(): FooBar | null {
+  return null;
+}
+function __wrapper_convertFoobars(): void {
+  const obj = getInput();
+  let result: Array<ContainerClass> = convertFoobars(decode<Array<FooBar>, Obj>(obj, "foobars"));
+  const val = encode<Array<ContainerClass>>(result);
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_convertFoobars as convertFoobars }
+function __wrapper_getStringArrayLength(): void {
+  const obj = getInput();
+  let result: i32 = getStringArrayLength(decode<Array<string>, Obj>(obj, "arr"));
+  const val = encode<i32>(result);
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_getStringArrayLength as getStringArrayLength }
+function __wrapper_rewrapFoobar(): void {
+  const obj = getInput();
+  let result: AnotherContainerClass = rewrapFoobar(decode<ContainerClass, Obj>(obj, "container"));
+  const val = encode<AnotherContainerClass>(result);
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_rewrapFoobar as rewrapFoobar }
+function __wrapper_unwrapFoobar(): void {
+  const obj = getInput();
+  let result: FooBar = unwrapFoobar(decode<AnotherContainerClass, Obj>(obj, "container"));
+  const val = encode<FooBar>(result);
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_unwrapFoobar as unwrapFoobar }
+function __wrapper_stringOrNull(): void {
+  let result: string | null = stringOrNull();
+  const val = encode<string>(changetype<string>(result));
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_stringOrNull as stringOrNull }
+function __wrapper_stringAliasTest(): void {
+  const obj = getInput();
+  let result: StringAlias = stringAliasTest(decode<StringAlias, Obj>(obj, "str"));
+  const val = encode<StringAlias>(result);
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_stringAliasTest as stringAliasTest }
+function __wrapper_classOrNull(): void {
+  let result: FooBar | null = classOrNull();
+  const val = encode<FooBar>(changetype<FooBar>(result));
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_classOrNull as classOrNull }
+function __wrapper_classAndNull(): void {
+  let result: FooBar | null = classAndNull();
+  const val = encode<FooBar>(changetype<FooBar>(result));
+  value_return(val.byteLength, <usize>val.buffer);
+}
+export { __wrapper_classAndNull as classAndNull }

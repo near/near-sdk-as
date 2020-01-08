@@ -93,3 +93,11 @@ type StringAlias = string;
 export function stringAliasTest(str: StringAlias): StringAlias {
     return str + " World"
 }
+
+export function classOrNull(): FooBar | null {
+    return main.classOrNull();
+}
+
+export function classAndNull(): FooBar | null {
+    return null;
+}
