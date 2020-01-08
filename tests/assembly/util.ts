@@ -30,3 +30,7 @@ export function _testTextMessageTwo(): TextMessage {
   message.number = 20;
   return message;
 }
+
+export function roundtrip<T>(obj: T): T {
+  return decode<T>(encode<T>(obj));
+}

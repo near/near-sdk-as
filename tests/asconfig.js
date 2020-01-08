@@ -6,7 +6,8 @@ compile("assembly/main.ts", // input file
         [
         //   "-O1",            // Optional arguments
         "--debug",
-        "--measure"
+        "--measure",
+        "--runPasses", "inlining-optimizing,dce",
         ],
         {verbose: true});
 
@@ -16,7 +17,8 @@ compile("assembly/hello/main.ts", // input file
         [
         //   "-O1",            // Optional arguments
         "--debug",
-        "--measure"
+        "--measure",
+        "--runPasses", "inlining,dce",
         ],
         {verbose: true});
 

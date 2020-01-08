@@ -9,7 +9,7 @@
   "dependencies": {
     "@as-pect/cli": "^2.6.0",
     "assemblyscript": "^0.8.0",
-    "near-bindgen-as": "^1.1.1",
+    "near-bindgen-as": "^1.1.2",
     "near-hello": "willemneal/near-hello",
     "near-runtime-ts": "../"
   }
