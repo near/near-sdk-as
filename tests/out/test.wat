@@ -5221,6 +5221,7 @@
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
+  (local $5 i32)
   local.get $0
   i32.load offset=8
   i32.const 1
@@ -5234,6 +5235,18 @@
     i32.const -1
     i32.eq
     br_if $break|0
+    i32.const 1
+    i32.const 0
+    local.get $1
+    i64.const 1
+    local.get $3
+    i64.extend_i32_s
+    i64.shl
+    i64.and
+    i64.const 0
+    i64.ne
+    select
+    local.set $5
     i32.const 0
     local.set $2
     loop $loop|1
@@ -5252,13 +5265,12 @@
       call $~lib/typedarray/Int8Array#__get
       i32.const 5
       i32.ge_s
-      i32.const 3
-      i32.mul
+      if (result i32)
+       i32.const 3
+      else
+       i32.const 0
+      end
       i32.add
-      i32.const 24
-      i32.shl
-      i32.const 24
-      i32.shr_s
       call $~lib/typedarray/Int8Array#__set
       local.get $2
       i32.const 1
@@ -5280,10 +5292,8 @@
       local.get $0
       local.get $2
       call $~lib/typedarray/Int8Array#__get
-      i32.const 25
+      i32.const 1
       i32.shl
-      i32.const 24
-      i32.shr_s
       call $~lib/typedarray/Int8Array#__set
       local.get $2
       local.get $4
@@ -5303,11 +5313,12 @@
        call $~lib/typedarray/Int8Array#__get
        i32.const 15
        i32.gt_s
+       if (result i32)
+        i32.const 1
+       else
+        i32.const 0
+       end
        i32.or
-       i32.const 24
-       i32.shl
-       i32.const 24
-       i32.shr_s
        call $~lib/typedarray/Int8Array#__set
       end
       local.get $0
@@ -5330,19 +5341,8 @@
     local.get $0
     i32.const 0
     call $~lib/typedarray/Int8Array#__get
-    local.get $1
-    i64.const 1
-    local.get $3
-    i64.extend_i32_s
-    i64.shl
-    i64.and
-    i64.const 0
-    i64.ne
+    local.get $5
     i32.add
-    i32.const 24
-    i32.shl
-    i32.const 24
-    i32.shr_s
     call $~lib/typedarray/Int8Array#__set
     local.get $3
     i32.const 1
@@ -10064,7 +10064,7 @@
   if
    i32.const 5472
    i32.const 5520
-   i32.const 133
+   i32.const 163
    i32.const 4
    call $~lib/builtins/abort
    unreachable
@@ -12492,30 +12492,23 @@
   i32.const 5832
   local.get $0
   call $assembly/model/FooBar#encode
+  local.tee $2
   i32.const 936
   call $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
   local.tee $1
   call $assembly/model/FooBar#toJSON
   call $~lib/string/String.__concat
   call $~lib/near-runtime-ts/logging/logging.log
-  local.get $0
-  i32.load
+  local.get $2
+  i32.const 936
+  call $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
+  local.set $2
   local.get $1
-  i32.load
-  i32.ne
-  if
-   i32.const 0
-   i32.const 5864
-   i32.const 37
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.load offset=4
-  i32.ne
+  call $assembly/model/FooBar#toJSON
+  local.get $2
+  call $assembly/model/FooBar#toJSON
+  call $~lib/string/String.__eq
+  i32.eqz
   if
    i32.const 0
    i32.const 5864
@@ -12525,6 +12518,32 @@
    unreachable
   end
   local.get $0
+  i32.load
+  local.get $1
+  i32.load
+  i32.ne
+  if
+   i32.const 0
+   i32.const 5864
+   i32.const 39
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  i32.load offset=4
+  i32.ne
+  if
+   i32.const 0
+   i32.const 5864
+   i32.const 40
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
   i32.load offset=40
   call $~lib/near-runtime-ts/base64/base64.encode
   local.get $1
@@ -12535,7 +12554,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 39
+   i32.const 41
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12555,7 +12574,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 40
+   i32.const 42
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12572,37 +12591,37 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 41
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=64
-  i32.const 0
-  call $~lib/array/Array<u64>#__get
-  local.get $1
-  i32.load offset=64
-  i32.const 0
-  call $~lib/array/Array<u64>#__get
-  i64.ne
-  if
-   i32.const 0
-   i32.const 5864
-   i32.const 42
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i64.load offset=16
-  local.get $1
-  i64.load offset=16
-  i64.ne
-  if
-   i32.const 0
-   i32.const 5864
    i32.const 43
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load offset=64
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  local.get $1
+  i32.load offset=64
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  i64.ne
+  if
+   i32.const 0
+   i32.const 5864
+   i32.const 44
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i64.load offset=16
+  local.get $1
+  i64.load offset=16
+  i64.ne
+  if
+   i32.const 0
+   i32.const 5864
+   i32.const 45
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12623,7 +12642,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 46
+   i32.const 48
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12648,7 +12667,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 47
+   i32.const 49
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12658,7 +12677,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 48
+   i32.const 50
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12692,7 +12711,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 52
+   i32.const 54
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12722,7 +12741,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 56
+   i32.const 58
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12745,7 +12764,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 57
+   i32.const 59
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12763,7 +12782,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 58
+   i32.const 60
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12781,7 +12800,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 59
+   i32.const 61
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12800,7 +12819,7 @@
   if
    i32.const 6112
    i32.const 5864
-   i32.const 60
+   i32.const 62
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -12824,7 +12843,7 @@
   if
    i32.const 0
    i32.const 5864
-   i32.const 61
+   i32.const 63
    i32.const 2
    call $~lib/builtins/abort
    unreachable

@@ -162,7 +162,7 @@ export { __wrapper_${name} as ${name} }`);
   }
 
   static decode<V = Uint8Array>(buf: V): ${className} {
-    decode<${className}>(buf);
+    return decode<${className}>(buf);
   }
 
   private _decode(obj: Obj): ${className} {
