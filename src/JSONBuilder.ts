@@ -161,6 +161,10 @@ export { __wrapper_${name} as ${name} }`);
     return this._decode(json);
   }
 
+  static decode<V = Uint8Array>(buf: V): ${className} {
+    return decode<${className}>(buf!);
+  }
+
   private _decode(obj: Obj): ${className} {
     ${createDecodeStatements(_class).join("\n    ")}
     return this;

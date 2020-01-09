@@ -30,6 +30,8 @@ export function runTest(): void {
     //@ts-ignore
     let decoded: FooBar = decode<FooBar>(encoded);
     logging.log("After:  "+ decoded.toJSON());
+    let decodedStatic: FooBar = FooBar.decode(encoded);
+    assert(decoded.toJSON() == decodedStatic.toJSON());
     assert(original.foo == decoded.foo);
     assert(original.bar == decoded.bar);
     assert(base64.encode(original.uint8array) == base64.encode(decoded.uint8array));
