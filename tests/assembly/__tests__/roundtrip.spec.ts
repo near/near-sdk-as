@@ -1,4 +1,4 @@
-import { _testTextMessage } from "../util";
+import { _testTextMessage, roundtrip } from "../util";
 import { TextMessage } from "../model";
 import { util } from "near-runtime-ts";
 import { Box } from "../generic";
@@ -29,6 +29,29 @@ describe("Round Trip", () => {
     //@ts-ignore
     const u32_2 = util.parseFromBytes<Box<u32>>(u32.serialize());
     expect<u32>(u32.t).toBe(u32_2.t);
+  });
+  it("should handle non-empty arrays", () => {
+    const arr: Array<i32> = [42, 84];
+    expect<i32[]>(roundtrip<i32[]>(arr)).toStrictEqual(arr);
+  });
+
+  it("should handle empty arrays", () => {
+    const arr: Array<i32> = [];
+    expect<i32[]>(roundtrip<i32[]>(arr)).toStrictEqual(arr);
+  });
+
+  it("should handle integers", () => {
+    expect<i32>(roundtrip<i32>(42)).toBe(42);
+    expect<i64>(roundtrip<i64>(42)).toBe(42);
+
+  });
+  
+  it("should handle strings", () => {
+    expect<string>(roundtrip<string>("hello world!")).toBe("hello world!");
+  });
+
+  it("sholud handle null", () => {
+    expect<TextMessage | null>(roundtrip<TextMessage | null>(null)).toBeNull();
   })
 })
 
@@ -77,6 +100,7 @@ function isBox<T>(): bool {
 describe("Generic classes",() => {
   it("can use instanceof", () => {
     let genericFoo = new Generic<Foo>(new Foo());
+    //@ts-ignore
     expect<boolean>(genericFoo instanceof Generic<Foo>).toBe(true);
   });
 });

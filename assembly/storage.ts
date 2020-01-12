@@ -121,7 +121,7 @@ export class Storage {
       this.setString(key, value.toString());
     } else {
        //@ts-ignore
-      this.setBytes(key, value.serialize());
+      this.setBytes(key, encode<T>(value));
     }
   }
 

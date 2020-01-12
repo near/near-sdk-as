@@ -1,4 +1,4 @@
-const compile = require("near-runtime-ts").compile;
+const compile = require("near-bindgen-as/compiler").compile;
 
 
 compile("assembly/main.ts", // input file
@@ -6,7 +6,20 @@ compile("assembly/main.ts", // input file
         [
         //   "-O1",            // Optional arguments
         "--debug",
-        "--measure"
-        ]);
+        "--measure",
+        "--runPasses", "inlining-optimizing,dce",
+        ],
+        {verbose: true});
+
+
+compile("assembly/hello/main.ts", // input file
+        "out/hello/main.wasm",    // output file
+        [
+        //   "-O1",            // Optional arguments
+        "--debug",
+        "--measure",
+        "--runPasses", "inlining,dce",
+        ],
+        {verbose: true});
 
 
