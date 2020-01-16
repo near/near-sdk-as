@@ -6,12 +6,13 @@
     "input": "{\"name\":\"Alice\"}",
     "block_index": 0,
     "account_balance": 0,
+    "account_locked_balance": 0,
     "attached_deposit": 0,
-    "prepaid_gas": 1000000000,
+    "prepaid_gas": 100000000000000,
     "random_seed": "15T",
     "free_of_charge": false,
     "storage_usage": 0,
     "output_data_receivers": [],
     "block_timestamp": 1,
-    "is_view": true
+    "is_view": false
 }

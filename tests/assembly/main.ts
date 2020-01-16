@@ -186,6 +186,16 @@ export function mapTestsWithPrimitices(): void{
   assert(map.getSome(1) == -20, "wrong value on map get for i32");
 }
 
+export function mapTestsWithArray(): void {
+  // map with arrays
+  const map = new PersistentMap<i32, Array<string>>("mapArray");
+  const arr1 = new Array<string>();
+  arr1.push("123456789");
+  // return arr1;
+  map.set(1, arr1);
+  assert(map.getSome(1)[0] == "123456789");
+}
+
 export function vectorTests(): void {
   logging.log("vectorTests");
   const vector = new PersistentVector<string>("vector1");
@@ -395,8 +405,8 @@ export function promiseTests(): void {
   logging.log("promiseTests");
   const emptyResults = ContractPromise.getResults();
   assert(emptyResults.length == 0, "wrong length for results");
-  const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 100);
-  const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 100);
+  const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
+  const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
   const promise3 = ContractPromise.all([promise2]);
 }
 

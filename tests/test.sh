@@ -1,11 +1,11 @@
 #!/bin/bash
-TESTS=(base58Test base64Test logTest storageStringRoundtripTest storageBytesRoundtripTest storageGenericGetSetRoundtripTest storageKeysTest mapTests mapTestsWithPrimitices vectorTests dequeTests topnTests promiseTests mathTests)
+TESTS=(mapTestsWithArray base58Test base64Test logTest storageStringRoundtripTest storageBytesRoundtripTest storageGenericGetSetRoundtripTest storageKeysTest mapTests mapTestsWithPrimitices vectorTests dequeTests topnTests promiseTests mathTests)
 DISABLED_TESTS=(contextTests)
 
 [[ -e /tmp/main.wasm ]] && rm /tmp/main.wasm
 cp $(dirname "$0")/out/main.wasm /tmp/
 cp $(dirname "$0")/*.json /tmp/
-errormsg="WasmerCallError"
+errormsg="FunctionCallError"
 errors=0
 passed=0
 
@@ -23,10 +23,10 @@ testcase () {
 
 for i in "${TESTS[@]}"
 do
-    # access each element  
+    # access each element
     # as $i
     echo
-    echo "Running $i" 
+    echo "Running $i"
     testcase $i
 done
 

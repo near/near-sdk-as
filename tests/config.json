@@ -91,7 +91,7 @@
     },
     "grow_mem_cost": 1,
     "regular_op_cost": 1,
-    "max_gas_burnt": 1000000000,
+    "max_gas_burnt": 200000000000000,
     "max_stack_height": 65536,
     "initial_memory_pages": 17,
     "max_memory_pages": 32,
