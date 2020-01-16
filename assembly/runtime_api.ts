@@ -11,7 +11,7 @@ export declare namespace runtime_api {
   //@ts-ignore
   @external("env", "register_len")
   export function register_len(register_id: u64) : u64;
-  
+
   // ###############
   // # Context API #
   // ###############
@@ -103,6 +103,43 @@ export declare namespace runtime_api {
   //@ts-ignore
   @external("env", "promise_return")
   export function promise_return(promise_id: u64) : void;
+  //@ts-ignore
+  @external("env", "promise_batch_create")
+  export function promise_batch_create(account_id_len: u64, account_id_ptr: u64): u64;
+  //@ts-ignore
+  @external("env", "promise_batch_then")
+  export function promise_batch_then(promise_index: u64, account_id_len: u64, account_id_ptr: u64): u64;
+
+  // #######################
+  // # Promise API actions #
+  // #######################
+  //@ts-ignore
+  @external("env", "promise_batch_action_create_account")
+  export function promise_batch_action_create_account(promise_index: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_deploy_contract")
+  export function promise_batch_action_deploy_contract(promise_index: u64, code_len: u64, code_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_function_call")
+  export function promise_batch_action_function_call(promise_index: u64, method_name_len: u64, method_name_ptr: u64, arguments_len: u64, arguments_ptr: u64, amount_ptr: u64, gas: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_transfer")
+  export function promise_batch_action_transfer(promise_index: u64, amount_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_stake")
+  export function promise_batch_action_stake(promise_index: u64, amount_ptr: u64, public_key_len: u64, public_key_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_add_key_with_full_access")
+  export function promise_batch_action_add_key_with_full_access(promise_index: u64, public_key_len: u64, public_key_ptr: u64, nonce: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_add_key_with_function_call")
+  export function promise_batch_action_add_key_with_function_call(promise_index: u64, public_key_len: u64, public_key_ptr: u64, nonce: u64, allowance_ptr: u64, receiver_id_len: u64, receiver_id_ptr: u64, method_names_len: u64, method_names_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_delete_key")
+  export function promise_batch_action_delete_key(promise_index: u64, public_key_len: u64, public_key_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_delete_account")
+  export function promise_batch_action_delete_account(promise_index: u64, beneficiary_id_len: u64, beneficiary_id_ptr: u64): void
 
   // ###############
   // # Storage API #
