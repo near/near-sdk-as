@@ -61,7 +61,7 @@ export function storageGenericGetSetRoundtripTest(): void {
   const message = _testTextMessage();
   storage.set<TextMessage>("message1", message);
 
-  const messageFromStorage = storage.get<TextMessage>("message1");
+  const messageFromStorage = storage.getSome<TextMessage>("message1");
   assert(messageFromStorage.sender == "mysteriousStranger", "Incorrect data value (sender) for retrieved object");
   assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
   assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
@@ -451,7 +451,10 @@ function _arrayEqual(first: Uint8Array | null, second: Uint8Array | null): bool 
   return true;
 }
 
-function _modelObjectEqual(first: TextMessage, second: TextMessage): bool {
+function _modelObjectEqual(first: TextMessage | null, second: TextMessage): bool {
+  if (first == null) {
+    return second != null;
+  }
   if (first.sender != second.sender) {
     return false;
   }

@@ -79,9 +79,7 @@ class Context {
   }
 
   private _readRegisterContentsAsString(registerId: u64): string {
-    const registerContents = new Uint8Array(runtime_api.register_len(registerId) as i32);
-    runtime_api.read_register(registerId, registerContents.dataStart);
-    return util.bytesToString(registerContents)!;
+    return util.bytesToString(util.read_register(registerId))!;
   }
 }
 
@@ -294,7 +292,7 @@ export class ContractPromise {
  */
   static getResults(): ContractPromiseResult[] {
     let count = <i64>runtime_api.promise_results_count();
-    let results = Array.create<ContractPromiseResult>(count as i32);
+    let results = new Array<ContractPromiseResult>(count as i32);
     for (let i = 0; i < count; i++) {
       const promise_status = runtime_api.promise_result(i, 0) as i32;
       let isOk = promise_status == 1;
@@ -303,8 +301,7 @@ export class ContractPromise {
         results[i].status = promise_status;
         continue;
       }
-      const buffer = new Uint8Array(runtime_api.register_len(0) as i32);
-      runtime_api.read_register(0, buffer.dataStart);
+      const buffer = util.read_register(0);
       results[i] = { status: promise_status, buffer: buffer };
     }
     return results;

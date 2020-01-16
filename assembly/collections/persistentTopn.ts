@@ -1,7 +1,6 @@
 import { collections } from "../collections";
 import { PersistentMap } from "./persistentMap";
 import { storage } from "../storage";
-import { logging } from "../logging";
 
 /*
 
@@ -123,7 +122,7 @@ export class PersistentTopN<K> {
   * @returns an array of key to rating pairs for the given keys.
   */
   keysToRatings(keys: K[]): collections.MapEntry<K, i32>[] {
-    let result = Array.create<collections.MapEntry<K, i32>>(keys.length);
+    let result = new Array<collections.MapEntry<K, i32>>(keys.length);
     for (let index = 0; index < keys.length; ++index) {
       let key = keys[index];
       result[index] = new collections.MapEntry<K, i32>(key, this._ratings.getSome(key));

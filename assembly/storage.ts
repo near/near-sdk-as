@@ -1,6 +1,5 @@
 import { runtime_api } from './runtime_api';
 import { util } from "./util";
-import { logging } from "./logging";
 
 
 
@@ -138,7 +137,7 @@ export class Storage {
   get<T>(key: string, defaultValue: T | null = null): T | null {
     if (isString<T>()) {
       const strValue = this.getString(key);
-      return strValue == null ? defaultValue : util.parseFromString<T>(this.getString(key));
+      return strValue == null ? defaultValue : util.parseFromString<T>(<string>strValue);
     } else {
       const byteValue = this.getBytes(key);
       return byteValue == null ? defaultValue : util.parseFromBytes<T>(byteValue!);
@@ -156,7 +155,7 @@ export class Storage {
   getPrimitive<T>(key: string, defaultValue: T): T {
     if (isInteger<T>()) {
       const strValue = this.getString(key);
-      return strValue == null ? defaultValue : util.parseFromString<T>(this.getString(key));
+      return strValue == null ? defaultValue : util.parseFromString<T>(<string>strValue);
     } else {
       throw "Operation not supported. Please use storage.get<T> for non-primitives";
     }
@@ -176,8 +175,10 @@ export class Storage {
       assert(false, "Key '" + key + "' is not present in the storage");
     }
     if (isString<T>() || isInteger<T>()) {
+      //@ts-ignore won't be null
       return util.parseFromString<T>(this.getString(key));
     } else {
+      //@ts-ignore won't be null
       return util.parseFromBytes<T>(this.getBytes(key));
     }
   }
@@ -186,10 +187,7 @@ export class Storage {
     let key_encoded = util.stringToBytes(key);
     let res = runtime_api.storage_read(key_encoded.byteLength, key_encoded.dataStart, 0);
     if (res == 1) {
-      let value_len = runtime_api.register_len(0);
-      let value = new Uint8Array(value_len as i32);
-      runtime_api.read_register(0, value.dataStart);
-      return value;
+      return util.read_register(0);
     } else {
       return null;
     }
@@ -203,9 +201,7 @@ export class Storage {
     let result: string[] = new Array<string>();
 
     while(limit-- != 0 && runtime_api.storage_iter_next(iterId, 0, 1) == 1) {
-      let key_len = runtime_api.register_len(0);
-      let key_data = new Uint8Array(key_len as i32);
-      runtime_api.read_register(0, key_data.dataStart);
+      let key_data = util.read_register(0);
       if (key_data != null) {
         //@ts-ignore: Compiler says this is never null TODO
         result.push(util.bytesToString(key_data));

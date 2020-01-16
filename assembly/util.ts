@@ -1,3 +1,5 @@
+import { runtime_api } from "./runtime_api";
+
 export namespace util {
 
   export function stringToBytes(s: string): Uint8Array {
@@ -34,12 +36,7 @@ export namespace util {
   * @returns A parsed value of type T.
   */
   export function parseFromBytes<T>(bytes: Uint8Array): T {
-    if (isString<T>() || isInteger<T>()) {
-      return parseFromString<T>(bytesToString(bytes));
-    } else {
-      //@ts-ignore v will have decode. Although second parameter is optional it causes compile error
-      return decode<T>(bytes);
-    }
+    return decode<T>(bytes);
   }
 
   /**
@@ -68,5 +65,17 @@ export namespace util {
       //@ts-ignore v will have decode method
       return decode<T>(stringToBytes(s));
     }
+  }
+
+  /**
+   * Reads contents of a register into a Uint8Array.
+   * 
+   * @param register_id Id of register to read from
+   */
+  export function read_register(register_id: u64): Uint8Array {
+    const value_len = runtime_api.register_len(register_id);
+    const value = new Uint8Array(value_len as i32);
+    runtime_api.read_register(0, value.dataStart);
+    return value;
   }
 }
