@@ -44,7 +44,7 @@ A TopN class that can return first N keys of a type K sorted by rating. Rating i
 
 ⊕ **new PersistentTopN**(prefix: *`string`*, descending?: *`bool`*): [PersistentTopN](_collections_persistenttopn_.persistenttopn.md)
 
-*Defined in [collections/persistentTopn.ts:30](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L30)*
+*Defined in [collections/persistentTopn.ts:30](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L30)*
 
 Creates or restores a persistent top N collection with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -67,7 +67,7 @@ ___
 
 **get isEmpty**(): `bool`
 
-*Defined in [collections/persistentTopn.ts:75](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L75)*
+*Defined in [collections/persistentTopn.ts:75](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L75)*
 
 **Returns:** `bool`
 True if the TopN collection is empty.
@@ -79,7 +79,7 @@ ___
 
 **get length**(): `i32`
 
-*Defined in [collections/persistentTopn.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L83)*
+*Defined in [collections/persistentTopn.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L83)*
 
 **Returns:** `i32`
 The number of unique elements in the TopN collection.
@@ -94,7 +94,7 @@ ___
 
 ▸ **contains**(key: *`K`*): `bool`
 
-*Defined in [collections/persistentTopn.ts:104](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L104)*
+*Defined in [collections/persistentTopn.ts:104](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L104)*
 
 **Parameters:**
 
@@ -112,7 +112,7 @@ ___
 
 ▸ **delete**(key: *`K`*): `void`
 
-*Defined in [collections/persistentTopn.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L112)*
+*Defined in [collections/persistentTopn.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L112)*
 
 Removes rating and the key from the collection.
 
@@ -131,7 +131,7 @@ ___
 
 ▸ **getRating**(key: *`K`*, defaultRating?: *`i32`*): `i32`
 
-*Defined in [collections/persistentTopn.ts:184](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L184)*
+*Defined in [collections/persistentTopn.ts:184](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L184)*
 
 **Parameters:**
 
@@ -150,7 +150,7 @@ ___
 
 ▸ **getTop**(limit: *`i32`*): `K`[]
 
-*Defined in [collections/persistentTopn.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L138)*
+*Defined in [collections/persistentTopn.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L138)*
 
 **Parameters:**
 
@@ -168,7 +168,7 @@ ___
 
 ▸ **getTopFromKey**(limit: *`i32`*, fromKey: *`K`*): `K`[]
 
-*Defined in [collections/persistentTopn.ts:149](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L149)*
+*Defined in [collections/persistentTopn.ts:149](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L149)*
 
 Returns a top list starting from the given key (exclusive). It's useful for pagination.
 
@@ -189,7 +189,7 @@ ___
 
 ▸ **getTopWithRating**(limit: *`i32`*): [MapEntry](_collections_index_.collections.mapentry.md)<`K`, `i32`>[]
 
-*Defined in [collections/persistentTopn.ts:164](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L164)*
+*Defined in [collections/persistentTopn.ts:164](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L164)*
 
 **Parameters:**
 
@@ -207,7 +207,7 @@ ___
 
 ▸ **getTopWithRatingFromKey**(limit: *`i32`*, fromKey: *`K`*): [MapEntry](_collections_index_.collections.mapentry.md)<`K`, `i32`>[]
 
-*Defined in [collections/persistentTopn.ts:175](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L175)*
+*Defined in [collections/persistentTopn.ts:175](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L175)*
 
 Returns a top list with rating starting from the given key (exclusive). It's useful for pagination.
 
@@ -228,7 +228,7 @@ ___
 
 ▸ **incrementRating**(key: *`K`*, increment?: *`i32`*): `void`
 
-*Defined in [collections/persistentTopn.ts:209](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L209)*
+*Defined in [collections/persistentTopn.ts:209](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L209)*
 
 Increments rating of the given key by the given increment (1 by default).
 
@@ -248,7 +248,7 @@ ___
 
 ▸ **keysToRatings**(keys: *`K`[]*): [MapEntry](_collections_index_.collections.mapentry.md)<`K`, `i32`>[]
 
-*Defined in [collections/persistentTopn.ts:125](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L125)*
+*Defined in [collections/persistentTopn.ts:125](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L125)*
 
 **Parameters:**
 
@@ -266,7 +266,7 @@ ___
 
 ▸ **setRating**(key: *`K`*, rating: *`i32`*): `void`
 
-*Defined in [collections/persistentTopn.ts:193](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentTopn.ts#L193)*
+*Defined in [collections/persistentTopn.ts:193](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentTopn.ts#L193)*
 
 Sets the new rating for the given key.
 

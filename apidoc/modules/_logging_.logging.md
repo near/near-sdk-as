@@ -18,7 +18,7 @@
 
 ▸ **log**(msg: *`string`*): `void`
 
-*Defined in [logging.ts:8](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/logging.ts#L8)*
+*Defined in [logging.ts:8](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/logging.ts#L8)*
 
 Log a string message.
 

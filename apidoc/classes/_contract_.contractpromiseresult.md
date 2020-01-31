@@ -25,7 +25,7 @@ Class to store results of the async calls on the remote contracts.
 
 **● buffer**: *`Uint8Array`*
 
-*Defined in [contract.ts:319](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L319)*
+*Defined in [contract.ts:322](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/contract.ts#L322)*
 
 ___
 <a id="status"></a>
@@ -34,7 +34,7 @@ ___
 
 **● status**: *`i32`*
 
-*Defined in [contract.ts:316](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L316)*
+*Defined in [contract.ts:319](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/contract.ts#L319)*
 
 ___
 

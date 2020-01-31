@@ -24,7 +24,7 @@
 
 ▸ **UTF8Length**(str: *`string`*, nullTerminated?: *`boolean`*): `usize`
 
-*Defined in [util.ts:17](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/util.ts#L17)*
+*Defined in [util.ts:17](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/util.ts#L17)*
 
 **Parameters:**
 
@@ -42,7 +42,7 @@ ___
 
 ▸ **bytesToString**(bytes: *`Uint8Array`*): `string` \| `null`
 
-*Defined in [util.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/util.ts#L10)*
+*Defined in [util.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/util.ts#L10)*
 
 **Parameters:**
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **parseFromBytes**<`T`>(bytes: *`Uint8Array`*): `T`
 
-*Defined in [util.ts:36](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/util.ts#L36)*
+*Defined in [util.ts:36](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/util.ts#L36)*
 
 Parses the given bytes array to return a value of the given generic type. Supported types: bool, integer, string and data objects defined in model.ts.
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **parseFromString**<`T`>(s: *`string`*): `T`
 
-*Defined in [util.ts:53](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/util.ts#L53)*
+*Defined in [util.ts:52](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/util.ts#L52)*
 
 Parses the given string to return a value of the given generic type. Supported types: bool, integer, string and data objects defined in model.ts.
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **stringToBytes**(s: *`string`*): `Uint8Array`
 
-*Defined in [util.ts:3](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/util.ts#L3)*
+*Defined in [util.ts:3](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/util.ts#L3)*
 
 **Parameters:**
 
@@ -122,7 +122,7 @@ ___
 
 ▸ **toUTF8**(str: *`string`*, nullTerminated?: *`boolean`*): `usize`
 
-*Defined in [util.ts:21](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/util.ts#L21)*
+*Defined in [util.ts:21](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/util.ts#L21)*
 
 **Parameters:**
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **uint8ArrayToBuffer**(array: *`Uint8Array`*): `ArrayBuffer`
 
-*Defined in [util.ts:25](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/util.ts#L25)*
+*Defined in [util.ts:25](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/util.ts#L25)*
 
 **Parameters:**
 

@@ -36,7 +36,7 @@ Represents contract storage.
 
 ▸ **contains**(key: *`string`*): `bool`
 
-*Defined in [storage.ts:90](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L90)*
+*Defined in [storage.ts:90](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L90)*
 
 Returns true if the given key is present in the storage.
 
@@ -55,7 +55,7 @@ ___
 
 ▸ **delete**(key: *`string`*): `void`
 
-*Defined in [storage.ts:103](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L103)*
+*Defined in [storage.ts:103](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L103)*
 
 Deletes a given key from the storage.
 
@@ -74,7 +74,7 @@ ___
 
 ▸ **get**<`T`>(key: *`string`*, defaultValue?: *`T` \| `null`*): `T` \| `null`
 
-*Defined in [storage.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L138)*
+*Defined in [storage.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L138)*
 
 Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: string and data objects defined in model.ts. Please use getPrimitive for getting primitives with a default value, and getSome for primitives and non-primitives in case it's known that a particular key exists.
 
@@ -98,7 +98,7 @@ ___
 
 ▸ **getBytes**(key: *`string`*): `Uint8Array` \| `null`
 
-*Defined in [storage.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L83)*
+*Defined in [storage.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L83)*
 
 Get byte array stored under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -119,7 +119,7 @@ ___
 
 ▸ **getPrimitive**<`T`>(key: *`string`*, defaultValue: *`T`*): `T`
 
-*Defined in [storage.ts:156](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L156)*
+*Defined in [storage.ts:156](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L156)*
 
 Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer.
 
@@ -143,7 +143,7 @@ ___
 
 ▸ **getSome**<`T`>(key: *`string`*): `T`
 
-*Defined in [storage.ts:174](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L174)*
+*Defined in [storage.ts:174](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L174)*
 
 Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer, string and data objects defined in model.ts. This function will throw if throw if the key does not exist in the storage.
 
@@ -166,7 +166,7 @@ ___
 
 ▸ **getString**(key: *`string`*): `string` \| `null`
 
-*Defined in [storage.ts:59](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L59)*
+*Defined in [storage.ts:59](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L59)*
 
 Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
 
@@ -185,7 +185,7 @@ ___
 
 ▸ **hasKey**(key: *`string`*): `bool`
 
-*Defined in [storage.ts:96](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L96)*
+*Defined in [storage.ts:96](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L96)*
 
 **Parameters:**
 
@@ -202,7 +202,7 @@ ___
 
 ▸ **keyRange**(start: *`string`*, end: *`string`*, limit?: *`i32`*): `string`[]
 
-*Defined in [storage.ts:18](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L18)*
+*Defined in [storage.ts:18](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L18)*
 
 Returns list of keys between the given start key and the end key. Both inclusive. NOTE: Must be very careful to avoid exploding amount of compute with this method.
 
@@ -223,7 +223,7 @@ ___
 
 ▸ **keys**(prefix: *`string`*, limit?: *`i32`*): `string`[]
 
-*Defined in [storage.ts:37](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L37)*
+*Defined in [storage.ts:37](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L37)*
 
 Returns list of keys starting with given prefix. NOTE: Must be very careful to avoid exploding amount of compute with this method.
 
@@ -243,7 +243,7 @@ ___
 
 ▸ **set**<`T`>(key: *`string`*, value: *`T`*): `void`
 
-*Defined in [storage.ts:115](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L115)*
+*Defined in [storage.ts:115](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L115)*
 
 Stores given generic value under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer, string and data objects defined in model.ts.
 
@@ -266,7 +266,7 @@ ___
 
 ▸ **setBytes**(key: *`string`*, value: *`Uint8Array`*): `void`
 
-*Defined in [storage.ts:70](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L70)*
+*Defined in [storage.ts:70](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L70)*
 
 Store byte array under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -288,7 +288,7 @@ ___
 
 ▸ **setString**(key: *`string`*, value: *`string`*): `void`
 
-*Defined in [storage.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L48)*
+*Defined in [storage.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L48)*
 
 Store string value under given key. Both key and value are encoded as UTF-8 strings.
 

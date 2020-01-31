@@ -24,7 +24,7 @@
 
 **● context**: *[Context](../classes/_contract_.context.md)* =  new Context()
 
-*Defined in [contract.ts:322](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/contract.ts#L322)*
+*Defined in [contract.ts:325](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/contract.ts#L325)*
 
 ___
 

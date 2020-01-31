@@ -22,7 +22,7 @@
 
 **● storage**: *[Storage](../classes/_storage_.storage.md)* =  new Storage()
 
-*Defined in [storage.ts:219](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/storage.ts#L219)*
+*Defined in [storage.ts:221](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/storage.ts#L221)*
 
 An instance of a Storage class that is used for working with contract storage on the blockchain.
 

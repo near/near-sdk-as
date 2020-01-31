@@ -6,6 +6,8 @@ near-runtime-ts
 
 ](#near-runtime-ts)
 
+![Build Status](https://gitlab.com/near-protocol/near-runtime-ts/badges/master/pipeline.svg)
+
 Typescript library for writing near smart contracts
 
 [
@@ -34,9 +36,7 @@ Run tests
 
 ](#run-tests)
 
-```
 yarn test
-```
 
 ## Index
 

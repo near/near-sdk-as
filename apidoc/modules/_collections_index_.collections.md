@@ -29,7 +29,7 @@ Classes and functions for persistent collections on the blockchain.
 
 **● _KEY_BACK_INDEX_SUFFIX**: *":back"* = ":back"
 
-*Defined in [collections/index.ts:7](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/index.ts#L7)*
+*Defined in [collections/index.ts:7](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/index.ts#L7)*
 
 ___
 <a id="_key_element_suffix"></a>
@@ -38,7 +38,7 @@ ___
 
 **● _KEY_ELEMENT_SUFFIX**: *"::"* = "::"
 
-*Defined in [collections/index.ts:8](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/index.ts#L8)*
+*Defined in [collections/index.ts:8](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/index.ts#L8)*
 
 ___
 <a id="_key_front_index_suffix"></a>
@@ -47,7 +47,7 @@ ___
 
 **● _KEY_FRONT_INDEX_SUFFIX**: *":front"* = ":front"
 
-*Defined in [collections/index.ts:6](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/index.ts#L6)*
+*Defined in [collections/index.ts:6](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/index.ts#L6)*
 
 ___
 <a id="_key_length_suffix"></a>
@@ -56,7 +56,7 @@ ___
 
 **● _KEY_LENGTH_SUFFIX**: *":len"* = ":len"
 
-*Defined in [collections/index.ts:5](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/index.ts#L5)*
+*Defined in [collections/index.ts:5](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/index.ts#L5)*
 
 ___
 <a id="_key_rating_suffix"></a>
@@ -65,7 +65,7 @@ ___
 
 **● _KEY_RATING_SUFFIX**: *":r"* = ":r"
 
-*Defined in [collections/index.ts:9](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/index.ts#L9)*
+*Defined in [collections/index.ts:9](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/index.ts#L9)*
 
 ___
 <a id="_rating_offset"></a>
@@ -74,7 +74,7 @@ ___
 
 **● _RATING_OFFSET**: *`u64`* = 2147483648
 
-*Defined in [collections/index.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/index.ts#L10)*
+*Defined in [collections/index.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/index.ts#L10)*
 
 ___
 

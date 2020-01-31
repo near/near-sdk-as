@@ -10,6 +10,11 @@ A vector class that implements a persistent array.
 
 **PersistentVector**
 
+## Indexable
+
+\[key: `number`\]:&nbsp;`T`
+A vector class that implements a persistent array.
+
 ## Index
 
 ### Constructors
@@ -43,7 +48,7 @@ A vector class that implements a persistent array.
 
 ⊕ **new PersistentVector**(prefix: *`string`*): [PersistentVector](_collections_persistentvector_.persistentvector.md)
 
-*Defined in [collections/persistentVector.ts:10](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L10)*
+*Defined in [collections/persistentVector.ts:12](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L12)*
 
 Creates or restores a persistent vector with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -65,7 +70,7 @@ ___
 
 **get back**(): `T`
 
-*Defined in [collections/persistentVector.ts:158](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L158)*
+*Defined in [collections/persistentVector.ts:160](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L160)*
 
 **Returns:** `T`
 The last element of the vector. Asserts that the vector is not empty.
@@ -77,7 +82,7 @@ ___
 
 **get first**(): `T`
 
-*Defined in [collections/persistentVector.ts:181](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L181)*
+*Defined in [collections/persistentVector.ts:183](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L183)*
 
 **Returns:** `T`
 The first element of the vector. Asserts that the vector is not empty.
@@ -89,7 +94,7 @@ ___
 
 **get front**(): `T`
 
-*Defined in [collections/persistentVector.ts:173](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L173)*
+*Defined in [collections/persistentVector.ts:175](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L175)*
 
 **Returns:** `T`
 The first element of the vector. Asserts that the vector is not empty.
@@ -101,7 +106,7 @@ ___
 
 **get isEmpty**(): `bool`
 
-*Defined in [collections/persistentVector.ts:42](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L42)*
+*Defined in [collections/persistentVector.ts:44](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L44)*
 
 **Returns:** `bool`
 True if the vector is empty.
@@ -113,7 +118,7 @@ ___
 
 **get last**(): `T`
 
-*Defined in [collections/persistentVector.ts:166](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L166)*
+*Defined in [collections/persistentVector.ts:168](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L168)*
 
 **Returns:** `T`
 The last element of the vector. Asserts that the vector is not empty.
@@ -125,7 +130,7 @@ ___
 
 **get length**(): `i32`
 
-*Defined in [collections/persistentVector.ts:49](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L49)*
+*Defined in [collections/persistentVector.ts:51](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L51)*
 
 **Returns:** `i32`
 The length of the vector.
@@ -140,7 +145,7 @@ ___
 
 ▸ **containsIndex**(index: *`i32`*): `bool`
 
-*Defined in [collections/persistentVector.ts:35](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L35)*
+*Defined in [collections/persistentVector.ts:37](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L37)*
 
 **Parameters:**
 
@@ -158,7 +163,7 @@ ___
 
 ▸ **pop**(): `T`
 
-*Defined in [collections/persistentVector.ts:136](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L136)*
+*Defined in [collections/persistentVector.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L138)*
 
 Removes the last element from the vector and returns it. Asserts that the vector is not empty. Decreases the length of the vector.
 
@@ -172,7 +177,7 @@ ___
 
 ▸ **popBack**(): `T`
 
-*Defined in [collections/persistentVector.ts:151](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L151)*
+*Defined in [collections/persistentVector.ts:153](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L153)*
 
 Removes the last element from the vector and returns it. Asserts that the vector is not empty. Decreases the length of the vector.
 
@@ -186,7 +191,7 @@ ___
 
 ▸ **push**(element: *`T`*): `i32`
 
-*Defined in [collections/persistentVector.ts:114](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L114)*
+*Defined in [collections/persistentVector.ts:116](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L116)*
 
 Adds a new element to the end of the vector. Increases the length of the vector.
 
@@ -206,7 +211,7 @@ ___
 
 ▸ **pushBack**(element: *`T`*): `i32`
 
-*Defined in [collections/persistentVector.ts:127](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentVector.ts#L127)*
+*Defined in [collections/persistentVector.ts:129](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentVector.ts#L129)*
 
 Adds a new element to the end of the vector. Increases the length of the vector.
 

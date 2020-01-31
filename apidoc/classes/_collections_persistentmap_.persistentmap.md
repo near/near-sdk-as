@@ -36,7 +36,7 @@ A map class that implements a persistent unordered map. NOTE: The Map doesn't st
 
 ⊕ **new PersistentMap**(prefix: *`string`*): [PersistentMap](_collections_persistentmap_.persistentmap.md)
 
-*Defined in [collections/persistentMap.ts:9](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentMap.ts#L9)*
+*Defined in [collections/persistentMap.ts:9](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentMap.ts#L9)*
 
 Creates or restores a persistent map with a given storage prefix. Always use a unique storage prefix for different collections.
 
@@ -58,7 +58,7 @@ ___
 
 ▸ **contains**(key: *`K`*): `bool`
 
-*Defined in [collections/persistentMap.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentMap.ts#L48)*
+*Defined in [collections/persistentMap.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentMap.ts#L48)*
 
 **Parameters:**
 
@@ -76,7 +76,7 @@ ___
 
 ▸ **delete**(key: *`K`*): `void`
 
-*Defined in [collections/persistentMap.ts:56](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentMap.ts#L56)*
+*Defined in [collections/persistentMap.ts:56](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentMap.ts#L56)*
 
 Removes value and the key from the map.
 
@@ -95,7 +95,7 @@ ___
 
 ▸ **get**(key: *`K`*, defaultValue?: *`V` \| `null`*): `V` \| `null`
 
-*Defined in [collections/persistentMap.ts:65](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentMap.ts#L65)*
+*Defined in [collections/persistentMap.ts:65](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentMap.ts#L65)*
 
 **Parameters:**
 
@@ -114,7 +114,7 @@ ___
 
 ▸ **getSome**(key: *`K`*): `V`
 
-*Defined in [collections/persistentMap.ts:73](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentMap.ts#L73)*
+*Defined in [collections/persistentMap.ts:73](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentMap.ts#L73)*
 
 **Parameters:**
 
@@ -132,7 +132,7 @@ ___
 
 ▸ **set**(key: *`K`*, value: *`V`*): `void`
 
-*Defined in [collections/persistentMap.ts:82](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentMap.ts#L82)*
+*Defined in [collections/persistentMap.ts:82](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentMap.ts#L82)*
 
 Sets the new value for the given key.
 
@@ -152,7 +152,7 @@ ___
 
 ▸ **values**(start: *`K`*, end: *`K`*, limit?: *`i32`*, startInclusive?: *`bool`*): `V`[]
 
-*Defined in [collections/persistentMap.ts:36](https://github.com/nearprotocol/near-runtime-ts/blob/d0fcf87/assembly/collections/persistentMap.ts#L36)*
+*Defined in [collections/persistentMap.ts:36](https://github.com/nearprotocol/near-runtime-ts/blob/6995971/assembly/collections/persistentMap.ts#L36)*
 
 Returns values of the map between the given start key and the end key.
 

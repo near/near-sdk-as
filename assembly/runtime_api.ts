@@ -62,6 +62,12 @@ export declare namespace runtime_api {
   //@ts-ignore
   @external("env", "sha256")
   export function sha256(value_len: u64, value_ptr: u64, register_id: u64) : void;
+  //@ts-ignore
+  @external("env", "keccak256")
+  export function keccak256(value_len: u64, value_ptr: u64, register_id: u64) : void;
+  //@ts-ignore
+  @external("env", "keccak512")
+  export function keccak512(value_len: u64, value_ptr: u64, register_id: u64) : void;
 
   // #####################
   // # Miscellaneous API #

@@ -84,6 +84,20 @@ export namespace math {
     runtime_api.sha256(inp.byteLength, inp.dataStart, 0);
     return util.read_register(0);;
   }
+
+  export function keccak256(inp: Uint8Array): Uint8Array {
+    runtime_api.keccak256(inp.byteLength, inp.dataStart, 0);
+    const hashedBytes = new Uint8Array(runtime_api.register_len(0) as i32);
+    runtime_api.read_register(0, hashedBytes.dataStart);
+    return hashedBytes;
+  }
+
+  export function keccak512(inp: Uint8Array): Uint8Array {
+    runtime_api.keccak512(inp.byteLength, inp.dataStart, 0);
+    const hashedBytes = new Uint8Array(runtime_api.register_len(0) as i32);
+    runtime_api.read_register(0, hashedBytes.dataStart);
+    return hashedBytes;
+  }
   /**
   * Returns a random seed.
   */
