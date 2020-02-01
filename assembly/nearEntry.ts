@@ -423,7 +423,8 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     return u128.fromString(getStr(val, name));
   }
   assert(val instanceof Obj, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not an object or null");
-  value = instantiate<T>();
+  value = changetype<T>(__alloc(offsetof<T>(), idof<T>()));
+
   //@ts-ignore
   return value.decode<Obj>(<Obj>val);
 }
