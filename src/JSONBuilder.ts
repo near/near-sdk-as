@@ -151,21 +151,21 @@ export { __wrapper_${name} as ${name} }`);
         let className = this.typeName(_class);
         str += `
   decode<V = Uint8Array>(buf: V): ${className} {
-    let json: Obj;
+    let json: JSON.Obj;
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof Obj, "argument must be Uint8Array or Json Object");
-      json = <Obj> buf;
+      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
+      json = <JSON.Obj> buf;
     }
     return this._decode(json);
   }
 
-  static decode<V = Uint8Array>(buf: V): ${className} {
-    return decode<${className}>(buf!);
+  static decode(buf: Uint8Array): ${className} {
+    return decode<${className}>(buf);
   }
 
-  private _decode(obj: Obj): ${className} {
+  private _decode(obj: JSON.Obj): ${className} {
     ${createDecodeStatements(_class).join("\n    ")}
     return this;
   }
@@ -214,7 +214,7 @@ function createDecodeStatement(
 ): string {
   let T = toString(field.type!);
   let name = toString(field.name);
-  return `${setterPrefix}decode<${T}, Obj>(obj, "${name}")`;
+  return `${setterPrefix}decode<${T}, JSON.Obj>(obj, "${name}")`;
 }
 
 function createEncodeStatements(_class: ClassDeclaration): string[] {

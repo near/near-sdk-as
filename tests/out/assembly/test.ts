@@ -26,7 +26,7 @@ export function runTest(): void {
   original.uint8array = base64.decode("aGVsbG8sIHdvcmxkIQ==");
   original.u128Val = new u128(128);
   original.arr = [["Hello"], ["World"]];
-  original.uint8arrays = Array.create<Uint8Array>(2);
+  original.uint8arrays = new Array<Uint8Array>(2);
   original.uint8arrays[0] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
   original.uint8arrays[1] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
   original.u64Arr = [10000000000, 100000000000];
@@ -90,28 +90,28 @@ function classAndNull(): FooBar | null {
 }
 function __wrapper_convertFoobars(): void {
   const obj = getInput();
-  let result: Array<ContainerClass> = convertFoobars(decode<Array<FooBar>, Obj>(obj, "foobars"));
+  let result: Array<ContainerClass> = convertFoobars(decode<Array<FooBar>, JSON.Obj>(obj, "foobars"));
   const val = encode<Array<ContainerClass>>(result);
   value_return(val.byteLength, <usize>val.buffer);
 }
 export { __wrapper_convertFoobars as convertFoobars }
 function __wrapper_getStringArrayLength(): void {
   const obj = getInput();
-  let result: i32 = getStringArrayLength(decode<Array<string>, Obj>(obj, "arr"));
+  let result: i32 = getStringArrayLength(decode<Array<string>, JSON.Obj>(obj, "arr"));
   const val = encode<i32>(result);
   value_return(val.byteLength, <usize>val.buffer);
 }
 export { __wrapper_getStringArrayLength as getStringArrayLength }
 function __wrapper_rewrapFoobar(): void {
   const obj = getInput();
-  let result: AnotherContainerClass = rewrapFoobar(decode<ContainerClass, Obj>(obj, "container"));
+  let result: AnotherContainerClass = rewrapFoobar(decode<ContainerClass, JSON.Obj>(obj, "container"));
   const val = encode<AnotherContainerClass>(result);
   value_return(val.byteLength, <usize>val.buffer);
 }
 export { __wrapper_rewrapFoobar as rewrapFoobar }
 function __wrapper_unwrapFoobar(): void {
   const obj = getInput();
-  let result: FooBar = unwrapFoobar(decode<AnotherContainerClass, Obj>(obj, "container"));
+  let result: FooBar = unwrapFoobar(decode<AnotherContainerClass, JSON.Obj>(obj, "container"));
   const val = encode<FooBar>(result);
   value_return(val.byteLength, <usize>val.buffer);
 }
@@ -124,7 +124,7 @@ function __wrapper_stringOrNull(): void {
 export { __wrapper_stringOrNull as stringOrNull }
 function __wrapper_stringAliasTest(): void {
   const obj = getInput();
-  let result: StringAlias = stringAliasTest(decode<StringAlias, Obj>(obj, "str"));
+  let result: StringAlias = stringAliasTest(decode<StringAlias, JSON.Obj>(obj, "str"));
   const val = encode<StringAlias>(result);
   value_return(val.byteLength, <usize>val.buffer);
 }

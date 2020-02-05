@@ -19,7 +19,7 @@ export function runTest(): void {
     original.uint8array = base64.decode("aGVsbG8sIHdvcmxkIQ==");
     original.u128Val = new u128(128);
     original.arr = [["Hello"], ["World"]];
-    original.uint8arrays = Array.create<Uint8Array>(2);
+    original.uint8arrays = new Array<Uint8Array>(2);
     original.uint8arrays[0] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
     original.uint8arrays[1] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
     original.u64Arr =  [10000000000, 100000000000];

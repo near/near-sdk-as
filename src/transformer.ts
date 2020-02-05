@@ -44,10 +44,8 @@ class JSONTransformer extends Transform {
     });
 
     // Add needed entry file if bundled with webpack so it doesn't have to be passed in later
-    if (BUNDLE) {
-      const libSource = BUNDLE["nearEntry"];
-      this.parser.parseFile(libSource, "nearFile", true);
-    }
+    //@ts-ignore __dirname exists
+    this.parser.parseFile('import "near-bindgen-as"', "nearFile", true);
     if (!JSONTransformer.isTest){
       TypeChecker.check(parser);
     }

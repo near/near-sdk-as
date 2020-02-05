@@ -1,6 +1,6 @@
 const DEFAULT_ARGS = [
   "--baseDir", process.cwd(),
-  "--runtime", "stub",
+  "--runtime", "none",
   // On CLI this file is in the same directory as the transformer.
   "--transform", "near-bindgen-as"
 ]
@@ -84,7 +84,8 @@ module.exports.compile  = function (inputFile, outputFile, args, options, callba
   const asc = getAsc(options)
   if (args == undefined) {
     callback = () => {};
-  } else if (typeof args === "function") {
+  } 
+  if (typeof args === "function") {
     callback = args;
     args = [];
     options = null
