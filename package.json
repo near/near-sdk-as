@@ -4,9 +4,9 @@
   "description": "Bindings for serializing contract functions.",
   "main": "index.js",
   "scripts": {
-    "test": "cd tests && yarn add ../ --no-lockfile && yarn test",
+    "test": "cd tests && yarn add ../ --no-lockfile && yarn test:ci",
     "build": "webpack",
-    "test:ci": "yarn run build && yarn run test"
+    "test:ci": "yarn build && yarn test"
   },
   "bin": {
     "near-asc": "./bin/near-asc"

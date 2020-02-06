@@ -1,5 +1,5 @@
 
-//@nearfile out
+// @nearfile out
 
 import {u128} from "bignum";
 

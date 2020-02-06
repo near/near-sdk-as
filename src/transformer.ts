@@ -20,9 +20,7 @@ class JSONTransformer extends Transform {
     JSONTransformer.isTest = files.map(source => source.normalizedPath).some(path => path.includes("spec"));
     // Visit each file
     files.forEach(source => {
-      let writeOut = source.text
-        .substr(0, source.text.indexOf("\n"))
-        .includes("out");
+      let writeOut = /\/\/.*@nearfile .*out/.test(source.text);
       // Remove from logs in parser
       parser.donelog.delete(source.internalPath);
       parser.seenlog.delete(source.internalPath);

@@ -172,7 +172,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
       assert(val instanceof JSON.Str, "Value with Key: " +  name + " with type " + nameof<T>()  + " is an 64-bit integer and is expected to be encoded as a string");
       let str = (<JSON.Str>val)._str;
       //@ts-ignore
-      return <T>(val instanceof u64) ? U64.parseInt(str) : I64.parseInt(str);
+      return <T>(isSigned<T>() ? I64.parseInt(str) : U64.parseInt(str));
     }
     assert(val instanceof JSON.Num, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not an Integer");
     //@ts-ignore

@@ -5,9 +5,11 @@
   "main": "test.js",
   "scripts": {
     "build": "../node_modules/.bin/asc assembly/test.ts --transform ../src/index.ts --validate --runtime none --binaryFile out/test.wasm --textFile out/test.wat --runPasses inlining-optimizing,dce --debug",
-    "test": "npm run build:asconfig && npm run build && npm run test:wasm",
+    "test": "yarn build && yarn test:wasm",
+    "test:ci": "yarn test:asconfig && yarn test",
     "test:wasm": "node --experimental-wasm-bigint ./test.js",
-    "build:asconfig": "node asconfig.js"
+    "build:asconfig": "node asconfig.js",
+    "test:asconfig": "yarn build:asconfig && yarn test:wasm"
   },
   "dependencies": {
     "near-bindgen-as": "../"

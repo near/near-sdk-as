@@ -203,7 +203,7 @@ function createDecodeStatements(_class: ClassDeclaration): string[] {
       const name = toString(field.name);
       return (
         createDecodeStatement(field, `this.${name} = obj.has("${name}") ? `) +
-        `: this.${name};`
+        `: ${field.initializer != null ? ASTBuilder.build(field.initializer) : `this.${name}`};`
       );
     });
 }
