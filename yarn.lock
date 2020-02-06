@@ -252,7 +252,7 @@ assemblyscript-json@^0.3.0:
   resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-0.3.0.tgz#f44e4001ecf8db5816bf74d2ef34868ec80e2867"
   integrity sha512-CW05xrcMQ2mQUXj84Nq8KESyMHn5x+Z4NUwRQveUhWpWwPu7zp8oLNMLb5lKJ8CgRXmE8lxYSfe3/867sN+qRA==
 
-assemblyscript@^0.8.1:
+assemblyscript@0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.8.1.tgz#c5c627492406e6d87f426897b3d92bd2a533f7fe"
   integrity sha512-AEpb4Aq5g77XOxSvWn9ZFjIdfyypGavO5oKOAXUo22tnSpebGHdrx0iyVindGKkDlxWhHUc87B0fvM/w1fnpDg==

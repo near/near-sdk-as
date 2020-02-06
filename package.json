@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/nearprotocol/near-bindgen#readme",
   "devDependencies": {
-    "assemblyscript": "^0.8.1",
     "assemblyscript-json": "^0.3.0",
     "near-runtime-ts": "^0.5.1",
     "ts-loader": "^6.2.0",
@@ -42,5 +41,8 @@
     "index.js",
     "assembly/index.ts",
     "compiler.js"
-  ]
+  ],
+  "peerDependencies": {
+    "assemblyscript": "0.8.1"
+  }
 }
