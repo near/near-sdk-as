@@ -44,6 +44,7 @@
     "compiler.js"
   ],
   "peerDependencies": {
-    "assemblyscript": "0.8.1"
+    "assemblyscript": "0.8.1",
+    "assemblyscript-json": "^0.3.0"
   }
 }
