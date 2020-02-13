@@ -1,5 +1,5 @@
 //@nearfile
-import { logging, base64, util } from 'near-runtime-ts';
+import {  base64, util } from 'near-runtime-ts';
 
 
 function testBase64(original: string, expectedEncoding: string): void {
@@ -40,7 +40,6 @@ describe('base64 encoding/decoding', (): void => {
 describe("calling exports internally",() => {
     it("should not call the wrapper function ", () => {
         expect<string>(simple("hello")).toStrictEqual("hello world");
-        logging.log(simple("hello"));
     })
 })
 
