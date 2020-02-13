@@ -7,10 +7,11 @@
     "build": "node asconfig.js"
   },
   "dependencies": {
-    "@as-pect/cli": "^2.6.0",
+    "@as-pect/cli": "^2.8.0",
     "assemblyscript": "^0.8.0",
     "near-bindgen-as": "^1.1.2",
     "near-hello": "nearprotocol/near-hello",
-    "near-runtime-ts": "../"
+    "near-runtime-ts": "../",
+    "wasm-mock-vm": "^1.0.1"
   }
 }
