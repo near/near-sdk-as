@@ -2,8 +2,9 @@
   "scripts": {
     "build:hello": "near-asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
     "pretest": "yarn build && ./build-near-vm-runner-standalone.sh",
-    "test": "yarn build:hello && yarn asp",
-    "asp": "node --experimental-wasm-bigint ./node_modules/.bin/asp --compiler ./node_modules/assemblyscript",
+    "test": "yarn build:hello && yarn asp:ci",
+    "asp:ci": "asp",
+    "asp": "yarn asp:ci --verbose",
     "build": "node asconfig.js"
   },
   "dependencies": {
@@ -12,6 +13,6 @@
     "near-bindgen-as": "^1.1.2",
     "near-hello": "nearprotocol/near-hello",
     "near-runtime-ts": "../",
-    "wasm-mock-vm": "^1.0.1"
+    "wasm-mock-vm": "^1.1.0"
   }
 }

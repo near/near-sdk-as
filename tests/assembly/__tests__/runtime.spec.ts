@@ -1,7 +1,7 @@
 import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, PersistentTopN, ContractPromise, math } from "near-runtime-ts";
 import { TextMessage } from "../model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "../util";
-import { saveState, restoreState, setCurrent_account_id } from "wasm-mock-vm";
+import { VM, Context } from "wasm-mock-vm";
 
 // export function hello(): string {
 //   const s = simple("a"); // Test that we can call other export functions
@@ -30,19 +30,19 @@ describe("Encodings", () => {
 describe("Storage", (): void => {
 
   beforeAll( () => {
-    saveState();
+    VM.saveState();
   });
 
   afterAll( () => {
-    restoreState();
+    VM.restoreState();
   });
 
   beforeEach(() => {
-    saveState();
+    VM.saveState();
   });
 
   afterEach(() => {
-    restoreState();
+    VM.restoreState();
   });
 
   it("String Roundtrip", () => {
@@ -412,7 +412,7 @@ describe("TopN", () => {
 
 export function contextTests(): void {
   expect(context.sender).toBe("bob", "Wrong sender");
-  setCurrent_account_id("contractaccount");
+  Context.setCurrent_account_id("contractaccount");
   expect(context.contractName).toBe("contractaccount", "Wrong contract name");
   // expect(context.blockIndex).toBe(113, "Wrong contract name");
   // expect(context.attachedDeposit).toBe(u128.fromU64(7), "Wrong receivedAmount");
