@@ -9,7 +9,7 @@
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",
   "scripts": {
-    "test": "cd tests/ && yarn && yarn test && ./test.sh",
+    "test": "cd tests/ && yarn --no-lockfile && yarn add nearprotocol/near-hello && yarn test && ./test.sh",
     "doc": "rm -rf apidoc && mkdir apidoc && node_modules/.bin/typedoc assembly/*.ts assembly/collections/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/"
   },
   "author": "",
