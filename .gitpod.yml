@@ -1,4 +1,4 @@
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - init: nvm install v12.0.0 && nvm use --default v12.0.0 && npm install -g yarn # runs during prebuild
-    command: yarn && (cd tests; yarn install --no-lockfile && yarn add nearprotocol/near-hello && yarn asp)
+    command: yarn && (cd tests; yarn install --no-lockfile && yarn add nearprotocol/near-hello && rm -rf node_modules/assemblyscript-json && yarn asp)
