@@ -1,6 +1,6 @@
 {
   "name": "near-runtime-ts",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Near smart contract runtime library for typescript",
   "repository": {
     "type": "git",
