@@ -39,7 +39,7 @@
     "webpack-cli": "^3.3.9"
   },
   "files": [
-    "./bin/near-asc",
+    "bin/near-asc",
     "index.js",
     "assembly/index.ts",
     "compiler.js"
