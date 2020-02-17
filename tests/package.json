@@ -8,7 +8,7 @@
     "build": "node asconfig.js"
   },
   "dependencies": {
-    "@as-pect/cli": "^2.8.0",
+    "near-hello": "nearprotocol/near-hello",
     "assemblyscript": "^0.8.0",
     "near-bindgen-as": "^1.1.2",
     "near-runtime-ts": "../",
