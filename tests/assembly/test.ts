@@ -1,11 +1,20 @@
 //out
+/// <reference types="near-runtime-ts/assembly/as_types" />
 import * as main from "./main";
 import { base64, logging } from "near-runtime-ts";
 import { FooBar, Nullables, ContainerClass, AnotherContainerClass } from './model';
 import { u128 } from "bignum";
 
+
 function roundtrip<T>(obj: T): T {
     return decode<T>(encode<T>(obj));
+}
+
+function isNull<T>(t: T): bool {
+    if (isNullable<T>() || isReference<T>()) {
+        return changetype<usize>(t) == 0;
+    }
+    return false;
 }
 
 export function runTest(): void {
@@ -41,11 +50,12 @@ export function runTest(): void {
     assert(original.u64_zero == decoded.u64_zero);
 
     const nullable = new Nullables();
+    logging.log(String.UTF8.decode(nullable.encode().buffer));
     //@ts-ignore
     const nullable2 = decode<Nullables>(nullable.encode());
     assert(nullable2.str == null);
-    assert(nullable2.u128 == <u128> null);
-    assert(nullable2.uint8Array == null);
+    logging.log(isNull(nullable2.u128).toString());
+    assert(isNull(nullable2.uint8Array), "expected nullable2.uint8Array to be null");
 
     const foobar2 = new FooBar();
     foobar2.arr  = [];

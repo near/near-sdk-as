@@ -6,10 +6,6 @@ class JSONTransformer extends Transform {
   parser: Parser;
   static isTest: boolean = false;
 
-  get program(): Program {
-    return this.parser.program;
-  }
-
   afterParse(parser: Parser): void {
     this.parser = parser;
     const writeFile = this.writeFile;

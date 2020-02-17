@@ -556,6 +556,33 @@ export class ASTBuilder {
     sb.push(")");
   }
 
+  private visitArguments(typeArguments: TypeNode[] | null, args: Expression[]): void {
+    var sb = this.sb;
+    if (typeArguments) {
+      let numTypeArguments = typeArguments.length;
+      if (numTypeArguments) {
+        sb.push("<");
+        this.visitTypeNode(typeArguments[0]);
+        for (let i = 1; i < numTypeArguments; ++i) {
+          sb.push(", ");
+          this.visitTypeNode(typeArguments[i]);
+        }
+        sb.push(">(");
+      }
+    } else {
+      sb.push("(");
+    }
+    var numArgs = args.length;
+    if (numArgs) {
+      this.visitNode(args[0]);
+      for (let i = 1; i < numArgs; ++i) {
+        sb.push(", ");
+        this.visitNode(args[i]);
+      }
+    }
+    sb.push(")");
+  }
+
   visitClassExpression(node: ClassExpression): void {
     var declaration = node.declaration;
     this.visitClassDeclaration(declaration);
@@ -741,7 +768,8 @@ export class ASTBuilder {
 
   visitNewExpression(node: NewExpression): void {
     this.sb.push("new ");
-    this.visitCallExpression(node);
+    this.visitTypeName(node.typeName);
+    this.visitArguments(node.typeArguments, node.arguments);  
   }
 
   visitParenthesizedExpression(node: ParenthesizedExpression): void {

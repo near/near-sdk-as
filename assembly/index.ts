@@ -52,7 +52,7 @@ function getInput(): JSON.Obj {
   }
   let json = new Uint8Array(json_len as u32);
   //@ts-ignore
-  read_register(0, <usize>json.buffer);
+  read_register(0, json.dataStart);
   return <JSON.Obj> JSON.parse(json);
 }
 
@@ -71,14 +71,18 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
     //@ts-ignore
       encoder.setInteger(name, value);
     }
-    //@ts-ignore
-  } else if (value == <T>null) {
-    encoder.setNull(name);
   } else if (isString<T>()) {
-    //@ts-ignore
-    encoder.setString(name, value);
+    if (changetype<usize>(value) == 0) {
+      encoder.setNull(name);
+    } else {
+      //@ts-ignore
+      encoder.setString(name, value);
+    }
   } else if (isReference<T>()) {
-    if (isArrayLike<T>(value)) {
+    //@ts-ignore
+     if (changetype<usize>(value) == 0) {
+       encoder.setNull(name);
+     } else if (isArrayLike<T>(value)) {
       if (value instanceof Uint8Array) {
         //@ts-ignore
         encoder.setString(name, base64.encode(<Uint8Array> value));
@@ -144,21 +148,20 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     const obj: JSON.Obj = <JSON.Obj>buffer;
     let res = obj.get(name);
     if (res == null) {
-      //@ts-ignore
-      return <T>null;
+      if (isReallyNullable<T>() && !isInteger<T>()){
+        if (isInteger<T>()){
+          throw new Error("type " + nameof<T>() + " cannot be null.");
+        } else {
+          //@ts-ignore
+          return <T>null
+        }
+      } else {
+        throw new Error("type " + nameof<T>() + " cannot be null.");
+      }
     }
     val = res;
   }else {
     val = <JSON.Value> buffer;
-  }
-  if (val instanceof JSON.Null) {
-    assert(isReallyNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable.");
-    //@ts-ignore
-    return <T>null;
-  }
-  if (isString<T>()) {
-    //@ts-ignore
-    return getStr(val, name);
   }
   if (isBoolean<T>()) {
     assert(val instanceof JSON.Bool, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not a string");
@@ -177,6 +180,15 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     assert(val instanceof JSON.Num, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not an Integer");
     //@ts-ignore
     return <T>(<JSON.Num>val)._num;
+  }
+  if (val instanceof JSON.Null) {
+    assert(isReallyNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable.");
+    //@ts-ignore
+    return changetype<T>(<usize>0);
+  }
+  if (isString<T>()) {
+    //@ts-ignore
+    return getStr(val, name);
   }
   assert(isReference<T>(), name + " with type " + nameof<T>() + " must be an integer, boolean, string, object, or array");
   if (isArrayLike<T>()) {

@@ -433,7 +433,6 @@ export class BaseVisitor extends AbstractVisitor<Node> {
   visitRegexpLiteralExpression(node: RegexpLiteralExpression): void {}
 
   visitNewExpression(node: NewExpression): void {
-    this.visit(node.expression);
     this.visit(node.typeArguments);
     this.visit(node.arguments);
   }

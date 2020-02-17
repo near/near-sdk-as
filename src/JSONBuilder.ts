@@ -10,7 +10,7 @@ import {
   Parser,
   CommonFlags,
   FieldDeclaration,
-  ParameterNode
+  ParameterNode,
 } from "./ast";
 import { ASTBuilder } from "./ASTBuilder";
 import { BaseVisitor } from "./base";
@@ -97,7 +97,7 @@ export class JSONBindingsBuilder extends BaseVisitor {
       .filter(name => name !== "null")
       .join("|");
     let hasNull = toString(returnType).includes("null");
-    let name = func.name.symbol;
+    let name = func.name.text;
 
     this.sb.push(`function __wrapper_${name}(): void {`);
     if (params.length > 0) {
@@ -116,7 +116,7 @@ export class JSONBindingsBuilder extends BaseVisitor {
     this.sb[this.sb.length - 1] += ");";
     if (toString(returnType) !== "void") {
       this.sb.push(`  const val = encode<${returnTypeName}>(${hasNull ? `changetype<${returnTypeName}>(result)` : "result"});
-  value_return(val.byteLength, <usize>val.buffer);`);
+  value_return(val.byteLength, val.dataStart);`);
     }
     this.sb.push(`}
 export { __wrapper_${name} as ${name} }`);
