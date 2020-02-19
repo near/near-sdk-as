@@ -6,6 +6,15 @@ import { u128 } from "bignum";
 // Runtime functions
 // tslint:disable: no-unsafe-any
 
+//@ts-ignore
+@global
+function isNull<T>(t: T): bool {
+  if (isNullable<T>() || isReference<T>()) {
+      return changetype<usize>(t) == 0;
+  }
+  return false;
+}
+
 @global
 class JSONEncoder extends _JSONEncoder {
   encode<T>(name: string, val: T): void {
@@ -72,7 +81,7 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
       encoder.setInteger(name, value);
     }
   } else if (isString<T>()) {
-    if (changetype<usize>(value) == 0) {
+    if (isNull<T>(value)) {
       encoder.setNull(name);
     } else {
       //@ts-ignore
@@ -80,7 +89,7 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
     }
   } else if (isReference<T>()) {
     //@ts-ignore
-     if (changetype<usize>(value) == 0) {
+     if (isNull<T>(value)) {
        encoder.setNull(name);
      } else if (isArrayLike<T>(value)) {
       if (value instanceof Uint8Array) {
