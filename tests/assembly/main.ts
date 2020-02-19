@@ -1,6 +1,6 @@
 //@nearfile out
 // These imports need to be copied properly
-import { storage, context, ContractPromise, logging, util } from "near-runtime-ts";
+import { storage, context, ContractPromise, logging } from "near-runtime-ts";
 import { FooBar, ContainerClass, AnotherContainerClass } from "./model";
 import { PromiseArgs, MyCallbackResult, MyContractPromiseResult } from "./model";
 
@@ -38,7 +38,7 @@ export function callbackWithName(args: PromiseArgs): MyCallbackResult {
     let allRes = new Array<MyContractPromiseResult>(contractResults.length);
     for (let i = 0; i < contractResults.length; ++i) {
         allRes[i] = new MyContractPromiseResult();
-        allRes[i].ok = contractResults[i].success;
+        allRes[i].ok = contractResults[i].status != 0;
         if (allRes[i].ok && contractResults[i].buffer != null && contractResults[i].buffer!.length > 0) {
             allRes[i].r = MyCallbackResult.decode(contractResults[i].buffer!);
         }

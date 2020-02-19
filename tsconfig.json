@@ -12,10 +12,11 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noEmitOnError": true,
+    "allowJs": true,
     "strictNullChecks": true,
     "experimentalDecorators": true,
     "typeRoots": ["./node_modules/assemblyscript/std/types"],
     "types": ["portable" ]
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*"]
 }

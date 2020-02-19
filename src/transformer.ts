@@ -1,4 +1,4 @@
-import { Transform, Parser, Program, Source, Module } from "./ast";
+import { Transform, Parser, Source, Module } from "./ast";
 import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
 
@@ -37,20 +37,19 @@ class JSONTransformer extends Transform {
       );
     });
 
-    // Add needed entry file if bundled with webpack so it doesn't have to be passed in later
     //@ts-ignore __dirname exists
     this.parser.parseFile('import "near-bindgen-as"', "nearFile", true);
-    if (!JSONTransformer.isTest){
+    if (!JSONTransformer.isTest) {
       TypeChecker.check(parser);
     }
   }
   
   /** Check for floats */
   afterCompile(module: Module): void {
-    if (!JSONTransformer.isTest){
+    if (!JSONTransformer.isTest) {
       TypeChecker.checkBinary(module);
     }
   }
 }
 
-export {JSONTransformer};
+export { JSONTransformer };

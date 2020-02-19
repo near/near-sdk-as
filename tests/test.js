@@ -1,4 +1,5 @@
-
+const v8 = require('v8');
+v8.setFlagsFromString('--experimental-wasm-bigint');
 const fs = require('fs');
 const assert = require('assert');
 let asc = require("assemblyscript/cli/asc");

@@ -74,7 +74,7 @@ import {
   Statement,
   VoidStatement,
   CommentNode
-} from "assemblyscript";
+} from "./ast";
 
 import { AbstractVisitor } from "./visitor";
 

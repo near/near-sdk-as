@@ -1,9 +1,14 @@
+let semver = require("semver");
+let path = require("path");
+
 const DEFAULT_ARGS = [
   "--baseDir", process.cwd(),
   "--runtime", "none",
   // On CLI this file is in the same directory as the transformer.
   "--transform", "near-bindgen-as"
 ]
+
+const requiredRange = require(path.join(__dirname, "package.json")).peerDependencies["assemblyscript"];
 
 // reference to asc cli api
 var asc;
@@ -23,13 +28,11 @@ function getAsc(config) {
   } 
 
   // Check asc version
-  const mainVersion = parseInt(asc.version.replace(/(\d+)\.\d+\.\d+/, "$1"));
-  if (mainVersion == 0) {
-    const version = parseInt(asc.version.replace(/\d+\.(\d+)\.\d+/, "$1"));
-    if (version < 8) {
-      throw Error("Requires a version of AssemblyScript greater than 0.8.0");
-    }
+  if (semver.ltr(asc.version, requiredRange) ) {
+    throw Error("The current version of AssemblyScript is " + asc.version + 
+                " which must be " + semver.validRange(requiredRange));
   }
+  
   // Wrap the main function to automatically inject options.
   asc.main = (main => (args, options, fn) => {
     if (typeof options === "function") {
@@ -40,7 +43,7 @@ function getAsc(config) {
     const cliArgs = [...DEFAULT_ARGS, ...args];
 
     if (config && config.verbose){
-      console.log("Cli arguments passed to asc:\n"+ cliArgs.join(" "))
+      console.log("Cli arguments passed to asc:\n" + cliArgs.join(" "))
     }
     const logLn = process.browser ? window.logLn : console.log;
     
@@ -75,12 +78,12 @@ function getAsc(config) {
   return asc;
 }
 
-Object.defineProperty(module.exports, "asc", {get: () => getAsc()});
+Object.defineProperty(module.exports, "asc", { get: () => getAsc() });
 
 /** Convience function for scripts such as gulp to use. 
  * Adding {verbose: true}, to the options will print out the cli arguments passed to asc.
 */
-module.exports.compile  = function (inputFile, outputFile, args, options, callback){
+module.exports.compile  = function (inputFile, outputFile, args, options, callback) {
   const asc = getAsc(options)
   if (args == undefined) {
     callback = () => {};

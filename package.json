@@ -2,10 +2,10 @@
   "name": "near-bindgen-as",
   "version": "1.2.3",
   "description": "Bindings for serializing contract functions.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "cd tests && yarn add ../ --no-lockfile && yarn test:ci",
-    "build": "webpack",
+    "build": "tsc",
     "test:ci": "yarn build && yarn test"
   },
   "bin": {
@@ -32,20 +32,21 @@
     "assemblyscript": "^0.9.2",
     "assemblyscript-json": "^0.3.0",
     "near-runtime-ts": "^0.5.1",
-    "ts-loader": "^6.2.0",
     "ts-node": "^8.6.2",
-    "typescript": "^3.6.4",
-    "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9"
+    "typescript": "^3.6.4"
   },
   "files": [
     "bin/near-asc",
     "index.js",
     "assembly/index.ts",
-    "compiler.js"
+    "compiler.js",
+    "dist/"
   ],
   "peerDependencies": {
     "assemblyscript": "^0.9.2",
     "assemblyscript-json": "^0.3.0"
+  },
+  "dependencies": {
+    "semver": "^7.1.3"
   }
 }
