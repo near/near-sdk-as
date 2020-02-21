@@ -56,7 +56,6 @@ export class Storage {
   * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
   */
   getString(key: string): string | null {
-    //@ts-ignore: Compiler says this is never null TODO
     return util.bytesToString(this._internalReadBytes(key));
   }
 
@@ -175,11 +174,9 @@ export class Storage {
       assert(false, "Key '" + key + "' is not present in the storage");
     }
     if (isString<T>() || isInteger<T>()) {
-      //@ts-ignore won't be null
-      return util.parseFromString<T>(this.getString(key));
+      return util.parseFromString<T>(this.getString(key)!);
     } else {
-      //@ts-ignore won't be null
-      return util.parseFromBytes<T>(this.getBytes(key));
+      return util.parseFromBytes<T>(this.getBytes(key)!);
     }
   }
 
@@ -204,7 +201,7 @@ export class Storage {
       let key_data = util.read_register(0);
       if (key_data != null) {
         //@ts-ignore: Compiler says this is never null TODO
-        result.push(util.bytesToString(key_data));
+        result.push(util.bytesToString(key_data)!);
       }
     }
     return result;

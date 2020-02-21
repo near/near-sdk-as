@@ -27,6 +27,12 @@ describe("Encodings", () => {
 // export function logTest(): void {
 // }
 
+describe("logging", () => {
+  it("should handle simple objects", () => {
+    log(_testTextMessage().toJSON());
+  });
+});
+
 describe("Storage", (): void => {
 
   beforeAll( () => {
@@ -80,7 +86,7 @@ describe("Storage", (): void => {
   
     storage.set<TextMessage>("message2", new TextMessage());
     // TODO: fix this
-    //expect(_modelObjectEqual(storage.get<TextMessage>("message2"), new TextMessage())).toBe(true, "Incorrect empty message on storage roundtrip");
+    expect(storage.get<TextMessage>("message2")).toStrictEqual(new TextMessage(), "Incorrect empty message on storage roundtrip");
   
     storage.set<u64>("u64key", 20);
     expect(storage.getPrimitive<u64>("u64key", 0)).toBe(20, "Incorrect data value for u64 roundtrip");
@@ -108,7 +114,6 @@ describe("Storage", (): void => {
     storage.delete("someKey");
     // empty storage
     const emptyKeys = storage.keys("someKey");
-    if (emptyKeys.length == 1) log(emptyKeys[0]);
     expect(emptyKeys.length).toBe(0, "Incorrect keys contents for empty storage");
   
     // // add some keys
@@ -118,7 +123,6 @@ describe("Storage", (): void => {
     storage.setString("someKey6", "myValue2");
   
     const keyRange = storage.keyRange("someKey", "someKey3");
-    keyRange.map<string>(v => { log(v); return v });
     expect(keyRange.length).toBe(2, "Incorrect keys length");
     expect(keyRange[0]).toBe("someKey", "Incorrect keys contents");
     expect(keyRange[1]).toBe("someKey2", "Incorrect keys contents");
@@ -175,24 +179,24 @@ describe("Map should handle", () => {
     expect(map.contains("mapKey1")).toBe(true);
     const values = map.values("mapKey1", "zzz");
     expect(values.length).toBe(2, "Unexpected values size in map with 2 entries");
-    expect(_modelObjectEqual(values[0], message)).toBe(true, "Unexpected values contents in map with 2 entries");
-    expect(_modelObjectEqual(values[1], _testTextMessageTwo())).toBe(true, "Unexpected values contents in map with 2 entries");
+    expect(values[0]).toStrictEqual(message, "Unexpected values contents in map with 2 entries");
+    expect(values[1]).toStrictEqual(_testTextMessageTwo(), "Unexpected values contents in map with 2 entries");
     expect(map.values("mapKey3", "zzz").length).toBe(1, "Unexpected values size in map with 2 entries");
     expect(map.values("mapKey1", "mapKey2").length).toBe(1, "Unexpected values size in map with 2 entries");
     expect(map.values("mapKey1", "mapKey4", -1, false).length).toBe(1, "Unexpected values size in map with 2 entries");
     expect(!map.contains("nonexistentkey")).toBe(true, "Map contains a non existent key");
     expect(map.contains("mapKey1")).toBe(true, "Map does not contain a key that was added (mapKey1)");
     expect(map.contains("mapKey3")).toBe(true, "Map does not contain a key that was added (mapKey3)");
-    expect(_modelObjectEqual(map.get("mapKey1"), message)).toBe(true, "Incorrect result from map get");
-    expect(_modelObjectEqual(map.get("mapKey3"), _testTextMessageTwo())).toBe(true, "Incorrect result from map get");
+    expect(map.get("mapKey1")).toStrictEqual(message, "Incorrect result from map get");
+    expect(map.get("mapKey3")).toStrictEqual(_testTextMessageTwo(), "Incorrect result from map get");
     // delete an entry and retry api calls
     map.delete("mapKey3");
     expect(map.values("", "zzz").length).toBe(1, "Unexpected values size in map after delete");
-    expect(_modelObjectEqual(map.values("", "zzz")[0], message)).toBe(true, "Unexpected values contents in map after delete");
+    expect(map.values("", "zzz")[0]).toStrictEqual(message, "Unexpected values contents in map after delete");
     expect(map.values("mapKey1", "zzz").length).toBe(1, "Unexpected values size in map after delete");
     expect(!map.contains("mapKey3")).toBe(true, "Map contains a key that was deleted");
     expect(map.contains("mapKey1")).toBe(true, "Map does not contain a key that should be there after deletion of another key");
-    expect(_modelObjectEqual(map.get("mapKey1"), message)).toBe(true, "Incorrect result from map get after delete");
+    expect(map.get("mapKey1")).toStrictEqual(message, "Incorrect result from map get after delete");
     expect(map.get("mapKey3")).toBe(null, "Incorrect result from map get on a deleted key");
   });
 
@@ -218,8 +222,8 @@ describe("Vectors", () => {
   //TODO: Improve tests
   it("should work", () => {
     const vector = new PersistentVector<string>("vector1");
-    expect(vector != null).toBe(true, "Vector not initialized");
-    expect(vector.length).toBe(0, "Empty vector has incorrect length");
+    expect<PersistentVector<string> | null>(vector).not.toBeNull("Vector not initialized");
+    expect(vector).toHaveLength(0, "Empty vector has incorrect length");
     expect(!vector.containsIndex(0)).toBe(true, "Empty vector incorrectly has index 0");
     expect(vector.isEmpty).toBe(true, "isEmpty incorrect on empty vector");
     //try { expect(vector[0]).toBe(null, "");} catch (e) {} not possible to test due to lack of try catch
@@ -237,7 +241,7 @@ describe("Vectors", () => {
     expect(_vectorHasContents(vector, ["bb"])).toBe(true, "Unexpected vector contents. Expected [bb]");
 
     vector.pushBack("bc");
-    expect(vector.length).toBe(2, "Vector has incorrect length");
+    expect(vector).toHaveLength(2, "Vector has incorrect length");
     expect(vector.containsIndex(0)).toBe(true, "Non empty vector does not have index 0");
     expect(vector.containsIndex(1)).toBe(true, "Vector size 2 does not have index 1");
     expect(!vector.containsIndex(2)).toBe(true, "Vector size 2 incorrectly has index 2");

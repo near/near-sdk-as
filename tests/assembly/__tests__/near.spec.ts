@@ -7,7 +7,7 @@ function testBase64(original: string, expectedEncoding: string): void {
     let encoded = base64.encode(bytes);
     expect<string>(encoded).toBe(expectedEncoding);
     let decoded = base64.decode(encoded);
-    expect<string>(util.bytesToString(decoded)).toBe(original);
+    expect<string>(util.bytesToString(decoded)!).toBe(original);
 }
 
 describe('utils', (): void => {

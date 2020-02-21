@@ -1,6 +1,5 @@
 import { runtime_api } from './runtime_api';
 import { util } from "./util";
-import { logging } from "./logging";
 import { storage } from "./storage";
 
 export namespace math {

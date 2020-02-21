@@ -16,4 +16,9 @@ declare function encode<T, K = Uint8Array>(item: T, name?: string): K;
 declare interface Object {
   encode(): Uint8Array;
   decode<T, K = Uint8Array>(bytes : K): T;
+  toJSON(): string;
+  serialize(): Uint8Array;
 }
+
+declare function isNull<T>(t: T): bool;
+

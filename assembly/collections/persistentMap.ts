@@ -38,7 +38,7 @@ export class PersistentMap<K, V> {
     let endKey = this._key(end);
     let keys = storage.keyRange(startKey, endKey, limit);
     let startKeyIndex = keys.length > 0 && !startInclusive && keys[0] == startKey ? 1 : 0;
-    return keys.slice(startKeyIndex).map<V>((key: string) => storage.get<V>(key));
+    return keys.slice(startKeyIndex).map<V>((key: string) => storage.get<V>(key)!);
   }
 
   /**

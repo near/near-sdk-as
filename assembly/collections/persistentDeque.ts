@@ -10,6 +10,8 @@ export class PersistentDeque<T> {
   private _backIndexKey: string;
   private _frontIndex: i32;
   private _backIndex: i32;
+
+  [key: number]: T;
   
   /**
   * Creates or restores a persistent deque with a given storage prefix.

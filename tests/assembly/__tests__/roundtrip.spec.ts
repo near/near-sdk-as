@@ -15,6 +15,7 @@ describe("Round Trip", () => {
 
   it("should handle empty Message", () => {
     const message = new TextMessage();
+    log<TextMessage>(message);
     //@ts-ignore
     const messageFromStorage = util.parseFromBytes<TextMessage>(message.serialize());
     expect<string>(messageFromStorage.sender).toStrictEqual(message.sender, "Incorrect data value (sender) for retrieved object");
@@ -30,6 +31,7 @@ describe("Round Trip", () => {
     const u32_2 = util.parseFromBytes<Box<u32>>(u32.serialize());
     expect<u32>(u32.t).toBe(u32_2.t);
   });
+
   it("should handle non-empty arrays", () => {
     const arr: Array<i32> = [42, 84];
     expect<i32[]>(roundtrip<i32[]>(arr)).toStrictEqual(arr);
@@ -43,7 +45,6 @@ describe("Round Trip", () => {
   it("should handle integers", () => {
     expect<i32>(roundtrip<i32>(42)).toBe(42);
     expect<i64>(roundtrip<i64>(42)).toBe(42);
-
   });
   
   it("should handle strings", () => {
@@ -101,6 +102,6 @@ describe("Generic classes",() => {
   it("can use instanceof", () => {
     let genericFoo = new Generic<Foo>(new Foo());
     //@ts-ignore
-    expect<boolean>(genericFoo instanceof Generic<Foo>).toBe(true);
+    expect<boolean>(genericFoo instanceof Generic).toBe(true);
   });
 });
