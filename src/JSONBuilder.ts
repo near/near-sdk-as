@@ -24,7 +24,7 @@ function numOfParameters(node: FunctionDeclaration): number {
 }
 
 function hasNearDecorator(stmt: Source): boolean {
-  return stmt.text.includes("@nearfile") || isEntry(stmt);
+  return (stmt.text.includes("@nearfile") || isEntry(stmt)) && !stmt.text.includes("@notNearfile");
 }
 
 function toString(node: Node): string {

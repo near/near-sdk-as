@@ -1,7 +1,7 @@
 
 import { base64, runtime_api } from "near-runtime-ts";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
-import { u128 } from "bignum";
+import { u128 } from "as-bignum";
 
 // Runtime functions
 // tslint:disable: no-unsafe-any
