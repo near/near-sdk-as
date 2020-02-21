@@ -29,10 +29,8 @@
   },
   "homepage": "https://github.com/nearprotocol/near-bindgen#readme",
   "devDependencies": {
-    "as-bignum": "^0.1.5",
     "assemblyscript": "^0.9.2",
-    "assemblyscript-json": "^0.3.0",
-    "near-runtime-ts": "^0.5.1",
+    "near-runtime-ts": "^0.6.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.6.4"
   },
@@ -44,8 +42,7 @@
     "dist/"
   ],
   "peerDependencies": {
-    "assemblyscript": "^0.9.2",
-    "assemblyscript-json": "^0.3.0"
+    "assemblyscript": "^0.9.2"
   },
   "dependencies": {
     "semver": "^7.1.3"
