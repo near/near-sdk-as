@@ -35,12 +35,12 @@
  (data (i32.const 80) "\n\00\00\00\01\00\00\00\01\00\00\00\n\00\00\00:\00b\00a\00c\00k\00")
  (data (i32.const 112) "\04\00\00\00\01\00\00\00\01\00\00\00\04\00\00\00:\00:\00")
  (data (i32.const 144) "\04\00\00\00\01\00\00\00\01\00\00\00\04\00\00\00:\00r\00")
- (data (i32.const 176) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00")
- (data (i32.const 224) "\02\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00=\00")
- (data (i32.const 256) "\80\00\00\00\01\00\00\00\01\00\00\00\80\00\00\00A\00B\00C\00D\00E\00F\00G\00H\00I\00J\00K\00L\00M\00N\00O\00P\00Q\00R\00S\00T\00U\00V\00W\00X\00Y\00Z\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\000\001\002\003\004\005\006\007\008\009\00+\00/\00")
- (data (i32.const 400) "*\00\00\00\01\00\00\00\01\00\00\00*\00\00\00b\00l\00o\00c\00k\00_\00i\00n\00d\00e\00x\00_\00s\00e\00e\00d\00e\00d\00_\00a\00t\00")
- (data (i32.const 464) "\"\00\00\00\01\00\00\00\01\00\00\00\"\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00k\00e\00y\00")
- (data (i32.const 528) ".\00\00\00\01\00\00\00\01\00\00\00.\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00i\00n\00d\00e\00x\00_\00k\00e\00y\00")
+ (data (i32.const 176) "\02\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00=\00")
+ (data (i32.const 208) "\80\00\00\00\01\00\00\00\01\00\00\00\80\00\00\00A\00B\00C\00D\00E\00F\00G\00H\00I\00J\00K\00L\00M\00N\00O\00P\00Q\00R\00S\00T\00U\00V\00W\00X\00Y\00Z\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\000\001\002\003\004\005\006\007\008\009\00+\00/\00")
+ (data (i32.const 352) "*\00\00\00\01\00\00\00\01\00\00\00*\00\00\00b\00l\00o\00c\00k\00_\00i\00n\00d\00e\00x\00_\00s\00e\00e\00d\00e\00d\00_\00a\00t\00")
+ (data (i32.const 416) "\"\00\00\00\01\00\00\00\01\00\00\00\"\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00k\00e\00y\00")
+ (data (i32.const 480) ".\00\00\00\01\00\00\00\01\00\00\00.\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00i\00n\00d\00e\00x\00_\00k\00e\00y\00")
+ (data (i32.const 544) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00")
  (data (i32.const 592) "\1a\00\00\00\01\00\00\00\01\00\00\00\1a\00\00\00s\00t\00a\00r\00t\00i\00n\00g\00 \00t\00e\00s\00t\00")
  (data (i32.const 640) "\1c\00\00\00\01\00\00\00\01\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h\00")
  (data (i32.const 688) "&\00\00\00\01\00\00\00\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s\00")
@@ -103,7 +103,7 @@
  (data (i32.const 3328) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00i\003\002\00A\00r\00r\00")
  (data (i32.const 3360) "\0e\00\00\00\01\00\00\00\01\00\00\00\0e\00\00\00u\001\002\008\00V\00a\00l\00")
  (data (i32.const 3392) "N\00\00\00\01\00\00\00\01\00\00\00N\00\00\00r\00a\00d\00i\00x\00 \00a\00r\00g\00u\00m\00e\00n\00t\00 \00m\00u\00s\00t\00 \00b\00e\00 \00b\00e\00t\00w\00e\00e\00n\00 \001\000\00 \00o\00r\00 \001\006\00")
- (data (i32.const 3488) "6\00\00\00\01\00\00\00\01\00\00\006\00\00\00~\00l\00i\00b\00/\00b\00i\00g\00n\00u\00m\00/\00i\00n\00t\00e\00g\00e\00r\00/\00u\001\002\008\00.\00t\00s\00")
+ (data (i32.const 3488) "<\00\00\00\01\00\00\00\01\00\00\00<\00\00\00~\00l\00i\00b\00/\00a\00s\00-\00b\00i\00g\00n\00u\00m\00/\00i\00n\00t\00e\00g\00e\00r\00/\00u\001\002\008\00.\00t\00s\00")
  (data (i32.const 3568) "\12\00\00\00\01\00\00\00\01\00\00\00\12\00\00\00u\00n\00d\00e\00f\00i\00n\00e\00d\00")
  (data (i32.const 3616) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00u\00i\00n\00t\008\00a\00r\00r\00a\00y\00s\00")
  (data (i32.const 3664) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00u\006\004\00A\00r\00r\00")
@@ -158,7 +158,7 @@
  (data (i32.const 6304) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00A\00r\00r\00a\00y\00<\00i\003\002\00>\00")
  (data (i32.const 6352) "\08\00\00\00\01\00\00\00\01\00\00\00\08\00\00\00u\001\002\008\00")
  (data (i32.const 6384) "\1a\00\00\00\01\00\00\00\01\00\00\00\1a\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00r\00a\00d\00i\00x\00")
- (data (i32.const 6432) "(\00\00\00\01\00\00\00\01\00\00\00(\00\00\00~\00l\00i\00b\00/\00b\00i\00g\00n\00u\00m\00/\00u\00t\00i\00l\00s\00.\00t\00s\00")
+ (data (i32.const 6432) ".\00\00\00\01\00\00\00\01\00\00\00.\00\00\00~\00l\00i\00b\00/\00a\00s\00-\00b\00i\00g\00n\00u\00m\00/\00u\00t\00i\00l\00s\00.\00t\00s\00")
  (data (i32.const 6496) "K\00\00\00\01\00\00\00\00\00\00\00K\00\00\00\00\01\02\03\04\05\06\07\08\t$$$$$$$\n\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f !\"#$$$$$$\n\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f !\"#")
  (data (i32.const 6592) "\10\00\00\00\01\00\00\00\1d\00\00\00\10\00\00\00p\19\00\00p\19\00\00K\00\00\00K\00\00\00")
  (data (i32.const 6624) "B\00\00\00\01\00\00\00\01\00\00\00B\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00/\00U\00i\00n\00t\008\00A\00r\00r\00a\00y\00>\00")
@@ -196,20 +196,20 @@
  (global $~lib/near-runtime-ts/collections/index/collections._KEY_ELEMENT_SUFFIX i32 (i32.const 128))
  (global $~lib/near-runtime-ts/collections/index/collections._KEY_RATING_SUFFIX i32 (i32.const 160))
  (global $~lib/near-runtime-ts/collections/index/collections._RATING_OFFSET i64 (i64.const 2147483648))
- (global $~lib/bignum/utils/HEX_CHARS i32 (i32.const 192))
- (global $~lib/bignum/globals/__divmod_quot_lo (mut i64) (i64.const 0))
- (global $~lib/bignum/globals/__divmod_quot_hi (mut i64) (i64.const 0))
- (global $~lib/bignum/globals/__divmod_rem (mut i64) (i64.const 0))
- (global $~lib/bignum/globals/__res128_lo (mut i64) (i64.const 0))
- (global $~lib/bignum/globals/__res128_hi (mut i64) (i64.const 0))
- (global $~lib/bignum/globals/__float_u128_lo (mut i64) (i64.const 0))
- (global $~lib/bignum/globals/__float_u128_hi (mut i64) (i64.const 0))
  (global $~lib/near-runtime-ts/contract/context (mut i32) (i32.const 0))
- (global $~lib/near-runtime-ts/base64/base64.PADCHAR i32 (i32.const 240))
- (global $~lib/near-runtime-ts/base64/base64.ALPHA i32 (i32.const 272))
- (global $~lib/near-runtime-ts/math/math._BLOCK_INDEX_SEED_AT_KEY i32 (i32.const 416))
- (global $~lib/near-runtime-ts/math/math._RANDOM_BUFFER_KEY i32 (i32.const 480))
- (global $~lib/near-runtime-ts/math/math._RANDOM_BUFFER_INDEX_KEY i32 (i32.const 544))
+ (global $~lib/near-runtime-ts/base64/base64.PADCHAR i32 (i32.const 192))
+ (global $~lib/near-runtime-ts/base64/base64.ALPHA i32 (i32.const 224))
+ (global $~lib/near-runtime-ts/math/math._BLOCK_INDEX_SEED_AT_KEY i32 (i32.const 368))
+ (global $~lib/near-runtime-ts/math/math._RANDOM_BUFFER_KEY i32 (i32.const 432))
+ (global $~lib/near-runtime-ts/math/math._RANDOM_BUFFER_INDEX_KEY i32 (i32.const 496))
+ (global $~lib/as-bignum/utils/HEX_CHARS i32 (i32.const 560))
+ (global $~lib/as-bignum/globals/__divmod_quot_lo (mut i64) (i64.const 0))
+ (global $~lib/as-bignum/globals/__divmod_quot_hi (mut i64) (i64.const 0))
+ (global $~lib/as-bignum/globals/__divmod_rem (mut i64) (i64.const 0))
+ (global $~lib/as-bignum/globals/__res128_lo (mut i64) (i64.const 0))
+ (global $~lib/as-bignum/globals/__res128_hi (mut i64) (i64.const 0))
+ (global $~lib/as-bignum/globals/__float_u128_lo (mut i64) (i64.const 0))
+ (global $~lib/as-bignum/globals/__float_u128_hi (mut i64) (i64.const 0))
  (global $~lib/ASC_SHRINK_LEVEL i32 (i32.const 0))
  (global $~lib/assemblyscript-json/decoder/TRUE_STR i32 (i32.const 2656))
  (global $~lib/assemblyscript-json/decoder/FALSE_STR i32 (i32.const 2688))
@@ -221,9 +221,9 @@
  (global $~lib/assemblyscript-json/JSON/_JSON.handler (mut i32) (i32.const 0))
  (global $~lib/assemblyscript-json/JSON/_JSON.decoder (mut i32) (i32.const 0))
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
- (global $~lib/bignum/integer/u128/HEX_CHARS i32 (i32.const 192))
+ (global $~lib/as-bignum/integer/u128/HEX_CHARS i32 (i32.const 560))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (global $~lib/bignum/utils/RadixCharsTable i32 (i32.const 6608))
+ (global $~lib/as-bignum/utils/RadixCharsTable i32 (i32.const 6608))
  (global $~lib/number/U32.MAX_VALUE i32 (i32.const -1))
  (global $~lib/rt/__rtti_base i32 (i32.const 7808))
  (global $~lib/heap/__heap_base i32 (i32.const 8100))
@@ -2248,7 +2248,7 @@
   call $~lib/memory/memory.copy
   local.get $2
  )
- (func $~lib/near-runtime-ts/logging/logging.log (; 17 ;) (param $0 i32)
+ (func $~lib/near-runtime-ts/logging/logging.log<~lib/string/String> (; 17 ;) (param $0 i32)
   local.get $0
   call $~lib/near-runtime-ts/util/util.stringToBytes
   local.tee $0
@@ -2562,7 +2562,7 @@
   i32.const -1
  )
  (func $~lib/near-runtime-ts/base64/base64.getByte64 (; 25 ;) (param $0 i32) (param $1 i32) (result i32)
-  i32.const 272
+  i32.const 224
   local.get $0
   local.get $1
   call $~lib/string/String#charAt
@@ -2615,7 +2615,7 @@
   i32.const 1
   i32.sub
   call $~lib/string/String#charAt
-  i32.const 240
+  i32.const 192
   call $~lib/string/String.__eq
   if
    i32.const 1
@@ -2625,7 +2625,7 @@
    i32.const 2
    i32.sub
    call $~lib/string/String#charAt
-   i32.const 240
+   i32.const 192
    call $~lib/string/String.__eq
    if
     i32.const 2
@@ -2827,7 +2827,7 @@
   end
   local.get $6
  )
- (func $~lib/bignum/integer/u128/u128#constructor (; 28 ;) (param $0 i32) (param $1 i64) (param $2 i64) (result i32)
+ (func $~lib/as-bignum/integer/u128/u128#constructor (; 28 ;) (param $0 i32) (param $1 i64) (param $2 i64) (result i32)
   local.get $0
   i32.eqz
   if
@@ -4610,7 +4610,7 @@
    i32.lt_s
    if
     local.get $1
-    i32.const 272
+    i32.const 224
     local.get $0
     local.get $3
     call $~lib/typedarray/Uint8Array#__get
@@ -4637,7 +4637,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 272
+    i32.const 224
     local.get $2
     i32.const 12
     i32.shr_u
@@ -4647,7 +4647,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 272
+    i32.const 224
     local.get $2
     i32.const 6
     i32.shr_u
@@ -4657,7 +4657,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 272
+    i32.const 224
     local.get $2
     i32.const 63
     i32.and
@@ -4688,7 +4688,7 @@
      br $break|1
     end
     local.get $1
-    i32.const 272
+    i32.const 224
     local.get $0
     local.get $3
     call $~lib/typedarray/Uint8Array#__get
@@ -4701,7 +4701,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 272
+    i32.const 224
     local.get $2
     i32.const 12
     i32.shr_u
@@ -4711,17 +4711,17 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 240
+    i32.const 192
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 240
+    i32.const 192
     call $~lib/array/Array<~lib/string/String>#push
     drop
     br $break|1
    end
    local.get $1
-   i32.const 272
+   i32.const 224
    local.get $0
    local.get $3
    call $~lib/typedarray/Uint8Array#__get
@@ -4742,7 +4742,7 @@
    call $~lib/array/Array<~lib/string/String>#push
    drop
    local.get $1
-   i32.const 272
+   i32.const 224
    local.get $2
    i32.const 12
    i32.shr_u
@@ -4752,7 +4752,7 @@
    call $~lib/array/Array<~lib/string/String>#push
    drop
    local.get $1
-   i32.const 272
+   i32.const 224
    local.get $2
    i32.const 6
    i32.shr_u
@@ -4762,7 +4762,7 @@
    call $~lib/array/Array<~lib/string/String>#push
    drop
    local.get $1
-   i32.const 240
+   i32.const 192
    call $~lib/array/Array<~lib/string/String>#push
    drop
   end
@@ -5117,7 +5117,7 @@
   local.get $2
   i32.store8
  )
- (func $~lib/bignum/utils/processU64 (; 85 ;) (param $0 i32) (param $1 i64)
+ (func $~lib/as-bignum/utils/processU64 (; 85 ;) (param $0 i32) (param $1 i64)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -5249,7 +5249,7 @@
    end
   end
  )
- (func $~lib/bignum/utils/u128toa10 (; 86 ;) (param $0 i32) (result i32)
+ (func $~lib/as-bignum/utils/u128toa10 (; 86 ;) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -5262,11 +5262,11 @@
   local.tee $2
   local.get $0
   i64.load offset=8
-  call $~lib/bignum/utils/processU64
+  call $~lib/as-bignum/utils/processU64
   local.get $2
   local.get $0
   i64.load
-  call $~lib/bignum/utils/processU64
+  call $~lib/as-bignum/utils/processU64
   i32.const 976
   local.set $1
   i32.const 0
@@ -5295,7 +5295,7 @@
     local.get $3
     if
      local.get $1
-     i32.const 192
+     i32.const 560
      local.get $2
      local.get $0
      call $~lib/typedarray/Int8Array#__get
@@ -5312,7 +5312,7 @@
   end
   local.get $1
  )
- (func $~lib/bignum/integer/u128/u128#toString (; 87 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/as-bignum/integer/u128/u128#toString (; 87 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i64)
   (local $4 i64)
@@ -5362,7 +5362,7 @@
   i64.load
   local.get $2
   i64.load offset=8
-  call $~lib/bignum/integer/u128/u128#constructor
+  call $~lib/as-bignum/integer/u128/u128#constructor
   local.set $5
   local.get $1
   i32.const 16
@@ -5408,7 +5408,7 @@
     i32.ge_s
     if
      local.get $6
-     i32.const 192
+     i32.const 560
      local.get $2
      i32.const 127
      i32.and
@@ -5465,7 +5465,7 @@
      local.get $4
      local.get $9
      i64.and
-     call $~lib/bignum/integer/u128/u128#constructor
+     call $~lib/as-bignum/integer/u128/u128#constructor
      local.set $0
      local.get $0
      local.tee $5
@@ -5491,20 +5491,20 @@
    i32.eq
    if
     local.get $0
-    call $~lib/bignum/utils/u128toa10
+    call $~lib/as-bignum/utils/u128toa10
     return
    end
   end
   i32.const 3584
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder> (; 88 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder> (; 88 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
    local.get $1
    local.get $0
    i32.const 0
-   call $~lib/bignum/integer/u128/u128#toString
+   call $~lib/as-bignum/integer/u128/u128#toString
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
   else
    local.get $2
@@ -5749,7 +5749,7 @@
   i32.load offset=56
   i32.const 3376
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder>
+  call $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder>
   drop
   local.get $0
   i32.load offset=60
@@ -10485,7 +10485,7 @@
   local.get $1
   call $~lib/near-bindgen-as/index/decodeArray<i32>
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/bignum/integer/u128/u128> (; 187 ;) (result i32)
+ (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128> (; 187 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -10522,7 +10522,7 @@
   i32.add
   i32.load8_u
  )
- (func $~lib/bignum/globals/__multi3 (; 189 ;) (param $0 i32) (param $1 i64) (param $2 i64) (param $3 i64) (param $4 i64)
+ (func $~lib/as-bignum/globals/__multi3 (; 189 ;) (param $0 i32) (param $1 i64) (param $2 i64) (param $3 i64) (param $4 i64)
   (local $5 i64)
   (local $6 i64)
   (local $7 i64)
@@ -10614,11 +10614,11 @@
   i64.add
   local.set $14
   local.get $13
-  global.set $~lib/bignum/globals/__res128_lo
+  global.set $~lib/as-bignum/globals/__res128_lo
   local.get $14
-  global.set $~lib/bignum/globals/__res128_hi
+  global.set $~lib/as-bignum/globals/__res128_hi
  )
- (func $~lib/bignum/utils/atou128 (; 190 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/as-bignum/utils/atou128 (; 190 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -10658,7 +10658,7 @@
    i32.const 0
    i64.const 0
    i64.const 0
-   call $~lib/bignum/integer/u128/u128#constructor
+   call $~lib/as-bignum/integer/u128/u128#constructor
    return
   end
   local.get $0
@@ -10676,7 +10676,7 @@
    i32.const 0
    i64.const 0
    i64.const 0
-   call $~lib/bignum/integer/u128/u128#constructor
+   call $~lib/as-bignum/integer/u128/u128#constructor
    return
   end
   local.get $0
@@ -10754,7 +10754,7 @@
   i32.const 0
   i64.const 0
   i64.const 0
-  call $~lib/bignum/integer/u128/u128#constructor
+  call $~lib/as-bignum/integer/u128/u128#constructor
   local.set $2
   i32.const 6608
   local.set $10
@@ -10801,7 +10801,7 @@
         i64.const 63
         i64.shr_u
         i64.or
-        call $~lib/bignum/integer/u128/u128#constructor
+        call $~lib/as-bignum/integer/u128/u128#constructor
         local.set $1
         local.get $1
         local.tee $2
@@ -10810,7 +10810,7 @@
         local.get $3
         i64.extend_i32_u
         i64.const 0
-        call $~lib/bignum/integer/u128/u128#constructor
+        call $~lib/as-bignum/integer/u128/u128#constructor
         local.set $1
         i32.const 0
         local.get $6
@@ -10823,7 +10823,7 @@
         local.get $1
         i64.load offset=8
         i64.or
-        call $~lib/bignum/integer/u128/u128#constructor
+        call $~lib/as-bignum/integer/u128/u128#constructor
         local.set $3
         local.get $3
         local.set $2
@@ -10862,7 +10862,7 @@
        i64.const 61
        i64.shr_u
        i64.or
-       call $~lib/bignum/integer/u128/u128#constructor
+       call $~lib/as-bignum/integer/u128/u128#constructor
        local.set $6
        i32.const 0
        local.get $2
@@ -10878,7 +10878,7 @@
        i64.const 63
        i64.shr_u
        i64.or
-       call $~lib/bignum/integer/u128/u128#constructor
+       call $~lib/as-bignum/integer/u128/u128#constructor
        local.tee $1
        i64.load
        local.tee $7
@@ -10899,7 +10899,7 @@
        i32.const 0
        local.get $5
        local.get $7
-       call $~lib/bignum/integer/u128/u128#constructor
+       call $~lib/as-bignum/integer/u128/u128#constructor
        local.set $1
        local.get $1
        local.tee $2
@@ -10908,7 +10908,7 @@
        local.get $3
        i64.extend_i32_u
        i64.const 0
-       call $~lib/bignum/integer/u128/u128#constructor
+       call $~lib/as-bignum/integer/u128/u128#constructor
        local.tee $1
        i64.load
        local.tee $5
@@ -10929,7 +10929,7 @@
        i32.const 0
        local.get $7
        local.get $5
-       call $~lib/bignum/integer/u128/u128#constructor
+       call $~lib/as-bignum/integer/u128/u128#constructor
        local.set $1
        local.get $1
        local.set $2
@@ -10976,7 +10976,7 @@
       i64.const 60
       i64.shr_u
       i64.or
-      call $~lib/bignum/integer/u128/u128#constructor
+      call $~lib/as-bignum/integer/u128/u128#constructor
       local.set $3
       local.get $3
       local.tee $2
@@ -10985,7 +10985,7 @@
       local.get $1
       i64.extend_i32_u
       i64.const 0
-      call $~lib/bignum/integer/u128/u128#constructor
+      call $~lib/as-bignum/integer/u128/u128#constructor
       local.set $3
       i32.const 0
       local.get $6
@@ -10998,7 +10998,7 @@
       local.get $3
       i64.load offset=8
       i64.or
-      call $~lib/bignum/integer/u128/u128#constructor
+      call $~lib/as-bignum/integer/u128/u128#constructor
       local.set $6
       local.get $6
       local.set $2
@@ -11017,7 +11017,7 @@
    local.get $1
    i64.extend_i32_s
    i64.const 0
-   call $~lib/bignum/integer/u128/u128#constructor
+   call $~lib/as-bignum/integer/u128/u128#constructor
    local.set $6
    loop $do-continue|4
     block $do-break|4
@@ -11049,11 +11049,11 @@
      i64.load
      local.get $3
      i64.load offset=8
-     call $~lib/bignum/globals/__multi3
+     call $~lib/as-bignum/globals/__multi3
      i32.const 0
-     global.get $~lib/bignum/globals/__res128_lo
-     global.get $~lib/bignum/globals/__res128_hi
-     call $~lib/bignum/integer/u128/u128#constructor
+     global.get $~lib/as-bignum/globals/__res128_lo
+     global.get $~lib/as-bignum/globals/__res128_hi
+     call $~lib/as-bignum/integer/u128/u128#constructor
      local.set $3
      local.get $3
      local.tee $2
@@ -11062,7 +11062,7 @@
      local.get $12
      i64.extend_i32_u
      i64.const 0
-     call $~lib/bignum/integer/u128/u128#constructor
+     call $~lib/as-bignum/integer/u128/u128#constructor
      local.tee $3
      i64.load
      local.tee $5
@@ -11083,7 +11083,7 @@
      i32.const 0
      local.get $7
      local.get $5
-     call $~lib/bignum/integer/u128/u128#constructor
+     call $~lib/as-bignum/integer/u128/u128#constructor
      local.set $3
      local.get $3
      local.set $2
@@ -11121,12 +11121,12 @@
    i64.const 63
    i64.shr_u
    i64.add
-   call $~lib/bignum/integer/u128/u128#constructor
+   call $~lib/as-bignum/integer/u128/u128#constructor
   else
    local.get $2
   end
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj> (; 191 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj> (; 191 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -11165,7 +11165,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/bignum/integer/u128/u128>
+    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
     if (result i32)
      i32.const 1
     else
@@ -11208,7 +11208,7 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/bignum/integer/u128/u128>
+   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
    i32.eqz
    if
     i32.const 5184
@@ -11285,7 +11285,7 @@
   end
   i32.load
   i32.const 0
-  call $~lib/bignum/utils/atou128
+  call $~lib/as-bignum/utils/atou128
  )
  (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/typedarray/Uint8Array>> (; 192 ;) (result i32)
   i32.const 1
@@ -12173,7 +12173,7 @@
   if (result i32)
    local.get $1
    i32.const 3376
-   call $~lib/near-bindgen-as/index/decode<~lib/bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=56
@@ -12432,7 +12432,7 @@
   i32.load offset=4
   i32.const 6368
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder>
+  call $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder>
   drop
   local.get $0
   i32.load offset=8
@@ -12499,7 +12499,7 @@
   if (result i32)
    local.get $1
    i32.const 6368
-   call $~lib/near-bindgen-as/index/decode<~lib/bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=4
@@ -13304,7 +13304,7 @@
   end
   i32.load
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline (; 221 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline (; 221 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -13329,7 +13329,7 @@
    local.get $1
    local.get $0
    i32.const 0
-   call $~lib/bignum/integer/u128/u128#toString
+   call $~lib/as-bignum/integer/u128/u128#toString
    call $~lib/assemblyscript-json/encoder/JSONEncoder#setString
   else
    local.get $2
@@ -13339,7 +13339,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array> (; 222 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array> (; 222 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -13380,7 +13380,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/bignum/integer/u128/u128>
+    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
     if (result i32)
      i32.const 1
     else
@@ -13423,7 +13423,7 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/bignum/integer/u128/u128>
+   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
    i32.eqz
    if
     i32.const 5184
@@ -13500,14 +13500,14 @@
   end
   i32.load
   i32.const 0
-  call $~lib/bignum/utils/atou128
+  call $~lib/as-bignum/utils/atou128
  )
  (func $assembly/test/runTest (; 223 ;)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
   i32.const 608
-  call $~lib/near-runtime-ts/logging/logging.log
+  call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
   i32.const 0
   call $assembly/model/FooBar#constructor
   local.tee $0
@@ -13550,7 +13550,7 @@
   i32.const 0
   i64.const 128
   i64.const 0
-  call $~lib/bignum/integer/u128/u128#constructor
+  call $~lib/as-bignum/integer/u128/u128#constructor
   local.set $2
   local.get $0
   i32.load offset=56
@@ -13623,7 +13623,7 @@
   local.get $0
   call $assembly/model/FooBar#toJSON
   call $~lib/string/String.__concat
-  call $~lib/near-runtime-ts/logging/logging.log
+  call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
   i32.const 6784
   local.get $0
   call $assembly/model/FooBar#encode
@@ -13633,7 +13633,7 @@
   local.tee $1
   call $assembly/model/FooBar#toJSON
   call $~lib/string/String.__concat
-  call $~lib/near-runtime-ts/logging/logging.log
+  call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
   local.get $2
   i32.const 976
   call $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
@@ -13647,7 +13647,7 @@
   if
    i32.const 0
    i32.const 6816
-   i32.const 44
+   i32.const 42
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13657,6 +13657,35 @@
   local.get $1
   i32.load
   i32.ne
+  if
+   i32.const 0
+   i32.const 6816
+   i32.const 43
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  i32.load offset=4
+  i32.ne
+  if
+   i32.const 0
+   i32.const 6816
+   i32.const 44
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load offset=40
+  call $~lib/near-runtime-ts/base64/base64.encode
+  local.get $1
+  i32.load offset=40
+  call $~lib/near-runtime-ts/base64/base64.encode
+  call $~lib/string/String.__eq
+  i32.eqz
   if
    i32.const 0
    i32.const 6816
@@ -13666,50 +13695,21 @@
    unreachable
   end
   local.get $0
-  i32.load offset=4
+  i32.load offset=60
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
+  call $~lib/near-runtime-ts/base64/base64.encode
   local.get $1
-  i32.load offset=4
-  i32.ne
+  i32.load offset=60
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
+  call $~lib/near-runtime-ts/base64/base64.encode
+  call $~lib/string/String.__eq
+  i32.eqz
   if
    i32.const 0
    i32.const 6816
    i32.const 46
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=40
-  call $~lib/near-runtime-ts/base64/base64.encode
-  local.get $1
-  i32.load offset=40
-  call $~lib/near-runtime-ts/base64/base64.encode
-  call $~lib/string/String.__eq
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 6816
-   i32.const 47
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=60
-  i32.const 0
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
-  call $~lib/near-runtime-ts/base64/base64.encode
-  local.get $1
-  i32.load offset=60
-  i32.const 0
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
-  call $~lib/near-runtime-ts/base64/base64.encode
-  call $~lib/string/String.__eq
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 6816
-   i32.const 48
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13726,37 +13726,37 @@
   if
    i32.const 0
    i32.const 6816
+   i32.const 47
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i32.load offset=64
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  local.get $1
+  i32.load offset=64
+  i32.const 0
+  call $~lib/array/Array<u64>#__get
+  i64.ne
+  if
+   i32.const 0
+   i32.const 6816
+   i32.const 48
+   i32.const 2
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  i64.load offset=16
+  local.get $1
+  i64.load offset=16
+  i64.ne
+  if
+   i32.const 0
+   i32.const 6816
    i32.const 49
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i32.load offset=64
-  i32.const 0
-  call $~lib/array/Array<u64>#__get
-  local.get $1
-  i32.load offset=64
-  i32.const 0
-  call $~lib/array/Array<u64>#__get
-  i64.ne
-  if
-   i32.const 0
-   i32.const 6816
-   i32.const 50
-   i32.const 2
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $0
-  i64.load offset=16
-  local.get $1
-  i64.load offset=16
-  i64.ne
-  if
-   i32.const 0
-   i32.const 6816
-   i32.const 51
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13771,7 +13771,7 @@
   call $~lib/arraybuffer/ArrayBuffer#get:byteLength
   i32.const 0
   call $~lib/string/String.UTF8.decodeUnsafe
-  call $~lib/near-runtime-ts/logging/logging.log
+  call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
   local.get $0
   call $assembly/model/Nullables#encode
   i32.const 976
@@ -13784,7 +13784,7 @@
   if
    i32.const 0
    i32.const 6816
-   i32.const 55
+   i32.const 53
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13794,13 +13794,13 @@
   local.get $0
   i32.load offset=4
   select
-  call $~lib/near-runtime-ts/logging/logging.log
+  call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
   local.get $0
   i32.load offset=8
   if
    i32.const 6992
    i32.const 6816
-   i32.const 57
+   i32.const 55
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13833,7 +13833,7 @@
   if
    i32.const 0
    i32.const 6816
-   i32.const 61
+   i32.const 59
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13863,7 +13863,7 @@
   if
    i32.const 0
    i32.const 6816
-   i32.const 65
+   i32.const 63
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13886,7 +13886,7 @@
   if
    i32.const 0
    i32.const 6816
-   i32.const 66
+   i32.const 64
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13904,7 +13904,7 @@
   if
    i32.const 0
    i32.const 6816
-   i32.const 67
+   i32.const 65
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13922,7 +13922,7 @@
   if
    i32.const 0
    i32.const 6816
-   i32.const 68
+   i32.const 66
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13941,7 +13941,7 @@
   if
    i32.const 7200
    i32.const 6816
-   i32.const 69
+   i32.const 67
    i32.const 2
    call $~lib/builtins/abort
    unreachable
@@ -13949,29 +13949,29 @@
   i32.const 0
   i64.const 42
   i64.const 42
-  call $~lib/bignum/integer/u128/u128#constructor
+  call $~lib/as-bignum/integer/u128/u128#constructor
   local.set $0
   i32.const 1
   global.set $~argumentsLength
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline
+  call $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<~lib/bignum/integer/u128/u128,~lib/typedarray/Uint8Array>
+  call $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>
   i64.load
   i64.const 42
   i64.ne
   if
    i32.const 0
    i32.const 6816
-   i32.const 70
+   i32.const 68
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
   i32.const 7264
-  call $~lib/near-runtime-ts/logging/logging.log
+  call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
  )
  (func $~lib/near-bindgen-as/index/getInput (; 224 ;) (result i32)
   (local $0 i32)
@@ -14757,7 +14757,7 @@
   i32.load offset=12
   call $~lib/util/number/itoa32
   call $~lib/string/String.__concat
-  call $~lib/near-runtime-ts/logging/logging.log
+  call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
   local.get $0
   i32.load offset=12
   local.set $0

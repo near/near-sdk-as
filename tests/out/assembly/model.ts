@@ -1,6 +1,6 @@
 import {
   u128
-} from "bignum"
+} from "near-runtime-ts"
 export class FooBar {
   foo: i32 = 0;
   bar: u32 = 1;

@@ -1,9 +1,8 @@
 //out
 /// <reference types="near-runtime-ts/assembly/as_types" />
 import * as main from "./main";
-import { base64, logging } from "near-runtime-ts";
+import { base64, logging, u128 } from "near-runtime-ts";
 import { FooBar, Nullables, ContainerClass, AnotherContainerClass } from './model';
-import { u128 } from "bignum";
 
 
 function roundtrip<T>(obj: T): T {

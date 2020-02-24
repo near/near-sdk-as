@@ -1,7 +1,7 @@
 
 // @nearfile out
 
-import {u128} from "bignum";
+import { u128 } from "near-runtime-ts";
 
 export class FooBar {
     foo: i32 = 0;
