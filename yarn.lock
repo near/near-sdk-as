@@ -2,31 +2,46 @@
 # yarn lockfile v1
 
 
-"@as-pect/assembly@^3.0.0-alpha.2":
-  version "3.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/assembly/-/assembly-3.0.0-alpha.2.tgz#6e08e77818656281fb28d21772894bab7f9815a8"
-  integrity sha512-O+mgJN5QVSFdstuaH2CFMKzTxco8B6E2XVf348Wkb8PLRyAwwP075i9v9BKMYcf08jxGpB67zaB6MH/kJD5x/A==
+"@as-pect/assembly@^3.0.0-beta.0":
+  version "3.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/assembly/-/assembly-3.0.0-beta.0.tgz#21b88c00560db54e95a38cf24d4a6617d413cb49"
+  integrity sha512-La/VGBO3fD3cuNmwpg1FBbPJH8qn0FLqWoRBA9whXAfjT0FjzgFiPBhc/IahMkiHE8fDkBN77cULD+dd3bw3Kg==
 
-"@as-pect/cli@^3.0.0-alpha.2":
-  version "3.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/cli/-/cli-3.0.0-alpha.2.tgz#bf10b563422f36acf337583fb5750085692acd7d"
-  integrity sha512-3X8ckjLtjPSAsxVuUfqSdGVZnIonCtTyE+UAWkVPQ+qKPvgdVhjONJgi7yEjmLTaiY44ChQocHxHDSCAwbWlng==
+"@as-pect/cli@^3.0.0-beta.0":
+  version "3.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/cli/-/cli-3.0.0-beta.0.tgz#bc6dba6a4a82581cfa65a06dbf360ae2962de901"
+  integrity sha512-S2BXBfXKRwyJwb0HRyvv2zIBOybD4rqLllOCeEuGD4lhT3YL4gdGqyj08UEIXVJzZM852FnfPP7zU/bEgn5OOQ==
   dependencies:
-    "@as-pect/assembly" "^3.0.0-alpha.2"
-    "@as-pect/core" "^3.0.0-alpha.2"
+    "@as-pect/assembly" "^3.0.0-beta.0"
+    "@as-pect/core" "^3.0.0-beta.0"
     chalk "^3.0.0"
     glob "^7.1.6"
+  optionalDependencies:
+    "@as-pect/csv-reporter" "^3.0.0-beta.0"
+    "@as-pect/json-reporter" "^3.0.0-beta.0"
 
-"@as-pect/core@^3.0.0-alpha.2":
-  version "3.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/core/-/core-3.0.0-alpha.2.tgz#96ffa8b53321f7270db8c1b3fd67f857e52d2680"
-  integrity sha512-I6SZa+CIVFTPvpYqsNhVD9MCwCU7H8V7EbQG3+dOXT5bMpmyCQjWtdLweJipr+JB7hYm5UJqVRETrT+t2IozIQ==
+"@as-pect/core@^3.0.0-beta.0":
+  version "3.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/core/-/core-3.0.0-beta.0.tgz#19dd3fd20310f0c25df9db21998ae8e6758d667a"
+  integrity sha512-xRooRf/JPp/GgDc0QA7cVJpaTNAtPh6LtYkE9Zc4RE6QTTOCpaJgmBbFVv8N/ms74x6Ike2Bkp4hTTvD0FTnEA==
   dependencies:
-    "@as-pect/assembly" "^3.0.0-alpha.2"
+    "@as-pect/assembly" "^3.0.0-beta.0"
     chalk "^3.0.0"
     long "^4.0.0"
-  optionalDependencies:
-    csv-stringify "^5.3.6"
+
+"@as-pect/csv-reporter@^3.0.0-beta.0":
+  version "3.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/csv-reporter/-/csv-reporter-3.0.0-beta.0.tgz#f532c5167bc174693c4df1064626002b60aa66a3"
+  integrity sha512-F91wGncStAVJq7pe5MbUWFSTE3DKnRx/wbFFO/VJSEApE7WEX0g7zFRLvKIh+lcGInB+TIaf2DtlNE90p9vZqw==
+  dependencies:
+    "@as-pect/core" "^3.0.0-beta.0"
+
+"@as-pect/json-reporter@^3.0.0-beta.0":
+  version "3.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/json-reporter/-/json-reporter-3.0.0-beta.0.tgz#b1d854da6892e156f3162bc2cae34a0dbdd1d534"
+  integrity sha512-gdapm6U0utv5kMXy005KGNOoTjIDkHfzE8/kyFXyhpvFg5ntKFF1lvMfQj8K+DsoUbk74QJa0GrZoAfbIxI1Rg==
+  dependencies:
+    "@as-pect/core" "^3.0.0-beta.0"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -244,11 +259,6 @@ cssstyle@^1.0.0:
   integrity sha512-GBrLZYZ4X4x6/QEoBnIrqb8B/f5l4+8me2dkom/j1Gtbxy0kBv6OGzKuAsGM75bkGwGAFkt56Iwg28S3XTZgSA==
   dependencies:
     cssom "0.3.x"
-
-csv-stringify@^5.3.6:
-  version "5.3.6"
-  resolved "https://registry.yarnpkg.com/csv-stringify/-/csv-stringify-5.3.6.tgz#2655e2e1c01b97b3963bccbc9407b8fb876dc589"
-  integrity sha512-kPcRbMvo5NLLD71TAqW5K+g9kbM2HpIZJLAzm73Du8U+5TXmDp9YtXKCBLyxEh0q3Jbg8QhNFBz3b5VJzjZ/jw==
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -1001,10 +1011,10 @@ w3c-hr-time@^1.0.1:
   dependencies:
     browser-process-hrtime "^0.1.2"
 
-wasm-mock-vm@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/wasm-mock-vm/-/wasm-mock-vm-1.1.0.tgz#3eab4764a4b5a6ca0bf730d61796a6265152f762"
-  integrity sha512-jUHpFmYoiHqRY3PUp6OXxUmxe34BEeoyESpUYp4OX01kjnnFgJpKuZb99IMVhZbVWVoM+W4dov7CGGKrvWTSVA==
+wasm-mock-vm@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/wasm-mock-vm/-/wasm-mock-vm-1.1.1.tgz#a53b140e818aeafa2591f7efec7f2d91c9be52b3"
+  integrity sha512-eQTwJlm0atMlmqxOOnYqD274pqpN3kYDq79CoiklkIDe6VLs2Y13QIGPT79WVWYn+RZqPuj7iqDqakqo3eRJFA==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

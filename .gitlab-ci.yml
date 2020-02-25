@@ -30,7 +30,7 @@ install_test_dependencies:
     - docker
   stage: install-tests
   script:
-    - cd tests && yarn && yarn remove near-runtime-ts && yarn add ../
+    - cd tests && yarn 
 
 build_test_wasm:
   tags:

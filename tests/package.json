@@ -3,11 +3,13 @@
     "build:hello": "near-asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
     "pretest": "yarn build && ./build-near-vm-runner-standalone.sh",
     "test": "yarn build:hello && yarn asp:ci",
-    "asp:ci": "asp",
+    "asp:ci": "../node_modules/.bin/asp",
     "asp": "yarn asp:ci --verbose",
     "build": "node asconfig.js"
   },
-  "dependencies": {
-    "near-runtime-ts": "../"
+  "dependencies": {},
+  "devDependencies": {
+    "near-bindgen-as": "^1.3.0-0",
+    "near-runtime-ts": "file:../"
   }
 }
