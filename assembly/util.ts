@@ -9,7 +9,7 @@ export namespace util {
     return bytes;
   }
 
-  export function bytesToString(bytes: Uint8Array): string | null {
+  export function bytesToString(bytes: Uint8Array | null): string | null {
     if (bytes == null) {
       return null;
     }

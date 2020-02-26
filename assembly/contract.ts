@@ -1,6 +1,6 @@
 import { util } from "./util";
 import { runtime_api } from './runtime_api';
-import { u128 } from "bignum";
+import { u128 } from ".";
 
 /**
 * Provides context for contract execution, including information about transaction sender, etc.
@@ -19,6 +19,15 @@ class Context {
   */
   get contractName(): string {
     runtime_api.current_account_id(0);
+    return this._readRegisterContentsAsString(0);
+  }
+
+  /**
+   * Account ID of predecessor.
+   */
+
+  get predecessor(): string {
+    runtime_api.predecessor_account_id(0);
     return this._readRegisterContentsAsString(0);
   }
 
@@ -79,7 +88,8 @@ class Context {
   }
 
   private _readRegisterContentsAsString(registerId: u64): string {
-    return util.bytesToString(util.read_register(registerId))!;
+    const res = util.bytesToString(util.read_register(registerId));
+    return res != null ? <string>res : "";
   }
 }
 
@@ -159,7 +169,7 @@ export class ContractPromise {
       gas);
       //@ts-ignore: Typescript expects the object to have a function to match the type
       // Wheras as only cares about the fields.
-    return {
+    return { // new ContractPromise(id);
       id
     };
   }

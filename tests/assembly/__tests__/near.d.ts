@@ -1,3 +1,1 @@
-declare interface TextMessage {
-  serialize(): Uint8Array;
-}
+/// <reference types="near-runtime-ts/assembly/as_types" />
