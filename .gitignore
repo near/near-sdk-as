@@ -10,3 +10,5 @@ tests/nearcore/
 package-lock.json
 tests/package-lock.json
 yarn-error.log
+
+tests/out/test.wasm
