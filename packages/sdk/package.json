@@ -1,6 +1,6 @@
 {
   "name": "near-sdk-as",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of packages for developming NEAR smart contracts",
   "main": "index.js",
   "repository": "git@github.com:nearprotocol/near-sdk-as",
