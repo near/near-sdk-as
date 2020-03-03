@@ -12,3 +12,4 @@ tests/package-lock.json
 yarn-error.log
 
 tests/out/test.wasm
+packages/sdk/wasm-mock-vm/
