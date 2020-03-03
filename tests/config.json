@@ -1,0 +1,150 @@
+{
+    "runtime_fees": {
+        "action_receipt_creation_config": {
+            "send_sir": 1,
+            "send_not_sir": 1,
+            "execution": 1
+        },
+        "data_receipt_creation_config": {
+            "base_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "cost_per_byte": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            }
+        },
+        "action_creation_config": {
+            "create_account_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "deploy_contract_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "deploy_contract_cost_per_byte": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "function_call_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "function_call_cost_per_byte": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "transfer_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "stake_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "add_key_cost": {
+                "full_access_cost": {
+                    "send_sir": 1,
+                    "send_not_sir": 1,
+                    "execution": 1
+                },
+                "function_call_cost": {
+                    "send_sir": 1,
+                    "send_not_sir": 1,
+                    "execution": 1
+                },
+                "function_call_cost_per_byte": {
+                    "send_sir": 1,
+                    "send_not_sir": 1,
+                    "execution": 1
+                }
+            },
+            "delete_key_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            },
+            "delete_account_cost": {
+                "send_sir": 1,
+                "send_not_sir": 1,
+                "execution": 1
+            }
+        },
+        "storage_usage_config": {
+            "account_cost": 100,
+            "data_record_cost": 40,
+            "key_cost_per_byte": 1,
+            "value_cost_per_byte": 1,
+            "code_cost_per_byte": 1
+        }
+    },
+    "grow_mem_cost": 1,
+    "regular_op_cost": 1,
+    "max_gas_burnt": 200000000000000,
+    "max_stack_height": 65536,
+    "initial_memory_pages": 17,
+    "max_memory_pages": 32,
+    "registers_memory_limit": 1073741824,
+    "max_register_size": 104857600,
+    "max_number_registers": 100,
+    "max_number_logs": 100,
+    "max_log_len": 500,
+    "ext_costs": {
+        "base": 1,
+        "read_memory_base": 1,
+        "read_memory_byte": 1,
+        "write_memory_base": 1,
+        "write_memory_byte": 1,
+        "read_register_base": 1,
+        "read_register_byte": 1,
+        "write_register_base": 1,
+        "write_register_byte": 1,
+        "utf8_decoding_base": 1,
+        "utf8_decoding_byte": 1,
+        "utf16_decoding_base": 1,
+        "utf16_decoding_byte": 1,
+        "sha256_base": 1,
+        "sha256_byte": 1,
+        "keccak256_base": 1,
+        "keccak256_byte": 1,
+        "keccak512_base": 1,
+        "keccak512_byte": 1,
+        "log_base": 1,
+        "log_byte": 1,
+        "storage_write_base": 1,
+        "storage_write_key_byte": 1,
+        "storage_write_value_byte": 1,
+        "storage_write_evicted_byte": 1,
+        "storage_read_base": 1,
+        "storage_read_key_byte": 1,
+        "storage_read_value_byte": 1,
+        "storage_remove_base": 1,
+        "storage_remove_key_byte": 1,
+        "storage_remove_ret_value_byte": 1,
+        "storage_has_key_base": 1,
+        "storage_has_key_byte": 1,
+        "storage_iter_create_prefix_base": 1,
+        "storage_iter_create_prefix_byte": 1,
+        "storage_iter_create_range_base": 1,
+        "storage_iter_create_from_byte": 1,
+        "storage_iter_create_to_byte": 1,
+        "storage_iter_next_base": 1,
+        "storage_iter_next_key_byte": 1,
+        "storage_iter_next_value_byte": 1,
+        "touching_trie_node": 1,
+        "promise_and_base": 1,
+        "promise_and_per_promise": 1,
+        "promise_return": 1
+    }
+}
