@@ -1,0 +1,4 @@
+out/
+assembly/__tests__/near.spec.wat
+assembly/__tests__/roundtrip.spec.wat
+nearcore/

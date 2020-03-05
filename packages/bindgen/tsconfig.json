@@ -14,9 +14,7 @@
     "noEmitOnError": true,
     "allowJs": true,
     "strictNullChecks": true,
-    "experimentalDecorators": true,
-    "typeRoots": ["./node_modules/assemblyscript/std/types"],
-    "types": ["portable" ]
+    "experimentalDecorators": true
   },
   "include": ["src/**/*"]
 }
