@@ -8,12 +8,16 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/*/tests"
   ],
   "devDependencies": {
-    "assemblyscript": "^0.9.2"
+    "assemblyscript": "^0.9.2",
+    "lerna": "^3.20.2"
   },
   "scripts": {
-    "test:ci": "cd packages/tests && yarn asp"
+    "postinstall": "yarn bootstrap",
+    "test:ci": "lerna run test",
+    "bootstrap": "lerna bootstrap"
   }
 }

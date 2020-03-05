@@ -4,16 +4,20 @@
   "description": "Bindings for serializing contract functions.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "cd tests && yarn add ../ --no-lockfile && yarn test:ci",
     "build": "tsc",
-    "test:ci": "yarn build && yarn test"
+    "build:as": "asc assembly/test.ts --transform ./src/index.ts --validate --runtime none --binaryFile out/test.wasm --textFile out/test.wat --runPasses inlining-optimizing,dce --debug",
+    "test": "yarn build:as && yarn test:wasm",
+    "test:ci": "yarn build:asconfig && yarn test",
+    "test:wasm": "node ./test.js",
+    "build:asconfig": "node asconfig.js"
   },
   "bin": {
     "near-asc": "./bin/near-asc"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/nearprotocol/near-bindgen-as.git"
+    "url": "git+ssh://git@github.com/nearprotocol/near-sdk-as.git",
+    "directory": "packages/bindgen"
   },
   "keywords": [
     "near",
@@ -25,11 +29,11 @@
   "author": "Willem Wyndham",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nearprotocol/near-bindgen/issues"
+    "url": "https://github.com/nearprotocol/near-sdk-as/issues"
   },
-  "homepage": "https://github.com/nearprotocol/near-bindgen#readme",
+  "homepage": "https://github.com/nearprotocol/near-sdk-as/tree/master/packages/bindgen#readme",
   "devDependencies": {
-    "near-runtime-ts": "0.7.0-0",
+    "near-runtime-ts": "file:../runtime",
     "ts-node": "^8.6.2",
     "typescript": "^3.6.4"
   },

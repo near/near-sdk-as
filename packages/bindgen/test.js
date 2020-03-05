@@ -135,7 +135,7 @@ async function loadModule(path) {
 
 async function testFloatDetection(file){
   return new Promise( (resolve, reject)=>
-    asc.main([file, "--runtime", "none", "--noEmit", "--transform", "../"], error => {
+    asc.main([file, "--runtime", "none", "--noEmit", "--transform", "."], error => {
       if (error == null || !/Floating point numbers are not allowed/g.test(error.message)) {
         if (error == null){
             error = "Couldn't find float";

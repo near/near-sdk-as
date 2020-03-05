@@ -2,10 +2,11 @@
 CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
 RUST_VERSION=nightly
 if [[ -e nearcore ]]; then
-    cd nearcore
+    cd nearcore;
+    git checkout stable;
     git pull
 else
-    git clone https://github.com/nearprotocol/nearcore
+    git clone --depth=1 -b stable https://github.com/nearprotocol/nearcore;
     cd nearcore
 fi
 

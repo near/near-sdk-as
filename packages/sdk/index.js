@@ -1,0 +1,1 @@
+module.exports = require("near-bindgen-as/compiler");

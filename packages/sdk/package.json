@@ -3,7 +3,11 @@
   "version": "0.0.2",
   "description": "Collection of packages for developming NEAR smart contracts",
   "main": "index.js",
-  "repository": "git@github.com:nearprotocol/near-sdk-as",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:nearprotocol/near-sdk-as",
+    "directory": "packages/sdk"
+  },
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "license": "MIT",
   "dependencies": {
