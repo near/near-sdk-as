@@ -12,8 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "@as-pect/cli": "^3.0.0-beta.0",
-    "near-bindgen-as": "^1.3.0-0",
-    "near-runtime-ts": "^0.7.0-0",
+    "near-bindgen-as": "file:../bindgen",
+    "near-runtime-ts": "file:../runtime",
     "wasm-mock-vm": "^1.2.1"
   },
   "scripts": {
