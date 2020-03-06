@@ -17,7 +17,7 @@
   },
   "scripts": {
     "postinstall": "yarn bootstrap",
-    "test:ci": "lerna run test",
+    "test": "lerna run test",
     "bootstrap": "lerna bootstrap"
   }
 }

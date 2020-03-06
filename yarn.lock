@@ -1146,9 +1146,9 @@ arrify@^1.0.1:
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
 as-bignum@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.1.5.tgz#e97a46a175644c277ecfe17d3850a63b6e55ac44"
-  integrity sha512-lv0ZOxtBReuCq6wpXUtjm6Mrj7CQn+qdSgF/O7yh553aH4FRrRaUXp/ywfSNMoiPK7AJ47f9gcKs0Toi5H84iA==
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.1.6.tgz#014c14c4027359ced10ac35225cbeed4778ef621"
+  integrity sha512-PiQwgChwyTogru0Z0kR7xvxcenLVgpa7d8UOrIqG9Ea91kcKfAo/SVc4gWjaPQJUl+xINekofxBzlj3tIeX18A==
 
 asap@^2.0.0:
   version "2.0.6"
@@ -1286,10 +1286,10 @@ braces@^2.3.1:
     split-string "^3.0.2"
     to-regex "^3.0.1"
 
-browser-process-hrtime@^0.1.2:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-0.1.3.tgz#616f00faef1df7ec1b5bf9cfe2bdc3170f26c7b4"
-  integrity sha512-bRFnI4NnjO6cnyLmOV/7PVoDEMJChlcfN0z4s1YMBY989/SvlfMI1lgCnkFUs53e9gQF+w7qu7XdllSTiSl8Aw==
+browser-process-hrtime@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-1.0.0.tgz#3c9b4b7d782c8121e56f10106d84c0d0ffc94626"
+  integrity sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==
 
 btoa-lite@^1.0.0:
   version "1.0.0"
@@ -3557,9 +3557,14 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+"near-bindgen-as@file:packages/bindgen":
+  version "1.3.0-0"
+  dependencies:
+    semver "^7.1.3"
+
 near-hello@nearprotocol/near-hello:
   version "0.4.0"
-  resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/109daea2927db53c491ec633ad486c234fd5cb6b"
+  resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/46d11631059b402d99dd16bc91a3a6bd19dd5844"
 
 "near-runtime-ts@file:packages/runtime":
   version "0.7.0-0"
@@ -3571,8 +3576,8 @@ near-hello@nearprotocol/near-hello:
   version "0.0.2"
   dependencies:
     "@as-pect/cli" "^3.0.0-beta.0"
-    near-bindgen-as "^1.3.0-0"
-    near-runtime-ts "^0.7.0-0"
+    near-bindgen-as "file:../../../Library/Caches/Yarn/v6/npm-near-sdk-as-0.0.2-90553660-3f09-4c3c-b148-78b50ae32738-1583520596812/node_modules/bindgen"
+    near-runtime-ts "file:../../../Library/Caches/Yarn/v6/npm-near-sdk-as-0.0.2-90553660-3f09-4c3c-b148-78b50ae32738-1583520596812/node_modules/runtime"
     wasm-mock-vm "^1.2.1"
 
 neo-async@^2.6.0:
@@ -5248,11 +5253,11 @@ verror@1.10.0:
     extsprintf "^1.2.0"
 
 w3c-hr-time@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.1.tgz#82ac2bff63d950ea9e3189a58a65625fedf19045"
-  integrity sha1-gqwr/2PZUOqeMYmlimViX+3xkEU=
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.2.tgz#0a89cdf5cc15822df9c360543676963e0cc308cd"
+  integrity sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==
   dependencies:
-    browser-process-hrtime "^0.1.2"
+    browser-process-hrtime "^1.0.0"
 
 wasm-mock-vm@^1.2.1:
   version "1.2.1"
