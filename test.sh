@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+LINK="yarn link --link-folder $(pwd)/.yarn";
 
 WASM_MOCK_VM="wasm-mock-vm";
 
@@ -8,6 +9,6 @@ if test -d "./$WASM_MOCK_VM"; then
 else 
   git clone https://github.com/nearprotocol/$WASM_MOCK_VM
 fi
-yarn link;
+
 cd $WASM_MOCK_VM/;
-yarn && yarn link near-sdk-as && yarn test;
+yarn && yarn add ../ && yarn test;
