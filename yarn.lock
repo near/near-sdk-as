@@ -644,9 +644,9 @@ minimist@~0.0.1:
 "near-bindgen-as@file:./bindgen":
   version "0.0.1-alpha.0"
 
-near-hello@nearprotocol/near-hello#master:
+near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
   version "0.4.0"
-  resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/46d11631059b402d99dd16bc91a3a6bd19dd5844"
+  resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
 
 "near-runtime-ts@file:./runtime":
   version "0.0.1-alpha.0"
