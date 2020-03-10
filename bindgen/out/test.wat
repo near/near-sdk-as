@@ -129,62 +129,62 @@
  (data (i32.const 4736) "\02\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00\'\00")
  (data (i32.const 4768) "\02\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00-\00")
  (data (i32.const 4800) "\"\00\00\00\01\00\00\00\01\00\00\00\"\00\00\00C\00a\00n\00n\00o\00t\00 \00p\00a\00r\00s\00e\00 \00J\00S\00O\00N\00")
- (data (i32.const 4864) ":\00\00\00\01\00\00\00\01\00\00\00:\00\00\00~\00l\00i\00b\00/\00n\00e\00a\00r\00-\00b\00i\00n\00d\00g\00e\00n\00-\00a\00s\00/\00i\00n\00d\00e\00x\00.\00t\00s\00")
- (data (i32.const 4944) "$\00\00\00\01\00\00\00\01\00\00\00$\00\00\00K\00e\00y\00 \00d\00o\00e\00s\00 \00n\00o\00t\00 \00e\00x\00i\00s\00t\00")
- (data (i32.const 5008) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00~\00l\00i\00b\00/\00m\00a\00p\00.\00t\00s\00")
- (data (i32.const 5056) "\n\00\00\00\01\00\00\00\01\00\00\00\n\00\00\00t\00y\00p\00e\00 \00")
- (data (i32.const 5088) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00F\00o\00o\00B\00a\00r\00")
- (data (i32.const 5120) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00 \00c\00a\00n\00n\00o\00t\00 \00b\00e\00 \00n\00u\00l\00l\00.\00")
- (data (i32.const 5168) "\n\00\00\00\01\00\00\00\01\00\00\00\n\00\00\00K\00e\00y\00:\00 \00")
- (data (i32.const 5200) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00 \00w\00i\00t\00h\00 \00t\00y\00p\00e\00 \00")
- (data (i32.const 5248) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00i\00s\00 \00n\00o\00t\00 \00n\00u\00l\00l\00a\00b\00l\00e\00.\00")
- (data (i32.const 5296) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00V\00a\00l\00u\00e\00 \00w\00i\00t\00h\00 \00K\00e\00y\00:\00 \00")
- (data (i32.const 5344) "2\00\00\00\01\00\00\00\01\00\00\002\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00n\00 \00o\00b\00j\00e\00c\00t\00 \00o\00r\00 \00n\00u\00l\00l\00")
- (data (i32.const 5424) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00i\003\002\00")
- (data (i32.const 5456) "$\00\00\00\01\00\00\00\01\00\00\00$\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00n\00 \00I\00n\00t\00e\00g\00e\00r\00")
- (data (i32.const 5520) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00u\003\002\00")
- (data (i32.const 5552) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00u\006\004\00")
- (data (i32.const 5584) "~\00\00\00\01\00\00\00\01\00\00\00~\00\00\00 \00i\00s\00 \00a\00n\00 \006\004\00-\00b\00i\00t\00 \00i\00n\00t\00e\00g\00e\00r\00 \00a\00n\00d\00 \00i\00s\00 \00e\00x\00p\00e\00c\00t\00e\00d\00 \00t\00o\00 \00b\00e\00 \00e\00n\00c\00o\00d\00e\00d\00 \00a\00s\00 \00a\00 \00s\00t\00r\00i\00n\00g\00")
- (data (i32.const 5728) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00i\006\004\00")
- (data (i32.const 5760) "\08\00\00\00\01\00\00\00\01\00\00\00\08\00\00\00b\00o\00o\00l\00")
- (data (i32.const 5792) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00 \00s\00t\00r\00i\00n\00g\00")
- (data (i32.const 5840) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00S\00t\00r\00i\00n\00g\00")
- (data (i32.const 5872) "0\00\00\00\01\00\00\00\01\00\00\000\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00 \00s\00t\00r\00i\00n\00g\00 \00o\00r\00 \00n\00u\00l\00l\00")
- (data (i32.const 5936) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00U\00i\00n\00t\008\00A\00r\00r\00a\00y\00")
- (data (i32.const 5984) "V\00\00\00\01\00\00\00\01\00\00\00V\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00/\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00/\00S\00t\00r\00i\00n\00g\00>\00>\00")
- (data (i32.const 6096) "2\00\00\00\01\00\00\00\01\00\00\002\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00n\00 \00a\00r\00r\00a\00y\00 \00o\00r\00 \00n\00u\00l\00l\00.\00")
- (data (i32.const 6176) "2\00\00\00\01\00\00\00\01\00\00\002\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00/\00S\00t\00r\00i\00n\00g\00>\00")
- (data (i32.const 6256) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00A\00r\00r\00a\00y\00<\00u\003\002\00>\00")
- (data (i32.const 6304) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00A\00r\00r\00a\00y\00<\00i\003\002\00>\00")
- (data (i32.const 6352) "\08\00\00\00\01\00\00\00\01\00\00\00\08\00\00\00u\001\002\008\00")
- (data (i32.const 6384) "\1a\00\00\00\01\00\00\00\01\00\00\00\1a\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00r\00a\00d\00i\00x\00")
- (data (i32.const 6432) ".\00\00\00\01\00\00\00\01\00\00\00.\00\00\00~\00l\00i\00b\00/\00a\00s\00-\00b\00i\00g\00n\00u\00m\00/\00u\00t\00i\00l\00s\00.\00t\00s\00")
- (data (i32.const 6496) "K\00\00\00\01\00\00\00\00\00\00\00K\00\00\00\00\01\02\03\04\05\06\07\08\t$$$$$$$\n\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f !\"#$$$$$$\n\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f !\"#")
- (data (i32.const 6592) "\10\00\00\00\01\00\00\00\1d\00\00\00\10\00\00\00p\19\00\00p\19\00\00K\00\00\00K\00\00\00")
- (data (i32.const 6624) "B\00\00\00\01\00\00\00\01\00\00\00B\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00/\00U\00i\00n\00t\008\00A\00r\00r\00a\00y\00>\00")
- (data (i32.const 6720) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00A\00r\00r\00a\00y\00<\00u\006\004\00>\00")
- (data (i32.const 6768) "\10\00\00\00\01\00\00\00\01\00\00\00\10\00\00\00A\00f\00t\00e\00r\00:\00 \00 \00")
- (data (i32.const 6800) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00t\00e\00s\00t\00.\00t\00s\00")
- (data (i32.const 6848) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00s\00t\00r\00")
- (data (i32.const 6880) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00u\00i\00n\00t\008\00A\00r\00r\00a\00y\00")
- (data (i32.const 6928) "\12\00\00\00\01\00\00\00\01\00\00\00\12\00\00\00N\00u\00l\00l\00a\00b\00l\00e\00s\00")
- (data (i32.const 6976) "P\00\00\00\01\00\00\00\01\00\00\00P\00\00\00e\00x\00p\00e\00c\00t\00e\00d\00 \00n\00u\00l\00l\00a\00b\00l\00e\002\00.\00u\00i\00n\00t\008\00A\00r\00r\00a\00y\00 \00t\00o\00 \00b\00e\00 \00n\00u\00l\00l\00")
+ (data (i32.const 4864) "\10\00\00\00\01\00\00\00\01\00\00\00\10\00\00\00n\00e\00a\00r\00F\00i\00l\00e\00")
+ (data (i32.const 4896) "$\00\00\00\01\00\00\00\01\00\00\00$\00\00\00K\00e\00y\00 \00d\00o\00e\00s\00 \00n\00o\00t\00 \00e\00x\00i\00s\00t\00")
+ (data (i32.const 4960) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00~\00l\00i\00b\00/\00m\00a\00p\00.\00t\00s\00")
+ (data (i32.const 5008) "\n\00\00\00\01\00\00\00\01\00\00\00\n\00\00\00t\00y\00p\00e\00 \00")
+ (data (i32.const 5040) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00F\00o\00o\00B\00a\00r\00")
+ (data (i32.const 5072) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00 \00c\00a\00n\00n\00o\00t\00 \00b\00e\00 \00n\00u\00l\00l\00.\00")
+ (data (i32.const 5120) "\n\00\00\00\01\00\00\00\01\00\00\00\n\00\00\00K\00e\00y\00:\00 \00")
+ (data (i32.const 5152) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00 \00w\00i\00t\00h\00 \00t\00y\00p\00e\00 \00")
+ (data (i32.const 5200) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00i\00s\00 \00n\00o\00t\00 \00n\00u\00l\00l\00a\00b\00l\00e\00.\00")
+ (data (i32.const 5248) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00V\00a\00l\00u\00e\00 \00w\00i\00t\00h\00 \00K\00e\00y\00:\00 \00")
+ (data (i32.const 5296) "2\00\00\00\01\00\00\00\01\00\00\002\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00n\00 \00o\00b\00j\00e\00c\00t\00 \00o\00r\00 \00n\00u\00l\00l\00")
+ (data (i32.const 5376) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00i\003\002\00")
+ (data (i32.const 5408) "$\00\00\00\01\00\00\00\01\00\00\00$\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00n\00 \00I\00n\00t\00e\00g\00e\00r\00")
+ (data (i32.const 5472) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00u\003\002\00")
+ (data (i32.const 5504) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00u\006\004\00")
+ (data (i32.const 5536) "~\00\00\00\01\00\00\00\01\00\00\00~\00\00\00 \00i\00s\00 \00a\00n\00 \006\004\00-\00b\00i\00t\00 \00i\00n\00t\00e\00g\00e\00r\00 \00a\00n\00d\00 \00i\00s\00 \00e\00x\00p\00e\00c\00t\00e\00d\00 \00t\00o\00 \00b\00e\00 \00e\00n\00c\00o\00d\00e\00d\00 \00a\00s\00 \00a\00 \00s\00t\00r\00i\00n\00g\00")
+ (data (i32.const 5680) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00i\006\004\00")
+ (data (i32.const 5712) "\08\00\00\00\01\00\00\00\01\00\00\00\08\00\00\00b\00o\00o\00l\00")
+ (data (i32.const 5744) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00 \00s\00t\00r\00i\00n\00g\00")
+ (data (i32.const 5792) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00S\00t\00r\00i\00n\00g\00")
+ (data (i32.const 5824) "0\00\00\00\01\00\00\00\01\00\00\000\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00 \00s\00t\00r\00i\00n\00g\00 \00o\00r\00 \00n\00u\00l\00l\00")
+ (data (i32.const 5888) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00U\00i\00n\00t\008\00A\00r\00r\00a\00y\00")
+ (data (i32.const 5936) "V\00\00\00\01\00\00\00\01\00\00\00V\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00/\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00/\00S\00t\00r\00i\00n\00g\00>\00>\00")
+ (data (i32.const 6048) "2\00\00\00\01\00\00\00\01\00\00\002\00\00\00 \00i\00s\00 \00n\00o\00t\00 \00a\00n\00 \00a\00r\00r\00a\00y\00 \00o\00r\00 \00n\00u\00l\00l\00.\00")
+ (data (i32.const 6128) "2\00\00\00\01\00\00\00\01\00\00\002\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00/\00S\00t\00r\00i\00n\00g\00>\00")
+ (data (i32.const 6208) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00A\00r\00r\00a\00y\00<\00u\003\002\00>\00")
+ (data (i32.const 6256) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00A\00r\00r\00a\00y\00<\00i\003\002\00>\00")
+ (data (i32.const 6304) "\08\00\00\00\01\00\00\00\01\00\00\00\08\00\00\00u\001\002\008\00")
+ (data (i32.const 6336) "\1a\00\00\00\01\00\00\00\01\00\00\00\1a\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00r\00a\00d\00i\00x\00")
+ (data (i32.const 6384) ".\00\00\00\01\00\00\00\01\00\00\00.\00\00\00~\00l\00i\00b\00/\00a\00s\00-\00b\00i\00g\00n\00u\00m\00/\00u\00t\00i\00l\00s\00.\00t\00s\00")
+ (data (i32.const 6448) "K\00\00\00\01\00\00\00\00\00\00\00K\00\00\00\00\01\02\03\04\05\06\07\08\t$$$$$$$\n\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f !\"#$$$$$$\n\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f !\"#")
+ (data (i32.const 6544) "\10\00\00\00\01\00\00\00\1d\00\00\00\10\00\00\00@\19\00\00@\19\00\00K\00\00\00K\00\00\00")
+ (data (i32.const 6576) "B\00\00\00\01\00\00\00\01\00\00\00B\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00/\00U\00i\00n\00t\008\00A\00r\00r\00a\00y\00>\00")
+ (data (i32.const 6672) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00A\00r\00r\00a\00y\00<\00u\006\004\00>\00")
+ (data (i32.const 6720) "\10\00\00\00\01\00\00\00\01\00\00\00\10\00\00\00A\00f\00t\00e\00r\00:\00 \00 \00")
+ (data (i32.const 6752) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00t\00e\00s\00t\00.\00t\00s\00")
+ (data (i32.const 6800) "\06\00\00\00\01\00\00\00\01\00\00\00\06\00\00\00s\00t\00r\00")
+ (data (i32.const 6832) "\14\00\00\00\01\00\00\00\01\00\00\00\14\00\00\00u\00i\00n\00t\008\00A\00r\00r\00a\00y\00")
+ (data (i32.const 6880) "\12\00\00\00\01\00\00\00\01\00\00\00\12\00\00\00N\00u\00l\00l\00a\00b\00l\00e\00s\00")
+ (data (i32.const 6928) "P\00\00\00\01\00\00\00\01\00\00\00P\00\00\00e\00x\00p\00e\00c\00t\00e\00d\00 \00n\00u\00l\00l\00a\00b\00l\00e\002\00.\00u\00i\00n\00t\008\00A\00r\00r\00a\00y\00 \00t\00o\00 \00b\00e\00 \00n\00u\00l\00l\00")
+ (data (i32.const 7024) "\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7040) "\08\00\00\00\01\00\00\00\00\00\00\00\08\00\00\00\15\cd[\07\00\00\00\00")
  (data (i32.const 7072) "\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7088) "\08\00\00\00\01\00\00\00\00\00\00\00\08\00\00\00\15\cd[\07\00\00\00\00")
- (data (i32.const 7120) "\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7136) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00h\00e\00l\00l\00o\00 \00w\00o\00r\00l\00d\00")
- (data (i32.const 7184) ",\00\00\00\01\00\00\00\01\00\00\00,\00\00\00e\00x\00p\00e\00c\00t\00e\00d\00 \00\"\00h\00e\00l\00l\00o\00 \00w\00o\00r\00l\00d\00\"\00")
- (data (i32.const 7248) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00T\00e\00s\00t\00 \00P\00a\00s\00s\00e\00d\00")
- (data (i32.const 7296) "\0e\00\00\00\01\00\00\00\01\00\00\00\0e\00\00\00f\00o\00o\00b\00a\00r\00s\00")
- (data (i32.const 7328) "8\00\00\00\01\00\00\00\01\00\00\008\00\00\00A\00r\00r\00a\00y\00<\00a\00s\00s\00e\00m\00b\00l\00y\00/\00m\00o\00d\00e\00l\00/\00F\00o\00o\00B\00a\00r\00>\00")
- (data (i32.const 7408) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00f\00o\00o\00b\00a\00r\00")
- (data (i32.const 7440) ",\00\00\00\01\00\00\00\01\00\00\00,\00\00\00g\00e\00t\00S\00t\00r\00i\00n\00g\00A\00r\00r\00a\00y\00L\00e\00n\00g\00t\00h\00:\00 \00")
- (data (i32.const 7504) "\12\00\00\00\01\00\00\00\01\00\00\00\12\00\00\00c\00o\00n\00t\00a\00i\00n\00e\00r\00")
- (data (i32.const 7552) "\1c\00\00\00\01\00\00\00\01\00\00\00\1c\00\00\00C\00o\00n\00t\00a\00i\00n\00e\00r\00C\00l\00a\00s\00s\00")
- (data (i32.const 7600) "*\00\00\00\01\00\00\00\01\00\00\00*\00\00\00A\00n\00o\00t\00h\00e\00r\00C\00o\00n\00t\00a\00i\00n\00e\00r\00C\00l\00a\00s\00s\00")
- (data (i32.const 7664) "\\\00\00\00\01\00\00\00\01\00\00\00\\\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00/\00A\00r\00r\00a\00y\00<\00a\00s\00s\00e\00m\00b\00l\00y\00/\00m\00o\00d\00e\00l\00/\00F\00o\00o\00B\00a\00r\00>\00>\00")
- (data (i32.const 7776) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00 \00W\00o\00r\00l\00d\00")
- (data (i32.const 7808) "$\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\93 \00\00\02\00\00\00\93\00\00\00\02\00\00\00\93\04\00\00\02\00\00\00\93 \00\00\02\00\00\00\13\01\00\00\02\00\00\00\10\00\00\00\0f\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\04\00\00\02\00\00\00\10\00\00\00\11\00\00\00\98 A\00\00\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\003\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00")
+ (data (i32.const 7088) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00h\00e\00l\00l\00o\00 \00w\00o\00r\00l\00d\00")
+ (data (i32.const 7136) ",\00\00\00\01\00\00\00\01\00\00\00,\00\00\00e\00x\00p\00e\00c\00t\00e\00d\00 \00\"\00h\00e\00l\00l\00o\00 \00w\00o\00r\00l\00d\00\"\00")
+ (data (i32.const 7200) "\16\00\00\00\01\00\00\00\01\00\00\00\16\00\00\00T\00e\00s\00t\00 \00P\00a\00s\00s\00e\00d\00")
+ (data (i32.const 7248) "\0e\00\00\00\01\00\00\00\01\00\00\00\0e\00\00\00f\00o\00o\00b\00a\00r\00s\00")
+ (data (i32.const 7280) "8\00\00\00\01\00\00\00\01\00\00\008\00\00\00A\00r\00r\00a\00y\00<\00a\00s\00s\00e\00m\00b\00l\00y\00/\00m\00o\00d\00e\00l\00/\00F\00o\00o\00B\00a\00r\00>\00")
+ (data (i32.const 7360) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00f\00o\00o\00b\00a\00r\00")
+ (data (i32.const 7392) ",\00\00\00\01\00\00\00\01\00\00\00,\00\00\00g\00e\00t\00S\00t\00r\00i\00n\00g\00A\00r\00r\00a\00y\00L\00e\00n\00g\00t\00h\00:\00 \00")
+ (data (i32.const 7456) "\12\00\00\00\01\00\00\00\01\00\00\00\12\00\00\00c\00o\00n\00t\00a\00i\00n\00e\00r\00")
+ (data (i32.const 7504) "\1c\00\00\00\01\00\00\00\01\00\00\00\1c\00\00\00C\00o\00n\00t\00a\00i\00n\00e\00r\00C\00l\00a\00s\00s\00")
+ (data (i32.const 7552) "*\00\00\00\01\00\00\00\01\00\00\00*\00\00\00A\00n\00o\00t\00h\00e\00r\00C\00o\00n\00t\00a\00i\00n\00e\00r\00C\00l\00a\00s\00s\00")
+ (data (i32.const 7616) "\\\00\00\00\01\00\00\00\01\00\00\00\\\00\00\00A\00r\00r\00a\00y\00<\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00/\00A\00r\00r\00a\00y\00<\00a\00s\00s\00e\00m\00b\00l\00y\00/\00m\00o\00d\00e\00l\00/\00F\00o\00o\00B\00a\00r\00>\00>\00")
+ (data (i32.const 7728) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00 \00W\00o\00r\00l\00d\00")
+ (data (i32.const 7760) "$\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\93 \00\00\02\00\00\00\93\00\00\00\02\00\00\00\93\04\00\00\02\00\00\00\93 \00\00\02\00\00\00\13\01\00\00\02\00\00\00\10\00\00\00\0f\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\001\04\00\00\02\00\00\00\10\00\00\00\11\00\00\00\98 A\00\00\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\00\10\00\00\00\11\00\00\003\00\00\00\02\00\00\00\10\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00\93 \00\00\02\00\00\00\10\00\00\00\00\00\00\00\93 \00\00\02\00\00\00")
  (table $0 2 funcref)
  (elem (i32.const 1) $assembly/main/convertFoobars~anonymous|0)
  (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
@@ -223,10 +223,10 @@
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
  (global $~lib/as-bignum/integer/u128/HEX_CHARS i32 (i32.const 560))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (global $~lib/as-bignum/utils/RadixCharsTable i32 (i32.const 6608))
+ (global $~lib/as-bignum/utils/RadixCharsTable i32 (i32.const 6560))
  (global $~lib/number/U32.MAX_VALUE i32 (i32.const -1))
- (global $~lib/rt/__rtti_base i32 (i32.const 7808))
- (global $~lib/heap/__heap_base i32 (i32.const 8100))
+ (global $~lib/rt/__rtti_base i32 (i32.const 7760))
+ (global $~lib/heap/__heap_base i32 (i32.const 8052))
  (export "__setArgumentsLength" (func $~setArgumentsLength))
  (export "memory" (memory $0))
  (export "runTest" (func $assembly/test/runTest))
@@ -3206,7 +3206,7 @@
   drop
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/JSONEncoder#constructor (; 37 ;) (param $0 i32) (result i32)
+ (func $nearFile/JSONEncoder#constructor (; 37 ;) (param $0 i32) (result i32)
   local.get $0
   if (result i32)
    local.get $0
@@ -4295,7 +4295,7 @@
   call $~lib/util/number/itoa64
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
  )
- (func $~lib/near-bindgen-as/index/encode<i32,~lib/near-bindgen-as/index/JSONEncoder> (; 61 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<i32,nearFile/JSONEncoder> (; 61 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
   local.get $1
   local.get $0
@@ -4303,7 +4303,7 @@
   call $~lib/assemblyscript-json/encoder/JSONEncoder#setInteger
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/encode<u32,~lib/near-bindgen-as/index/JSONEncoder> (; 62 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<u32,nearFile/JSONEncoder> (; 62 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
   local.get $1
   local.get $0
@@ -4361,7 +4361,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#writeString
  )
- (func $~lib/near-bindgen-as/index/encode<u64,~lib/near-bindgen-as/index/JSONEncoder> (; 65 ;) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<u64,nearFile/JSONEncoder> (; 65 ;) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
   local.get $2
   local.get $1
   local.get $0
@@ -4377,7 +4377,7 @@
   i32.const 2560
   call $~lib/assemblyscript-json/encoder/JSONEncoder#write
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/near-bindgen-as/index/JSONEncoder> (; 67 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/string/String,nearFile/JSONEncoder> (; 67 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -4770,7 +4770,7 @@
   i32.const 976
   call $~lib/array/Array<~lib/string/String>#join
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/typedarray/Uint8Array,~lib/near-bindgen-as/index/JSONEncoder> (; 72 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/typedarray/Uint8Array,nearFile/JSONEncoder> (; 72 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -4905,7 +4905,7 @@
   call $~lib/array/Array<i32>#pop
   drop
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/string/String>,~lib/near-bindgen-as/index/JSONEncoder> (; 78 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<~lib/string/String>,nearFile/JSONEncoder> (; 78 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -4925,7 +4925,7 @@
      call $~lib/array/Array<~lib/string/String>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<~lib/string/String,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -4943,7 +4943,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/near-bindgen-as/index/JSONEncoder> (; 79 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,nearFile/JSONEncoder> (; 79 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -4963,7 +4963,7 @@
      call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/string/String>,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<~lib/array/Array<~lib/string/String>,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -5002,7 +5002,7 @@
   i32.add
   i32.load
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<u32>,~lib/near-bindgen-as/index/JSONEncoder> (; 81 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<u32>,nearFile/JSONEncoder> (; 81 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -5022,7 +5022,7 @@
      call $~lib/array/Array<u32>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<u32,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<u32,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -5040,7 +5040,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<i32>,~lib/near-bindgen-as/index/JSONEncoder> (; 82 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<i32>,nearFile/JSONEncoder> (; 82 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -5060,7 +5060,7 @@
      call $~lib/array/Array<i32>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<i32,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<i32,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -5497,7 +5497,7 @@
   end
   i32.const 3584
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder> (; 88 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/as-bignum/integer/u128/u128,nearFile/JSONEncoder> (; 88 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -5545,7 +5545,7 @@
   end
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/near-bindgen-as/index/JSONEncoder> (; 90 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<~lib/typedarray/Uint8Array>,nearFile/JSONEncoder> (; 90 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -5565,7 +5565,7 @@
      call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<~lib/typedarray/Uint8Array,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<~lib/typedarray/Uint8Array,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -5604,7 +5604,7 @@
   i32.add
   i64.load
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<u64>,~lib/near-bindgen-as/index/JSONEncoder> (; 92 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<u64>,nearFile/JSONEncoder> (; 92 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -5624,7 +5624,7 @@
      call $~lib/array/Array<u64>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<u64,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<u64,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -5656,7 +5656,7 @@
   i32.eqz
   if
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $2
@@ -5677,25 +5677,25 @@
   i32.load
   i32.const 880
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<i32,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<i32,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=4
   i32.const 2816
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<u32,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<u32,nearFile/JSONEncoder>
   drop
   local.get $0
   i64.load offset=8
   i32.const 2848
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<u64,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<u64,nearFile/JSONEncoder>
   drop
   local.get $0
   i64.load offset=16
   i32.const 2880
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<u64,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<u64,nearFile/JSONEncoder>
   drop
   local.get $2
   i32.const 2912
@@ -5719,49 +5719,49 @@
   i32.load offset=36
   i32.const 2976
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/string/String,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=40
   i32.const 3008
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/typedarray/Uint8Array,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/typedarray/Uint8Array,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=44
   i32.const 3056
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=48
   i32.const 3312
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<u32>,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/array/Array<u32>,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=52
   i32.const 3344
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<i32>,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/array/Array<i32>,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=56
   i32.const 3376
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/as-bignum/integer/u128/u128,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=60
   i32.const 3632
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/array/Array<~lib/typedarray/Uint8Array>,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=64
   i32.const 3680
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<u64>,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/array/Array<u64>,nearFile/JSONEncoder>
   drop
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
@@ -7957,8 +7957,8 @@
   local.tee $0
   i32.eqz
   if
-   i32.const 4960
-   i32.const 5024
+   i32.const 4912
+   i32.const 4976
    i32.const 111
    i32.const 16
    call $~lib/builtins/abort
@@ -7982,7 +7982,7 @@
   local.get $1
   call $~lib/map/Map<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Value>#get
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/FooBar> (; 149 ;) (result i32)
+ (func $nearFile/isReallyNullable<assembly/model/FooBar> (; 149 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -8006,7 +8006,7 @@
   local.get $1
   call $~lib/map/Map<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Value>#has
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<i32> (; 151 ;) (result i32)
+ (func $nearFile/isReallyNullable<i32> (; 151 ;) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -8024,7 +8024,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/decode<i32,~lib/assemblyscript-json/JSON/JSON.Obj> (; 152 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<i32,~lib/assemblyscript-json/JSON/JSON.Obj> (; 152 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -8062,14 +8062,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<i32>
+    call $nearFile/isReallyNullable<i32>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5440
+     i32.const 5024
+     i32.const 5392
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -8077,10 +8077,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5440
+     i32.const 5024
+     i32.const 5392
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -8105,14 +8105,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5440
+   i32.const 5392
    call $~lib/string/String.__concat
-   i32.const 5472
+   i32.const 5424
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 188
@@ -8136,7 +8136,7 @@
   i64.load
   i32.wrap_i64
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<u32> (; 153 ;) (result i32)
+ (func $nearFile/isReallyNullable<u32> (; 153 ;) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -8154,7 +8154,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/decode<u32,~lib/assemblyscript-json/JSON/JSON.Obj> (; 154 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<u32,~lib/assemblyscript-json/JSON/JSON.Obj> (; 154 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -8192,14 +8192,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<u32>
+    call $nearFile/isReallyNullable<u32>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5536
+     i32.const 5024
+     i32.const 5488
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -8207,10 +8207,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5536
+     i32.const 5024
+     i32.const 5488
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -8235,14 +8235,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5536
+   i32.const 5488
    call $~lib/string/String.__concat
-   i32.const 5472
+   i32.const 5424
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 188
@@ -8266,7 +8266,7 @@
   i64.load
   i32.wrap_i64
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<u64> (; 155 ;) (result i32)
+ (func $nearFile/isReallyNullable<u64> (; 155 ;) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -8608,7 +8608,7 @@
   local.get $1
   call $~lib/util/string/strtol<i64>
  )
- (func $~lib/near-bindgen-as/index/decode<u64,~lib/assemblyscript-json/JSON/JSON.Obj> (; 159 ;) (param $0 i32) (param $1 i32) (result i64)
+ (func $nearFile/decode<u64,~lib/assemblyscript-json/JSON/JSON.Obj> (; 159 ;) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -8646,14 +8646,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<u64>
+    call $nearFile/isReallyNullable<u64>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5568
+     i32.const 5024
+     i32.const 5520
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -8661,10 +8661,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5568
+     i32.const 5024
+     i32.const 5520
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -8689,14 +8689,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5568
+   i32.const 5520
    call $~lib/string/String.__concat
-   i32.const 5600
+   i32.const 5552
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 183
@@ -8721,7 +8721,7 @@
   i32.const 0
   call $~lib/number/U64.parseInt
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<i64> (; 160 ;) (result i32)
+ (func $nearFile/isReallyNullable<i64> (; 160 ;) (result i32)
   i32.const 0
   if (result i32)
    i32.const 1
@@ -8744,7 +8744,7 @@
   local.get $1
   call $~lib/util/string/strtol<i64>
  )
- (func $~lib/near-bindgen-as/index/decode<i64,~lib/assemblyscript-json/JSON/JSON.Obj> (; 162 ;) (param $0 i32) (param $1 i32) (result i64)
+ (func $nearFile/decode<i64,~lib/assemblyscript-json/JSON/JSON.Obj> (; 162 ;) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -8782,14 +8782,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<i64>
+    call $nearFile/isReallyNullable<i64>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5744
+     i32.const 5024
+     i32.const 5696
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -8797,10 +8797,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5744
+     i32.const 5024
+     i32.const 5696
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -8825,14 +8825,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5744
+   i32.const 5696
    call $~lib/string/String.__concat
-   i32.const 5600
+   i32.const 5552
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 183
@@ -8857,7 +8857,7 @@
   i32.const 0
   call $~lib/number/I64.parseInt
  )
- (func $~lib/near-bindgen-as/index/decode<bool,~lib/assemblyscript-json/JSON/JSON.Obj> (; 163 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<bool,~lib/assemblyscript-json/JSON/JSON.Obj> (; 163 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -8895,10 +8895,10 @@
    local.tee $0
    i32.eqz
    if
-    i32.const 5072
-    i32.const 5776
+    i32.const 5024
+    i32.const 5728
     call $~lib/string/String.__concat
-    i32.const 5136
+    i32.const 5088
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 167
@@ -8921,14 +8921,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5776
+   i32.const 5728
    call $~lib/string/String.__concat
-   i32.const 5808
+   i32.const 5760
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 175
@@ -8951,7 +8951,7 @@
   end
   i32.load8_u
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/string/String> (; 164 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/string/String> (; 164 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -8969,7 +8969,7 @@
    i32.const 1
   end
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj> (; 165 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj> (; 165 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9007,7 +9007,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/string/String>
+    call $nearFile/isReallyNullable<~lib/string/String>
     if (result i32)
      i32.const 1
     else
@@ -9021,10 +9021,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5856
+     i32.const 5024
+     i32.const 5808
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -9050,17 +9050,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/string/String>
+   call $nearFile/isReallyNullable<~lib/string/String>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5808
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5856
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -9082,10 +9082,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5888
+   i32.const 5840
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 131
@@ -9108,7 +9108,7 @@
   end
   i32.load
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/typedarray/Uint8Array> (; 166 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/typedarray/Uint8Array> (; 166 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -9126,7 +9126,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Obj> (; 167 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Obj> (; 167 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9164,7 +9164,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/typedarray/Uint8Array>
+    call $nearFile/isReallyNullable<~lib/typedarray/Uint8Array>
     if (result i32)
      i32.const 1
     else
@@ -9178,10 +9178,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5952
+     i32.const 5024
+     i32.const 5904
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -9207,17 +9207,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/typedarray/Uint8Array>
+   call $nearFile/isReallyNullable<~lib/typedarray/Uint8Array>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5904
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5952
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -9239,10 +9239,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5888
+   i32.const 5840
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 131
@@ -9266,7 +9266,7 @@
   i32.load
   call $~lib/near-runtime-ts/base64/base64.decode
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>> (; 168 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>> (; 168 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -9304,7 +9304,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/string/String>> (; 170 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<~lib/string/String>> (; 170 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -9322,7 +9322,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Value> (; 171 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Value> (; 171 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9360,7 +9360,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/string/String>
+    call $nearFile/isReallyNullable<~lib/string/String>
     if (result i32)
      i32.const 1
     else
@@ -9374,10 +9374,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5856
+     i32.const 5024
+     i32.const 5808
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -9403,17 +9403,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/string/String>
+   call $nearFile/isReallyNullable<~lib/string/String>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5808
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5856
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -9435,10 +9435,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5888
+   i32.const 5840
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 131
@@ -9461,7 +9461,7 @@
   end
   i32.load
  )
- (func $~lib/near-bindgen-as/index/decodeArray<~lib/string/String> (; 172 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/string/String> (; 172 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9474,10 +9474,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -9518,7 +9518,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $0
@@ -9530,7 +9530,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Value> (; 173 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Value> (; 173 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9568,7 +9568,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/string/String>>
+    call $nearFile/isReallyNullable<~lib/array/Array<~lib/string/String>>
     if (result i32)
      i32.const 1
     else
@@ -9582,10 +9582,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6192
+     i32.const 5024
+     i32.const 6144
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -9609,17 +9609,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/string/String>>
+   call $nearFile/isReallyNullable<~lib/array/Array<~lib/string/String>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6144
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6192
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -9632,7 +9632,7 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<~lib/string/String>
+  call $nearFile/decodeArray<~lib/string/String>
  )
  (func $~lib/array/Array<~lib/array/Array<~lib/string/String>>#push (; 174 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -9659,7 +9659,7 @@
   i32.store offset=12
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decodeArray<~lib/array/Array<~lib/string/String>> (; 175 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/array/Array<~lib/string/String>> (; 175 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9672,10 +9672,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -9716,7 +9716,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<~lib/array/Array<~lib/string/String>>#push
     drop
     local.get $0
@@ -9728,7 +9728,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 176 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 176 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9766,7 +9766,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>>
+    call $nearFile/isReallyNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>>
     if (result i32)
      i32.const 1
     else
@@ -9780,10 +9780,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6000
+     i32.const 5024
+     i32.const 5952
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -9807,17 +9807,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>>
+   call $nearFile/isReallyNullable<~lib/array/Array<~lib/array/Array<~lib/string/String>>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5952
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6000
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -9830,9 +9830,9 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<~lib/array/Array<~lib/string/String>>
+  call $nearFile/decodeArray<~lib/array/Array<~lib/string/String>>
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u32>> (; 177 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<u32>> (; 177 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -9870,7 +9870,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/decode<u32,~lib/assemblyscript-json/JSON/JSON.Value> (; 179 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<u32,~lib/assemblyscript-json/JSON/JSON.Value> (; 179 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -9908,14 +9908,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<u32>
+    call $nearFile/isReallyNullable<u32>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5536
+     i32.const 5024
+     i32.const 5488
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -9923,10 +9923,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5536
+     i32.const 5024
+     i32.const 5488
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -9951,14 +9951,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5536
+   i32.const 5488
    call $~lib/string/String.__concat
-   i32.const 5472
+   i32.const 5424
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 188
@@ -10009,7 +10009,7 @@
   i32.store offset=12
   local.get $3
  )
- (func $~lib/near-bindgen-as/index/decodeArray<u32> (; 181 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<u32> (; 181 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -10022,10 +10022,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -10066,7 +10066,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<u32,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<u32,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<u32>#push
     drop
     local.get $0
@@ -10078,7 +10078,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<u32>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 182 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<u32>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 182 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -10116,7 +10116,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u32>>
+    call $nearFile/isReallyNullable<~lib/array/Array<u32>>
     if (result i32)
      i32.const 1
     else
@@ -10130,10 +10130,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6272
+     i32.const 5024
+     i32.const 6224
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -10157,17 +10157,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u32>>
+   call $nearFile/isReallyNullable<~lib/array/Array<u32>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6224
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6272
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -10180,9 +10180,9 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<u32>
+  call $nearFile/decodeArray<u32>
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<i32>> (; 183 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<i32>> (; 183 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -10200,7 +10200,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/decode<i32,~lib/assemblyscript-json/JSON/JSON.Value> (; 184 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<i32,~lib/assemblyscript-json/JSON/JSON.Value> (; 184 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -10238,14 +10238,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<i32>
+    call $nearFile/isReallyNullable<i32>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5440
+     i32.const 5024
+     i32.const 5392
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -10253,10 +10253,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5440
+     i32.const 5024
+     i32.const 5392
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -10281,14 +10281,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5440
+   i32.const 5392
    call $~lib/string/String.__concat
-   i32.const 5472
+   i32.const 5424
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 188
@@ -10312,7 +10312,7 @@
   i64.load
   i32.wrap_i64
  )
- (func $~lib/near-bindgen-as/index/decodeArray<i32> (; 185 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<i32> (; 185 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -10325,10 +10325,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -10369,7 +10369,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<i32,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<i32,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<i32>#push
     drop
     local.get $0
@@ -10381,7 +10381,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<i32>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 186 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<i32>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 186 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -10419,7 +10419,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<i32>>
+    call $nearFile/isReallyNullable<~lib/array/Array<i32>>
     if (result i32)
      i32.const 1
     else
@@ -10433,10 +10433,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6320
+     i32.const 5024
+     i32.const 6272
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -10460,17 +10460,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<i32>>
+   call $nearFile/isReallyNullable<~lib/array/Array<i32>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6272
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6320
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -10483,9 +10483,9 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<i32>
+  call $nearFile/decodeArray<i32>
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128> (; 187 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/as-bignum/integer/u128/u128> (; 187 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -10643,8 +10643,8 @@
   i32.lt_s
   select
   if
+   i32.const 6352
    i32.const 6400
-   i32.const 6448
    i32.const 133
    i32.const 4
    call $~lib/builtins/abort
@@ -10756,7 +10756,7 @@
   i64.const 0
   call $~lib/as-bignum/integer/u128/u128#constructor
   local.set $2
-  i32.const 6608
+  i32.const 6560
   local.set $10
   block $break|0
    block $case3|0
@@ -11126,7 +11126,7 @@
    local.get $2
   end
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj> (; 191 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj> (; 191 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -11165,7 +11165,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
+    call $nearFile/isReallyNullable<~lib/as-bignum/integer/u128/u128>
     if (result i32)
      i32.const 1
     else
@@ -11179,10 +11179,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6368
+     i32.const 5024
+     i32.const 6320
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -11208,17 +11208,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
+   call $nearFile/isReallyNullable<~lib/as-bignum/integer/u128/u128>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6320
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6368
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -11259,10 +11259,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5888
+   i32.const 5840
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 131
@@ -11287,7 +11287,7 @@
   i32.const 0
   call $~lib/as-bignum/utils/atou128
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/typedarray/Uint8Array>> (; 192 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<~lib/typedarray/Uint8Array>> (; 192 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -11305,7 +11305,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Value> (; 193 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Value> (; 193 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -11343,7 +11343,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/typedarray/Uint8Array>
+    call $nearFile/isReallyNullable<~lib/typedarray/Uint8Array>
     if (result i32)
      i32.const 1
     else
@@ -11357,10 +11357,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5952
+     i32.const 5024
+     i32.const 5904
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -11386,17 +11386,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/typedarray/Uint8Array>
+   call $nearFile/isReallyNullable<~lib/typedarray/Uint8Array>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5904
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5952
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -11418,10 +11418,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5888
+   i32.const 5840
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 131
@@ -11470,7 +11470,7 @@
   i32.store offset=12
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decodeArray<~lib/typedarray/Uint8Array> (; 195 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/typedarray/Uint8Array> (; 195 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -11483,10 +11483,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -11527,7 +11527,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<~lib/typedarray/Uint8Array>#push
     drop
     local.get $0
@@ -11539,7 +11539,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 196 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 196 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -11577,7 +11577,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/typedarray/Uint8Array>>
+    call $nearFile/isReallyNullable<~lib/array/Array<~lib/typedarray/Uint8Array>>
     if (result i32)
      i32.const 1
     else
@@ -11591,10 +11591,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6640
+     i32.const 5024
+     i32.const 6592
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -11618,17 +11618,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/typedarray/Uint8Array>>
+   call $nearFile/isReallyNullable<~lib/array/Array<~lib/typedarray/Uint8Array>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6592
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6640
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -11641,9 +11641,9 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<~lib/typedarray/Uint8Array>
+  call $nearFile/decodeArray<~lib/typedarray/Uint8Array>
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u64>> (; 197 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<u64>> (; 197 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -11681,7 +11681,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/decode<u64,~lib/assemblyscript-json/JSON/JSON.Value> (; 199 ;) (param $0 i32) (param $1 i32) (result i64)
+ (func $nearFile/decode<u64,~lib/assemblyscript-json/JSON/JSON.Value> (; 199 ;) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -11719,14 +11719,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<u64>
+    call $nearFile/isReallyNullable<u64>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5568
+     i32.const 5024
+     i32.const 5520
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -11734,10 +11734,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5568
+     i32.const 5024
+     i32.const 5520
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -11762,14 +11762,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5568
+   i32.const 5520
    call $~lib/string/String.__concat
-   i32.const 5600
+   i32.const 5552
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 183
@@ -11821,7 +11821,7 @@
   i32.store offset=12
   local.get $3
  )
- (func $~lib/near-bindgen-as/index/decodeArray<u64> (; 201 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<u64> (; 201 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -11834,10 +11834,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -11878,7 +11878,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<u64,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<u64,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<u64>#push
     drop
     local.get $0
@@ -11890,7 +11890,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<u64>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 202 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<u64>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 202 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -11928,7 +11928,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u64>>
+    call $nearFile/isReallyNullable<~lib/array/Array<u64>>
     if (result i32)
      i32.const 1
     else
@@ -11942,10 +11942,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6736
+     i32.const 5024
+     i32.const 6688
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -11969,17 +11969,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u64>>
+   call $nearFile/isReallyNullable<~lib/array/Array<u64>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6688
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6736
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -11992,7 +11992,7 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<u64>
+  call $nearFile/decodeArray<u64>
  )
  (func $assembly/model/FooBar#_decode (; 203 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -12004,7 +12004,7 @@
   if (result i32)
    local.get $1
    i32.const 880
-   call $~lib/near-bindgen-as/index/decode<i32,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<i32,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    i32.const 0
   end
@@ -12016,7 +12016,7 @@
   if (result i32)
    local.get $1
    i32.const 2816
-   call $~lib/near-bindgen-as/index/decode<u32,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<u32,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    i32.const 1
   end
@@ -12028,7 +12028,7 @@
   if (result i64)
    local.get $1
    i32.const 2848
-   call $~lib/near-bindgen-as/index/decode<u64,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<u64,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    i64.const 4294967297
   end
@@ -12040,7 +12040,7 @@
   if (result i64)
    local.get $1
    i32.const 2880
-   call $~lib/near-bindgen-as/index/decode<u64,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<u64,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i64.load offset=16
@@ -12053,7 +12053,7 @@
   if (result i64)
    local.get $1
    i32.const 2912
-   call $~lib/near-bindgen-as/index/decode<i64,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<i64,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    i64.const -64
   end
@@ -12065,7 +12065,7 @@
   if (result i32)
    local.get $1
    i32.const 2944
-   call $~lib/near-bindgen-as/index/decode<bool,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<bool,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load8_u offset=32
@@ -12079,7 +12079,7 @@
   if (result i32)
    local.get $1
    i32.const 2976
-   call $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    i32.const 816
   end
@@ -12097,7 +12097,7 @@
   if (result i32)
    local.get $1
    i32.const 3008
-   call $~lib/near-bindgen-as/index/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=40
@@ -12116,7 +12116,7 @@
   if (result i32)
    local.get $1
    i32.const 3056
-   call $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/array/Array<~lib/array/Array<~lib/string/String>>,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=44
@@ -12135,7 +12135,7 @@
   if (result i32)
    local.get $1
    i32.const 3312
-   call $~lib/near-bindgen-as/index/decode<~lib/array/Array<u32>,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/array/Array<u32>,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=48
@@ -12154,7 +12154,7 @@
   if (result i32)
    local.get $1
    i32.const 3344
-   call $~lib/near-bindgen-as/index/decode<~lib/array/Array<i32>,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/array/Array<i32>,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=52
@@ -12173,7 +12173,7 @@
   if (result i32)
    local.get $1
    i32.const 3376
-   call $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=56
@@ -12192,7 +12192,7 @@
   if (result i32)
    local.get $1
    i32.const 3632
-   call $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/array/Array<~lib/typedarray/Uint8Array>,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=60
@@ -12211,7 +12211,7 @@
   if (result i32)
    local.get $1
    i32.const 3680
-   call $~lib/near-bindgen-as/index/decode<~lib/array/Array<u64>,~lib/assemblyscript-json/JSON/JSON.Obj>
+   call $nearFile/decode<~lib/array/Array<u64>,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=64
@@ -12231,7 +12231,7 @@
   local.get $0
   call $assembly/model/FooBar#_decode
  )
- (func $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array> (; 205 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array> (; 205 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   call $~lib/assemblyscript-json/JSON/_JSON.parse<~lib/typedarray/Uint8Array>
@@ -12271,7 +12271,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/FooBar>
+    call $nearFile/isReallyNullable<assembly/model/FooBar>
     if (result i32)
      i32.const 1
     else
@@ -12285,10 +12285,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5104
+     i32.const 5024
+     i32.const 5056
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -12312,17 +12312,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/FooBar>
+   call $nearFile/isReallyNullable<assembly/model/FooBar>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5056
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5104
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -12344,14 +12344,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5104
+   i32.const 5056
    call $~lib/string/String.__concat
-   i32.const 5360
+   i32.const 5312
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 219
@@ -12405,7 +12405,7 @@
   i32.eqz
   if
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $2
@@ -12424,21 +12424,21 @@
   drop
   local.get $0
   i32.load
-  i32.const 6864
+  i32.const 6816
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/string/String,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=4
-  i32.const 6368
+  i32.const 6320
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/as-bignum/integer/u128/u128,nearFile/JSONEncoder>
   drop
   local.get $0
   i32.load offset=8
-  i32.const 6896
+  i32.const 6848
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/typedarray/Uint8Array,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/typedarray/Uint8Array,nearFile/JSONEncoder>
   drop
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
@@ -12451,7 +12451,7 @@
   call $assembly/model/Nullables#_encode
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/Nullables> (; 209 ;) (result i32)
+ (func $nearFile/isReallyNullable<assembly/model/Nullables> (; 209 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -12475,12 +12475,12 @@
   local.get $0
   local.tee $2
   local.get $1
-  i32.const 6864
+  i32.const 6816
   call $~lib/assemblyscript-json/JSON/JSON.Obj#has
   if (result i32)
    local.get $1
-   i32.const 6864
-   call $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj>
+   i32.const 6816
+   call $nearFile/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load
@@ -12494,12 +12494,12 @@
   local.get $0
   local.tee $3
   local.get $1
-  i32.const 6368
+  i32.const 6320
   call $~lib/assemblyscript-json/JSON/JSON.Obj#has
   if (result i32)
    local.get $1
-   i32.const 6368
-   call $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
+   i32.const 6320
+   call $nearFile/decode<~lib/as-bignum/integer/u128/u128,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=4
@@ -12513,12 +12513,12 @@
   local.get $0
   local.tee $2
   local.get $1
-  i32.const 6896
+  i32.const 6848
   call $~lib/assemblyscript-json/JSON/JSON.Obj#has
   if (result i32)
    local.get $1
-   i32.const 6896
-   call $~lib/near-bindgen-as/index/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Obj>
+   i32.const 6848
+   call $nearFile/decode<~lib/typedarray/Uint8Array,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load offset=8
@@ -12531,7 +12531,7 @@
   i32.store offset=8
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array> (; 211 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array> (; 211 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   call $~lib/assemblyscript-json/JSON/_JSON.parse<~lib/typedarray/Uint8Array>
@@ -12571,7 +12571,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/Nullables>
+    call $nearFile/isReallyNullable<assembly/model/Nullables>
     if (result i32)
      i32.const 1
     else
@@ -12585,10 +12585,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6944
+     i32.const 5024
+     i32.const 6896
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -12612,17 +12612,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/Nullables>
+   call $nearFile/isReallyNullable<assembly/model/Nullables>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6896
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6944
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -12644,14 +12644,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 6944
+   i32.const 6896
    call $~lib/string/String.__concat
-   i32.const 5360
+   i32.const 5312
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 219
@@ -12678,7 +12678,7 @@
   end
   call $assembly/model/Nullables#_decode
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array> (; 212 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array> (; 212 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -12698,7 +12698,7 @@
      call $~lib/array/Array<u64>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<u64,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<u64,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -12717,7 +12717,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline (; 213 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline (; 213 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -12733,15 +12733,15 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $0
   local.get $1
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
+  call $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array> (; 214 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array> (; 214 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   call $~lib/assemblyscript-json/JSON/_JSON.parse<~lib/typedarray/Uint8Array>
@@ -12781,7 +12781,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u64>>
+    call $nearFile/isReallyNullable<~lib/array/Array<u64>>
     if (result i32)
      i32.const 1
     else
@@ -12795,10 +12795,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6736
+     i32.const 5024
+     i32.const 6688
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -12822,17 +12822,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<u64>>
+   call $nearFile/isReallyNullable<~lib/array/Array<u64>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6688
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6736
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -12845,9 +12845,9 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<u64>
+  call $nearFile/decodeArray<u64>
  )
- (func $~lib/near-bindgen-as/index/encode<i32,~lib/typedarray/Uint8Array>|trampoline (; 215 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<i32,~lib/typedarray/Uint8Array>|trampoline (; 215 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -12863,7 +12863,7 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $2
@@ -12874,7 +12874,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/decode<i32,~lib/typedarray/Uint8Array> (; 216 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<i32,~lib/typedarray/Uint8Array> (; 216 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   call $~lib/assemblyscript-json/JSON/_JSON.parse<~lib/typedarray/Uint8Array>
@@ -12914,14 +12914,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<i32>
+    call $nearFile/isReallyNullable<i32>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5440
+     i32.const 5024
+     i32.const 5392
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -12929,10 +12929,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5440
+     i32.const 5024
+     i32.const 5392
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -12957,14 +12957,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5440
+   i32.const 5392
    call $~lib/string/String.__concat
-   i32.const 5472
+   i32.const 5424
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 188
@@ -12988,7 +12988,7 @@
   i64.load
   i32.wrap_i64
  )
- (func $~lib/near-bindgen-as/index/encode<i64,~lib/typedarray/Uint8Array>|trampoline (; 217 ;) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<i64,~lib/typedarray/Uint8Array>|trampoline (; 217 ;) (param $0 i64) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -13004,7 +13004,7 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $2
@@ -13015,7 +13015,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/decode<i64,~lib/typedarray/Uint8Array> (; 218 ;) (param $0 i32) (param $1 i32) (result i64)
+ (func $nearFile/decode<i64,~lib/typedarray/Uint8Array> (; 218 ;) (param $0 i32) (param $1 i32) (result i64)
   (local $2 i32)
   local.get $0
   call $~lib/assemblyscript-json/JSON/_JSON.parse<~lib/typedarray/Uint8Array>
@@ -13055,14 +13055,14 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<i64>
+    call $nearFile/isReallyNullable<i64>
     drop
     i32.const 0
     if
-     i32.const 5072
-     i32.const 5744
+     i32.const 5024
+     i32.const 5696
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 161
@@ -13070,10 +13070,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5744
+     i32.const 5024
+     i32.const 5696
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -13098,14 +13098,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5744
+   i32.const 5696
    call $~lib/string/String.__concat
-   i32.const 5600
+   i32.const 5552
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 183
@@ -13130,7 +13130,7 @@
   i32.const 0
   call $~lib/number/I64.parseInt
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline (; 219 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline (; 219 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -13146,7 +13146,7 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $0
@@ -13163,7 +13163,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/typedarray/Uint8Array> (; 220 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/string/String,~lib/typedarray/Uint8Array> (; 220 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   call $~lib/assemblyscript-json/JSON/_JSON.parse<~lib/typedarray/Uint8Array>
@@ -13203,7 +13203,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/string/String>
+    call $nearFile/isReallyNullable<~lib/string/String>
     if (result i32)
      i32.const 1
     else
@@ -13217,10 +13217,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5856
+     i32.const 5024
+     i32.const 5808
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -13246,17 +13246,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/string/String>
+   call $nearFile/isReallyNullable<~lib/string/String>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5808
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5856
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -13278,10 +13278,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5888
+   i32.const 5840
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 131
@@ -13304,7 +13304,7 @@
   end
   i32.load
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline (; 221 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline (; 221 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -13320,7 +13320,7 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $0
@@ -13339,7 +13339,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array> (; 222 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array> (; 222 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -13380,7 +13380,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
+    call $nearFile/isReallyNullable<~lib/as-bignum/integer/u128/u128>
     if (result i32)
      i32.const 1
     else
@@ -13394,10 +13394,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6368
+     i32.const 5024
+     i32.const 6320
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -13423,17 +13423,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/as-bignum/integer/u128/u128>
+   call $nearFile/isReallyNullable<~lib/as-bignum/integer/u128/u128>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6320
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6368
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -13474,10 +13474,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5888
+   i32.const 5840
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 131
@@ -13624,19 +13624,19 @@
   call $assembly/model/FooBar#toJSON
   call $~lib/string/String.__concat
   call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
-  i32.const 6784
+  i32.const 6736
   local.get $0
   call $assembly/model/FooBar#encode
   local.tee $2
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
   local.tee $1
   call $assembly/model/FooBar#toJSON
   call $~lib/string/String.__concat
   call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
   local.get $2
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
   local.set $2
   local.get $1
   call $assembly/model/FooBar#toJSON
@@ -13646,7 +13646,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 42
    i32.const 2
    call $~lib/builtins/abort
@@ -13659,7 +13659,7 @@
   i32.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 43
    i32.const 2
    call $~lib/builtins/abort
@@ -13672,7 +13672,7 @@
   i32.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 44
    i32.const 2
    call $~lib/builtins/abort
@@ -13688,7 +13688,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 45
    i32.const 2
    call $~lib/builtins/abort
@@ -13708,7 +13708,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 46
    i32.const 2
    call $~lib/builtins/abort
@@ -13725,7 +13725,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 47
    i32.const 2
    call $~lib/builtins/abort
@@ -13742,7 +13742,7 @@
   i64.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 48
    i32.const 2
    call $~lib/builtins/abort
@@ -13755,7 +13755,7 @@
   i64.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 49
    i32.const 2
    call $~lib/builtins/abort
@@ -13775,7 +13775,7 @@
   local.get $0
   call $assembly/model/Nullables#encode
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<assembly/model/Nullables,~lib/typedarray/Uint8Array>
   local.tee $0
   i32.load
   i32.const 0
@@ -13783,7 +13783,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 53
    i32.const 2
    call $~lib/builtins/abort
@@ -13798,8 +13798,8 @@
   local.get $0
   i32.load offset=8
   if
-   i32.const 6992
-   i32.const 6816
+   i32.const 6944
+   i32.const 6768
    i32.const 55
    i32.const 2
    call $~lib/builtins/abort
@@ -13812,7 +13812,7 @@
   i32.const 0
   i32.const 2
   i32.const 9
-  i32.const 7088
+  i32.const 7040
   call $~lib/rt/__allocArray
   local.set $2
   local.get $1
@@ -13823,7 +13823,7 @@
   local.get $0
   call $assembly/model/FooBar#encode
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<assembly/model/FooBar,~lib/typedarray/Uint8Array>
   i32.load offset=44
   i32.load offset=12
   local.get $0
@@ -13832,7 +13832,7 @@
   i32.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 59
    i32.const 2
    call $~lib/builtins/abort
@@ -13841,7 +13841,7 @@
   i32.const 1
   i32.const 3
   i32.const 13
-  i32.const 7104
+  i32.const 7056
   call $~lib/rt/__allocArray
   local.set $0
   i32.const 1
@@ -13849,9 +13849,9 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
   local.set $1
   local.get $0
   i32.const 0
@@ -13862,7 +13862,7 @@
   i64.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 63
    i32.const 2
    call $~lib/builtins/abort
@@ -13871,7 +13871,7 @@
   i32.const 0
   i32.const 3
   i32.const 13
-  i32.const 7136
+  i32.const 7088
   call $~lib/rt/__allocArray
   local.set $0
   i32.const 1
@@ -13879,13 +13879,13 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>|trampoline
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<~lib/array/Array<u64>,~lib/typedarray/Uint8Array>
   i32.load offset=12
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 64
    i32.const 2
    call $~lib/builtins/abort
@@ -13896,14 +13896,14 @@
   i32.const 42
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<i32,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<i32,~lib/typedarray/Uint8Array>|trampoline
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<i32,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<i32,~lib/typedarray/Uint8Array>
   i32.const 42
   i32.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 65
    i32.const 2
    call $~lib/builtins/abort
@@ -13914,14 +13914,14 @@
   i64.const 42
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<i64,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<i64,~lib/typedarray/Uint8Array>|trampoline
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<i64,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<i64,~lib/typedarray/Uint8Array>
   i64.const 42
   i64.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 66
    i32.const 2
    call $~lib/builtins/abort
@@ -13929,18 +13929,18 @@
   end
   i32.const 1
   global.set $~argumentsLength
-  i32.const 7152
+  i32.const 7104
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/typedarray/Uint8Array>
-  i32.const 7152
+  call $nearFile/decode<~lib/string/String,~lib/typedarray/Uint8Array>
+  i32.const 7104
   call $~lib/string/String.__eq
   i32.eqz
   if
-   i32.const 7200
-   i32.const 6816
+   i32.const 7152
+   i32.const 6768
    i32.const 67
    i32.const 2
    call $~lib/builtins/abort
@@ -13956,24 +13956,24 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>|trampoline
   i32.const 976
-  call $~lib/near-bindgen-as/index/decode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>
+  call $nearFile/decode<~lib/as-bignum/integer/u128/u128,~lib/typedarray/Uint8Array>
   i64.load
   i64.const 42
   i64.ne
   if
    i32.const 0
-   i32.const 6816
+   i32.const 6768
    i32.const 68
    i32.const 2
    call $~lib/builtins/abort
    unreachable
   end
-  i32.const 7264
+  i32.const 7216
   call $~lib/near-runtime-ts/logging/logging.log<~lib/string/String>
  )
- (func $~lib/near-bindgen-as/index/getInput (; 224 ;) (result i32)
+ (func $nearFile/getInput (; 224 ;) (result i32)
   (local $0 i32)
   (local $1 i64)
   i64.const 0
@@ -14011,7 +14011,7 @@
   end
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<assembly/model/FooBar>> (; 225 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<assembly/model/FooBar>> (; 225 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -14049,7 +14049,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Value> (; 227 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Value> (; 227 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -14087,7 +14087,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/FooBar>
+    call $nearFile/isReallyNullable<assembly/model/FooBar>
     if (result i32)
      i32.const 1
     else
@@ -14101,10 +14101,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5104
+     i32.const 5024
+     i32.const 5056
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -14128,17 +14128,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/FooBar>
+   call $nearFile/isReallyNullable<assembly/model/FooBar>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5056
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5104
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -14160,14 +14160,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5104
+   i32.const 5056
    call $~lib/string/String.__concat
-   i32.const 5360
+   i32.const 5312
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 219
@@ -14221,7 +14221,7 @@
   i32.store offset=12
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decodeArray<assembly/model/FooBar> (; 229 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<assembly/model/FooBar> (; 229 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -14234,10 +14234,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -14278,7 +14278,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<assembly/model/FooBar>#push
     drop
     local.get $0
@@ -14290,7 +14290,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 230 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 230 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -14328,7 +14328,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
+    call $nearFile/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
     if (result i32)
      i32.const 1
     else
@@ -14342,10 +14342,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 7344
+     i32.const 5024
+     i32.const 7296
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -14369,17 +14369,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
+   call $nearFile/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 7296
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 7344
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -14392,7 +14392,7 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<assembly/model/FooBar>
+  call $nearFile/decodeArray<assembly/model/FooBar>
  )
  (func $assembly/main/convertFoobars~anonymous|0 (; 231 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   i32.const 4
@@ -14493,7 +14493,7 @@
   end
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/encode<assembly/model/FooBar,~lib/near-bindgen-as/index/JSONEncoder> (; 234 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<assembly/model/FooBar,nearFile/JSONEncoder> (; 234 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $0
@@ -14513,7 +14513,7 @@
   i32.eqz
   if
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $2
@@ -14532,15 +14532,15 @@
   drop
   local.get $0
   i32.load
-  i32.const 7424
+  i32.const 7376
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<assembly/model/FooBar,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<assembly/model/FooBar,nearFile/JSONEncoder>
   drop
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array> (; 236 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array> (; 236 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   local.get $0
@@ -14592,7 +14592,7 @@
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#serialize
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array>|trampoline (; 237 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array>|trampoline (; 237 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -14608,24 +14608,24 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $0
   local.get $1
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array>
+  call $nearFile/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array>
  )
- (func $~lib/near-bindgen-as/index/value_return (; 238 ;) (param $0 i64) (param $1 i64)
+ (func $nearFile/value_return (; 238 ;) (param $0 i64) (param $1 i64)
   local.get $0
   local.get $1
   call $~lib/near-runtime-ts/runtime_api/runtime_api.value_return
  )
  (func $assembly/test/__wrapper_convertFoobars (; 239 ;)
   (local $0 i32)
-  call $~lib/near-bindgen-as/index/getInput
-  i32.const 7312
-  call $~lib/near-bindgen-as/index/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Obj>
+  call $nearFile/getInput
+  i32.const 7264
+  call $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Obj>
   i32.const 1
   call $~lib/array/Array<assembly/model/FooBar>#map<assembly/model/ContainerClass>
   local.set $0
@@ -14634,16 +14634,16 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<~lib/array/Array<assembly/model/ContainerClass>,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 240 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 240 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -14681,7 +14681,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/string/String>>
+    call $nearFile/isReallyNullable<~lib/array/Array<~lib/string/String>>
     if (result i32)
      i32.const 1
     else
@@ -14695,10 +14695,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 6192
+     i32.const 5024
+     i32.const 6144
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -14722,17 +14722,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/string/String>>
+   call $nearFile/isReallyNullable<~lib/array/Array<~lib/string/String>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 6144
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 6192
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -14745,14 +14745,14 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<~lib/string/String>
+  call $nearFile/decodeArray<~lib/string/String>
  )
  (func $assembly/test/__wrapper_getStringArrayLength (; 241 ;)
   (local $0 i32)
-  i32.const 7456
-  call $~lib/near-bindgen-as/index/getInput
+  i32.const 7408
+  call $nearFile/getInput
   i32.const 3056
-  call $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Obj>
+  call $nearFile/decode<~lib/array/Array<~lib/string/String>,~lib/assemblyscript-json/JSON/JSON.Obj>
   local.tee $0
   i32.load offset=12
   call $~lib/util/number/itoa32
@@ -14766,16 +14766,16 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<i32,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<i32,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/ContainerClass> (; 242 ;) (result i32)
+ (func $nearFile/isReallyNullable<assembly/model/ContainerClass> (; 242 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -14793,7 +14793,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Obj> (; 243 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Obj> (; 243 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -14831,7 +14831,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/FooBar>
+    call $nearFile/isReallyNullable<assembly/model/FooBar>
     if (result i32)
      i32.const 1
     else
@@ -14845,10 +14845,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 5104
+     i32.const 5024
+     i32.const 5056
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -14872,17 +14872,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/FooBar>
+   call $nearFile/isReallyNullable<assembly/model/FooBar>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 5056
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 5104
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -14904,14 +14904,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 5104
+   i32.const 5056
    call $~lib/string/String.__concat
-   i32.const 5360
+   i32.const 5312
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 219
@@ -14945,12 +14945,12 @@
   local.get $0
   local.tee $2
   local.get $1
-  i32.const 7424
+  i32.const 7376
   call $~lib/assemblyscript-json/JSON/JSON.Obj#has
   if (result i32)
    local.get $1
-   i32.const 7424
-   call $~lib/near-bindgen-as/index/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Obj>
+   i32.const 7376
+   call $nearFile/decode<assembly/model/FooBar,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load
@@ -14963,7 +14963,7 @@
   i32.store
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/decode<assembly/model/ContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj> (; 245 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/ContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj> (; 245 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -15001,7 +15001,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/ContainerClass>
+    call $nearFile/isReallyNullable<assembly/model/ContainerClass>
     if (result i32)
      i32.const 1
     else
@@ -15015,10 +15015,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 7568
+     i32.const 5024
+     i32.const 7520
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -15042,17 +15042,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/ContainerClass>
+   call $nearFile/isReallyNullable<assembly/model/ContainerClass>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 7520
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 7568
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -15074,14 +15074,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 7568
+   i32.const 7520
    call $~lib/string/String.__concat
-   i32.const 5360
+   i32.const 5312
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 219
@@ -15212,7 +15212,7 @@
   end
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<assembly/model/FooBar>,~lib/near-bindgen-as/index/JSONEncoder> (; 249 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<assembly/model/FooBar>,nearFile/JSONEncoder> (; 249 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -15232,7 +15232,7 @@
      call $~lib/array/Array<assembly/model/FooBar>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<assembly/model/FooBar,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<assembly/model/FooBar,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -15250,7 +15250,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/near-bindgen-as/index/JSONEncoder> (; 250 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,nearFile/JSONEncoder> (; 250 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   local.get $0
   if
    local.get $2
@@ -15270,7 +15270,7 @@
      call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__get
      i32.const 0
      local.get $2
-     call $~lib/near-bindgen-as/index/encode<~lib/array/Array<assembly/model/FooBar>,~lib/near-bindgen-as/index/JSONEncoder>
+     call $nearFile/encode<~lib/array/Array<assembly/model/FooBar>,nearFile/JSONEncoder>
      drop
      local.get $1
      i32.const 1
@@ -15293,7 +15293,7 @@
   i32.eqz
   if
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $2
@@ -15312,15 +15312,15 @@
   drop
   local.get $0
   i32.load
-  i32.const 7312
+  i32.const 7264
   local.get $2
-  call $~lib/near-bindgen-as/index/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/near-bindgen-as/index/JSONEncoder>
+  call $nearFile/encode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,nearFile/JSONEncoder>
   drop
   local.get $2
   call $~lib/assemblyscript-json/encoder/JSONEncoder#popObject
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/encode<assembly/model/AnotherContainerClass,~lib/typedarray/Uint8Array>|trampoline (; 252 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<assembly/model/AnotherContainerClass,~lib/typedarray/Uint8Array>|trampoline (; 252 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -15336,7 +15336,7 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $0
@@ -15356,9 +15356,9 @@
  )
  (func $assembly/test/__wrapper_rewrapFoobar (; 253 ;)
   (local $0 i32)
-  call $~lib/near-bindgen-as/index/getInput
-  i32.const 7520
-  call $~lib/near-bindgen-as/index/decode<assembly/model/ContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj>
+  call $nearFile/getInput
+  i32.const 7472
+  call $nearFile/decode<assembly/model/ContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj>
   call $assembly/main/rewrapFoobar
   local.set $0
   i32.const 1
@@ -15366,16 +15366,16 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<assembly/model/AnotherContainerClass,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<assembly/model/AnotherContainerClass,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/AnotherContainerClass> (; 254 ;) (result i32)
+ (func $nearFile/isReallyNullable<assembly/model/AnotherContainerClass> (; 254 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -15393,7 +15393,7 @@
    i32.const 0
   end
  )
- (func $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>> (; 255 ;) (result i32)
+ (func $nearFile/isReallyNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>> (; 255 ;) (result i32)
   i32.const 1
   if (result i32)
    i32.const 1
@@ -15431,7 +15431,7 @@
   i32.store offset=12
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Value> (; 257 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Value> (; 257 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -15469,7 +15469,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
+    call $nearFile/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
     if (result i32)
      i32.const 1
     else
@@ -15483,10 +15483,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 7344
+     i32.const 5024
+     i32.const 7296
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -15510,17 +15510,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
+   call $nearFile/isReallyNullable<~lib/array/Array<assembly/model/FooBar>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 7296
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 7344
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -15533,7 +15533,7 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<assembly/model/FooBar>
+  call $nearFile/decodeArray<assembly/model/FooBar>
  )
  (func $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#push (; 258 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -15560,7 +15560,7 @@
   i32.store offset=12
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decodeArray<~lib/array/Array<assembly/model/FooBar>> (; 259 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decodeArray<~lib/array/Array<assembly/model/FooBar>> (; 259 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -15573,10 +15573,10 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 6112
+   i32.const 6064
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 136
@@ -15617,7 +15617,7 @@
     local.get $0
     call $~lib/array/Array<~lib/assemblyscript-json/JSON/JSON.Value>#__get
     i32.const 976
-    call $~lib/near-bindgen-as/index/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Value>
+    call $nearFile/decode<~lib/array/Array<assembly/model/FooBar>,~lib/assemblyscript-json/JSON/JSON.Value>
     call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#push
     drop
     local.get $0
@@ -15629,7 +15629,7 @@
   end
   local.get $2
  )
- (func $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 260 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/JSON/JSON.Obj> (; 260 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -15667,7 +15667,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>>
+    call $nearFile/isReallyNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>>
     if (result i32)
      i32.const 1
     else
@@ -15681,10 +15681,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 7680
+     i32.const 5024
+     i32.const 7632
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -15708,17 +15708,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>>
+   call $nearFile/isReallyNullable<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 7632
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 7680
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -15731,19 +15731,19 @@
   end
   local.get $2
   local.get $1
-  call $~lib/near-bindgen-as/index/decodeArray<~lib/array/Array<assembly/model/FooBar>>
+  call $nearFile/decodeArray<~lib/array/Array<assembly/model/FooBar>>
  )
  (func $assembly/model/AnotherContainerClass#_decode (; 261 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
   local.get $1
-  i32.const 7312
+  i32.const 7264
   call $~lib/assemblyscript-json/JSON/JSON.Obj#has
   if (result i32)
    local.get $1
-   i32.const 7312
-   call $~lib/near-bindgen-as/index/decode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/JSON/JSON.Obj>
+   i32.const 7264
+   call $nearFile/decode<~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>,~lib/assemblyscript-json/JSON/JSON.Obj>
   else
    local.get $0
    i32.load
@@ -15756,7 +15756,7 @@
   i32.store
   local.get $0
  )
- (func $~lib/near-bindgen-as/index/decode<assembly/model/AnotherContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj> (; 262 ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $nearFile/decode<assembly/model/AnotherContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj> (; 262 ;) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
   local.tee $2
@@ -15794,7 +15794,7 @@
    local.tee $0
    i32.eqz
    if
-    call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/AnotherContainerClass>
+    call $nearFile/isReallyNullable<assembly/model/AnotherContainerClass>
     if (result i32)
      i32.const 1
     else
@@ -15808,10 +15808,10 @@
      call $~lib/builtins/abort
      unreachable
     else
-     i32.const 5072
-     i32.const 7616
+     i32.const 5024
+     i32.const 7568
      call $~lib/string/String.__concat
-     i32.const 5136
+     i32.const 5088
      call $~lib/string/String.__concat
      i32.const 4880
      i32.const 167
@@ -15835,17 +15835,17 @@
    i32.const 0
   end
   if
-   call $~lib/near-bindgen-as/index/isReallyNullable<assembly/model/AnotherContainerClass>
+   call $nearFile/isReallyNullable<assembly/model/AnotherContainerClass>
    i32.eqz
    if
-    i32.const 5184
+    i32.const 5136
     local.get $1
     call $~lib/string/String.__concat
+    i32.const 5168
+    call $~lib/string/String.__concat
+    i32.const 7568
+    call $~lib/string/String.__concat
     i32.const 5216
-    call $~lib/string/String.__concat
-    i32.const 7616
-    call $~lib/string/String.__concat
-    i32.const 5264
     call $~lib/string/String.__concat
     i32.const 4880
     i32.const 193
@@ -15867,14 +15867,14 @@
   end
   i32.eqz
   if
-   i32.const 5312
+   i32.const 5264
    local.get $1
    call $~lib/string/String.__concat
-   i32.const 5216
+   i32.const 5168
    call $~lib/string/String.__concat
-   i32.const 7616
+   i32.const 7568
    call $~lib/string/String.__concat
-   i32.const 5360
+   i32.const 5312
    call $~lib/string/String.__concat
    i32.const 4880
    i32.const 219
@@ -15901,7 +15901,7 @@
   end
   call $assembly/model/AnotherContainerClass#_decode
  )
- (func $~lib/near-bindgen-as/index/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline (; 263 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $nearFile/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline (; 263 ;) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $2of2
    block $1of2
     block $0of2
@@ -15917,7 +15917,7 @@
     local.set $1
    end
    i32.const 0
-   call $~lib/near-bindgen-as/index/JSONEncoder#constructor
+   call $nearFile/JSONEncoder#constructor
    local.set $2
   end
   local.get $0
@@ -15937,9 +15937,9 @@
  )
  (func $assembly/test/__wrapper_unwrapFoobar (; 264 ;)
   (local $0 i32)
-  call $~lib/near-bindgen-as/index/getInput
-  i32.const 7520
-  call $~lib/near-bindgen-as/index/decode<assembly/model/AnotherContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj>
+  call $nearFile/getInput
+  i32.const 7472
+  call $nearFile/decode<assembly/model/AnotherContainerClass,~lib/assemblyscript-json/JSON/JSON.Obj>
   i32.load
   i32.const 0
   call $~lib/array/Array<~lib/array/Array<assembly/model/FooBar>>#__get
@@ -15951,14 +15951,14 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
  (func $assembly/test/__wrapper_stringOrNull (; 265 ;)
   (local $0 i32)
@@ -15967,21 +15967,21 @@
   i32.const 0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
  (func $assembly/test/__wrapper_stringAliasTest (; 266 ;)
   (local $0 i32)
-  call $~lib/near-bindgen-as/index/getInput
-  i32.const 6864
-  call $~lib/near-bindgen-as/index/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj>
-  i32.const 7792
+  call $nearFile/getInput
+  i32.const 6816
+  call $nearFile/decode<~lib/string/String,~lib/assemblyscript-json/JSON/JSON.Obj>
+  i32.const 7744
   call $~lib/string/String.__concat
   local.set $0
   i32.const 1
@@ -15989,14 +15989,14 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<~lib/string/String,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
  (func $assembly/test/__wrapper_classOrNull (; 267 ;)
   (local $0 i32)
@@ -16008,14 +16008,14 @@
   local.get $0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
  (func $assembly/test/__wrapper_classAndNull (; 268 ;)
   (local $0 i32)
@@ -16024,17 +16024,17 @@
   i32.const 0
   i32.const 976
   i32.const 0
-  call $~lib/near-bindgen-as/index/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline
+  call $nearFile/encode<assembly/model/FooBar,~lib/typedarray/Uint8Array>|trampoline
   local.tee $0
   i32.load offset=8
   i64.extend_i32_s
   local.get $0
   i32.load offset=4
   i64.extend_i32_u
-  call $~lib/near-bindgen-as/index/value_return
+  call $nearFile/value_return
  )
  (func $~start (; 269 ;)
-  i32.const 8112
+  i32.const 8064
   global.set $~lib/rt/stub/startOffset
   global.get $~lib/rt/stub/startOffset
   global.set $~lib/rt/stub/offset

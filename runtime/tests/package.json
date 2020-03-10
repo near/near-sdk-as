@@ -5,12 +5,9 @@
     "build:hello": "near-asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
     "pretest": "yarn build && ./build-near-vm-runner-standalone.sh",
     "test:ci": "yarn pretest && yarn build:hello && yarn asp:ci && ./test.sh",
-    "asp:ci": "asp",
+    "asp:ci": "../../node_modules/.bin/asp",
     "asp": "yarn asp:ci --verbose",
     "build": "node asconfig.js"
-  },
-  "dependencies": {
-    "near-sdk-as": "file:../../sdk"
   },
   "private": true
 }

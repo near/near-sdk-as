@@ -1,4 +1,4 @@
-const compile = require("near-bindgen-as/compiler").compile;
+const compile = require("./compiler").compile;
 
 
 compile("assembly/test.ts", // input file

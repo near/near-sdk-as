@@ -4,12 +4,12 @@ assembly/__tests__/as-pect.d.ts
 
 *.wasm
 
-tests/out/
-tests/nearcore/
+runtime/tests/out/
+runtime/tests/nearcore/
 
 package-lock.json
 tests/package-lock.json
 yarn-error.log
 
 tests/out/test.wasm
-packages/sdk/wasm-mock-vm/
+wasm-mock-vm/

@@ -36,9 +36,10 @@ class JSONTransformer extends Transform {
         isEntry(source)
       );
     });
-
     //@ts-ignore __dirname exists
-    this.parser.parseFile('import "near-bindgen-as"', "nearFile", true);
+    const entryFile: string = this.readFile("../assembly/index.ts", __dirname);
+
+    this.parser.parseFile(entryFile, "nearFile", true);
     if (!JSONTransformer.isTest) {
       TypeChecker.check(parser);
     }
