@@ -10,5 +10,5 @@ else
   git clone https://github.com/nearprotocol/$WASM_MOCK_VM
 fi
 
-cd $WASM_MOCK_VM/;
-yarn && yarn add ../ && yarn test;
+cd $WASM_MOCK_VM;
+../node_modules/.bin/asp;
