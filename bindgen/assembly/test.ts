@@ -1,7 +1,7 @@
 //out
-/// <reference types="near-runtime-ts/assembly/as_types" />
+/// <reference types="../../as_types" />
 import * as main from "./main";
-import { base64, logging, u128 } from "near-runtime-ts";
+import { base64, logging, u128 } from "near-sdk-as";
 import { FooBar, Nullables, ContainerClass, AnotherContainerClass } from './model';
 
 

@@ -3,7 +3,7 @@ import {
   context,
   ContractPromise,
   logging
-} from "near-runtime-ts"
+} from "near-sdk-as"
 import {
   FooBar,
   ContainerClass,

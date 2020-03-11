@@ -2,12 +2,14 @@
   "name": "sdk-tests",
   "version": "0.0.1-alpha.0",
   "scripts": {
-    "build:hello": "near-asc --runtime stub assembly/hello/main.ts --textFile out/hello/main.wat --validate --debug",
     "pretest": "yarn build && ./build-near-vm-runner-standalone.sh",
-    "test:ci": "yarn pretest && yarn build:hello && yarn asp:ci && ./test.sh",
+    "test:ci": "yarn pretest && yarn asp:ci && ./test.sh",
     "asp:ci": "../../node_modules/.bin/asp",
     "asp": "yarn asp:ci --verbose",
     "build": "node asconfig.js"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "near-sdk-as": "file:../.."
+  }
 }

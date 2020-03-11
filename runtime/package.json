@@ -1,6 +1,5 @@
 {
-  "name": "near-runtime-ts",
-  "version": "0.0.1-alpha.0",
+  "name": "runtime",
   "description": "Near smart contract runtime library for typescript",
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",

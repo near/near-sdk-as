@@ -1,1 +1,1 @@
-module.exports = require('wasm-mock-vm/imports');
+module.exports = require('../../vm/imports');

@@ -3,6 +3,7 @@
   "version": "0.0.2-0",
   "description": "Collection of packages for developming NEAR smart contracts",
   "main": "index.js",
+  "types": "assembly/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com:nearprotocol/near-sdk-as",
@@ -14,17 +15,11 @@
     "@as-pect/cli": "^3.0.0-beta.0",
     "as-bignum": "^0.1.5",
     "assemblyscript-json": "^0.3.0",
-    "near-bindgen-as": "file:./bindgen",
-    "near-runtime-ts": "file:./runtime",
     "semver": "^7.1.3",
     "wasm-mock-vm": "^1.2.1"
   },
-  "bundledDependencies": [
-    "near-runtime-ts",
-    "near-bindgen-as"
-  ],
   "scripts": {
-    "test": "(cd bindgen; yarn test) && (cd runtime; yarn test) && ./test.sh",
+    "test": "(cd bindgen; yarn test:ci) && (cd runtime; yarn test) && ./test.sh",
     "setup": "./link.sh"
   },
   "devDependencies": {

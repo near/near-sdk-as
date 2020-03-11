@@ -1,5 +1,5 @@
 
-import { base64, runtime_api, u128 } from "near-runtime-ts";
+import { base64, runtime_api, u128 } from "near-sdk-as";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 
 // Runtime functions

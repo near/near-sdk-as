@@ -1,7 +1,7 @@
 
 // @nearfile out
 
-import { u128 } from "near-runtime-ts";
+import { u128 } from "near-sdk-as";
 
 export class FooBar {
     foo: i32 = 0;

@@ -1,0 +1,21 @@
+{
+  "name": "wasm-mock-vm",
+  "version": "1.2.1",
+  "description": "Mock Near VM core logic for unit testing",
+  "main": "./pkg/wasm_mock_vm.js",
+  "types": "./assembly/index.ts",
+  "author": "Willem Wyndham <willem@nearprotocol.com>",
+  "scripts": {
+    "test": "asp"
+  },
+  "files": [
+    "pkg/wasm*",
+    "imports.js",
+    "assembly/index.ts",
+    "context.json",
+    "assembly/*.ts"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

@@ -1,6 +1,6 @@
 //@nearfile out
 // These imports need to be copied properly
-import { storage, context, ContractPromise, logging } from "near-runtime-ts";
+import { storage, context, ContractPromise, logging } from "near-sdk-as";
 import { FooBar, ContainerClass, AnotherContainerClass } from "./model";
 import { PromiseArgs, MyCallbackResult, MyContractPromiseResult } from "./model";
 
