@@ -641,15 +641,9 @@ minimist@~0.0.1:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
   integrity sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8=
 
-"near-bindgen-as@file:./bindgen":
-  version "0.0.1-alpha.0"
-
 near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
   version "0.4.0"
   resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
-
-"near-runtime-ts@file:./runtime":
-  version "0.0.1-alpha.0"
 
 neo-async@^2.6.0:
   version "2.6.1"

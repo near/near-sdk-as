@@ -1,24 +1,19 @@
 {
-  "name": "near-bindgen-as",
+  "name": "bindgen",
   "version": "0.0.1-alpha.0",
   "description": "Bindings for serializing contract functions.",
-  "main": "dist/index.js",
-  "ascMain": "assemblyl/index.ts",
+  "main": "index.js",
+  "ascMain": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "build:as": "asc assembly/test.ts --transform ./src/index.ts --validate --runtime none --binaryFile out/test.wasm --textFile out/test.wat --runPasses inlining-optimizing,dce --debug",
-    "test": "yarn build:as && yarn test:wasm",
-    "test:ci": "yarn build && yarn build:asconfig && yarn test",
-    "test:wasm": "node ./test.js",
-    "build:asconfig": "node asconfig.js"
-  },
-  "bin": {
-    "near-asc": "./bin/near-asc"
+    "build:asconfig": "node asconfig.js",
+    "pretest": "yarn build && yarn build:asconfig",
+    "test": "node ./test.js"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/nearprotocol/near-sdk-as.git",
-    "directory": "packages/bindgen"
+    "directory": "bindgen"
   },
   "keywords": [
     "near",
@@ -32,17 +27,13 @@
   "bugs": {
     "url": "https://github.com/nearprotocol/near-sdk-as/issues"
   },
-  "homepage": "https://github.com/nearprotocol/near-sdk-as/tree/master/packages/bindgen#readme",
+  "homepage": "https://github.com/nearprotocol/near-sdk-as/tree/master/bindgen#readme",
   "files": [
     "bin/near-asc",
     "index.js",
-    "assembly/index.ts",
     "compiler.js",
     "dist/"
   ],
-  "devDependencies": {
-    "near-sdk-as": "file:.."
-  },
   "peerDependencies": {
     "assemblyscript": "^0.9.2"
   },

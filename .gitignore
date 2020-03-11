@@ -13,3 +13,5 @@ yarn-error.log
 
 tests/out/test.wasm
 wasm-mock-vm/
+
+.DS_Store

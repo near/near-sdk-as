@@ -14,7 +14,8 @@
     "noEmitOnError": true,
     "allowJs": true,
     "strictNullChecks": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "declaration": true
   },
   "include": ["src/**/*"]
 }

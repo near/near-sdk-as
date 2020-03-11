@@ -4,6 +4,9 @@
   "description": "Collection of packages for developming NEAR smart contracts",
   "main": "index.js",
   "types": "assembly/index.ts",
+  "bin": {
+    "near-asc": "./bin/near-asc"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com:nearprotocol/near-sdk-as",
@@ -19,8 +22,10 @@
     "wasm-mock-vm": "^1.2.1"
   },
   "scripts": {
-    "test": "(cd bindgen; yarn test:ci) && (cd runtime; yarn test) && ./test.sh",
-    "setup": "./link.sh"
+    "test": "(cd bindgen; yarn test) && yarn asp:ci && (cd nearcore-tests; yarn test)",
+    "asp:ci": "asp",
+    "asp":"yarn asp:ci --verbose",
+    "doc": "rm -rf apidoc && mkdir apidoc && typedoc assembly/runtime/*.ts assembly/runtime/collections/*.ts assembly/vm/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/"
   },
   "devDependencies": {
     "assemblyscript": "^0.9.2",
