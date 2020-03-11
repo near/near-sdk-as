@@ -275,8 +275,8 @@ async function testFloatDetection(file){
     );
     assert.deepEqual(await module.classAndNull(), null);
 
-    await testFloatDetection("assembly/f32.ts");
-    await testFloatDetection("assembly/f64.ts");
+    await testFloatDetection("../assembly/__tests__/bindgen/f32.ts");
+    await testFloatDetection("../assembly/__tests__/bindgen/f64.ts");
 
 })().catch(e => {
     console.error('Error during test execution:', e);

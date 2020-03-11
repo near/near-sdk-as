@@ -1,0 +1,10 @@
+{
+  "name": "sdk-runtime-tests",
+  "version": "0.0.1-alpha.0",
+  "scripts": {
+    "pretest": "yarn build && ./build-near-vm-runner-standalone.sh",
+    "test":  "./test.sh",
+    "build": "node asconfig.js"
+  },
+  "private": true
+}

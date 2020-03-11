@@ -1,0 +1,5 @@
+test.sh
+tsconfig.json
+nearcore-tests/
+assembly/__tests__
+**/*/out/

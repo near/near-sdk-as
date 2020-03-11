@@ -1,2 +1,2 @@
-/// <reference types="./runtime/assembly/as_types" />
+/// <reference types="./assembly/as_types" />
 
