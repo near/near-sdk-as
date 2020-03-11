@@ -1,4 +1,4 @@
-const compile = require("near-bindgen-as/compiler").compile;
+const compile = require("../../compiler").compile;
 
 
 compile("assembly/main.ts", // input file
@@ -12,14 +12,14 @@ compile("assembly/main.ts", // input file
         {verbose: true});
 
 
-compile("assembly/hello/main.ts", // input file
-        "out/hello/main.wasm",    // output file
-        [
-        //   "-O1",            // Optional arguments
-        "--debug",
-        "--measure",
-        "--runPasses", "inlining,dce",
-        ],
-        {verbose: true});
+// compile("assembly/hello/main.ts", // input file
+//         "out/hello/main.wasm",    // output file
+//         [
+//         //   "-O1",            // Optional arguments
+//         "--debug",
+//         "--measure",
+//         "--runPasses", "inlining,dce",
+//         ],
+//         {verbose: true});
 
 

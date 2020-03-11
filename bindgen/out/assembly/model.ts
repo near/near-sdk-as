@@ -1,6 +1,6 @@
 import {
   u128
-} from "near-runtime-ts"
+} from "near-sdk-as"
 export class FooBar {
   foo: i32 = 0;
   bar: u32 = 1;

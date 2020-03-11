@@ -1,1 +1,1 @@
-/// <reference types="near-runtime-ts/assembly/as_types" />
+/// <reference types="../../assembly/as_types" />
