@@ -7,6 +7,7 @@ compile("../assembly/__tests__/bindgen/test.ts", // input file
         //   "-O1",            // Optional arguments
         "--debug",
         "--measure",
+        "--runPasses", "inlining-optimizing,dce" // Inlines to optimize and removes deadcode
         ], {verbose: true});
 
 
