@@ -22,13 +22,15 @@
     "wasm-mock-vm": "^1.2.1"
   },
   "scripts": {
-    "test": "(cd bindgen; yarn test) && yarn asp:ci && (cd nearcore-tests; yarn test)",
+    "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore",
+    "test:nearcore": "(cd nearcore-tests; yarn test)",
+    "test:bindgen": "(cd bindgen; yarn test)",
     "asp:ci": "asp",
     "asp": "yarn asp:ci --verbose",
     "doc": "rm -rf apidoc && mkdir apidoc && typedoc assembly/runtime/*.ts assembly/runtime/collections/*.ts assembly/vm/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/"
   },
   "devDependencies": {
-    "assemblyscript": "^0.9.2",
+    "assemblyscript": "^0.9.4",
     "near-hello": "nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10",
     "ts-node": "^8.6.2",
     "typedoc": "^0.15.0",

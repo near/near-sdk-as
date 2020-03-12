@@ -351,7 +351,7 @@ export class BaseVisitor extends AbstractVisitor<Node> {
 
   visitFunctionTypeNode(node: FunctionTypeNode): void {
     for (let param of node.parameters) {
-      this.visit(param);
+      this.visitParameter(param);
     }
     this.visit(node.returnType);
   }
