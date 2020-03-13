@@ -8,40 +8,6 @@ import { util } from "./util";
  */
 export class Storage {
   /**
-   * Returns list of keys between the given start key and the end key. Both inclusive.
-  * NOTE: Must be very careful to avoid exploding amount of compute with this method.
-  * @param start The start key used as a lower bound in lexicographical order. Inclusive.
-  * @param end The end key used as a upper bound in lexicographical order. Inclusive.
-  * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
-  */
-  keyRange(start: string, end: string, limit: i32 = -1): string[] {
-    let start_encoded = util.stringToBytes(start);
-    let end_encoded = util.stringToBytes(end);
-
-    const iterator_id = runtime_api.storage_iter_range(
-      start_encoded.byteLength,
-      start_encoded.dataStart,
-      end_encoded.byteLength,
-      end_encoded.dataStart);
-
-    return this._fetchIter(iterator_id, limit);
-  }
-
-  /**
-  * Returns list of keys starting with given prefix.
-  * NOTE: Must be very careful to avoid exploding amount of compute with this method.
-  * @param prefix The key prefix.
-  * @param limit The maximum number of keys to return. Default is `-1`, means no limit.
-  */
-  keys(prefix: string, limit: i32 = -1): string[] {
-    let prefix_encoded = util.stringToBytes(prefix);
-    const iterator_id = runtime_api.storage_iter_prefix(
-      prefix_encoded.byteLength,
-      prefix_encoded.dataStart);
-    return this._fetchIter(iterator_id, limit);
-  }
-
-  /**
   * Store string value under given key. Both key and value are encoded as UTF-8 strings.
   */
   setString(key: string, value: string): void {
@@ -166,7 +132,6 @@ export class Storage {
   * This function will throw if throw if the key does not exist in the storage.
   *
   * @param key A key to read from storage.
-  * @param defaultValue The default value if the key is not available
   * @returns A value of type T stored under the given key.
   */
   getSome<T>(key: string): T {
@@ -188,23 +153,6 @@ export class Storage {
     } else {
       return null;
     }
-  }
-
-  /**
-  * @hidden
-  * Internal method to fetch list of keys from the given iterator up the limit.
-  */
-  private _fetchIter(iterId: u64, limit: i32 = -1): string[] {
-    let result: string[] = new Array<string>();
-
-    while(limit-- != 0 && runtime_api.storage_iter_next(iterId, 0, 1) == 1) {
-      let key_data = util.read_register(0);
-      if (key_data != null) {
-        //@ts-ignore: Compiler says this is never null TODO
-        result.push(util.bytesToString(key_data)!);
-      }
-    }
-    return result;
   }
 }
 

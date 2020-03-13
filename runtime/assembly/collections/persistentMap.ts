@@ -26,22 +26,6 @@ export class PersistentMap<K, V> {
   }
 
   /**
-  * Returns values of the map between the given start key and the end key.
-  * @param start Starting from which key to include values. Default is `null`, means from the beginning.
-  * @param end Up to which key include values (inclusive). Default is `null`, means to the end.
-  * @param limit The maximum number of values to return. Default is `-1`, means no limit.
-  * @param startInclusive Whether the start key is inclusive. Default is `true`, means include start key.
-  *     It's useful to set it to false for pagination.
-  */
-  values(start: K, end: K, limit: i32 = -1, startInclusive: bool = true): V[] {
-    let startKey =  this._key(start);
-    let endKey = this._key(end);
-    let keys = storage.keyRange(startKey, endKey, limit);
-    let startKeyIndex = keys.length > 0 && !startInclusive && keys[0] == startKey ? 1 : 0;
-    return keys.slice(startKeyIndex).map<V>((key: string) => storage.get<V>(key)!);
-  }
-
-  /**
   * @param key Key to check.
   * @returns True if the given key present in the map.
   */

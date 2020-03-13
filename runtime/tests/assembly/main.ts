@@ -1,5 +1,5 @@
 //@nearfile
-import { u128, context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, PersistentTopN, ContractPromise, math } from "near-runtime-ts";
+import { u128, context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math } from "near-runtime-ts";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 
@@ -92,61 +92,10 @@ export function storageGenericGetSetRoundtripTest(): void {
   assert(storage.get<string>("nonexistent", null) == null, "Incorrect data value for get<T> string nonexistent key");
 }
 
-export function storageKeysTest(): string[] {
-  logging.log("storageKeysTest");
-
-  // empty storage
-  const emptyKeys = storage.keys("someKey");
-  assert(emptyKeys.length == 0, "Incorrect keys contents for empty storage");
-
-  // add some keys
-  storage.setString("someApple", "myApple");
-  storage.setString("someKey", "myValue1");
-  storage.setString("someKey2", "myValue1");
-  storage.setString("someKey6", "myValue2");
-
-  const keyRange = storage.keyRange("someKey", "someKey3");
-  assert(keyRange.length == 2, "Incorrect keys length");
-  assert(keyRange[0] == "someKey", "Incorrect keys contents");
-  assert(keyRange[1] == "someKey2", "Incorrect keys contents");
-  const keyRangeWithLimit = storage.keyRange("someKey", "someKey3", 1);
-  assert(keyRangeWithLimit.length == 1, "Incorrect keys length");
-  assert(keyRangeWithLimit[0] == "someKey", "Incorrect keys contents");
-
-  const keys = storage.keys("someKey");
-  assert(keys.length == 3, "Incorrect keys length");
-  assert(keys[0] == "someKey", "Incorrect keys contents");
-  assert(keys[1] == "someKey2", "Incorrect keys contents");
-  assert(keys[2] == "someKey6", "Incorrect keys contents");
-  const keysWithLimit = storage.keys("someKey", 1);
-  assert(keysWithLimit.length == 1, "Incorrect keys length");
-  assert(keys[0] == "someKey", "Incorrect keys contents")
-
-  assert(storage.contains("someApple"), "Storage does not contain key");
-  assert(storage.contains("someKey"), "Storage does not contain key");
-  assert(storage.contains("someKey2"), "Storage does not contain key");
-  assert(storage.contains("someKey6"), "Storage does not contain key");
-  assert(!storage.contains("nonexisting"), "Storage has unexpected key");
-  assert(storage.hasKey("someKey6"), "Storage does not contain key");
-  assert(!storage.hasKey("nonexisting"), "Storage has unexpected key");
-
-  // remove a key and retry some of the api calls
-  storage.delete("someKey");
-  assert(!storage.contains("someKey"), "Storage contains key that was deleted");
-  assert(storage.contains("someKey2"), "Some other key got deleted");
-  const keyswithdelete = storage.keys("someKey");
-  assert(keyswithdelete.length == 2, "Incorrect keys length after removing a key")
-  assert(keyswithdelete[0] == "someKey2", "Incorrect keyswithdelete contents");
-  assert(keyswithdelete[1] == "someKey6", "Incorrect keyswithdelete contents");
-  return keyswithdelete;
-}
-
 export function mapTests(): void {
   logging.log("mapTests");
   // empty map
   const map = new PersistentMap<string, TextMessage>("mapId");
-  const valuesEmpty = map.values("", "zzz");
-  assert(valuesEmpty.length == 0, "Unexpected values in empty map");
   assert(!map.contains("nonexistentkey"), "Map contains a non existent key");
   assert(map.get("nonexistentkey") == null, "Incorrect result on get with nonexistent key");
 
@@ -154,13 +103,9 @@ export function mapTests(): void {
   const message = _testTextMessage();
   map.set("mapKey1", message);
   map.set("mapKey3", _testTextMessageTwo());
-  const values = map.values("", "zzz");
   assert(values.length == 2, "Unexpected values size in map with 2 entries");
   assert(_modelObjectEqual(values[0], message), "Unexpected values contents in map with 2 entries");
   assert(_modelObjectEqual(values[1], _testTextMessageTwo()), "Unexpected values contents in map with 2 entries");
-  assert(map.values("mapKey3", "zzz").length == 1, "Unexpected values size in map with 2 entries");
-  assert(map.values("mapKey1", "mapKey2").length == 1, "Unexpected values size in map with 2 entries");
-  assert(map.values("mapKey1", "mapKey4", -1, false).length == 1, "Unexpected values size in map with 2 entries");
   assert(!map.contains("nonexistentkey"), "Map contains a non existent key");
   assert(map.contains("mapKey1"), "Map does not contain a key that was added (mapKey1)");
   assert(map.contains("mapKey3"), "Map does not contain a key that was added (mapKey3)");
@@ -169,9 +114,6 @@ export function mapTests(): void {
 
   // delete an entry and retry api calls
   map.delete("mapKey3");
-  assert(map.values("", "zzz").length == 1, "Unexpected values size in map after delete");
-  assert(_modelObjectEqual(map.values("", "zzz")[0], message), "Unexpected values contents in map after delete");
-  assert(map.values("mapKey1", "zzz").length == 1, "Unexpected values size in map after delete");
   assert(!map.contains("mapKey3"), "Map contains a key that was deleted");
   assert(map.contains("mapKey1"), "Map does not contain a key that should be there after deletion of another key");
   assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get after delete");
@@ -315,76 +257,6 @@ export function dequeTests(): void {
   assert(deque.front == "-2", "wrong front element");
   assert(deque.first == "-2", "wrong first element");
   assert(deque.last == "-2", "wrong last element");
-}
-
-export function topnTests(): void {
-  logging.log("topnTests");
-  // empty topn cases
-  const topn = new PersistentTopN<string>("topnid");
-  assert(topn != null, "topn is null");
-  assert(topn.isEmpty, "empty topn - wrong result for isEmpty");
-  assert(topn.length == 0, "empty topn - wrong length");
-  assert(!topn.contains("nonexistentKey"), "empty topn - contains nonexistent key");
-  topn.delete("nonexistentKey"); // this should not crash
-  assert(topn.keysToRatings(new Array<string>(0)).length == 0, "keys to ratings for empty topn is not empty");
-  assert(topn.getTop(10).length == 0, "get top for empty topn returned non empty list")
-  //assert(topn.getTopFromKey(10, "somekey").length == 0, "getTopFromKey for empty topn returned non empty list") // fails due to key doesn't exist
-  assert(topn.getTopWithRating(10).length == 0, "getTopWithRating for empty topn is not empty");
-  //assert(topn.getTopWithRatingFromKey(10, "somekey").length == 0, "getTopWithRatingFromKey for empty topn is not empty"); // fails due to key doesn't exist
-
-  topn.setRating("k1", 5);
-  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
-  assert(topn.length == 1, "topn - wrong length");
-  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
-  assert(topn.contains("k1"), "topn - does not contain a key that should be there");
-  topn.delete("nonexistentKey"); // this should not crash
-  assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
-  assert(topn.keysToRatings(["k1"])[0].value == 5, "keys to ratings wrong for topn");
-  assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
-  assert(topn.getTop(10)[0] == "k1", "wrong key in getTop")
-  assert(topn.getTopFromKey(10, "k1").length == 0, "getTopFromKey for topn wrong result");
-  assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
-  assert(topn.getTopWithRatingFromKey(10, "k1").length == 0, "getTopWithRatingFromKey for topn is not empty");
-
-  // Tests with 2 entries --  k1: 6, k: 5
-  topn.setRating("k", 5);
-  topn.incrementRating("k1");
-  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
-  assert(topn.length == 2, "topn - wrong length");
-  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
-  assert(topn.contains("k"), "topn - does not contain a key that should be there");
-  assert(topn.contains("k1"), "topn - does not contain a key that should be there");
-  topn.delete("nonexistentKey"); // this should not crash
-  assert(topn.keysToRatings(["k1"]).length == 1, "keys to ratings wrong for topn");
-  assert(topn.keysToRatings(["k1", "k"]).length == 2, "keys to ratings wrong for topn");
-  assert(topn.keysToRatings(["k1", "k"])[0].value == 6, "keys to ratings wrong for topn");
-  assert(topn.keysToRatings(["k1", "k"])[1].value == 5, "keys to ratings wrong for topn");
-  assert(topn.getTop(10).length == 2, "get top for topn is wrong");
-  assert(topn.getTop(10)[0] == "k1", "wrong key in getTop");
-  assert(topn.getTop(10)[1] == "k", "wrong key in getTop");
-  assert(topn.getTop(1).length == 1, "get top for topn is wrong when limit is applied");
-  assert(topn.getTop(1)[0] == "k1", "wrong key in getTop");
-  assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
-  assert(topn.getTopFromKey(10, "k1").length == 1, "getTopFromKey for topn wrong result");
-  assert(topn.getTopFromKey(10, "k1")[0] == "k", "getTopFromKey for topn wrong result");
-  assert(topn.getTopWithRating(10).length == 2, "getTopWithRating for topn with 1 element is wrong size");
-  assert(topn.getTopWithRating(10)[0].value == 6, "getTopWithRating for topn with 1 element is wrong size");
-  assert(topn.getTopWithRating(10)[1].value == 5, "getTopWithRating for topn with 1 element is wrong size");
-
-  topn.delete("k1");
-  topn.incrementRating("k");
-  assert(!topn.isEmpty, "topn - wrong result for isEmpty");
-  assert(topn.length == 1, "topn - wrong length");
-  assert(!topn.contains("nonexistentKey"), "topn - contains nonexistent key");
-  assert(topn.contains("k"), "topn - does not contain a key that should be there");
-  topn.delete("nonexistentKey"); // this should not crash
-  assert(topn.keysToRatings(["k"]).length == 1, "keys to ratings wrong for topn");
-  assert(topn.keysToRatings(["k"])[0].value == 6, "keys to ratings wrong for topn");
-  assert(topn.getTop(10).length == 1, "get top for topn returned non empty list");
-  assert(topn.getTop(10)[0] == "k", "wrong key in getTop")
-  assert(topn.getTopFromKey(10, "k").length == 0, "getTopFromKey for topn wrong result");
-  assert(topn.getTopWithRating(10).length == 1, "getTopWithRating for topn with 1 element is wrong size");
-  assert(topn.getTopWithRatingFromKey(10, "k").length == 0, "getTopWithRatingFromKey for topn is not empty");
 }
 
 export function contextTests(): void {

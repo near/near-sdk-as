@@ -155,6 +155,38 @@ export class PersistentVector<T> {
   }
 
   /**
+   * Removes an element from the vector and returns it. The removed element is replaced by the last element of the
+   * vector. Does not preserve ordering, but is O(1). Panics if index is out of bounds.
+   * @param index
+   */
+  swap_remove(index: i32): T {
+    assert(index >= this.length, "Index out of bounds");
+    if (index + 1 == this.length) {
+     return this.pop();
+    } else {
+      // Swap last element with this one.
+      let curr_value = this.__unchecked_get(index);
+      let last_value = this.__unchecked_get(this.length - 1);
+      storage.delete(this._key(this.length - 1));
+      this.__unchecked_set(index, last_value);
+      this.length -= 1;
+      return curr_value;
+    }
+}
+
+/**
+ * Inserts the element at index, returns evicted element. Panics if index is out of bounds.
+ * @param index
+ * @param new_element
+ */
+replace(index: i32, new_element: T): T {
+    assert(index >= this.length, "Index out of bounds");
+    let evicted = this.__unchecked_get(index);
+    storage.set(this._key(index), new_element);
+    return evicted;
+}
+
+  /**
   * @returns The last element of the vector. Asserts that the vector is not empty.
   */
   get back(): T {
