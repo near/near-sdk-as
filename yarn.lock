@@ -641,9 +641,34 @@ minimist@~0.0.1:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
   integrity sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8=
 
+near-bindgen-as@^1.3.1-1:
+  version "1.3.1-1"
+  resolved "https://registry.yarnpkg.com/near-bindgen-as/-/near-bindgen-as-1.3.1-1.tgz#67572fd531536147d5f4b697a907da1b063c0281"
+  integrity sha512-kH0wUWx4+lLK/2L5aqjlcM6reXlniUr1YEtHR/GDGyZYyhKJ5NtCvKBAnKQVcVVK1xRsCCqbEmmfykVsf8Y57w==
+  dependencies:
+    near-sdk-as "^0.1.0-1"
+
 near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
   version "0.4.0"
   resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
+
+near-runtime-ts@^0.7.1-1:
+  version "0.7.1-1"
+  resolved "https://registry.yarnpkg.com/near-runtime-ts/-/near-runtime-ts-0.7.1-1.tgz#be20c032465652f432a8d4fd3313b85d297d46c9"
+  integrity sha512-Xi4IJ+7zDpHbeD5ERBFiq/kGPqyUqC61ShXDquKkvFY383kjs420MQkQ/yHFOFtlrF+slbnrL+ghbpKpe6+HaQ==
+  dependencies:
+    near-sdk-as "^0.1.0-1"
+
+near-sdk-as@^0.1.0-1:
+  version "0.1.0-1"
+  resolved "https://registry.yarnpkg.com/near-sdk-as/-/near-sdk-as-0.1.0-1.tgz#a363d678a7701b97961159d22b984684bbef4e18"
+  integrity sha512-TSFW+sHw1RhoVPunzgSw8+rRqwUyYqV4gB71cSEGWHkwxPLkjaeiu6TBz1wMyZydQPWjgnjJvdMuAHvIz3sscA==
+  dependencies:
+    "@as-pect/cli" "^3.0.0-beta.0"
+    as-bignum "^0.1.5"
+    assemblyscript-json "^0.3.0"
+    semver "^7.1.3"
+    wasm-mock-vm "^1.2.1"
 
 neo-async@^2.6.0:
   version "2.6.1"
