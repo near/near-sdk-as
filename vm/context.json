@@ -1,0 +1,17 @@
+{
+  "current_account_id": "alice", 
+  "signer_account_id": "bob",
+  "signer_account_pk": "HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK",
+  "predecessor_account_id": "carol",
+  "input": "{ \"arg1\": 1 }",
+  "block_index": 10,
+  "block_timestamp": 42,
+  "account_balance": 2,
+  "account_locked_balance": 1,
+  "storage_usage": 12,
+  "attached_deposit": 2,
+  "prepaid_gas": 100000000000000,
+  "random_seed": "HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK",
+  "is_view": false,
+  "output_data_receivers": []
+}

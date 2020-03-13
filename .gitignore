@@ -1,6 +1,5 @@
 node_modules
 \.idea/
-assembly/__tests__/as-pect.d.ts
 
 *.wasm
 
@@ -13,3 +12,5 @@ yarn-error.log
 
 tests/out/test.wasm
 wasm-mock-vm/
+
+.DS_Store

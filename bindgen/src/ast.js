@@ -11,6 +11,12 @@ if (assemblyscriptPath) {
   assemblyscriptPath = require.resolve("assemblyscript");
   transformerPath = require.resolve("assemblyscript/cli/transform");
 }
+const assemblyscript = require(assemblyscriptPath);
+
 //@ts-ignore
 module.exports.Transform = require(transformerPath).Transform;
-module.exports = {...module.exports, ...require(assemblyscriptPath)};
+module.exports = {
+                  ...module.exports,
+                  ...assemblyscript,
+                  ...assemblyscript.util // Need to add because newer version adds namespace
+                };
