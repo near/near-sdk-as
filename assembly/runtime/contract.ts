@@ -1,5 +1,5 @@
 import { util } from "./util";
-import { runtime_api } from './runtime_api';
+import { env } from './env';
 import { u128 } from ".";
 
 /**
@@ -10,7 +10,7 @@ class Context {
   * Account ID of transaction sender.
   */
   get sender(): string {
-    runtime_api.signer_account_id(0);
+    env.signer_account_id(0);
     return this._readRegisterContentsAsString(0);
   }
 
@@ -18,7 +18,7 @@ class Context {
   * Account ID of contract.
   */
   get contractName(): string {
-    runtime_api.current_account_id(0);
+    env.current_account_id(0);
     return this._readRegisterContentsAsString(0);
   }
 
@@ -27,7 +27,7 @@ class Context {
    */
 
   get predecessor(): string {
-    runtime_api.predecessor_account_id(0);
+    env.predecessor_account_id(0);
     return this._readRegisterContentsAsString(0);
   }
 
@@ -35,7 +35,7 @@ class Context {
   * Current block index.
   */
   get blockIndex(): u64 {
-    return runtime_api.block_index();
+    return env.block_index();
   }
 
   /**
@@ -52,7 +52,7 @@ class Context {
   */
   get attachedDeposit(): u128 {
     let buffer = new Uint8Array(16);
-    runtime_api.attached_deposit(buffer.dataStart);
+    env.attached_deposit(buffer.dataStart);
     return u128.fromBytes(buffer);
   }
 
@@ -62,7 +62,7 @@ class Context {
   */
   get accountBalance(): u128 {
     let buffer = new Uint8Array(16);
-    runtime_api.account_balance(buffer.dataStart);
+    env.account_balance(buffer.dataStart);
     return u128.fromBytes(buffer);
   }
 
@@ -70,21 +70,21 @@ class Context {
   * Get the amount of prepaid gas attached to the call (in units of gas).
   */
   get prepaidGas(): u64 {
-    return runtime_api.prepaid_gas();
+    return env.prepaid_gas();
   }
 
   /**
   * Get the amount of gas (in units of gas) that was already burnt during the contract execution and attached to promises (cannot exceed prepaid gas).
   */
   get usedGas(): u64 {
-    return runtime_api.used_gas();
+    return env.used_gas();
   }
 
   /**
   * The current storage usage in bytes.
   */
   get storageUsage(): u64 {
-    return runtime_api.storage_usage();
+    return env.storage_usage();
   }
 
   private _readRegisterContentsAsString(registerId: u64): string {
@@ -158,7 +158,7 @@ export class ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
     let amount_arr = amount.toUint8Array();
-    const id: u64 = runtime_api.promise_create(
+    const id: u64 = env.promise_create(
       contract_name_encoded.byteLength,
       contract_name_encoded.dataStart,
       method_name_encoded.byteLength,
@@ -194,7 +194,7 @@ export class ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
     let amount_arr = amount.toUint8Array();
-    const id = runtime_api.promise_then(
+    const id = env.promise_then(
       this.id,
       contract_name_encoded.byteLength,
       contract_name_encoded.dataStart,
@@ -257,7 +257,7 @@ export class ContractPromise {
   * ```
   */
   returnAsResult(): void {
-    runtime_api.promise_return(this.id);
+    env.promise_return(this.id);
   }
 
   // /**
@@ -272,7 +272,7 @@ export class ContractPromise {
     for (let i = 0; i < promises.length; i++) {
       ids[i] = promises[i].id;
     }
-    const id = runtime_api.promise_and(ids.dataStart, ids.length);
+    const id = env.promise_and(ids.dataStart, ids.length);
     //@ts-ignore doesn't need methods
     return { id };
   }
@@ -301,10 +301,10 @@ export class ContractPromise {
  *     If the callback using `then` was scheduled only on one result, then one result will be returned.
  */
   static getResults(): ContractPromiseResult[] {
-    let count = <i64>runtime_api.promise_results_count();
+    let count = <i64>env.promise_results_count();
     let results = new Array<ContractPromiseResult>(count as i32);
     for (let i = 0; i < count; i++) {
-      const promise_status = runtime_api.promise_result(i, 0) as i32;
+      const promise_status = env.promise_result(i, 0) as i32;
       let isOk = promise_status == 1;
       if (!isOk) {
         results[i] = new ContractPromiseResult();

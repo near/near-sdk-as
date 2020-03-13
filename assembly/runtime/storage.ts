@@ -1,4 +1,4 @@
-import { runtime_api } from './runtime_api';
+import { env } from './env';
 import { util } from "./util";
 
 
@@ -18,7 +18,7 @@ export class Storage {
     let start_encoded = util.stringToBytes(start);
     let end_encoded = util.stringToBytes(end);
 
-    const iterator_id = runtime_api.storage_iter_range(
+    const iterator_id = env.storage_iter_range(
       start_encoded.byteLength,
       start_encoded.dataStart,
       end_encoded.byteLength,
@@ -35,7 +35,7 @@ export class Storage {
   */
   keys(prefix: string, limit: i32 = -1): string[] {
     let prefix_encoded = util.stringToBytes(prefix);
-    const iterator_id = runtime_api.storage_iter_prefix(
+    const iterator_id = env.storage_iter_prefix(
       prefix_encoded.byteLength,
       prefix_encoded.dataStart);
     return this._fetchIter(iterator_id, limit);
@@ -48,7 +48,7 @@ export class Storage {
     let key_encoded = util.stringToBytes(key);
     let value_encoded = util.stringToBytes(value);
     const storage_write_result =
-      runtime_api.storage_write(key_encoded.byteLength, key_encoded.dataStart, value_encoded.byteLength, value_encoded.dataStart, 0);
+      env.storage_write(key_encoded.byteLength, key_encoded.dataStart, value_encoded.byteLength, value_encoded.dataStart, 0);
     // TODO: handle return value?
   }
 
@@ -68,7 +68,7 @@ export class Storage {
   setBytes(key: string, value: Uint8Array): void {
     let key_encoded = util.stringToBytes(key);
     const storage_write_result =
-      runtime_api.storage_write(key_encoded.byteLength, key_encoded.dataStart, value.byteLength, value.dataStart, 0);
+      env.storage_write(key_encoded.byteLength, key_encoded.dataStart, value.byteLength, value.dataStart, 0);
     // TODO: handle return value?
   }
 
@@ -87,7 +87,7 @@ export class Storage {
   */
   contains(key: string): bool {
     let key_encoded = util.stringToBytes(key);
-    return (bool)(runtime_api.storage_has_key(key_encoded.byteLength, key_encoded.dataStart));
+    return (bool)(env.storage_has_key(key_encoded.byteLength, key_encoded.dataStart));
   }
 
   @inline
@@ -100,7 +100,7 @@ export class Storage {
   */
   delete(key: string): void {
     let key_encoded = util.stringToBytes(key);
-    runtime_api.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
+    env.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
   }
 
   /**
@@ -182,7 +182,7 @@ export class Storage {
 
   private _internalReadBytes(key: string): Uint8Array | null {
     let key_encoded = util.stringToBytes(key);
-    let res = runtime_api.storage_read(key_encoded.byteLength, key_encoded.dataStart, 0);
+    let res = env.storage_read(key_encoded.byteLength, key_encoded.dataStart, 0);
     if (res == 1) {
       return util.read_register(0);
     } else {
@@ -197,7 +197,7 @@ export class Storage {
   private _fetchIter(iterId: u64, limit: i32 = -1): string[] {
     let result: string[] = new Array<string>();
 
-    while(limit-- != 0 && runtime_api.storage_iter_next(iterId, 0, 1) == 1) {
+    while(limit-- != 0 && env.storage_iter_next(iterId, 0, 1) == 1) {
       let key_data = util.read_register(0);
       if (key_data != null) {
         //@ts-ignore: Compiler says this is never null TODO

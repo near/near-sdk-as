@@ -1,4 +1,4 @@
-import { runtime_api } from './runtime_api';
+import { env } from './env';
 import { util } from "./util";
 import { storage } from "./storage";
 
@@ -51,8 +51,8 @@ export namespace math {
     let len_i32 = len as i32;
 
     // Reseed if it was not seeded at all, or was seeded more than one block ago.
-    if (!storage.contains(_BLOCK_INDEX_SEED_AT_KEY) || storage.getSome<i32>(_BLOCK_INDEX_SEED_AT_KEY) != runtime_api.block_index()) {
-      block_index_seeded_at = runtime_api.block_index() as i32;
+    if (!storage.contains(_BLOCK_INDEX_SEED_AT_KEY) || storage.getSome<i32>(_BLOCK_INDEX_SEED_AT_KEY) != env.block_index()) {
+      block_index_seeded_at = env.block_index() as i32;
       storage.set<u64>(_BLOCK_INDEX_SEED_AT_KEY, block_index_seeded_at); 
       random_buffer = randomSeed();
       storage.setBytes(_RANDOM_BUFFER_KEY, random_buffer);
@@ -80,28 +80,28 @@ export namespace math {
   }
 
   export function sha256(inp: Uint8Array): Uint8Array {
-    runtime_api.sha256(inp.byteLength, inp.dataStart, 0);
+    env.sha256(inp.byteLength, inp.dataStart, 0);
     return util.read_register(0);;
   }
 
   export function keccak256(inp: Uint8Array): Uint8Array {
-    runtime_api.keccak256(inp.byteLength, inp.dataStart, 0);
-    const hashedBytes = new Uint8Array(runtime_api.register_len(0) as i32);
-    runtime_api.read_register(0, hashedBytes.dataStart);
+    env.keccak256(inp.byteLength, inp.dataStart, 0);
+    const hashedBytes = new Uint8Array(env.register_len(0) as i32);
+    env.read_register(0, hashedBytes.dataStart);
     return hashedBytes;
   }
 
   export function keccak512(inp: Uint8Array): Uint8Array {
-    runtime_api.keccak512(inp.byteLength, inp.dataStart, 0);
-    const hashedBytes = new Uint8Array(runtime_api.register_len(0) as i32);
-    runtime_api.read_register(0, hashedBytes.dataStart);
+    env.keccak512(inp.byteLength, inp.dataStart, 0);
+    const hashedBytes = new Uint8Array(env.register_len(0) as i32);
+    env.read_register(0, hashedBytes.dataStart);
     return hashedBytes;
   }
   /**
   * Returns a random seed.
   */
   export function randomSeed(): Uint8Array {
-    runtime_api.random_seed(0);
+    env.random_seed(0);
     return util.read_register(0);;
   }
 }
