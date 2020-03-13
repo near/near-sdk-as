@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:nearprotocol/near-sdk-as",
+    "url": "git+https://github.com:near/near-sdk-as",
     "directory": "packages/sdk"
   },
   "author": "Willem Wyndham <willem@nearprotocol.com>",
