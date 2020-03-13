@@ -48,6 +48,7 @@ export class PersistentVector<T> {
   /**
   * @returns The length of the vector.
   */
+  //@ts-ignore TS doesn't like property accessors with different levels of visability
   get length(): i32 {
     if (this._length < 0) {
       this._length = storage.getPrimitive<i32>(this._lengthKey, 0);

@@ -1,4 +1,4 @@
-import { runtime_api } from './runtime_api';
+import { env } from './env';
 import { util } from "./util";
 
 export namespace logging {
@@ -14,6 +14,6 @@ export namespace logging {
     } else {
       msg_encoded = encode<T>(msg);
     }
-    runtime_api.log_utf8(msg_encoded.byteLength, msg_encoded.dataStart);
+    env.log_utf8(msg_encoded.byteLength, msg_encoded.dataStart);
   }
 }

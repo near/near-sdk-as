@@ -1,4 +1,4 @@
-import { runtime_api } from "./runtime_api";
+import { env } from "./env";
 
 export namespace util {
 
@@ -73,9 +73,9 @@ export namespace util {
    * @param register_id Id of register to read from
    */
   export function read_register(register_id: u64): Uint8Array {
-    const value_len = runtime_api.register_len(register_id);
+    const value_len = env.register_len(register_id);
     const value = new Uint8Array(value_len as i32);
-    runtime_api.read_register(0, value.dataStart);
+    env.read_register(0, value.dataStart);
     return value;
   }
 }
