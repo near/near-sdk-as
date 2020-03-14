@@ -154,6 +154,7 @@ export class Storage {
       return null;
     }
   }
+}
 
 /**
 * An instance of a Storage class that is used for working with contract storage on the blockchain.
