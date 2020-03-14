@@ -1,7 +1,7 @@
-import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128 } from "../runtime";
+import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128 } from "../../runtime";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
-import { Context, VM, Outcome } from "../vm";
+import { Context, VM, Outcome } from "../../vm";
 
 beforeAll(()=> {
   VM.saveState();
