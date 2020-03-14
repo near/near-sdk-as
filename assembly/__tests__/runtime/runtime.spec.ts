@@ -1,4 +1,4 @@
-import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, PersistentTopN, ContractPromise, math, logging, runtime_api, u128 } from "../runtime";
+import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128 } from "../runtime";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 import { Context, VM, Outcome } from "../vm";
@@ -55,21 +55,21 @@ describe("outcome", () => {
       storage.delete("hello");
     }
     let orig = VM.outcome();
-    expect(orig.storage_usage).toBe(runtime_api.storage_usage(), "it should be the same when no storage has been added.");
+    expect(orig.storage_usage).toBe(env.storage_usage(), "it should be the same when no storage has been added.");
     storage.set("hello", "world");
     expect(storage.get<string>("hello")).toBe("world", "key hello should be set to \"world\"");
     let newOutcome = VM.outcome();
     expect(newOutcome.storage_usage).toBeGreaterThan(orig.storage_usage, "the new storage usage should be greater than the original.");
-    expect(runtime_api.storage_usage()).toBe(initial_base_cost + key_cost + value_cost + orig.storage_usage, "first write cost 40 + length of key + length of value");
+    expect(env.storage_usage()).toBe(initial_base_cost + key_cost + value_cost + orig.storage_usage, "first write cost 40 + length of key + length of value");
   });
 
   it("should decrease storage usage with smaller value", () => {
     const oldVaule  = "world";
     const newValue = "wor";
     const lenDiff = String.UTF8.byteLength(oldVaule) - String.UTF8.byteLength(newValue);
-    const usageBefore = runtime_api.storage_usage();
+    const usageBefore = env.storage_usage();
     storage.set("hello", newValue);
-    expect(runtime_api.storage_usage()).toBe(usageBefore - lenDiff, "storage usage should be less with smaller value.");
+    expect(env.storage_usage()).toBe(usageBefore - lenDiff, "storage usage should be less with smaller value.");
   });
 });
 
@@ -142,32 +142,11 @@ describe("Storage", (): void => {
   
   it("Keys", () => {
     storage.delete("someKey");
-    // empty storage
-    const emptyKeys = storage.keys("someKey");
-    expect(emptyKeys.length).toBe(0, "Incorrect keys contents for empty storage");
-  
     // // add some keys
     storage.setString("someApple", "myApple");
     storage.setString("someKey", "myValue1");
     storage.setString("someKey2", "myValue1");
     storage.setString("someKey6", "myValue2");
-  
-    const keyRange = storage.keyRange("someKey", "someKey3");
-    expect(keyRange.length).toBe(2, "Incorrect keys length");
-    expect(keyRange[0]).toBe("someKey", "Incorrect keys contents");
-    expect(keyRange[1]).toBe("someKey2", "Incorrect keys contents");
-    const keyRangeWithLimit = storage.keyRange("someKey", "someKey3", 1);
-    expect(keyRangeWithLimit.length).toBe(1, "Incorrect keys length");
-    expect(keyRangeWithLimit[0]).toBe("someKey", "Incorrect keys contents");
-  
-    const keys = storage.keys("someKey");
-    expect(keys.length).toBe(3, "Incorrect keys length");
-    expect(keys[0]).toBe("someKey", "Incorrect keys contents");
-    expect(keys[1]).toBe("someKey2", "Incorrect keys contents");
-    expect(keys[2]).toBe("someKey6", "Incorrect keys contents");
-    const keysWithLimit = storage.keys("someKey", 1);
-    expect(keysWithLimit.length).toBe(1, "Incorrect keys length");
-    expect(keys[0]).toBe("someKey", "Incorrect keys contents")
   
     expect(storage.contains("someApple")).toBe(true, "Storage does not contain key");
     expect(storage.contains("someKey")).toBe(true, "Storage does not contain key");
@@ -181,10 +160,6 @@ describe("Storage", (): void => {
     storage.delete("someKey");
     expect(!storage.contains("someKey")).toBe(true, "Storage contains key that was deleted");
     expect(storage.contains("someKey2")).toBe(true, "Some other key got deleted");
-    const keyswithdelete = storage.keys("someKey");
-    expect(keyswithdelete.length).toBe(2, "Incorrect keys length after removing a key")
-    expect(keyswithdelete[0]).toBe("someKey2", "Incorrect keyswithdelete contents");
-    expect(keyswithdelete[1]).toBe("someKey6", "Incorrect keyswithdelete contents");
   });
 });
 
@@ -194,8 +169,6 @@ describe("Map should handle", () => {
     // TODO: values
     // empty map
     const map = new PersistentMap<string, TextMessage>("mapId");
-    const valuesEmpty = map.values("", "zzz");
-    expect(valuesEmpty.length).toBe(0, "Unexpected values in empty map");
     expect(!map.contains("nonexistentkey")).toBe(true, "Map contains a non existent key");
     expect(map.get("nonexistentkey")).toBeNull("Incorrect result on get with nonexistent key");
   });
@@ -207,13 +180,6 @@ describe("Map should handle", () => {
     map.set("mapKey1", message);
     map.set("mapKey3", _testTextMessageTwo());
     expect(map.contains("mapKey1")).toBe(true);
-    const values = map.values("mapKey1", "zzz");
-    expect(values.length).toBe(2, "Unexpected values size in map with 2 entries");
-    expect(values[0]).toStrictEqual(message, "Unexpected values contents in map with 2 entries");
-    expect(values[1]).toStrictEqual(_testTextMessageTwo(), "Unexpected values contents in map with 2 entries");
-    expect(map.values("mapKey3", "zzz").length).toBe(1, "Unexpected values size in map with 2 entries");
-    expect(map.values("mapKey1", "mapKey2").length).toBe(1, "Unexpected values size in map with 2 entries");
-    expect(map.values("mapKey1", "mapKey4", -1, false).length).toBe(1, "Unexpected values size in map with 2 entries");
     expect(!map.contains("nonexistentkey")).toBe(true, "Map contains a non existent key");
     expect(map.contains("mapKey1")).toBe(true, "Map does not contain a key that was added (mapKey1)");
     expect(map.contains("mapKey3")).toBe(true, "Map does not contain a key that was added (mapKey3)");
@@ -221,9 +187,6 @@ describe("Map should handle", () => {
     expect(map.get("mapKey3")).toStrictEqual(_testTextMessageTwo(), "Incorrect result from map get");
     // delete an entry and retry api calls
     map.delete("mapKey3");
-    expect(map.values("", "zzz").length).toBe(1, "Unexpected values size in map after delete");
-    expect(map.values("", "zzz")[0]).toStrictEqual(message, "Unexpected values contents in map after delete");
-    expect(map.values("mapKey1", "zzz").length).toBe(1, "Unexpected values size in map after delete");
     expect(!map.contains("mapKey3")).toBe(true, "Map contains a key that was deleted");
     expect(map.contains("mapKey1")).toBe(true, "Map does not contain a key that should be there after deletion of another key");
     expect(map.get("mapKey1")).toStrictEqual(message, "Incorrect result from map get after delete");
@@ -391,87 +354,6 @@ describe("Deque should handle", () => {
     expect(deque.front).toBe("-2", "wrong front element");
     expect(deque.first).toBe("-2", "wrong first element");
     expect(deque.last).toBe("-2", "wrong last element");
-  });
-});
-
-let topn: PersistentTopN<string>;
-describe("TopN should", () => {
-
-  beforeAll(() => {
-    topn = new PersistentTopN<string>("topnid");
-  });
-    it("handle empty collection", () => {
-      // empty topn cases
-    expect(topn != null).toBe(true, "topn is null");
-    expect(topn.isEmpty).toBe(true, "empty topn - wrong result for isEmpty");
-    expect(topn.length).toBe(0, "empty topn - wrong length");
-    expect(!topn.contains("nonexistentKey")).toBe(true, "empty topn - contains nonexistent key");
-    topn.delete("nonexistentKey"); // this should not crash
-    expect(topn.keysToRatings(new Array<string>(0)).length).toBe(0, "keys to ratings for empty topn is not empty");
-    expect(topn.getTop(10).length).toBe(0, "get top for empty topn returned non empty list")
-    // expect(topn.getTopFromKey(10, "somekey").length).toBe(0, "getTopFromKey for empty topn returned non empty list") // fails due to key doesn't exist
-    expect(topn.getTopWithRating(10).length).toBe(0, "getTopWithRating for empty topn is not empty");
-    // expect(topn.getTopWithRatingFromKey(10, "somekey").length).toBe(0, "getTopWithRatingFromKey for empty topn is not empty"); // fails due to key doesn't exist
-  });
-  
-  it("handle single items", () => {
-    topn.setRating("k1", 5);
-    expect(!topn.isEmpty).toBe(true, "topn - wrong result for isEmpty");
-    expect(topn.length).toBe(1, "topn - wrong length");
-    expect(!topn.contains("nonexistentKey")).toBe(true, "topn - contains nonexistent key");
-    expect(topn.contains("k1")).toBe(true, "topn - does not contain a key that should be there");
-    topn.delete("nonexistentKey"); // this should not crash
-    expect(topn.keysToRatings(["k1"]).length).toBe(1, "keys to ratings wrong for topn");
-    expect(topn.keysToRatings(["k1"])[0].value).toBe(5, "keys to ratings wrong for topn");
-    expect(topn.getTop(10).length).toBe(1, "get top for topn returned non empty list");
-    expect(topn.getTop(10)[0]).toBe("k1", "wrong key in getTop")
-    expect(topn.getTopFromKey(10, "k1").length).toBe(0, "getTopFromKey for topn wrong result");
-    expect(topn.getTopWithRating(10).length).toBe(1, "getTopWithRating for topn with 1 element is wrong size");
-    expect(topn.getTopWithRatingFromKey(10, "k1").length).toBe(0, "getTopWithRatingFromKey for topn is not empty");
-  });
-
-  
-  it("handle two entries", () => {
-    topn.setRating("k", 5);
-    topn.incrementRating("k1");
-    expect(!topn.isEmpty).toBe(true, "topn - wrong result for isEmpty");
-    expect(topn.length).toBe(2, "topn - wrong length");
-    expect(!topn.contains("nonexistentKey")).toBe(true, "topn - contains nonexistent key");
-    expect(topn.contains("k")).toBe(true, "topn - does not contain a key that should be there");
-    expect(topn.contains("k1")).toBe(true, "topn - does not contain a key that should be there");
-    topn.delete("nonexistentKey"); // this should not crash
-    expect(topn.keysToRatings(["k1"]).length).toBe(1, "keys to ratings wrong for topn");
-    expect(topn.keysToRatings(["k1", "k"]).length).toBe(2, "keys to ratings wrong for topn");
-    expect(topn.keysToRatings(["k1", "k"])[0].value).toBe(6, "keys to ratings wrong for topn");
-    expect(topn.keysToRatings(["k1", "k"])[1].value).toBe(5, "keys to ratings wrong for topn");
-    expect(topn.getTop(10).length).toBe(2, "get top for topn is wrong");
-    expect(topn.getTop(10)[0]).toBe("k1", "wrong key in getTop");
-    expect(topn.getTop(10)[1]).toBe("k", "wrong key in getTop");
-    expect(topn.getTop(1).length).toBe(1, "get top for topn is wrong when limit is applied");
-    expect(topn.getTop(1)[0]).toBe("k1", "wrong key in getTop");
-    expect(topn.getTopFromKey(10, "k").length).toBe(0, "getTopFromKey for topn wrong result");
-    expect(topn.getTopFromKey(10, "k1").length).toBe(1, "getTopFromKey for topn wrong result");
-    expect(topn.getTopFromKey(10, "k1")[0]).toBe("k", "getTopFromKey for topn wrong result");
-    expect(topn.getTopWithRating(10).length).toBe(2, "getTopWithRating for topn with 1 element is wrong size");
-    expect(topn.getTopWithRating(10)[0].value).toBe(6, "getTopWithRating for topn with 1 element is wrong size");
-    expect(topn.getTopWithRating(10)[1].value).toBe(5, "getTopWithRating for topn with 1 element is wrong size");
-  });
-
-  it("handle deleting items", () => {
-    topn.delete("k1");
-    topn.incrementRating("k");
-    expect(!topn.isEmpty).toBe(true, "topn - wrong result for isEmpty");
-    expect(topn.length).toBe(1, "topn - wrong length");
-    expect(!topn.contains("nonexistentKey")).toBe(true, "topn - contains nonexistent key");
-    expect(topn.contains("k")).toBe(true, "topn - does not contain a key that should be there");
-    topn.delete("nonexistentKey"); // this should not crash
-    expect(topn.keysToRatings(["k"]).length).toBe(1, "keys to ratings wrong for topn");
-    expect(topn.keysToRatings(["k"])[0].value).toBe(6, "keys to ratings wrong for topn");
-    expect(topn.getTop(10).length).toBe(1, "get top for topn returned non empty list");
-    expect(topn.getTop(10)[0]).toBe("k", "wrong key in getTop");
-    expect(topn.getTopFromKey(10, "k").length).toBe(0, "getTopFromKey for topn wrong result");
-    expect(topn.getTopWithRating(10).length).toBe(1, "getTopWithRating for topn with 1 element is wrong size");
-    expect(topn.getTopWithRatingFromKey(10, "k").length).toBe(0, "getTopWithRatingFromKey for topn is not empty");
   });
 });
 
