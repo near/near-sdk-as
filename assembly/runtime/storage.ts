@@ -105,7 +105,7 @@ export class Storage {
       return strValue == null ? defaultValue : util.parseFromString<T>(<string>strValue);
     } else {
       const byteValue = this.getBytes(key);
-      return byteValue == null ? defaultValue : util.parseFromBytes<T>(byteValue!);
+      return byteValue == null ? defaultValue : util.parseFromBytes<T>(byteValue);
     }
   }
 
