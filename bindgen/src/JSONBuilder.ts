@@ -32,10 +32,7 @@ function toString(node: Node): string {
 }
 
 export function isEntry(source: Source | Node): boolean {
-  let _source = <Source>(
-    (source.kind == NodeKind.SOURCE ? source : source.range.source)
-  );
-  return _source.sourceKind == SourceKind.USER_ENTRY;
+  return source.range.source.sourceKind == SourceKind.USER_ENTRY;
 }
 
 function isClass(type: Node): boolean {
@@ -44,6 +41,37 @@ function isClass(type: Node): boolean {
 
 function isField(mem: DeclarationStatement) {
   return mem.kind == NodeKind.FIELDDECLARATION;
+}
+
+function createDecodeStatements(_class: ClassDeclaration): string[] {
+  return _class.members
+    .filter(isField)
+    .map((field: FieldDeclaration): string => {
+      const name = toString(field.name);
+      return (
+        createDecodeStatement(field, `this.${name} = obj.has("${name}") ? `) +
+        `: ${field.initializer != null ? toString(field.initializer) : `this.${name}`};`
+      );
+    });
+}
+
+function createDecodeStatement(
+  field: FieldDeclaration | ParameterNode,
+  setterPrefix: string = ""
+): string {
+  let T = toString(field.type!);
+  let name = toString(field.name);
+  return `${setterPrefix}decode<${T}, JSON.Obj>(obj, "${name}")`;
+}
+
+function createEncodeStatements(_class: ClassDeclaration): string[] {
+  return _class.members
+    .filter(isField)
+    .map((field: FieldDeclaration): string => {
+      let T = toString(field.type!);
+      let name = toString(field.name);
+      return `encode<${T}, JSONEncoder>(this.${name}, "${name}", encoder);`;
+    });
 }
 
 // TODO: Extract this into separate module, preferrable pluggable
@@ -124,7 +152,7 @@ export { __wrapper_${name} as ${name} }`);
 
   private typeName(type: TypeNode | ClassDeclaration): string {
     if (!isClass(type)) {
-      return ASTBuilder.build(type);
+      return toString(type);
     }
     type = <ClassDeclaration>type;
     let className = toString(type.name);
@@ -138,7 +166,7 @@ export { __wrapper_${name} as ${name} }`);
     this.sb = [];
     this.visit(source);
     let sourceText = source.statements.map(stmt => {
-      let str = ASTBuilder.build(stmt);
+      let str = toString(stmt);
       if (isClass(stmt)) {
         let _class = <ClassDeclaration>stmt;
         str = str.slice(0, str.lastIndexOf("}"));
@@ -171,7 +199,7 @@ export { __wrapper_${name} as ${name} }`);
   }
 
   _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
-    let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
+    let encoder = _encoder == null ? new JSONEncoder() : _encoder;
     encoder.pushObject(name);
     ${createEncodeStatements(_class).join("\n    ")}
     encoder.popObject();
@@ -194,35 +222,4 @@ export { __wrapper_${name} as ${name} }`);
     });
     return sourceText.concat(this.sb).join("\n");
   }
-}
-
-function createDecodeStatements(_class: ClassDeclaration): string[] {
-  return _class.members
-    .filter(isField)
-    .map((field: FieldDeclaration): string => {
-      const name = toString(field.name);
-      return (
-        createDecodeStatement(field, `this.${name} = obj.has("${name}") ? `) +
-        `: ${field.initializer != null ? ASTBuilder.build(field.initializer) : `this.${name}`};`
-      );
-    });
-}
-
-function createDecodeStatement(
-  field: FieldDeclaration | ParameterNode,
-  setterPrefix: string = ""
-): string {
-  let T = toString(field.type!);
-  let name = toString(field.name);
-  return `${setterPrefix}decode<${T}, JSON.Obj>(obj, "${name}")`;
-}
-
-function createEncodeStatements(_class: ClassDeclaration): string[] {
-  return _class.members
-    .filter(isField)
-    .map((field: FieldDeclaration): string => {
-      let T = toString(field.type!);
-      let name = toString(field.name);
-      return `encode<${T}, JSONEncoder>(this.${name}, "${name}", encoder);`;
-    });
 }
