@@ -1,6 +1,7 @@
 const v8 = require('v8');
 v8.setFlagsFromString('--experimental-wasm-bigint');
 let rust = require("./vm");
+let bs64 = require("js-base64").Base64;
 let path = require("path");
 let posixRelativePath = require("./bindgen/dist/utils").posixRelativePath;
 
@@ -161,6 +162,7 @@ function createImports(memory, createImports, instantiateSync, binary) {
   }
 
   context =  createContext();
+  context.input = bs64.encode(context.input);
   vm = new rust.VM(context);
   let _imports =  {
     vm: {
@@ -168,7 +170,7 @@ function createImports(memory, createImports, instantiateSync, binary) {
           vm.save_state();
         },
         restoreState() {
-          vm.restore_state();
+          vm.reset();
         },
         outcome() {
           let outcome = vm.outcome();
