@@ -39,9 +39,9 @@ class JSONTransformer extends Transform {
       );
     });
     //@ts-ignore __dirname exists
-    const entryFile: string = this.readFile("../../assembly/bindgen.ts", __dirname);
-    //@ts-ignore __dirname exists
     const relativePath = path.relative(baseDir, path.join(__dirname, "../../assembly/bindgen.ts"));
+    //@ts-ignore __dirname exists
+    const entryFile: string = this.readFile(relativePath, baseDir);
     this.parser.parseFile(entryFile, relativePath, true);
 
     if (!JSONTransformer.isTest) {

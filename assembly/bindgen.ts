@@ -1,5 +1,5 @@
 
-import { base64, runtime_api, u128 } from "./index";
+import { base64, runtime_api, u128 } from ".";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 
 // Runtime functions
