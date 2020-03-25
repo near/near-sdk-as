@@ -42,7 +42,9 @@ class JSONTransformer extends Transform {
     const relativePath = path.relative(baseDir, path.join(__dirname, "../../assembly/bindgen.ts"));
     //@ts-ignore __dirname exists
     const entryFile: string = this.readFile(relativePath, baseDir);
-    this.parser.parseFile(entryFile, relativePath, true);
+    // Ensures that the path uses unix seperator instead of windows
+    const unixPath = relativePath.split(path.sep).join("/");
+    this.parser.parseFile(entryFile, unixPath, true);
 
     if (!JSONTransformer.isTest) {
       TypeChecker.check(parser);
