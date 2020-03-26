@@ -201,7 +201,7 @@ function createImports(memory, createImports, instantiateSync, binary) {
           vm.set_current_account_id(readUTF8Str(s));
         },
         setInput(s) {
-          vm.set_input(readUTF8Str(s));
+          vm.set_input(bs64.encode(readUTF8Str(s)));
         },
         setSigner_account_id(s) {
           vm.set_signer_account_id(readUTF8Str(s));
