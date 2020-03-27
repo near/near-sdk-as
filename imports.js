@@ -427,7 +427,7 @@ function createImports(memory, createImports, instantiateSync, binary) {
 
 
 // add an extra entry file
-let includePath = path.join(__dirname, "assembly", "__tests__", "vm.include.ts");
+let includePath = path.join(__dirname, "assembly", "vm", "vm.include.ts");
 const relativePath = path.posix.relative(process.cwd(), includePath);
 
 module.exports = {
