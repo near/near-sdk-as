@@ -1,6 +1,7 @@
 import { Transform, Parser, Source, Module } from "./ast";
 import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
+import { posixRelativePath } from './utils';
 //@ts-ignore
 import * as path from "path";
 
@@ -39,12 +40,9 @@ class JSONTransformer extends Transform {
       );
     });
     //@ts-ignore __dirname exists
-    const relativePath = path.relative(baseDir, path.join(__dirname, "../../assembly/bindgen.ts"));
-    //@ts-ignore __dirname exists
-    const entryFile: string = this.readFile(relativePath, baseDir);
-    // Ensures that the path uses unix seperator instead of windows
-    const unixPath = relativePath.split(path.sep).join("/");
-    this.parser.parseFile(entryFile, unixPath, true);
+    const entryPath = posixRelativePath(baseDir, path.join(__dirname, "../../assembly/bindgen.ts"));
+    const entryFile: string = this.readFile(entryPath, baseDir)!;
+    this.parser.parseFile(entryFile, entryPath, true);
 
     if (!JSONTransformer.isTest) {
       TypeChecker.check(parser);
