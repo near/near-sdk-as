@@ -424,9 +424,11 @@ function createImports(memory, createImports, instantiateSync, binary) {
   return wasm;
 }
 
-// add an extra entry file//
-flags = {};
-flags[path.join(__dirname, "assembly", "vm", "vm.include.ts")] = [];
+
+
+// add an extra entry file
+let includePath = path.join(__dirname, "assembly", "__tests__", "vm.include.ts");
+const relativePath = path.posix.relative(process.cwd(), includePath);
 
 module.exports = {
      /**
@@ -436,12 +438,11 @@ module.exports = {
   /**
    * A set of globs passed to the glob package that quality files to be added to each test.
    */
-  add: ["assembly/__tests__/**/*.include.ts"],
+  add: ["assembly/__tests__/**/*.include.ts", relativePath],
   /**
    * All the compiler flags needed for this test suite. Make sure that a binary file is output.
    */
   flags: {
-    ...flags,
     "--validate": [],
     "--debug": [],
     /** This is required. Do not change this. The filename is ignored, but required by the compiler. */
