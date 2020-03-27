@@ -1,5 +1,5 @@
 //@notNearfile
-export * from "../vm/outcome";
+export * from "./outcome";
 
 export function newStringArray(): Array<string> {
   return new Array<string>();
