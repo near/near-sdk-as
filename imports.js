@@ -2,7 +2,7 @@ const v8 = require('v8');
 v8.setFlagsFromString('--experimental-wasm-bigint');
 let rust = require("./vm");
 let path = require("path");
-let relativePath = require("./bindgen/dist/utils").relativePath;
+let posixRelativePath = require("./bindgen/dist/utils").posixRelativePath;
 
 function toNum(x) { return parseInt(x.toString()); }
 
@@ -429,8 +429,7 @@ function createImports(memory, createImports, instantiateSync, binary) {
 // add an extra entry file
 let includePath = path.join(__dirname, "assembly", "vm", "vm.include.ts");
 const flags = {}
-flags[relativePath(process.cwd(), includePath)] = [];
-
+flags[posixRelativePath(process.cwd(), includePath)] = [];
 
 module.exports = {
      /**

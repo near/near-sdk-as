@@ -1,1 +1,1 @@
-export declare function relativePath(from: string, to: string): string;
+export declare function posixRelativePath(from: string, to: string): string;
