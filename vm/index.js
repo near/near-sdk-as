@@ -1,1 +1,1 @@
-module.exports = require("wasm-mock-vm");
+module.exports = require("near-mock-vm");

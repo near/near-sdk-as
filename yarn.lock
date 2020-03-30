@@ -52,6 +52,11 @@
     diff "^4.0.2"
     nearley "^2.19.1"
 
+"@assemblyscript/loader@^0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.9.4.tgz#a483c54c1253656bb33babd464e3154a173e1577"
+  integrity sha512-HazVq9zwTVwGmqdwYzu7WyQ6FQVZ7SwET0KKQuKm55jD0IfUpZgN0OPIiZG3zV1iSrVYcN0bdwLRXI/VNCYsUA==
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -669,6 +674,13 @@ near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
   version "0.4.0"
   resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
 
+near-mock-vm@^0.0.2-0:
+  version "0.0.2-0"
+  resolved "https://registry.yarnpkg.com/near-mock-vm/-/near-mock-vm-0.0.2-0.tgz#3db0ec504dfa71f0442553afb009e1a395d3ef4e"
+  integrity sha512-Q/ETLYvDytDb+hzt8zwvvzkcBpUNi3grpKrNFflN+jI3mCtG8dx4rWnmlUxUpejX4DRfC2vRG32l5qlqxBL8Lw==
+  dependencies:
+    "@assemblyscript/loader" "^0.9.4"
+
 nearley@^2.19.1:
   version "2.19.1"
   resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.19.1.tgz#4af4006e16645ff800e9f993c3af039857d9dbdc"
@@ -1066,11 +1078,6 @@ w3c-hr-time@^1.0.1:
   integrity sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==
   dependencies:
     browser-process-hrtime "^1.0.0"
-
-wasm-mock-vm@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/wasm-mock-vm/-/wasm-mock-vm-1.2.1.tgz#a2f8c7b5f3ffe977e9c2a3ee3dd43c76ce4f243c"
-  integrity sha512-ksmOWAFxn8zts/xjyPWX7j2yILVjSW7NFbwzJxs6nrkooRV6xWg8PCV8UN+Nza9jjazTGFOzcs1ljyPa3IapWw==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

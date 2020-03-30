@@ -1,1 +1,1 @@
-/// <reference types="wasm-mock-vm/pkg/wasm_mock_vm" />
+/// <reference types="near-mock-vm" />
