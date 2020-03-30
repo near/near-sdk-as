@@ -19,7 +19,7 @@ testcase () {
         echo -e "\033[92m[PASS] \033[0m$res"
         passed=$((passed + 1))
     fi
-    res=$(node ../node_modules/near-mock-vm/bin/standalone_vm.js  ./out/main.wasm "$1" "{}")
+    res=$(../node_modules/.bin/near-vm  ./out/main.wasm "$1" "{}")
     if [[ "$res" =~ $errormsg ]]; then
         echo -e "\033[91m[FAIL] \033[0m$res"
         errors=$((errors + 1))

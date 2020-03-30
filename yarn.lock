@@ -674,10 +674,10 @@ near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
   version "0.4.0"
   resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
 
-near-mock-vm@^0.0.2-0:
-  version "0.0.2-0"
-  resolved "https://registry.yarnpkg.com/near-mock-vm/-/near-mock-vm-0.0.2-0.tgz#3db0ec504dfa71f0442553afb009e1a395d3ef4e"
-  integrity sha512-Q/ETLYvDytDb+hzt8zwvvzkcBpUNi3grpKrNFflN+jI3mCtG8dx4rWnmlUxUpejX4DRfC2vRG32l5qlqxBL8Lw==
+near-mock-vm@^0.0.3-0:
+  version "0.0.3-0"
+  resolved "https://registry.yarnpkg.com/near-mock-vm/-/near-mock-vm-0.0.3-0.tgz#348be73d1fc75b3989028d62c8e3bf5974de4c67"
+  integrity sha512-1pbNYtDPPOhyaSgmAI+F6gMmlX89/guaM5eVBXM1KRO/5Wml4AWzT6STFdjn3Z9KoZTl1Y3welfkNmNoHqJ9oA==
   dependencies:
     "@assemblyscript/loader" "^0.9.4"
 
