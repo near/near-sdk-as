@@ -3,7 +3,7 @@ import { env } from "./env";
 export namespace util {
 
   /**
-   * Convert a given string into a Uint8Array using UTF-8.
+   * Convert a given string into a Uint8Array encoded as UTF-8.
    * @param s data to encode
    */
   export function stringToBytes(s: string): Uint8Array {
