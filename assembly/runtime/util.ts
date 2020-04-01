@@ -14,7 +14,7 @@ export namespace util {
   }
 
   /**
-   * Decode a given Uint8Array into a string using UTF-8.
+   * Decode an UTF-8 encoded Uint8Array into a string.
    * @param bytes array to decode
    */
   export function bytesToString(bytes: Uint8Array | null): string | null {
