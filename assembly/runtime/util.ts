@@ -25,7 +25,7 @@ export namespace util {
   }
 
   /**
-   * Calculates the byte length of the specified string when encoded as UTF-8, optionally null terminated.
+   * Calculates the byte length of the specified UTF-8 string, which can optionally be null terminated.
    * @param str data
    * @param nullTerminated 
    */
