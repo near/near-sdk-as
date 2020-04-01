@@ -2,6 +2,10 @@ import { env } from "./env";
 
 export namespace util {
 
+  /**
+   * Convert a given string into a Uint8Array using UTF-8.
+   * @param s data to encode
+   */
   export function stringToBytes(s: string): Uint8Array {
     let len = String.UTF8.byteLength(s, true) - 1;
     let bytes = new Uint8Array(len);
@@ -9,6 +13,10 @@ export namespace util {
     return bytes;
   }
 
+  /**
+   * Decode a given Uint8Array into a string using UTF-8.
+   * @param bytes array to decode
+   */
   export function bytesToString(bytes: Uint8Array | null): string | null {
     if (bytes == null) {
       return null;
@@ -16,16 +24,13 @@ export namespace util {
     return String.UTF8.decode(uint8ArrayToBuffer(bytes), true)
   }
 
+  /**
+   * Calculates the byte length of the specified string when encoded as UTF-8, optionally null terminated.
+   * @param str data
+   * @param nullTerminated 
+   */
   export function UTF8Length(str: string, nullTerminated: boolean = false): usize {
     return String.UTF8.byteLength(str, nullTerminated);
-  }
-
-  export function toUTF8(str: string, nullTerminated: boolean = false): usize {
-    return changetype<usize>(String.UTF8.encode(str, nullTerminated));
-  }
-
-  function uint8ArrayToBuffer(array: Uint8Array): ArrayBuffer {
-    return array.buffer.slice(array.byteOffset, array.byteLength + array.byteOffset)
   }
 
   /**
@@ -68,7 +73,8 @@ export namespace util {
   }
 
   /**
-   * Reads contents of a register into a Uint8Array.
+   * Reads contents of a register into a Uint8Array. Note: this is a low level
+   * function and should be used directly only rarely from client code.
    * 
    * @param register_id Id of register to read from
    */
@@ -77,5 +83,14 @@ export namespace util {
     const value = new Uint8Array(value_len as i32);
     env.read_register(0, value.dataStart);
     return value;
+  }
+
+  // Private helpers
+  function toUTF8(str: string, nullTerminated: boolean = false): usize {
+    return changetype<usize>(String.UTF8.encode(str, nullTerminated));
+  }
+
+  function uint8ArrayToBuffer(array: Uint8Array): ArrayBuffer {
+    return array.buffer.slice(array.byteOffset, array.byteLength + array.byteOffset)
   }
 }
