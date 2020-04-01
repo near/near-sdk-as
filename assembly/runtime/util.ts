@@ -73,8 +73,9 @@ export namespace util {
   }
 
   /**
-   * Reads contents of a register into a Uint8Array. Note: this is a low level
-   * function and should be used directly only rarely from client code.
+   * @package
+   * Reads contents of a register into a Uint8Array.
+   * Note: this is a low level function and should be used directly only rarely from client code.
    * 
    * @param register_id Id of register to read from
    */
