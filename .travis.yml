@@ -7,8 +7,8 @@ node_js:
   - 12
 env:
   - YARN_GPG=no
-cache: 
-  - yarn
+cache: yarn
+cache:
   directories:
     - nearcore-tests/nearcore
 script:
