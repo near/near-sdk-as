@@ -23,9 +23,9 @@ class Context {
   }
 
   /**
-   * Account ID of predecessor.
+   * Account ID of predecessor. It is either the another contract that called it in case
+   * of a cross-contract call, or the account that signed the transaction if it was called from the transaction.
    */
-
   get predecessor(): string {
     env.predecessor_account_id(0);
     return this._readRegisterContentsAsString(0);
@@ -57,8 +57,7 @@ class Context {
   }
 
   /**
-  * The amount of tokens received with this execution call.
-  * @deprecated use attachedDeposit.
+  * Returns the current balance of the sender account.
   */
   get accountBalance(): u128 {
     let buffer = new Uint8Array(16);
@@ -74,7 +73,8 @@ class Context {
   }
 
   /**
-  * Get the amount of gas (in units of gas) that was already burnt during the contract execution and attached to promises (cannot exceed prepaid gas).
+  * Get the amount of gas (in units of gas) that was already burnt during the contract execution and
+  * attached to promises (cannot exceed prepaid gas).
   */
   get usedGas(): u64 {
     return env.used_gas();
@@ -329,4 +329,7 @@ export class ContractPromiseResult {
   buffer: Uint8Array;
 }
 
+/**
+ * An instance of context that can be used to access the Context functions.
+ */
 export let context: Context = new Context();
