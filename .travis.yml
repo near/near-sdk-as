@@ -1,15 +1,27 @@
-language: node_js
+language: rust
 os:
   - linux
   - osx
   - windows
-node_js:
-  - 12
+rust:
+  - stable
+  - nightly
+
 env:
-  - YARN_GPG=no
-cache: yarn
-cache:
-  directories:
+   - YARN_GPG=no
+cache: 
+  - yarn
+  - directories:
     - nearcore-tests/nearcore
+
+before_install:
+  - rustup target add wasm32-unknown-unknown
+  - nvm install 12
+  - nvm use 12
+  - npm install -g yarn
+
+install:
+  - yarn 
+
 script:
   - yarn test
