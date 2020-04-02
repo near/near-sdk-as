@@ -1,0 +1,15 @@
+language: node_js
+os:
+  - linux
+  - osx
+  - windows
+node_js:
+  - 12
+env:
+  - YARN_GPG=no
+cache: 
+  - yarn
+  directories:
+    - nearcore-tests/nearcore
+script:
+  - yarn test
