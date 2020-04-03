@@ -1,7 +1,7 @@
 export namespace base58 {
 
   /**
-  * Encode Uint8Array in base58.
+  * Encode Uint8Array as a base58 string.
   * @param bytes Byte array of type Uint8Array.
   */
   export function encode(source: Uint8Array): string {
