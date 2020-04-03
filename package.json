@@ -36,7 +36,7 @@
     "near-hello": "nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10",
     "ts-node": "^8.6.2",
     "typedoc": "^0.15.0",
-    "typedoc-plugin-markdown": "^1.2.1",
+    "typedoc-plugin-markdown": "^2.2.16",
     "typescript": "^3.6.4"
   },
   "engines": {
