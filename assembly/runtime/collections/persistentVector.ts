@@ -8,7 +8,7 @@ import { storage } from "../storage";
  * To create a vector
  *
  * ```ts
- * let vec = PersistentVector<string>("v")
+ * let vec = PersistentVector<string>("v")  // choose a unique prefix for the account
  * ```
  *
  * To use the vector
