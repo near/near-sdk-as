@@ -7,7 +7,7 @@ export namespace base64 {
   const ALPHA: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
   /**
-  * Decode base64-encoded string and return a Uint8Array.
+  * Decode a base64-encoded string and return a Uint8Array.
   * @param s Base64 encoded string.
   */
   export function decode (s: string): Uint8Array {
@@ -56,7 +56,7 @@ export namespace base64 {
   }
 
   /**
-  * Encode Uint8Array in base64.
+  * Encode Uint8Array as a base64 string.
   * @param bytes Byte array of type Uint8Array.
   */
   export function encode(bytes: Uint8Array): string {

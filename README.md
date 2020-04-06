@@ -12,3 +12,8 @@ Collection of packages used in developing NEAR smart contracts in AssemblyScript
 yarn add -D near-sdk-as
 ```
 
+## License
+
+`near-sdk-as` is distributed under the terms of both the MIT license and the Apache License (Version 2.0).
+
+See [LICENSE-MIT](LICENSE-MIT) and [LICENSE-APACHE](LICENSE-APACHE) for details.
