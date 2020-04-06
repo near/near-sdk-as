@@ -3,17 +3,17 @@ import { storage } from "../storage";
 
 /**
  * This class is one of several convenience collections built on top of the `Storage` class
- * exposed by the NEAR platform.  It implements a persistent array.
+ * exposed by the NEAR platform.  It implements a vector -- a persistent array.
  *
  * To create a vector
  *
  * ```ts
- * let vec = PersistentVector<string>("v")  // choose a unique prefix for the account
+ * let vec = PersistentVector<string>("v")  // choose a unique prefix per account
  * ```
  *
  * To use the vector
  *
- * ```
+ * ```ts
  * vec.push(value)
  * vec.pop(value)
  * vec.length
@@ -36,8 +36,6 @@ export class PersistentVector<T> {
   /**
    * Creates or restores a persistent vector with a given storage prefix.
    * Always use a unique storage prefix for different collections.
-   *
-   * Example
    *
    * ```ts
    * let vec = PersistentVector<string>("v") // note the prefix must be unique (per NEAR account)
@@ -64,8 +62,6 @@ export class PersistentVector<T> {
   /**
    * Checks whether the index is within the range of the vector indices
    *
-   * Example
-   *
    * ```ts
    * let vec = PersistentVector<string>("v")
    *
@@ -84,14 +80,12 @@ export class PersistentVector<T> {
   /**
    * Checks if the vector is empty
    *
-   * Example
-   *
    * ```ts
    * let vec = PersistentVector<string>("v")
    *
-   * vec.isEmpty()  // true
+   * assert(vec.isEmpty)
    * vec.push("hello world")
-   * vec.isEmpty()  // false
+   * assert(!vec.isEmpty)
    * ```
    *
    * @returns True if the vector is empty.
@@ -103,14 +97,12 @@ export class PersistentVector<T> {
   /**
    * Returns the length of the vector
    *
-   * Example
-   *
    * ```ts
    * let vec = PersistentVector<string>("v")
    *
-   * vec.length // 0
+   * assert(vec.length == 0)
    * vec.push("hello world")
-   * vec.length // 1
+   * assert(vec.length == 1)
    * ```
    *
    * @returns The length of the vector.
@@ -134,12 +126,21 @@ export class PersistentVector<T> {
   }
 
   /**
-  * Returns the element of the vector for a given index. Asserts the given index is within the
-  * range of the vector.
-  * @param index The index of the element to return.
-  * @returns The element at the given index.
-  * @internal
-  */
+   * Returns the element of the vector for a given index. Asserts the given index is within the
+   * range of the vector.
+   *
+   * ```ts
+   * let vec = PersistentVector<string>("v")
+   *
+   * vec.push("hello world")
+   * vec[0] // "hello world"
+   *
+   * vec[1] // will throw with failed assertion: "Index out of range"
+   * ```
+   *
+   * @param index The index of the element to return.
+   * @returns The element at the given index.
+   */
   @operator("[]")
   private __get(index: i32): T {
     assert(this.containsIndex(index), "Index out of range");
@@ -147,23 +148,41 @@ export class PersistentVector<T> {
   }
 
   /**
-  * Returns the element of the vector for a given index without checks.
-  * @param index The index of the element to return.
-  * @returns The element at the given index.
-  * @internal
-  */
+   * Returns the element of the vector for a given index without checks.
+   *
+   * ```ts
+   * let vec = PersistentVector<string>("v")
+   *
+   * vec.push("hello world")
+   * vec{0} // "hello world"
+   *
+   * vec{1} // will throw with failed assertion from getSome()
+   * ```
+   *
+   * @param index The index of the element to return.
+   * @returns The element at the given index.
+   */
   @operator("{}")
   private __unchecked_get(index: i32): T {
     return storage.getSome<T>(this._key(index));
   }
 
   /**
-  * Sets the value of an element at the given index. Asserts the given index is within the
-  * range of the vector.
-  * @param index The index of the element.
-  * @param value The new value.
-  * @internal
-  */
+   * Sets the value of an element at the given index. Asserts the given index is within the
+   * range of the vector.
+   *
+   * ```ts
+   * let vec = PersistentVector<string>("v")
+   *
+   * vec.push("hello world")
+   * vec[0] = "hello again"
+   *
+   * assert(vec[0] == "hello again")
+   * ```
+   *
+   * @param index The index of the element.
+   * @param value The new value.
+   */
   @operator("[]=")
   private __set(index: i32, value: T): void {
     assert(this.containsIndex(index), "Index out of range");
@@ -171,11 +190,19 @@ export class PersistentVector<T> {
   }
 
   /**
-  * Sets the value of an element at the given index without checks.
-  * @param index The index of the element.
-  * @param value The new value.
-  * @internal
-  */
+   * Sets the value of an element at the given index without checks.
+   *
+   * ```ts
+   * let vec = PersistentVector<string>("v")
+   *
+   * vec{0} = "hello world"
+   *
+   * assert(vec[0] == "hello world")
+   * ```
+   *
+   * @param index The index of the element.
+   * @param value The new value.
+   */
   @operator("{}=")
   private __unchecked_set(index: i32, value: T): void {
     storage.set<T>(this._key(index), value);
@@ -183,8 +210,6 @@ export class PersistentVector<T> {
 
   /**
    * Adds a new element to the end of the vector. Increases the length of the vector.
-   *
-   * Example
    *
    * ```ts
    * let vec = PersistentVector<string>("v")
@@ -207,8 +232,6 @@ export class PersistentVector<T> {
   /**
    * Adds a new element to the end of the vector. Increases the length of the vector.
    *
-   * Example
-   *
    * ```
    * // see alias method: push()
    * ```
@@ -225,8 +248,6 @@ export class PersistentVector<T> {
    * Removes the last element from the vector and returns it. Asserts that the vector is not empty.
    * Decreases the length of the vector.
    *
-   * Example
-   *
    * ```ts
    * let vec = PersistentVector<string>("v")
    *
@@ -238,7 +259,7 @@ export class PersistentVector<T> {
    * let element = vec.pop()
    * vec.length // 0
    *
-   * assert(element === text, "PersistentVector returned surprising results, time for a break ;)")
+   * assert(element == text, "PersistentVector returned surprising results, time for a break ;)")
    * ```
    *
    * @returns The removed last element of the vector.
@@ -253,17 +274,15 @@ export class PersistentVector<T> {
   }
 
   /**
-  * Removes the last element from the vector and returns it. Asserts that the vector is not empty.
-  * Decreases the length of the vector.
-  *
-  * Example
-  *
-  * ```
-  * // see alias method: pop()
-  * ```
-  *
-  * @returns The removed last element of the vector.
-  */
+   * Removes the last element from the vector and returns it. Asserts that the vector is not empty.
+   * Decreases the length of the vector.
+   *
+   * ```
+   * // see alias method: pop()
+   * ```
+   *
+   * @returns The removed last element of the vector.
+   */
   @inline
   popBack(): T {
     return this.pop();
@@ -272,8 +291,6 @@ export class PersistentVector<T> {
   /**
    * Removes an element from the vector and returns it. The removed element is replaced by the last element of the
    * vector. Does not preserve ordering, but is O(1). Panics if index is out of bounds.
-   *
-   * Example
    *
    * ```ts
    * let vec = PersistentVector<string>("v")
@@ -288,8 +305,8 @@ export class PersistentVector<T> {
    *
    * let element = vec.swap_remove(2)
    *
-   * assert(element === "red", "PersistentVector returned surprising results, time for a break ;)")
-   * assert(vec[2] === "brown", "PersistentVector returned surprising results, time for a break ;)")
+   * assert(element == "red", "PersistentVector returned surprising results, time for a break ;)")
+   * assert(vec[2] == "brown", "PersistentVector returned surprising results, time for a break ;)")
    * ```
    *
    * @param index
@@ -313,8 +330,6 @@ export class PersistentVector<T> {
   /**
    * Inserts the element at index, returns evicted element. Panics if index is out of bounds.
    *
-   * Example
-   *
    * ```ts
    * let vec = PersistentVector<string>("v")
    *
@@ -327,8 +342,8 @@ export class PersistentVector<T> {
    *
    * let element = vec.replace(2, "brown")
    *
-   * assert(element === "red", "PersistentVector returned surprising results, time for a break ;)")
-   * assert(vec[2] === "brown", "PersistentVector returned surprising results, time for a break ;)")
+   * assert(element == "red", "PersistentVector returned surprising results, time for a break ;)")
+   * assert(vec[2] == "brown", "PersistentVector returned surprising results, time for a break ;)")
    * ```
    *
    * @param index The index of the element to replace
@@ -345,8 +360,6 @@ export class PersistentVector<T> {
   /**
    * Returns the last element of the vector
    *
-   * Example
-   *
    * ```ts
    * let vec = PersistentVector<string>("v")
    *
@@ -357,9 +370,7 @@ export class PersistentVector<T> {
    * vec.push("brown")
    * vec.push("fox")
    *
-   * let element = vec.back()
-   *
-   * assert(element === "fox", "PersistentVector returned surprising results, time for a break ;)")
+   * assert(vec.back == "fox", "PersistentVector returned surprising results, time for a break ;)")
    * ```
    *
    * @returns The last element of the vector. Asserts that the vector is not empty.
@@ -369,16 +380,14 @@ export class PersistentVector<T> {
   }
 
   /**
-    * Returns the last element of the vector
-    *
-    * Example
-    *
-    * ```
-    * // see alias method: front()
-    * ```
-    *
-    * @returns The last element of the vector. Asserts that the vector is not empty.
-    */
+   * Returns the last element of the vector
+   *
+   * ```
+   * // see alias method: back
+   * ```
+   *
+   * @returns The last element of the vector. Asserts that the vector is not empty.
+   */
   @inline
   get last(): T {
     return this.back;
@@ -386,8 +395,6 @@ export class PersistentVector<T> {
 
   /**
    * Returns the first element of the vector
-   *
-   * Example
    *
    * ```ts
    * let vec = PersistentVector<string>("v")
@@ -399,9 +406,7 @@ export class PersistentVector<T> {
    * vec.push("brown")
    * vec.push("fox")
    *
-   * let element = vec.back()
-   *
-   * assert(element === "the", "PersistentVector returned surprising results, time for a break ;)")
+   * assert(vec.front == "the", "PersistentVector returned surprising results, time for a break ;)")
    * ```
    *
    * @returns The first element of the vector. Asserts that the vector is not empty.
@@ -411,16 +416,14 @@ export class PersistentVector<T> {
   }
 
   /**
-    * Returns the first element of the vector
-    *
-    * Example
-    *
-    * ```
-    * // see alias method: front()
-    * ```
-    *
-    * @returns The first element of the vector. Asserts that the vector is not empty.
-    */
+   * Returns the first element of the vector
+   *
+   * ```
+   * // see alias method: front
+   * ```
+   *
+   * @returns The first element of the vector. Asserts that the vector is not empty.
+   */
   @inline
   get first(): T  {
     return this.front;

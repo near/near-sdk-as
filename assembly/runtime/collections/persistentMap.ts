@@ -3,12 +3,12 @@ import { storage } from "../storage";
 
 /**
  * This class is one of several convenience collections built on top of the `Storage` class
- * exposed by the NEAR platform.  It implements a map class, a persistent unordered map.
+ * exposed by the NEAR platform.  It implements a map -- a persistent unordered map.
  *
  * To create a map
  *
  * ```ts
- * let map = PersistentMap<string, string>("m")  // choose a unique prefix for the account
+ * let map = PersistentMap<string, string>("m")  // choose a unique prefix per account
  * ```
  *
  * To use the map
@@ -29,12 +29,17 @@ import { storage } from "../storage";
  * @typeParam V The generic type parameter `V` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
  */
 export class PersistentMap<K, V> {
-  /** @ignore */
   private _elementPrefix: string;
 
   /**
   * Creates or restores a persistent map with a given storage prefix.
   * Always use a unique storage prefix for different collections.
+  *
+  * Example
+  *
+  * ```ts
+  * let map = PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
+  * ```
   *
   * @param prefix A prefix to use for every key of this map.
   */
@@ -52,8 +57,6 @@ export class PersistentMap<K, V> {
 
   /**
    * Checks whether the map contains a given key
-   *
-   * Example
    *
    * ```ts
    * let map = PersistentMap<string, string>("m")
@@ -73,8 +76,6 @@ export class PersistentMap<K, V> {
   /**
    * Removes the given key and related value from the map
    *
-   * Example
-   *
    * ```ts
    * let map = PersistentMap<string, string>("m")
    *
@@ -92,8 +93,6 @@ export class PersistentMap<K, V> {
   /**
    * Retrieves the related value for a given key, or uses the `defaultValue` if not key is found
    *
-   * Example
-   *
    * ```ts
    * let map = PersistentMap<string, string>("m")
    *
@@ -101,8 +100,8 @@ export class PersistentMap<K, V> {
    * let found = map.get("hello")
    * let notFound = map.get("goodbye", "cruel world")
    *
-   * assert(found === "world")
-   * assert(notFound === "cruel world")
+   * assert(found == "world")
+   * assert(notFound == "cruel world")
    * ```
    *
    * @param key Key of the element.
@@ -116,8 +115,6 @@ export class PersistentMap<K, V> {
   /**
    * Retrieves a related value for a given key or fails assertion with "key not found"
    *
-   * Example
-   *
    * ```ts
    * let map = PersistentMap<string, string>("m")
    *
@@ -125,7 +122,7 @@ export class PersistentMap<K, V> {
    * let result = map.getSome("hello")
    * // map.getSome("goodbye")  // will throw with failed assertion
    *
-   * assert(result === "world")
+   * assert(result == "world")
    * ```
    *
    * @param key Key of the element.
@@ -136,8 +133,6 @@ export class PersistentMap<K, V> {
   }
 
   /**
-   * Example
-   *
    * ```ts
    * let map = PersistentMap<string, string>("m")
    *

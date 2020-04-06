@@ -2,8 +2,29 @@ import { collections } from "../collections";
 import { storage } from "../storage";
 
 /**
-* A deque class that implements a persistent bidirectional queue.
-*/
+ * This class is one of several convenience collections built on top of the `Storage` class
+ * exposed by the NEAR platform.  It implements queue -- a persistent bidirectional queue
+ * (aka double-ended queue or deque)
+ *
+ * To create a deque
+ *
+ * ```ts
+ * let dq = PersistentDeque<string>("q")  // choose a unique prefix per account
+ * ```
+ *
+ * To use the deque
+ *
+ * ```ts
+ * dq.pushFront(value)
+ * dq.popBack()
+ * ```
+ *
+ * IMPORTANT NOTE:
+ * Since all data stored on the blockchain is kept in a single key-value store under your account,
+ * you must always use a *unique storage prefix* for different collections to avoid data collision.
+ *
+ * @typeParam T The generic type parameter `T` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
+ */
 export class PersistentDeque<T> {
   private _elementPrefix: string;
   private _frontIndexKey: string;
@@ -11,11 +32,19 @@ export class PersistentDeque<T> {
   private _frontIndex: i32;
   private _backIndex: i32;
 
+  /** @ignore */
   [key: number]: T;
-  
+
   /**
   * Creates or restores a persistent deque with a given storage prefix.
   * Always use a unique storage prefix for different collections.
+  *
+  * Example
+  *
+  * ```ts
+  * let dq = PersistentDeque<string>("q") // note the prefix must be unique (per NEAR account)
+  * ```
+  *
   * @param prefix A prefix to use for every key of this deque.
   */
   constructor(prefix: string) {
@@ -27,7 +56,7 @@ export class PersistentDeque<T> {
   }
 
   /**
-   * @returns An interal key for a given index.
+   * @returns An internal key for a given index.
    */
   @inline
   private _key(index: i32): string {
@@ -71,21 +100,51 @@ export class PersistentDeque<T> {
   }
 
   /**
-  * @param index The index to check.
-  * @returns True if the given index is within the range of the deque indices.
-  */
+   * Checks whether the index is within the range of the deque indices
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.containsIndex(0) // false
+   * dq.pushFront("hello world")
+   * dq.containsIndex(0) // true
+   * ```
+   *
+   * @param index The index to check.
+   * @returns True if the given index is within the range of the deque indices.
+   */
   containsIndex(index: i32): bool {
     return index >= 0 && index < this.length;
   }
 
   /**
-  * @returns The length of the deque.
-  */
+   * Returns the length of the deque
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.length // 0
+   * dq.pushFront("hello world")
+   * dq.length // 1
+   * ```
+   *
+   * @returns The length of the deque.
+   */
   get length(): i32 {
     return this.backIndex - this.frontIndex + 1;
   }
 
   /**
+   * Returns a boolean indicating whether the deque is empty
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.isEmpty // true
+   * dq.pushFront("hello world")
+   * dq.isEmpty // false
+   * ```
+   *
    * @returns True if the deque is empty.
    */
   get isEmpty(): bool {
@@ -95,6 +154,16 @@ export class PersistentDeque<T> {
   /**
    * Returns the element of the deque for a given index. Asserts the given index is within the
    * range of the vector.
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushFront("hello world")
+   * dq[0] // "hello world"
+   *
+   * dq[1] // will throw with failed assertion
+   * ```
+   *
    * @param index The index of the element to return.
    * @returns The element at the given index.
    */
@@ -106,6 +175,16 @@ export class PersistentDeque<T> {
 
   /**
    * Returns the element of the deque for a given index without checks.
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushFront("hello world")
+   * dq{0} // "hello world"
+   *
+   * dq{1} // will throw with failed assertion  "Key is not present in the storage"
+   * ```
+   *
    * @param index The index of the element to return.
    * @returns The element at the given index.
    */
@@ -128,6 +207,14 @@ export class PersistentDeque<T> {
 
   /**
    * Sets the new value of an element at the given index without checks.
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq{0} = "hello world"
+   * dq{0} // "hello world"
+   * ```
+   *
    * @param index The index of the element.
    * @param value The new value.
    */
@@ -138,6 +225,15 @@ export class PersistentDeque<T> {
 
   /**
    * Adds a new element in front of the deque. Increases the length of the deque.
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushFront("world")
+   * dq.pushFront("hello")
+   * dq[0] // "hello"
+   * ```
+   *
    * @param element A new element to add.
    * @returns The index of a newly added element
    */
@@ -150,6 +246,18 @@ export class PersistentDeque<T> {
   /**
    * Removes the first/front element from the deque and returns it.
    * Asserts that the deque is not empty. Decreases the length of the deque.
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushFront("world")
+   * dq.pushFront("hello")
+   * let element = dq.popFront()
+   *
+   * assert(element == "hello")
+   * assert(dq.length == 1)
+   * ```
+   *
    * @returns The removed first element of the queue.
    */
   popFront(): T {
@@ -161,6 +269,18 @@ export class PersistentDeque<T> {
   }
 
   /**
+   * Returns the first element in the deque without changing the queue
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushFront("world")
+   * dq.pushFront("hello")
+   *
+   * assert(dq.front == "hello")
+   * assert(dq.length == 2)
+   * ```
+   *
    * @returns The first/front element of the deque.
    */
   get front(): T {
@@ -168,6 +288,12 @@ export class PersistentDeque<T> {
   }
 
   /**
+   * Returns the first element in the deque without changing the queue
+   *
+   * ```ts
+   * dq.first // alias of front
+   * ```
+   *
    * @returns The first/front element of the deque.
    */
   @inline
@@ -177,6 +303,15 @@ export class PersistentDeque<T> {
 
   /**
    * Adds a new element to the end of the deque. Increases the length of the deque.
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushBack("hello")
+   * dq.pushBack("world")
+   * dq[0] // hello
+   * ```
+   *
    * @param element A new element to add.
    * @returns The index of a newly added element
    */
@@ -190,6 +325,18 @@ export class PersistentDeque<T> {
   /**
    * Removes the last/back element from the deque and returns it.
    * Asserts that the deque is not empty. Decreases the length of the deque.
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushFront("world")
+   * dq.pushFront("hello")
+   * let element = dq.popBack()
+   *
+   * assert(element == "world")
+   * assert(dq.length == 1)
+   * ```
+   *
    * @returns The removed first element of the queue.
    */
   popBack(): T {
@@ -202,6 +349,18 @@ export class PersistentDeque<T> {
   }
 
   /**
+   * Returns the last element in the deque without changing the queue
+   *
+   * ```ts
+   * let dq = PersistentDeque<string>("q")
+   *
+   * dq.pushFront("world")
+   * dq.pushFront("hello")
+   *
+   * assert(dq.back == "world")
+   * assert(dq.length == 2)
+   * ```
+   *
    * @returns The last/back element of the deque.
    */
   get back(): T {
@@ -209,7 +368,13 @@ export class PersistentDeque<T> {
   }
 
   /**
-   * @returns The last/back element of the deque.
+   * Returns the last element in the deque without changing the queue
+   *
+   * ```ts
+   * dq.last // alias of method back
+   * ```
+   *
+  * @returns The last/back element of the deque.
    */
   @inline
   get last(): T {
