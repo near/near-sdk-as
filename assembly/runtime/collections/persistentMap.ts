@@ -22,7 +22,7 @@ import { storage } from "../storage";
  *
  * (1) The Map doesn't store keys, so if you need to retrieve them, include keys in the values.
  *
- * (2) Since all data stored on the blockchain is kept in a single key-value store under your account,
+ * (2) Since all data stored on the blockchain is kept in a single key-value store under the contract account,
  * you must always use a *unique storage prefix* for different collections to avoid data collision.
  *
  * @typeParam K The generic type parameter `K` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).

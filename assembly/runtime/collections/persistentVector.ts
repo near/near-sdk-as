@@ -20,7 +20,7 @@ import { storage } from "../storage";
  * ```
  *
  * IMPORTANT NOTE:
- * Since all data stored on the blockchain is kept in a single key-value store under your account,
+ * Since all data stored on the blockchain is kept in a single key-value store under the contract account,
  * you must always use a *unique storage prefix* for different collections to avoid data collision.
  *
  * @typeParam T The generic type parameter `T` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
