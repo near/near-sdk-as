@@ -197,6 +197,11 @@ binaryen@91.0.0-nightly.20200310:
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-91.0.0-nightly.20200310.tgz#f2c60020fef1fb5ac0e436b9a0e01b25c484c0b4"
   integrity sha512-MmDzq267aa61HdEQeYiz+7guJlsYk2/6NxWC8I4w1jijqDwoqyZZxi7UYnTH7QvfLrNdMjweEgfT7FHjkvkPmQ==
 
+bn.js@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.1.tgz#48efc4031a9c4041b9c99c6941d903463ab62eb5"
+  integrity sha512-IUTD/REb78Z2eodka1QZyyEk66pciRcP6Sroka0aI3tG/iwIdYLrBD62RsubR7vqdt3WyX8p4jxeatzmRSphtA==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -674,12 +679,14 @@ near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
   version "0.4.0"
   resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
 
-near-mock-vm@^0.0.3-0:
-  version "0.0.3-0"
-  resolved "https://registry.yarnpkg.com/near-mock-vm/-/near-mock-vm-0.0.3-0.tgz#348be73d1fc75b3989028d62c8e3bf5974de4c67"
-  integrity sha512-1pbNYtDPPOhyaSgmAI+F6gMmlX89/guaM5eVBXM1KRO/5Wml4AWzT6STFdjn3Z9KoZTl1Y3welfkNmNoHqJ9oA==
+near-mock-vm@^0.0.4-0:
+  version "0.0.4-0"
+  resolved "https://registry.yarnpkg.com/near-mock-vm/-/near-mock-vm-0.0.4-0.tgz#5df3e2a51cf26d7ee237abb75d4397e2a14798aa"
+  integrity sha512-v1uYdWf2klKs1PzR/XDHPZ/DrQ++piRjJ4u0UP1PevjX+so1mVyvokbtDzhT7ckrNx6+O11gEvWJ9milpty1fw==
   dependencies:
     "@assemblyscript/loader" "^0.9.4"
+    bn.js "^5.1.1"
+    js-base64 "^2.5.2"
 
 nearley@^2.19.1:
   version "2.19.1"
