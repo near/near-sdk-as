@@ -1,4 +1,17 @@
 {
   "extends": "assemblyscript/std/assembly.json",
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "typedocOptions": {
+    "exclude": "assembly/__tests__",
+    "out": "docs/near-sdk-as",
+    "theme": "docusaurus",
+    "skipSidebar": true,
+    "hideBreadcrumbs": true,
+    "hideSources": true,
+    "ignoreCompilerErrors": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "excludeExternals": true,
+    "stripInternal": true
+  }
 }
