@@ -29,7 +29,7 @@
     "test:bindgen": "(cd bindgen; yarn test)",
     "asp:ci": "asp",
     "asp": "yarn asp:ci --verbose",
-    "doc": "rm -rf apidoc && mkdir apidoc && typedoc assembly/runtime/*.ts assembly/runtime/collections/*.ts assembly/vm/*.ts --theme docusaurus --skipSidebar --hideBreadcrumbs --hideSources --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --stripInternal --out apidoc/"
+    "doc": "rm -rf docs; mkdir docs && typedoc assembly --tsconfig assembly/tsconfig.json"
   },
   "devDependencies": {
     "assemblyscript": "^0.9.4",
