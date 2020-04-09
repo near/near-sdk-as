@@ -6,11 +6,11 @@ let posixRelativePath = require("./bindgen/dist/utils").posixRelativePath;
 
 function createImports(memory, createImports, instantiateSync, binary) {
   let wasm;
-  const VM = rust.NearVM.create(memory);
-  const _imports = VM.createImports();
+  const runner = rust.VMRunner.create(memory);
+  const _imports = runner.createImports();
   wasm = instantiateSync(binary, createImports(_imports));
   // Save reference to the instance
-  VM.wasm = wasm;
+  runner.wasm = wasm;
   return wasm;
 }
 

@@ -15,7 +15,7 @@ export function pushString(arr: string[], str: string): Array<string> {
 }
 
 /**
- * Ensure that state of the VM is restored.
+ * Ensure that state of the VM is restored before each test.
  */
 beforeEach(()=> {
   VM.restoreState();
