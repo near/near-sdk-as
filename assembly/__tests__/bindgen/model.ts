@@ -1,8 +1,8 @@
 
-// @nearfile
 
 import { u128 } from "../..";
 
+@nearBindgen
 export class FooBar {
     foo: i32 = 0;
     bar: u32 = 1;
@@ -21,20 +21,24 @@ export class FooBar {
     u64Arr: u64[];
 }
 
+@nearBindgen
 export class Nullables {
     str: string;
     u128: u128;
     uint8Array: Uint8Array;
 }
 
+@nearBindgen
 export class ContainerClass {
     foobar: FooBar
 }
 
+@nearBindgen
 export class AnotherContainerClass {
     foobars: Array<Array<FooBar>>
 }
 
+@nearBindgen
 export class PromiseArgs {
     receiver: string;
     methodName: string;
@@ -45,16 +49,19 @@ export class PromiseArgs {
     callbackBalance: i32;
 }
 
+@nearBindgen
 export class MyContractPromiseResult {
     ok: bool;
     r: MyCallbackResult;
 }
 
+@nearBindgen
 export class MyCallbackResult {
     rs: MyContractPromiseResult[];
     n: string;
 }
 
+@nearBindgen
 export class Generic<T> {
     value: T;
 }

@@ -3,12 +3,6 @@ import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 import { Context, VM, Outcome } from "../../vm";
 
-
-// export function hello(): string {
-//   const s = simple("a"); // Test that we can call other export functions
-//   return "hello".concat(s);
-// }
-
 describe("Encodings", () => {
   it("base58 round trip", () => {
     let array: Uint8Array = _testBytes();

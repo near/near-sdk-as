@@ -1,5 +1,6 @@
-//@nearfile
+
 // Exporting a new class TextMessage so it can be used outside of this file.
+@nearBindgen
 export class TextMessage {
   sender: string;
   text: string;

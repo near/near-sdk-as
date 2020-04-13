@@ -1,4 +1,3 @@
-//@nearfile
 import { u128, context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math } from "../..";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";

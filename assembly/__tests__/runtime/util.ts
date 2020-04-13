@@ -1,4 +1,4 @@
-import {TextMessage} from "./model";
+import { TextMessage } from "./model";
 
 //Testing helper functions
 export function _testBytes(): Uint8Array {

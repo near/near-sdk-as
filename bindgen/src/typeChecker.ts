@@ -1,5 +1,5 @@
-import { TypeName, Module, Source, Parser } from "./ast";
-import { BaseVisitor } from "./base";
+import { TypeName, Module, Source, Parser } from "visitor-as/as";
+import { BaseVisitor } from "visitor-as";
 
 declare interface RegExp {
   test(s: string): bool;

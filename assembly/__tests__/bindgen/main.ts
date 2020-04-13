@@ -1,4 +1,3 @@
-//@nearfile
 // These imports need to be copied properly
 import { storage, context, ContractPromise, logging } from "../..";
 import { FooBar, ContainerClass, AnotherContainerClass, PromiseArgs, MyCallbackResult, MyContractPromiseResult } from "./model";

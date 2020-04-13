@@ -11,9 +11,13 @@ import {
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
-} from "./ast";
-import { ASTBuilder } from "./ASTBuilder";
-import { BaseVisitor } from "./base";
+  DecoratorNode,
+  IdentifierExpression,
+} from "visitor-as/as";
+import { ASTBuilder, BaseVisitor, utils} from "visitor-as";
+
+
+const NEAR_DECORATOR = "nearBindgen"
 
 function returnsVoid(node: FunctionDeclaration): boolean {
   return toString(node.signature.returnType) === "void";
@@ -24,7 +28,10 @@ function numOfParameters(node: FunctionDeclaration): number {
 }
 
 function hasNearDecorator(stmt: Source): boolean {
-  return (stmt.text.includes("@nearfile") || isEntry(stmt)) && !stmt.text.includes("@notNearfile");
+  return (
+    (stmt.text.includes("@nearfile") || stmt.text.includes("@" + NEAR_DECORATOR) || isEntry(stmt)) &&
+    !stmt.text.includes("@notNearfile")
+  );
 }
 
 function toString(node: Node): string {
@@ -80,7 +87,7 @@ export class JSONBindingsBuilder extends BaseVisitor {
   private exportedClasses: Map<string, ClassDeclaration> = new Map();
   wrappedFuncs: Set<string> = new Set();
 
-  static build(parser: Parser, source: Source): string {
+  static build(source: Source): string {
     return new JSONBindingsBuilder().build(source);
   }
 
@@ -163,20 +170,27 @@ export { __wrapper_${name} as ${name} }`);
   }
 
   build(source: Source): string {
+    const isNearFile = source.text.includes("@nearfile")
     this.sb = [];
     this.visit(source);
     let sourceText = source.statements.map(stmt => {
       let str = toString(stmt);
-      if (isClass(stmt)) {
+      if (
+        isClass(stmt) &&
+        (utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR) || isNearFile)
+        ) {
         let _class = <ClassDeclaration>stmt;
         str = str.slice(0, str.lastIndexOf("}"));
         let fields = _class.members
           .filter(isField)
           .map((field: FieldDeclaration) => field);
-        if (fields.some(field => field.type == null)) {
+        if (fields.some((field) => field.type == null)) {
           throw new Error("All Fields must have explict type declaration.");
         }
         let className = this.typeName(_class);
+        if (!utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR)) {
+          console.error("\x1b[31m", `@nearfile is deprecated use @${NEAR_DECORATOR} decorator on ${className}`,"\x1b[0m");
+        }
         str += `
   decode<V = Uint8Array>(buf: V): ${className} {
     let json: JSON.Obj;
