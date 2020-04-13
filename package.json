@@ -30,14 +30,14 @@
     "test:bindgen": "(cd bindgen; yarn test)",
     "asp:ci": "asp",
     "asp": "yarn asp:ci --verbose",
-    "doc": "rm -rf apidoc && mkdir apidoc && typedoc assembly/runtime/*.ts assembly/runtime/collections/*.ts assembly/vm/*.ts --theme markdown --ignoreCompilerErrors --excludePrivate --excludeProtected --excludeExternals --out apidoc/"
+    "doc": "rm -rf docs; mkdir docs && typedoc assembly --tsconfig assembly/tsconfig.json"
   },
   "devDependencies": {
     "assemblyscript": "^0.9.4",
     "near-hello": "nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10",
     "ts-node": "^8.6.2",
-    "typedoc": "^0.15.0",
-    "typedoc-plugin-markdown": "^1.2.1",
+    "typedoc": "^0.17.3",
+    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "^3.6.4"
   },
   "engines": {

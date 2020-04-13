@@ -3,3 +3,7 @@ tsconfig.json
 nearcore-tests/
 assembly/__tests__
 **/*/out/
+bindgen/src
+bindgen/out
+bindgen/asconfig.js
+bindgen/test.js
