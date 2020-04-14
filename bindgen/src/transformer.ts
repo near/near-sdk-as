@@ -1,4 +1,4 @@
-import { Transform, Parser, Source, Module } from "./ast";
+import { Transform, Parser, Source, Module } from "visitor-as/as";
 import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
 import { posixRelativePath } from './utils';
@@ -28,7 +28,7 @@ class JSONTransformer extends Transform {
         (_source: Source) => _source !== source
       );
       // Build new Source
-      let sourceText = JSONBindingsBuilder.build(parser, source);
+      let sourceText = JSONBindingsBuilder.build(source);
       if (writeOut) {
         writeFile("out/" + source.normalizedPath, sourceText, baseDir);
       }

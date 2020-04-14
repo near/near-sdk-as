@@ -1,6 +1,5 @@
 #!/bin/bash
 set -ex
-LINK="yarn link --link-folder $(pwd)/.yarn";
 
 WASM_MOCK_VM="wasm-mock-vm";
 

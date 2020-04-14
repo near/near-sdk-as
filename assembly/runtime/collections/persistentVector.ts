@@ -313,7 +313,7 @@ export class PersistentVector<T> {
    * @return The element that was removed
    */
   swap_remove(index: i32): T {
-    assert(index >= this.length, "Index out of bounds");
+    assert(index <= this.length, "Index out of bounds");
     if (index + 1 == this.length) {
      return this.pop();
     } else {

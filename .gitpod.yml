@@ -18,7 +18,7 @@ github:
     # add a "Review in Gitpod" button to the pull request's description (defaults to false)
     addBadge: false
     # add a label once the prebuild is ready to pull requests (defaults to false)
-    addLabel: false
+    addLabel: true
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:

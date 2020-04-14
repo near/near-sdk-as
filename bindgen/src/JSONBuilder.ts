@@ -11,9 +11,13 @@ import {
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
-} from "./ast";
-import { ASTBuilder } from "./ASTBuilder";
-import { BaseVisitor } from "./base";
+  DecoratorNode,
+  IdentifierExpression,
+} from "visitor-as/as";
+import { ASTBuilder, BaseVisitor, utils} from "visitor-as";
+
+
+const NEAR_DECORATOR = "nearBindgen"
 
 function returnsVoid(node: FunctionDeclaration): boolean {
   return toString(node.signature.returnType) === "void";
@@ -24,7 +28,10 @@ function numOfParameters(node: FunctionDeclaration): number {
 }
 
 function hasNearDecorator(stmt: Source): boolean {
-  return (stmt.text.includes("@nearfile") || isEntry(stmt)) && !stmt.text.includes("@notNearfile");
+  return (
+    (stmt.text.includes("@nearfile") || stmt.text.includes("@" + NEAR_DECORATOR) || isEntry(stmt)) &&
+    !stmt.text.includes("@notNearfile")
+  );
 }
 
 function toString(node: Node): string {
@@ -32,10 +39,7 @@ function toString(node: Node): string {
 }
 
 export function isEntry(source: Source | Node): boolean {
-  let _source = <Source>(
-    (source.kind == NodeKind.SOURCE ? source : source.range.source)
-  );
-  return _source.sourceKind == SourceKind.USER_ENTRY;
+  return source.range.source.sourceKind == SourceKind.USER_ENTRY;
 }
 
 function isClass(type: Node): boolean {
@@ -46,13 +50,44 @@ function isField(mem: DeclarationStatement) {
   return mem.kind == NodeKind.FIELDDECLARATION;
 }
 
+function createDecodeStatements(_class: ClassDeclaration): string[] {
+  return _class.members
+    .filter(isField)
+    .map((field: FieldDeclaration): string => {
+      const name = toString(field.name);
+      return (
+        createDecodeStatement(field, `this.${name} = obj.has("${name}") ? `) +
+        `: ${field.initializer != null ? toString(field.initializer) : `this.${name}`};`
+      );
+    });
+}
+
+function createDecodeStatement(
+  field: FieldDeclaration | ParameterNode,
+  setterPrefix: string = ""
+): string {
+  let T = toString(field.type!);
+  let name = toString(field.name);
+  return `${setterPrefix}decode<${T}, JSON.Obj>(obj, "${name}")`;
+}
+
+function createEncodeStatements(_class: ClassDeclaration): string[] {
+  return _class.members
+    .filter(isField)
+    .map((field: FieldDeclaration): string => {
+      let T = toString(field.type!);
+      let name = toString(field.name);
+      return `encode<${T}, JSONEncoder>(this.${name}, "${name}", encoder);`;
+    });
+}
+
 // TODO: Extract this into separate module, preferrable pluggable
 export class JSONBindingsBuilder extends BaseVisitor {
   private sb: string[] = [];
   private exportedClasses: Map<string, ClassDeclaration> = new Map();
   wrappedFuncs: Set<string> = new Set();
 
-  static build(parser: Parser, source: Source): string {
+  static build(source: Source): string {
     return new JSONBindingsBuilder().build(source);
   }
 
@@ -124,7 +159,7 @@ export { __wrapper_${name} as ${name} }`);
 
   private typeName(type: TypeNode | ClassDeclaration): string {
     if (!isClass(type)) {
-      return ASTBuilder.build(type);
+      return toString(type);
     }
     type = <ClassDeclaration>type;
     let className = toString(type.name);
@@ -135,20 +170,27 @@ export { __wrapper_${name} as ${name} }`);
   }
 
   build(source: Source): string {
+    const isNearFile = source.text.includes("@nearfile")
     this.sb = [];
     this.visit(source);
     let sourceText = source.statements.map(stmt => {
-      let str = ASTBuilder.build(stmt);
-      if (isClass(stmt)) {
+      let str = toString(stmt);
+      if (
+        isClass(stmt) &&
+        (utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR) || isNearFile)
+        ) {
         let _class = <ClassDeclaration>stmt;
         str = str.slice(0, str.lastIndexOf("}"));
         let fields = _class.members
           .filter(isField)
           .map((field: FieldDeclaration) => field);
-        if (fields.some(field => field.type == null)) {
+        if (fields.some((field) => field.type == null)) {
           throw new Error("All Fields must have explict type declaration.");
         }
         let className = this.typeName(_class);
+        if (!utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR)) {
+          console.error("\x1b[31m", `@nearfile is deprecated use @${NEAR_DECORATOR} decorator on ${className}`,"\x1b[0m");
+        }
         str += `
   decode<V = Uint8Array>(buf: V): ${className} {
     let json: JSON.Obj;
@@ -171,7 +213,7 @@ export { __wrapper_${name} as ${name} }`);
   }
 
   _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
-    let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
+    let encoder = _encoder == null ? new JSONEncoder() : _encoder;
     encoder.pushObject(name);
     ${createEncodeStatements(_class).join("\n    ")}
     encoder.popObject();
@@ -194,35 +236,4 @@ export { __wrapper_${name} as ${name} }`);
     });
     return sourceText.concat(this.sb).join("\n");
   }
-}
-
-function createDecodeStatements(_class: ClassDeclaration): string[] {
-  return _class.members
-    .filter(isField)
-    .map((field: FieldDeclaration): string => {
-      const name = toString(field.name);
-      return (
-        createDecodeStatement(field, `this.${name} = obj.has("${name}") ? `) +
-        `: ${field.initializer != null ? ASTBuilder.build(field.initializer) : `this.${name}`};`
-      );
-    });
-}
-
-function createDecodeStatement(
-  field: FieldDeclaration | ParameterNode,
-  setterPrefix: string = ""
-): string {
-  let T = toString(field.type!);
-  let name = toString(field.name);
-  return `${setterPrefix}decode<${T}, JSON.Obj>(obj, "${name}")`;
-}
-
-function createEncodeStatements(_class: ClassDeclaration): string[] {
-  return _class.members
-    .filter(isField)
-    .map((field: FieldDeclaration): string => {
-      let T = toString(field.type!);
-      let name = toString(field.name);
-      return `encode<${T}, JSONEncoder>(this.${name}, "${name}", encoder);`;
-    });
 }

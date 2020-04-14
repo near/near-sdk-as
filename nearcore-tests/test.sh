@@ -11,7 +11,15 @@ passed=0
 
 testcase () {
 
-    res=$(nearcore/target/debug/near-vm-runner-standalone --context-file=/tmp/context.json --config-file=/tmp/config.json --method-name="$1" --wasm-file=/tmp/main.wasm --input="{}")
+    res=$(nearcore/target/debug/near-vm-runner-standalone --context-file=/tmp/context-stable.json --method-name="$1" --wasm-file=/tmp/main.wasm --input="{}")
+    if [[ "$res" =~ $errormsg ]]; then
+        echo -e "\033[91m[FAIL] \033[0m$res"
+        errors=$((errors + 1))
+    else
+        echo -e "\033[92m[PASS] \033[0m$res"
+        passed=$((passed + 1))
+    fi
+    res=$(../node_modules/near-mock-vm/bin/bin.js run ./out/main.wasm "$1" "{}")
     if [[ "$res" =~ $errormsg ]]; then
         echo -e "\033[91m[FAIL] \033[0m$res"
         errors=$((errors + 1))

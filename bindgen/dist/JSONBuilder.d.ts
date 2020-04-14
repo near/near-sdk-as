@@ -1,11 +1,11 @@
-import { Node, FunctionDeclaration, Source, ClassDeclaration, Parser } from "./ast";
-import { BaseVisitor } from "./base";
+import { Node, FunctionDeclaration, Source, ClassDeclaration, Parser } from "visitor-as/as";
+import { BaseVisitor } from "visitor-as";
 export declare function isEntry(source: Source | Node): boolean;
 export declare class JSONBindingsBuilder extends BaseVisitor {
     private sb;
     private exportedClasses;
     wrappedFuncs: Set<string>;
-    static build(parser: Parser, source: Source): string;
+    static build(source: Source): string;
     static nearFiles(parser: Parser): Source[];
     visitClassDeclaration(node: ClassDeclaration): void;
     visitFunctionDeclaration(node: FunctionDeclaration): void;

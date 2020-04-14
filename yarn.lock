@@ -2,28 +2,10 @@
 # yarn lockfile v1
 
 
-"@as-pect/assembly@^3.0.0-beta.2":
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/assembly/-/assembly-3.0.0-beta.2.tgz#06787e0c0aa9322c12adde64aa7aa25bf92f043f"
-  integrity sha512-vc8VSzSY9gt2vXiKPwsgZP+9ze718+6pqpw9N/aKS2s2If/PcPGoy+iOg/FnFNw+HhD+yptEV6e5lC9Kz8hzBw==
-
 "@as-pect/assembly@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@as-pect/assembly/-/assembly-3.1.2.tgz#3b8a3e17386ac76897a0c097c87b17a6e7eb8b0c"
   integrity sha512-RHmiU5D8sFVWA2BgoAioKmewnGibN592vT8kCweYN6fQ0TL2UGvGEdMvAdAgGdc0fgdWcAy9PIXGxsfBXpR4MA==
-
-"@as-pect/cli@^3.0.0-beta.0":
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/cli/-/cli-3.0.0-beta.2.tgz#5288fddc319b7ea519231be00c652f0c4ab767b0"
-  integrity sha512-umklLdqPMpO3jqa7XvGIKucnKibuKeJizI8Uug+5NJ400OBPS54QLDB4jQTuPNvXG6HHK93vc17U/vfQYIgc3Q==
-  dependencies:
-    "@as-pect/assembly" "^3.0.0-beta.2"
-    "@as-pect/core" "^3.0.0-beta.2"
-    chalk "^3.0.0"
-    glob "^7.1.6"
-  optionalDependencies:
-    "@as-pect/csv-reporter" "^3.0.0-beta.2"
-    "@as-pect/json-reporter" "^3.0.0-beta.2"
 
 "@as-pect/cli@^3.1.4":
   version "3.1.4"
@@ -38,15 +20,6 @@
     "@as-pect/csv-reporter" "^3.1.4"
     "@as-pect/json-reporter" "^3.1.4"
 
-"@as-pect/core@^3.0.0-beta.2":
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/core/-/core-3.0.0-beta.2.tgz#eda13229256308cfc9beb24e92ae3db8d282e329"
-  integrity sha512-GWNXUp1zszuzTvrt03BtYFM8ficeyFhH3/LIO6KvB/Z54easBs1QbAryMMH1vsGFiwaKqAn3nhK5qDgMhS6ouw==
-  dependencies:
-    "@as-pect/assembly" "^3.0.0-beta.2"
-    chalk "^3.0.0"
-    long "^4.0.0"
-
 "@as-pect/core@^3.1.4":
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/@as-pect/core/-/core-3.1.4.tgz#a6903717f6977af5b813d6f23a4cd0099e1ac00a"
@@ -57,26 +30,12 @@
     chalk "^3.0.0"
     long "^4.0.0"
 
-"@as-pect/csv-reporter@^3.0.0-beta.2":
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/csv-reporter/-/csv-reporter-3.0.0-beta.2.tgz#26e354371321f1dd3c71b614e837e5abaf9ed94b"
-  integrity sha512-MvRnWHVdDSjmU00RKApxIGKGP7oDNMVSr/FlIVVPuQc4WTqT2fJrjt5Gaasu7kkx/vXe6gedZ1qw2yOpMCqMQQ==
-  dependencies:
-    "@as-pect/core" "^3.0.0-beta.2"
-
 "@as-pect/csv-reporter@^3.1.4":
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/@as-pect/csv-reporter/-/csv-reporter-3.1.4.tgz#1f65b89ed514f6f7f77621e0a2bbd6028ed84297"
   integrity sha512-tLXrrqUgH2gIPMFxSXoGpXyggqUkfuiJMJXoUnRpe8omzEvE4sW1OueXW+t+LKCI1ha2BYNl9ALR163G3gaOEw==
   dependencies:
     "@as-pect/core" "^3.1.4"
-
-"@as-pect/json-reporter@^3.0.0-beta.2":
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@as-pect/json-reporter/-/json-reporter-3.0.0-beta.2.tgz#55e4041394f8aefd0414217e7afb4b4a865c1f06"
-  integrity sha512-UG0oogbB1hmZuJTpiOjU50NdIIyhhvO3z7w5cDzX1JW4RIx4Q4ZpUUQDVh9A7XCo/Uzi8KePgCUfdE/c4hkPJg==
-  dependencies:
-    "@as-pect/core" "^3.0.0-beta.2"
 
 "@as-pect/json-reporter@^3.1.4":
   version "3.1.4"
@@ -92,6 +51,11 @@
   dependencies:
     diff "^4.0.2"
     nearley "^2.19.1"
+
+"@assemblyscript/loader@^0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.9.4.tgz#a483c54c1253656bb33babd464e3154a173e1577"
+  integrity sha512-HazVq9zwTVwGmqdwYzu7WyQ6FQVZ7SwET0KKQuKm55jD0IfUpZgN0OPIiZG3zV1iSrVYcN0bdwLRXI/VNCYsUA==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -143,6 +107,11 @@ binaryen@91.0.0-nightly.20200310:
   version "91.0.0-nightly.20200310"
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-91.0.0-nightly.20200310.tgz#f2c60020fef1fb5ac0e436b9a0e01b25c484c0b4"
   integrity sha512-MmDzq267aa61HdEQeYiz+7guJlsYk2/6NxWC8I4w1jijqDwoqyZZxi7UYnTH7QvfLrNdMjweEgfT7FHjkvkPmQ==
+
+bn.js@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.1.tgz#48efc4031a9c4041b9c99c6941d903463ab62eb5"
+  integrity sha512-IUTD/REb78Z2eodka1QZyyEk66pciRcP6Sroka0aI3tG/iwIdYLrBD62RsubR7vqdt3WyX8p4jxeatzmRSphtA==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -309,6 +278,11 @@ is-fullwidth-code-point@^3.0.0:
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
   integrity sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==
 
+js-base64@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.2.tgz#313b6274dda718f714d00b3330bbae6e38e90209"
+  integrity sha512-Vg8czh0Q7sFBSUMWWArX/miJeBWYBPpdU/3M/DKSaekLMqrqVPaedp+5mZhie/r0lgrcaYBfwXatEew6gwgiQQ==
+
 jsonfile@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-4.0.0.tgz#8771aae0799b64076b76640fca058f9c10e33ecb"
@@ -322,6 +296,11 @@ locate-path@^5.0.0:
   integrity sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==
   dependencies:
     p-locate "^4.1.0"
+
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
 lodash@^4.17.15:
   version "4.17.15"
@@ -360,34 +339,19 @@ moo@^0.5.0:
   resolved "https://registry.yarnpkg.com/moo/-/moo-0.5.1.tgz#7aae7f384b9b09f620b6abf6f74ebbcd1b65dbc4"
   integrity sha512-I1mnb5xn4fO80BH9BLcF0yLypy2UKl+Cb01Fu0hJRkJjlCRtxZMWkTdAtDd5ZqCOxtCkhmRwyI57vWT+1iZ67w==
 
-near-bindgen-as@^1.3.1-1:
-  version "1.3.1-1"
-  resolved "https://registry.yarnpkg.com/near-bindgen-as/-/near-bindgen-as-1.3.1-1.tgz#67572fd531536147d5f4b697a907da1b063c0281"
-  integrity sha512-kH0wUWx4+lLK/2L5aqjlcM6reXlniUr1YEtHR/GDGyZYyhKJ5NtCvKBAnKQVcVVK1xRsCCqbEmmfykVsf8Y57w==
-  dependencies:
-    near-sdk-as "^0.1.0-1"
-
 near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
   version "0.4.0"
   resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
 
-near-runtime-ts@^0.7.1-1:
-  version "0.7.1-1"
-  resolved "https://registry.yarnpkg.com/near-runtime-ts/-/near-runtime-ts-0.7.1-1.tgz#be20c032465652f432a8d4fd3313b85d297d46c9"
-  integrity sha512-Xi4IJ+7zDpHbeD5ERBFiq/kGPqyUqC61ShXDquKkvFY383kjs420MQkQ/yHFOFtlrF+slbnrL+ghbpKpe6+HaQ==
+near-mock-vm@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/near-mock-vm/-/near-mock-vm-0.1.0.tgz#5f5cc6d672d7977d03e5b73eaf5b11f4bbf651cd"
+  integrity sha512-PLJrPekgpj8hLeWzPP5MqSIwo60mVLzYNDru6EfkI3zFhYlzk7rlaqg3bH1RAy8L8N/39RupVLi++ylnwsEJOw==
   dependencies:
-    near-sdk-as "^0.1.0-1"
-
-near-sdk-as@^0.1.0-1:
-  version "0.1.0-1"
-  resolved "https://registry.yarnpkg.com/near-sdk-as/-/near-sdk-as-0.1.0-1.tgz#a363d678a7701b97961159d22b984684bbef4e18"
-  integrity sha512-TSFW+sHw1RhoVPunzgSw8+rRqwUyYqV4gB71cSEGWHkwxPLkjaeiu6TBz1wMyZydQPWjgnjJvdMuAHvIz3sscA==
-  dependencies:
-    "@as-pect/cli" "^3.0.0-beta.0"
-    as-bignum "^0.1.5"
-    assemblyscript-json "^0.3.0"
-    semver "^7.1.3"
-    wasm-mock-vm "^1.2.1"
+    "@assemblyscript/loader" "^0.9.4"
+    bn.js "^5.1.1"
+    js-base64 "^2.5.2"
+    yargs "^15.3.1"
 
 nearley@^2.19.1:
   version "2.19.1"
@@ -553,10 +517,15 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+ts-mixer@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ts-mixer/-/ts-mixer-5.1.0.tgz#4edc3792d30e706db9bdd2e9442758146a3a2189"
+  integrity sha512-u6caArZIK/XXKq80fWyE8JOnWSOod7Q7lGdJKZ/d2xP0g8cBj5+rHpJzCz3mvy5sUwnfN42bH9BWHuek/pSH5g==
+
 ts-node@^8.6.2:
-  version "8.6.2"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.6.2.tgz#7419a01391a818fbafa6f826a33c1a13e9464e35"
-  integrity sha512-4mZEbofxGqLL2RImpe3zMJukvEvcO1XP8bj8ozBPySdCUXEcU5cIRwR0aM3R+VoZq7iXc8N86NC0FspGRqP4gg==
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.8.1.tgz#7c4d3e9ed33aa703b64b28d7f9d194768be5064d"
+  integrity sha512-10DE9ONho06QORKAaCBpPiFCdW+tZJuY/84tyypGtl6r+/C7Asq0dhqbRZURuUlLQtZxxDvT8eoj8cGW0ha6Bg==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
@@ -612,10 +581,13 @@ universalify@^0.1.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
   integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
 
-wasm-mock-vm@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/wasm-mock-vm/-/wasm-mock-vm-1.2.1.tgz#a2f8c7b5f3ffe977e9c2a3ee3dd43c76ce4f243c"
-  integrity sha512-ksmOWAFxn8zts/xjyPWX7j2yILVjSW7NFbwzJxs6nrkooRV6xWg8PCV8UN+Nza9jjazTGFOzcs1ljyPa3IapWw==
+visitor-as@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/visitor-as/-/visitor-as-0.1.0.tgz#8ccda709311595a4acbaafb5f894e912aca4a464"
+  integrity sha512-vEV1k4fiyGwzHdNomjj32/pxK16x5+WX+oLZvcM4veaq+CeIiiFEteR/xzsvXh54aZPKDd5Aux2Rw2EDfN5H7Q==
+  dependencies:
+    lodash.clonedeep "^4.5.0"
+    ts-mixer "^5.1.0"
 
 which-module@^2.0.0:
   version "2.0.0"

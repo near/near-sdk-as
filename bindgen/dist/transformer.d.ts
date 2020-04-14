@@ -1,4 +1,4 @@
-import { Transform, Parser, Module } from "./ast";
+import { Transform, Parser, Module } from "visitor-as/as";
 declare class JSONTransformer extends Transform {
     parser: Parser;
     static isTest: boolean;
