@@ -34,11 +34,11 @@
  (data (i32.const 48) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00:\00f\00r\00o\00n\00t\00")
  (data (i32.const 80) "\n\00\00\00\01\00\00\00\01\00\00\00\n\00\00\00:\00b\00a\00c\00k\00")
  (data (i32.const 112) "\04\00\00\00\01\00\00\00\01\00\00\00\04\00\00\00:\00:\00")
- (data (i32.const 144) "\02\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00=\00")
- (data (i32.const 176) "\80\00\00\00\01\00\00\00\01\00\00\00\80\00\00\00A\00B\00C\00D\00E\00F\00G\00H\00I\00J\00K\00L\00M\00N\00O\00P\00Q\00R\00S\00T\00U\00V\00W\00X\00Y\00Z\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\000\001\002\003\004\005\006\007\008\009\00+\00/\00")
- (data (i32.const 320) "*\00\00\00\01\00\00\00\01\00\00\00*\00\00\00b\00l\00o\00c\00k\00_\00i\00n\00d\00e\00x\00_\00s\00e\00e\00d\00e\00d\00_\00a\00t\00")
- (data (i32.const 384) "\"\00\00\00\01\00\00\00\01\00\00\00\"\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00k\00e\00y\00")
- (data (i32.const 448) ".\00\00\00\01\00\00\00\01\00\00\00.\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00i\00n\00d\00e\00x\00_\00k\00e\00y\00")
+ (data (i32.const 144) "*\00\00\00\01\00\00\00\01\00\00\00*\00\00\00b\00l\00o\00c\00k\00_\00i\00n\00d\00e\00x\00_\00s\00e\00e\00d\00e\00d\00_\00a\00t\00")
+ (data (i32.const 208) "\"\00\00\00\01\00\00\00\01\00\00\00\"\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00k\00e\00y\00")
+ (data (i32.const 272) ".\00\00\00\01\00\00\00\01\00\00\00.\00\00\00r\00a\00n\00d\00o\00m\00_\00b\00u\00f\00f\00e\00r\00_\00i\00n\00d\00e\00x\00_\00k\00e\00y\00")
+ (data (i32.const 336) "\02\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00=\00")
+ (data (i32.const 368) "\80\00\00\00\01\00\00\00\01\00\00\00\80\00\00\00A\00B\00C\00D\00E\00F\00G\00H\00I\00J\00K\00L\00M\00N\00O\00P\00Q\00R\00S\00T\00U\00V\00W\00X\00Y\00Z\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\000\001\002\003\004\005\006\007\008\009\00+\00/\00")
  (data (i32.const 512) " \00\00\00\01\00\00\00\01\00\00\00 \00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00")
  (data (i32.const 560) "\1a\00\00\00\01\00\00\00\01\00\00\00\1a\00\00\00s\00t\00a\00r\00t\00i\00n\00g\00 \00t\00e\00s\00t\00")
  (data (i32.const 608) "\1c\00\00\00\01\00\00\00\01\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h\00")
@@ -192,12 +192,12 @@
  (global $../assembly/runtime/collections/index/collections._KEY_BACK_INDEX_SUFFIX i32 (i32.const 96))
  (global $../assembly/runtime/collections/index/collections._KEY_ELEMENT_SUFFIX i32 (i32.const 128))
  (global $../assembly/runtime/collections/index/collections._RATING_OFFSET i64 (i64.const 2147483648))
+ (global $../assembly/runtime/math/math._BLOCK_INDEX_SEED_AT_KEY i32 (i32.const 160))
+ (global $../assembly/runtime/math/math._RANDOM_BUFFER_KEY i32 (i32.const 224))
+ (global $../assembly/runtime/math/math._RANDOM_BUFFER_INDEX_KEY i32 (i32.const 288))
  (global $../assembly/runtime/contract/context (mut i32) (i32.const 0))
- (global $../assembly/runtime/base64/base64.PADCHAR i32 (i32.const 160))
- (global $../assembly/runtime/base64/base64.ALPHA i32 (i32.const 192))
- (global $../assembly/runtime/math/math._BLOCK_INDEX_SEED_AT_KEY i32 (i32.const 336))
- (global $../assembly/runtime/math/math._RANDOM_BUFFER_KEY i32 (i32.const 400))
- (global $../assembly/runtime/math/math._RANDOM_BUFFER_INDEX_KEY i32 (i32.const 464))
+ (global $../assembly/runtime/base64/base64.PADCHAR i32 (i32.const 352))
+ (global $../assembly/runtime/base64/base64.ALPHA i32 (i32.const 384))
  (global $~lib/as-bignum/utils/HEX_CHARS i32 (i32.const 528))
  (global $~lib/as-bignum/globals/__divmod_quot_lo (mut i64) (i64.const 0))
  (global $~lib/as-bignum/globals/__divmod_quot_hi (mut i64) (i64.const 0))
@@ -2593,7 +2593,7 @@
   i32.const -1
  )
  (func $../assembly/runtime/base64/base64.getByte64 (; 26 ;) (param $0 i32) (param $1 i32) (result i32)
-  i32.const 192
+  i32.const 384
   local.get $0
   local.get $1
   call $~lib/string/String#charAt
@@ -2646,7 +2646,7 @@
   i32.const 1
   i32.sub
   call $~lib/string/String#charAt
-  i32.const 160
+  i32.const 352
   call $~lib/string/String.__eq
   if
    i32.const 1
@@ -2656,7 +2656,7 @@
    i32.const 2
    i32.sub
    call $~lib/string/String#charAt
-   i32.const 160
+   i32.const 352
    call $~lib/string/String.__eq
    if
     i32.const 2
@@ -4633,7 +4633,7 @@
    i32.lt_s
    if
     local.get $1
-    i32.const 192
+    i32.const 384
     local.get $0
     local.get $3
     call $~lib/typedarray/Uint8Array#__get
@@ -4660,7 +4660,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 192
+    i32.const 384
     local.get $2
     i32.const 12
     i32.shr_u
@@ -4670,7 +4670,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 192
+    i32.const 384
     local.get $2
     i32.const 6
     i32.shr_u
@@ -4680,7 +4680,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 192
+    i32.const 384
     local.get $2
     i32.const 63
     i32.and
@@ -4711,7 +4711,7 @@
      br $break|1
     end
     local.get $1
-    i32.const 192
+    i32.const 384
     local.get $0
     local.get $3
     call $~lib/typedarray/Uint8Array#__get
@@ -4724,7 +4724,7 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 192
+    i32.const 384
     local.get $2
     i32.const 12
     i32.shr_u
@@ -4734,17 +4734,17 @@
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 160
+    i32.const 352
     call $~lib/array/Array<~lib/string/String>#push
     drop
     local.get $1
-    i32.const 160
+    i32.const 352
     call $~lib/array/Array<~lib/string/String>#push
     drop
     br $break|1
    end
    local.get $1
-   i32.const 192
+   i32.const 384
    local.get $0
    local.get $3
    call $~lib/typedarray/Uint8Array#__get
@@ -4765,7 +4765,7 @@
    call $~lib/array/Array<~lib/string/String>#push
    drop
    local.get $1
-   i32.const 192
+   i32.const 384
    local.get $2
    i32.const 12
    i32.shr_u
@@ -4775,7 +4775,7 @@
    call $~lib/array/Array<~lib/string/String>#push
    drop
    local.get $1
-   i32.const 192
+   i32.const 384
    local.get $2
    i32.const 6
    i32.shr_u
@@ -4785,7 +4785,7 @@
    call $~lib/array/Array<~lib/string/String>#push
    drop
    local.get $1
-   i32.const 160
+   i32.const 352
    call $~lib/array/Array<~lib/string/String>#push
    drop
   end

@@ -11,7 +11,7 @@ passed=0
 
 testcase () {
 
-    res=$(nearcore/target/debug/near-vm-runner-standalone --context-file=/tmp/context-stable.json --config-file=/tmp/config.json --method-name="$1" --wasm-file=/tmp/main.wasm --input="{}")
+    res=$(nearcore/target/debug/near-vm-runner-standalone --context-file=/tmp/context-stable.json --method-name="$1" --wasm-file=/tmp/main.wasm --input="{}")
     if [[ "$res" =~ $errormsg ]]; then
         echo -e "\033[91m[FAIL] \033[0m$res"
         errors=$((errors + 1))
