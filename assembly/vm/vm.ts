@@ -1,30 +1,34 @@
 import { Outcome } from "./outcome";
 
+//@ts-ignore
+@external("vm", "outcome")
+declare function _outcome(): Outcome;
+
+//@ts-ignore
+@external("vm", "restoreState")
+declare function _restoreState(): void;
+
 /**
  * Methods on the current VM
  */ 
-export declare namespace VM {
-  /** 
-   * Saves the internal state of the VM. 
-   * */ 
-  //@ts-ignore
-  @external("vm", "saveState")
-  export function saveState(): void;
+export namespace VM {
 
   /** 
    * Restores the internal state of the VM. 
    * 
    */ 
-  //@ts-ignore
-  @external("vm", "restoreState")
-  export function restoreState(): void;
+  export function restoreState(): void {
+    _restoreState();
+  }
 
   /**
    * Return the VM Outcome of the current running contract
    */ 
-  //@ts-ignore
-  @external("vm", "outcome")
-  export function outcome(): Outcome;
+  export function outcome(): Outcome {
+    return _outcome();
+  }
 
-  
+  export function logs(): string[] {
+    return outcome().logs;
+  }
 }  

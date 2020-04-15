@@ -20,3 +20,7 @@ declare interface Object {
 
 declare function isNull<T>(t: T): bool;
 
+/**
+ * Decorator used to make classes serializable.
+ */
+declare function nearBindgen(_class: any): void;

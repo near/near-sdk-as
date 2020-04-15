@@ -3,8 +3,16 @@ import { util } from "./util";
 
 export namespace logging {
   /**
-  * Log a string message.
-  */
+   * Log a string message.
+   *
+   * Logs are stored as an array of strings
+   *
+   * ```ts
+   * logging.log("log message")
+   * ```
+   *
+   * @param msg Text to be added to the log
+   */
   export function log<T = string>(msg: T): void {
     let msg_encoded: Uint8Array;
     if (isString<T>()) {

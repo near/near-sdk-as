@@ -11,7 +11,10 @@ else
 fi
 
 if [[ ! -e $CARGO_HOME ]]; then
-    curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain $RUST_VERSION
+    curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain $RUST_VERSION;
+    $HOME/.cargo/bin/cargo build -p near-vm-runner-standalone
+
+else
+    cargo build -p near-vm-runner-standalone
 fi
 
-cargo build -p near-vm-runner-standalone
