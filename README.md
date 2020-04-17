@@ -1,4 +1,4 @@
-# near-ask-as
+# near-sdk-as
 Collection of packages used in developing NEAR smart contracts in AssemblyScript including:
 
 
