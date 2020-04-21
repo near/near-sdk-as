@@ -104,6 +104,7 @@ module.exports.compile  = function (inputFile, outputFile, args, options, callba
       }
     };
   }
+  args = args.concat(process.argv.slice(2))
   asc.main(
     [inputFile,
     // TODO: Optimiziation is very slow, enable it only conditionally for "prod" builds?
