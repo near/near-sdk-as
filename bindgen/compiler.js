@@ -84,16 +84,25 @@ Object.defineProperty(module.exports, "asc", { get: () => getAsc() });
  * Adding {verbose: true}, to the options will print out the cli arguments passed to asc.
 */
 module.exports.compile  = function (inputFile, outputFile, args, options, callback) {
+  if (inputFile == undefined) {
+    throw new Error("input file required.");
+  }
+  if (outputFile == undefined) {
+    throw new Error("output file required.");
+  }
   const asc = getAsc(options)
-  if (args == undefined) {
-    callback = () => {};
-  } 
   if (typeof args === "function") {
     callback = args;
     args = [];
     options = null
   } else if (typeof options === "function") {
     callback = options;
+  } else {
+    callback = (err) => {
+      if (err != null) {
+        throw new Error(err);
+      }
+    };
   }
   asc.main(
     [inputFile,
