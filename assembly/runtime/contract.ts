@@ -153,7 +153,7 @@ export class ContractPromise {
     methodName: string,
     args: Uint8Array,
     gas: u64,
-    amount: u128 = u128.fromU64(0)
+    amount: u128 = u128.Zero
   ): ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
@@ -189,7 +189,7 @@ export class ContractPromise {
     methodName: string,
     args: Uint8Array,
     gas: u64,
-    amount: u128 = u128.fromU64(0)
+    amount: u128 = u128.Zero
   ): ContractPromise {
     const contract_name_encoded = util.stringToBytes(contractName);
     const method_name_encoded = util.stringToBytes(methodName);
