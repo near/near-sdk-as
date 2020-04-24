@@ -27,10 +27,13 @@
     "visitor-as": "^0.1.0"
   },
   "scripts": {
-    "build": "cd bindgen; yarn build",
+    "build": "yarn build:bindgen && yarn build:vm",
+    "build:bindgen": "(cd bindgen; yarn build)",
+    "build:vm": "(cd vm; tsc)",
     "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore",
     "test:nearcore": "(cd nearcore-tests; yarn test)",
     "test:bindgen": "(cd bindgen; yarn test)",
+    "test:vm": "(cd vm; node asconfig && ./test.ts)",
     "asp:ci": "asp",
     "asp": "yarn asp:ci --verbose",
     "doc": "rm -rf docs; typedoc assembly --tsconfig assembly/tsconfig.json && touch docs/.nojekyll"

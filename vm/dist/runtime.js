@@ -49,6 +49,7 @@ def context(
         "output_data_receivers": output_data_receivers
     }
 */
+const DEFAULT_GAS = 10 ** 15;
 class Account {
     constructor(account_id, wasmFile = null, runtime) {
         this.account_id = account_id;
@@ -59,54 +60,51 @@ class Account {
         this.lockedBalance = 0;
         this.signerAccountPk = utils_1.encodebs58(account_id.slice(0, 32).padEnd(32, " "));
     }
-    call_step_other(account_id, method_name, input = {}, prepaid_gas = 10 ** 15) {
-        if (this.runtime == null)
-            throw new Error("Runtime is not set");
+    createAccountContext(input = {}, prepaid_gas = DEFAULT_GAS) {
         input = JSON.stringify(input);
         let accountContext = {
             input,
             prepaid_gas,
             signer_account_pk: this.account_id,
         };
-        return this.runtime.call_step(account_id, method_name, input, accountContext);
+        return accountContext;
     }
-    //   call_step(method_name: string, input: string = "", prepaid_gas: number = 10**15) {
-    //     return this.call_step_other(this.account_id, method_name, input, prepaid_gas)
-    //   }
-    call_other(account_id, method_name, input = "", prepaid_gas = 10 ** 15) {
+    call_step_other(account_id, method_name, input = {}, prepaid_gas = DEFAULT_GAS) {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
-        input = JSON.stringify(input);
-        let accountContext = {
-            input,
-            prepaid_gas,
-            signer_account_pk: this.account_id,
-        };
-        return this.runtime.call(account_id, method_name, input = input, accountContext);
+        let accountContext = this.createAccountContext(input, prepaid_gas);
+        return this.runtime.call_step(account_id, method_name, accountContext.input, accountContext);
     }
-    //   call(method_name: string, input: string = "", prepaid_gas: number = 10**15) {
-    //     return this.call_other(this.account_id, method_name, input, prepaid_gas)
-    //   }
-    view(method_name, input = "") {
-        //   if (this.runtime == null) throw new Error("Runtime is not set");
-        //   const is_view = true
-        //   let accountContext: Partial<AccountContext> = {
-        //       is_view,
-        //       prepaid_gas
-        //   }
-        //   const result = this.runtime.call_step(this.account_id, method_name, input, 10**15, isView);
-        //   var return_data = result.outcome && result.outcome.return_data;//('outcome', {}).get('return_data', None)
-        //   if (return_data) {
-        //       return_data = return_data['Value'] || "";
-        //   }
-        //   const err = result['err'];
-        // // if return_data is not None:
-        // //     return_data = return_data['Value'] if 'Value' in return_data else ''
-        // return {
-        //     return_data,
-        //     err,
-        //     result
-        // }
+    call_step(method_name, input, prepaid_gas) {
+        return this.call_step_other(this.account_id, method_name, input, prepaid_gas);
+    }
+    call_other(account_id, method_name, input, prepaid_gas) {
+        if (this.runtime == null)
+            throw new Error("Runtime is not set");
+        let accountContext = this.createAccountContext(input, prepaid_gas);
+        return this.runtime.call(account_id, method_name, input, accountContext);
+    }
+    call(method_name, input, prepaid_gas) {
+        return this.call_other(this.account_id, method_name, input, prepaid_gas);
+    }
+    view(method_name, input) {
+        if (this.runtime == null)
+            throw new Error("Runtime is not set");
+        let accountContext = this.createAccountContext(input);
+        accountContext.is_view = true;
+        const result = this.runtime.call_step(this.account_id, method_name, input, accountContext);
+        var return_data = result.outcome && result.outcome.return_data; //('outcome', {}).get('return_data', None)
+        if (return_data) {
+            return_data = return_data['Value'] || "";
+        }
+        const err = result['err'];
+        // if return_data is not None:
+        //     return_data = return_data['Value'] if 'Value' in return_data else ''
+        return {
+            return_data,
+            err,
+            result
+        };
     }
 }
 exports.Account = Account;
@@ -378,7 +376,7 @@ class Runtime {
                             };
                             q.push(next);
                         }
-                        console.log(ret);
+                        this.log(ret);
                         numReceipts += result['receipts'].length;
                     }
                 }
@@ -388,9 +386,9 @@ class Runtime {
         const result = results[return_index];
         this.log(`Final result:`);
         this.log(result);
-        let return_data = result.outcome;
+        let return_data = result.outcome.return_data;
         if (return_data) {
-            return_data = return_data['Value'] || "";
+            return_data = JSON.parse(return_data['Value'] || "");
         }
         return {
             return_data,

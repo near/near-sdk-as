@@ -10,15 +10,28 @@ export declare class Account {
     lockedBalance: number;
     signerAccountPk: string;
     constructor(account_id: string, wasmFile: string | null, runtime: Runtime);
+    createAccountContext(input?: any, prepaid_gas?: number): Partial<AccountContext>;
     call_step_other(account_id: string, method_name: string, input?: any, prepaid_gas?: number): any;
-    call_other(account_id: string, method_name: string, input?: string, prepaid_gas?: number): {
+    call_step(method_name: string, input?: any, prepaid_gas?: number): any;
+    call_other(account_id: string, method_name: string, input?: any, prepaid_gas?: number): {
         return_data: any;
         err: any;
         result: any;
         calls: any;
         results: any;
     };
-    view(method_name: string, input?: string): void;
+    call(method_name: string, input?: any, prepaid_gas?: number): {
+        return_data: any;
+        err: any;
+        result: any;
+        calls: any;
+        results: any;
+    };
+    view(method_name: string, input?: any): {
+        return_data: any;
+        err: any;
+        result: any;
+    };
 }
 export declare class Runtime {
     accounts: Map<string, Account>;
