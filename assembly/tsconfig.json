@@ -3,6 +3,10 @@
   "include": ["**/*.ts"],
   "typedocOptions": {
     "exclude": "assembly/__tests__",
-    "ignoreCompilerErrors": true
+    "ignoreCompilerErrors": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "excludeExternals": true,
+    "stripInternal": true    
   }
 }
