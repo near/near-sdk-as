@@ -27,7 +27,7 @@
     "visitor-as": "^0.1.0"
   },
   "scripts": {
-    "build": "yarn build:bindgen && yarn build:vm",
+    "build": "yarn add near-vm && yarn build:bindgen && yarn build:vm",
     "build:bindgen": "(cd bindgen; yarn build)",
     "build:vm": "(cd vm; tsc)",
     "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:vm",
