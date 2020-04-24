@@ -27,10 +27,10 @@
     "visitor-as": "^0.1.0"
   },
   "scripts": {
-    "build": "yarn add near-vm && yarn build:bindgen && yarn build:vm",
+    "build": "yarn build:bindgen && yarn build:vm",
     "build:bindgen": "(cd bindgen; yarn build)",
     "build:vm": "(cd vm; tsc)",
-    "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:vm",
+    "test": "node node_modules/near-vm/install.js && yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:vm",
     "test:nearcore": "(cd nearcore-tests; yarn test)",
     "test:bindgen": "(cd bindgen; yarn test)",
     "test:vm": "(cd vm; node asconfig && ./test.ts)",
