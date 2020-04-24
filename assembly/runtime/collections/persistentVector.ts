@@ -8,7 +8,7 @@ import { storage } from "../storage";
  * To create a vector
  *
  * ```ts
- * let vec = PersistentVector<string>("v")  // choose a unique prefix per account
+ * let vec = new PersistentVector<string>("v")  // choose a unique prefix per account
  * ```
  *
  * To use the vector
@@ -38,7 +38,7 @@ export class PersistentVector<T> {
    * Always use a unique storage prefix for different collections.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v") // note the prefix must be unique (per NEAR account)
+   * let vec = new PersistentVector<string>("v") // note the prefix must be unique (per NEAR account)
    * ```
    *
    * @param prefix A prefix to use for every key of this vector.
@@ -63,7 +63,7 @@ export class PersistentVector<T> {
    * Checks whether the index is within the range of the vector indices
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * vec.containsIndex(0) // false
    * vec.push("hello world")
@@ -81,7 +81,7 @@ export class PersistentVector<T> {
    * Checks if the vector is empty
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * assert(vec.isEmpty)
    * vec.push("hello world")
@@ -98,7 +98,7 @@ export class PersistentVector<T> {
    * Returns the length of the vector
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * assert(vec.length == 0)
    * vec.push("hello world")
@@ -151,7 +151,7 @@ export class PersistentVector<T> {
    * Returns the element of the vector for a given index without checks.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * vec.push("hello world")
    * vec{0} // "hello world"
@@ -172,7 +172,7 @@ export class PersistentVector<T> {
    * range of the vector.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * vec.push("hello world")
    * vec[0] = "hello again"
@@ -193,7 +193,7 @@ export class PersistentVector<T> {
    * Sets the value of an element at the given index without checks.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * vec{0} = "hello world"
    *
@@ -212,7 +212,7 @@ export class PersistentVector<T> {
    * Adds a new element to the end of the vector. Increases the length of the vector.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * vec.length // 0
    * vec.push("hello world")
@@ -249,7 +249,7 @@ export class PersistentVector<T> {
    * Decreases the length of the vector.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * let text = "hello world"
    *
@@ -293,7 +293,7 @@ export class PersistentVector<T> {
    * vector. Does not preserve ordering, but is O(1). Panics if index is out of bounds.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * // the phrase "the quick brown fox" is well known in English
    *
@@ -315,7 +315,7 @@ export class PersistentVector<T> {
   swap_remove(index: i32): T {
     assert(index <= this.length, "Index out of bounds");
     if (index + 1 == this.length) {
-     return this.pop();
+      return this.pop();
     } else {
       // Swap last element with this one.
       let curr_value = this.__unchecked_get(index);
@@ -331,7 +331,7 @@ export class PersistentVector<T> {
    * Inserts the element at index, returns evicted element. Panics if index is out of bounds.
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * // the phrase "the quick brown fox" is well known in English
    *
@@ -351,17 +351,17 @@ export class PersistentVector<T> {
    * @returns The element that was replaced
    */
   replace(index: i32, new_element: T): T {
-      assert(index >= this.length, "Index out of bounds");
-      let evicted = this.__unchecked_get(index);
-      storage.set(this._key(index), new_element);
-      return evicted;
+    assert(index >= this.length, "Index out of bounds");
+    let evicted = this.__unchecked_get(index);
+    storage.set(this._key(index), new_element);
+    return evicted;
   }
 
   /**
    * Returns the last element of the vector
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * // the phrase "the quick brown fox" is well known in English
    *
@@ -397,7 +397,7 @@ export class PersistentVector<T> {
    * Returns the first element of the vector
    *
    * ```ts
-   * let vec = PersistentVector<string>("v")
+   * let vec = new PersistentVector<string>("v")
    *
    * // the phrase "the quick brown fox" is well known in English
    *
@@ -425,7 +425,7 @@ export class PersistentVector<T> {
    * @returns The first element of the vector. Asserts that the vector is not empty.
    */
   @inline
-  get first(): T  {
+  get first(): T {
     return this.front;
   }
 }

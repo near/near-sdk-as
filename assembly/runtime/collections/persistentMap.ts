@@ -8,7 +8,7 @@ import { storage } from "../storage";
  * To create a map
  *
  * ```ts
- * let map = PersistentMap<string, string>("m")  // choose a unique prefix per account
+ * let map = new PersistentMap<string, string>("m")  // choose a unique prefix per account
  * ```
  *
  * To use the map
@@ -38,7 +38,7 @@ export class PersistentMap<K, V> {
   * Example
   *
   * ```ts
-  * let map = PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
+  * let map = new PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
   * ```
   *
   * @param prefix A prefix to use for every key of this map.
@@ -59,7 +59,7 @@ export class PersistentMap<K, V> {
    * Checks whether the map contains a given key
    *
    * ```ts
-   * let map = PersistentMap<string, string>("m")
+   * let map = new PersistentMap<string, string>("m")
    *
    * map.contains("hello")      // false
    * map.set("hello", "world")
@@ -77,7 +77,7 @@ export class PersistentMap<K, V> {
    * Removes the given key and related value from the map
    *
    * ```ts
-   * let map = PersistentMap<string, string>("m")
+   * let map = new PersistentMap<string, string>("m")
    *
    * map.set("hello", "world")
    * map.delete("hello")
@@ -94,7 +94,7 @@ export class PersistentMap<K, V> {
    * Retrieves the related value for a given key, or uses the `defaultValue` if not key is found
    *
    * ```ts
-   * let map = PersistentMap<string, string>("m")
+   * let map = new PersistentMap<string, string>("m")
    *
    * map.set("hello", "world")
    * let found = map.get("hello")
@@ -116,7 +116,7 @@ export class PersistentMap<K, V> {
    * Retrieves a related value for a given key or fails assertion with "key not found"
    *
    * ```ts
-   * let map = PersistentMap<string, string>("m")
+   * let map = new PersistentMap<string, string>("m")
    *
    * map.set("hello", "world")
    * let result = map.getSome("hello")
@@ -134,7 +134,7 @@ export class PersistentMap<K, V> {
 
   /**
    * ```ts
-   * let map = PersistentMap<string, string>("m")
+   * let map = new PersistentMap<string, string>("m")
    *
    * map.set("hello", "world")
    * ```
