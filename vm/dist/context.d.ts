@@ -14,18 +14,19 @@ export interface VMContext {
     prepaid_gas: number;
     random_seed: string;
     is_view: boolean;
-    output_data_receivers: Uint8Array;
+    output_data_receivers: Array<any>;
 }
+export declare function defaultContext(): VMContext;
 export interface AccountContext {
     current_account_id: string;
     signer_account_id: string;
-    predecessor_account_id: string;
     signer_account_pk: string;
+    predecessor_account_id: string;
     input: string;
     input_data: any[];
     account_balance: string;
     account_locked_balance: string;
-    output_data_receivers: Uint8Array;
+    output_data_receivers: any[];
     prepaid_gas: number;
     attached_deposit: string;
     is_view: boolean;

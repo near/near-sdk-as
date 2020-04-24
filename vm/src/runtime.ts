@@ -1,6 +1,10 @@
-import { encodebs58, assign } from './utils';
-import { AccountContext, defaultAccountContext, createContext } from './context';
-import { spawnSync } from "child_process"
+import { encodebs58, assign } from "./utils";
+import {
+  AccountContext,
+  defaultAccountContext,
+  createContext,
+} from "./context";
+import { spawnSync } from "child_process";
 /*
 def context(
         current_account_id="alice_near",
@@ -53,44 +57,62 @@ export class Account {
   balance: number = 1000000000000;
   lockedBalance = 0;
   signerAccountPk: string;
-  constructor(public accountId: string, public wasmFile: string | null = null, public runtime: Runtime){
-    this.signerAccountPk = encodebs58(accountId.slice(0, 32).padEnd(32, " "));
+  constructor(
+    public account_id: string,
+    public wasmFile: string | null = null,
+    public runtime: Runtime
+  ) {
+    this.signerAccountPk = encodebs58(account_id.slice(0, 32).padEnd(32, " "));
   }
 
-  call_step_other(account_id: string, methodName: string, input: any = {}, prepaid_gas: number = 10**15){
+  call_step_other(
+    account_id: string,
+    method_name: string,
+    input: any = {},
+    prepaid_gas: number = 10 ** 15
+  ) {
     if (this.runtime == null) throw new Error("Runtime is not set");
     input = JSON.stringify(input);
     let accountContext: Partial<AccountContext> = {
-        input,
-        prepaid_gas,
-        signer_account_pk: this.accountId,
-
-    }
-    return this.runtime.call_step(account_id, methodName, input, accountContext);
-
+      input,
+      prepaid_gas,
+      signer_account_pk: this.account_id,
+    };
+    return this.runtime.call_step(
+      account_id,
+      method_name,
+      input,
+      accountContext
+    );
   }
 
-//   call_step(methodName: string, input: string = "", prepaid_gas: number = 10**15) {
-//     return this.call_step_other(this.accountId, methodName, input, prepaid_gas)
-//   }
+  //   call_step(method_name: string, input: string = "", prepaid_gas: number = 10**15) {
+  //     return this.call_step_other(this.account_id, method_name, input, prepaid_gas)
+  //   }
 
-//   call_other(account_id: string, methodName: string, input: string = "", prepaid_gas: number = 10**15) {
-//     if (this.runtime == null) throw new Error("Runtime is not set");
-//     return this.runtime.call(account_id, methodName, input=input, this.accountId, prepaid_gas)
-//   }
+    call_other(account_id: string, method_name: string, input: string = "", prepaid_gas: number = 10**15) {
+      if (this.runtime == null) throw new Error("Runtime is not set");
+      input = JSON.stringify(input);
+      let accountContext: Partial<AccountContext> = {
+        input,
+        prepaid_gas,
+        signer_account_pk: this.account_id,
+      };
+      return this.runtime.call(account_id, method_name, input=input, accountContext);
+    }
 
-//   call(methodName: string, input: string = "", prepaid_gas: number = 10**15) {
-//     return this.call_other(this.accountId, methodName, input, prepaid_gas)
-//   }
+  //   call(method_name: string, input: string = "", prepaid_gas: number = 10**15) {
+  //     return this.call_other(this.account_id, method_name, input, prepaid_gas)
+  //   }
 
-  view(methodName: string, input: string = "") {
+  view(method_name: string, input: string = "") {
     //   if (this.runtime == null) throw new Error("Runtime is not set");
     //   const is_view = true
     //   let accountContext: Partial<AccountContext> = {
     //       is_view,
     //       prepaid_gas
     //   }
-    //   const result = this.runtime.call_step(this.accountId, methodName, input, 10**15, isView);
+    //   const result = this.runtime.call_step(this.account_id, method_name, input, 10**15, isView);
     //   var return_data = result.outcome && result.outcome.return_data;//('outcome', {}).get('return_data', None)
     //   if (return_data) {
     //       return_data = return_data['Value'] || "";
@@ -104,7 +126,6 @@ export class Account {
     //     result
     // }
   }
-
 }
 /*
 
@@ -164,26 +185,26 @@ class Account:
         self.runtime = runtime
         return self
 
-    def call_step_other(self, account_id, methodName, input=None, prepaid_gas=10**15):
+    def call_step_other(self, account_id, method_name, input=None, prepaid_gas=10**15):
         if self.runtime is None:
             raise Exception("Runtime is not set")
-        return self.runtime.call_step(account_id, methodName, input=input, signer_account_id=self.account_id, prepaid_gas=prepaid_gas)
+        return self.runtime.call_step(account_id, method_name, input=input, signer_account_id=self.account_id, prepaid_gas=prepaid_gas)
 
-    def call_step(self, methodName, input=None, prepaid_gas=10**15):
-        return self.call_step_other(self.account_id, methodName, input=input, prepaid_gas=prepaid_gas)
+    def call_step(self, method_name, input=None, prepaid_gas=10**15):
+        return self.call_step_other(self.account_id, method_name, input=input, prepaid_gas=prepaid_gas)
 
-    def call_other(self, account_id, methodName, input=None, prepaid_gas=10**15):
+    def call_other(self, account_id, method_name, input=None, prepaid_gas=10**15):
         if self.runtime is None:
             raise Exception("Runtime is not set")
-        return self.runtime.call(account_id, methodName, input=input, signer_account_id=self.account_id, prepaid_gas=prepaid_gas)
+        return self.runtime.call(account_id, method_name, input=input, signer_account_id=self.account_id, prepaid_gas=prepaid_gas)
 
-    def call(self, methodName, input=None, prepaid_gas=10**15):
-        return self.call_other(self.account_id, methodName, input=input, prepaid_gas=prepaid_gas)
+    def call(self, method_name, input=None, prepaid_gas=10**15):
+        return self.call_other(self.account_id, method_name, input=input, prepaid_gas=prepaid_gas)
 
-    def view(self, methodName, input=None):
+    def view(self, method_name, input=None):
         if self.runtime is None:
             raise Exception("Runtime is not set")
-        result = self.runtime.call_step(self.account_id, methodName, input=input, is_view=True)
+        result = self.runtime.call_step(self.account_id, method_name, input=input, is_view=True)
         return_data = result.get('outcome', {}).get('return_data', None)
         if return_data is not None:
             return_data = return_data['Value'] if 'Value' in return_data else ''
@@ -195,63 +216,229 @@ class Account:
 */
 
 export class Runtime {
-  log =  console.log;
   accounts: Map<string, Account> = new Map();
   
+  log(input: any): void {
+    if (process.env.DEBUG) {
+        console.log(input);
+    }
+  }
+
   newAccount(accoundId: string, wasmFile: string | null = null) {
     const account = new Account(accoundId, wasmFile, this);
     account.runtime = this;
     this.accounts.set(accoundId, account);
     return account;
   }
-  getOrCreateAccount(accountId: string): Account {
-    return this.accounts.get(accountId) || this.newAccount(accountId);
+  getOrCreateAccount(account_id: string): Account {
+    return this.accounts.get(account_id) || this.newAccount(account_id);
   }
 
-  call_step(accountId: string, methodName: string, input: string = '', accountContext: Partial<AccountContext> = defaultAccountContext()){
-    
-    accountContext.signer_account_id = accountContext.signer_account_id || accountId;
+  call_step(
+    account_id: string,
+    method_name: string,
+    input: string = "",
+    accountContext: Partial<AccountContext> = defaultAccountContext()
+  ) {
+    accountContext.signer_account_id =
+      accountContext.signer_account_id || account_id;
     accountContext.input = input;
-    accountContext.predecessor_account_id = accountContext.predecessor_account_id || accountContext.signer_account_id;
-    const context = assign<AccountContext>(accountContext, defaultAccountContext())
-    
+    accountContext.predecessor_account_id =
+      accountContext.predecessor_account_id || accountContext.signer_account_id;
+    const context = assign<AccountContext>(
+      accountContext,
+      defaultAccountContext()
+    );
+
     const signer_account = this.getOrCreateAccount(context.signer_account_id);
-    const predecessor_account = this.getOrCreateAccount(context.predecessor_account_id);
-    const account = this.accounts.get(accountId);
-    if (account == undefined) throw new Error(accountId + " has not be added and thus can't be called");
-    context.current_account_id = account.accountId;
+    const predecessor_account = this.getOrCreateAccount(
+      context.predecessor_account_id
+    );
+    const account = this.accounts.get(account_id);
+    if (account == undefined)
+      throw new Error(account_id + " has not be added and thus can't be called");
+    context.current_account_id = account.account_id;
     context.signer_account_pk = signer_account.signerAccountPk;
     context.account_balance = account.balance.toString();
     context.account_locked_balance = account.lockedBalance.toString();
     context.input = input;
-    console.log(input)
+    // console.log(input)
     const vmContext = createContext(context);
     let args = [
-        __dirname + "/bin.js",
-        // "--context=" + JSON.stringify(vmContext),
-        "--input="+input,
-        "--wasm-file=" + account.wasmFile,
-        "--method-name=" + methodName,
-        "--state=" + JSON.stringify(account.state),
-        ]
-        console.log(args)
-    for (let data in accountContext.input_data) {
+      __dirname + "/bin.js",
+      "--context=" + JSON.stringify(vmContext),
+      "--input=" + input,
+      "--wasm-file=" + account.wasmFile,
+      "--method-name=" + method_name,
+      "--state=" + JSON.stringify(account.state),
+    ];
+    // console.log(args)
+    for (let data of (accountContext.input_data || [])) {
       args.push("--promise-results=" + JSON.stringify(data));
     }
     let execResult = spawnSync("node", args);
 
     // exec_result = subprocess.run(args, capture_output=True)
     if (execResult.status != 0)
-        throw new Error("Failed to run successfully: " + execResult.output.toString());
+      throw new Error(
+        "Failed to run successfully: " + execResult.output.toString()
+      );
     var output = execResult.output.toString().slice(1);
     output = output.slice(0, output.lastIndexOf("}") + 1);
-    console.log(output);
-    const result = JSON.parse(output);
-    if (!context.is_view && result['err']  == null) {
-      account.balance = result['outcome']['balance'];
-      account.state = result['state'];
+    var result;
+    try {
+        result = JSON.parse(output);
+    } catch (e) {
+        console.log(output)
+        throw e;
+    }
+    if (!context.is_view && result["err"] == null) {
+      account.balance = result["outcome"]["balance"];
+      account.state = result["state"];
     }
     return result;
+  }
+
+  call(
+    account_id: string,
+    method_name: string,
+    input: string = "",
+    accountContext: Partial<AccountContext>
+  ) {
+      var q = [{
+          ...accountContext,
+          index: 0,
+          account_id,
+          method_name,
+          input
+      }]
+      var numReceipts = 1;
+      var all_input_data: any = {};
+      var all_output_data: any = {};
+      var num_data = 0;
+      var return_index = 0;
+      var calls: any = {};
+      var results: any = {};
+      while (q.length > 0) {
+          let c = q.shift()!;
+          let index = c['index'];
+          let input_data = []
+          if (c.input_data) {
+            for (let d of c.input_data) {
+                if (all_input_data[d]!= undefined) {
+                    input_data.push(all_input_data[d]);
+                } else {
+                    break;
+                }
+            }
+            if (input_data.length < c.input_data.length) {
+                q.push(c);
+                continue;
+            }
+          }
+          let output_data = all_output_data[index] || [];
+          calls[index] = c;
+          this.log(`Call ${JSON.stringify(c)} Output ${JSON.stringify(output_data)}`);
+          let accountContext = {
+              ...c,
+              output_data_receivers: output_data.map((d:any) => d['account_id']),
+              input_data
+          }
+          let result = this.call_step(
+              c['account_id'],
+              c['method_name'],
+              c['input'],
+              accountContext
+          );
+          results[index] = result;
+          this.log(`Result:`); this.log(result);
+          if (result) {
+              if (result.outcome) {
+                  for (let log of result.outcome.logs) {
+                    console.log(`${c['account_id']}: ${log}`);
+                  }
+                  if (result.outcome.err) {
+                    let result_data = { "Failed": null }
+                    for (let d of output_data) {
+                      all_input_data[d['data_id']] = result_data;
+                    }
+                  } else {
+                    let ret = result.outcome.return_data;
+                    if (ret["ReceiptIndex"] != undefined) {
+                      let adj_index = ret["ReceiptIndex"] + numReceipts;
+                      if (!all_output_data[adj_index]) {
+                        all_output_data[adj_index] = [];
+                      }
+                      for (let d of output_data) {
+                        all_output_data[adj_index].push(d);
+                      }
+                      if (return_index == index) {
+                          return_index = adj_index;
+                      }
+                    } else {
+                        let result_data = {
+                            "Successful": ret["Value"] || ""
+                        }
+                        for (let d of output_data) {
+                            all_input_data[d['data_id']] = result_data
+                        }
+                    }
+                    for (let i in result['receipts']) {
+                        const receipt = result['receipts'][i] 
+                        if (receipt.actions.length != 1) {
+                            throw new Error("reciept actions must have length 1");
+                        }
+                        const action = receipt.actions[0];
+                        const fca = action["FunctionCall"];
+                        let new_input_data = [];
+                        for (let ind of receipt['receipt_indices']) {
+                            let data_id = num_data++;
+                            new_input_data.push(data_id);
+                            let adj_index = ind + numReceipts;
+                            if (all_output_data[adj_index] == undefined) {
+                                all_output_data[adj_index] = [];
+                            }
+                            all_output_data[adj_index].push({
+                                account_id: receipt["receiver_id"],
+                                data_id
+                            })
+                            // }
+                        }
+                        let next = {
+                            index: parseInt(i) + numReceipts,
+                            "account_id": receipt['receiver_id'],
+                            method_name: fca['method_name'],
+                            input: fca['args'],
+                            signer_account_id: accountContext.signer_account_id,
+                            predecessor_account_id: c['account_id'],
+                            input_data: new_input_data,
+                            prepaid_gas: fca['gas'],
+                            attached_deposit: fca['deposit']
+                        };
+                        q.push(next);
+                        
+                    }
+                    console.log(ret);
+                    numReceipts += result['receipts'].length;
+                  }
+              }
+          }
+          this.log(`Queue:  ${q.map(x => `${x.predecessor_account_id} -> ${x.account_id}`)}`);
+      }
+      const result = results[return_index];
+      this.log(`Final result:`);
+      this.log(result);
+      let return_data = result.outcome
+      if (return_data) {
+          return_data = return_data['Value'] || ""
+      }
+      return {
+          return_data,
+          err: result["err"],
+          result,
+          calls,
+          results
+      }
   }
 }
 
@@ -283,7 +470,7 @@ class Runtime:
     def call_step(
             self,
             account_id,
-            methodName,
+            method_name,
             input=None,
             signer_account_id=None,
             predecessor_account_id=None,
@@ -322,7 +509,7 @@ class Runtime:
             binFile,
             "--context=%s" % (json.dumps(ctx),),
             "--wasm-file=%s" % account.wasm_file,
-            "--method-name=%s" % (methodName,),
+            "--method-name=%s" % (method_name,),
             "--state=%s" % (json.dumps(account.state),),
             ]
         for data in input_data:
@@ -337,11 +524,11 @@ class Runtime:
             account.set_state(result['state'])
         return result
 
-    def call(self, account_id, methodName, input=None, signer_account_id=None, prepaid_gas=10**15):
+    def call(self, account_id, method_name, input=None, signer_account_id=None, prepaid_gas=10**15):
         q = collections.deque([{
             'index': 0,
             'account_id': account_id,
-            'methodName': methodName,
+            'method_name': method_name,
             'input': input,
             'signer_account_id': signer_account_id,
             'predecessor_account_id': signer_account_id,
@@ -377,7 +564,7 @@ class Runtime:
             self.log.debug('Call %s Output %s' % (c, output_data))
             result = self.call_step(
                 account_id=c['account_id'],
-                methodName=c['methodName'],
+                method_name=c['method_name'],
                 input=c['input'],
                 signer_account_id=c['signer_account_id'],
                 predecessor_account_id=c['predecessor_account_id'],
@@ -425,7 +612,7 @@ class Runtime:
                             q.append({
                                 'index': i,
                                 'account_id': receipt['receiver_id'],
-                                'methodName': fca['methodName'],
+                                'method_name': fca['method_name'],
                                 'input': fca['args'],
                                 'signer_account_id': signer_account_id,
                                 'predecessor_account_id': c['account_id'],
