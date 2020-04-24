@@ -9,7 +9,7 @@ import { storage } from "../storage";
  * To create a deque
  *
  * ```ts
- * let dq = PersistentDeque<string>("q")  // choose a unique prefix per account
+ * let dq = new PersistentDeque<string>("q")  // choose a unique prefix per account
  * ```
  *
  * To use the deque
@@ -42,7 +42,7 @@ export class PersistentDeque<T> {
   * Example
   *
   * ```ts
-  * let dq = PersistentDeque<string>("q") // note the prefix must be unique (per NEAR account)
+  * let dq = new PersistentDeque<string>("q") // note the prefix must be unique (per NEAR account)
   * ```
   *
   * @param prefix A prefix to use for every key of this deque.
@@ -103,7 +103,7 @@ export class PersistentDeque<T> {
    * Checks whether the index is within the range of the deque indices
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.containsIndex(0) // false
    * dq.pushFront("hello world")
@@ -121,7 +121,7 @@ export class PersistentDeque<T> {
    * Returns the length of the deque
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.length // 0
    * dq.pushFront("hello world")
@@ -138,7 +138,7 @@ export class PersistentDeque<T> {
    * Returns a boolean indicating whether the deque is empty
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.isEmpty // true
    * dq.pushFront("hello world")
@@ -156,7 +156,7 @@ export class PersistentDeque<T> {
    * range of the vector.
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushFront("hello world")
    * dq[0] // "hello world"
@@ -177,7 +177,7 @@ export class PersistentDeque<T> {
    * Returns the element of the deque for a given index without checks.
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushFront("hello world")
    * dq{0} // "hello world"
@@ -209,7 +209,7 @@ export class PersistentDeque<T> {
    * Sets the new value of an element at the given index without checks.
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq{0} = "hello world"
    * dq{0} // "hello world"
@@ -227,7 +227,7 @@ export class PersistentDeque<T> {
    * Adds a new element in front of the deque. Increases the length of the deque.
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushFront("world")
    * dq.pushFront("hello")
@@ -248,7 +248,7 @@ export class PersistentDeque<T> {
    * Asserts that the deque is not empty. Decreases the length of the deque.
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushFront("world")
    * dq.pushFront("hello")
@@ -272,7 +272,7 @@ export class PersistentDeque<T> {
    * Returns the first element in the deque without changing the queue
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushFront("world")
    * dq.pushFront("hello")
@@ -305,7 +305,7 @@ export class PersistentDeque<T> {
    * Adds a new element to the end of the deque. Increases the length of the deque.
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushBack("hello")
    * dq.pushBack("world")
@@ -327,7 +327,7 @@ export class PersistentDeque<T> {
    * Asserts that the deque is not empty. Decreases the length of the deque.
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushFront("world")
    * dq.pushFront("hello")
@@ -352,7 +352,7 @@ export class PersistentDeque<T> {
    * Returns the last element in the deque without changing the queue
    *
    * ```ts
-   * let dq = PersistentDeque<string>("q")
+   * let dq = new PersistentDeque<string>("q")
    *
    * dq.pushFront("world")
    * dq.pushFront("hello")
