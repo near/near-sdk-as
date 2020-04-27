@@ -7,3 +7,8 @@ export class TextMessage {
   number: u64;
   isRead: bool;
 }
+
+@nearBindgen
+export class Word {
+  constructor(public text: string){}
+}

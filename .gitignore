@@ -5,7 +5,7 @@ node_modules
 
 runtime/tests/out/
 runtime/tests/nearcore/
-
+vm/out/
 package-lock.json
 tests/package-lock.json
 yarn-error.log
