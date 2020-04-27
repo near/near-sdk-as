@@ -282,8 +282,7 @@ export class Runtime {
       throw new Error(
         "Failed to run successfully: " + execResult.output.toString()
       );
-    var output = execResult.output.toString().slice(1);
-    output = output.slice(0, output.lastIndexOf("}") + 1);
+    var output = execResult.output[1];
     var result;
     try {
         result = JSON.parse(output);
@@ -428,8 +427,11 @@ export class Runtime {
       this.log(`Final result:`);
       this.log(result);
       let return_data = result.outcome.return_data
-      if (return_data) {
-          return_data = JSON.parse(return_data['Value'] || "")
+      if (return_data != undefined) {
+          return_data = return_data['Value'] ? JSON.parse(return_data['Value']) : null;
+      }
+      if (result["err"] != null) {
+        console.error("ERROR: ", result.err);
       }
       return {
           return_data,
