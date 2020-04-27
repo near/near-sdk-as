@@ -1,1 +1,1 @@
-module.exports = require("near-mock-vm");
+module.exports = require("./dist");

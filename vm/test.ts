@@ -18,4 +18,4 @@ assert(alice.call_other("sentences", "reverseWordOne").return_data.text == "elpm
 console.log("\n");
 assert(alice.call_other("sentences", "reverseWordTwo"));
 console.log(sentences.view("sample"))
-// console.log(alice.call_other("sentences", "reverseWordThree"));
+console.log(alice.call_other("sentences", "reverseWordThree"));
