@@ -100,7 +100,7 @@ export class Account {
     call_other(account_id: string, method_name: string, input?: any, prepaid_gas?: number) {
       if (this.runtime == null) throw new Error("Runtime is not set");
       let accountContext = this.createAccountContext(input, prepaid_gas);
-      return this.runtime.call(account_id, method_name, input, accountContext);
+      return this.runtime.call(account_id, method_name, accountContext.input, accountContext);
     }
 
     call(method_name: string, input?: any, prepaid_gas?: number) {

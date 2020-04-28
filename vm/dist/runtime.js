@@ -82,7 +82,7 @@ class Account {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input, prepaid_gas);
-        return this.runtime.call(account_id, method_name, input, accountContext);
+        return this.runtime.call(account_id, method_name, accountContext.input, accountContext);
     }
     call(method_name, input, prepaid_gas) {
         return this.call_other(this.account_id, method_name, input, prepaid_gas);
