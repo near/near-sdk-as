@@ -1,12 +1,15 @@
-import { Transform, Parser, Source, Module } from "visitor-as/as";
+import { Transform, Parser, Source, Module, Program } from "visitor-as/as";
 import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
 import { posixRelativePath } from './utils';
 //@ts-ignore
 import * as path from "path";
+import { TypesTransformer } from './exportWrapper';
+
 
 class JSONTransformer extends Transform {
   parser: Parser;
+  entryPath: string;
   static isTest: boolean = false;
 
   afterParse(parser: Parser): void {
@@ -20,6 +23,9 @@ class JSONTransformer extends Transform {
     // Visit each file
     files.forEach(source => {
       let writeOut = /\/\/.*@nearfile .*out/.test(source.text);
+      if (isEntry(source)) {
+        this.entryPath = "out/" + path.basename(source.normalizedPath).replace(".ts","") + ".d.ts";
+      }
       // Remove from logs in parser
       parser.donelog.delete(source.internalPath);
       parser.seenlog.delete(source.internalPath);
@@ -54,6 +60,7 @@ class JSONTransformer extends Transform {
     if (!JSONTransformer.isTest) {
       TypeChecker.checkBinary(module);
     }
+    this.writeFile(this.entryPath, TypesTransformer.build(this.program), this.baseDir);
   }
 }
 
