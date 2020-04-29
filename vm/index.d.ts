@@ -1,1 +1,1 @@
-/// <reference types="near-mock-vm" />
+/// <reference types="./dist" />
