@@ -128,6 +128,10 @@ export class Runtime {
   accounts: Map<string, Account> = new Map();
 
   constructor() {
+    if (os.type() === 'Windows_NT') {
+      console.error("Windows is not supported.");
+      process.exit(0);
+    }
     /**
      * run binary if it doesn't exist so that it installs itself.
     */
@@ -371,10 +375,6 @@ export class Runtime {
   private spawn(args: string[]): any {
     let execResult = spawnSync("node", args);
     if (execResult.status != 0) {
-      if (os.type() === 'Windows_NT') {
-        console.error("Windows is not supported.");
-        process.exit(0);
-      }
       throw new Error(
         "Failed to run successfully: " + execResult.output[2].toString()
       );
