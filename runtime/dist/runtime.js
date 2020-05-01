@@ -13,18 +13,6 @@ const child_process_1 = require("child_process");
 const os = __importStar(require("os"));
 const fs = __importStar(require("fs"));
 const DEFAULT_GAS = 10 ** 15;
-/**
- * run binary if it doesn't exist so that it installs itself.
- */
-try {
-    let binary = require("near-vm/getBinary");
-    const binPath = require("path").join(binary.installDirectory, "bin", binary.name);
-    if (!fs.existsSync(binPath)) {
-        child_process_1.spawnSync("node", [__dirname + "/bin.js"]);
-    }
-}
-catch (e) {
-}
 class Account {
     constructor(account_id, wasmFile = null, runtime) {
         this.account_id = account_id;
@@ -99,6 +87,19 @@ exports.Account = Account;
 class Runtime {
     constructor() {
         this.accounts = new Map();
+        /**
+         * run binary if it doesn't exist so that it installs itself.
+        */
+        try {
+            // let binary = require("near-vm/getBinary");
+            // const binPath = require("path").join(binary.installDirectory, "bin", binary.name);
+            // if (!fs.existsSync(binPath)) {
+            child_process_1.spawnSync("node", [__dirname + "/bin.js"]);
+            // }
+            // console.log("Binary " + binPath + " exists")
+        }
+        catch (e) {
+        }
     }
     log(input) {
         if (process.env.DEBUG) {

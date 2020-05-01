@@ -362,8 +362,8 @@
         "signature": "a379b99ef48dce42a04a811e59dfd712e9725df5e4583c4f4c43bf14f0de5f42"
       },
       "../src/runtime.ts": {
-        "version": "8bef708763046a5650a60bb494571c81efea1935e86febebca30606a74d0d913",
-        "signature": "d5086e49de9521517d97006b8e9bcaea91c221a32010914f7346dcf3ee49c294"
+        "version": "5af87cd1da8af4aea9598fd014e68253ab47ace67514f7ef43d3b2bd2fc54c70",
+        "signature": "f4a4fad1c19f8e1c59cfacfa5b2eec364e9e16b34b61fd4092d920a292be54bf"
       },
       "../src/index.ts": {
         "version": "32d6f957487819cefbcf8a026ff4355b15ebcab05f570e50be64f88f96ec3690",
@@ -1782,9 +1782,9 @@
       "../../node_modules/base-x/src/index.d.ts",
       "../../node_modules/@types/bs58/index.d.ts",
       "../src/utils.ts",
+      "../src/index.ts",
       "../../node_modules/@types/color-name/index.d.ts",
-      "../src/runtime.ts",
-      "../src/index.ts"
+      "../src/runtime.ts"
     ]
   },
   "version": "3.8.3"
