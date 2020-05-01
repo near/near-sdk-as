@@ -95,10 +95,14 @@ function createU128Str(lo, hi) {
     return num.shln(64).add(new bn_js_1.default(lo.toString())).toString();
 }
 exports.createU128Str = createU128Str;
-function encodebs58(str) {
+function encodeBs58(str) {
     return base58.encode(StrtoUTF8(str));
 }
-exports.encodebs58 = encodebs58;
+exports.encodeBs58 = encodeBs58;
+function decodeBs58(str) {
+    return UTF8toStr(new Uint8Array(base58.decode(str)));
+}
+exports.decodeBs58 = decodeBs58;
 function assign(...args) {
     return Object.assign.apply(Object, [{}, ...args]);
 }

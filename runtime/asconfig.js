@@ -7,10 +7,12 @@ function compileContract(input) {
         [
         //   "-O1",            // Optional arguments
         "--debug",
-        "--measure",
-        "-d", "out/" + input + ".d.ts",
-        "--runPasses", "inlining-optimizing,dce" // Inlines to optimize and removes deadcode
-        ], {verbose: true})
+        // "--measure",
+        // "-d", "out/" + input + ".d.ts",
+        // "--runPasses", "inlining-optimizing,dce" // Inlines to optimize and removes deadcode
+        ], {
+        //   verbose: true
+        })
 }
 
 compileContract("words")

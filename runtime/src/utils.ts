@@ -84,8 +84,12 @@ export function createU128Str(lo: BigInt, hi: BigInt): string {
   
 }
 
-export function encodebs58(str: string): string {
+export function encodeBs58(str: string): string {
   return base58.encode(StrtoUTF8(str));
+}
+
+export function decodeBs58(str: string): string {
+  return UTF8toStr(new Uint8Array(base58.decode(str)));
 }
 
 export function assign<T>(...args: T[] | Partial<T>[]): T {

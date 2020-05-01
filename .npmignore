@@ -7,4 +7,4 @@ bindgen/src
 bindgen/out
 bindgen/asconfig.js
 bindgen/test.js
-vm/dist/tsconfig.tsbuildinfo
+runtime/dist/tsconfig.tsbuildinfo
