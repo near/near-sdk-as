@@ -87,7 +87,7 @@ exports.Account = Account;
 class Runtime {
     constructor() {
         this.accounts = new Map();
-        if (os.type() === 'Darwin') {
+        if (os.type() === 'Windows_NT') {
             console.error("Windows is not supported.");
             process.exit(0);
         }
@@ -298,10 +298,6 @@ class Runtime {
     spawn(args) {
         let execResult = child_process_1.spawnSync("node", args);
         if (execResult.status != 0) {
-            if (os.type() === 'Windows_NT') {
-                console.error("Windows is not supported.");
-                process.exit(0);
-            }
             throw new Error("Failed to run successfully: " + execResult.output[2].toString());
         }
         var output = execResult.output[1];
