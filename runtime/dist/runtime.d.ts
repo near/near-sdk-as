@@ -40,6 +40,7 @@ export declare class Account {
 }
 export declare class Runtime {
     accounts: Map<string, Account>;
+    constructor();
     log(input: any): void;
     newAccount(accoundId: string, wasmFile?: string | null): Account;
     getOrCreateAccount(account_id: string): Account;

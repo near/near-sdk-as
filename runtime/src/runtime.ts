@@ -11,18 +11,6 @@ import * as fs from "fs";
 const DEFAULT_GAS = 10 ** 15;
 type State = { [key: string]: string };
 
-/**
- * run binary if it doesn't exist so that it installs itself.
- */
-try {
-  let binary = require("near-vm/getBinary");
-  const binPath = require("path").join(binary.installDirectory, "bin", binary.name);
-  if (!fs.existsSync(binPath)) {
-    spawnSync("node", [__dirname+"/bin.js"]);
-  }
-} catch (e){
-
-}
 
 export class Account {
   state: State = {};
@@ -138,6 +126,18 @@ export class Account {
 
 export class Runtime {
   accounts: Map<string, Account> = new Map();
+
+  constructor() {
+    /**
+     * run binary if it doesn't exist so that it installs itself.
+    */
+    try {
+      spawnSync("node", [__dirname+"/bin.js"]);
+    } catch (e){
+
+    }
+
+  }
 
   log(input: any): void {
     if (process.env.DEBUG) {
