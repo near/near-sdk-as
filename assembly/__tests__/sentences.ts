@@ -37,7 +37,7 @@ export function reverseWordThree(): void {
   let promise = ContractPromise.create(
     contract,                             // contract account name
     method,                               // contract method name
-    reverseArgs.encode(),                 // serialized contract method arguments encoded as Uint8Array
+    reverseArgs,                 // serialized contract method arguments encoded as Uint8Array
     10000000,                                    // gas attached to the call
     u128.Zero                             // attached deposit to be sent with the call
   )
@@ -45,20 +45,23 @@ export function reverseWordThree(): void {
   // Setting up args for the callback
   let responseArgs = new ReverseArgs(new Word("elpmas"));
   logging.log(responseArgs);
+  let args = responseArgs;
+
 
   logging.log(context.contractName)
+  let methodName = "_onReverseCalledThree";
 
   let callbackPromise = promise.then(
     context.contractName,
-    "_onReverseCalledTwo",
-    responseArgs.encode(),
+    methodName,
+    args,
     2
   );
 
   callbackPromise.returnAsResult();
 }
 
-export function _onReverseCalledTwo(word: Word): bool {
+export function _onReverseCalledThree(word: Word): bool {
   const drow = word;
   let results = ContractPromise.getResults();
   assert(results.length > 0, "should be contract promise result");
@@ -99,7 +102,7 @@ export function reverseWordTwo(): void {
 
   let callbackPromise = promise.then(
     context.contractName,
-    "_onReverseCalled",
+    "_onReverseCalledTwo",
     new Uint8Array(0),
     2
   );
@@ -107,7 +110,7 @@ export function reverseWordTwo(): void {
   callbackPromise.returnAsResult();
 }
 
-export function _onReverseCalled(): bool {
+export function _onReverseCalledTwo(): bool {
   const drow = new Word("elpmas");
   let results = ContractPromise.getResults();
   assert(results.length > 0, "should be contract promise result");
@@ -136,7 +139,7 @@ export function reverseWordOne(): void {
   let promise = ContractPromise.create(
     contract,                             // contract account name
     method,                               // contract method name
-    reverseArgs.encode(),                 // serialized contract method arguments encoded as Uint8Array
+    reverseArgs,                 // serialized contract method arguments encoded as Uint8Array
     0,                                    // gas attached to the call
     u128.Zero                             // attached deposit to be sent with the call
   )
@@ -176,7 +179,7 @@ class ReverseArgs {
 //   let promise = ContractPromise.create(
 //     "metanear",
 //     "addItem",
-//     itemArgs.encode(),
+//     itemArgs,
 //     0,
 //     u128.Zero
 //   );
@@ -193,7 +196,7 @@ class ReverseArgs {
 //   let promise = ContractPromise.create(
 //     "metanear",
 //     "addItem",
-//     itemArgs.encode(),
+//     itemArgs,
 //     0,
 //     0,
 //   );
@@ -209,7 +212,7 @@ class ReverseArgs {
 
 // let callbackPromise = promise.then(
 //   "_onItemAdded",
-//   requestArgs.encode(),
+//   requestArgs,
 //   2,  // Attaching 2 additional requests, in case we need to do another call
 // );
 // callbackPromise.returnAsResult();

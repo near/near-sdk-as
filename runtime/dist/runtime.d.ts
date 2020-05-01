@@ -1,11 +1,12 @@
 import { AccountContext } from "./context";
+declare type State = {
+    [key: string]: string;
+};
 export declare class Account {
     account_id: string;
     wasmFile: string | null;
     runtime: Runtime;
-    state: {
-        [key: string]: string;
-    };
+    state: State;
     balance: number;
     lockedBalance: number;
     signerAccountPk: string;
@@ -32,12 +33,17 @@ export declare class Account {
         err: any;
         result: any;
     };
+    /**
+     * Current state of contract.
+     */
+    getState(): State;
 }
 export declare class Runtime {
     accounts: Map<string, Account>;
     log(input: any): void;
     newAccount(accoundId: string, wasmFile?: string | null): Account;
     getOrCreateAccount(account_id: string): Account;
+    getAccount(account_id: string): Account;
     call_step(account_id: string, method_name: string, input?: string, accountContext?: Partial<AccountContext>): any;
     call(account_id: string, method_name: string, input: string | undefined, accountContext: Partial<AccountContext>): {
         return_data: any;
@@ -46,4 +52,6 @@ export declare class Runtime {
         calls: any;
         results: any;
     };
+    private spawn;
 }
+export {};

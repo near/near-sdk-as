@@ -1,17 +1,18 @@
-import { encodebs58, assign } from "./utils";
+import { encodeBs58, assign, decodeBs58 } from './utils';
 import {
   AccountContext,
   defaultAccountContext,
   createContext,
 } from "./context";
 import { spawnSync } from "child_process";
-
+import * as os from "os";
 import * as fs from "fs";
 
 const DEFAULT_GAS = 10 ** 15;
+type State = { [key: string]: string };
 
 export class Account {
-  state: { [key: string]: string } = {};
+  state: State = {};
   balance: number = 1000000000000;
   lockedBalance = 0;
   signerAccountPk: string;
@@ -20,7 +21,7 @@ export class Account {
     public wasmFile: string | null = null,
     public runtime: Runtime
   ) {
-    this.signerAccountPk = encodebs58(account_id.slice(0, 32).padEnd(32, " "));
+    this.signerAccountPk = encodeBs58(account_id.slice(0, 32).padEnd(32, " "));
     if (wasmFile != null && !fs.existsSync(wasmFile)) {
         throw new Error(`Path ${wasmFile} to contract wasm file doesn't exist`);
     }
@@ -107,6 +108,18 @@ export class Account {
       result,
     };
   }
+
+  /**
+   * Current state of contract.
+   */
+  getState(): State {
+    return Object.getOwnPropertyNames(this.state).reduce<State>((acc: State, cur: string) => {
+      let key = decodeBs58(cur);
+      acc[key] = decodeBs58(this.state[cur]);
+      return acc;
+    },
+    {})
+  }
 }
 
 
@@ -125,8 +138,18 @@ export class Runtime {
     this.accounts.set(accoundId, account);
     return account;
   }
+
   getOrCreateAccount(account_id: string): Account {
     return this.accounts.get(account_id) || this.newAccount(account_id);
+  }
+
+  getAccount(account_id: string): Account {
+    const account = this.accounts.get(account_id);
+    if (account == undefined)
+    throw new Error(
+      account_id + " has not be added."
+    );
+    return account;
   }
 
   call_step(
@@ -146,20 +169,15 @@ export class Runtime {
     );
 
     const signer_account = this.getOrCreateAccount(context.signer_account_id);
-    const predecessor_account = this.getOrCreateAccount(
+    const predecessor_account = this.getAccount(
       context.predecessor_account_id
     );
-    const account = this.accounts.get(account_id);
-    if (account == undefined)
-      throw new Error(
-        account_id + " has not be added and thus can't be called"
-      );
+    const account = this.getAccount(account_id);
     context.current_account_id = account.account_id;
     context.signer_account_pk = signer_account.signerAccountPk;
     context.account_balance = account.balance.toString();
     context.account_locked_balance = account.lockedBalance.toString();
     context.input = input;
-    // console.log(input)
     const vmContext = createContext(context);
     let args = [
       __dirname + "/bin.js",
@@ -169,25 +187,11 @@ export class Runtime {
       "--method-name=" + method_name,
       "--state=" + JSON.stringify(account.state),
     ];
-    // console.log(args)
     for (let data of accountContext.input_data || []) {
       args.push("--promise-results=" + JSON.stringify(data));
     }
-    let execResult = spawnSync("node", args);
 
-    // exec_result = subprocess.run(args, capture_output=True)
-    if (execResult.status != 0)
-      throw new Error(
-        "Failed to run successfully: " + execResult.output.toString()
-      );
-    var output = execResult.output[1];
-    var result;
-    try {
-      result = JSON.parse(output);
-    } catch (e) {
-      console.log(output);
-      throw e;
-    }
+    var result = this.spawn(args);
     if (!context.is_view && result["err"] == null) {
       account.balance = result["outcome"]["balance"];
       account.state = result["state"];
@@ -256,7 +260,7 @@ export class Runtime {
       if (result) {
         if (result.outcome) {
           for (let log of result.outcome.logs) {
-            console.log(`${c["account_id"]}: ${log}`);
+            this.log(`${c["account_id"]}: ${log}`);
           }
           if (result.outcome.err) {
             let result_data = { Failed: null };
@@ -349,5 +353,27 @@ export class Runtime {
       calls,
       results,
     };
+  }
+
+  private spawn(args: string[]): any {
+    let execResult = spawnSync("node", args);
+    if (execResult.status != 0) {
+      if (os.type() === 'Windows_NT') {
+        console.error("Windows is not supported.");
+        process.exit(0);
+      }
+      throw new Error(
+        "Failed to run successfully: " + execResult.output[2].toString()
+      );
+    }
+    var output = execResult.output[1];
+    var result;
+    try {
+      result = JSON.parse(output);
+    } catch (e) {
+      console.error("Failed to parse: " + output);
+      throw e;
+    }
+    return result;
   }
 }
