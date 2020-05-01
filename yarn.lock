@@ -484,10 +484,10 @@ near-mock-vm@^0.1.0:
     js-base64 "^2.5.2"
     yargs "^15.3.1"
 
-near-vm@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/near-vm/-/near-vm-0.0.5.tgz#831ba17343b6ae7278a3311c1cbb67aad487c23f"
-  integrity sha512-iKbXf/QEP5X3H+cTi8vmiWnW9w8KBe/kPEzA2Oy76LRNN5170MQipwCkAY3OhQjAMYE0eNxemU+hoTc/j64R6A==
+near-vm@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/near-vm/-/near-vm-0.0.6.tgz#d6b2154046628a729cf3237a057a3fd40bf7f5f3"
+  integrity sha512-x11rj9bGysV+m+228bR6ci707U17lBSjJm/iJNhekWVZoAGMiiSNJhkUyMoHTr4PUrOGIT4xTRTcfmjTuumINQ==
   dependencies:
     binary-install "^0.0.1"
 
