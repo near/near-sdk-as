@@ -11,6 +11,7 @@ import * as fs from "fs";
 const DEFAULT_GAS = 10 ** 15;
 type State = { [key: string]: string };
 
+
 export class Account {
   state: State = {};
   balance: number = 1000000000000;
@@ -125,6 +126,22 @@ export class Account {
 
 export class Runtime {
   accounts: Map<string, Account> = new Map();
+
+  constructor() {
+    if (os.type() === 'Windows_NT') {
+      console.error("Windows is not supported.");
+      process.exit(0);
+    }
+    /**
+     * run binary if it doesn't exist so that it installs itself.
+    */
+    try {
+      spawnSync("node", [__dirname+"/bin.js"]);
+    } catch (e){
+
+    }
+
+  }
 
   log(input: any): void {
     if (process.env.DEBUG) {
@@ -358,10 +375,6 @@ export class Runtime {
   private spawn(args: string[]): any {
     let execResult = spawnSync("node", args);
     if (execResult.status != 0) {
-      if (os.type() === 'Windows_NT') {
-        console.error("Windows is not supported.");
-        process.exit(0);
-      }
       throw new Error(
         "Failed to run successfully: " + execResult.output[2].toString()
       );
