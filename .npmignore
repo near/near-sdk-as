@@ -8,3 +8,4 @@ bindgen/out
 bindgen/asconfig.js
 bindgen/test.js
 runtime/dist/tsconfig.tsbuildinfo
+**/*/__tests__

@@ -33,7 +33,7 @@
     "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:runtime",
     "test:nearcore": "(cd nearcore-tests; yarn test)",
     "test:bindgen": "(cd bindgen; yarn test)",
-    "test:runtime": "(cd runtime; node asconfig && ./test.ts)",
+    "test:runtime": "(cd runtime; node asconfig) && jest",
     "asp:ci": "asp",
     "asp": "yarn asp:ci --verbose",
     "doc": "rm -rf docs; typedoc assembly --tsconfig assembly/tsconfig.json && touch docs/.nojekyll"
@@ -41,10 +41,13 @@
   "devDependencies": {
     "@types/bn.js": "^4.11.6",
     "@types/bs58": "^4.0.1",
+    "@types/jest": "^25.2.1",
     "@types/js-base64": "^2.3.1",
-    "@types/node": "^13.13.2",
+    "@types/node": "^13.13.4",
     "assemblyscript": "^0.9.4",
+    "jest": "^25.5.4",
     "near-hello": "nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10",
+    "ts-jest": "^25.4.0",
     "ts-node": "^8.6.2",
     "typedoc": "^0.17.3",
     "typescript": "^3.6.4"

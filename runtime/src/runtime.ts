@@ -7,16 +7,23 @@ import {
 import { spawnSync } from "child_process";
 import * as os from "os";
 import * as fs from "fs";
-
-const DEFAULT_GAS = 10 ** 15;
-type State = { [key: string]: string };
+import { State, DEFAULT_GAS, StandaloneOutput, Value, ResultsObject } from './types';
 
 
+/**
+ * Account object of client and contracts.
+ */
 export class Account {
   state: State = {};
   balance: number = 1000000000000;
   lockedBalance = 0;
   signerAccountPk: string;
+  /**
+   * Sholud only be constructed by a runtime instance.
+   * @param account_id 
+   * @param wasmFile 
+   * @param runtime 
+   */
   constructor(
     public account_id: string,
     public wasmFile: string | null = null,
@@ -28,7 +35,7 @@ export class Account {
     }
   }
 
-  createAccountContext(
+  private createAccountContext(
     input: any = {},
     prepaid_gas: number = DEFAULT_GAS
   ): Partial<AccountContext> {
@@ -41,6 +48,13 @@ export class Account {
     return accountContext;
   }
 
+  /**
+   * Single execution of contract method.
+   * @param account_id contractId to call
+   * @param method_name method to call
+   * @param input object of arguments of method
+   * @param prepaid_gas How much gas to use.
+   */
   call_step_other(
     account_id: string,
     method_name: string,
@@ -57,6 +71,12 @@ export class Account {
     );
   }
 
+  /**
+   * Single execution of contract method to the same contract.
+   * @param method_name method to call
+   * @param input object of arguments of method
+   * @param prepaid_gas How much gas to use.
+   */
   call_step(method_name: string, input?: any, prepaid_gas?: number) {
     return this.call_step_other(
       this.account_id,
@@ -66,6 +86,13 @@ export class Account {
     );
   }
 
+  /**
+   * Execute contract and any promises generated until no more promises are generated or gas runs out.
+   * @param account_id Initial Contract to call.
+   * @param method_name Method to call.
+   * @param input object of input to method.
+   * @param prepaid_gas How much gas to use.
+   */
   call_other(
     account_id: string,
     method_name: string,
@@ -81,11 +108,21 @@ export class Account {
       accountContext
     );
   }
-
+  /**
+   * Execute this contract and any promises generated until no more promises are generated or gas runs out.
+   * @param method_name Method to call.
+   * @param input object of input to method.
+   * @param prepaid_gas How much gas to use.
+   */
   call(method_name: string, input?: any, prepaid_gas?: number) {
     return this.call_other(this.account_id, method_name, input, prepaid_gas);
   }
 
+  /**
+   * View contract call to this contract.
+   * @param method_name view method.
+   * @param input object of input to method.
+   */
   view(method_name: string, input?: any) {
     if (this.runtime == null) throw new Error("Runtime is not set");
     let accountContext = this.createAccountContext(input);
@@ -96,15 +133,14 @@ export class Account {
       input,
       accountContext
     );
-    var return_data = result.outcome && result.outcome.return_data; //('outcome', {}).get('return_data', None)
-    if (return_data) {
-      return_data = return_data["Value"] || "";
+    var return_data = <Value>(result.outcome && result.outcome.return_data); //('outcome', {}).get('return_data', None)
+    var return_value = "";
+    if (return_data && return_data.Value) {
+      return_value = return_data["Value"] || "";
     }
     const err = result["err"];
-    // if return_data is not None:
-    //     return_data = return_data['Value'] if 'Value' in return_data else ''
     return {
-      return_data,
+      return_value,
       err,
       result,
     };
@@ -142,8 +178,8 @@ export class Runtime {
     }
 
   }
-
-  log(input: any): void {
+  
+  private log(input: any): void {
     if (process.env.DEBUG) {
       console.log(input);
     }
@@ -174,7 +210,7 @@ export class Runtime {
     method_name: string,
     input: string = "",
     accountContext: Partial<AccountContext> = defaultAccountContext()
-  ) {
+  ): StandaloneOutput {
     accountContext.signer_account_id =
       accountContext.signer_account_id || account_id;
     accountContext.input = input;
@@ -237,7 +273,7 @@ export class Runtime {
     var num_data = 0;
     var return_index = 0;
     var calls: any = {};
-    var results: any = {};
+    var results: ResultsObject = {};
     while (q.length > 0) {
       let c = q.shift()!;
       let index = c["index"];
@@ -279,14 +315,21 @@ export class Runtime {
           for (let log of result.outcome.logs) {
             this.log(`${c["account_id"]}: ${log}`);
           }
-          if (result.outcome.err) {
+          if (result.err) {
             let result_data = { Failed: null };
             for (let d of output_data) {
               all_input_data[d["data_id"]] = result_data;
             }
           } else {
             let ret = result.outcome.return_data;
-            if (ret["ReceiptIndex"] != undefined) {
+            if (typeof ret == "string" || ret.Value != undefined)  {
+              let result_data = {
+                Successful: typeof ret == "string" ? "" : ret["Value"],
+              };
+              for (let d of output_data) {
+                all_input_data[d["data_id"]] = result_data;
+              }
+            } else if (ret.ReceiptIndex != undefined) {
               let adj_index = ret["ReceiptIndex"] + numReceipts;
               if (!all_output_data[adj_index]) {
                 all_output_data[adj_index] = [];
@@ -296,13 +339,6 @@ export class Runtime {
               }
               if (return_index == index) {
                 return_index = adj_index;
-              }
-            } else {
-              let result_data = {
-                Successful: ret["Value"] || "",
-              };
-              for (let d of output_data) {
-                all_input_data[d["data_id"]] = result_data;
               }
             }
             for (let i in result["receipts"]) {
@@ -353,12 +389,13 @@ export class Runtime {
     const result = results[return_index];
     this.log(`Final result:`);
     this.log(result);
-    let return_data =
+    let return_data: any =
       (result.outcome && result.outcome.return_data) || undefined;
     if (return_data != undefined) {
-      return_data = return_data["Value"]
-        ? JSON.parse(return_data["Value"])
-        : null;
+      return_data =
+        typeof return_data != "string" && return_data.Value
+          ? JSON.parse(return_data.Value)
+          : null;
     }
     if (result["err"] != null) {
       console.error("ERROR: ", result.err);

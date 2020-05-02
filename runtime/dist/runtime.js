@@ -12,8 +12,17 @@ const context_1 = require("./context");
 const child_process_1 = require("child_process");
 const os = __importStar(require("os"));
 const fs = __importStar(require("fs"));
-const DEFAULT_GAS = 10 ** 15;
+const types_1 = require("./types");
+/**
+ * Account object of client and contracts.
+ */
 class Account {
+    /**
+     * Sholud only be constructed by a runtime instance.
+     * @param account_id
+     * @param wasmFile
+     * @param runtime
+     */
     constructor(account_id, wasmFile = null, runtime) {
         this.account_id = account_id;
         this.wasmFile = wasmFile;
@@ -26,7 +35,7 @@ class Account {
             throw new Error(`Path ${wasmFile} to contract wasm file doesn't exist`);
         }
     }
-    createAccountContext(input = {}, prepaid_gas = DEFAULT_GAS) {
+    createAccountContext(input = {}, prepaid_gas = types_1.DEFAULT_GAS) {
         input = JSON.stringify(input);
         let accountContext = {
             input,
@@ -35,39 +44,69 @@ class Account {
         };
         return accountContext;
     }
-    call_step_other(account_id, method_name, input = {}, prepaid_gas = DEFAULT_GAS) {
+    /**
+     * Single execution of contract method.
+     * @param account_id contractId to call
+     * @param method_name method to call
+     * @param input object of arguments of method
+     * @param prepaid_gas How much gas to use.
+     */
+    call_step_other(account_id, method_name, input = {}, prepaid_gas = types_1.DEFAULT_GAS) {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input, prepaid_gas);
         return this.runtime.call_step(account_id, method_name, accountContext.input, accountContext);
     }
+    /**
+     * Single execution of contract method to the same contract.
+     * @param method_name method to call
+     * @param input object of arguments of method
+     * @param prepaid_gas How much gas to use.
+     */
     call_step(method_name, input, prepaid_gas) {
         return this.call_step_other(this.account_id, method_name, input, prepaid_gas);
     }
+    /**
+     * Execute contract and any promises generated until no more promises are generated or gas runs out.
+     * @param account_id Initial Contract to call.
+     * @param method_name Method to call.
+     * @param input object of input to method.
+     * @param prepaid_gas How much gas to use.
+     */
     call_other(account_id, method_name, input, prepaid_gas) {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input, prepaid_gas);
         return this.runtime.call(account_id, method_name, accountContext.input, accountContext);
     }
+    /**
+     * Execute this contract and any promises generated until no more promises are generated or gas runs out.
+     * @param method_name Method to call.
+     * @param input object of input to method.
+     * @param prepaid_gas How much gas to use.
+     */
     call(method_name, input, prepaid_gas) {
         return this.call_other(this.account_id, method_name, input, prepaid_gas);
     }
+    /**
+     * View contract call to this contract.
+     * @param method_name view method.
+     * @param input object of input to method.
+     */
     view(method_name, input) {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input);
         accountContext.is_view = true;
         const result = this.runtime.call_step(this.account_id, method_name, input, accountContext);
-        var return_data = result.outcome && result.outcome.return_data; //('outcome', {}).get('return_data', None)
-        if (return_data) {
-            return_data = return_data["Value"] || "";
+        var return_data = (result.outcome && result.outcome.return_data); //('outcome', {}).get('return_data', None)
+        var return_value = "";
+        if (return_data && return_data.Value) {
+            return_value = return_data["Value"] || "";
         }
         const err = result["err"];
-        // if return_data is not None:
-        //     return_data = return_data['Value'] if 'Value' in return_data else ''
         return {
-            return_data,
+            return_value,
             err,
             result,
         };
@@ -206,7 +245,7 @@ class Runtime {
                     for (let log of result.outcome.logs) {
                         this.log(`${c["account_id"]}: ${log}`);
                     }
-                    if (result.outcome.err) {
+                    if (result.err) {
                         let result_data = { Failed: null };
                         for (let d of output_data) {
                             all_input_data[d["data_id"]] = result_data;
@@ -214,7 +253,15 @@ class Runtime {
                     }
                     else {
                         let ret = result.outcome.return_data;
-                        if (ret["ReceiptIndex"] != undefined) {
+                        if (typeof ret == "string" || ret.Value != undefined) {
+                            let result_data = {
+                                Successful: typeof ret == "string" ? "" : ret["Value"],
+                            };
+                            for (let d of output_data) {
+                                all_input_data[d["data_id"]] = result_data;
+                            }
+                        }
+                        else if (ret.ReceiptIndex != undefined) {
                             let adj_index = ret["ReceiptIndex"] + numReceipts;
                             if (!all_output_data[adj_index]) {
                                 all_output_data[adj_index] = [];
@@ -224,14 +271,6 @@ class Runtime {
                             }
                             if (return_index == index) {
                                 return_index = adj_index;
-                            }
-                        }
-                        else {
-                            let result_data = {
-                                Successful: ret["Value"] || "",
-                            };
-                            for (let d of output_data) {
-                                all_input_data[d["data_id"]] = result_data;
                             }
                         }
                         for (let i in result["receipts"]) {
@@ -280,9 +319,10 @@ class Runtime {
         this.log(result);
         let return_data = (result.outcome && result.outcome.return_data) || undefined;
         if (return_data != undefined) {
-            return_data = return_data["Value"]
-                ? JSON.parse(return_data["Value"])
-                : null;
+            return_data =
+                typeof return_data != "string" && return_data.Value
+                    ? JSON.parse(return_data.Value)
+                    : null;
         }
         if (result["err"] != null) {
             console.error("ERROR: ", result.err);
