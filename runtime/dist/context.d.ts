@@ -30,6 +30,7 @@ export interface AccountContext {
     prepaid_gas: number;
     attached_deposit: string;
     is_view: boolean;
+    storage_usage: number;
 }
 export declare function defaultAccountContext(): Partial<AccountContext>;
 export declare function prepareContext(vmcontext: VMContext): VMContext;

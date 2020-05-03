@@ -1,4 +1,4 @@
-import { encodeBs58, assign, decodeBs58 } from './utils';
+import { encodeBs58, assign, decodeBs58, StrtoUTF8 } from './utils';
 import {
   AccountContext,
   defaultAccountContext,
@@ -8,16 +8,21 @@ import { spawnSync } from "child_process";
 import * as os from "os";
 import * as fs from "fs";
 import { State, DEFAULT_GAS, StandaloneOutput, Value, ResultsObject } from './types';
+import { Base64 } from 'js-base64';
 
+
+const DEFAULT_BALANCE = 1000000000000;
 
 /**
  * Account object of client and contracts.
  */
 export class Account {
   state: State = {};
-  balance: number = 1000000000000;
+  balance: number = DEFAULT_BALANCE;
   lockedBalance = 0;
   signerAccountPk: string;
+  storage_usage: number = 0;
+
   /**
    * Sholud only be constructed by a runtime instance.
    * @param account_id 
@@ -30,6 +35,7 @@ export class Account {
     public runtime: Runtime
   ) {
     this.signerAccountPk = encodeBs58(account_id.slice(0, 32).padEnd(32, " "));
+    this.runtime.log(this.signerAccountPk);
     if (wasmFile != null && !fs.existsSync(wasmFile)) {
         throw new Error(`Path ${wasmFile} to contract wasm file doesn't exist`);
     }
@@ -63,10 +69,11 @@ export class Account {
   ) {
     if (this.runtime == null) throw new Error("Runtime is not set");
     let accountContext = this.createAccountContext(input, prepaid_gas);
+    accountContext.signer_account_id = this.signerAccountPk;
     return this.runtime.call_step(
       account_id,
       method_name,
-      accountContext.input!,
+      accountContext.input,
       accountContext
     );
   }
@@ -101,6 +108,8 @@ export class Account {
   ) {
     if (this.runtime == null) throw new Error("Runtime is not set");
     let accountContext = this.createAccountContext(input, prepaid_gas);
+    accountContext.signer_account_id = this.account_id;
+    this.runtime.log("Account Signer ID: " + accountContext.signer_account_id);
     return this.runtime.call(
       account_id,
       method_name,
@@ -133,14 +142,13 @@ export class Account {
       input,
       accountContext
     );
-    var return_data = <Value>(result.outcome && result.outcome.return_data); //('outcome', {}).get('return_data', None)
-    var return_value = "";
+    var return_data = <any>(result.outcome && result.outcome.return_data);
     if (return_data && return_data.Value) {
-      return_value = return_data["Value"] || "";
+      return_data = JSON.parse(return_data.Value);
     }
     const err = result["err"];
     return {
-      return_value,
+      return_data,
       err,
       result,
     };
@@ -151,11 +159,18 @@ export class Account {
    */
   getState(): State {
     return Object.getOwnPropertyNames(this.state).reduce<State>((acc: State, cur: string) => {
-      let key = decodeBs58(cur);
-      acc[key] = decodeBs58(this.state[cur]);
+      let key = Base64.decode(cur);
+      acc[key] = Base64.decode(this.state[cur]);
       return acc;
     },
-    {})
+    {});
+  }
+
+
+  reset(): void {
+    this.state = {};
+    this.balance = DEFAULT_BALANCE;
+    this.lockedBalance = 0;
   }
 }
 
@@ -174,12 +189,10 @@ export class Runtime {
     try {
       spawnSync("node", [__dirname+"/bin.js"]);
     } catch (e){
-
     }
-
   }
   
-  private log(input: any): void {
+  log(input: any): void {
     if (process.env.DEBUG) {
       console.log(input);
     }
@@ -231,7 +244,9 @@ export class Runtime {
     context.account_balance = account.balance.toString();
     context.account_locked_balance = account.lockedBalance.toString();
     context.input = input;
+    context.storage_usage = account.storage_usage;
     const vmContext = createContext(context);
+    this.log(JSON.stringify(vmContext));
     let args = [
       __dirname + "/bin.js",
       "--context=" + JSON.stringify(vmContext),
@@ -245,9 +260,11 @@ export class Runtime {
     }
 
     var result = this.spawn(args);
+    this.log(result);
     if (!context.is_view && result["err"] == null) {
       account.balance = result["outcome"]["balance"];
       account.state = result["state"];
+      account.storage_usage = result["outcome"].storage_usage;
     }
     return result;
   }
@@ -258,7 +275,7 @@ export class Runtime {
     input: string = "",
     accountContext: Partial<AccountContext>
   ) {
-    var q = [
+    const q = [
       {
         ...accountContext,
         index: 0,
@@ -268,12 +285,12 @@ export class Runtime {
       },
     ];
     var numReceipts = 1;
-    var all_input_data: any = {};
-    var all_output_data: any = {};
+    const all_input_data: any = {};
+    const all_output_data: any = {};
     var num_data = 0;
     var return_index = 0;
-    var calls: any = {};
-    var results: ResultsObject = {};
+    const calls: any = {};
+    const results: ResultsObject = {};
     while (q.length > 0) {
       let c = q.shift()!;
       let index = c["index"];
@@ -298,13 +315,13 @@ export class Runtime {
       );
       let accountContext = {
         ...c,
-        output_data_receivers: output_data.map((d: any) => d["account_id"]),
+        output_data_receivers: output_data.map((d: any) => d.account_id),
         input_data,
       };
       let result = this.call_step(
-        c["account_id"],
-        c["method_name"],
-        c["input"],
+        c.account_id,
+        c.method_name,
+        c.input,
         accountContext
       );
       results[index] = result;
@@ -313,24 +330,24 @@ export class Runtime {
       if (result) {
         if (result.outcome) {
           for (let log of result.outcome.logs) {
-            this.log(`${c["account_id"]}: ${log}`);
+            this.log(`${c.account_id}: ${log}`);
           }
           if (result.err) {
             let result_data = { Failed: null };
             for (let d of output_data) {
-              all_input_data[d["data_id"]] = result_data;
+              all_input_data[d.data_id] = result_data;
             }
           } else {
             let ret = result.outcome.return_data;
             if (typeof ret == "string" || ret.Value != undefined)  {
               let result_data = {
-                Successful: typeof ret == "string" ? "" : ret["Value"],
+                Successful: typeof ret == "string" ? "" : ret.Value,
               };
               for (let d of output_data) {
-                all_input_data[d["data_id"]] = result_data;
+                all_input_data[d.data_id] = result_data;
               }
             } else if (ret.ReceiptIndex != undefined) {
-              let adj_index = ret["ReceiptIndex"] + numReceipts;
+              let adj_index = ret.ReceiptIndex + numReceipts;
               if (!all_output_data[adj_index]) {
                 all_output_data[adj_index] = [];
               }
@@ -341,8 +358,8 @@ export class Runtime {
                 return_index = adj_index;
               }
             }
-            for (let i in result["receipts"]) {
-              const receipt = result["receipts"][i];
+            for (let i in result.receipts) {
+              const receipt = result.receipts[i];
               if (receipt.actions.length != 1) {
                 throw new Error("reciept actions must have length 1");
               }
@@ -407,6 +424,10 @@ export class Runtime {
       calls,
       results,
     };
+  }
+
+  reset() {
+    this.accounts.forEach(account => account.reset());
   }
 
   private spawn(args: string[]): any {

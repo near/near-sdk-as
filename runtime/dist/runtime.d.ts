@@ -11,6 +11,7 @@ export declare class Account {
     balance: number;
     lockedBalance: number;
     signerAccountPk: string;
+    storage_usage: number;
     /**
      * Sholud only be constructed by a runtime instance.
      * @param account_id
@@ -67,7 +68,7 @@ export declare class Account {
      * @param input object of input to method.
      */
     view(method_name: string, input?: any): {
-        return_value: string;
+        return_data: any;
         err: any;
         result: StandaloneOutput;
     };
@@ -75,11 +76,12 @@ export declare class Account {
      * Current state of contract.
      */
     getState(): State;
+    reset(): void;
 }
 export declare class Runtime {
     accounts: Map<string, Account>;
     constructor();
-    private log;
+    log(input: any): void;
     newAccount(accoundId: string, wasmFile?: string | null): Account;
     getOrCreateAccount(account_id: string): Account;
     getAccount(account_id: string): Account;
@@ -91,5 +93,6 @@ export declare class Runtime {
         calls: any;
         results: ResultsObject;
     };
+    reset(): void;
     private spawn;
 }
