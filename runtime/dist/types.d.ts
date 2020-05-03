@@ -1,6 +1,9 @@
 export declare const DEFAULT_GAS: number;
-export declare type State = {
+export declare type InternalState = {
     [key: string]: string;
+};
+export declare type ExternalState = {
+    [key: string]: any;
 };
 export declare type ResultsObject = {
     [key: number]: StandaloneOutput;
@@ -76,5 +79,5 @@ export interface StandaloneOutput {
     /**
      * Current state of the contract. key and values encoded as Base64 strings.
      */
-    state: State;
+    state: InternalState;
 }

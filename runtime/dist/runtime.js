@@ -13,6 +13,7 @@ const child_process_1 = require("child_process");
 const os = __importStar(require("os"));
 const fs = __importStar(require("fs"));
 const types_1 = require("./types");
+const DEFAULT_BALANCE = 1000000000000;
 /**
  * Account object of client and contracts.
  */
@@ -27,10 +28,12 @@ class Account {
         this.account_id = account_id;
         this.wasmFile = wasmFile;
         this.runtime = runtime;
-        this.state = {};
-        this.balance = 1000000000000;
+        this.internalState = {};
+        this.balance = DEFAULT_BALANCE;
         this.lockedBalance = 0;
+        this.storage_usage = 0;
         this.signerAccountPk = utils_1.encodeBs58(account_id.slice(0, 32).padEnd(32, " "));
+        this.runtime.log(this.signerAccountPk);
         if (wasmFile != null && !fs.existsSync(wasmFile)) {
             throw new Error(`Path ${wasmFile} to contract wasm file doesn't exist`);
         }
@@ -55,6 +58,7 @@ class Account {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input, prepaid_gas);
+        accountContext.signer_account_id = this.signerAccountPk;
         return this.runtime.call_step(account_id, method_name, accountContext.input, accountContext);
     }
     /**
@@ -77,6 +81,8 @@ class Account {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input, prepaid_gas);
+        accountContext.signer_account_id = this.account_id;
+        this.runtime.log("Account Signer ID: " + accountContext.signer_account_id);
         return this.runtime.call(account_id, method_name, accountContext.input, accountContext);
     }
     /**
@@ -99,14 +105,13 @@ class Account {
         let accountContext = this.createAccountContext(input);
         accountContext.is_view = true;
         const result = this.runtime.call_step(this.account_id, method_name, input, accountContext);
-        var return_data = (result.outcome && result.outcome.return_data); //('outcome', {}).get('return_data', None)
-        var return_value = "";
+        var return_data = (result.outcome && result.outcome.return_data);
         if (return_data && return_data.Value) {
-            return_value = return_data["Value"] || "";
+            return_data = JSON.parse(return_data.Value);
         }
         const err = result["err"];
         return {
-            return_value,
+            return_data,
             err,
             result,
         };
@@ -114,12 +119,17 @@ class Account {
     /**
      * Current state of contract.
      */
-    getState() {
-        return Object.getOwnPropertyNames(this.state).reduce((acc, cur) => {
-            let key = utils_1.decodeBs58(cur);
-            acc[key] = utils_1.decodeBs58(this.state[cur]);
+    get state() {
+        return Object.getOwnPropertyNames(this.internalState).reduce((acc, cur) => {
+            let key = utils_1.decodeBs64(cur);
+            acc[key] = JSON.parse(utils_1.decodeBs64(this.internalState[cur]));
             return acc;
         }, {});
+    }
+    reset() {
+        this.internalState = {};
+        this.balance = DEFAULT_BALANCE;
+        this.lockedBalance = 0;
     }
 }
 exports.Account = Account;
@@ -174,27 +184,31 @@ class Runtime {
         context.account_balance = account.balance.toString();
         context.account_locked_balance = account.lockedBalance.toString();
         context.input = input;
+        context.storage_usage = account.storage_usage;
         const vmContext = context_1.createContext(context);
+        this.log(JSON.stringify(vmContext));
         let args = [
             __dirname + "/bin.js",
             "--context=" + JSON.stringify(vmContext),
             "--input=" + input,
             "--wasm-file=" + account.wasmFile,
             "--method-name=" + method_name,
-            "--state=" + JSON.stringify(account.state),
+            "--state=" + JSON.stringify(account.internalState),
         ];
         for (let data of accountContext.input_data || []) {
             args.push("--promise-results=" + JSON.stringify(data));
         }
         var result = this.spawn(args);
+        this.log(result);
         if (!context.is_view && result["err"] == null) {
             account.balance = result["outcome"]["balance"];
-            account.state = result["state"];
+            account.internalState = result["state"];
+            account.storage_usage = result["outcome"].storage_usage;
         }
         return result;
     }
     call(account_id, method_name, input = "", accountContext) {
-        var q = [
+        const q = [
             {
                 ...accountContext,
                 index: 0,
@@ -204,12 +218,12 @@ class Runtime {
             },
         ];
         var numReceipts = 1;
-        var all_input_data = {};
-        var all_output_data = {};
+        const all_input_data = {};
+        const all_output_data = {};
         var num_data = 0;
         var return_index = 0;
-        var calls = {};
-        var results = {};
+        const calls = {};
+        const results = {};
         while (q.length > 0) {
             let c = q.shift();
             let index = c["index"];
@@ -233,36 +247,36 @@ class Runtime {
             this.log(`Call ${JSON.stringify(c)} Output ${JSON.stringify(output_data)}`);
             let accountContext = {
                 ...c,
-                output_data_receivers: output_data.map((d) => d["account_id"]),
+                output_data_receivers: output_data.map((d) => d.account_id),
                 input_data,
             };
-            let result = this.call_step(c["account_id"], c["method_name"], c["input"], accountContext);
+            let result = this.call_step(c.account_id, c.method_name, c.input, accountContext);
             results[index] = result;
             this.log(`Result:`);
             this.log(result);
             if (result) {
                 if (result.outcome) {
                     for (let log of result.outcome.logs) {
-                        this.log(`${c["account_id"]}: ${log}`);
+                        this.log(`${c.account_id}: ${log}`);
                     }
                     if (result.err) {
                         let result_data = { Failed: null };
                         for (let d of output_data) {
-                            all_input_data[d["data_id"]] = result_data;
+                            all_input_data[d.data_id] = result_data;
                         }
                     }
                     else {
                         let ret = result.outcome.return_data;
                         if (typeof ret == "string" || ret.Value != undefined) {
                             let result_data = {
-                                Successful: typeof ret == "string" ? "" : ret["Value"],
+                                Successful: typeof ret == "string" ? "" : ret.Value,
                             };
                             for (let d of output_data) {
-                                all_input_data[d["data_id"]] = result_data;
+                                all_input_data[d.data_id] = result_data;
                             }
                         }
                         else if (ret.ReceiptIndex != undefined) {
-                            let adj_index = ret["ReceiptIndex"] + numReceipts;
+                            let adj_index = ret.ReceiptIndex + numReceipts;
                             if (!all_output_data[adj_index]) {
                                 all_output_data[adj_index] = [];
                             }
@@ -273,8 +287,8 @@ class Runtime {
                                 return_index = adj_index;
                             }
                         }
-                        for (let i in result["receipts"]) {
-                            const receipt = result["receipts"][i];
+                        for (let i in result.receipts) {
+                            const receipt = result.receipts[i];
                             if (receipt.actions.length != 1) {
                                 throw new Error("reciept actions must have length 1");
                             }
@@ -334,6 +348,9 @@ class Runtime {
             calls,
             results,
         };
+    }
+    reset() {
+        this.accounts.forEach(account => account.reset());
     }
     spawn(args) {
         let execResult = child_process_1.spawnSync("node", args);

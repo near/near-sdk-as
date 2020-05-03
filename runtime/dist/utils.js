@@ -12,6 +12,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const bn_js_1 = __importDefault(require("bn.js"));
 const base58 = __importStar(require("bs58"));
+const js_base64_1 = require("js-base64");
 function toNum(x) {
     return parseInt(x.toString());
 }
@@ -103,6 +104,14 @@ function decodeBs58(str) {
     return UTF8toStr(new Uint8Array(base58.decode(str)));
 }
 exports.decodeBs58 = decodeBs58;
+function encodeBs64(str) {
+    return js_base64_1.Base64.encode(str);
+}
+exports.encodeBs64 = encodeBs64;
+function decodeBs64(str) {
+    return js_base64_1.Base64.decode(str);
+}
+exports.decodeBs64 = decodeBs64;
 function assign(...args) {
     return Object.assign.apply(Object, [{}, ...args]);
 }

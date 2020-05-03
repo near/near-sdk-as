@@ -29,7 +29,7 @@ function defaultAccountContext() {
         output_data_receivers: [],
         prepaid_gas: 10 ** 15,
         attached_deposit: "0",
-        is_view: false,
+        is_view: false
     };
 }
 exports.defaultAccountContext = defaultAccountContext;

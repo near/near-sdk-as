@@ -57,6 +57,7 @@ export interface AccountContext {
   prepaid_gas: number;
   attached_deposit: string;
   is_view: boolean;
+  storage_usage: number;
 }
 
 export function defaultAccountContext(): Partial<AccountContext> {
@@ -66,7 +67,7 @@ export function defaultAccountContext(): Partial<AccountContext> {
     output_data_receivers: [],
     prepaid_gas: 10**15,
     attached_deposit: "0",
-    is_view: false,
+    is_view: false 
   }
 }
 

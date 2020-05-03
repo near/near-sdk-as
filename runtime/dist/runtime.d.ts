@@ -1,5 +1,5 @@
 import { AccountContext } from "./context";
-import { State, StandaloneOutput, ResultsObject } from './types';
+import { InternalState, StandaloneOutput, ResultsObject, ExternalState } from './types';
 /**
  * Account object of client and contracts.
  */
@@ -7,10 +7,11 @@ export declare class Account {
     account_id: string;
     wasmFile: string | null;
     runtime: Runtime;
-    state: State;
+    internalState: InternalState;
     balance: number;
     lockedBalance: number;
     signerAccountPk: string;
+    storage_usage: number;
     /**
      * Sholud only be constructed by a runtime instance.
      * @param account_id
@@ -67,19 +68,20 @@ export declare class Account {
      * @param input object of input to method.
      */
     view(method_name: string, input?: any): {
-        return_value: string;
+        return_data: any;
         err: any;
         result: StandaloneOutput;
     };
     /**
      * Current state of contract.
      */
-    getState(): State;
+    get state(): ExternalState;
+    reset(): void;
 }
 export declare class Runtime {
     accounts: Map<string, Account>;
     constructor();
-    private log;
+    log(input: any): void;
     newAccount(accoundId: string, wasmFile?: string | null): Account;
     getOrCreateAccount(account_id: string): Account;
     getAccount(account_id: string): Account;
@@ -91,5 +93,6 @@ export declare class Runtime {
         calls: any;
         results: ResultsObject;
     };
+    reset(): void;
     private spawn;
 }

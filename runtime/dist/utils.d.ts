@@ -4,4 +4,6 @@ export declare function StrtoUTF8(str: string): Uint8Array;
 export declare function createU128Str(lo: BigInt, hi: BigInt): string;
 export declare function encodeBs58(str: string): string;
 export declare function decodeBs58(str: string): string;
+export declare function encodeBs64(str: string): string;
+export declare function decodeBs64(str: string): string;
 export declare function assign<T>(...args: T[] | Partial<T>[]): T;
