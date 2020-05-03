@@ -1,4 +1,4 @@
-import { encodeBs58, assign, decodeBs58, StrtoUTF8 } from './utils';
+import { encodeBs58, assign, decodeBs64 } from './utils';
 import {
   AccountContext,
   defaultAccountContext,
@@ -7,8 +7,7 @@ import {
 import { spawnSync } from "child_process";
 import * as os from "os";
 import * as fs from "fs";
-import { State, DEFAULT_GAS, StandaloneOutput, Value, ResultsObject } from './types';
-import { Base64 } from 'js-base64';
+import { InternalState, DEFAULT_GAS, StandaloneOutput, ResultsObject, ExternalState } from './types';
 
 
 const DEFAULT_BALANCE = 1000000000000;
@@ -17,7 +16,7 @@ const DEFAULT_BALANCE = 1000000000000;
  * Account object of client and contracts.
  */
 export class Account {
-  state: State = {};
+  internalState: InternalState = {};
   balance: number = DEFAULT_BALANCE;
   lockedBalance = 0;
   signerAccountPk: string;
@@ -157,10 +156,10 @@ export class Account {
   /**
    * Current state of contract.
    */
-  getState(): State {
-    return Object.getOwnPropertyNames(this.state).reduce<State>((acc: State, cur: string) => {
-      let key = Base64.decode(cur);
-      acc[key] = Base64.decode(this.state[cur]);
+  get state(): ExternalState {
+    return Object.getOwnPropertyNames(this.internalState).reduce<ExternalState>((acc: InternalState, cur: string) => {
+      let key = decodeBs64(cur);
+      acc[key] = JSON.parse(decodeBs64(this.internalState[cur]));
       return acc;
     },
     {});
@@ -168,7 +167,7 @@ export class Account {
 
 
   reset(): void {
-    this.state = {};
+    this.internalState = {};
     this.balance = DEFAULT_BALANCE;
     this.lockedBalance = 0;
   }
@@ -253,7 +252,7 @@ export class Runtime {
       "--input=" + input,
       "--wasm-file=" + account.wasmFile,
       "--method-name=" + method_name,
-      "--state=" + JSON.stringify(account.state),
+      "--state=" + JSON.stringify(account.internalState),
     ];
     for (let data of accountContext.input_data || []) {
       args.push("--promise-results=" + JSON.stringify(data));
@@ -263,7 +262,7 @@ export class Runtime {
     this.log(result);
     if (!context.is_view && result["err"] == null) {
       account.balance = result["outcome"]["balance"];
-      account.state = result["state"];
+      account.internalState = result["state"];
       account.storage_usage = result["outcome"].storage_usage;
     }
     return result;

@@ -1,26 +1,15 @@
-import { context, logging, ContractPromise, u128 } from "..";
+import { context, logging, ContractPromise, u128, storage } from "..";
 import { Word } from "./model";
 
-// export function reverseWordsInSentence(text: string): string {
-//   logging.log("[" + context.sender + "] invoked function reverseSentence(" + text + ")")
+export function SetWord(word: Word): void {
+  storage.set("word", word);
+}
 
-//   const word = new Word(text.split(" ")[0], "en-us")
+export function GetWord(): Word {
+  return <Word>storage.get<Word>("word", new Word("DEFAULT"));
+}
 
-//   logging.log("reversing word [" + word.text + "]")
 
-//   _reverseWord(word)
-
-//   // logging.log("results: [" + results + "]")
-
-//   return word.text
-
-//   // const reversedSentence = text.split(" ").map<Word>((word) => {
-//   //   logging.log("reversing word [" + word + "]")
-//   //   let results = _reverseWord(word)
-//   //   logging.log("results: [" + results + "]")
-//   //   return results
-//   // })
-// }
 export function sample(): string {
   return "hello world";
 }
@@ -37,8 +26,8 @@ export function reverseWordThree(): void {
   let promise = ContractPromise.create(
     contract,                             // contract account name
     method,                               // contract method name
-    reverseArgs,                 // serialized contract method arguments encoded as Uint8Array
-    10000000,                                    // gas attached to the call
+    reverseArgs,                          // serialized contract method arguments encoded as Uint8Array
+    10000000,                             // gas attached to the call
     u128.Zero                             // attached deposit to be sent with the call
   )
 
@@ -148,18 +137,6 @@ export function reverseWordOne(): void {
 }
 
 
-// ------------------------------
-// ContractPromise Helpers
-// ------------------------------
-
-// @nearBindgen
-// class AddItemArgs {
-//   constructor(
-//     public accountId: string,
-//     public itemId: string
-//   ) { }
-// }
-
 @nearBindgen
 class ReverseArgs {
   constructor(
@@ -167,68 +144,3 @@ class ReverseArgs {
   ) { }
 }
 
-
-// ------------------------------------------------------------------------------
-// everything below is from sample code in near-sdk-as contract code comments
-// ------------------------------------------------------------------------------
-
-// export function callMetaNear(): void {
-
-//   let itemArgs = new AddItemArgs("alice.near", "Sword +9000")
-
-//   let promise = ContractPromise.create(
-//     "metanear",
-//     "addItem",
-//     itemArgs,
-//     0,
-//     u128.Zero
-//   );
-
-//   promise.returnAsResult();
-// }
-
-// export function callMetaNear(): void {
-//   let itemArgs: AddItemArgs = {
-//     accountId: "alice.near",
-//     itemId: "Sword +9000",
-//   };
-// 
-//   let promise = ContractPromise.create(
-//     "metanear",
-//     "addItem",
-//     itemArgs,
-//     0,
-//     0,
-//   );
-// 
-//   promise.returnAsResult();
-// }
-
-// // Setting up args for the callback
-// let requestArgs: OnItemAddedArgs = {
-//   "itemAddedRequestId": "UNIQUE_REQUEST_ID",
-// };
-
-
-// let callbackPromise = promise.then(
-//   "_onItemAdded",
-//   requestArgs,
-//   2,  // Attaching 2 additional requests, in case we need to do another call
-// );
-// callbackPromise.returnAsResult();
-// }
-
-// export function _onItemAdded(itemAddedRequestId: string): bool {
-//   // Get all results
-//   let results = ContractPromise.getResults();
-//   let addItemResult = results[0];
-//   // Verifying the remote contract call succeeded.
-//   if (addItemResult.success) {
-//     // Decoding data from the bytes buffer into the local object.
-//     let data = AddItemResult.decode(addItemResult.buffer);
-//     if (data.itemPower > 9000) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }

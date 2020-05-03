@@ -22,5 +22,22 @@ describe("cross contract calls", () => {
   test("promise + then with arguments", () => {
     let res  = alice.call_other("sentences", "reverseWordThree");
     expect(res.return_data).toBe(true)
-  });  
+  }); 
+
+  test("add to storage", () => {
+    alice.call_other("sentences", "SetWord", {word: {text: "hello"}});
+    expect(sentences.storage_usage).toBeGreaterThan(0);
+  });
+
+  test("read from storage with default", () => {
+    const word =sentences.view("GetWord").return_data;
+    expect(word.text).toBe("DEFAULT");
+    expect(sentences.state["word"]).toBe(undefined);
+  });
+  test("read from storage", () => {
+    alice.call_other("sentences", "SetWord", {word: {text: "hello"}});
+    const word =sentences.view("GetWord").return_data;
+    expect(word.text).toBe("hello");
+    expect(sentences.state["word"]).toStrictEqual(word)
+  });
 })

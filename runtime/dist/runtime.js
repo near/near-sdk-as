@@ -13,7 +13,6 @@ const child_process_1 = require("child_process");
 const os = __importStar(require("os"));
 const fs = __importStar(require("fs"));
 const types_1 = require("./types");
-const js_base64_1 = require("js-base64");
 const DEFAULT_BALANCE = 1000000000000;
 /**
  * Account object of client and contracts.
@@ -29,7 +28,7 @@ class Account {
         this.account_id = account_id;
         this.wasmFile = wasmFile;
         this.runtime = runtime;
-        this.state = {};
+        this.internalState = {};
         this.balance = DEFAULT_BALANCE;
         this.lockedBalance = 0;
         this.storage_usage = 0;
@@ -120,15 +119,15 @@ class Account {
     /**
      * Current state of contract.
      */
-    getState() {
-        return Object.getOwnPropertyNames(this.state).reduce((acc, cur) => {
-            let key = js_base64_1.Base64.decode(cur);
-            acc[key] = js_base64_1.Base64.decode(this.state[cur]);
+    get state() {
+        return Object.getOwnPropertyNames(this.internalState).reduce((acc, cur) => {
+            let key = utils_1.decodeBs64(cur);
+            acc[key] = JSON.parse(utils_1.decodeBs64(this.internalState[cur]));
             return acc;
         }, {});
     }
     reset() {
-        this.state = {};
+        this.internalState = {};
         this.balance = DEFAULT_BALANCE;
         this.lockedBalance = 0;
     }
@@ -194,7 +193,7 @@ class Runtime {
             "--input=" + input,
             "--wasm-file=" + account.wasmFile,
             "--method-name=" + method_name,
-            "--state=" + JSON.stringify(account.state),
+            "--state=" + JSON.stringify(account.internalState),
         ];
         for (let data of accountContext.input_data || []) {
             args.push("--promise-results=" + JSON.stringify(data));
@@ -203,7 +202,7 @@ class Runtime {
         this.log(result);
         if (!context.is_view && result["err"] == null) {
             account.balance = result["outcome"]["balance"];
-            account.state = result["state"];
+            account.internalState = result["state"];
             account.storage_usage = result["outcome"].storage_usage;
         }
         return result;

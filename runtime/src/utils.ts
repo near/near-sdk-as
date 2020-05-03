@@ -1,5 +1,6 @@
 import BN from "bn.js";
 import * as base58 from "bs58";
+import { Base64 } from 'js-base64';
 
 export function toNum(x: number | BigInt){ 
   return parseInt(x.toString());}
@@ -90,6 +91,14 @@ export function encodeBs58(str: string): string {
 
 export function decodeBs58(str: string): string {
   return UTF8toStr(new Uint8Array(base58.decode(str)));
+}
+
+export function encodeBs64(str: string): string {
+  return Base64.encode(str);
+}
+
+export function decodeBs64(str: string): string {
+  return Base64.decode(str);
 }
 
 export function assign<T>(...args: T[] | Partial<T>[]): T {

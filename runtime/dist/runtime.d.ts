@@ -1,5 +1,5 @@
 import { AccountContext } from "./context";
-import { State, StandaloneOutput, ResultsObject } from './types';
+import { InternalState, StandaloneOutput, ResultsObject, ExternalState } from './types';
 /**
  * Account object of client and contracts.
  */
@@ -7,7 +7,7 @@ export declare class Account {
     account_id: string;
     wasmFile: string | null;
     runtime: Runtime;
-    state: State;
+    internalState: InternalState;
     balance: number;
     lockedBalance: number;
     signerAccountPk: string;
@@ -75,7 +75,7 @@ export declare class Account {
     /**
      * Current state of contract.
      */
-    getState(): State;
+    get state(): ExternalState;
     reset(): void;
 }
 export declare class Runtime {
