@@ -31,7 +31,7 @@ class Account {
         this.internalState = {};
         this.balance = DEFAULT_BALANCE;
         this.lockedBalance = 0;
-        this.storage_usage = 0;
+        this.storage_usage = 60;
         this.signerAccountPk = utils_1.encodeBs58(account_id.slice(0, 32).padEnd(32, " "));
         this.runtime.log(this.signerAccountPk);
         if (wasmFile != null && !fs.existsSync(wasmFile)) {
@@ -120,34 +120,34 @@ class Account {
      * Current state of contract.
      */
     get state() {
-        return Object.getOwnPropertyNames(this.internalState).reduce((acc, cur) => {
-            let key = utils_1.decodeBs64(cur);
-            acc[key] = JSON.parse(utils_1.decodeBs64(this.internalState[cur]));
-            return acc;
-        }, {});
+        return utils_1.decodeState(this.internalState);
+    }
+    set state(state) {
+        this.internalState = utils_1.encodeState(state);
+        this.storage_usage = utils_1.stateSize(state);
     }
     reset() {
         this.internalState = {};
         this.balance = DEFAULT_BALANCE;
         this.lockedBalance = 0;
+        this.storage_usage = 60;
     }
 }
 exports.Account = Account;
 class Runtime {
     constructor() {
         this.accounts = new Map();
-        if (os.type() === 'Windows_NT') {
+        if (os.type() === "Windows_NT") {
             console.error("Windows is not supported.");
             process.exit(0);
         }
         /**
          * run binary if it doesn't exist so that it installs itself.
-        */
+         */
         try {
             child_process_1.spawnSync("node", [__dirname + "/bin.js"]);
         }
-        catch (e) {
-        }
+        catch (e) { }
     }
     log(input) {
         if (process.env.DEBUG) {
@@ -199,12 +199,13 @@ class Runtime {
             args.push("--promise-results=" + JSON.stringify(data));
         }
         var result = this.spawn(args);
-        this.log(result);
-        if (!context.is_view && result["err"] == null) {
-            account.balance = result["outcome"]["balance"];
-            account.internalState = result["state"];
-            account.storage_usage = result["outcome"].storage_usage;
+        if (!context.is_view && result.err == null) {
+            account.balance = result.outcome.balance;
+            account.internalState = result.state;
+            account.storage_usage = result.outcome.storage_usage;
         }
+        result.state = utils_1.decodeState(result.state);
+        this.log(result);
         return result;
     }
     call(account_id, method_name, input = "", accountContext) {
@@ -350,7 +351,7 @@ class Runtime {
         };
     }
     reset() {
-        this.accounts.forEach(account => account.reset());
+        this.accounts.forEach((account) => account.reset());
     }
     spawn(args) {
         let execResult = child_process_1.spawnSync("node", args);

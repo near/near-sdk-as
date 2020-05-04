@@ -1,3 +1,4 @@
+import { InternalState, ExternalState } from "./types";
 export declare function toNum(x: number | BigInt): number;
 export declare function UTF8toStr(array: Uint8Array | number[]): string;
 export declare function StrtoUTF8(str: string): Uint8Array;
@@ -7,3 +8,6 @@ export declare function decodeBs58(str: string): string;
 export declare function encodeBs64(str: string): string;
 export declare function decodeBs64(str: string): string;
 export declare function assign<T>(...args: T[] | Partial<T>[]): T;
+export declare function decodeState(state: InternalState): ExternalState;
+export declare function encodeState(state: ExternalState): InternalState;
+export declare function stateSize(state: ExternalState): number;
