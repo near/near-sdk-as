@@ -1,7 +1,13 @@
 export declare const DEFAULT_GAS: number;
+/**
+ * Base64 encoded string key/value pair used internally by the VM Runner
+ */
 export declare type InternalState = {
     [key: string]: string;
 };
+/**
+ * Decoded string key and JSON paresd value
+ */
 export declare type ExternalState = {
     [key: string]: any;
 };
@@ -37,15 +43,15 @@ export declare type ReturnData = Value | ReceiptIndex | None;
 export interface VMOutcome {
     /**
      * Balance remaining after the transaction.
-    */
+     */
     balance: string;
     /**
      * Total amount of storage used by contract.
-    */
+     */
     storage_usage: number;
     /**
      * Data returned from contract method.
-    */
+     */
     return_data: ReturnData;
     /**
      * Amount of gased burnt through executing the contract.
@@ -79,5 +85,5 @@ export interface StandaloneOutput {
     /**
      * Current state of the contract. key and values encoded as Base64 strings.
      */
-    state: InternalState;
+    state: ExternalState;
 }

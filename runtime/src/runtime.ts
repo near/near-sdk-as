@@ -1,4 +1,4 @@
-import { encodeBs58, assign, decodeBs64 } from './utils';
+import { encodeBs58, assign, decodeState, encodeState, stateSize } from './utils';
 import {
   AccountContext,
   defaultAccountContext,
@@ -7,8 +7,13 @@ import {
 import { spawnSync } from "child_process";
 import * as os from "os";
 import * as fs from "fs";
-import { InternalState, DEFAULT_GAS, StandaloneOutput, ResultsObject, ExternalState } from './types';
-
+import {
+  InternalState,
+  DEFAULT_GAS,
+  StandaloneOutput,
+  ResultsObject,
+  ExternalState,
+} from "./types";
 
 const DEFAULT_BALANCE = 1000000000000;
 
@@ -20,13 +25,13 @@ export class Account {
   balance: number = DEFAULT_BALANCE;
   lockedBalance = 0;
   signerAccountPk: string;
-  storage_usage: number = 0;
+  storage_usage: number = 60;
 
   /**
    * Sholud only be constructed by a runtime instance.
-   * @param account_id 
-   * @param wasmFile 
-   * @param runtime 
+   * @param account_id
+   * @param wasmFile
+   * @param runtime
    */
   constructor(
     public account_id: string,
@@ -36,7 +41,7 @@ export class Account {
     this.signerAccountPk = encodeBs58(account_id.slice(0, 32).padEnd(32, " "));
     this.runtime.log(this.signerAccountPk);
     if (wasmFile != null && !fs.existsSync(wasmFile)) {
-        throw new Error(`Path ${wasmFile} to contract wasm file doesn't exist`);
+      throw new Error(`Path ${wasmFile} to contract wasm file doesn't exist`);
     }
   }
 
@@ -157,40 +162,38 @@ export class Account {
    * Current state of contract.
    */
   get state(): ExternalState {
-    return Object.getOwnPropertyNames(this.internalState).reduce<ExternalState>((acc: InternalState, cur: string) => {
-      let key = decodeBs64(cur);
-      acc[key] = JSON.parse(decodeBs64(this.internalState[cur]));
-      return acc;
-    },
-    {});
+    return decodeState(this.internalState);
   }
 
+  set state(state: ExternalState) {
+    this.internalState = encodeState(state);
+    this.storage_usage = stateSize(state);
+  }
 
   reset(): void {
     this.internalState = {};
     this.balance = DEFAULT_BALANCE;
     this.lockedBalance = 0;
+    this.storage_usage = 60;
   }
 }
-
 
 export class Runtime {
   accounts: Map<string, Account> = new Map();
 
   constructor() {
-    if (os.type() === 'Windows_NT') {
+    if (os.type() === "Windows_NT") {
       console.error("Windows is not supported.");
       process.exit(0);
     }
     /**
      * run binary if it doesn't exist so that it installs itself.
-    */
+     */
     try {
-      spawnSync("node", [__dirname+"/bin.js"]);
-    } catch (e){
-    }
+      spawnSync("node", [__dirname + "/bin.js"]);
+    } catch (e) {}
   }
-  
+
   log(input: any): void {
     if (process.env.DEBUG) {
       console.log(input);
@@ -211,9 +214,7 @@ export class Runtime {
   getAccount(account_id: string): Account {
     const account = this.accounts.get(account_id);
     if (account == undefined)
-    throw new Error(
-      account_id + " has not be added."
-    );
+      throw new Error(account_id + " has not be added.");
     return account;
   }
 
@@ -234,9 +235,7 @@ export class Runtime {
     );
 
     const signer_account = this.getOrCreateAccount(context.signer_account_id);
-    const predecessor_account = this.getAccount(
-      context.predecessor_account_id
-    );
+    const predecessor_account = this.getAccount(context.predecessor_account_id);
     const account = this.getAccount(account_id);
     context.current_account_id = account.account_id;
     context.signer_account_pk = signer_account.signerAccountPk;
@@ -259,12 +258,13 @@ export class Runtime {
     }
 
     var result = this.spawn(args);
-    this.log(result);
-    if (!context.is_view && result["err"] == null) {
-      account.balance = result["outcome"]["balance"];
-      account.internalState = result["state"];
-      account.storage_usage = result["outcome"].storage_usage;
+    if (!context.is_view && result.err == null) {
+      account.balance = result.outcome.balance;
+      account.internalState = result.state;
+      account.storage_usage = result.outcome.storage_usage;
     }
+    result.state = decodeState(result.state);
+    this.log(result);
     return result;
   }
 
@@ -338,7 +338,7 @@ export class Runtime {
             }
           } else {
             let ret = result.outcome.return_data;
-            if (typeof ret == "string" || ret.Value != undefined)  {
+            if (typeof ret == "string" || ret.Value != undefined) {
               let result_data = {
                 Successful: typeof ret == "string" ? "" : ret.Value,
               };
@@ -426,7 +426,7 @@ export class Runtime {
   }
 
   reset() {
-    this.accounts.forEach(account => account.reset());
+    this.accounts.forEach((account) => account.reset());
   }
 
   private spawn(args: string[]): any {

@@ -1,4 +1,4 @@
-import { Runtime, Account } from "..";
+import { Runtime, Account, stateSize } from "..";
 
 let runtime: Runtime;
 let sentences: Account, words: Account, alice: Account;
@@ -9,6 +9,10 @@ describe("cross contract calls", () => {
     sentences = runtime.newAccount("sentences", __dirname + "/../out/sentences.wasm");
     words = runtime.newAccount("words.examples", __dirname + "/../out/words.wasm");
   });
+
+  function addWord(hello: string) {
+    return alice.call_other("sentences", "SetWord", {word: {text: "hello"}});
+  }
   
   test("single promise", () => {
     let res = alice.call_other("sentences", "reverseWordOne");
@@ -25,7 +29,7 @@ describe("cross contract calls", () => {
   }); 
 
   test("add to storage", () => {
-    alice.call_other("sentences", "SetWord", {word: {text: "hello"}});
+    addWord("hello");
     expect(sentences.storage_usage).toBeGreaterThan(0);
   });
 
@@ -35,9 +39,18 @@ describe("cross contract calls", () => {
     expect(sentences.state["word"]).toBe(undefined);
   });
   test("read from storage", () => {
-    alice.call_other("sentences", "SetWord", {word: {text: "hello"}});
-    const word =sentences.view("GetWord").return_data;
+    addWord("hello");
+    const word = sentences.view("GetWord").return_data;
     expect(word.text).toBe("hello");
     expect(sentences.state["word"]).toStrictEqual(word)
   });
-})
+
+  test("setting state", () => {
+    let state = { "word": { text: "hello" }};
+    sentences.state = state;
+    sentences.reset();
+    let { result } = addWord("hello");
+    expect(result.state).toStrictEqual(state);
+  });
+
+});

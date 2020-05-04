@@ -1,5 +1,5 @@
 import { AccountContext } from "./context";
-import { InternalState, StandaloneOutput, ResultsObject, ExternalState } from './types';
+import { InternalState, StandaloneOutput, ResultsObject, ExternalState } from "./types";
 /**
  * Account object of client and contracts.
  */
@@ -76,6 +76,7 @@ export declare class Account {
      * Current state of contract.
      */
     get state(): ExternalState;
+    set state(state: ExternalState);
     reset(): void;
 }
 export declare class Runtime {
