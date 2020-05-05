@@ -104,7 +104,7 @@ class Account {
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input);
         accountContext.is_view = true;
-        const result = this.runtime.call_step(this.account_id, method_name, input, accountContext);
+        const result = this.runtime.call_step(this.account_id, method_name, accountContext.input, accountContext);
         var return_data = (result.outcome && result.outcome.return_data);
         if (return_data && return_data.Value) {
             return_data = JSON.parse(return_data.Value);

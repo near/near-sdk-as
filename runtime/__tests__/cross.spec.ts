@@ -53,4 +53,8 @@ describe("cross contract calls", () => {
     expect(result.state).toStrictEqual(state);
   });
 
+  test("getting view with arg", () => {
+    expect(words.view("reverse", {word: {text: "hello"}}).return_data.text).toBe("olleh");
+  });
+
 });

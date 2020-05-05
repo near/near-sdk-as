@@ -143,7 +143,7 @@ export class Account {
     const result = this.runtime.call_step(
       this.account_id,
       method_name,
-      input,
+      accountContext.input,
       accountContext
     );
     var return_data = <any>(result.outcome && result.outcome.return_data);
