@@ -25,6 +25,7 @@ import { storage } from "../storage";
  *
  * @typeParam T The generic type parameter `T` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
  */
+@nearBindgen
 export class PersistentVector<T> {
   private _elementPrefix: string;
   private _lengthKey: string;
