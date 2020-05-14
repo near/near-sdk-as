@@ -16,3 +16,4 @@ wasm-mock-vm/
 .DS_Store
 
 docs/
+**/*/tsconfig.tsbuildinfo*

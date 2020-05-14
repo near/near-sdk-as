@@ -1,4 +1,4 @@
-import { context, logging, ContractPromise, u128, storage } from "..";
+import { context, logging, ContractPromise, u128, storage, env } from "..";
 import { Word } from "./model";
 
 export function SetWord(word: Word): void {
@@ -142,5 +142,9 @@ class ReverseArgs {
   constructor(
     public word: Word
   ) { }
+}
+
+export function getBlock_timestamp(): u64 {
+  return env.block_timestamp();
 }
 

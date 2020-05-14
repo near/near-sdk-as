@@ -1,4 +1,4 @@
-import { AccountContext } from "./context";
+import { AccountContext, VMContext } from "./context";
 import { InternalState, StandaloneOutput, ResultsObject, ExternalState } from "./types";
 /**
  * Account object of client and contracts.
@@ -81,11 +81,13 @@ export declare class Account {
 }
 export declare class Runtime {
     accounts: Map<string, Account>;
+    context?: VMContext;
     constructor();
     log(input: any): void;
     newAccount(accoundId: string, wasmFile?: string | null): Account;
     getOrCreateAccount(account_id: string): Account;
     getAccount(account_id: string): Account;
+    setContext(context: Partial<VMContext>): void;
     call_step(account_id: string, method_name: string, input?: string, accountContext?: Partial<AccountContext>): StandaloneOutput;
     call(account_id: string, method_name: string, input: string | undefined, accountContext: Partial<AccountContext>): {
         return_data: any;
