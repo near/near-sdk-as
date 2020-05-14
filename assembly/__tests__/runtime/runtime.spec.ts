@@ -374,7 +374,20 @@ describe("context", () => {
           expect(context.accountBalance).toStrictEqual(u128.from(6), "Updating the attached deposit should update the account balance");
         });
     });
-      
+  
+  describe("Find the block_timestamp", () => {
+    it("should be the default", () => {
+      let timestamp = context.blockTimestamp;
+      expect(timestamp).toBe(42)
+    });
+
+    it("should be the updatable", () => {
+      Context.setBlock_timestamp(84);
+      let timestamp = context.blockTimestamp;
+      expect(timestamp).toBe(84);
+    });
+
+  });
       
   it("should be editable", () => {
     Context.setCurrent_account_id("contractaccount");

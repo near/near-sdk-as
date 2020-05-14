@@ -9,7 +9,7 @@ function defaultContext() {
         attached_deposit: "0",
         is_view: false,
         block_index: 1,
-        block_timestamp: 1585778575325000000,
+        block_timestamp: 42,
         epoch_height: 1,
         storage_usage: 100,
         random_seed: "KuTCtARNzxZQ3YvXDeLjx83FDqxv2SdQTSbiq876zR7",
@@ -38,8 +38,7 @@ function prepareContext(vmcontext) {
     return vmcontext;
 }
 exports.prepareContext = prepareContext;
-function createContext(accountContext) {
-    const context = defaultContext();
+function createContext(accountContext, context = defaultContext()) {
     for (let key of Object.getOwnPropertyNames(context)) {
         //@ts-ignore
         if (accountContext[key] != undefined) {
