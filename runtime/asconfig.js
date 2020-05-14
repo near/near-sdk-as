@@ -12,8 +12,8 @@ function compileContract(input) {
         // "--runPasses", "inlining-optimizing,dce" // Inlines to optimize and removes deadcode
         ], {
         //   verbose: true
-        })
+        });
 }
 
-compileContract("words")
-compileContract("sentences")
+compileContract("words");
+compileContract("sentences");

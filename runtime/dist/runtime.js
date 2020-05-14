@@ -169,6 +169,9 @@ class Runtime {
             throw new Error(account_id + " has not be added.");
         return account;
     }
+    setContext(context) {
+        this.context = { ...context_1.defaultContext(), ...context };
+    }
     call_step(account_id, method_name, input = "", accountContext = context_1.defaultAccountContext()) {
         accountContext.signer_account_id =
             accountContext.signer_account_id || account_id;
@@ -185,7 +188,7 @@ class Runtime {
         context.account_locked_balance = account.lockedBalance.toString();
         context.input = input;
         context.storage_usage = account.storage_usage;
-        const vmContext = context_1.createContext(context);
+        const vmContext = context_1.createContext(context, this.context);
         this.log(JSON.stringify(vmContext));
         let args = [
             __dirname + "/bin.js",

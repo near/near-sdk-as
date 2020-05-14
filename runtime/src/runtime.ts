@@ -3,6 +3,8 @@ import {
   AccountContext,
   defaultAccountContext,
   createContext,
+  VMContext,
+  defaultContext
 } from "./context";
 import { spawnSync } from "child_process";
 import * as os from "os";
@@ -180,6 +182,7 @@ export class Account {
 
 export class Runtime {
   accounts: Map<string, Account> = new Map();
+  context?: VMContext;
 
   constructor() {
     if (os.type() === "Windows_NT") {
@@ -218,6 +221,10 @@ export class Runtime {
     return account;
   }
 
+  setContext(context: Partial<VMContext>) {
+    this.context = {...defaultContext(), ...context };
+  }
+
   call_step(
     account_id: string,
     method_name: string,
@@ -243,7 +250,7 @@ export class Runtime {
     context.account_locked_balance = account.lockedBalance.toString();
     context.input = input;
     context.storage_usage = account.storage_usage;
-    const vmContext = createContext(context);
+    const vmContext = createContext(context, this.context);
     this.log(JSON.stringify(vmContext));
     let args = [
       __dirname + "/bin.js",
