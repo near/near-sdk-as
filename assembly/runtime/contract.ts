@@ -39,6 +39,13 @@ class Context {
   }
 
   /**
+  * Current block timestamp, i.e. number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
+  */
+  get blockTimestamp(): u64 {
+    return env.block_timestamp();
+  }
+
+  /**
   * The amount of tokens received with this execution call.
   * @deprecated use attachedDeposit.
   */

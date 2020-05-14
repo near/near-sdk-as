@@ -31,6 +31,9 @@ export declare namespace env {
   @external("env", "block_index")
   export function block_index() : u64;
   //@ts-ignore
+  @external("env", "block_timestamp")
+  export function block_timestamp() : u64;
+  //@ts-ignore
   @external("env", "storage_usage")
   export function storage_usage() : u64;
 
