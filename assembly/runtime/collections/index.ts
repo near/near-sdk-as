@@ -50,4 +50,7 @@ export * from "./persistentDeque";
 export * from "./persistentMap";
 /** @internal */
 export * from "./persistentVector";
+/** @internal */
 export * from "./persistentSet";
+/** @internal */
+export * from "./persistentOrderedMap"
