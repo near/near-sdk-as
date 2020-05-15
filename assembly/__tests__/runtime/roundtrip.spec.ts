@@ -62,24 +62,24 @@ describe("Round Trip", () => {
       arr.push("hello");
       expect<PersistentVector<string>>(roundtrip(arr)).toStrictEqual(arr);
     });
-    // it("Set", () => {
-    //   let arr = new PersistentSet<string>("hi");
-    //   expect(roundtrip(arr)).toStrictEqual(arr);
-    //   arr.add("hello");
-    //   expect(roundtrip(arr)).toStrictEqual(arr);
-    // });
-    // it("Map", () => {
-    //   let arr = new PersistentMap<string, string>("hi");
-    //   expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
-    //   arr.set("hello", "world");
-    //   expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
-    // });
-    // it("Deque", () => {
-    //   let arr = new PersistentDeque<string>("hi");
-    //   expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
-    //   arr.push("hello");
-    //   expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
-    // });
+    it("Set", () => {
+      let arr = new PersistentSet<string>("hi");
+      expect(roundtrip(arr)).toStrictEqual(arr);
+      arr.add("hello");
+      expect(roundtrip(arr)).toStrictEqual(arr);
+    });
+    it("Map", () => {
+      let arr = new PersistentMap<string, string>("hi");
+      expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
+      arr.set("hello", "world");
+      expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
+    });
+    it("Deque", () => {
+      let arr = new PersistentDeque<string>("hi");
+      expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
+      arr.pushFront("hello");
+      expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
+    });
   }); 
 })
 
