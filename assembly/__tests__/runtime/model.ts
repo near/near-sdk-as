@@ -16,19 +16,19 @@ export class TextMessage {
 
 @nearBindgen
 export class Collections {
-  public getVector() {
+  public getVector(): PersistentVector<string> {
     return new PersistentVector<string>("v");
   }
 
-  public getMap() {
+  public getMap(): PersistentMap<string,string> {
     return new PersistentMap<string, string>("m");
   }
 
-  public getSet() {
+  public getSet(): PersistentSet<string> {
     return new PersistentSet<string>("s");
   }
 
-  public getDeque() {
+  public getDeque(): PersistentDeque<string> {
     return new PersistentDeque<string>("dq");
   }
 }
