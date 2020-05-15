@@ -28,6 +28,7 @@ import { storage } from "../storage";
  * @typeParam K The generic type parameter `K` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
  * @typeParam V The generic type parameter `V` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
  */
+@nearBindgen
 export class PersistentMap<K, V> {
   private _elementPrefix: string;
 

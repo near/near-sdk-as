@@ -1,6 +1,6 @@
 import { _testTextMessage, roundtrip } from "../util";
 import { TextMessage } from "../model";
-import { util } from "../..";
+import { util, PersistentVector, PersistentSet, PersistentMap, PersistentDeque } from "../..";
 import { Box } from "./generic";
 
 describe("Round Trip", () => {
@@ -53,7 +53,34 @@ describe("Round Trip", () => {
 
   it("sholud handle null", () => {
     expect<TextMessage | null>(roundtrip<TextMessage | null>(null)).toBeNull();
-  })
+  });
+
+  describe("Persistent Collections are serializable ",() => {
+    it("Vector", () => {
+      let arr = new PersistentVector<string>("hi");
+      expect<PersistentVector<string>>(roundtrip(arr)).toStrictEqual(arr);
+      arr.push("hello");
+      expect<PersistentVector<string>>(roundtrip(arr)).toStrictEqual(arr);
+    });
+    it("Set", () => {
+      let arr = new PersistentSet<string>("hi");
+      expect(roundtrip(arr)).toStrictEqual(arr);
+      arr.add("hello");
+      expect(roundtrip(arr)).toStrictEqual(arr);
+    });
+    it("Map", () => {
+      let arr = new PersistentMap<string, string>("hi");
+      expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
+      arr.set("hello", "world");
+      expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
+    });
+    it("Deque", () => {
+      let arr = new PersistentDeque<string>("hi");
+      expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
+      arr.pushFront("hello");
+      expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
+    });
+  }); 
 })
 
 class Generic<T> {

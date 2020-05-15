@@ -24,6 +24,7 @@ import { math } from "../math";
  * ```
  *
  */
+@nearBindgen
 export class PersistentSet<T> {
   private _map: PersistentMap<Uint8Array, i32>;
   private _vector: PersistentVector<T>;

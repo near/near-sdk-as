@@ -192,7 +192,7 @@ export { __wrapper_${name} as ${name} }`);
           console.error("\x1b[31m", `@nearfile is deprecated use @${NEAR_DECORATOR} decorator on ${className}`,"\x1b[0m");
         }
         str += `
-  decode<V = Uint8Array>(buf: V): ${className} {
+  decode<_V = Uint8Array>(buf: _V): ${className} {
     let json: JSON.Obj;
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);

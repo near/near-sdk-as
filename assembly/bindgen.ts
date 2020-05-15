@@ -90,25 +90,30 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
     //@ts-ignore
      if (isNull<T>(value)) {
        encoder.setNull(name);
-     } else if (isArrayLike<T>(value)) {
-      if (value instanceof Uint8Array) {
+     } else {
         //@ts-ignore
-        encoder.setString(name, base64.encode(<Uint8Array> value));
-      } else {
-        encoder.pushArray(name);
-        for (let i: i32 = 0; i < value.length; i++) {
+       if (isDefined(value._encode)) {
+        //@ts-ignore
+         value._encode(name, encoder);
+       } else if (isArrayLike<T>(value)) {
+        if (value instanceof Uint8Array) {
           //@ts-ignore
-          encode<valueof<T>, JSONEncoder>(value[i], null, encoder);
+          encoder.setString(name, base64.encode(<Uint8Array> value));
+        } else {
+          encoder.pushArray(name);
+          for (let i: i32 = 0; i < value.length; i++) {
+            //@ts-ignore
+            encode<valueof<T>, JSONEncoder>(value[i], null, encoder);
+          }
+          encoder.popArray();
         }
-        encoder.popArray();
-      }
-    } else { // Is an object
-      if (value instanceof u128) {
-        encoder.setString(name, value.toString());
-      } else {
-        //@ts-ignore
-        value._encode(name, encoder);
-      }
+      } else { // Is an object
+        if (value instanceof u128) {
+          encoder.setString(name, value.toString());
+        }
+     }
+     
+
     }
   } else {
     throw new Error("Encoding failed");
@@ -199,6 +204,13 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     return getStr(val, name);
   }
   assert(isReference<T>(), name + " with type " + nameof<T>() + " must be an integer, boolean, string, object, or array");
+  //@ts-ignore
+  if (isDefined(value.decode)) {
+    assert(val instanceof JSON.Obj, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not an object or null");
+    value = changetype<T>(__alloc(offsetof<T>(), idof<T>()));
+    //@ts-ignore
+    return value.decode<JSON.Obj>(<JSON.Obj>val);
+  }
   if (isArrayLike<T>()) {
     //@ts-ignore
     if (value instanceof Uint8Array ) {
@@ -216,8 +228,5 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     //@ts-ignore
     return u128.fromString(getStr(val, name));
   }
-  assert(val instanceof JSON.Obj, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not an object or null");
-  value = changetype<T>(__alloc(offsetof<T>(), idof<T>()));
-  //@ts-ignore
-  return value.decode<JSON.Obj>(<JSON.Obj>val);
+  unreachable();
 }
