@@ -117,6 +117,7 @@ export function _onReverseCalledTwo(): bool {
 
 
 export function reverseWordOne(): void {
+  env.input()
   const word = new Word("sample")
   const contract = "words.examples"
   const method = "reverse"
