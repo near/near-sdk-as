@@ -48,6 +48,11 @@ function value_return(value_len: Usize, value_ptr: Usize): void {
 function panic(): void {
   runtime_api.panic();
 }
+//@ts-ignore
+@global
+function panic_utf8(len: Usize, ptr: Usize): void {
+  runtime_api.panic_utf8(len, ptr);
+}
 
 //@ts-ignore
 @global

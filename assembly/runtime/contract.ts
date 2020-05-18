@@ -39,6 +39,20 @@ class Context {
   }
 
   /**
+  * Current block timestamp.
+  */
+  get blockTimestamp(): u64 {
+    return env.block_timestamp();
+  }
+
+  /**
+  * Current epoch height.
+  */
+  get epochHeight(): u64 {
+    return env.epoch_height();
+  }
+
+  /**
   * The amount of tokens received with this execution call.
   * @deprecated use attachedDeposit.
   */
@@ -62,6 +76,15 @@ class Context {
   get accountBalance(): u128 {
     let buffer = new Uint8Array(16);
     env.account_balance(buffer.dataStart);
+    return u128.fromBytes(buffer);
+  }
+
+  /**
+  * Returns the current locked balance of the sender account.  This amount will be greater than zero if the account is staking.
+  */
+  get accountLockedBalance(): u128 {
+    let buffer = new Uint8Array(16);
+    env.account_locked_balance(buffer.dataStart);
     return u128.fromBytes(buffer);
   }
 

@@ -31,6 +31,12 @@ export declare namespace env {
   @external("env", "block_index")
   export function block_index() : u64;
   //@ts-ignore
+  @external("env", "block_timestamp")
+  export function block_timestamp() : u64;
+  //@ts-ignore
+  @external("env", "epoch_height")
+  export function epoch_height() : u64;
+  //@ts-ignore
   @external("env", "storage_usage")
   export function storage_usage() : u64;
 
@@ -40,6 +46,9 @@ export declare namespace env {
   //@ts-ignore
   @external("env", "account_balance")
   export function account_balance(balance_ptr: u64) : void;
+  //@ts-ignore
+  @external("env", "account_locked_balance")
+  export function account_locked_balance(balance_ptr: u64) : void;
   //@ts-ignore
   @external("env", "attached_deposit")
   export function attached_deposit(balance_ptr: u64) : void;
@@ -75,6 +84,9 @@ export declare namespace env {
   //@ts-ignore
   @external("env", "panic")
   export function panic() : void;
+  //@ts-ignore
+  @external("env", "panic_utf8")
+  export function panic_utf8(len: u64, ptr: u64) : void;
   //@ts-ignore
   @external("env", "log_utf8")
   export function log_utf8(len: u64, ptr: u64) : void;
