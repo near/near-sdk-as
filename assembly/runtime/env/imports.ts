@@ -107,15 +107,6 @@ export declare namespace env {
   @external("env", "promise_and")
   export function promise_and(promise_idx_ptr: u64, promise_idx_count: u64) : u64;
   //@ts-ignore
-  @external("env", "promise_results_count")
-  export function promise_results_count() : u64;
-  //@ts-ignore
-  @external("env", "promise_result")
-  export function promise_result(result_idx: u64, register_id: u64) : u64;
-  //@ts-ignore
-  @external("env", "promise_return")
-  export function promise_return(promise_id: u64) : void;
-  //@ts-ignore
   @external("env", "promise_batch_create")
   export function promise_batch_create(account_id_len: u64, account_id_ptr: u64): u64;
   //@ts-ignore
@@ -152,6 +143,19 @@ export declare namespace env {
   //@ts-ignore
   @external("env", "promise_batch_action_delete_account")
   export function promise_batch_action_delete_account(promise_index: u64, beneficiary_id_len: u64, beneficiary_id_ptr: u64): void
+
+  // #######################
+  // # Promise API results #
+  // #######################
+  //@ts-ignore
+  @external("env", "promise_results_count")
+  export function promise_results_count() : u64;
+  //@ts-ignore
+  @external("env", "promise_result")
+  export function promise_result(result_idx: u64, register_id: u64) : u64;
+  //@ts-ignore
+  @external("env", "promise_return")
+  export function promise_return(promise_id: u64) : void;
 
   // ###############
   // # Storage API #
