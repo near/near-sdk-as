@@ -57,12 +57,11 @@ class Context {
   * @deprecated use attachedDeposit.
   */
   get receivedAmount(): u128 {
-    return this.receivedAmount();
+    return this.attachedDeposit();
   }
 
   /**
   * The amount of tokens received with this execution call.
-  * @deprecated use attachedDeposit.
   */
   get attachedDeposit(): u128 {
     let buffer = new Uint8Array(16);
