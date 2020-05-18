@@ -93,9 +93,6 @@ export declare namespace env {
   //@ts-ignore
   @external("env", "log_utf16")
   export function log_utf16(len: u64, ptr: u64) : void;
-  //@ts-ignore
-  @external("env", "abort")
-  export function abort(msg_ptr: u32, filename_ptr: u32, line: u32, col: u32) : void;
 
   // ################
   // # Promises API #
@@ -171,17 +168,4 @@ export declare namespace env {
   //@ts-ignore
   @external("env", "storage_has_key")
   export function storage_has_key(key_len: u64, key_ptr: u64) : u64;
-  //@ts-ignore
-  @external("env", "storage_iter_prefix")
-  export function storage_iter_prefix(prefix_len: u64, prefix_ptr: u64) : u64;
-  //@ts-ignore
-  @external("env", "storage_iter_range")
-  export function storage_iter_range(start_len: u64, start_ptr: u64, end_len: u64, end_ptr: u64) : u64;
-  //@ts-ignore
-  @external("env", "storage_iter_next")
-  export function storage_iter_next(iterator_id: u64, key_register_id: u64, value_register_id: u64) : u64;
-  //@ts-ignore
-  // Function for the injected gas counter. Automatically called by the gas meter.
-  @external("env", "gas")
-  export function gas(gas_amount: u32) : void;
 }
