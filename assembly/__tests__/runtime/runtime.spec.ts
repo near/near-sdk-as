@@ -1,4 +1,4 @@
-import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128 } from "../../runtime";
+import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, ContractPromiseBatch, math, logging, env, u128 } from "../../runtime";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 import { Context, VM, Outcome } from "../../vm";
@@ -415,6 +415,41 @@ describe("promises", () => {
     // const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
     // const promise3 = ContractPromise.all([promise2]);
   });
+
+  it("should support contract batch transactions", () => {
+    Context.setPrepaid_gas(10000000000000);
+    expect(context.accountBalance).toBe(u128.from(9))
+    ContractPromiseBatch.create("alice").transfer(u128.from(1))
+    expect(context.accountBalance).toBe(u128.from(8)) // this number is surprising
+  })
+
+  it("should support chained calls", () => {
+    const code = _testBytes();
+
+    // TODO: this sets balance to 14 for some reason, why is that?
+    Context.setAccount_balance(u128.Zero)
+    expect(context.accountBalance).toBe(u128.from(14))
+
+    ContractPromiseBatch
+      .create("app-v1.bob.testnet")
+      .create_account()
+      .transfer(u128.from(1))
+      .add_full_access_key(new Uint8Array(0)) // TODO: how to get signer public key?
+      .deploy_contract(code)
+
+    expect(context.accountBalance).toBe(u128.from(13))
+  })
+
+  it("should support cross contract calls", () => {
+    const msg = _testTextMessage();
+
+    let promise = ContractPromiseBatch
+                    .create("message-parser.testnet")
+                    .function_call("parseMessage", new Uint8Array(0), u128.Zero, 1000)
+
+    promise.then("message-replier.testnet")
+           .function_call("replyToMessage", new Uint8Array(0), u128.Zero, 1000)
+  })
 });
 
 const stringValue = "toHash";
