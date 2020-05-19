@@ -23,12 +23,12 @@
  (type $i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32) (result i32)))
  (type $i32_i64_i64_=>_i32 (func (param i32 i64 i64) (result i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
- (import "env" "log_utf8" (func $../assembly/runtime/env/imports/env.log_utf8 (param i64 i64)))
- (import "env" "input" (func $../assembly/runtime/env/imports/env.input (param i64)))
- (import "env" "register_len" (func $../assembly/runtime/env/imports/env.register_len (param i64) (result i64)))
- (import "env" "panic" (func $../assembly/runtime/env/imports/env.panic))
- (import "env" "read_register" (func $../assembly/runtime/env/imports/env.read_register (param i64 i64)))
- (import "env" "value_return" (func $../assembly/runtime/env/imports/env.value_return (param i64 i64)))
+ (import "env" "log_utf8" (func $../assembly/runtime/env/imports/_log_utf8 (param i64 i64)))
+ (import "env" "input" (func $../assembly/runtime/env/imports/_input (param i64)))
+ (import "env" "register_len" (func $../assembly/runtime/env/imports/_register_len (param i64) (result i64)))
+ (import "env" "panic" (func $../assembly/runtime/env/imports/_panic))
+ (import "env" "read_register" (func $../assembly/runtime/env/imports/_read_register (param i64 i64)))
+ (import "env" "value_return" (func $../assembly/runtime/env/imports/_value_return (param i64 i64)))
  (memory $0 1)
  (data (i32.const 16) "\08\00\00\00\01\00\00\00\01\00\00\00\08\00\00\00:\00l\00e\00n\00")
  (data (i32.const 48) "\0c\00\00\00\01\00\00\00\01\00\00\00\0c\00\00\00:\00f\00r\00o\00n\00t\00")
@@ -2621,6 +2621,8 @@
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
+  (local $4 i64)
+  (local $5 i64)
   local.get $0
   call $~lib/rt/stub/__retain
   local.set $0
@@ -2643,10 +2645,14 @@
   local.get $1
   i32.load offset=8
   i64.extend_i32_s
+  local.set $5
   local.get $1
   i32.load offset=4
   i64.extend_i32_u
-  call $../assembly/runtime/env/imports/env.log_utf8
+  local.set $4
+  local.get $5
+  local.get $4
+  call $../assembly/runtime/env/imports/_log_utf8
   local.get $1
   call $~lib/rt/stub/__release
   local.get $0
@@ -22450,20 +22456,32 @@
   call $~lib/rt/stub/__release
  )
  (func $../assembly/bindgen/input (param $0 i64)
+  (local $1 i64)
   local.get $0
-  call $../assembly/runtime/env/imports/env.input
+  local.set $1
+  local.get $1
+  call $../assembly/runtime/env/imports/_input
  )
  (func $../assembly/bindgen/register_len (param $0 i64) (result i64)
+  (local $1 i64)
   local.get $0
-  call $../assembly/runtime/env/imports/env.register_len
+  local.set $1
+  local.get $1
+  call $../assembly/runtime/env/imports/_register_len
  )
  (func $../assembly/bindgen/panic
-  call $../assembly/runtime/env/imports/env.panic
+  call $../assembly/runtime/env/imports/_panic
  )
  (func $../assembly/bindgen/read_register (param $0 i64) (param $1 i64)
+  (local $2 i64)
+  (local $3 i64)
   local.get $0
+  local.set $3
   local.get $1
-  call $../assembly/runtime/env/imports/env.read_register
+  local.set $2
+  local.get $3
+  local.get $2
+  call $../assembly/runtime/env/imports/_read_register
  )
  (func $../assembly/bindgen/getInput (result i32)
   (local $0 i64)
@@ -23832,9 +23850,15 @@
   local.get $4
  )
  (func $../assembly/bindgen/value_return (param $0 i64) (param $1 i64)
+  (local $2 i64)
+  (local $3 i64)
   local.get $0
+  local.set $3
   local.get $1
-  call $../assembly/runtime/env/imports/env.value_return
+  local.set $2
+  local.get $3
+  local.get $2
+  call $../assembly/runtime/env/imports/_value_return
  )
  (func $../assembly/__tests__/bindgen/test/__wrapper_convertFoobars
   (local $0 i32)
