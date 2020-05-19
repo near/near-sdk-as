@@ -392,6 +392,10 @@ describe("context", () => {
   it("should be editable", () => {
     Context.setCurrent_account_id("contractaccount");
     expect(context.contractName).toBe("contractaccount", "Wrong contract name");
+    Context.setSigner_account_id("signeraccount");
+    expect(context.sender).toBe("signeraccount", "Wrong signer account");
+    // Context.setSigner_account_pk("public-key-as-string");
+    // expect(context.senderPublicKey).toBe("public-key-as-string", "Wrong public key");
     Context.setBlock_index(113);
     expect(context.blockIndex).toBe(113, "Wrong contract name");
     Context.setAttached_deposit(u128.from(7));

@@ -15,6 +15,14 @@ class Context {
   }
 
   /**
+  * Account public key of transaction sender.
+  */
+  get senderPublicKey(): string {
+    env.signer_account_pk(0);
+    return this._readRegisterContentsAsString(0);
+  }
+
+  /**
   * Account ID of contract.
   */
   get contractName(): string {
