@@ -58,7 +58,11 @@ describe("cross contract calls", () => {
   });
 
   test("get block_timestanp", () => {
-    console.log(sentences.call("getBlock_timestamp").result.outcome.logs);
+    sentences.call("getBlock_timestamp").result.outcome;
   });
+
+  test("contract promise batch", () => {
+    sentences.call("contractPromiseBatch").result.outcome;
+  })
 
 });

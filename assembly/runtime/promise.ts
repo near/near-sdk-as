@@ -77,7 +77,6 @@ export class ContractPromiseBatch {
     return this;
   }
 
-  // TODO: why is amount: Balance a u128 even though the batch_action interface takes a u64?  seems like we're losing half the data here. same happens above w ContractPromise btw
   function_call<T>(methodName: string, args: T, amount: Balance, gas: Gas) : ContractPromiseBatch {
     const method_name = util.stringToBytes(methodName);
     const amountArr = amount.toUint8Array();
@@ -107,7 +106,7 @@ export class ContractPromiseBatch {
   // TODO: not sure what to do about fitting methodNames string[] into params --> (method_names_len: number, method_names_ptr: number)
   add_access_key(publicKey: PublicKey, allowance: Balance, receiverId: AccountId, methodNames: string[], nonce: u64 = 0) : ContractPromiseBatch {
     const allowanceArr = allowance.toUint8Array();
-    const methodNamesArr = util.stringToBytes(methodNames[0]);
+    const methodNamesArr = util.stringToBytes(methodNames.join("\n"));
     env.promise_batch_action_add_key_with_function_call(this.id, publicKey.byteLength, publicKey.dataStart, nonce, allowanceArr.dataStart, receiverId.byteLength, receiverId.dataStart, methodNamesArr.byteLength, methodNamesArr.dataStart)
     return this;
   }

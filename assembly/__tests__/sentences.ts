@@ -1,4 +1,4 @@
-import { context, logging, ContractPromise, u128, storage, env } from "..";
+import { context, logging, ContractPromise, ContractPromiseBatch, u128, storage, env } from "..";
 import { Word } from "./model";
 
 export function SetWord(word: Word): void {
@@ -148,3 +148,14 @@ export function getBlock_timestamp(): u64 {
   return env.block_timestamp();
 }
 
+export function contractPromiseBatch(): ContractPromiseBatch {
+  const word = new Word("sample")
+  const contract = "words.examples"
+  const method = "reverse"
+
+  let reverseArgs = new ReverseArgs(word)
+
+  return ContractPromiseBatch
+            .create(contract)
+            .function_call(method, reverseArgs.encode(), u128.Zero, 0)
+}
