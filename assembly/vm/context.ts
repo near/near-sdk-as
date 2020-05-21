@@ -23,7 +23,7 @@ declare function _setSigner_account_pk(s: usize): void;
 declare function _setPredecessor_account_id(s: usize): void;
 //@ts-ignore
 @external("vm", "setRandom_seed")
-declare function _setRandom_seed(s: usize): void;
+declare function _setRandom_seed(s: string): void;
 
 //@ts-ignore
 @external("vm", "setAttached_deposit")
@@ -128,7 +128,7 @@ export namespace Context {
   }
 
   export function setRandom_seed(s: string): void {
-    _setRandom_seed(changetype<usize>(String.UTF8.encode(s)));
+    _setRandom_seed(s);
   }
 
   export function setIs_view(b: bool): void {

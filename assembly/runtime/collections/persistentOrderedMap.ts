@@ -1,4 +1,5 @@
-import { PersistentMap, PersistentVector } from '.'
+import { PersistentMap } from './persistentMap';
+import { PersistentVector } from './persistentVector';
 
 export class PersistentOrderedMap<K, V> {
   private _map: PersistentMap<K, V>
@@ -37,7 +38,11 @@ export class PersistentOrderedMap<K, V> {
     return ret
   }
 
-  upsert(key: K, value: V): void {
+  get(key: K, defaultValue: V | null = null): V | null {
+    return this._map.get(key, defaultValue);
+  }
+
+  set(key: K, value: V): void {
     if (this._map.contains(key)) {
       if (this._map.get(key) != value) {
         this._map.set(key, value)
