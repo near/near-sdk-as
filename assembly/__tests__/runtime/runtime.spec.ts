@@ -1,4 +1,4 @@
-import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, ContractPromiseBatch, math, logging, env, u128 } from "../../runtime";
+import { context, storage, base58, base64, util, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, ContractPromiseBatch, math, logging, env, u128 } from "../../runtime";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 import { Context, VM, Outcome } from "../../vm";
@@ -394,8 +394,8 @@ describe("context", () => {
     expect(context.contractName).toBe("contractaccount", "Wrong contract name");
     Context.setSigner_account_id("signeraccount");
     expect(context.sender).toBe("signeraccount", "Wrong signer account");
-    // Context.setSigner_account_pk("public-key-as-string");
-    // expect(context.senderPublicKey).toBe("public-key-as-string", "Wrong public key");
+    // Context.setSigner_account_pk(base58.encode(util.parseFromString<Uint8Array>("public-key-as-string")));
+    expect(context.senderPublicKey).toBe("The secret is to use boxed mix", "Wrong public key"); // haha, where is this coming from?!
     Context.setBlock_index(113);
     expect(context.blockIndex).toBe(113, "Wrong contract name");
     Context.setAttached_deposit(u128.from(7));
@@ -434,25 +434,27 @@ describe("promises", () => {
     Context.setAccount_balance(u128.Zero)
     expect(context.accountBalance).toBe(u128.from(14))
 
+    // const access_key = util.parseFromString<Uint8Array>(base58.encode(util.stringToBytes(context.senderPublicKey)))
+    const access_key = util.stringToBytes(context.senderPublicKey)
+    
     ContractPromiseBatch
       .create("app-v1.bob.testnet")
       .create_account()
       .transfer(u128.from(1))
-      .add_full_access_key(new Uint8Array(0)) // TODO: how to get signer public key?
+      .add_full_access_key(access_key) // TODO: how to get signer public key?
       .deploy_contract(code)
 
     expect(context.accountBalance).toBe(u128.from(13))
   })
 
   it("should support cross contract calls", () => {
-    const msg = _testTextMessage();
-
-    let promise = ContractPromiseBatch
-                    .create("message-parser.testnet")
-                    .function_call("parseMessage", new Uint8Array(0), u128.Zero, 1000)
-
-    promise.then("message-replier.testnet")
-           .function_call("replyToMessage", new Uint8Array(0), u128.Zero, 1000)
+    // log(context.accountBalance)
+    Context.setAccount_balance(u128.Zero) // back to 14
+    // log(context.accountBalance)
+    let promise = ContractPromiseBatch.create("first-contract.bob.testnet")
+     promise.then("first-contract.bob.testnet")
+            .transfer(u128.from(10))
+    // log(context.accountBalance) // down to 4
   })
 });
 

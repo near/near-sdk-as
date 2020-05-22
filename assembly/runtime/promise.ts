@@ -9,7 +9,7 @@ function encodeArgs<T>(t: T) : Uint8Array {
   return encode<T>(t);
 }
 
-// TODO: not sure if these types make any sense at all
+// TODO: make a types file for reuse
 type Balance = u128;
 type Gas = u64;
 type PublicKey = Uint8Array;
@@ -38,17 +38,14 @@ type AccountId = Uint8Array;
  *     .add_full_access_key(new Uint8Array(0)) // TODO: need signer public key as byte array
  *     .deploy_contract(code)
  *
- * (3) make cross contract calls // TODO: this example doesn't make sense
+ * (3) chain promises
  *
  * // assume context.sender = "bob.testnet"
  *
- * let encodedArgs = new Uint8Array(0)
- * let promise = ContractPromiseBatch
- *                    .create("message-parser.testnet")
- *                    .function_call("parseMessage", encodedArgs , u128.Zero, 1000)
+ * let promise = ContractPromiseBatch.create("first-contract.bob.testnet")
  *
- * promise.then("message-replier.testnet")
- *        .function_call("replyToMessage", encodedArgs, u128.Zero, 1000)
+ * promise.then("first-contract.bob.testnet")
+ *        .transfer(u128.from(10))
  *
  */
 export class ContractPromiseBatch {
