@@ -1,5 +1,3 @@
-import "./imports";
-
 export namespace env {
   // #############
   // # Registers #
