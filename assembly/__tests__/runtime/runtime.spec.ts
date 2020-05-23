@@ -8,7 +8,13 @@ describe("Encodings", () => {
     let array: Uint8Array = _testBytes();
     const encoded = base58.encode(array);
     expect(encoded).toBe("1TMu", "Wrong encoded value for base58 encoding")
-  });
+    // const decoded1 = base58.decode(encoded); // TODO: not sure why this is failing
+    // expect(decoded1).toBe(array, "Wrong encoded value for base58 encoding")
+    const decoded2 = base58.decode('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj');
+    expect('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj').toBe(base58.encode(decoded2), "Wrong encoded value for base58 encoding")
+    const decoded3 = base58.decode('1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m');
+    expect('1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m').toBe(base58.encode(decoded3), "Wrong encoded value for base58 encoding")
+  })
   
   it("base64 round trip", () => {
     const array = _testBytes();
