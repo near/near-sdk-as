@@ -395,7 +395,7 @@ describe("context", () => {
     Context.setSigner_account_id("signeraccount");
     expect(context.sender).toBe("signeraccount", "Wrong signer account");
     // Context.setSigner_account_pk(base58.encode(util.parseFromString<Uint8Array>("public-key-as-string")));
-    expect(context.senderPublicKey).toBe("The secret is to use boxed mix", "Wrong public key"); // haha, where is this coming from?!
+    expect(context.senderPublicKey).toBe("HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK", "Wrong public key"); // haha, where is this coming from?!
     Context.setBlock_index(113);
     expect(context.blockIndex).toBe(113, "Wrong contract name");
     Context.setAttached_deposit(u128.from(7));
