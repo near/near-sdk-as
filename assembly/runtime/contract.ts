@@ -65,7 +65,7 @@ class Context {
   * @deprecated use attachedDeposit.
   */
   get receivedAmount(): u128 {
-    return this.attachedDeposit();
+    return this.attachedDeposit;
   }
 
   /**
