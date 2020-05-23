@@ -1,6 +1,6 @@
 import { util } from "./util";
 import { env } from './env';
-import { u128 } from ".";
+import { u128, base58 } from ".";
 
 /**
 * Provides context for contract execution, including information about transaction sender, etc.
@@ -18,8 +18,8 @@ class Context {
   * Account public key of transaction sender.
   */
   get senderPublicKey(): string {
-    env.signer_account_pk(0);
-    return this._readRegisterContentsAsString(0);
+    env.signer_account_pk(0)
+    return base58.encode(util.read_register(0))
   }
 
   /**
