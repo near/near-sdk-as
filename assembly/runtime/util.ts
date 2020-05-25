@@ -94,4 +94,11 @@ export namespace util {
   function uint8ArrayToBuffer(array: Uint8Array): ArrayBuffer {
     return array.buffer.slice(array.byteOffset, array.byteLength + array.byteOffset)
   }
+
+  /**
+   * Unsafe function that alocates a new type T with no initialization.
+   */
+  export function allocate<T>(): T {
+    return changetype<T>(__alloc(offsetof<T>(), idof<T>()));
+  }
 }
