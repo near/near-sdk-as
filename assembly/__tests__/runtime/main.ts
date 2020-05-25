@@ -12,8 +12,9 @@ export function base58Test(): void {
   logging.log("base58Test");
   let array: Uint8Array = _testBytes();
   const encoded = base58.encode(array);
-  logging.log("base58 encoded value " + encoded);
   assert(encoded == "1TMu", "Wrong encoded value for base58 encoding")
+  const decoded = base58.decode("1TMu");
+  assert(_arrayEqual(decoded, array), "Wrong decoded value for base58 encoding")
 }
 
 export function base64Test(): void {
