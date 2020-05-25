@@ -8,12 +8,16 @@ describe("Encodings", () => {
     let array: Uint8Array = _testBytes();
     const encoded = base58.encode(array);
     expect(encoded).toBe("1TMu", "Wrong encoded value for base58 encoding")
-    // const decoded1 = base58.decode(encoded); // TODO: not sure why this is failing
-    // expect(decoded1).toBe(array, "Wrong encoded value for base58 encoding")
-    const decoded2 = base58.decode('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj');
-    expect('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj').toBe(base58.encode(decoded2), "Wrong encoded value for base58 encoding")
-    const decoded3 = base58.decode('1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m');
-    expect('1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m').toBe(base58.encode(decoded3), "Wrong encoded value for base58 encoding")
+    const decoded1 = base58.decode(encoded);
+    expect(_arrayEqual(decoded1, array)).toBeTruthy("Wrong decoded value for base58 encoding")
+    
+    // tests work for our public keys if they included the key prefix (only works for ed25519)
+    const publicKeyWithCurvePrefix = base58.decode('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj');
+    expect('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj').toBe(base58.encode(publicKeyWithCurvePrefix), "Wrong encoded value for base58 encoding")
+    
+    // but decoding assumes ed25519 so it prepends the Base10 numeral 1 (as per near-sdk-rs env::signer_account_pk response)
+    const publicKeyWithoutCurvePrefix = base58.decode('SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m');
+    expect('SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m').not.toBe(base58.encode(publicKeyWithoutCurvePrefix), "Wrong encoded value for base58 encoding")
   })
   
   it("base64 round trip", () => {
@@ -420,11 +424,29 @@ describe("context", () => {
 describe("promises", () => {
   it("should work", () => {
     const emptyResults = ContractPromise.getResults();
-    // expect(emptyResults.length).toBe(0, "wrong length for results");
-    // const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
-    // const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
-    // const promise3 = ContractPromise.all([promise2]);
+    expect(emptyResults.length).toBe(0, "wrong length for results");
+    const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
+    const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
+    const promise3 = ContractPromise.all([promise, promise2]);
   });
+})
+
+describe("promise batches", () => {
+  it('should support the full promise batch interface', () => {
+    const access_key = base58.decode("1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m")
+
+    ContractPromiseBatch
+      .create("test.account")
+      .create_account()
+      .add_access_key(access_key, u128.Zero, "testing.account", ['send', 'receive'])
+      .add_full_access_key(access_key)
+      .delete_key(access_key)
+      .deploy_contract(new Uint8Array(0))
+      .function_call('send', new Uint8Array(0), u128.Zero, 0)
+      .stake(u128.Zero, access_key)
+      .transfer(u128.Zero)
+      .delete_account("bene.account")
+  })
 
   it("should support contract batch transactions", () => {
     Context.setPrepaid_gas(10000000000000);
@@ -434,33 +456,63 @@ describe("promises", () => {
   })
 
   it("should support chained calls", () => {
-    const code = _testBytes();
-
     // TODO: this sets balance to 14 for some reason, why is that?
     Context.setAccount_balance(u128.Zero)
-    expect(context.accountBalance).toBe(u128.from(14))
 
-    // const access_key = util.parseFromString<Uint8Array>(base58.encode(util.stringToBytes(context.senderPublicKey)))
-    const access_key = util.stringToBytes(context.senderPublicKey)
-    
+    const before = context.accountBalance
+    const amount = u128.from(1)
+
+    const access_key = base58.decode(context.senderPublicKey)
+    const code = _testBytes();
+
     ContractPromiseBatch
       .create("app-v1.bob.testnet")
       .create_account()
-      .transfer(u128.from(1))
-      .add_full_access_key(access_key) // TODO: how to get signer public key?
+      .transfer(amount)
+      .add_full_access_key(access_key)
       .deploy_contract(code)
 
-    expect(context.accountBalance).toBe(u128.from(13))
+    // TODO: what else can we test besides balance xfer at this point?
+    expect(context.accountBalance).toBe(u128.sub(before, amount))
   })
 
   it("should support cross contract calls", () => {
-    // log(context.accountBalance)
     Context.setAccount_balance(u128.Zero) // back to 14
-    // log(context.accountBalance)
-    let promise = ContractPromiseBatch.create("first-contract.bob.testnet")
-     promise.then("first-contract.bob.testnet")
-            .transfer(u128.from(10))
-    // log(context.accountBalance) // down to 4
+
+    const before = context.accountBalance
+    const amount = u128.from(10)
+    const contractAccount = "first-contract.bob.testnet"
+
+    let promise = ContractPromiseBatch.create(contractAccount)
+
+    promise.then(contractAccount)
+           .transfer(amount)
+
+    // TODO: what else can we test besides balance xfer at this point?
+    expect(context.accountBalance).toBe(u128.sub(before, amount))
+  })
+
+  it('should support controlling access keys', () => {
+    const access_key1 = base58.decode(context.senderPublicKey)
+    const access_key2 = base58.decode("1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m")
+    const receiver = 'test.account'
+
+    ContractPromiseBatch
+      .create('test')
+      .create_account()
+      .add_access_key(access_key1, u128.Zero, receiver, ['send', 'receive'], 0)
+      .add_full_access_key(access_key2)
+      .delete_key(access_key1)
+  })
+
+  it('should support adding access keys', () => {
+    const access_key = base58.decode(context.senderPublicKey)
+    const receiver = 'test.account'
+
+    ContractPromiseBatch
+      .create('test')
+      .create_account()
+      .add_access_key(access_key, u128.Zero, receiver, ['send', 'receive'], 0)
   })
 });
 

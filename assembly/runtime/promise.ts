@@ -13,7 +13,7 @@ function encodeArgs<T>(t: T) : Uint8Array {
 type Balance = u128;
 type Gas = u64;
 type PublicKey = Uint8Array;
-type AccountId = Uint8Array;
+type AccountId = string;
 
 /**
  * Batch actions from within an AssemblyScript contract
@@ -52,7 +52,7 @@ export class ContractPromiseBatch {
   id: u64;
 
   static create(
-    accountId: string
+    accountId: AccountId
   ) : ContractPromiseBatch {
     const accountIdArr = util.stringToBytes(accountId);
     const id: u64 = env.promise_batch_create(accountIdArr.byteLength, accountIdArr.dataStart);
@@ -100,11 +100,11 @@ export class ContractPromiseBatch {
     return this;
   }
 
-  // TODO: not sure what to do about fitting methodNames string[] into params --> (method_names_len: number, method_names_ptr: number)
   add_access_key(publicKey: PublicKey, allowance: Balance, receiverId: AccountId, methodNames: string[], nonce: u64 = 0) : ContractPromiseBatch {
     const allowanceArr = allowance.toUint8Array();
+    const typedArray = util.stringToBytes(receiverId)
     const methodNamesArr = util.stringToBytes(methodNames.join("\n"));
-    env.promise_batch_action_add_key_with_function_call(this.id, publicKey.byteLength, publicKey.dataStart, nonce, allowanceArr.dataStart, receiverId.byteLength, receiverId.dataStart, methodNamesArr.byteLength, methodNamesArr.dataStart)
+    env.promise_batch_action_add_key_with_function_call(this.id, publicKey.byteLength, publicKey.dataStart, nonce, allowanceArr.dataStart, typedArray.byteLength, typedArray.dataStart, methodNamesArr.byteLength, methodNamesArr.dataStart)
     return this;
   }
 
@@ -114,12 +114,13 @@ export class ContractPromiseBatch {
   }
 
   delete_account(beneficiaryId: AccountId) : ContractPromiseBatch {
-    env.promise_batch_action_delete_account(this.id, beneficiaryId.byteLength, beneficiaryId.dataStart);
+    const typedArray = util.stringToBytes(beneficiaryId)
+    env.promise_batch_action_delete_account(this.id, typedArray.byteLength, typedArray.dataStart);
     return this;
   }
 
   then(
-    accountId: string,
+    accountId: AccountId,
   ) : ContractPromiseBatch {
     const accountIdArr = util.stringToBytes(accountId)
     const id = env.promise_batch_then(
