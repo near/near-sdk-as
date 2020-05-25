@@ -11,10 +11,14 @@ const enum Compare {
 
 class Node<K,V> extends collections.MapEntry<K, V> {
   ptrs: Array<Node<K,V>>;
+  widths: Array<u32>;
+  index: u32 = 0;
 
   constructor(key: K, value: V, level: u32){
     super(key, value);
     this.ptrs = new Array<Node<K,V>>(level);
+    this.widths = new Array<u32>(level);
+    this.widths.fill(0);
   }
 
   equals(other: Node<K,V>): boolean {
@@ -44,49 +48,18 @@ class Node<K,V> extends collections.MapEntry<K, V> {
   }
 }
 
-
-
 function allocate<T>(): T {
   return changetype<T>(__alloc(offsetof<T>(), idof<T>()));
 }
 
-export class RNG<T> {
-  private buffer: Uint8Array;
-  private index: i32 = 0;
-  private tripsAround: u32 = 0;
 
-  constructor(len: u32, public max: u32 = 10_000){
-    if (!isInteger<T>()) {
-      throw new Error("Only Integer types can be created");
-    }
-    let real_len = len * sizeof<T>();
-    this.buffer = math.randomBuffer(real_len);
-  }
-  
-  next(): T {
-    if (this.index * sizeof<T>() >= this.buffer.length) {
-      this.tripsAround++;
-      if (this.tripsAround == sizeof<T>()) {
-        math.randomBuffer(this.buffer.length, this.buffer);
-        this.index = 0;
-        this.tripsAround = 0;
-      } else {
-        this.index = this.tripsAround;
-      }
-    }
-    const index = this.index;
-    this.index += sizeof<T>();
-    //@ts-ignore
-    return <T>(load<T>(this.buffer.dataStart + index) % this.max);
-  }
-}
 	
 const FACTOR: u64 = 10_000;
 
 const ETimes10e10: u64 = 27183;
 
 
-export function lessThanE(rng: RNG<u64>): bool {
+export function lessThanE(rng: math.RNG<u64>): bool {
   let low = rng.next();
   let high = (FACTOR * FACTOR) / ETimes10e10;
   return low < high;
@@ -99,21 +72,22 @@ export class SkipList<K,V> {
   /** Empty Node */
   private readonly NIL: Node<K, V> = allocate<Node<K,V>>();
   level: u32 = 1;
-  private rng: RNG<u64> = new RNG<u64>(100, <u32>FACTOR);
+  private rng: math.RNG<u64> = new math.RNG<u64>(100, <u32>FACTOR);
   tail: Node<K,V>;
   head: Node<K,V>;
   private _update: Array<Node<K,V>>;
+  private _indexes: Array<u32>;
   private readonly maxLevel: u32;
 
   constructor(maxSize: u32 = 65535) {
     let NIL = allocate<Node<K, V>>();
     this.head = allocate<Node<K, V>>();
-    this._update = new Array<Node<K,V>>(maxSize);
     const key = NIL.key;
     const NILPtr = changetype<usize>(NIL);
     this.tail = NIL;
     this.maxLevel = math.binaryLog(maxSize);
-    let nilKey: K;
+    this._update = new Array<Node<K,V>>(this.maxLevel);
+    this._indexes = new Array<u32>(this.maxLevel)
     if (isString<K>()) {
       store<string>(NILPtr, 0xFFFF);
       //@ts-ignore
@@ -141,42 +115,80 @@ export class SkipList<K,V> {
     this._update.fill(this.head);
     this.head.ptrs = new Array<Node<K,V>>(this.maxLevel);
     this.head.ptrs.fill(<Node<K,V>>this.tail);
+    this.head.widths = new Array<u32>(this.maxLevel);
+    this.head.widths.fill(0);///,0, this.maxLevel);
+    // for (let i: i32 = 0; i < this.head.widths.length; i++) {
+    //   this.head.widths[0] = 0;
+    // }
+    // log(this.head)
   }
 
   set(key: K, value: V): void {
     let node = this.head;
-    for (let i: i32 = <i32>this.level - 1; i >= 0; i--) {
+    // let _update = new Array<Node<K,V>>(this.maxLevel);
+    let _indexes = new Array<u32>(this.maxLevel);
+    let width: u32 = 0;
+    for (let i: i32 = this.level - 1; i >= 0; i--) {
       while (node.peek(i) < key) {
+        // log(node)
+        width += node.widths[i];
         node = node.forward(i);
       }
       this._update[i] = node;
+      _indexes[i] = width;
     }
+    let newIndex = width + 1;
+    // log(this._update.map<Node<K,V>[]>(node => node.ptrs.slice(0, 4)).slice(0, this.level));
+    // log(_indexes.slice(0, this.level));
     if (node.key == key) {
       node.value = value;
     } else {
       let newLevel: u32 = this.randomLvl();
       if (newLevel > this.level) {
-        this._update.fill(this.head, this.level, newLevel);
+        this._update.fill(this.head, this.level);
         this.level = newLevel;
+      } else {
+      }
+      for (let level = this.level; level >= newLevel; level--) {
+        this._update[level].widths[level]++;
       }
       node = new Node<K, V>(key, value, newLevel);
+      node.index = newIndex;
+      // log("adding " + node.key.toString() + " with index " + (width + 1 ).toString())
       for (let i: u32 = 0; i < newLevel; i++) {
         node.set(i, this._update[i].forward(i));
         this._update[i].set(i, node);
+        /*
+          j = prev_node_index
+          k = new_node_index
+          z = forward_node_width
+          node.width[i] = u_i.width[i] + 1 - k - j
+          u_i.width[i] = k - j;
+        */
+      //  log("i: " + i.toString() + " - " + _indexes[i].toString() + " prev width " + this._update[i].widths[i].toString())
+
+       let updateNewWidth = (width + 1) - _indexes[i];
+       node.widths[i] = this._update[i].widths[i] + 1  - updateNewWidth;
+       this._update[i].widths[i] = updateNewWidth;
       }
+      // log(node);
     }
   }
 
-  get(key: K): V | null {
+  getNode(key: K): Node<K,V> | null {
     let node = this.head;
     for (let i: i32 = this.level - 1; i >= 0; i--) {
       while (node.forward(i).key < key) {
         node = node.forward(i);
       }
     }
-    node = node.forward(0);
-    if (node.key == key) return node.value;
-    return null;
+    return node.forward(0);
+  }
+
+  get(key: K, _default: V): V {
+    let node = this.getNode(key);
+    if (node != null && node.key == key) return node.value;
+    return _default;
   }
 
   private randomLvl(): u32 {
@@ -186,6 +198,8 @@ export class SkipList<K,V> {
     }
     return lvl;
   }
+
+  deleteNode(node: Node<K,V>): void {}
 
   delete(key: K): void {
     let node = this.head;
@@ -197,7 +211,16 @@ export class SkipList<K,V> {
     }
     node = node.ptrs[0];
     if (node.key == key) {
-      
+      for (let i: i32 = 0; i < <i32>this.level; i++) {
+        if (this._update[i].peek(i) != node.key) {
+          break;
+        }
+        this._update[i].set(i, node.forward(i));
+      }
+      this.deleteNode(node);
+      while (this.level > 1 && this.head.peek(this.level) == this.NIL.key){
+        this.level--;
+      }
     }
 
   }

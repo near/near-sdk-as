@@ -1,5 +1,5 @@
 import { math, VM, Context, base58, context } from ".."
-import { lessThanE, RNG, SkipList } from '../runtime/collections/skiplist';
+import { lessThanE, SkipList } from '../runtime/collections/skiplist';
  
 function test(i: u32): void {
   expect(<f64>math.binaryLog(i)).toBe(Math.floor(Math.log2(i)));
@@ -41,7 +41,7 @@ describe("log_2", () => {
     // log((FACTOR * FACTOR) / ETimes10e10);
     Context.setPrepaid_gas(8446744073709552000);
     log(context.prepaidGas);
-    let rng = new RNG<u64>(10000, 10_000);
+    let rng = new math.RNG<u64>(10000, 10_000);
     let count: u32 = 0;
     // while(count < 32){
     //   log(rng.next());
@@ -60,33 +60,84 @@ describe("log_2", () => {
   });
 });
 let list: SkipList<string, string>;
+let u16List: SkipList<u16,u16>;
 describe("SkipList", () => {
   beforeEach(() => {
     list = new SkipList<string, string>();
+    u16List = new SkipList<u16,u16>();
   });
-  it("can insert", () => {
-    list.set("hello", "world");
-    expect(list.get("hello")).toBe("world");
-  });
+  // it("can insert", () => {
+  //   list.set("hello", "world");
+  //   expect(list.get("hello", "")).toBe("world");
+  //   list.set("world", "hello")
+  //   expect(list.get("world", "")).toBe("hello");
+
+  // });
 
   it("keys should be in order", () => {
-    const times = 1_000
-    let rng = new RNG<i32>(times);
-    let keys = new Array<string>();
-    for (let _i = 0; _i < times; _i++) {
-      let key = rng.next().toString();
+    let list = new SkipList<u16, u16>();
+    const times = 3;
+    let rng = new math.RNG<u16>(times);
+    let keys: u16[] = [3000, 5000, 7000, 4000, 6000];// = new Array<u16>();
+    for (let _i = 0; _i < keys.length; _i++) {
+      let key = keys[_i];//rng.next() + 1;
       list.set(key, key);
+      // keys.push(key);
     }
+    // log("4121" < "699")
+    // log(keys)
+    // log(list);
+    // log(list.get("699"));
+    // log(keys)
+    log(list.head)
     for (let i: i32 = 0; i < keys.length; i++) {
-      expect(list.get(keys[i])).toBe(keys[i]);
+      expect(list.get(keys[i], 0),).toBe(keys[i]);
+      // log(list.getNode(keys[i]));
     }
     let node = list.head;
     let arr = new Array<i32>(32);
-    while (node.key != list.tail.key) {
-      node.key <= node.ptrs[0].key;
+    while (node.peek(0) != list.tail.key) {
+      expect(node.key <= node.ptrs[0].key).toBe(true);
+      // log(node.key);
       node = node.ptrs[0];
+      log("node " + node.key.toString() + ", level " + node.ptrs.length.toString());
+      log(node.widths)
       arr[node.ptrs.length]++;
     }
-    log(arr.slice(0, list.level));
+    log(arr.slice(0, list.level + 1));
   });
+ 
+  // it("keys should be deletable", () => {
+  //   const times = 100
+  //   let rng = new math.RNG<u16>(times);
+  //   let keys = new Array<u16>();
+  //   for (let _i = 0; _i < times; _i++) {
+  //     let key = rng.next();
+  //     u16List.set(key, key);
+  //     keys.push(key);
+  //   }
+  //   // log("2397" < "239")
+  //   // log(u16List.getNode("239"))
+  //   for (let i: i32 = 0; i < keys.length; i++) {
+  //     expect(u16List.get(keys[i], 0)).toBe(keys[i]);
+  //   }
+  //   let deleted = new Array<i32>();
+  //   for (let _i= 0; _i < times/3; _i++) {
+  //     let newKey = rng.next() % 100;
+  //     while (deleted.includes(newKey)){
+  //       newKey = rng.next() % 100;
+  //     }
+  //     u16List.delete(keys[newKey]);
+  //   }
+  //   let node = u16List.head;
+  //   let arr = new Array<i32>(32);
+  //   while (node.key != u16List.tail.key) {
+  //     expect(node.key <= node.ptrs[0].key).toBe(true);
+  //     node = node.ptrs[0];
+  //     // nodes.push(node.key.padEnd(6, " ") + ":  " + "[X]".repeat(node.ptrs.length));
+  //     arr[node.ptrs.length]++;
+  //   }
+  //   log(arr.slice(0, u16List.level));
+  // });
+  
 });

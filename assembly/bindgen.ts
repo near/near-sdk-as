@@ -229,4 +229,5 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     return u128.fromString(getStr(val, name));
   }
   unreachable();
+  return value;
 }

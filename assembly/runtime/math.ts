@@ -114,4 +114,38 @@ export namespace math {
     if( bits >= 4   ) { bits >>>= 2; log += 2; }
     return log + ( bits >>> 1 );
   }
+
+  /**
+   * Random Number Generator
+   */
+  export class RNG<T> {
+    private buffer: Uint8Array;
+    private index: i32 = 0;
+    private tripsAround: u32 = 0;
+  
+    constructor(len: u32, public max: u32 = 10_000){
+      if (!isInteger<T>()) {
+        throw new Error("Only Integer types can be created");
+      }
+      let real_len = len * sizeof<T>();
+      this.buffer = math.randomBuffer(real_len);
+    }
+    
+    next(): T {
+      if (this.index * sizeof<T>() >= this.buffer.length) {
+        this.tripsAround++;
+        if (this.tripsAround == sizeof<T>()) {
+          math.randomBuffer(this.buffer.length, this.buffer);
+          this.index = 0;
+          this.tripsAround = 0;
+        } else {
+          this.index = this.tripsAround;
+        }
+      }
+      const index = this.index;
+      this.index += sizeof<T>();
+      //@ts-ignore
+      return <T>(load<T>(this.buffer.dataStart + index) % this.max);
+    }
+  }
 }
