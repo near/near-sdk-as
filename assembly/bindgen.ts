@@ -246,7 +246,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   }
   //@ts-ignore
   if (value instanceof u128) {
-    assert(val instanceof JSON.Str, "Value with Key: " + name + " with type string to decode u128 but got " + JSONTypeToString(val));
+    assert(val instanceof JSON.Str, "Value with Key: " + name + " expected type string to decode u128 but got " + JSONTypeToString(val));
     //@ts-ignore
     return u128.fromString(getStr(val, name));
   }
