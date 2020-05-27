@@ -163,7 +163,7 @@ function JSONTypeToString<T>(t: T): string {
     return "Object";
   }
   if (t instanceof JSON.Arr) {
-    return "Array;
+    return "Array";
   }
   if (t instanceof JSON.Null) {
     return "Null";
