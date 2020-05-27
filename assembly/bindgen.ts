@@ -152,6 +152,28 @@ function isReallyNullable<T>(): bool {
   return isReference<T>() || isArrayLike<T>() || isNullable<T>() || isString<T>();
 }
 
+function JSONTypeToString<T>(t: T): string {
+  if (t instanceof JSON.Str) {
+    return "string";
+  }
+  if (t instanceof JSON.Bool) {
+    return "Boolean";
+  }
+  if (t instanceof JSON.Obj) {
+    return "Object";
+  }
+  if (t instanceof JSON.Arr) {
+    return "Array;
+  }
+  if (t instanceof JSON.Null) {
+    return "Null";
+  }
+  if (t instanceof JSON.Num) {
+    return "Number";
+  }
+  return "UNKNOWN TYPE";
+}
+
 //@ts-ignore
 @global
 function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
@@ -224,9 +246,9 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   }
   //@ts-ignore
   if (value instanceof u128) {
-    assert(val instanceof JSON.Str);
+    assert(val instanceof JSON.Str, "Value with Key: " + name + " with type string to decode u128 but got " + JSONTypeToString(val));
     //@ts-ignore
     return u128.fromString(getStr(val, name));
   }
-  unreachable();
+  throw new Error("Bad Decoding.");
 }
