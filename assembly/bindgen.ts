@@ -116,7 +116,7 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
 
     }
   } else {
-    throw new Error("Encoding failed");
+    throw new Error("Encoding failed " + (name != null && name != "" ? (" for " + name) : "") + " with type " + nameof<T>());
   }
   var output: Output;
   //@ts-ignore
@@ -125,7 +125,7 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
     return <Output>encoder.serialize();
   }
   //@ts-ignore
-  assert( output instanceof JSONEncoder, "Bad return type for encoder");
+  assert( output instanceof JSONEncoder, "Bad return type " + nameof<Output> + " for encoder");
   //@ts-ignore
   return <Output>encoder;
 }
@@ -250,5 +250,5 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     //@ts-ignore
     return u128.fromString(getStr(val, name));
   }
-  throw new Error("Bad Decoding.");
+  throw new Error("Error when trying to decode " + name + " with type " + nameof<T>());
 }
