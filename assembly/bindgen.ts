@@ -116,7 +116,7 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
 
     }
   } else {
-    throw new Error("Encoding failed");
+    throw new Error("Encoding failed " + (name != null && name != "" ? (" for " + name) : "") + " with type " + nameof<T>());
   }
   var output: Output;
   //@ts-ignore
@@ -125,7 +125,7 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
     return <Output>encoder.serialize();
   }
   //@ts-ignore
-  assert( output instanceof JSONEncoder, "Bad return type for encoder");
+  assert( output instanceof JSONEncoder, "Bad return type " + nameof<Output> + " for encoder");
   //@ts-ignore
   return <Output>encoder;
 }
@@ -150,6 +150,28 @@ function decodeArray<T>(val: JSON.Value, name: string): Array<T> {
 
 function isReallyNullable<T>(): bool {
   return isReference<T>() || isArrayLike<T>() || isNullable<T>() || isString<T>();
+}
+
+function JSONTypeToString<T>(t: T): string {
+  if (t instanceof JSON.Str) {
+    return "string";
+  }
+  if (t instanceof JSON.Bool) {
+    return "Boolean";
+  }
+  if (t instanceof JSON.Obj) {
+    return "Object";
+  }
+  if (t instanceof JSON.Arr) {
+    return "Array";
+  }
+  if (t instanceof JSON.Null) {
+    return "Null";
+  }
+  if (t instanceof JSON.Num) {
+    return "Number";
+  }
+  return "UNKNOWN TYPE";
 }
 
 //@ts-ignore
@@ -195,7 +217,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     return <T>(<JSON.Num>val)._num;
   }
   if (val instanceof JSON.Null) {
-    assert(isReallyNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable.");
+    assert(isReallyNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable");
     //@ts-ignore
     return changetype<T>(<usize>0);
   }
@@ -224,9 +246,11 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   }
   //@ts-ignore
   if (value instanceof u128) {
-    assert(val instanceof JSON.Str);
+    assert(val instanceof JSON.Str, "Value with Key: " + name + " expected type string to decode u128 but got " + JSONTypeToString(val));
     //@ts-ignore
     return u128.fromString(getStr(val, name));
   }
-  unreachable();
+  throw new Error("Error when trying to decode " + name + " with type " + nameof<T>() +
+                  " and unexpected JSON type " + JSONTypeToString(val) + 
+                  "\nPerhaps @nearBindgen decorator needs to be added to class " + nameof<T>());
 }
