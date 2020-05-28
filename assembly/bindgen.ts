@@ -217,7 +217,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     return <T>(<JSON.Num>val)._num;
   }
   if (val instanceof JSON.Null) {
-    assert(isReallyNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable.");
+    assert(isReallyNullable<T>(), "Key: " + name + " with type " + nameof<T>() + "is not nullable");
     //@ts-ignore
     return changetype<T>(<usize>0);
   }
