@@ -251,6 +251,6 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     return u128.fromString(getStr(val, name));
   }
   throw new Error("Error when trying to decode " + name + " with type " + nameof<T>() +
-                  " and unexpected JSON type" + JSONTypeToString(val) + 
+                  " and unexpected JSON type " + JSONTypeToString(val) + 
                   "\nPerhaps @nearBindgen decorator needs to be added to class " + nameof<T>());
 }
