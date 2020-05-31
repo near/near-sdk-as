@@ -80,8 +80,27 @@ describe("Round Trip", () => {
       arr.pushFront("hello");
       expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
     });
-  }); 
-})
+  });
+
+  describe("Maps", () => {
+    beforeEach(() =>{
+      map = new Map<string, string>();
+    });
+
+    it("should handle an empty map", () => {
+      expect(roundtrip(map)).toStrictEqual(map);
+    });
+
+    it("should handle entries", () => {
+      map.set("hello", "world");
+      expect(roundtrip(map)).toStrictEqual(map);
+      map.set("world", "hello");
+      expect(roundtrip(map)).toStrictEqual(map);
+    });
+  });
+});
+
+let map: Map<string, string>;
 
 class Generic<T> {
   constructor(public value: T){}
@@ -91,8 +110,6 @@ class Foo{}
 export const Foo_ID = idof<Foo>();
 export const Generic_i32_ID = idof<Generic<i32>>();
 export const Generic_Foo_ID = idof<Generic<Foo>>();
-
-
 
 
 

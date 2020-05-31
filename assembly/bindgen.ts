@@ -110,6 +110,16 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
       } else { // Is an object
         if (value instanceof u128) {
           encoder.setString(name, value.toString());
+        } else if (value instanceof Map) {
+          //@ts-ignore
+          assert(nameof<indexof<T>>() == "String", "Can only encode maps with string keys");
+          let keys = value.keys();
+          encoder.pushObject(name);
+          for (let i = 0; i < keys.length; i++) {
+            //@ts-ignore
+            encode<valueof<T>, JSONEncoder>(value.get(keys[i]), keys[i], encoder);
+          }
+          encoder.popObject();
         }
      }
      
@@ -146,6 +156,16 @@ function decodeArray<T>(val: JSON.Value, name: string): Array<T> {
     res.push(item);
   }
   return res;
+}
+
+function decodeMap<V>(val: JSON.Obj, name: string): Map<string, V> {
+  assert(val instanceof JSON.Obj, "Value with Key: " + name + " is not an Obj.");
+  let map = new Map<string, V>();
+  for (let i = 0; i < val.keys.length; i++) {
+    let key = val.keys[i];
+    map.set(key, decode<V, JSON.Value>(<JSON.Value>val.get(key)));
+  }
+  return map;
 }
 
 function isReallyNullable<T>(): bool {
@@ -232,6 +252,14 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     value = changetype<T>(__alloc(offsetof<T>(), idof<T>()));
     //@ts-ignore
     return value.decode<JSON.Obj>(<JSON.Obj>val);
+  }
+  //@ts-ignore
+  if (value instanceof Map) {
+    assert(val instanceof JSON.Obj, "Value with Key: " + name + " of type map expected a JSON.Obj, but recevied " + JSONTypeToString(val));
+    //@ts-ignore
+    assert(nameof<indexof<T>>() == "String", "Value with Key: " + name + " cannot decode a map which has an index type "+ nameof<indexof<T>>() + ", it must be a string");
+    //@ts-ignore
+    return <T>decodeMap<valueof<T>>(<JSON.Obj>val, name);
   }
   if (isArrayLike<T>()) {
     //@ts-ignore
