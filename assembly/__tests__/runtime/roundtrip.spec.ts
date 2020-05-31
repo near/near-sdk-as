@@ -82,7 +82,7 @@ describe("Round Trip", () => {
     });
   });
 
-  describe("Maps", () => {
+  describe("Map", () => {
     beforeEach(() =>{
       map = new Map<string, string>();
     });
@@ -98,9 +98,26 @@ describe("Round Trip", () => {
       expect(roundtrip(map)).toStrictEqual(map);
     });
   });
+  describe("Set", () => {
+    beforeEach(() =>{
+      aSet = new Set<string>();
+    });
+
+    it("should handle an empty set", () => {
+      expect(roundtrip(aSet.values())).toStrictEqual([]);
+    });
+
+    it("should handle entries", () => {
+      aSet.add("hello");
+      expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());
+      aSet.add("world");
+      expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());
+    });
+  });
 });
 
 let map: Map<string, string>;
+let aSet: Set<string>;
 
 class Generic<T> {
   constructor(public value: T){}
