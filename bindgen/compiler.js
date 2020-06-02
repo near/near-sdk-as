@@ -5,7 +5,8 @@ const DEFAULT_ARGS = [
   "--baseDir", process.cwd(),
   "--runtime", "none",
   // On CLI this file is in the same directory as the transformer.
-  "--transform", __dirname
+  "--transform", __dirname,
+  __dirname + "/../assembly/bindgen.ts"
 ]
 
 const requiredRange = require(path.join(__dirname, "package.json")).peerDependencies["assemblyscript"];

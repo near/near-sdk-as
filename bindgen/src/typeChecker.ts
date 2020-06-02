@@ -35,20 +35,28 @@ export class TypeChecker extends BaseVisitor {
 
   static check(node: Parser): void {
     const typeChecker = new TypeChecker();
-    for (let i: i32 = 0; i < node.program.sources.length; i++) {
-      typeChecker.check(node.program.sources[i]);
+    for (let i: i32 = 0; i < node.sources.length; i++) {
+      typeChecker.check(node.sources[i]);
     }
   }
 
   visitTypeName(node: TypeName): void {
     const regex: RegExp = <RegExp>/f32|f64/;
     if (regex.test(node.identifier.text)) {
+      let range = node.range;
+      let source = range.source;
+      let line = source.lineAt(range.start);
+      let lineStr = source.text.split("\n")[line - 1];
+
       TypeChecker.floatsFound.push(
-        node.range.source.normalizedPath +
-          " line: " +
-          node.range.line +
-          " " +
-          node.range.source.text.split("\n")[node.range.line - 1]
+        "\n" + " ".repeat(4) + lineStr + "\n" +
+          "in " +
+           source.normalizedPath +
+          "(" +
+          line.toString() +
+          "," +
+          source.columnAt().toString() +
+          ")"
       );
     }
   }

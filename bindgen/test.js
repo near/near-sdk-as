@@ -3,7 +3,7 @@ v8.setFlagsFromString('--experimental-wasm-bigint');
 const fs = require('fs');
 const assert = require('assert');
 let asc = require("assemblyscript/cli/asc");
-const loader = require('assemblyscript/lib/loader');
+const loader = require('@assemblyscript/loader');
 
 function toNum(x) { return parseInt(x.toString());}
 // http://www.onicos.com/staff/iz/amuse/javascript/expert/utf.txt
@@ -55,7 +55,7 @@ async function loadModule(path) {
     let outputJson = null;
     let module;
     let mem = { get U8() {
-                  return new Uint8Array(module.memory.buffer);
+                  return new Uint8Array(module.exports.memory.buffer);
     }}
     module = loader.instantiateSync(fs.readFileSync(path), {
         env: {
@@ -119,11 +119,12 @@ async function loadModule(path) {
     }
 
     let wrapped = {};
-    Object.keys(module).forEach(methodName => {
+    const exports = module.exports;
+    Object.keys(exports).forEach(methodName => {
         wrapped[methodName] = async function(inputJson) {
             setInputJson(inputJson);
             outputJson = null;
-            await module[methodName].call(module);
+            await exports[methodName].call(module);
             return getOutputJson();
         }
     });
