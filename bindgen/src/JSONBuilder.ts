@@ -11,8 +11,6 @@ import {
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
-  DecoratorNode,
-  IdentifierExpression,
 } from "visitor-as/as";
 import { ASTBuilder, BaseVisitor, utils} from "visitor-as";
 
@@ -92,7 +90,7 @@ export class JSONBindingsBuilder extends BaseVisitor {
   }
 
   static nearFiles(parser: Parser): Source[] {
-    return parser.program.sources.filter(hasNearDecorator);
+    return parser.sources.filter(hasNearDecorator);
   }
 
   visitClassDeclaration(node: ClassDeclaration): void {
