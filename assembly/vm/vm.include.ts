@@ -1,6 +1,7 @@
 //@notNearfile
 /// <reference types="@as-pect/assembly/types/as-pect" />
 
+import "../bindgen";
 export * from "./outcome";
 import { VM } from "./vm";
 

@@ -1,9 +1,6 @@
 import { Transform, Parser, Source, Module } from "visitor-as/as";
 import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
-import { posixRelativePath } from './utils';
-//@ts-ignore
-import * as path from "path";
 
 class JSONTransformer extends Transform {
   parser: Parser;
@@ -13,6 +10,7 @@ class JSONTransformer extends Transform {
     this.parser = parser;
     const writeFile = this.writeFile;
     const baseDir = this.baseDir;
+    let newParser = new Parser(parser.diagnostics);
 
     // Filter for near files
     let files = JSONBindingsBuilder.nearFiles(parser);
@@ -24,7 +22,10 @@ class JSONTransformer extends Transform {
       parser.donelog.delete(source.internalPath);
       parser.seenlog.delete(source.internalPath);
       // Remove from programs sources
-      parser.program.sources = parser.program.sources.filter(
+      this.parser.sources = this.parser.sources.filter(
+        (_source: Source) => _source !== source
+      );
+      this.program.sources = this.program.sources.filter(
         (_source: Source) => _source !== source
       );
       // Build new Source
@@ -33,17 +34,18 @@ class JSONTransformer extends Transform {
         writeFile("out/" + source.normalizedPath, sourceText, baseDir);
       }
       // Parses file and any new imports added to the source
-      parser.parseFile(
+      newParser.parseFile(
         sourceText,
         (isEntry(source) ? "" : "./") + source.normalizedPath,
         isEntry(source)
       );
+      let newSource = newParser.sources.pop()!;
+      this.program.sources.push(newSource);
+      parser.donelog.add(source.internalPath);
+      parser.seenlog.add(source.internalPath);
+      parser.sources.push(newSource);
     });
-    //@ts-ignore __dirname exists
-    const entryPath = posixRelativePath(baseDir, path.join(__dirname, "../../assembly/bindgen.ts"));
-    const entryFile: string = this.readFile(entryPath, baseDir)!;
-    this.parser.parseFile(entryFile, entryPath, true);
-
+   
     if (!JSONTransformer.isTest) {
       TypeChecker.check(parser);
     }

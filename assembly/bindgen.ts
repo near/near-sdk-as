@@ -90,11 +90,19 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
     //@ts-ignore
      if (isNull<T>(value)) {
        encoder.setNull(name);
-     } else {
+      } else {
         //@ts-ignore
-       if (isDefined(value._encode)) {
-        //@ts-ignore
-         value._encode(name, encoder);
+        if (isDefined(value._encode)) {
+          if (isNullable<T>()) {
+            if (value != null) {
+              //@ts-ignore
+              value._encode(name, encoder);
+            } else {
+              encoder.setNull(name);
+          }
+        } else {
+          value._encode(name, encoder);
+        }
        } else if (isArrayLike<T>(value)) {
         if (value instanceof Uint8Array) {
           //@ts-ignore
@@ -230,8 +238,15 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   if (isDefined(value.decode)) {
     assert(val instanceof JSON.Obj, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not an object or null");
     value = changetype<T>(__alloc(offsetof<T>(), idof<T>()));
-    //@ts-ignore
-    return value.decode<JSON.Obj>(<JSON.Obj>val);
+    if (isNullable<T>()) {
+      if (value != null) {
+        //@ts-ignore
+        return value.decode<JSON.Obj>(<JSON.Obj>val);
+      }
+    } else {
+      //@ts-ignore
+      return value.decode<JSON.Obj>(<JSON.Obj>val);
+    }
   }
   if (isArrayLike<T>()) {
     //@ts-ignore
