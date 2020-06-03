@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createContext = exports.prepareContext = exports.defaultAccountContext = exports.defaultContext = void 0;
 const js_base64_1 = require("js-base64");
 function defaultContext() {
     return {
