@@ -10,7 +10,7 @@ function createImports(memory, createImports, instantiateSync, binary) {
   const _imports = runner.createImports();
   wasm = instantiateSync(binary, createImports(_imports));
   // Save reference to the instance
-  runner.wasm = wasm;
+  runner.wasm = wasm.exports || wasm;
   return wasm;
 }
 
