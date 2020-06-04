@@ -44,7 +44,7 @@
     "@types/bs58": "^4.0.1",
     "@types/jest": "^25.2.1",
     "@types/js-base64": "^2.3.1",
-    "@types/node": "^13.13.4",
+    "@types/node": "^14.0.10",
     "assemblyscript": "^0.9.4",
     "jest": "^25.5.4",
     "near-hello": "nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10",
