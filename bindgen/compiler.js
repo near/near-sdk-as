@@ -91,7 +91,6 @@ module.exports.compile  = function (inputFile, outputFile, args, options, callba
   if (outputFile == undefined) {
     throw new Error("output file required.");
   }
-  const asc = getAsc(options)
   if (typeof args === "function") {
     callback = args;
     args = [];
@@ -105,13 +104,46 @@ module.exports.compile  = function (inputFile, outputFile, args, options, callba
       }
     };
   }
-  args = args.concat(process.argv.slice(2))
+  if (options == null || typeof options == "function") {
+    options = {};
+  }
+  let argv = process.argv.slice(2);
+  let nearArgs = argv;
+  let ascArgs = args;
+  /**
+   * Args before "--" are used as options for near
+   */
+  if (argv.indexOf("--") >= 0) {
+    ascArgs = ascArgs.concat(argv.slice(argv.indexOf("--") + 1)); 
+    nearArgs = argv.slice(0, argv.indexOf("--"));
+  }
+  for (let arg of nearArgs) {
+    options[arg.replace("--", "")] = true
+  }
+  if (options.help) {
+    console.log(
+`Near AssemblyScript Complier frontend.  Any cli args after "--" are passed to asc.
+Options:
+        --verbose    Prints out cli arguments passed to asc
+        --wat        Writes out the corresponding wat file, e.g. outputFile.wat
+        --help       Prints this`
+    );
+    process.exit(0);
+  }
+  let textFile = options && options.wat ? 
+                [
+                  "--textFile", 
+                  outputFile.substring(0, outputFile.lastIndexOf(".")) + ".wat"
+                ] :
+                [];
+  const asc = getAsc(options);
   asc.main(
-    [inputFile,
-    // TODO: Optimiziation is very slow, enable it only conditionally for "prod" builds?
-    "--binaryFile", outputFile,
-    "--textFile", outputFile.substring(0, outputFile.lastIndexOf(".")) + ".wat",
-    ...args,
+    [
+      inputFile,
+      // TODO: Optimiziation is very slow, enable it only conditionally for "prod" builds?
+      "--binaryFile", outputFile,
+      ...textFile,
+      ...ascArgs,
     ],
     options || {}, callback);
 }
