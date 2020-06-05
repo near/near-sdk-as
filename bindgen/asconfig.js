@@ -6,9 +6,9 @@ compile("../assembly/__tests__/bindgen/test.ts", // input file
         [
           // "-O3z",            // Optional arguments
         // "--debug",
-        "--measure",
+        // "--measure",
         // "--runPasses", "inlining-optimizing,dce" // Inlines to optimize and removes deadcode
-        ], {verbose: true});
+        ]);
 
 
 function buildFail(msg, input, output, args, options) {

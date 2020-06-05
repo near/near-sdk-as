@@ -35,7 +35,6 @@ module.exports = {
    */
   flags: {
     ...flags,
-    "--validate": [],
     "--debug": [],
     /** 
      * This is required. Do not change this. 
