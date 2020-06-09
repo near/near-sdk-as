@@ -80,8 +80,44 @@ describe("Round Trip", () => {
       arr.pushFront("hello");
       expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
     });
-  }); 
-})
+  });
+
+  describe("Map", () => {
+    beforeEach(() =>{
+      map = new Map<string, string>();
+    });
+
+    it("should handle an empty map", () => {
+      expect(roundtrip(map)).toStrictEqual(map);
+    });
+
+    it("should handle entries", () => {
+      map.set("hello", "world");
+      expect(roundtrip(map)).toStrictEqual(map);
+      map.set("world", "hello");
+      expect(roundtrip(map)).toStrictEqual(map);
+    });
+  });
+  describe("Set", () => {
+    beforeEach(() =>{
+      aSet = new Set<string>();
+    });
+
+    it("should handle an empty set", () => {
+      expect(roundtrip(aSet.values())).toStrictEqual([]);
+    });
+
+    it("should handle entries", () => {
+      aSet.add("hello");
+      expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());
+      aSet.add("world");
+      expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());
+    });
+  });
+});
+
+let map: Map<string, string>;
+let aSet: Set<string>;
 
 class Generic<T> {
   constructor(public value: T){}
@@ -91,8 +127,6 @@ class Foo{}
 export const Foo_ID = idof<Foo>();
 export const Generic_i32_ID = idof<Generic<i32>>();
 export const Generic_Foo_ID = idof<Generic<Foo>>();
-
-
 
 
 
