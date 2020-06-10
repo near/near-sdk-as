@@ -1,12 +1,14 @@
 let semver = require("semver");
 let path = require("path");
+let relPathToBindgen = path.relative(process.cwd(), path.join(__dirname, '../assembly/bindgen.ts'));
+
 
 const DEFAULT_ARGS = [
   "--baseDir", process.cwd(),
   "--runtime", "none",
   // On CLI this file is in the same directory as the transformer.
   "--transform", __dirname,
-  __dirname + "/../assembly/bindgen.ts"
+  relPathToBindgen
 ]
 
 const requiredRange = require(path.join(__dirname, "package.json")).peerDependencies["assemblyscript"];
