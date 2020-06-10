@@ -282,8 +282,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/node/http.d.ts": {
-        "version": "b5fd0a137bd6d0afe291d465e99c7469b082b66b3ee89273b3b22801b6c2948e",
-        "signature": "b5fd0a137bd6d0afe291d465e99c7469b082b66b3ee89273b3b22801b6c2948e",
+        "version": "9440dcf960685f7ec10856891a6cebb52a5ae8cef6a2e85daf9476dafd346cbe",
+        "signature": "9440dcf960685f7ec10856891a6cebb52a5ae8cef6a2e85daf9476dafd346cbe",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/node/http2.d.ts": {
@@ -352,8 +352,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/node/stream.d.ts": {
-        "version": "ba1569d69c27f4d2cb2615068cfee4b18c3658aa43534ce68d84bfb56ac172d7",
-        "signature": "ba1569d69c27f4d2cb2615068cfee4b18c3658aa43534ce68d84bfb56ac172d7",
+        "version": "406a63c7e94107394341e97dbdc3312a1ecea75571d067a69eaa213786d9f154",
+        "signature": "406a63c7e94107394341e97dbdc3312a1ecea75571d067a69eaa213786d9f154",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/node/string_decoder.d.ts": {
