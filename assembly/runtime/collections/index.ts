@@ -31,19 +31,8 @@ export namespace collections {
   export const _KEY_ELEMENT_SUFFIX = "::";
   /** @internal */
   export const _RATING_OFFSET: u64 = 2147483648;
-
-  /**
-  * Helper class to store key->value pairs.
-  * @internal
-  */
-  export class MapEntry<K, V> {
-    constructor(
-      public key: K,
-      public value: V
-    ) {
-    }
-  }
 }
+
 /** @internal */
 export * from "./persistentDeque";
 /** @internal */
@@ -53,4 +42,6 @@ export * from "./persistentVector";
 /** @internal */
 export * from "./persistentSet";
 /** @internal */
-export * from "./persistentOrderedMap"
+export * from "./persistentUnorderedMap";
+/** @internal */
+export * from "./util";

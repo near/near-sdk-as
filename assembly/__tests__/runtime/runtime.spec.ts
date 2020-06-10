@@ -1,7 +1,8 @@
-import { context, storage, base58, base64, util, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, ContractPromiseBatch, math, logging, env, u128 } from "../../runtime";
+import { context, storage, base58, base64, PersistentUnorderedMap, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128 } from "../../runtime";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 import { Context, VM, Outcome } from "../../vm";
+
 
 describe("Encodings", () => {
   it("base58 round trip", () => {
@@ -367,6 +368,72 @@ describe("Deque should handle", () => {
     expect(deque.front).toBe("-2", "wrong front element");
     expect(deque.first).toBe("-2", "wrong first element");
     expect(deque.last).toBe("-2", "wrong last element");
+  });
+});
+
+let  orderedMap: PersistentUnorderedMap<string, TextMessage>;
+
+describe("Ordered Map should handle", () => {
+  beforeEach(() => {
+    orderedMap = new PersistentUnorderedMap<string, TextMessage>("orderedMap");
+  });
+
+  describe("empty maps", () => {
+    it("should not contain key", () => {
+      expect(!orderedMap.contains("nonexistentkey")).toBe(true, "Map contains a non existent key");
+    });
+    
+    throws("should throw when retrieving key that doesn't exist", () =>{
+      expect(orderedMap.getSome("nonexistentkey")).toBeNull("Incorrect result on get with nonexistent key");
+    });
+  });
+
+  it("some entries", () => {
+    // add some entries to the map
+    const message = _testTextMessage();
+    orderedMap.set("mapKey1", message);
+    orderedMap.set("mapKey3", _testTextMessageTwo());
+    expect(orderedMap.contains("mapKey1")).toBe(true);
+    expect(!orderedMap.contains("nonexistentkey")).toBe(true, "Map contains a non existent key");
+    expect(orderedMap.contains("mapKey1")).toBe(true, "Map does not contain a key that was added (mapKey1)");
+    expect(orderedMap.contains("mapKey3")).toBe(true, "Map does not contain a key that was added (mapKey3)");
+    expect(orderedMap.getSome("mapKey1")).toStrictEqual(message, "Incorrect result from map get");
+    expect(orderedMap.getSome("mapKey3")).toStrictEqual(_testTextMessageTwo(), "Incorrect result from map get");
+    // delete an entry and retry api calls
+    orderedMap.pop();
+    expect(!orderedMap.contains("mapKey3")).toBe(true, "Map contains a key that was deleted");
+    expect(orderedMap.contains("mapKey1")).toBe(true, "Map does not contain a key that should be there after deletion of another key");
+    expect(orderedMap.getSome("mapKey1")).toStrictEqual(message, "Incorrect result from map get after delete");
+  });
+
+  it("should handle primitives", () => {
+    // map with primitives
+    const map = new PersistentUnorderedMap<i32, i32>("mapPrimitives");
+    map.set(1, -20);
+    expect(map.getSome(1)).toBe(-20, "wrong value on map get for i32");
+    expect(map.values()).toStrictEqual([-20]);
+  });
+
+  it("should maintain order", () => {
+    const map = new PersistentUnorderedMap<i32, i32>("mapPrimitives");
+    let keys = new Array<i32>();
+    for(let i=0; i < 10; i++) {
+      map.set(i,i);
+      keys.push(i);
+    }
+    expect(map.keys()).toStrictEqual(keys, "keys should be in order inserted");
+    expect(map.values()).toStrictEqual(keys, "values should be in order inserted");
+
+  })
+  
+  it("should handle arrays", () => {
+    // map with arrays
+    const map = new PersistentUnorderedMap<i32, Array<string>>("mapArray");
+    const arr1 = new Array<string>();
+    arr1.push("123456789");
+    // return arr1;
+    map.set(1, arr1);
+    expect(map.getSome(1)[0]).toBe("123456789");
   });
 });
 
