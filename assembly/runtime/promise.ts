@@ -103,7 +103,7 @@ export class ContractPromiseBatch {
   add_access_key(publicKey: PublicKey, allowance: Balance, receiverId: AccountId, methodNames: string[], nonce: u64 = 0) : ContractPromiseBatch {
     const allowanceArr = allowance.toUint8Array();
     const typedArray = util.stringToBytes(receiverId)
-    const methodNamesArr = util.stringToBytes(methodNames.join("\n"));
+    const methodNamesArr = util.stringToBytes(methodNames.join(","));
     env.promise_batch_action_add_key_with_function_call(this.id, publicKey.byteLength, publicKey.dataStart, nonce, allowanceArr.dataStart, typedArray.byteLength, typedArray.dataStart, methodNamesArr.byteLength, methodNamesArr.dataStart)
     return this;
   }

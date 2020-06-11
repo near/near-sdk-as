@@ -28,6 +28,17 @@ testcase () {
     #     passed=$((passed + 1))
     # fi
 }
+METHOD=promiseBatchTest
+batchRes=$(../node_modules/.bin/near-vm --context-file=/tmp/context-stable.json --method-name="$METHOD" --wasm-file=/tmp/main.wasm --input="{}")
+echo "Running $METHOD";
+./verifyBatch.js "$batchRes";
+if [[ $? -eq 1 ]]; then
+        echo -e "\033[91m[FAIL] \033[0m$res"
+        errors=$((errors + 1))
+    else
+        echo -e "\033[92m[PASS] \033[0m$res"
+        passed=$((passed + 1))
+    fi
 
 for i in "${TESTS[@]}"
 do

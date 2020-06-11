@@ -473,7 +473,8 @@ describe("promise batches", () => {
       .deploy_contract(code)
 
     // TODO: what else can we test besides balance xfer at this point?
-    expect(context.accountBalance).toBe(u128.sub(before, amount))
+    expect(context.accountBalance).toBe(u128.sub(before, amount));
+
   })
 
   it("should support cross contract calls", () => {
@@ -484,6 +485,7 @@ describe("promise batches", () => {
     const contractAccount = "first-contract.bob.testnet"
 
     let promise = ContractPromiseBatch.create(contractAccount)
+                                      .create_account();
 
     promise.then(contractAccount)
            .transfer(amount)
