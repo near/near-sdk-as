@@ -44,11 +44,11 @@ export namespace math {
   const _RANDOM_BUFFER_KEY = "random_buffer_key";
   const _RANDOM_BUFFER_INDEX_KEY = "random_buffer_index_key";
 
-  export function randomBuffer(len: u32): Uint8Array {
+  export function randomBuffer(len: u32, buffer: Uint8Array | null = null): Uint8Array {
     let block_index_seeded_at: u64;
     let random_buffer: Uint8Array;
     let random_buffer_index_key: i32;
-    let len_i32 = len as i32;
+    let len_i32 = (buffer != null) ? buffer.length : len as i32;
 
     // Reseed if it was not seeded at all, or was seeded more than one block ago.
     if (!storage.contains(_BLOCK_INDEX_SEED_AT_KEY) || storage.getSome<i32>(_BLOCK_INDEX_SEED_AT_KEY) != env.block_index()) {
@@ -63,7 +63,7 @@ export namespace math {
       random_buffer_index_key = storage.getPrimitive<i32>(_RANDOM_BUFFER_INDEX_KEY, 0);
     }
 
-    let result: Uint8Array = new Uint8Array(len);
+    let result: Uint8Array = (buffer == null || buffer.length < <i32>len) ? new Uint8Array(len) : buffer;
     for (let i = 0; i < len_i32; i++) {
       result[i] = random_buffer[random_buffer_index_key];
       if (random_buffer_index_key == random_buffer.length - 1) {
@@ -103,5 +103,49 @@ export namespace math {
   export function randomSeed(): Uint8Array {
     env.random_seed(0);
     return util.read_register(0);;
+  }
+
+  /** Log_2 using interger arthimetic */
+  export function binaryLog(bits: u32): u32 {
+    var log: u32 = 0;
+    if( (bits & 0xffff0000 ) != 0 ) { bits >>>= 16; log = 16; }
+    if( bits >= 256 ) { bits >>>= 8; log += 8; }
+    if( bits >= 16  ) { bits >>>= 4; log += 4; }
+    if( bits >= 4   ) { bits >>>= 2; log += 2; }
+    return log + ( bits >>> 1 );
+  }
+
+}
+/**
+ * Random Number Generator
+ */
+export class RNG<T> {
+  private buffer: Uint8Array;
+  private index: i32 = 0;
+  private tripsAround: u32 = 0;
+
+  constructor(len: u32, public max: u32 = 10_000){
+    if (!isInteger<T>()) {
+      throw new Error("Only Integer types can be created");
+    }
+    let real_len = len * sizeof<T>();
+    this.buffer = math.randomBuffer(real_len);
+  }
+  
+  next(): T {
+    if (this.index * sizeof<T>() >= this.buffer.length) {
+      this.tripsAround++;
+      if (this.tripsAround == sizeof<T>()) {
+        math.randomBuffer(this.buffer.length, this.buffer);
+        this.index = 0;
+        this.tripsAround = 0;
+      } else {
+        this.index = this.tripsAround;
+      }
+    }
+    const index = this.index;
+    this.index += sizeof<T>();
+    //@ts-ignore
+    return <T>(load<T>(this.buffer.dataStart + index) % this.max);
   }
 }

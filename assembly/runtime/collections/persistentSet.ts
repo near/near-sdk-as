@@ -59,7 +59,7 @@ export class PersistentSet<T> {
   }
 
   /**
-   *
+   * Deletes all items.
    */
   clear(): void {
     while(this._vector.length > 0) {
