@@ -8,8 +8,5 @@
     "excludeProtected": true,
     "excludeExternals": true,
     "stripInternal": true    
-  },
-  "compilerOptions": {
-    "experimentalDecorators": true
   }
 }
