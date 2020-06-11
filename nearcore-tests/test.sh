@@ -8,7 +8,7 @@ cp "$(dirname "$0")"/*.json /tmp/
 errormsg="FunctionCallError"
 errors=0
 passed=0
-
+../node_modules/.bin/near-vm
 testcase () {
 
     res=$(../node_modules/.bin/near-vm --context-file=/tmp/context-stable.json --method-name="$1" --wasm-file=/tmp/main.wasm --input="{}")
