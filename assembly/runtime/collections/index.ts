@@ -45,3 +45,4 @@ export * from "./persistentSet";
 export * from "./persistentUnorderedMap";
 /** @internal */
 export * from "./util";
+export * from "./avlTree";
