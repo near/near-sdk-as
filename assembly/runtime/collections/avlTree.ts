@@ -58,29 +58,25 @@ export class AVLTree<K, V> {
     }
   
     /**
-     * Retrieves a related value for a given key or throws error "key not found"
+     * Retrieves a related value for a given key or uses the `defaultValue` if not key is found
      * 
      * @param key Key of the element.
      * @returns Value for the given key or the default value.
      */
-    get(key: K): V {
-        // TODO implement get()
-        throw new Error("TODO implement get()")
+    get(key: K, defaultValue: V | null = null): V | null {
+        return this.has(key) ? this.get(key) : defaultValue;
     }
   
     /**
-     * Retrieves the related value for a given key, or uses the `defaultValue` if not key is found
+     * Retrieves the related value for a given key, or throws error "key not found" 
      * 
      * @param key Key of the element.
      * @param defaultValue The default value if the key is not present.
      * @returns Value for the given key or the default value.
      */
-    getSome(key: K, defaultValue: V): V {
-        try {
-            return this.get(key);
-        } catch(err) { // TODO check that this is key not found error
-            return defaultValue;
-        }
+    getSome(key: K): V {
+        // TODO implement getSome()
+        throw new Error("TODO implement getSome()")
     }
   
     /**
