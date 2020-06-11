@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-let outcome = JSON.parse(process.argv[2]);
+const outcomeStr = process.argv[2];
+console.log(outcomeStr)
+let outcome = JSON.parse(outcomeStr);
 const expected = { 
   "outcome": {
     "balance": "4",
