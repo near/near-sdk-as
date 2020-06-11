@@ -1,4 +1,4 @@
-import { context, storage, base58, base64, PersistentUnorderedMap, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128, RNG } from "../../runtime";
+import { context, storage, base58, base64, PersistentUnorderedMap, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128, RNG, ContractPromiseBatch } from "../../runtime";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 import { Context, VM, Outcome } from "../../vm";
