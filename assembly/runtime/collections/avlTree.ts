@@ -136,6 +136,10 @@ export class AVLTree<K, V> {
         // TODO implement range()
         throw new Error("TODO implement range()");
     }
+    //alias to match rust sdk
+    range(start: K, end: K): collections.MapEntry<K,V>[] {
+        return this.entries(start, end);
+    }
   
     /**
      * Returns minimum key.
