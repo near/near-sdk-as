@@ -1,4 +1,4 @@
-import { context, storage, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128 } from "../../runtime";
+import { context, storage, base58, base64, util, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, ContractPromiseBatch, math, logging, env, u128 } from "../../runtime";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 import { Context, VM, Outcome } from "../../vm";
@@ -8,7 +8,17 @@ describe("Encodings", () => {
     let array: Uint8Array = _testBytes();
     const encoded = base58.encode(array);
     expect(encoded).toBe("1TMu", "Wrong encoded value for base58 encoding")
-  });
+    const decoded1 = base58.decode(encoded);
+    expect(_arrayEqual(decoded1, array)).toBeTruthy("Wrong decoded value for base58 encoding")
+    
+    // tests work for our public keys if they included the key prefix (only works for ed25519)
+    const publicKeyWithCurvePrefix = base58.decode('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj');
+    expect('1DgnyR5kTkaKB7BGuRXH5898iAsa9M6nGHptRK5SZanVj').toBe(base58.encode(publicKeyWithCurvePrefix), "Wrong encoded value for base58 encoding")
+    
+    // but decoding assumes ed25519 so it prepends the Base10 numeral 1 (as per near-sdk-rs env::signer_account_pk response)
+    const publicKeyWithoutCurvePrefix = base58.decode('SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m');
+    expect('SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m').not.toBe(base58.encode(publicKeyWithoutCurvePrefix), "Wrong encoded value for base58 encoding")
+  })
   
   it("base64 round trip", () => {
     const array = _testBytes();
@@ -374,11 +384,28 @@ describe("context", () => {
           expect(context.accountBalance).toStrictEqual(u128.from(6), "Updating the attached deposit should update the account balance");
         });
     });
-      
+  
+  describe("Find the block_timestamp", () => {
+    it("should be the default", () => {
+      let timestamp = context.blockTimestamp;
+      expect(timestamp).toBe(42)
+    });
+
+    it("should be the updatable", () => {
+      Context.setBlock_timestamp(84);
+      let timestamp = context.blockTimestamp;
+      expect(timestamp).toBe(84);
+    });
+
+  });
       
   it("should be editable", () => {
     Context.setCurrent_account_id("contractaccount");
     expect(context.contractName).toBe("contractaccount", "Wrong contract name");
+    Context.setSigner_account_id("signeraccount");
+    expect(context.sender).toBe("signeraccount", "Wrong signer account");
+    // Context.setSigner_account_pk(base58.encode(util.parseFromString<Uint8Array>("public-key-as-string")));
+    expect(context.senderPublicKey).toBe("HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK", "Wrong public key"); // haha, where is this coming from?!
     Context.setBlock_index(113);
     expect(context.blockIndex).toBe(113, "Wrong contract name");
     Context.setAttached_deposit(u128.from(7));
@@ -397,11 +424,98 @@ describe("context", () => {
 describe("promises", () => {
   it("should work", () => {
     const emptyResults = ContractPromise.getResults();
-    // expect(emptyResults.length).toBe(0, "wrong length for results");
-    // const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
-    // const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
-    // const promise3 = ContractPromise.all([promise2]);
+    expect(emptyResults.length).toBe(0, "wrong length for results");
+    const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
+    const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
+    const promise3 = ContractPromise.all([promise, promise2]);
   });
+})
+
+describe("promise batches", () => {
+  it('should support the full promise batch interface', () => {
+    const access_key = base58.decode("1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m")
+
+    ContractPromiseBatch
+      .create("test.account")
+      .create_account()
+      .add_access_key(access_key, u128.Zero, "testing.account", ['send', 'receive'])
+      .add_full_access_key(access_key)
+      .delete_key(access_key)
+      .deploy_contract(new Uint8Array(0))
+      .function_call('send', new Uint8Array(0), u128.Zero, 0)
+      .stake(u128.Zero, access_key)
+      .transfer(u128.Zero)
+      .delete_account("bene.account")
+  })
+
+  it("should support contract batch transactions", () => {
+    Context.setPrepaid_gas(10000000000000);
+    expect(context.accountBalance).toBe(u128.from(9))
+    ContractPromiseBatch.create("alice").transfer(u128.from(1))
+    expect(context.accountBalance).toBe(u128.from(8)) // this number is surprising
+  })
+
+  it("should support chained calls", () => {
+    // TODO: this sets balance to 14 for some reason, why is that?
+    Context.setAccount_balance(u128.Zero)
+
+    const before = context.accountBalance
+    const amount = u128.from(1)
+
+    const access_key = base58.decode(context.senderPublicKey)
+    const code = _testBytes();
+
+    ContractPromiseBatch
+      .create("app-v1.bob.testnet")
+      .create_account()
+      .transfer(amount)
+      .add_full_access_key(access_key)
+      .deploy_contract(code)
+
+    // TODO: what else can we test besides balance xfer at this point?
+    expect(context.accountBalance).toBe(u128.sub(before, amount));
+
+  })
+
+  it("should support cross contract calls", () => {
+    Context.setAccount_balance(u128.Zero) // back to 14
+
+    const before = context.accountBalance
+    const amount = u128.from(10)
+    const contractAccount = "first-contract.bob.testnet"
+
+    let promise = ContractPromiseBatch.create(contractAccount)
+                                      .create_account();
+
+    promise.then(contractAccount)
+           .transfer(amount)
+
+    // TODO: what else can we test besides balance xfer at this point?
+    expect(context.accountBalance).toBe(u128.sub(before, amount))
+  })
+
+  it('should support controlling access keys', () => {
+    const access_key1 = base58.decode(context.senderPublicKey)
+    const access_key2 = base58.decode("1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m")
+    const receiver = 'test.account'
+
+    ContractPromiseBatch
+      .create('test')
+      .create_account()
+      .add_access_key(access_key1, u128.Zero, receiver, ['send', 'receive'], 0)
+      .add_full_access_key(access_key2)
+      .delete_key(access_key1)
+  })
+
+  it('should support adding access keys', () => {
+    const access_key = base58.decode(context.senderPublicKey)
+    const receiver = 'test.account'
+
+    ContractPromiseBatch
+      .create('test')
+      .create_account()
+      .add_access_key(access_key, u128.Zero, receiver, ['send', 'receive'], 0)
+  })
 });
 
 const stringValue = "toHash";

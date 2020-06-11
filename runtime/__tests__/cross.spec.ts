@@ -57,4 +57,12 @@ describe("cross contract calls", () => {
     expect(words.view("reverse", {word: {text: "hello"}}).return_data.text).toBe("olleh");
   });
 
+  test("get block_timestanp", () => {
+    sentences.call("getBlock_timestamp").result.outcome;
+  });
+
+  test("contract promise batch", () => {
+    sentences.call("contractPromiseBatch").result.outcome;
+  })
+
 });

@@ -34,4 +34,4 @@ export interface AccountContext {
 }
 export declare function defaultAccountContext(): Partial<AccountContext>;
 export declare function prepareContext(vmcontext: VMContext): VMContext;
-export declare function createContext(accountContext: AccountContext): VMContext;
+export declare function createContext(accountContext: AccountContext, context?: VMContext): VMContext;

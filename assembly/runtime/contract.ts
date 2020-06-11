@@ -1,6 +1,6 @@
 import { util } from "./util";
 import { env } from './env';
-import { u128 } from ".";
+import { u128, base58 } from ".";
 
 /**
 * Provides context for contract execution, including information about transaction sender, etc.
@@ -12,6 +12,14 @@ class Context {
   get sender(): string {
     env.signer_account_id(0);
     return this._readRegisterContentsAsString(0);
+  }
+
+  /**
+  * Account public key of transaction sender.
+  */
+  get senderPublicKey(): string {
+    env.signer_account_pk(0)
+    return base58.encode(util.read_register(0))
   }
 
   /**
@@ -39,16 +47,29 @@ class Context {
   }
 
   /**
-  * The amount of tokens received with this execution call.
-  * @deprecated use attachedDeposit.
+  * Current block timestamp, i.e. number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
   */
-  get receivedAmount(): u128 {
-    return this.receivedAmount();
+  get blockTimestamp(): u64 {
+    return env.block_timestamp();
+  }
+
+  /**
+  * Current epoch height.
+  */
+  get epochHeight(): u64 {
+    return env.epoch_height();
   }
 
   /**
   * The amount of tokens received with this execution call.
   * @deprecated use attachedDeposit.
+  */
+  get receivedAmount(): u128 {
+    return this.attachedDeposit;
+  }
+
+  /**
+  * The amount of tokens received with this execution call.
   */
   get attachedDeposit(): u128 {
     let buffer = new Uint8Array(16);
@@ -62,6 +83,15 @@ class Context {
   get accountBalance(): u128 {
     let buffer = new Uint8Array(16);
     env.account_balance(buffer.dataStart);
+    return u128.fromBytes(buffer);
+  }
+
+  /**
+  * Returns the current locked balance of the sender account.  This amount will be greater than zero if the account is staking.
+  */
+  get accountLockedBalance(): u128 {
+    let buffer = new Uint8Array(16);
+    env.account_locked_balance(buffer.dataStart);
     return u128.fromBytes(buffer);
   }
 

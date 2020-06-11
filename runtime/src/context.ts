@@ -30,7 +30,7 @@ export function defaultContext(): VMContext {
     attached_deposit: "0",
     is_view: false,
     block_index: 1,
-    block_timestamp: 1585778575325000000,
+    block_timestamp: 42,
     epoch_height: 1,
     storage_usage: 100,
     random_seed: "KuTCtARNzxZQ3YvXDeLjx83FDqxv2SdQTSbiq876zR7",
@@ -76,8 +76,7 @@ export function prepareContext(vmcontext: VMContext): VMContext {
   return vmcontext;
 }
 
-export function createContext(accountContext: AccountContext): VMContext {
-  const context = defaultContext();
+export function createContext(accountContext: AccountContext, context: VMContext = defaultContext()): VMContext {
   for (let key of Object.getOwnPropertyNames(context)) {
     //@ts-ignore
     if (accountContext[key] != undefined) {

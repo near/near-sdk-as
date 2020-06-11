@@ -1,4 +1,4 @@
-import { u128, context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math } from "../..";
+import { u128, context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, ContractPromiseBatch } from "../..";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 
@@ -12,8 +12,9 @@ export function base58Test(): void {
   logging.log("base58Test");
   let array: Uint8Array = _testBytes();
   const encoded = base58.encode(array);
-  logging.log("base58 encoded value " + encoded);
   assert(encoded == "1TMu", "Wrong encoded value for base58 encoding")
+  const decoded = base58.decode("1TMu");
+  assert(_arrayEqual(decoded, array), "Wrong decoded value for base58 encoding")
 }
 
 export function base64Test(): void {
@@ -302,6 +303,44 @@ export function mathTests(): void {
   const randBuf3 = math.randomBuffer(14);
   const randBuf4 = math.randomBuffer(32);
   const randBuf5 = math.randomBuffer(35);
+}
+
+export function promiseBatchTest(): void {
+  const access_key = base58.decode("1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m")
+
+  ContractPromiseBatch
+    .create("test.account")
+    .create_account()
+    .add_access_key(access_key, u128.Zero, "testing.account", ['send', 'receive'])
+    .add_full_access_key(access_key)
+    .delete_key(access_key)
+    .deploy_contract(new Uint8Array(0))
+    .function_call('send', new Uint8Array(0), u128.Zero, 0)
+    .stake(u128.Zero, access_key)
+    .transfer(u128.Zero)
+    .delete_account("bene.account");
+
+    const before = context.accountBalance
+    const amount = u128.from(1)
+
+    const _access_key = base58.decode(context.senderPublicKey)
+    const code = _testBytes();
+
+    ContractPromiseBatch
+      .create("app-v1.bob.testnet")
+      .create_account()
+      .transfer(amount)
+      .add_full_access_key(_access_key)
+      .deploy_contract(code)
+
+      const amount1 = u128.from(10)
+      const contractAccount = "first-contract.bob.testnet"
+  
+      let promise = ContractPromiseBatch.create(contractAccount)
+                                        .create_account();
+  
+      promise.then(contractAccount)
+             .transfer(amount1)
 }
 
 

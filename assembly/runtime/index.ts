@@ -4,8 +4,9 @@ export * from "./contract";
 export * from "./near";
 export * from "./env";
 export * from "./util";
-export * from "./base64" 
+export * from "./base64";
 export * from "./base58";
 export * from "./logging";
 export * from "./math";
+export * from "./promise";
 export * from "as-bignum";

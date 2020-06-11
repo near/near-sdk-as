@@ -1,4 +1,4 @@
-
+import "./runtime/env/imports";
 import { base64, runtime_api, u128 } from "./runtime";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 
@@ -47,6 +47,11 @@ function value_return(value_len: Usize, value_ptr: Usize): void {
 @global
 function panic(): void {
   runtime_api.panic();
+}
+//@ts-ignore
+@global
+function panic_utf8(len: Usize, ptr: Usize): void {
+  runtime_api.panic_utf8(len, ptr);
 }
 
 //@ts-ignore
