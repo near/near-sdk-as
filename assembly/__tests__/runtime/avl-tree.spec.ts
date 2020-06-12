@@ -80,20 +80,20 @@ describe("AVLTrees should handle", () => {
         expect(tree.containsKey(key)).toBeTruthy("The tree should contain the key");
         expect(tree.getSome(key)).toStrictEqual(value);
     });
-
+    
     it("checks for non-existent keys", () => {
         const key = 1;
 
         expect(tree.has(key)).toBeFalsy("tree should not have the key");
         expect(tree.containsKey(key)).toBeFalsy("tree should not contain the key");
     });
-
+    
     throws("if attempting to get a non-existent key", () => {
         const key = 1;
 
         tree.getSome(key);
     });
-
+    
     it("is empty", () => {
         const key = 42;
         expect(tree.size).toStrictEqual(0);
@@ -105,7 +105,7 @@ describe("AVLTrees should handle", () => {
         // expect(tree.lower(key)).toThrow("min() should throw for empty tree");
         // expect(tree.higher(key)).toThrow("min() should throw for empty tree");
     });
-
+    
     it("rotates left twice when inserting 3 keys in decreasing order", () => {
         expect(height(tree)).toStrictEqual(0);
 
@@ -118,8 +118,7 @@ describe("AVLTrees should handle", () => {
         tree.insert(1, 1);
         expect(height(tree)).toStrictEqual(2);
 
-        const root = tree.root;
-        expect(root).toStrictEqual(1);
+        expect(tree.rootKey).toStrictEqual(1);
         // expect(tree.node(root).map(n => n.key)).toStrictEqual(2); FIXME
     });
 
@@ -135,8 +134,7 @@ describe("AVLTrees should handle", () => {
         tree.insert(3, 3);
         expect(height(tree)).toStrictEqual(2);
 
-        const root = tree.root;
-        expect(root).toStrictEqual(1);
+        expect(tree.rootKey).toStrictEqual(1);
         // expect(tree.node(root).map(n => n.key)).toStrictEqual(2); FIXME
     });
 
@@ -426,9 +424,9 @@ describe("AVLTrees should handle", () => {
         tree.insert(1, 1);
         tree.insert(4, 1);
 
-        expect(tree.root).toStrictEqual(2);
+        expect(tree.rootKey).toStrictEqual(2);
         tree.remove(2);
-        expect(tree.root).toStrictEqual(3);
+        expect(tree.rootKey).toStrictEqual(3);
 
         expect(tree.getSome(1)).toStrictEqual(1);
         expect(() => { tree.getSome(2) }).toThrow("tree should throw when getting removed key (root of the tree)");
