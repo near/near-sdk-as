@@ -763,10 +763,10 @@ array-unique@^0.3.2:
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
   integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
 
-as-bignum@^0.1.5:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.1.7.tgz#e580d25089d392fb67d321d44b8fed36b7c475dc"
-  integrity sha512-HqCW9HSKTVLxAebu8ctg52o2+F/xN07GofXzjALlABYxayi241zxrKDU7Mmu/ArKQkAuftSaP+nx2HIzvaC3TA==
+as-bignum@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.0.tgz#c3bdbb4630d843888a556236d4c3b87ba179e100"
+  integrity sha512-0VfGdtxybDLS+B9QcoURdKuhQBU6yEOjzlEspNABkml/NLxpNXAij8JI7c8A86lyTDUlxWUeT6mwF0tx0tt7JA==
 
 asn1@~0.2.3:
   version "0.2.4"
