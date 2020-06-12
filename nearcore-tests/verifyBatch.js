@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+
+const assertNoDiff = require("assert-no-diff")
 const outcomeStr = process.argv[2];
 let outcome = JSON.parse(outcomeStr);
 const expected = { 
@@ -122,8 +124,5 @@ const expected = {
  ],
  "state": {}
 }
-const areEqual = JSON.stringify(outcome) === JSON.stringify(expected)
-if (!areEqual) {
-  process.exit(1);
-}
-process.exit(0);
+assertNoDiff.json(outcome.receipts, expected.receipts, "Batch receipts should be the same")
+assertNoDiff.chars(outcome.outcome.balance, expected.outcome.balance, "Balances should be the same")
