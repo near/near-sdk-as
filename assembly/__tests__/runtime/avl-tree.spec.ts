@@ -1,5 +1,6 @@
 import { AVLTree, MapEntry } from "../../runtime";
 import { RNG } from "../../runtime/math";
+import { Context } from "../../vm";
 
 let tree: AVLTree<u32, u32>;
 let _closure_var1: u32;
@@ -12,7 +13,7 @@ function height<K, V>(tree: AVLTree<K, V>): u32 {
 let _closure_rng: RNG<u32>;
 function random(n: i32): u32[] {
     const a = new Array<u32>(n);
-    _closure_rng = new RNG<u32>(n);
+    _closure_rng = new RNG<u32>(2 * n);
     return a.map<u32>((_): u32 => _closure_rng.next());
 }
 
@@ -35,29 +36,54 @@ function maxTreeHeight(n: f64): u32 {
 }
 
 // Convenience method for tests that insert then remove some values
-function insertThenRemove (t: AVLTree<u32, u32>, keysToInsert: u32[], keysToRemove: u32[]): void {
+function insertThenRemove(t: AVLTree<u32, u32>, keysToInsert: u32[], keysToRemove: u32[]): void {
     const map = new Map<u32, u32>();
 
+    insertKeys(t, keysToInsert, map);
+    removeKeys(t, keysToRemove, map);
+};
+
+function insertKeys(t: AVLTree<u32, u32>, keysToInsert: u32[], map: Map<u32, u32> | null = null): void {
     for (let i = 0; i < keysToInsert.length; ++i) {
         const key = keysToInsert[i];
-        expect(t.has(key)).toBeFalsy("tree.has() should return false for removed key");
-        
+        expect(t.has(key)).toBeFalsy("tree.has() should return false for key that has not been inserted yet. Are duplicate keys being inserted?");
+
         t.insert(key, i);
-        map.set(key, i);
+        expect(t.getSome(key)).toStrictEqual(i);
 
-        expect(t.getSome(key)).toStrictEqual(map.get(key));
+        if (map) {
+            map.set(key, i);
+            expect(t.getSome(key)).toStrictEqual(map.get(key));
+        }
     }
+}
 
+function removeKeys(t: AVLTree<u32, u32>, keysToRemove: u32[], map: Map<u32, u32> | null = null): void {
     for (let i = 0; i < keysToRemove.length; ++i) {
         const key = keysToRemove[i];
-        if (map.has(key)) expect(t.getSome(key)).toStrictEqual(map.get(key));
+        if (map && map.has(key)) {
+            expect(t.getSome(key)).toStrictEqual(map.get(key));
+            map.delete(key);
+        }
 
         t.remove(key);
-        map.delete(key);
-
         expect(t.has(key)).toBeFalsy("tree.has() should return false for removed key");
     }
-};
+}
+
+function generateRandomTree(t: AVLTree<u32, u32>, n: u32): Map<u32, u32> {
+    const map = new Map<u32, u32>();
+    const keysToInsert = random(2 * n);
+    const keysToRemove: u32[] = [];
+    for (let i = 0; i < i32(n); ++i) {
+        keysToRemove.push(keysToInsert[i]);
+    }
+
+    insertKeys(t, keysToInsert, map);
+    removeKeys(t, keysToRemove, map);
+
+    return map;
+}
 
 describe("AVLTrees should handle", () => {
 
@@ -161,7 +187,7 @@ describe("AVLTrees should handle", () => {
             }
         }
 
-        expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n as f64));
+        expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n));
     });
     
     it("sets and gets n key-value pairs in descending order", () => {
@@ -192,8 +218,9 @@ describe("AVLTrees should handle", () => {
     });
     
     it("sets and gets n random key-value pairs", () => {
+        Context.setPrepaid_gas(u64.MAX_VALUE);
         // TODO setup free gas env to prevent gas exceeded error, and test larger trees
-        range(1, 7).forEach(k => { // tree size is 2^(k-1)
+        range(1, 8).forEach(k => { // tree size is 2^(k-1)
             const n = 1 << k;
             const input: u32[] = random(n);
 
@@ -526,7 +553,7 @@ describe("AVLTrees should handle", () => {
         expect(tree.values(5, 51)).toStrictEqual([10, 1, 9, 2, 8, 3, 7, 4, 6, 5]);
     });
     
-    it("remains balanced after insertions and deletions", () => {
+    it("remains balanced after some insertions and deletions", () => {
         const keysToInsert: u32[] = [2, 3, 4];
         const keysToRemove: u32[] = [0, 0, 0, 1];
 
@@ -540,5 +567,23 @@ describe("AVLTrees should handle", () => {
 
         insertThenRemove(tree, keysToInsert, keysToRemove);
         expect(tree.isBalanced()).toBeTruthy();
+    });
+
+    it("remains balanced and sorted after 2n insertions and n deletions", () => {
+        Context.setPrepaid_gas(u64.MAX_VALUE);
+        // TODO setup free gas env to prevent gas exceeded error, and test larger trees
+        const n: u32 = 33;
+        const map = generateRandomTree(tree, n);
+        const sortedKeys: u32[] = map.keys().sort();
+        const sortedValues: u32[] = [];
+        for (let i = 0; i < sortedKeys.length; ++i) {
+            sortedValues.push(map.get(sortedKeys[i]));
+        }
+
+        expect(tree.size).toStrictEqual(n);
+        expect(tree.isBalanced()).toBeTruthy();
+        expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n));
+        expect(tree.keys(u32.MIN_VALUE, u32.MAX_VALUE)).toStrictEqual(sortedKeys);
+        expect(tree.values(u32.MIN_VALUE, u32.MAX_VALUE)).toStrictEqual(sortedValues);
     });
 });
