@@ -2,6 +2,7 @@ import { PersistentMap, PersistentVector, collections } from "../collections";
 import { MapEntry } from "./util";
 import { storage } from "../storage";
 
+@nearBindgen
 class Nullable<T> {
     constructor(public val: T) {
         this.val = val;   
@@ -9,13 +10,15 @@ class Nullable<T> {
 }
 
 type NodeId = i32;
-type ChildParentPair<K> = AVLTreeNode<K>[];
 
-enum Direction {
-    Left,
-    Right
-};
+class ChildParentPair<K> {
+    constructor(public child: AVLTreeNode<K>, public parent: AVLTreeNode<K>) {
+        this.child = child;
+        this.parent = parent;
+    }
+} 
 
+@nearBindgen
 class AVLTreeNode<K> {
     constructor(
         public id: NodeId, 
@@ -55,7 +58,7 @@ export class AVLTree<K, V> {
     get size(): u32 {
         return this.tree.length;
     }
-    //alias to match rust sdk
+    // alias to match rust sdk
     get len(): u32 {
         return this.size;
     }
@@ -64,6 +67,7 @@ export class AVLTree<K, V> {
      * @returns Root key of the tree.
      */
     get rootKey(): K {
+        assert(!isNull(this.rootNode), "rootNode must be defined");
         return this.rootNode!.key;
     }
 
@@ -82,7 +86,7 @@ export class AVLTree<K, V> {
     has(key: K): bool {
         return this.val.contains(key);
     }
-    //alias to match rust sdk
+    // alias to match rust sdk
     containsKey(key: K): bool {
         return this.has(key);
     }
@@ -101,7 +105,7 @@ export class AVLTree<K, V> {
 
         this.val.set(key, value);
     }
-    //alias to match rust sdk
+    // alias to match rust sdk
     insert(key: K, value: V): void {
         this.set(key, value);
     }
@@ -134,18 +138,18 @@ export class AVLTree<K, V> {
      */
     delete(key: K): void {
         if (this.has(key)) {
-            this.rootId = new Nullable(this.doRemove(key).id);
+            this.rootId = this.doRemove(key);
             this.val.delete(key);
         }
     }
-    //alias to match rust sdk
+    // alias to match rust sdk
     remove(key: K): void {
         this.delete(key);
     }
   
   
     /**
-     * Get a range of values from a start key to an end key exclusive.
+     * Get a range of values from a start key (inclusive) to an end key (exclusive).
      * If end is greater than max key, include start to max inclusive.
      * 
      * @param start Key for lower bound (inclusive).
@@ -153,11 +157,17 @@ export class AVLTree<K, V> {
      * @returns Range of values corresponding to keys within start and end bounds.
      */
     values(start: K, end: K): V[] {
-        throw new Error("TODO implement values()");
+        const keys = this.keys(start, end);
+        const values: V[] = [];
+        for (let i = 0; i < keys.length; ++i) {
+            const key = keys[i];
+            values.push(this.val.getSome(key));
+        }
+        return values;
     }
 
     /**
-     * Get a range of keys from a start key to an end key exclusive.
+     * Get a range of keys from a start key (inclusive) to an end key (exclusive).
      * If end is greater than max key, include start to max inclusive.
      * 
      * @param start Key for lower bound (inclusive).
@@ -165,11 +175,49 @@ export class AVLTree<K, V> {
      * @returns Range of keys within start and end bounds.
      */
     keys(start: K, end: K): K[] {
-        throw new Error("TODO implement range()");
+        const rootNode = this.rootNode;
+        const sorted: K[] = [];
+        if (rootNode) {
+            const visited: AVLTreeNode<K>[] = [];
+
+            this.traverseLeft(start, rootNode, visited);
+
+            while (visited.length) {
+                const node = visited.pop();
+
+                if (
+                    // key must always be gte start bound
+                    node.key >= start && (
+                        // if start and end bound are equal, 
+                        // end bound becomes lte instead of strictly less than
+                        start === end ? 
+                            node.key <= end : 
+                            node.key < end
+                    )
+                ) {
+                    sorted.push(node.key);
+                }
+
+                if (node.key < end && node.right) {
+                    this.traverseLeft(start, this.node(node.right)!, visited);
+                }
+            }
+        }
+        
+        return sorted;
+    }
+
+    // TODO make private
+    traverseLeft(start: K, node: AVLTreeNode<K>, visited: AVLTreeNode<K>[]): void {
+        while (node.key >= start && node.left) {
+            visited.push(node);
+            node = this.node(node.left)!;
+        }
+        visited.push(node);
     }
 
     /**
-     * Get a range of entries from a start key to an end key exclusive.
+     * Get a range of entries from a start key (inclusive) to an end key (exclusive).
      * If end is greater than max key, include start to max inclusive.
      * 
      * @param start Key for lower bound (inclusive).
@@ -177,9 +225,15 @@ export class AVLTree<K, V> {
      * @returns Range of entries corresponding to keys within start and end bounds.
      */
     entries(start: K, end: K): MapEntry<K, V>[] {
-        throw new Error("TODO implement range()");
+        const keys = this.keys(start, end);
+        const entries: MapEntry<K, V>[] = [];
+        for (let i = 0; i < keys.length; ++i) {
+            const key = keys[i];
+            entries.push(new MapEntry(key, this.val.getSome(key)));
+        }
+        return entries;
     }
-    //alias to match rust sdk
+    // alias to match rust sdk
     range(start: K, end: K): MapEntry<K,V>[] {
         return this.entries(start, end);
     }
@@ -190,7 +244,7 @@ export class AVLTree<K, V> {
      * @returns Minimum key.
      */
     min(): K {
-        return this.minAt(this.rootNode!)[0].key;
+        return this.minAt(this.rootNode!).child.key;
     }
   
     /**
@@ -199,7 +253,7 @@ export class AVLTree<K, V> {
      * @returns Maximum key.
      */
     max(): K {
-        return this.maxAt(this.rootNode!)[0].key;
+        return this.maxAt(this.rootNode!).child.key;
     }
   
     /**
@@ -209,7 +263,23 @@ export class AVLTree<K, V> {
      * @returns Maximum key that is strictly less than given key.
      */
     lower(key: K): K {
-        throw new Error("TODO implement lower()");
+        let root = this.rootNode!;
+
+        while (root.left || root.right) {
+            if (root.key >= key && root.left) {
+                root = this.node(root.left)!;
+            } else if (root.right) {
+                const rightNode = this.node(root.right)!;
+                if (rightNode.key < key) {
+                    root = rightNode;
+                } else {
+                    break;
+                }
+            }
+        }
+
+        if (root.key >= key) throw new Error(`key is less than mininum key in tree`)
+        else return root.key;
     }
   
     /**
@@ -219,7 +289,23 @@ export class AVLTree<K, V> {
      * @returns Minimum key that is strictly greater than given key.
      */
     higher(key: K): K {
-        throw new Error("TODO implement higher()");
+        let root = this.rootNode!;
+
+        while (root.left || root.right) {
+            if (root.key <= key && root.right) {
+                root = this.node(root.right)!;
+            } else if (root.right) {
+                const leftNode = this.node(root.left)!;
+                if (leftNode.key > key) {
+                    root = leftNode;
+                } else {
+                    break;
+                }
+            }
+        }
+
+        if (root.key <= key) throw new Error(`key is greater than maximum key in tree`)
+        else return root.key;
     }
   
     /**
@@ -231,7 +317,7 @@ export class AVLTree<K, V> {
     lowerOrEqual(key: K): K {
         return this.has(key) ? key : this.lower(key);
     }
-    //alias to match rust sdk
+    // alias to match rust sdk
     floorKey(key: K): K {
         return this.lowerOrEqual(key);
     }
@@ -245,7 +331,7 @@ export class AVLTree<K, V> {
     higherOrEqual(key: K): K {
         return this.has(key) ? key : this.higher(key);
     }
-    //alias to match rust sdk
+    // alias to match rust sdk
     ceilKey(key: K): K {
         return this.higherOrEqual(key);
     }
@@ -254,13 +340,27 @@ export class AVLTree<K, V> {
      * Removes all key-value pairs from the tree
      */
     clear(): void {
-        trace("tree.clear()");
-        trace("tree.size = ", 1, this.size);
         while(this.size > 0) {
-            trace("tree.size = ", 1, this.size);
             this.val.delete(this.tree.popBack().key);
         }
         this.rootId = null;
+    }
+
+    // TODO make private
+    toString(): string {
+        const a: string[] = ["\n"];
+        for (let i: i32 = 0; i < i32(this.size); ++i) {
+            const node = this.tree[i];
+            const key = u32(node.key).toString();
+            const index = node.id.toString();
+            const leftKey = node.left ? u32(this.node(node.left)!.key).toString() : "null";
+            const rightKey = node.right ? u32(this.node(node.right)!.key).toString() : "null";
+            const isRoot = node.id === this.rootId!.val ? "true" : "false"
+            const childrenProperties: string[] = [leftKey, rightKey, isRoot];
+            const nodeProperties: string[] = [key, ",", index,  ":", childrenProperties.join()];
+            a.push(nodeProperties.join(" "));
+        }
+        return a.join("\n");
     }
 
     /**
@@ -269,27 +369,37 @@ export class AVLTree<K, V> {
      * **********************************
      */
 
+    // returns the root node of the tree, if it exists.
+    // returns null otherwise
     get rootNode(): AVLTreeNode<K> | null {
         return this.node(this.rootId);
     }
 
+    // returns the height for a given node
     height(id: Nullable<NodeId> | null): u32 {
         return id ? this.tree[id.val].height : 0;
     }
 
+    // returns the difference in heights between a node's left and right subtrees
     balance(node: AVLTreeNode<K>): i32 {
         return this.height(node.left) - this.height(node.right);
     }
 
+    // updates the height for a given node based on the heights of its subtrees
     updateHeight(node: AVLTreeNode<K>): void {
         node.height = 1 + max(this.height(node.left), this.height(node.right));
         this.tree[node.id] = node;
     }
 
+    // returns the node for the given id (index into underlying array this.tree)
     node(id: Nullable<NodeId> | null): AVLTreeNode<K> | null {
         return id ? this.tree[id.val] : null;
     }
 
+    // inserts a new key into the tree and
+    // recursively updates the height of each node in the tree,
+    // performing rotations as needed from bottom to top 
+    // to maintain the AVL tree balance invariant
     insertAt(parentNode: AVLTreeNode<K> | null, key: K): AVLTreeNode<K> {
         if (!parentNode) {
             const node = new AVLTreeNode<K>(this.size, key);
@@ -301,8 +411,8 @@ export class AVLTree<K, V> {
             } else if (key > parentNode.key) {
                 parentNode.right = new Nullable(this.insertAt(this.node(parentNode.right), key).id);
             } else {
-                throw new Error("Key already exists");
-                // return parentNode.id;
+                trace("\t FATAL ERROR in avlTree.ts for insertAt()");
+                throw new Error("Key already exists, but does not have an associated value");
             }
     
             this.updateHeight(parentNode);
@@ -311,25 +421,37 @@ export class AVLTree<K, V> {
         } 
     }
 
+    // given a node
+    // performs a single set left and right rotations to maintain AVL tree balance invariant
     enforceBalance(node: AVLTreeNode<K>): AVLTreeNode<K> {
         const balance = this.balance(node);
         if (balance > 1) {
             // implies left child must exist, since balance = left.height - right.height
-            if (this.balance(this.node(node.left)!) < 0) {
-                node.left = new Nullable(this.rotateRight(node).id);
+            const leftChildNode = this.node(node.left)!;
+            if (this.balance(leftChildNode) < 0) {
+                node.left = new Nullable(this.rotateRight(leftChildNode).id);
             }
             return this.rotateLeft(node);
         } else if (balance < -1) {
             // implies right child must exist
-            if (this.balance(this.node(node.right)!) > 0) {
-                node.right = new Nullable(this.rotateLeft(node).id);
+            const rightChildNode = this.node(node.right)!;
+            if (this.balance(rightChildNode) > 0) {
+                node.right = new Nullable(this.rotateLeft(rightChildNode).id);
             }
             return this.rotateRight(node);
         } else {
+            // node is already balanced
             return node;
         }
     }
 
+    // given a node
+    // performs a righthand rotation
+    //        node                        child
+    //           \                        /
+    //           child       ->       node
+    //           /                       \
+    //  child.left                       child.right  
     rotateRight(node: AVLTreeNode<K>): AVLTreeNode<K> {
         const childNode = this.node(node.right)!;
         node.right = childNode.left;
@@ -341,6 +463,13 @@ export class AVLTree<K, V> {
         return childNode;
     }
 
+    // given a node
+    // performs a lefthand rotation
+    //        node                  child
+    //        /                         \
+    //    child           ->            node
+    //        \                         /
+    //        child.right     child.right       
     rotateLeft(node: AVLTreeNode<K>): AVLTreeNode<K> {
         const childNode = this.node(node.left)!;
         node.left = childNode.right;
@@ -352,10 +481,12 @@ export class AVLTree<K, V> {
         return childNode;
     }
 
-    doRemove(key: K): AVLTreeNode<K> {
-        const nodes = this.lookupAt(this.rootNode!, key);
-        let node = nodes[0];
-        let parentNode = nodes[1];
+    // removes the given key from the tree, maintaining the AVL balance invariant
+    doRemove(key: K): Nullable<NodeId> | null {
+        const nodeAndParent = this.lookupAt(this.rootNode!, key);
+        let node = nodeAndParent.child;
+        let parentNode = nodeAndParent.parent;
+        let successorId: Nullable<NodeId> | null;
 
         if (!node.left && !node.right) {
             // node to remove is a leaf node
@@ -364,6 +495,7 @@ export class AVLTree<K, V> {
             } else {
                 parentNode.left = null;
             }
+            successorId = null;
         } else if (!node.left) {
             // node to remove has 1 right child
             // replace node to remove with its right child
@@ -372,6 +504,7 @@ export class AVLTree<K, V> {
             } else {
                 parentNode.left = node.right;
             }
+            successorId = node.right;
         } else if (!node.right) {
             // node to remove has 1 left child
             // replace node to remove with its left child
@@ -380,88 +513,115 @@ export class AVLTree<K, V> {
             } else {
                 parentNode.left = node.left;
             }
+            successorId = node.left;
         } else {
             // node has 2 children, search for successor
-            const nodes = this.balance(node) >= 0 ?
-                // node to remove is left leaning
+            const isLeftLeaning = this.balance(node) >= 0;
+            const nodes = isLeftLeaning ?
+                // node to remove is left leaning, so search left subtree
                 this.maxAt(this.node(node.left)!, node) :
-                // node to remove is right leaning
+                // node to remove is right leaning, so search right subtree
                 this.minAt(this.node(node.right)!, node);
+
+            const successor = nodes.child;
             
-            const successor = nodes[0];
             // node to remove and parentNode can be the same node on small trees (2 levels, 2-3 nodes)
             // if so, make parentNode point to node
-            // TODO debug and validate expected behavior of parentNode pointing to node
-            parentNode = nodes[1].id === node.id ? node : nodes[1];
+            parentNode = nodes.parent.id === node.id ? node : nodes.parent;
 
-            // remove successor from its parent
-            if (parentNode.key < successor.key) {
-                parentNode.right = null;
+            const successorIsLeftChild = parentNode.left ? parentNode.left!.val === successor.id : false;
+
+            // remove successor from its parent, and link the successor's child to its grandparent
+            if (successorIsLeftChild) {
+                parentNode.left = isLeftLeaning ? successor.left : successor.right;
             } else {
-                parentNode.left = null;
+                parentNode.right = isLeftLeaning ? successor.left : successor.right;
             }
-
+            
             // take successor's key, and update the node to remove
             node.key = successor.key;
             this.tree[node.id] = node;
-            
-            // remove the successor from the tree
+            successorId = new Nullable(node.id);
+
+            // set node to point to successor, so it is removed from the tree
             node = successor;
         }
 
         this.updateHeight(parentNode);
         this.swapRemove(node);
 
-        return this.rebalanceAt(this.rootNode!, parentNode.key);
+        return this.size > 0 && this.rootNode ? 
+            new Nullable(this.rebalanceAt(this.rootNode!, parentNode.key).id) : 
+            successorId;
     }
 
+    // removes the given node from the tree,
+    // and replaces it with the last node in the underlying array (this.tree)
     swapRemove(node: AVLTreeNode<K>): void {
         if (node.id === this.size - 1) {
             // node is last element in tree, so no swapping needed
-            this.tree.pop();
+            if (node.id === this.rootId!.val) {
+                this.rootId = null;
+            }
         } else {
-            const lastNode = this.tree.swap_remove(node.id);
-            const nodes = this.lookupAt(this.rootNode!, lastNode.key);
-            const parentNode = nodes[1];
+            const lastNode = this.tree[this.size - 1];
+            const parentNode = this.lookupAt(this.rootNode!, lastNode.key).parent;
 
             if (lastNode.id === this.rootId!.val) {
                 this.rootId = new Nullable(node.id);
             }
             
+            // check to make sure that parentNode and lastNode do not overlap
             if (parentNode.id !== lastNode.id) {
-                if ((parentNode.left && parentNode.left!.val) === lastNode.id) {
+                // make lastNode's parent point to new index (index of node that lastNode is replacing)
+                if (parentNode.left ? parentNode.left!.val === lastNode.id : false) {
                     parentNode.left = new Nullable(node.id);
                 } else {
                     parentNode.right = new Nullable(node.id);
                 }
+                
+                // update the parentNode
                 this.tree[parentNode.id] = parentNode;
             }
 
+            // update index of lastNode
             lastNode.id = node.id;
             this.tree[lastNode.id] = lastNode;
         }
+
+        this.tree.pop();
     }
 
+    // given a starting node
+    // returns the leftmost (min) descendant node, and its parent
     minAt(root: AVLTreeNode<K>, parentNode: AVLTreeNode<K> | null = null): ChildParentPair<K> {
         return root.left ? 
             this.minAt(this.node(root.left)!, root) : 
-            [root, parentNode ? parentNode : root];
+            new ChildParentPair(root, parentNode ? parentNode : root);
     }
 
+    // given a starting node
+    // returns the rightmost (max) descendant node, and its parent
     maxAt(root: AVLTreeNode<K>, parentNode: AVLTreeNode<K> | null = null): ChildParentPair<K> {
         return root.right ? 
             this.maxAt(this.node(root.right)!, root) : 
-            [root, parentNode ? parentNode : root];
+            new ChildParentPair(root, parentNode ? parentNode : root);
     }
 
+    // given a key and a starting node
+    // returns the node with the associated key, as well as its parent (if it exists)
+    // caution: this method assumes the key exists in the tree, and will throw otherwise
     lookupAt(root: AVLTreeNode<K>, key: K, parentNode: AVLTreeNode<K> | null = null): ChildParentPair<K> {
         return root.key === key ? 
-            [root, parentNode ? parentNode : root] :
+            new ChildParentPair(root, parentNode ? parentNode : root) :
             key < root.key ?
-                this.lookupAt(this.node(root.left)!, key) :
-                this.lookupAt(this.node(root.right)!, key);
+                this.lookupAt(this.node(root.left)!, key, root) :
+                this.lookupAt(this.node(root.right)!, key, root);
     }
 
+    // recursively updates the height of each node in the tree,
+    // and performs rotations as needed from bottom to top 
+    // to maintain the AVL tree balance invariant
     rebalanceAt(root: AVLTreeNode<K>, key: K): AVLTreeNode<K> {
         if (root.key > key) {
             const leftChild = this.node(root.left);
@@ -478,5 +638,15 @@ export class AVLTree<K, V> {
         this.updateHeight(root);
 
         return this.enforceBalance(root);
+    }
+
+    // recursively checks that each node in the tree is balanced by checking that
+    // the AVL tree invariant holds:
+    // any node's left and right subtrees must have a difference in height <= 1
+    isBalanced(root: AVLTreeNode<K> | null = this.rootNode): bool {
+        const b = root ? this.balance(root) : 0
+        return b >= -1 && b <= 1 && 
+            root ? this.isBalanced(this.node(root.left)) && this.isBalanced(this.node(root.right)) : 
+            true
     }
 }
