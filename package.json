@@ -13,7 +13,7 @@
     "directory": "packages/sdk"
   },
   "author": "Willem Wyndham <willem@nearprotocol.com>",
-  "license": "MIT",
+  "license": "(MIT AND Apache-2.0)",
   "dependencies": {
     "@as-pect/cli": "^3.2.6",
     "as-bignum": "^0.2.0",
