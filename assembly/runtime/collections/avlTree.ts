@@ -49,7 +49,7 @@ export class AVLTree<K, V> {
         this._elementPrefix = name + collections._KEY_ELEMENT_SUFFIX;
         this._val = new PersistentMap<K, V>(this._elementPrefix + "val");
         this._tree = new PersistentVector<AVLTreeNode<K>>(this._elementPrefix + "tree");
-        this._rootId = null;
+        this._rootId = storage.get<Nullable<NodeId>>(this._elementPrefix + "root");
     }
   
     /**
@@ -408,7 +408,6 @@ export class AVLTree<K, V> {
             } else if (key > parentNode.key) {
                 parentNode.right = new Nullable(this.insertAt(this.node(parentNode.right), key).id);
             } else {
-                trace("\t FATAL ERROR in avlTree.ts for insertAt()");
                 throw new Error("Key already exists, but does not have an associated value");
             }
     

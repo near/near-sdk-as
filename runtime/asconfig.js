@@ -17,3 +17,4 @@ function compileContract(input) {
 
 compileContract("words");
 compileContract("sentences");
+compileContract("avlTreeContract");
