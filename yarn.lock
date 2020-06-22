@@ -764,9 +764,9 @@ array-unique@^0.3.2:
   integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
 
 as-bignum@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.0.tgz#c3bdbb4630d843888a556236d4c3b87ba179e100"
-  integrity sha512-0VfGdtxybDLS+B9QcoURdKuhQBU6yEOjzlEspNABkml/NLxpNXAij8JI7c8A86lyTDUlxWUeT6mwF0tx0tt7JA==
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.2.tgz#8eccc70a5007175f4b8903160e1f7742158f579a"
+  integrity sha512-Tc3pJLrXNiqgXOY/SNC3g2D7x7shOpK9g7Zc2R88NOHVUqugqHcXnR/KmWOUerh4hKIl6fHI65Mnf6EFHjQG6Q==
 
 asn1@~0.2.3:
   version "0.2.4"
