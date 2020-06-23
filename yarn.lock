@@ -2793,9 +2793,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-near-hello@nearprotocol/near-hello#d4712392ab5ec56b6b0f0aa40dd4a2c744114a10:
-  version "0.4.0"
-  resolved "https://codeload.github.com/nearprotocol/near-hello/tar.gz/d4712392ab5ec56b6b0f0aa40dd4a2c744114a10"
+near-hello@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/near-hello/-/near-hello-0.5.0.tgz#afcd43228e5a8b5d2486dcf111cf9f21f523293a"
+  integrity sha512-eUQLugX4h8NA4zxj2ewSuwEX4vaeU/DqlskxNmivWvKfUYqnQqV8am8bKJ+u0aYlVLyk0Zs8Ug4n4UVBEbqjJw==
 
 near-mock-vm@^0.1.1:
   version "0.1.1"
