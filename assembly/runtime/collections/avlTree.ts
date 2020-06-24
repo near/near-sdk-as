@@ -351,8 +351,12 @@ export class AVLTree<K, V> {
      * **********************************
      */
 
+    get height(): u32 {
+      return this.nodeHeight(this.rootId);
+    }
+
     // returns root key of the tree.
-    private get rootKey(): K {
+    get rootKey(): K {
         assert(!isNull(this.rootNode), "rootNode must be defined");
         return this.rootNode!.key;
     }
@@ -373,18 +377,18 @@ export class AVLTree<K, V> {
     }
 
     // returns the height for a given node
-    private height(id: Nullable<NodeId> | null): u32 {
+    private nodeHeight(id: Nullable<NodeId> | null): u32 {
         return id ? this._tree[id.val].height : 0;
     }
 
     // returns the difference in heights between a node's left and right subtrees
     private balance(node: AVLTreeNode<K>): i32 {
-        return this.height(node.left) - this.height(node.right);
+        return this.nodeHeight(node.left) - this.nodeHeight(node.right);
     }
 
     // updates the height for a given node based on the heights of its subtrees
     private updateHeight(node: AVLTreeNode<K>): void {
-        node.height = 1 + max(this.height(node.left), this.height(node.right));
+        node.height = 1 + max(this.nodeHeight(node.left), this.nodeHeight(node.right));
         this._tree[node.id] = node;
     }
 

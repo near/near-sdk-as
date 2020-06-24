@@ -7,7 +7,7 @@ let _closure_var1: u32;
 
 // Return height of the tree - number of nodes on the longest path starting from the root node.
 function height<K, V>(tree: AVLTree<K, V>): u32 {
-    return tree.height(tree.rootId);
+    return tree.height;
 }
 
 let _closure_rng: RNG<u32>;
