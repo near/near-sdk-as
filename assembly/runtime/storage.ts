@@ -191,12 +191,11 @@ export class Storage {
    * @returns A value of type T stored under the given key.
    */
   getPrimitive<T>(key: string, defaultValue: T): T {
-    if (isInteger<T>()) {
-      const strValue = this.getString(key);
-      return strValue == null ? defaultValue : util.parseFromString<T>(<string>strValue);
-    } else {
-      throw "Operation not supported. Please use storage.get<T> for non-primitives";
-    }
+    if (!isInteger<T>() && !isString<T>()) {
+      ERROR("Operation not supported. Please use storage.get<T> for non-primitives");
+    } 
+    const strValue = this.getString(key);
+    return strValue == null ? defaultValue : util.parseFromString<T>(<string>strValue);
   }
 
   /**

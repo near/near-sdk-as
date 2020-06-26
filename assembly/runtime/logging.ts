@@ -3,7 +3,8 @@ import { util } from "./util";
 
 export namespace logging {
   /**
-   * Log a string message.
+   * Log a string message. If T has `toString` it is called, 
+   * otherwise T must be serializable.
    *
    * Logs are stored as an array of strings
    *
@@ -15,7 +16,8 @@ export namespace logging {
    */
   export function log<T = string>(msg: T): void {
     let msg_encoded: Uint8Array;
-    if (isString<T>()) {
+    //@ts-ignore
+    if (isString<T>() || isDefined(msg.toString)) {
       //@ts-ignore
       let message = msg.toString();
       msg_encoded= util.stringToBytes(message);
