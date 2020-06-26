@@ -5,11 +5,6 @@ import { Context } from "../../vm";
 let tree: AVLTree<u32, u32>;
 let _closure_var1: u32;
 
-// Return height of the tree - number of nodes on the longest path starting from the root node.
-function height<K, V>(tree: AVLTree<K, V>): u32 {
-    return tree.height;
-}
-
 let _closure_rng: RNG<u32>;
 function random(n: i32): u32[] {
     const a = new Array<u32>(n);
@@ -124,7 +119,7 @@ describe("AVLTrees should handle", () => {
         _closure_var1 = key;
         
         expect(tree.size).toStrictEqual(0);
-        expect(height(tree)).toStrictEqual(0);
+        expect(tree.height).toStrictEqual(0);
         expect(tree.has(key)).toBeFalsy("empty tree should not have the key");
         expect(tree.containsKey(key)).toBeFalsy("empty tree should not have the key");
         expect(() => { tree.min() }).toThrow("min() should throw for empty tree");
@@ -134,31 +129,31 @@ describe("AVLTrees should handle", () => {
     });
     
     it("rotates left twice when inserting 3 keys in decreasing order", () => {
-        expect(height(tree)).toStrictEqual(0);
+        expect(tree.height).toStrictEqual(0);
 
         tree.insert(3, 3);
-        expect(height(tree)).toStrictEqual(1);
+        expect(tree.height).toStrictEqual(1);
 
         tree.insert(2, 2);
-        expect(height(tree)).toStrictEqual(2);
+        expect(tree.height).toStrictEqual(2);
 
         tree.insert(1, 1);
-        expect(height(tree)).toStrictEqual(2);
+        expect(tree.height).toStrictEqual(2);
 
         expect(tree.rootKey).toStrictEqual(2);
     });
     
     it("rotates right twice when inserting 3 keys in increasing order", () => {
-        expect(height(tree)).toStrictEqual(0);
+        expect(tree.height).toStrictEqual(0);
 
         tree.insert(1, 1);
-        expect(height(tree)).toStrictEqual(1);
+        expect(tree.height).toStrictEqual(1);
 
         tree.insert(2, 2);
-        expect(height(tree)).toStrictEqual(2);
+        expect(tree.height).toStrictEqual(2);
 
         tree.insert(3, 3);
-        expect(height(tree)).toStrictEqual(2);
+        expect(tree.height).toStrictEqual(2);
 
         expect(tree.rootKey).toStrictEqual(2);
     });
@@ -187,7 +182,7 @@ describe("AVLTrees should handle", () => {
             }
         }
 
-        expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n));
+        expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(n));
     });
     
     it("sets and gets n key-value pairs in descending order", () => {
@@ -214,7 +209,7 @@ describe("AVLTrees should handle", () => {
             }
         }
 
-        expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n));
+        expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(n));
     });
     
     it("sets and gets n random key-value pairs", () => {
@@ -232,7 +227,7 @@ describe("AVLTrees should handle", () => {
                 expect(tree.getSome(x)).toStrictEqual(42);
             });
 
-            expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n));
+            expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(n));
             
             tree.clear();
         });
@@ -467,7 +462,7 @@ describe("AVLTrees should handle", () => {
 
         insertThenRemove(tree, keysToInsert, keysToRemove);
         
-        expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(tree.size));
+        expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(tree.size));
     });
 
     it("inserts n duplicate keys", () => {
@@ -501,7 +496,7 @@ describe("AVLTrees should handle", () => {
             }
 
             expect(tree.size).toStrictEqual(set.size);
-            expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n));
+            expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(n));
 
             tree.clear();
             expect(tree.size).toStrictEqual(0);
@@ -525,6 +520,7 @@ describe("AVLTrees should handle", () => {
             new MapEntry<u32, u32>(3, 43)
         ];
         expect(tree.entries(1, 4)).toStrictEqual(a);
+        expect(tree.entries(1, 3, true)).toStrictEqual(a);
     });
     
     it("returns an empty array when empty", () => {
@@ -551,6 +547,28 @@ describe("AVLTrees should handle", () => {
         expect(tree.values(40, 51)).toStrictEqual([4, 6, 5]);
         expect(tree.values(4, 5)).toStrictEqual([]);
         expect(tree.values(5, 51)).toStrictEqual([10, 1, 9, 2, 8, 3, 7, 4, 6, 5]);
+    });
+
+    it("returns a range of values for a given start key and inclusive end key", () => {
+        const keys =    [10, 20, 30, 40, 50, 45, 35, 25, 15,  5];
+        const values =  [ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10];
+
+        for (let i = 0; i < keys.length; ++i) {
+            const key = keys[i];
+            tree.insert(key, values[i]);
+        }
+
+        expect(tree.values(20, 30, true)).toStrictEqual([2, 8, 3]);
+        expect(tree.values(11, 41, true)).toStrictEqual([9, 2, 8, 3, 7, 4]);
+        expect(tree.values(20, 41, true)).toStrictEqual([2, 8, 3, 7, 4]);
+        expect(tree.values(21, 45, true)).toStrictEqual([8, 3, 7, 4, 6]);
+        expect(tree.values(26, 30, true)).toStrictEqual([3]);
+        expect(tree.values(25, 25, true)).toStrictEqual([8]);
+        expect(tree.values(26, 25, true)).toStrictEqual([]);
+        expect(tree.values(40, 50, true)).toStrictEqual([4, 6, 5]);
+        expect(tree.values(40, 51, true)).toStrictEqual([4, 6, 5]);
+        expect(tree.values(4, 5, true)).toStrictEqual([10]);
+        expect(tree.values(5, 51, true)).toStrictEqual([10, 1, 9, 2, 8, 3, 7, 4, 6, 5]);
     });
     
     it("remains balanced after some insertions and deletions", () => {
@@ -582,7 +600,7 @@ describe("AVLTrees should handle", () => {
 
         expect(tree.size).toStrictEqual(n);
         expect(tree.isBalanced()).toBeTruthy();
-        expect(height(tree)).toBeLessThanOrEqual(maxTreeHeight(n));
+        expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(n));
         expect(tree.keys(u32.MIN_VALUE, u32.MAX_VALUE)).toStrictEqual(sortedKeys);
         expect(tree.values(u32.MIN_VALUE, u32.MAX_VALUE)).toStrictEqual(sortedValues);
     });

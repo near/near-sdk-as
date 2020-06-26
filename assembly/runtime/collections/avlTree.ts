@@ -62,6 +62,13 @@ export class AVLTree<K, V> {
     get len(): u32 {
         return this.size;
     }
+
+    /**
+    * @returns Height of the tree.
+    */
+    get height(): u32 {
+        return this.nodeHeight(this.rootId);
+    }
   
     /**
      * @returns Whether the key is present in the tree.
@@ -132,15 +139,16 @@ export class AVLTree<K, V> {
   
   
     /**
-     * Get a range of values from a start key (inclusive) to an end key (exclusive).
+     * Get a range of values from a start key (inclusive) to an end key (exclusive by default).
      * If end is greater than max key, include start to max inclusive.
      * 
      * @param start Key for lower bound (inclusive).
-     * @param end Key for upper bound (exclusive).
+     * @param end Key for upper bound (exclusive by default).
+     * @param inclusive Set to false if upper bound should be exclusive, true if upper bound should be inclusive
      * @returns Range of values corresponding to keys within start and end bounds.
      */
-    values(start: K, end: K): V[] {
-        const keys = this.keys(start, end);
+    values(start: K, end: K, inclusive: boolean = false): V[] {
+        const keys = this.keys(start, end, inclusive);
         const values: V[] = [];
         for (let i = 0; i < keys.length; ++i) {
             const key = keys[i];
@@ -150,14 +158,15 @@ export class AVLTree<K, V> {
     }
 
     /**
-     * Get a range of keys from a start key (inclusive) to an end key (exclusive).
+     * Get a range of keys from a start key (inclusive) to an end key (exclusive by default).
      * If end is greater than max key, include start to max inclusive.
      * 
      * @param start Key for lower bound (inclusive).
-     * @param end Key for upper bound (exclusive).
+     * @param end Key for upper bound (exclusive by default).
+     * @param inclusive Set to false if upper bound should be exclusive, true if upper bound should be inclusive
      * @returns Range of keys within start and end bounds.
      */
-    keys(start: K, end: K): K[] {
+    keys(start: K, end: K, inclusive: boolean = false): K[] {
         const rootNode = this.rootNode;
         const sorted: K[] = [];
         if (rootNode) {
@@ -173,7 +182,7 @@ export class AVLTree<K, V> {
                     node.key >= start && (
                         // if start and end bound are equal, 
                         // end bound becomes lte instead of strictly less than
-                        start === end ? 
+                        start === end || inclusive ? 
                             node.key <= end : 
                             node.key < end
                     )
@@ -199,15 +208,16 @@ export class AVLTree<K, V> {
     }
 
     /**
-     * Get a range of entries from a start key (inclusive) to an end key (exclusive).
+     * Get a range of entries from a start key (inclusive) to an end key (exclusive by default).
      * If end is greater than max key, include start to max inclusive.
      * 
      * @param start Key for lower bound (inclusive).
-     * @param end Key for upper bound (exclusive).
+     * @param end Key for upper bound (exclusive by default).
+     * @param inclusive Set to false if upper bound should be exclusive, true if upper bound should be inclusive
      * @returns Range of entries corresponding to keys within start and end bounds.
      */
-    entries(start: K, end: K): MapEntry<K, V>[] {
-        const keys = this.keys(start, end);
+    entries(start: K, end: K, inclusive: boolean = false): MapEntry<K, V>[] {
+        const keys = this.keys(start, end, inclusive);
         const entries: MapEntry<K, V>[] = [];
         for (let i = 0; i < keys.length; ++i) {
             const key = keys[i];
@@ -216,8 +226,8 @@ export class AVLTree<K, V> {
         return entries;
     }
     // alias to match rust sdk
-    range(start: K, end: K): MapEntry<K,V>[] {
-        return this.entries(start, end);
+    range(start: K, end: K, inclusive: boolean = false): MapEntry<K,V>[] {
+        return this.entries(start, end, inclusive);
     }
   
     /**
@@ -350,10 +360,6 @@ export class AVLTree<K, V> {
      *      AVL Tree core routines
      * **********************************
      */
-
-    get height(): u32 {
-      return this.nodeHeight(this.rootId);
-    }
 
     // returns root key of the tree.
     get rootKey(): K {
