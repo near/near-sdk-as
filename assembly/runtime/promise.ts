@@ -21,7 +21,7 @@ type AccountId = string;
  * (1) transfer money
  *
  * // assume context.sender = "bob.testnet"
- * new ContractPromiseBatch("alice").transfer(100); // send 100 N to "alice"
+ * ContractPromiseBatch.create("alice.testnet").transfer(100); // send 100 N to "alice.testnet"
  *
  * (2) deploy a contract
  *
