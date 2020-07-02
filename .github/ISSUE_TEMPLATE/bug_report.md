@@ -28,5 +28,7 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. chrome, safari]
  - Version [e.g. 22]
 
+_Alternatively, please attach your `package.json` file here for more detailed versioning_
+
 **Additional context**
 Add any other context about the problem here.
