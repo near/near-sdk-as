@@ -106,6 +106,7 @@ function encode<T, Output = Uint8Array>(value: T, name: string | null = "", enco
               encoder.setNull(name);
           }
         } else {
+          //@ts-ignore
           value._encode(name, encoder);
         }
        } else if (isArrayLike<T>(value)) {

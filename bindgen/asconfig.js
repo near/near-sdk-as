@@ -26,5 +26,7 @@ function buildFail(msg, input, output, args, options) {
 buildFail("Missing input file should fail")
 buildFail("Missing output file should fail.", "../assembly/__tests__/bindgen/bad.ts")
 buildFail("Failing to compiling should fail.", "../assembly/__tests__/bindgen/bad.ts", "out/bad.wasm", [], { verbose:true })
+buildFail("Failing to types compiling should fail.", "../assembly/__tests__/bindgen/badType.ts", "out/badType.wasm", [], { verbose:true })
+
 console.log("PASSED");
 
