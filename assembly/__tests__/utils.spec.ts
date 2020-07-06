@@ -1,4 +1,4 @@
-import { math, Context, RNG } from ".."
+import { math, VMContext, RNG } from ".."
  
 function test(i: u32): void {
   expect(<f64>math.binaryLog(i)).toBe(Math.floor(Math.log2(i)));
@@ -19,7 +19,7 @@ describe("test integer log_2", () => {
 });
 describe("RNG", () => {
   it("coin flip should be 50/50", () => {
-    Context.setPrepaid_gas(8446744073709552000);
+    VMContext.setPrepaid_gas(8446744073709552000);
     let rng = new RNG<u64>(10000, 10_000);
     let count: u32 = 0;
     for (let i: u32 = 0; i < 10_000; i++) {

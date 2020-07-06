@@ -1,4 +1,4 @@
-import { u128, context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, ContractPromiseBatch } from "../..";
+import { u128, Context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, ContractPromiseBatch } from "../..";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
 
@@ -261,15 +261,15 @@ export function dequeTests(): void {
 
 export function contextTests(): void {
   logging.log("contextTests");
-  assert(context.sender == "bob", "Wrong sender");
-  assert(context.contractName == "contractaccount", "Wrong contract name");
-  assert(context.blockIndex == 113, "Wrong contract name");
-  assert(context.attachedDeposit == u128.fromU64(7), "Wrong receivedAmount");
-  assert(context.accountBalance == u128.fromU64(14), "Wrong receivedAmount");
-  assert(context.prepaidGas == 1000000000, "Wrong prepaid gas");
-  assert(context.usedGas <= 1000000000, "Wrong used gas");
-  assert(context.usedGas > 0, "Wrong used gas");
-  //assert(context.storageUsage == 0, "Wrong storage usage"); TODO: test when implemented
+  assert(Context.sender == "bob", "Wrong sender");
+  assert(Context.contractName == "contractaccount", "Wrong contract name");
+  assert(Context.blockIndex == 113, "Wrong contract name");
+  assert(Context.attachedDeposit == u128.fromU64(7), "Wrong receivedAmount");
+  assert(Context.accountBalance == u128.fromU64(14), "Wrong receivedAmount");
+  assert(Context.prepaidGas == 1000000000, "Wrong prepaid gas");
+  assert(Context.usedGas <= 1000000000, "Wrong used gas");
+  assert(Context.usedGas > 0, "Wrong used gas");
+  //assert(Context.storageUsage == 0, "Wrong storage usage"); TODO: test when implemented
 }
 
 export function promiseTests(): void {
@@ -320,10 +320,10 @@ export function promiseBatchTest(): void {
     .transfer(u128.Zero)
     .delete_account("bene.account");
 
-    const before = context.accountBalance
+    const before = Context.accountBalance
     const amount = u128.from(1)
 
-    const _access_key = base58.decode(context.senderPublicKey)
+    const _access_key = base58.decode(Context.senderPublicKey)
     const code = _testBytes();
 
     ContractPromiseBatch

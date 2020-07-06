@@ -69,7 +69,7 @@ declare function _setStorage_usage(amt: u64): void;
 /**
  * Functions to edit the current VM's context
  */
-export namespace Context {
+export namespace VMContext {
 
   export function saveContext(): void {
     _saveContext();

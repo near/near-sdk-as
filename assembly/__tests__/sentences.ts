@@ -1,4 +1,4 @@
-import { context, logging, ContractPromise, ContractPromiseBatch, u128, storage, env } from "..";
+import { Context, logging, ContractPromise, ContractPromiseBatch, u128, storage, env } from "..";
 import { Word } from "./model";
 
 export function SetWord(word: Word): void {
@@ -37,11 +37,11 @@ export function reverseWordThree(): void {
   let args = responseArgs;
 
 
-  logging.log(context.contractName)
+  logging.log(Context.contractName)
   let methodName = "_onReverseCalledThree";
 
   let callbackPromise = promise.then(
-    context.contractName,
+    Context.contractName,
     methodName,
     args,
     2
@@ -87,10 +87,10 @@ export function reverseWordTwo(): void {
   // Setting up args for the callback
   // let responseArgs = new ReverseArgs(new Word("elpmas"))
 
-  logging.log(context.contractName)
+  logging.log(Context.contractName)
 
   let callbackPromise = promise.then(
-    context.contractName,
+    Context.contractName,
     "_onReverseCalledTwo",
     new Uint8Array(0),
     2

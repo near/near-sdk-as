@@ -86,6 +86,11 @@ export namespace util {
     return value;
   }
 
+  export function read_register_string(register_id: u64): string {
+    const res = util.bytesToString(util.read_register(register_id));
+    return res != null ? <string>res : "";
+  }
+
   // Private helpers
   function toUTF8(str: string, nullTerminated: boolean = false): usize {
     return changetype<usize>(String.UTF8.encode(str, nullTerminated));

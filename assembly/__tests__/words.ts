@@ -1,4 +1,4 @@
-import { context, logging } from "..";
+import { Context, logging } from "..";
 import { Word } from "./model"
 
 // ----------------------------------------------------------------------------
@@ -11,7 +11,7 @@ import { Word } from "./model"
  * @returns a Word whose text attribute is the same characters but reversed
  */
 export function reverse(word: Word): Word {
-  logging.log("[" + context.sender + "] invoked function reverse(" + word.text + ")")
+  logging.log("[" + Context.sender + "] invoked function reverse(" + word.text + ")")
   return new Word(_reverse(word.text))
 }
 
@@ -21,7 +21,7 @@ export function reverse(word: Word): Word {
  * @returns a Word whose text attribute is the same characters but upper cased
  */
 export function upcase(word: Word): Word {
-  logging.log("[" + context.sender + "] invoked function upcase(" + word.text + ")")
+  logging.log("[" + Context.sender + "] invoked function upcase(" + word.text + ")")
   return new Word(_upcase(word.text)  )
 }
 

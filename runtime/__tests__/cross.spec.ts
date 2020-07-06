@@ -2,6 +2,7 @@ import { Runtime, Account, stateSize } from "..";
 
 let runtime: Runtime;
 let sentences: Account, words: Account, alice: Account;
+
 describe("cross contract calls", () => {
   beforeEach(() => {
     runtime = new Runtime();

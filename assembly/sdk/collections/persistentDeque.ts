@@ -1,4 +1,4 @@
-import { collections } from "../collections";
+import { collections } from ".";
 import { storage } from "../storage";
 
 /**

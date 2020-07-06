@@ -3,7 +3,7 @@ import {
   PersistentSet,
   PersistentVector,
   PersistentMap,
-} from "../../runtime";
+} from "../../sdk";
 
 // Exporting a new class TextMessage so it can be used outside of this file.
 @nearBindgen

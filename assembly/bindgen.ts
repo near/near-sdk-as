@@ -1,5 +1,5 @@
-import "./runtime/env/imports";
-import { base64, runtime_api, u128 } from "./runtime";
+import "./sdk/env/imports";
+import { base64, runtime_api, u128 } from "./sdk";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 
 // Runtime functions

@@ -20,7 +20,7 @@ type AccountId = string;
  *
  * (1) transfer money
  *
- * // assume context.sender = "bob.testnet"
+ * // assume Context.sender = "bob.testnet"
  * ContractPromiseBatch.create("alice.testnet").transfer(100); // send 100 N to "alice.testnet"
  *
  * (2) deploy a contract
@@ -29,7 +29,7 @@ type AccountId = string;
  * // contract itself or via input to a function call (requires some other changes in near-sdk-as)
  * const code = Uint8Array[1,2,3]; // regardless, you end up with the contract code somehow
  *
- * // assume context.sender = "bob.testnet"
+ * // assume Context.sender = "bob.testnet"
  *
  * ContractPromiseBatch
  *     .create("app-v1.bob.testnet")
@@ -40,7 +40,7 @@ type AccountId = string;
  *
  * (3) chain promises
  *
- * // assume context.sender = "bob.testnet"
+ * // assume Context.sender = "bob.testnet"
  *
  * let promise = ContractPromiseBatch.create("first-contract.bob.testnet")
  *

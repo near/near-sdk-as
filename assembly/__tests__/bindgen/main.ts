@@ -1,5 +1,5 @@
 // These imports need to be copied properly
-import { storage, context, ContractPromise, logging } from "../..";
+import { storage, Context, ContractPromise, logging } from "../..";
 import { FooBar, ContainerClass, AnotherContainerClass, PromiseArgs, MyCallbackResult, MyContractPromiseResult } from "./model";
 
 export function doNothing(): void {
@@ -43,7 +43,7 @@ export function callbackWithName(args: PromiseArgs): MyCallbackResult {
     }
     let result: MyCallbackResult = {
         rs: allRes,
-        n: context.contractName,
+        n: Context.contractName,
     }
     let bytes = result.encode();
     storage.setBytes("lastResult", bytes);

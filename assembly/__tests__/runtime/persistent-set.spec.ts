@@ -1,4 +1,4 @@
-import { PersistentSet } from "../../runtime";
+import { PersistentSet } from "../../sdk";
 
 let set: PersistentSet<string>
 const item = "hello"

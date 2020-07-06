@@ -5,19 +5,19 @@ import { u128, base58 } from ".";
 /**
 * Provides context for contract execution, including information about transaction sender, etc.
 */
-class Context {
+export class Context {
   /**
   * Account ID of transaction sender.
   */
-  get sender(): string {
+   static get sender(): string {
     env.signer_account_id(0);
-    return this._readRegisterContentsAsString(0);
+    return util.read_register_string(0);
   }
 
   /**
   * Account public key of transaction sender.
   */
-  get senderPublicKey(): string {
+   static get senderPublicKey(): string {
     env.signer_account_pk(0)
     return base58.encode(util.read_register(0))
   }
@@ -25,38 +25,38 @@ class Context {
   /**
   * Account ID of contract.
   */
-  get contractName(): string {
+   static get contractName(): string {
     env.current_account_id(0);
-    return this._readRegisterContentsAsString(0);
+    return util.read_register_string(0);
   }
 
   /**
    * Account ID of predecessor. It is either the another contract that called it in case
    * of a cross-contract call, or the account that signed the transaction if it was called from the transaction.
    */
-  get predecessor(): string {
+   static get predecessor(): string {
     env.predecessor_account_id(0);
-    return this._readRegisterContentsAsString(0);
+    return util.read_register_string(0);
   }
 
   /**
   * Current block index.
   */
-  get blockIndex(): u64 {
+   static get blockIndex(): u64 {
     return env.block_index();
   }
 
   /**
   * Current block timestamp, i.e. number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
   */
-  get blockTimestamp(): u64 {
+   static get blockTimestamp(): u64 {
     return env.block_timestamp();
   }
 
   /**
   * Current epoch height.
   */
-  get epochHeight(): u64 {
+   static get epochHeight(): u64 {
     return env.epoch_height();
   }
 
@@ -64,14 +64,14 @@ class Context {
   * The amount of tokens received with this execution call.
   * @deprecated use attachedDeposit.
   */
-  get receivedAmount(): u128 {
+   static get receivedAmount(): u128 {
     return this.attachedDeposit;
   }
 
   /**
   * The amount of tokens received with this execution call.
   */
-  get attachedDeposit(): u128 {
+   static get attachedDeposit(): u128 {
     let buffer = new Uint8Array(16);
     env.attached_deposit(buffer.dataStart);
     return u128.fromBytes(buffer);
@@ -80,7 +80,7 @@ class Context {
   /**
   * Returns the current balance of the sender account.
   */
-  get accountBalance(): u128 {
+   static get accountBalance(): u128 {
     let buffer = new Uint8Array(16);
     env.account_balance(buffer.dataStart);
     return u128.fromBytes(buffer);
@@ -89,7 +89,7 @@ class Context {
   /**
   * Returns the current locked balance of the sender account.  This amount will be greater than zero if the account is staking.
   */
-  get accountLockedBalance(): u128 {
+   static get accountLockedBalance(): u128 {
     let buffer = new Uint8Array(16);
     env.account_locked_balance(buffer.dataStart);
     return u128.fromBytes(buffer);
@@ -98,7 +98,7 @@ class Context {
   /**
   * Get the amount of prepaid gas attached to the call (in units of gas).
   */
-  get prepaidGas(): u64 {
+   static get prepaidGas(): u64 {
     return env.prepaid_gas();
   }
 
@@ -106,20 +106,15 @@ class Context {
   * Get the amount of gas (in units of gas) that was already burnt during the contract execution and
   * attached to promises (cannot exceed prepaid gas).
   */
-  get usedGas(): u64 {
+   static get usedGas(): u64 {
     return env.used_gas();
   }
 
   /**
   * The current storage usage in bytes.
   */
-  get storageUsage(): u64 {
+   static get storageUsage(): u64 {
     return env.storage_usage();
-  }
-
-  private _readRegisterContentsAsString(registerId: u64): string {
-    const res = util.bytesToString(util.read_register(registerId));
-    return res != null ? <string>res : "";
   }
 }
 
@@ -365,8 +360,3 @@ export class ContractPromiseResult {
   // method returns `void`.
   buffer: Uint8Array;
 }
-
-/**
- * An instance of context that can be used to access the Context functions.
- */
-export let context: Context = new Context();

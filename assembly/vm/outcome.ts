@@ -1,4 +1,4 @@
-import { u128 } from "../runtime";
+import { u128 } from "../sdk";
 
 export abstract class ReturnData {}
 

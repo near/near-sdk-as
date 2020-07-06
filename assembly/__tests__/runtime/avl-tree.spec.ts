@@ -1,6 +1,6 @@
-import { AVLTree, MapEntry } from "../../runtime";
-import { RNG } from "../../runtime/math";
-import { Context } from "../../vm";
+import { AVLTree, MapEntry } from "../..";
+import { RNG } from "../..";
+import { VMContext } from "../../vm";
 
 let tree: AVLTree<u32, u32>;
 let _closure_var1: u32;
@@ -213,7 +213,7 @@ describe("AVLTrees should handle", () => {
     });
     
     it("sets and gets n random key-value pairs", () => {
-        Context.setPrepaid_gas(u64.MAX_VALUE);
+        VMContext.setPrepaid_gas(u64.MAX_VALUE);
         // TODO setup free gas env to prevent gas exceeded error, and test larger trees
         range(1, 8).forEach(k => { // tree size is 2^(k-1)
             const n = 1 << k;
@@ -576,6 +576,7 @@ describe("AVLTrees should handle", () => {
         const keysToRemove: u32[] = [0, 0, 0, 1];
 
         insertThenRemove(tree, keysToInsert, keysToRemove);
+        // @ts-ignore
         expect(tree.isBalanced()).toBeTruthy();
     });
 
@@ -584,11 +585,12 @@ describe("AVLTrees should handle", () => {
         const keysToRemove: u32[] = [0, 0, 0, 3, 5, 6, 7, 4];
 
         insertThenRemove(tree, keysToInsert, keysToRemove);
+        //@ts-ignore
         expect(tree.isBalanced()).toBeTruthy();
     });
 
     it("remains balanced and sorted after 2n insertions and n deletions", () => {
-        Context.setPrepaid_gas(u64.MAX_VALUE);
+        VMContext.setPrepaid_gas(u64.MAX_VALUE);
         // TODO setup free gas env to prevent gas exceeded error, and test larger trees
         const n: u32 = 33;
         const map = generateRandomTree(tree, n);
@@ -599,6 +601,7 @@ describe("AVLTrees should handle", () => {
         }
 
         expect(tree.size).toStrictEqual(n);
+        // @ts-ignore
         expect(tree.isBalanced()).toBeTruthy();
         expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(n));
         expect(tree.keys(u32.MIN_VALUE, u32.MAX_VALUE)).toStrictEqual(sortedKeys);

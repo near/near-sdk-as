@@ -1,7 +1,7 @@
-import { context, storage, base58, base64, PersistentUnorderedMap, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128, RNG, ContractPromiseBatch } from "../../runtime";
+import { Context, storage, base58, base64, PersistentUnorderedMap, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, logging, env, u128, RNG, ContractPromiseBatch } from "../../sdk";
 import { TextMessage } from "./model";
 import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
-import { Context, VM, Outcome } from "../../vm";
+import { VMContext, VM, Outcome } from "../../vm";
 
 
 describe("Encodings", () => {
@@ -467,54 +467,54 @@ describe("Ordered Map should handle", () => {
   });
 });
 
-describe("context", () => {
+describe("Context", () => {
 
-  it("should read unchanged context", () => {
-    expect(context.sender).toBe("bob", "Wrong sender");
-    expect(context.attachedDeposit).toBe(u128.fromU64(2), "Wrong receivedAmount");
-    expect(context.accountBalance).toBe(u128.fromU32(4), "Account Balance should inclode attached deposit");
+  it("should read unchanged Context", () => {
+    expect(Context.sender).toBe("bob", "Wrong sender");
+    expect(Context.attachedDeposit).toBe(u128.fromU64(2), "Wrong receivedAmount");
+    expect(Context.accountBalance).toBe(u128.fromU32(4), "Account Balance should inclode attached deposit");
   });
   
   describe("Account Balance", () => {
       it("should be updated when attached attached deposit is updated", () => {
-          Context.setAttached_deposit(u128.from(4));
-          expect(context.accountBalance).toStrictEqual(u128.from(6), "Updating the attached deposit should update the account balance");
+          VMContext.setAttached_deposit(u128.from(4));
+          expect(Context.accountBalance).toStrictEqual(u128.from(6), "Updating the attached deposit should update the account balance");
         });
     });
   
   describe("Find the block_timestamp", () => {
     it("should be the default", () => {
-      let timestamp = context.blockTimestamp;
+      let timestamp = Context.blockTimestamp;
       expect(timestamp).toBe(42)
     });
 
     it("should be the updatable", () => {
-      Context.setBlock_timestamp(84);
-      let timestamp = context.blockTimestamp;
+      VMContext.setBlock_timestamp(84);
+      let timestamp = Context.blockTimestamp;
       expect(timestamp).toBe(84);
     });
 
   });
       
   it("should be editable", () => {
-    Context.setCurrent_account_id("contractaccount");
-    expect(context.contractName).toBe("contractaccount", "Wrong contract name");
-    Context.setSigner_account_id("signeraccount");
-    expect(context.sender).toBe("signeraccount", "Wrong signer account");
-    // Context.setSigner_account_pk(base58.encode(util.parseFromString<Uint8Array>("public-key-as-string")));
-    expect(context.senderPublicKey).toBe("HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK", "Wrong public key"); // haha, where is this coming from?!
-    Context.setBlock_index(113);
-    expect(context.blockIndex).toBe(113, "Wrong contract name");
-    Context.setAttached_deposit(u128.from(7));
-    expect(context.attachedDeposit.toString()).toBe(u128.fromU64(7).toString(), "Wrong receivedAmount");
-    // Context.setAccount_balance(u128.from(14))
+    VMContext.setCurrent_account_id("contractaccount");
+    expect(Context.contractName).toBe("contractaccount", "Wrong contract name");
+    VMContext.setSigner_account_id("signeraccount");
+    expect(Context.sender).toBe("signeraccount", "Wrong signer account");
+    // VMContext.setSigner_account_pk(base58.encode(util.parseFromString<Uint8Array>("public-key-as-string")));
+    expect(Context.senderPublicKey).toBe("HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK", "Wrong public key"); // haha, where is this coming from?!
+    VMContext.setBlock_index(113);
+    expect(Context.blockIndex).toBe(113, "Wrong contract name");
+    VMContext.setAttached_deposit(u128.from(7));
+    expect(Context.attachedDeposit.toString()).toBe(u128.fromU64(7).toString(), "Wrong receivedAmount");
+    // VMContext.setAccount_balance(u128.from(14))
     
-    // expect(context.accountBalance).toBe(u128.fromU64(14), "Wrong receivedAmount");
-    Context.setPrepaid_gas(1000000000);
-    expect(context.prepaidGas).toBe(1000000000, "Wrong prepaid gas");
-    expect(context.usedGas <= 1000000000).toBe(true, "Wrong used gas");
-    // expect(context.usedGas > 0).toBe(true, "Wrong used gas");
-    //expect(context.storageUsage).toBe(0, "Wrong storage usage"); TODO: test when implemented
+    // expect(Context.accountBalance).toBe(u128.fromU64(14), "Wrong receivedAmount");
+    VMContext.setPrepaid_gas(1000000000);
+    expect(Context.prepaidGas).toBe(1000000000, "Wrong prepaid gas");
+    expect(Context.usedGas <= 1000000000).toBe(true, "Wrong used gas");
+    // expect(Context.usedGas > 0).toBe(true, "Wrong used gas");
+    //expect(Context.storageUsage).toBe(0, "Wrong storage usage"); TODO: test when implemented
   });
 });
 
@@ -546,20 +546,20 @@ describe("promise batches", () => {
   })
 
   it("should support contract batch transactions", () => {
-    Context.setPrepaid_gas(10000000000000);
-    expect(context.accountBalance).toBe(u128.from(9))
+    VMContext.setPrepaid_gas(10000000000000);
+    expect(Context.accountBalance).toBe(u128.from(9))
     ContractPromiseBatch.create("alice").transfer(u128.from(1))
-    expect(context.accountBalance).toBe(u128.from(8)) // this number is surprising
+    expect(Context.accountBalance).toBe(u128.from(8)) // this number is surprising
   })
 
   it("should support chained calls", () => {
     // TODO: this sets balance to 14 for some reason, why is that?
-    Context.setAccount_balance(u128.Zero)
+    VMContext.setAccount_balance(u128.Zero)
 
-    const before = context.accountBalance
+    const before = Context.accountBalance
     const amount = u128.from(1)
 
-    const access_key = base58.decode(context.senderPublicKey)
+    const access_key = base58.decode(Context.senderPublicKey)
     const code = _testBytes();
 
     ContractPromiseBatch
@@ -570,14 +570,14 @@ describe("promise batches", () => {
       .deploy_contract(code)
 
     // TODO: what else can we test besides balance xfer at this point?
-    expect(context.accountBalance).toBe(u128.sub(before, amount));
+    expect(Context.accountBalance).toBe(u128.sub(before, amount));
 
   })
 
   it("should support cross contract calls", () => {
-    Context.setAccount_balance(u128.Zero) // back to 14
+    VMContext.setAccount_balance(u128.Zero) // back to 14
 
-    const before = context.accountBalance
+    const before = Context.accountBalance
     const amount = u128.from(10)
     const contractAccount = "first-contract.bob.testnet"
 
@@ -588,11 +588,11 @@ describe("promise batches", () => {
            .transfer(amount)
 
     // TODO: what else can we test besides balance xfer at this point?
-    expect(context.accountBalance).toBe(u128.sub(before, amount))
+    expect(Context.accountBalance).toBe(u128.sub(before, amount))
   })
 
   it('should support controlling access keys', () => {
-    const access_key1 = base58.decode(context.senderPublicKey)
+    const access_key1 = base58.decode(Context.senderPublicKey)
     const access_key2 = base58.decode("1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m")
     const receiver = 'test.account'
 
@@ -605,7 +605,7 @@ describe("promise batches", () => {
   })
 
   it('should support adding access keys', () => {
-    const access_key = base58.decode(context.senderPublicKey)
+    const access_key = base58.decode(Context.senderPublicKey)
     const receiver = 'test.account'
 
     ContractPromiseBatch
