@@ -1,5 +1,3 @@
-//@nearfile out
-
 import { u128 } from "../..";
 
 @nearBindgen
