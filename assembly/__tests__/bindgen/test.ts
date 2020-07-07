@@ -1,7 +1,6 @@
 import * as main from "./main";
-import { base64, logging, u128 } from "../..";
+import { base64, logging, u128, util } from "../..";
 import { FooBar, Nullables, ContainerClass, AnotherContainerClass } from './model';
-
 
 function roundtrip<T>(obj: T): T {
     return decode<T>(encode<T>(obj));
@@ -16,7 +15,7 @@ function isNull<T>(t: T): bool {
 
 export function runTest(): void {
     logging.log("starting test");
-    const original = new FooBar();
+    const original = util.allocate<FooBar>();
     original.u32Arr = [42, 11];
     original.foo = 321;
     original.bar = 123;
@@ -46,7 +45,7 @@ export function runTest(): void {
     assert(original.u64Arr[0] == decoded.u64Arr[0]);
     assert(original.u64_zero == decoded.u64_zero);
 
-    const nullable = new Nullables();
+    const nullable = util.allocate<Nullables>();
     logging.log(String.UTF8.decode(nullable.encode().buffer));
     //@ts-ignore
     const nullable2 = decode<Nullables>(nullable.encode());
@@ -54,7 +53,7 @@ export function runTest(): void {
     logging.log(isNull(nullable2.u128).toString());
     assert(isNull(nullable2.uint8Array), "expected nullable2.uint8Array to be null");
 
-    const foobar2 = new FooBar();
+    const foobar2 = util.allocate<FooBar>();
     foobar2.arr  = [];
     const foobar2_ = decode<FooBar>(foobar2.encode());
     assert(foobar2_.arr.length == foobar2.arr.length);

@@ -1,4 +1,4 @@
-
+//@nearfile out
 
 import { u128 } from "../..";
 
@@ -35,7 +35,8 @@ export class ContainerClass {
 
 @nearBindgen
 export class AnotherContainerClass {
-    foobars: Array<Array<FooBar>>
+    constructor(
+      public foobars: Array<Array<FooBar>>){}
 }
 
 @nearBindgen

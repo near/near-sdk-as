@@ -339,12 +339,11 @@ export class ContractPromise {
       const promise_status = env.promise_result(i, 0) as i32;
       let isOk = promise_status == 1;
       if (!isOk) {
-        results[i] = new ContractPromiseResult();
-        results[i].status = promise_status;
+        results[i] = new ContractPromiseResult(promise_status);
         continue;
       }
       const buffer = util.read_register(0);
-      results[i] = { status: promise_status, buffer: buffer };
+      results[i] = new ContractPromiseResult(promise_status, buffer);
     }
     return results;
   }
@@ -354,9 +353,10 @@ export class ContractPromise {
  * Class to store results of the async calls on the remote contracts.
  */
 export class ContractPromiseResult {
+  constructor( 
   // Whether the execution of the remote call succeeded.
-  status: i32;
-  // Bytes data returned by the remote contract. Can be empty or null, if the remote
-  // method returns `void`.
-  buffer: Uint8Array;
+    public status: i32,
+    // Bytes data returned by the remote contract. Can be empty or null, if the remote
+    // method returns `void`.
+    public buffer: Uint8Array = defaultValue<Uint8Array>()){}
 }

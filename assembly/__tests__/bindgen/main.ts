@@ -1,5 +1,6 @@
+
 // These imports need to be copied properly
-import { storage, Context, ContractPromise, logging } from "../..";
+import { storage, Context, ContractPromise, logging, util } from "../..";
 import { FooBar, ContainerClass, AnotherContainerClass, PromiseArgs, MyCallbackResult, MyContractPromiseResult } from "./model";
 
 export function doNothing(): void {
@@ -11,8 +12,7 @@ export function add(x: i32, y: i32): i32 {
 }
 
 export function rewrapFoobar(container: ContainerClass): AnotherContainerClass {
-    let result = new AnotherContainerClass();
-    result.foobars = [[<FooBar>container.foobar]];
+    let result = new AnotherContainerClass([[<FooBar>container.foobar]]);
     return result;
 }
 

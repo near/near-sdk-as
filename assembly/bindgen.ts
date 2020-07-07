@@ -1,5 +1,5 @@
 import "./sdk/env/imports";
-import { base64, runtime_api, u128 } from "./sdk";
+import { base64, runtime_api, u128, util } from "./sdk";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 
 // Runtime functions
@@ -282,7 +282,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   //@ts-ignore
   if (isDefined(value.decode)) {
     assert(val instanceof JSON.Obj, "Value with Key: " +  name + " with type " + nameof<T>()  + " is not an object or null");
-    value = changetype<T>(__alloc(offsetof<T>(), idof<T>()));
+    value = util.allocate<T>();
     if (isNullable<T>()) {
       if (value != null) {
         //@ts-ignore
@@ -327,4 +327,14 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   throw new Error("Error when trying to decode " + name + " with type " + nameof<T>() +
                   " and unexpected JSON type " + JSONTypeToString(val) + 
                   "\nPerhaps @nearBindgen decorator needs to be added to class " + nameof<T>());
+}
+
+//@ts-ignore
+@global
+function defaultValue<T>(): T {
+  if (isInteger<T>()) {
+    //@ts-ignore
+    return <T>0;
+  }
+  return changetype<T>(0);
 }

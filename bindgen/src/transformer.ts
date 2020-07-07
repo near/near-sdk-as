@@ -13,7 +13,7 @@ class JSONTransformer extends Transform {
     let newParser = new Parser(parser.diagnostics);
 
     // Filter for near files
-    let files = JSONBindingsBuilder.nearFiles(parser);
+    let files = JSONBindingsBuilder.nearFiles(this.parser.sources);
     JSONTransformer.isTest = files.map(source => source.normalizedPath).some(path => path.includes("spec"));
     // Visit each file
     files.forEach(source => {

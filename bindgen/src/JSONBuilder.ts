@@ -11,9 +11,11 @@ import {
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
+  Expression,
+  Tokenizer,
 } from "visitor-as/as";
 import { ASTBuilder, BaseVisitor, utils} from "visitor-as";
-
+import { SimpleParser } from './utils';
 
 const NEAR_DECORATOR = "nearBindgen"
 
@@ -32,7 +34,7 @@ function hasNearDecorator(stmt: Source): boolean {
   );
 }
 
-function toString(node: Node): string {
+export function toString(node: Node): string {
   return ASTBuilder.build(node);
 }
 
@@ -89,8 +91,8 @@ export class JSONBindingsBuilder extends BaseVisitor {
     return new JSONBindingsBuilder().build(source);
   }
 
-  static nearFiles(parser: Parser): Source[] {
-    return parser.sources.filter(hasNearDecorator);
+  static nearFiles(sources: Source[]): Source[] {
+    return sources.filter(hasNearDecorator);
   }
 
   visitClassDeclaration(node: ClassDeclaration): void {
@@ -171,20 +173,27 @@ export { __wrapper_${name} as ${name} }`);
     const isNearFile = source.text.includes("@nearfile")
     this.sb = [];
     this.visit(source);
+    
     let sourceText = source.statements.map(stmt => {
-      let str = toString(stmt);
+      let str;
       if (
         isClass(stmt) &&
         (utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR) || isNearFile)
         ) {
         let _class = <ClassDeclaration>stmt;
-        str = str.slice(0, str.lastIndexOf("}"));
         let fields = _class.members
-          .filter(isField)
-          .map((field: FieldDeclaration) => field);
+        .filter(isField)
+        .map((field: FieldDeclaration) => field);
         if (fields.some((field) => field.type == null)) {
           throw new Error("All Fields must have explict type declaration.");
         }
+        fields.forEach( field => {
+          if (field.initializer == null) {
+            field.initializer = SimpleParser.parseExpression(`defaultValue<${toString(field.type!)}>())`); 
+          }
+        })
+        str = toString(stmt);
+        str = str.slice(0, str.lastIndexOf("}"));
         let className = this.typeName(_class);
         if (!utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR)) {
           console.error("\x1b[31m", `@nearfile is deprecated use @${NEAR_DECORATOR} decorator on ${className}`,"\x1b[0m");
@@ -229,6 +238,8 @@ export { __wrapper_${name} as ${name} }`);
     return this._encode().toString();
   }
 }`;
+      } else {
+        str = toString(stmt);
       }
       return str;
     });
