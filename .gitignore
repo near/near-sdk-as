@@ -17,3 +17,5 @@ wasm-mock-vm/
 
 docs/
 **/*/tsconfig.tsbuildinfo*
+
+out/
