@@ -7,17 +7,14 @@ import {
   TypeNode,
   ClassDeclaration,
   DeclarationStatement,
-  Parser,
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
-  Expression,
-  Tokenizer,
 } from "visitor-as/as";
-import { ASTBuilder, BaseVisitor, utils} from "visitor-as";
-import { SimpleParser } from './utils';
+import { ASTBuilder, BaseVisitor, utils } from "visitor-as";
+import { SimpleParser } from "./utils";
 
-const NEAR_DECORATOR = "nearBindgen"
+const NEAR_DECORATOR = "nearBindgen";
 
 function returnsVoid(node: FunctionDeclaration): boolean {
   return toString(node.signature.returnType) === "void";
@@ -29,7 +26,9 @@ function numOfParameters(node: FunctionDeclaration): number {
 
 function hasNearDecorator(stmt: Source): boolean {
   return (
-    (stmt.text.includes("@nearfile") || stmt.text.includes("@" + NEAR_DECORATOR) || isEntry(stmt)) &&
+    (stmt.text.includes("@nearfile") ||
+      stmt.text.includes("@" + NEAR_DECORATOR) ||
+      isEntry(stmt)) &&
     !stmt.text.includes("@notNearfile")
   );
 }
@@ -57,7 +56,11 @@ function createDecodeStatements(_class: ClassDeclaration): string[] {
       const name = toString(field.name);
       return (
         createDecodeStatement(field, `this.${name} = obj.has("${name}") ? `) +
-        `: ${field.initializer != null ? toString(field.initializer) : `this.${name}`};`
+        `: ${
+          field.initializer != null
+            ? toString(field.initializer)
+            : `this.${name}`
+        };`
       );
     });
 }
@@ -128,8 +131,8 @@ export class JSONBindingsBuilder extends BaseVisitor {
     let returnType = signature.returnType;
     let returnTypeName = toString(returnType)
       .split("|")
-      .map(name => name.trim())
-      .filter(name => name !== "null")
+      .map((name) => name.trim())
+      .filter((name) => name !== "null")
       .join("|");
     let hasNull = toString(returnType).includes("null");
     let name = func.name.text;
@@ -145,12 +148,14 @@ export class JSONBindingsBuilder extends BaseVisitor {
     }
     if (params.length > 0) {
       this.sb[this.sb.length - 1] += params
-        .map(param => createDecodeStatement(param))
+        .map((param) => createDecodeStatement(param))
         .join(", ");
     }
     this.sb[this.sb.length - 1] += ");";
     if (toString(returnType) !== "void") {
-      this.sb.push(`  const val = encode<${returnTypeName}>(${hasNull ? `changetype<${returnTypeName}>(result)` : "result"});
+      this.sb.push(`  const val = encode<${returnTypeName}>(${
+        hasNull ? `changetype<${returnTypeName}>(result)` : "result"
+      });
   value_return(val.byteLength, val.dataStart);`);
     }
     this.sb.push(`}
@@ -170,33 +175,40 @@ export { __wrapper_${name} as ${name} }`);
   }
 
   build(source: Source): string {
-    const isNearFile = source.text.includes("@nearfile")
+    const isNearFile = source.text.includes("@nearfile");
     this.sb = [];
     this.visit(source);
-    
-    let sourceText = source.statements.map(stmt => {
+
+    let sourceText = source.statements.map((stmt) => {
       let str;
       if (
         isClass(stmt) &&
-        (utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR) || isNearFile)
-        ) {
+        (utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR) ||
+          isNearFile)
+      ) {
         let _class = <ClassDeclaration>stmt;
         let fields = _class.members
-        .filter(isField)
-        .map((field: FieldDeclaration) => field);
+          .filter(isField)
+          .map((field: FieldDeclaration) => field);
         if (fields.some((field) => field.type == null)) {
           throw new Error("All Fields must have explict type declaration.");
         }
-        fields.forEach( field => {
+        fields.forEach((field) => {
           if (field.initializer == null) {
-            field.initializer = SimpleParser.parseExpression(`defaultValue<${toString(field.type!)}>())`); 
+            field.initializer = SimpleParser.parseExpression(
+              `defaultValue<${toString(field.type!)}>())`
+            );
           }
-        })
+        });
         str = toString(stmt);
         str = str.slice(0, str.lastIndexOf("}"));
         let className = this.typeName(_class);
         if (!utils.hasDecorator(<ClassDeclaration>stmt, NEAR_DECORATOR)) {
-          console.error("\x1b[31m", `@nearfile is deprecated use @${NEAR_DECORATOR} decorator on ${className}`,"\x1b[0m");
+          console.error(
+            "\x1b[31m",
+            `@nearfile is deprecated use @${NEAR_DECORATOR} decorator on ${className}`,
+            "\x1b[0m"
+          );
         }
         str += `
   decode<_V = Uint8Array>(buf: _V): ${className} {

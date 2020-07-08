@@ -1,6 +1,24 @@
-import { u128, Context, storage, logging, base58, base64, PersistentMap, PersistentVector, PersistentDeque, ContractPromise, math, ContractPromiseBatch } from "../..";
+import {
+  u128,
+  Context,
+  storage,
+  logging,
+  base58,
+  base64,
+  PersistentMap,
+  PersistentVector,
+  PersistentDeque,
+  ContractPromise,
+  math,
+  ContractPromiseBatch,
+} from "../..";
 import { TextMessage } from "./model";
-import { _testTextMessage, _testTextMessageTwo, _testBytes, _testBytesTwo } from "./util";
+import {
+  _testTextMessage,
+  _testTextMessageTwo,
+  _testBytes,
+  _testBytesTwo,
+} from "./util";
 
 export function hello(): string {
   logging.log("hello test");
@@ -12,9 +30,12 @@ export function base58Test(): void {
   logging.log("base58Test");
   let array: Uint8Array = _testBytes();
   const encoded = base58.encode(array);
-  assert(encoded == "1TMu", "Wrong encoded value for base58 encoding")
+  assert(encoded == "1TMu", "Wrong encoded value for base58 encoding");
   const decoded = base58.decode("1TMu");
-  assert(_arrayEqual(decoded, array), "Wrong decoded value for base58 encoding")
+  assert(
+    _arrayEqual(decoded, array),
+    "Wrong decoded value for base58 encoding"
+  );
 }
 
 export function base64Test(): void {
@@ -23,7 +44,10 @@ export function base64Test(): void {
   const encoded = base64.encode(array);
   assert(encoded == "AAFaZA==", "Incorrect keys contents");
   const decoded = base64.decode("AAFaZA==");
-  assert(_arrayEqual(decoded, array), "Incorrect decoded value after base64 roundtrip");
+  assert(
+    _arrayEqual(decoded, array),
+    "Incorrect decoded value after base64 roundtrip"
+  );
 }
 
 export function logTest(): void {
@@ -38,7 +62,10 @@ export function storageStringRoundtripTest(): void {
   assert(getValueResult == "myValue1", "Incorrect value from storage");
   const otherValueResult = storage.getString("someOtherKey");
   assert(otherValueResult == "otherValue", "Incorrect value2 from storage");
-  assert(storage.getString("nonexistentKey") == null, "Unexpectd value on getting string with a nonexistent key");
+  assert(
+    storage.getString("nonexistentKey") == null,
+    "Unexpectd value on getting string with a nonexistent key"
+  );
 }
 
 export function storageBytesRoundtripTest(): void {
@@ -48,11 +75,20 @@ export function storageBytesRoundtripTest(): void {
   storage.setBytes("someKey", bytes);
   storage.setBytes("someOtherKey", bytes2);
   const getValueResult = storage.getBytes("someKey");
-  assert(_arrayEqual(getValueResult, bytes), "Incorrect bytes value from storage");
+  assert(
+    _arrayEqual(getValueResult, bytes),
+    "Incorrect bytes value from storage"
+  );
   const otherValueResult = storage.getBytes("someOtherKey");
-  assert(_arrayEqual(otherValueResult, bytes2), "Incorrect bytes value from storage");
+  assert(
+    _arrayEqual(otherValueResult, bytes2),
+    "Incorrect bytes value from storage"
+  );
 
-  assert(storage.getBytes("nonexistentKey") == null, "Unexpectd value on getting bytes with a nonexistent key");
+  assert(
+    storage.getBytes("nonexistentKey") == null,
+    "Unexpectd value on getting bytes with a nonexistent key"
+  );
 }
 
 export function storageGenericGetSetRoundtripTest(): void {
@@ -61,35 +97,77 @@ export function storageGenericGetSetRoundtripTest(): void {
   storage.set<TextMessage>("message1", message);
 
   const messageFromStorage = storage.getSome<TextMessage>("message1");
-  assert(messageFromStorage.sender == "mysteriousStranger", "Incorrect data value (sender) for retrieved object");
-  assert(messageFromStorage.text == "Hello world", "Incorrect data value (text) for retrieved object");
-  assert(messageFromStorage.number == 415, "Incorrect data value (number) for retrieved object");
-  assert(storage.get<TextMessage>("nonexistent", null) == null, "Incorrect data value for get<T> nonexistent key");
+  assert(
+    messageFromStorage.sender == "mysteriousStranger",
+    "Incorrect data value (sender) for retrieved object"
+  );
+  assert(
+    messageFromStorage.text == "Hello world",
+    "Incorrect data value (text) for retrieved object"
+  );
+  assert(
+    messageFromStorage.number == 415,
+    "Incorrect data value (number) for retrieved object"
+  );
+  assert(
+    storage.get<TextMessage>("nonexistent", null) == null,
+    "Incorrect data value for get<T> nonexistent key"
+  );
 
   storage.set<TextMessage>("message2", new TextMessage());
   // TODO: fix this
   //assert(_modelObjectEqual(storage.get<TextMessage>("message2"), new TextMessage()), "Incorrect empty message on storage roundtrip");
 
   storage.set<u64>("u64key", 20);
-  assert(storage.getPrimitive<u64>("u64key", 0) == 20, "Incorrect data value for u64 roundtrip");
-  assert(storage.getPrimitive<u64>("nonexistent", 1) == 1, "Incorrect data value for u64 get nonexistent key");
+  assert(
+    storage.getPrimitive<u64>("u64key", 0) == 20,
+    "Incorrect data value for u64 roundtrip"
+  );
+  assert(
+    storage.getPrimitive<u64>("nonexistent", 1) == 1,
+    "Incorrect data value for u64 get nonexistent key"
+  );
 
   storage.set<u32>("u32key", 12);
-  assert(storage.getPrimitive<u32>("u32key", 0) == 12, "Incorrect data value for u32 roundtrip");
-  assert(storage.getPrimitive<u32>("nonexistent", 2) == 2, "Incorrect data value for u32 get nonexistent key");
+  assert(
+    storage.getPrimitive<u32>("u32key", 0) == 12,
+    "Incorrect data value for u32 roundtrip"
+  );
+  assert(
+    storage.getPrimitive<u32>("nonexistent", 2) == 2,
+    "Incorrect data value for u32 get nonexistent key"
+  );
 
   storage.set<i32>("i32key", -5);
-  assert(storage.getPrimitive<i32>("i32key", 0) == -5, "Incorrect data value for i32 roundtrip");
-  assert(storage.getPrimitive<i32>("nonexistent", -10) == -10, "Incorrect data value for i32 get nonexistent key");
+  assert(
+    storage.getPrimitive<i32>("i32key", 0) == -5,
+    "Incorrect data value for i32 roundtrip"
+  );
+  assert(
+    storage.getPrimitive<i32>("nonexistent", -10) == -10,
+    "Incorrect data value for i32 get nonexistent key"
+  );
 
   storage.set<bool>("boolkey", true);
-  assert(storage.getPrimitive<bool>("boolkey", 0) == true, "Incorrect data value for bool roundtrip");
-  assert(storage.getPrimitive<bool>("nonexistent", true) == true, "Incorrect data value for bool get nonexistent key");
+  assert(
+    storage.getPrimitive<bool>("boolkey", 0) == true,
+    "Incorrect data value for bool roundtrip"
+  );
+  assert(
+    storage.getPrimitive<bool>("nonexistent", true) == true,
+    "Incorrect data value for bool get nonexistent key"
+  );
 
   storage.set<String>("stringkey", "StringValue");
   const stringGet = storage.get<String>("stringkey");
-  assert(stringGet == "StringValue", "Incorrect data value for string roundtrip");
-  assert(storage.get<string>("nonexistent", null) == null, "Incorrect data value for get<T> string nonexistent key");
+  assert(
+    stringGet == "StringValue",
+    "Incorrect data value for string roundtrip"
+  );
+  assert(
+    storage.get<string>("nonexistent", null) == null,
+    "Incorrect data value for get<T> string nonexistent key"
+  );
 }
 
 export function mapTests(): void {
@@ -97,30 +175,54 @@ export function mapTests(): void {
   // empty map
   const map = new PersistentMap<string, TextMessage>("mapId");
   assert(!map.contains("nonexistentkey"), "Map contains a non existent key");
-  assert(map.get("nonexistentkey") == null, "Incorrect result on get with nonexistent key");
+  assert(
+    map.get("nonexistentkey") == null,
+    "Incorrect result on get with nonexistent key"
+  );
 
   // add some entries to the map
   const message = _testTextMessage();
   map.set("mapKey1", message);
   map.set("mapKey3", _testTextMessageTwo());
-//   assert(values.length == 2, "Unexpected values size in map with 2 entries");
-//   assert(_modelObjectEqual(values[0], message), "Unexpected values contents in map with 2 entries");
-//   assert(_modelObjectEqual(values[1], _testTextMessageTwo()), "Unexpected values contents in map with 2 entries");
+  //   assert(values.length == 2, "Unexpected values size in map with 2 entries");
+  //   assert(_modelObjectEqual(values[0], message), "Unexpected values contents in map with 2 entries");
+  //   assert(_modelObjectEqual(values[1], _testTextMessageTwo()), "Unexpected values contents in map with 2 entries");
   assert(!map.contains("nonexistentkey"), "Map contains a non existent key");
-  assert(map.contains("mapKey1"), "Map does not contain a key that was added (mapKey1)");
-  assert(map.contains("mapKey3"), "Map does not contain a key that was added (mapKey3)");
-  assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get");
-  assert(_modelObjectEqual(map.get("mapKey3"), _testTextMessageTwo()), "Incorrect result from map get");
+  assert(
+    map.contains("mapKey1"),
+    "Map does not contain a key that was added (mapKey1)"
+  );
+  assert(
+    map.contains("mapKey3"),
+    "Map does not contain a key that was added (mapKey3)"
+  );
+  assert(
+    _modelObjectEqual(map.get("mapKey1"), message),
+    "Incorrect result from map get"
+  );
+  assert(
+    _modelObjectEqual(map.get("mapKey3"), _testTextMessageTwo()),
+    "Incorrect result from map get"
+  );
 
   // delete an entry and retry api calls
   map.delete("mapKey3");
   assert(!map.contains("mapKey3"), "Map contains a key that was deleted");
-  assert(map.contains("mapKey1"), "Map does not contain a key that should be there after deletion of another key");
-  assert(_modelObjectEqual(map.get("mapKey1"), message), "Incorrect result from map get after delete");
-  assert(map.get("mapKey3") == null, "Incorrect result from map get on a deleted key");
+  assert(
+    map.contains("mapKey1"),
+    "Map does not contain a key that should be there after deletion of another key"
+  );
+  assert(
+    _modelObjectEqual(map.get("mapKey1"), message),
+    "Incorrect result from map get after delete"
+  );
+  assert(
+    map.get("mapKey3") == null,
+    "Incorrect result from map get on a deleted key"
+  );
 }
 
-export function mapTestsWithPrimitices(): void{
+export function mapTestsWithPrimitices(): void {
   // map with primitives
   const map = new PersistentMap<i32, i32>("mapPrimitives");
   map.set(1, -20);
@@ -156,7 +258,10 @@ export function vectorTests(): void {
   assert(vector.front == "bb", "Incorrect front entry");
   assert(vector.first == "bb", "Incorrect first entry");
   assert(vector[0] == "bb", "incorrect vector contents");
-  assert(_vectorHasContents(vector, ["bb"]), "Unexpected vector contents. Expected [bb]");
+  assert(
+    _vectorHasContents(vector, ["bb"]),
+    "Unexpected vector contents. Expected [bb]"
+  );
 
   vector.pushBack("bc");
   assert(vector.length == 2, "Vector has incorrect length");
@@ -164,33 +269,57 @@ export function vectorTests(): void {
   assert(vector.containsIndex(1), "Vector size 2 does not have index 1");
   assert(!vector.containsIndex(2), "Vector size 2 incorrectly has index 2");
   assert(!vector.isEmpty, "isEmpty incorrect on non-empty vector");
-  assert(_vectorHasContents(vector, ["bb", "bc"]), "Unexpected vector contents. Expected [ba, bb]");
+  assert(
+    _vectorHasContents(vector, ["bb", "bc"]),
+    "Unexpected vector contents. Expected [ba, bb]"
+  );
   vector[1] = "bd";
-  assert(_vectorHasContents(vector, ["bb", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
+  assert(
+    _vectorHasContents(vector, ["bb", "bd"]),
+    "Unexpected vector contents. Expected [ba, bd]"
+  );
 
   vector[0] = "aa";
-  assert(_vectorHasContents(vector, ["aa", "bd"]), "Unexpected vector contents. Expected [aa, bd]");
-  assert(vector.length == 2, "Vector has incorrect length")
+  assert(
+    _vectorHasContents(vector, ["aa", "bd"]),
+    "Unexpected vector contents. Expected [aa, bd]"
+  );
+  assert(vector.length == 2, "Vector has incorrect length");
   vector.pushBack("be");
-  assert(_vectorHasContents(vector, ["aa", "bd", "be"]), "Unexpected vector contents. Expected [aa, bd, be]");
-  assert(vector.length == 3, "Vector has incorrect length")
-  assert(vector.back == "be", "Incorrect back entry")
-  assert(vector.last == "be", "Incorrect last entry")
-  assert(vector.front == "aa", "Incorrect front entry")
-  assert(vector.first == "aa", "Incorrect first entry")
+  assert(
+    _vectorHasContents(vector, ["aa", "bd", "be"]),
+    "Unexpected vector contents. Expected [aa, bd, be]"
+  );
+  assert(vector.length == 3, "Vector has incorrect length");
+  assert(vector.back == "be", "Incorrect back entry");
+  assert(vector.last == "be", "Incorrect last entry");
+  assert(vector.front == "aa", "Incorrect front entry");
+  assert(vector.first == "aa", "Incorrect first entry");
 
   //pop an entry and then try various other methods
   vector.pop();
-  assert(_vectorHasContents(vector, ["aa", "bd"]), "Unexpected vector contents. Expected [aa, bd]");
-  assert(vector.length == 2, "Vector has incorrect length after delete")
+  assert(
+    _vectorHasContents(vector, ["aa", "bd"]),
+    "Unexpected vector contents. Expected [aa, bd]"
+  );
+  assert(vector.length == 2, "Vector has incorrect length after delete");
   vector[0] = "ba";
-  assert(_vectorHasContents(vector, ["ba", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
-  assert(vector.length == 2, "Vector has incorrect length")
+  assert(
+    _vectorHasContents(vector, ["ba", "bd"]),
+    "Unexpected vector contents. Expected [ba, bd]"
+  );
+  assert(vector.length == 2, "Vector has incorrect length");
   vector.pushBack("bf");
-  assert(_vectorHasContents(vector, ["ba", "bd", "bf"]), "Unexpected vector contents. Expected [ba, bd, bf]");
-  assert(vector.length == 3, "Vector has incorrect length")
+  assert(
+    _vectorHasContents(vector, ["ba", "bd", "bf"]),
+    "Unexpected vector contents. Expected [ba, bd, bf]"
+  );
+  assert(vector.length == 3, "Vector has incorrect length");
   vector.popBack();
-  assert(_vectorHasContents(vector, ["ba", "bd"]), "Unexpected vector contents. Expected [ba, bd]");
+  assert(
+    _vectorHasContents(vector, ["ba", "bd"]),
+    "Unexpected vector contents. Expected [ba, bd]"
+  );
   assert(vector.length == 2, "Vector has incorrect length");
 
   // same id but different object.
@@ -276,8 +405,18 @@ export function promiseTests(): void {
   logging.log("promiseTests");
   const emptyResults = ContractPromise.getResults();
   assert(emptyResults.length == 0, "wrong length for results");
-  const promise = ContractPromise.create("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
-  const promise2 = promise.then("contractNameForPromise", "methodName", new Uint8Array(0), 10000000000000);
+  const promise = ContractPromise.create(
+    "contractNameForPromise",
+    "methodName",
+    new Uint8Array(0),
+    10000000000000
+  );
+  const promise2 = promise.then(
+    "contractNameForPromise",
+    "methodName",
+    new Uint8Array(0),
+    10000000000000
+  );
   const promise3 = ContractPromise.all([promise2]);
 }
 
@@ -306,46 +445,49 @@ export function mathTests(): void {
 }
 
 export function promiseBatchTest(): void {
-  const access_key = base58.decode("1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m")
+  const access_key = base58.decode(
+    "1SnaTomvVzRgZah6Xh34z5xR4HUTRP67KxB8btMFqc9m"
+  );
 
-  ContractPromiseBatch
-    .create("test.account")
+  ContractPromiseBatch.create("test.account")
     .create_account()
-    .add_access_key(access_key, u128.Zero, "testing.account", ['send', 'receive'])
+    .add_access_key(access_key, u128.Zero, "testing.account", [
+      "send",
+      "receive",
+    ])
     .add_full_access_key(access_key)
     .delete_key(access_key)
     .deploy_contract(new Uint8Array(0))
-    .function_call('send', new Uint8Array(0), u128.Zero, 0)
+    .function_call("send", new Uint8Array(0), u128.Zero, 0)
     .stake(u128.Zero, access_key)
     .transfer(u128.Zero)
     .delete_account("bene.account");
 
-    const before = Context.accountBalance
-    const amount = u128.from(1)
+  const before = Context.accountBalance;
+  const amount = u128.from(1);
 
-    const _access_key = base58.decode(Context.senderPublicKey)
-    const code = _testBytes();
+  const _access_key = base58.decode(Context.senderPublicKey);
+  const code = _testBytes();
 
-    ContractPromiseBatch
-      .create("app-v1.bob.testnet")
-      .create_account()
-      .transfer(amount)
-      .add_full_access_key(_access_key)
-      .deploy_contract(code)
+  ContractPromiseBatch.create("app-v1.bob.testnet")
+    .create_account()
+    .transfer(amount)
+    .add_full_access_key(_access_key)
+    .deploy_contract(code);
 
-      const amount1 = u128.from(10)
-      const contractAccount = "first-contract.bob.testnet"
-  
-      let promise = ContractPromiseBatch.create(contractAccount)
-                                        .create_account();
-  
-      promise.then(contractAccount)
-             .transfer(amount1)
+  const amount1 = u128.from(10);
+  const contractAccount = "first-contract.bob.testnet";
+
+  let promise = ContractPromiseBatch.create(contractAccount).create_account();
+
+  promise.then(contractAccount).transfer(amount1);
 }
 
-
 // cruft to compare test objects. TODO: use something standard
-function _arrayEqual(first: Uint8Array | null, second: Uint8Array | null): bool {
+function _arrayEqual(
+  first: Uint8Array | null,
+  second: Uint8Array | null
+): bool {
   if (first == null || second == null) {
     return first != second;
   }
@@ -360,7 +502,10 @@ function _arrayEqual(first: Uint8Array | null, second: Uint8Array | null): bool 
   return true;
 }
 
-function _modelObjectEqual(first: TextMessage | null, second: TextMessage): bool {
+function _modelObjectEqual(
+  first: TextMessage | null,
+  second: TextMessage
+): bool {
   if (first == null) {
     return second != null;
   }
@@ -376,7 +521,10 @@ function _modelObjectEqual(first: TextMessage | null, second: TextMessage): bool
   return true;
 }
 
-function _vectorHasContents(vector: PersistentVector<string>, expectedContents: Array<string>): bool {
+function _vectorHasContents(
+  vector: PersistentVector<string>,
+  expectedContents: Array<string>
+): bool {
   if (vector.length != expectedContents.length) {
     return false;
   }

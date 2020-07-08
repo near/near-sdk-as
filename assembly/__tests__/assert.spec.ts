@@ -1,12 +1,9 @@
-
-
 let triggered = false;
 
 function trigger(): string {
   triggered = true;
   return "triggered";
 }
-
 
 describe("assert", () => {
   it("should not trigger", () => {
@@ -16,4 +13,3 @@ describe("assert", () => {
     expect(triggered).toBe(true);
   });
 });
-

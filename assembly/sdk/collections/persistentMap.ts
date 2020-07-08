@@ -33,24 +33,24 @@ export class PersistentMap<K, V> {
   private _elementPrefix: string;
 
   /**
-  * Creates or restores a persistent map with a given storage prefix.
-  * Always use a unique storage prefix for different collections.
-  *
-  * Example
-  *
-  * ```ts
-  * let map = new PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
-  * ```
-  *
-  * @param prefix A prefix to use for every key of this map.
-  */
+   * Creates or restores a persistent map with a given storage prefix.
+   * Always use a unique storage prefix for different collections.
+   *
+   * Example
+   *
+   * ```ts
+   * let map = new PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
+   * ```
+   *
+   * @param prefix A prefix to use for every key of this map.
+   */
   constructor(prefix: string) {
     this._elementPrefix = prefix + collections._KEY_ELEMENT_SUFFIX;
   }
 
   /**
-  * @returns An internal string key for a given key of type K.
-  */
+   * @returns An internal string key for a given key of type K.
+   */
   private _key(key: K): string {
     //@ts-ignore: TODO: Add interface that forces all K types to have toString
     return this._elementPrefix + key.toString();

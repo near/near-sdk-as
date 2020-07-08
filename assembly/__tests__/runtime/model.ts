@@ -20,7 +20,7 @@ export class Collections {
     return new PersistentVector<string>("v");
   }
 
-  public getMap(): PersistentMap<string,string> {
+  public getMap(): PersistentMap<string, string> {
     return new PersistentMap<string, string>("m");
   }
 

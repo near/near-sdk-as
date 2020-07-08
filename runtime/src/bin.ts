@@ -1,2 +1,2 @@
 //@ts-ignore
-export * from "near-vm/run"
+export * from "near-vm/run";

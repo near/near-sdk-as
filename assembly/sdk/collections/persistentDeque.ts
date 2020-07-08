@@ -37,17 +37,17 @@ export class PersistentDeque<T> {
   [key: number]: T;
 
   /**
-  * Creates or restores a persistent deque with a given storage prefix.
-  * Always use a unique storage prefix for different collections.
-  *
-  * Example
-  *
-  * ```ts
-  * let dq = new PersistentDeque<string>("q") // note the prefix must be unique (per NEAR account)
-  * ```
-  *
-  * @param prefix A prefix to use for every key of this deque.
-  */
+   * Creates or restores a persistent deque with a given storage prefix.
+   * Always use a unique storage prefix for different collections.
+   *
+   * Example
+   *
+   * ```ts
+   * let dq = new PersistentDeque<string>("q") // note the prefix must be unique (per NEAR account)
+   * ```
+   *
+   * @param prefix A prefix to use for every key of this deque.
+   */
   constructor(prefix: string) {
     this._elementPrefix = prefix + collections._KEY_ELEMENT_SUFFIX;
     this._frontIndexKey = prefix + collections._KEY_FRONT_INDEX_SUFFIX;
@@ -65,8 +65,8 @@ export class PersistentDeque<T> {
   }
 
   /**
-  * @returns The index of the first/front element of the deque (inclusive).
-  */
+   * @returns The index of the first/front element of the deque (inclusive).
+   */
   private get frontIndex(): i32 {
     if (this._frontIndex == i32.MIN_VALUE) {
       this._frontIndex = storage.getPrimitive<i32>(this._frontIndexKey, 0);
@@ -83,8 +83,8 @@ export class PersistentDeque<T> {
   }
 
   /**
-  * @returns The index of the last/back element of the deque (inclusive).
-  */
+   * @returns The index of the last/back element of the deque (inclusive).
+   */
   private get backIndex(): i32 {
     if (this._backIndex == i32.MAX_VALUE) {
       this._backIndex = storage.getPrimitive<i32>(this._backIndexKey, -1);
@@ -375,7 +375,7 @@ export class PersistentDeque<T> {
    * dq.last // alias of method back
    * ```
    *
-  * @returns The last/back element of the deque.
+   * @returns The last/back element of the deque.
    */
   @inline
   get last(): T {

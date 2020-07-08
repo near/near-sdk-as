@@ -1,7 +1,6 @@
 import { env } from "./env";
 
 export namespace util {
-
   /**
    * Convert a given string into a Uint8Array encoded as UTF-8.
    * @param s data to encode
@@ -21,36 +20,39 @@ export namespace util {
     if (bytes == null) {
       return null;
     }
-    return String.UTF8.decode(uint8ArrayToBuffer(bytes), true)
+    return String.UTF8.decode(uint8ArrayToBuffer(bytes), true);
   }
 
   /**
    * Calculates the byte length of the specified UTF-8 string, which can optionally be null terminated.
    * @param str data
-   * @param nullTerminated 
+   * @param nullTerminated
    */
-  export function UTF8Length(str: string, nullTerminated: boolean = false): usize {
+  export function UTF8Length(
+    str: string,
+    nullTerminated: boolean = false
+  ): usize {
     return String.UTF8.byteLength(str, nullTerminated);
   }
 
   /**
-  * Parses the given bytes array to return a value of the given generic type.
-  * Supported types: bool, integer, string and data objects defined in model.ts.
-  *
-  * @param bytes Bytes to parse. Bytes must be not null.
-  * @returns A parsed value of type T.
-  */
+   * Parses the given bytes array to return a value of the given generic type.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
+   *
+   * @param bytes Bytes to parse. Bytes must be not null.
+   * @returns A parsed value of type T.
+   */
   export function parseFromBytes<T>(bytes: Uint8Array): T {
     return decode<T>(bytes);
   }
 
   /**
-  * Parses the given string to return a value of the given generic type.
-  * Supported types: bool, integer, string and data objects defined in model.ts.
-  *
-  * @param s String to parse. Must be not null.
-  * @returns A parsed value of type T.
-  */
+   * Parses the given string to return a value of the given generic type.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
+   *
+   * @param s String to parse. Must be not null.
+   * @returns A parsed value of type T.
+   */
   export function parseFromString<T>(s: string): T {
     if (isString<T>()) {
       //@ts-ignore
@@ -76,7 +78,7 @@ export namespace util {
    * @package
    * Reads contents of a register into a Uint8Array.
    * Note: this is a low level function and should be used directly only rarely from client code.
-   * 
+   *
    * @param register_id Id of register to read from
    */
   export function read_register(register_id: u64): Uint8Array {
@@ -97,7 +99,10 @@ export namespace util {
   }
 
   function uint8ArrayToBuffer(array: Uint8Array): ArrayBuffer {
-    return array.buffer.slice(array.byteOffset, array.byteLength + array.byteOffset)
+    return array.buffer.slice(
+      array.byteOffset,
+      array.byteLength + array.byteOffset
+    );
   }
 
   /**

@@ -9,11 +9,15 @@ declare interface Array<T> {
 }
 
 declare function decode<T, K = Uint8Array>(buffer: K, name?: string): T;
-declare function encode<T, K = Uint8Array>(item: T, name?: string, encoder?: any): K;
+declare function encode<T, K = Uint8Array>(
+  item: T,
+  name?: string,
+  encoder?: any
+): K;
 
 declare interface Object {
   encode(): Uint8Array;
-  decode<T, K = Uint8Array>(bytes : K): T;
+  decode<T, K = Uint8Array>(bytes: K): T;
   toJSON(): string;
   serialize(): Uint8Array;
 }

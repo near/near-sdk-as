@@ -150,4 +150,3 @@ export function stateSize(state: ExternalState): number {
     0
   );
 }
-

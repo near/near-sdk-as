@@ -1,4 +1,3 @@
-
 // Exporting a new class TextMessage so it can be used outside of this file.
 @nearBindgen
 export class TextMessage {
@@ -10,5 +9,5 @@ export class TextMessage {
 
 @nearBindgen
 export class Word {
-  constructor(public text: string){}
+  constructor(public text: string) {}
 }

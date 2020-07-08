@@ -15,7 +15,7 @@ const toIgnore = [
   "string",
   "typedarray",
   "bindings/Date",
-  "bindings/Math"
+  "bindings/Math",
 ];
 
 export class TypeChecker extends BaseVisitor {
@@ -26,7 +26,7 @@ export class TypeChecker extends BaseVisitor {
     if (
       !(
         first.includes("ignore") ||
-        toIgnore.some(n => node.normalizedPath.includes(n))
+        toIgnore.some((n) => node.normalizedPath.includes(n))
       )
     ) {
       this.visit(node);
@@ -49,9 +49,12 @@ export class TypeChecker extends BaseVisitor {
       let lineStr = source.text.split("\n")[line - 1];
 
       TypeChecker.floatsFound.push(
-        "\n" + " ".repeat(4) + lineStr + "\n" +
+        "\n" +
+          " ".repeat(4) +
+          lineStr +
+          "\n" +
           "in " +
-           source.normalizedPath +
+          source.normalizedPath +
           "(" +
           line.toString() +
           "," +

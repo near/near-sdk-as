@@ -7,12 +7,12 @@ import {
   Parser,
   Source,
   SourceKind,
-  Statement
+  Statement,
 } from "visitor-as/as";
 
 export class SimpleParser {
   private static parser = new Parser();
-  
+
   private static getTokenizer(s: string): Tokenizer {
     return new Tokenizer(new Source(SourceKind.USER, "index.ts", s));
   }
@@ -33,8 +33,6 @@ export class SimpleParser {
     return res;
   }
 }
-
-
 
 export function posixRelativePath(from: string, to: string): string {
   const relativePath = path.relative(from, to);

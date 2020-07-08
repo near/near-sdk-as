@@ -19,7 +19,7 @@ function defaultContext() {
         predecessor_account_id: "bob",
         account_balance: "1000",
         signer_account_pk: "KuTCtARNzxZQ3YvXDeLjx83FDqxv2SdQTSbiq876zR7",
-        account_locked_balance: "10"
+        account_locked_balance: "10",
     };
 }
 exports.defaultContext = defaultContext;
@@ -30,7 +30,7 @@ function defaultAccountContext() {
         output_data_receivers: [],
         prepaid_gas: 10 ** 15,
         attached_deposit: "0",
-        is_view: false
+        is_view: false,
     };
 }
 exports.defaultAccountContext = defaultAccountContext;

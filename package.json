@@ -30,14 +30,16 @@
     "build": "yarn build:bindgen && yarn build:runtime",
     "build:bindgen": "(cd bindgen; yarn build)",
     "build:runtime": "(cd runtime; tsc)",
-    "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:runtime",
+    "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:runtime && yarn check:pretty",
     "test:nearcore": "(cd nearcore-tests; yarn test)",
     "test:bindgen": "(cd bindgen; yarn test)",
     "test:runtime": "(cd runtime; node asconfig) && jest",
     "asp:ci": "asp",
     "asp": "yarn asp:ci --verbose",
     "doc": "rm -rf docs; typedoc assembly --tsconfig assembly/tsconfig.json && touch docs/.nojekyll",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "prettify": "prettier --write '**/*.ts'",
+    "check:pretty": "yarn prettier --check '**/*.ts'"
   },
   "devDependencies": {
     "@assemblyscript/loader": "^0.13.1",
@@ -47,8 +49,10 @@
     "@types/js-base64": "^2.3.1",
     "@types/node": "^14.0.9",
     "assert-no-diff": "^3.0.4",
+    "husky": "^4.2.5",
     "jest": "^26.0.1",
     "near-hello": "^0.5.0",
+    "prettier": "^2.0.5",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.6.2",
     "typedoc": "^0.17.3",
@@ -56,5 +60,10 @@
   },
   "engines": {
     "node": ">=12.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn check:pretty || (yarn prettify && exit 1)" 
+    }
   }
 }

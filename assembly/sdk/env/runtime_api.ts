@@ -1,2 +1,2 @@
 import { env } from "./env";
-export { env as runtime_api }
+export { env as runtime_api };
