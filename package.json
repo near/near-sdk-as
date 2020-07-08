@@ -27,7 +27,7 @@
     "visitor-as": "^0.2.0-1"
   },
   "scripts": {
-    "build": "yarn build:bindgen && yarn build:runtime",
+    "build": "yarn build:bindgen && yarn build:runtime && yarn prettify",
     "build:bindgen": "(cd bindgen; yarn build)",
     "build:runtime": "(cd runtime; tsc)",
     "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:runtime && yarn check:pretty",
