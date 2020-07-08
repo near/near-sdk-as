@@ -28,6 +28,7 @@
   },
   "scripts": {
     "build": "yarn build:bindgen && yarn build:runtime && yarn prettify",
+    "pretest": "yarn build",
     "build:bindgen": "(cd bindgen; yarn build)",
     "build:runtime": "(cd runtime; tsc)",
     "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:runtime && yarn check:pretty",
