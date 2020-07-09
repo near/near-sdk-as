@@ -24,7 +24,7 @@
     "js-base64": "^2.5.2",
     "near-mock-vm": "^0.1.1",
     "near-vm": "^0.0.8",
-    "visitor-as": "^0.2.0-1"
+    "visitor-as": "^0.2.0"
   },
   "scripts": {
     "build": "yarn build:bindgen && yarn build:runtime",
@@ -64,7 +64,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn check:pretty || (yarn prettify && exit 1)" 
+      "pre-commit": "yarn check:pretty || (yarn prettify && exit 1)"
     }
   }
 }
