@@ -1,7 +1,5 @@
 import { u128 } from "..";
 
-
-
 //@ts-ignore
 @external("vm", "setCurrent_account_id")
 declare function _setCurrent_account_id(id: usize): void;
@@ -37,7 +35,6 @@ declare function _setAccount_balance(lo: u64, hi: u64): void;
 @external("vm", "setAccount_locked_balance")
 declare function _setAccount_locked_balance(lo: u64, hi: u64): void;
 
-
 //@ts-ignore
 @external("vm", "saveContext")
 declare function _saveContext(): void;
@@ -69,8 +66,7 @@ declare function _setStorage_usage(amt: u64): void;
 /**
  * Functions to edit the current VM's context
  */
-export namespace Context {
-
+export namespace VMContext {
   export function saveContext(): void {
     _saveContext();
   }
@@ -102,7 +98,7 @@ export namespace Context {
   export function setBlock_index(block_height: u64): void {
     _setBlock_index(block_height);
   }
-  
+
   export function setBlock_timestamp(stmp: u64): void {
     _setBlock_timestamp(stmp);
   }
@@ -134,7 +130,7 @@ export namespace Context {
   export function setIs_view(b: bool): void {
     _setIs_view(b);
   }
-  
+
   export function setOutput_data_receivers(arrA: Array<string>): void {
     _setOutput_data_receivers(arrA);
   }

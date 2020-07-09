@@ -3,7 +3,7 @@ import {
   PersistentSet,
   PersistentVector,
   PersistentMap,
-} from "../../runtime";
+} from "../../sdk";
 
 // Exporting a new class TextMessage so it can be used outside of this file.
 @nearBindgen
@@ -20,7 +20,7 @@ export class Collections {
     return new PersistentVector<string>("v");
   }
 
-  public getMap(): PersistentMap<string,string> {
+  public getMap(): PersistentMap<string, string> {
     return new PersistentMap<string, string>("m");
   }
 

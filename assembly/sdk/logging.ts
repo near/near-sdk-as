@@ -1,9 +1,9 @@
-import { env } from './env';
+import { env } from "./env";
 import { util } from "./util";
 
 export namespace logging {
   /**
-   * Log a string message. If T has `toString` it is called, 
+   * Log a string message. If T has `toString` it is called,
    * otherwise T must be serializable.
    *
    * Logs are stored as an array of strings
@@ -20,7 +20,7 @@ export namespace logging {
     if (isString<T>() || isDefined(msg.toString)) {
       //@ts-ignore
       let message = msg.toString();
-      msg_encoded= util.stringToBytes(message);
+      msg_encoded = util.stringToBytes(message);
     } else {
       msg_encoded = encode<T>(msg);
     }

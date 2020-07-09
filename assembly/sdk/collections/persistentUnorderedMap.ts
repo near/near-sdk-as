@@ -1,26 +1,26 @@
 import { PersistentMap } from "./persistentMap";
 import { PersistentVector } from "./persistentVector";
-import { MapEntry } from './util';
+import { MapEntry } from "./util";
 
 export class PersistentUnorderedMap<K, V> {
   private _map: PersistentMap<K, i32>;
   private _entries: PersistentVector<MapEntry<K, V>>;
 
   /**
-  * Creates or restores a persistent map with a given storage prefix.
-  * Always use a unique storage prefix for different collections.
-  *
-  * Example
-  *
-  * ```ts
-  * let map = new PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
-  * ```
-  *
-  * @param prefix A prefix to use for every key of this map.
-  */
+   * Creates or restores a persistent map with a given storage prefix.
+   * Always use a unique storage prefix for different collections.
+   *
+   * Example
+   *
+   * ```ts
+   * let map = new PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
+   * ```
+   *
+   * @param prefix A prefix to use for every key of this map.
+   */
   constructor(prefix: string) {
-    this._map = new PersistentMap<K, i32>(prefix + ':map')
-    this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ':entries')
+    this._map = new PersistentMap<K, i32>(prefix + ":map");
+    this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ":entries");
   }
 
   /**
@@ -71,17 +71,17 @@ export class PersistentUnorderedMap<K, V> {
 
   /**
    * returns a map of number of last entries.
-   * @param count 
+   * @param count
    */
   last(count: i32): MapEntry<K, V>[] {
-    const n = min(count, this.length)
+    const n = min(count, this.length);
     const startIndex = this.length - n;
     const result = new Array<MapEntry<K, V>>();
     for (let i = startIndex; i < this.length; i++) {
       const entry = this._entries[i];
       result.push(entry);
     }
-    return result
+    return result;
   }
 
   /**
@@ -135,8 +135,8 @@ export class PersistentUnorderedMap<K, V> {
    * @param start index of starting entries
    * @param end index of end entries
    */
-  entries(start: i32 = 0, end: i32 = this.length): MapEntry<K,V>[] {
-    let result = new Array<MapEntry<K,V>>();
+  entries(start: i32 = 0, end: i32 = this.length): MapEntry<K, V>[] {
+    let result = new Array<MapEntry<K, V>>();
     const n = min(end, this.length);
     for (let i = start; i < n; i++) {
       result.push(this._entries[i]);
@@ -150,7 +150,7 @@ export class PersistentUnorderedMap<K, V> {
 
   /**
    * Pops the last entry added to the map.
-   * 
+   *
    */
   pop(): MapEntry<K, V> {
     let entry = this._entries.last;
@@ -170,11 +170,11 @@ export class PersistentUnorderedMap<K, V> {
    * @param value The new value of the element.
    */
   set(key: K, value: V): void {
-    let entry = new MapEntry<K,V>(key, value);
+    let entry = new MapEntry<K, V>(key, value);
     if (this._map.contains(key)) {
       if (this.getSome(key) != value) {
         this._map.set(key, this._entries.length);
-        this._entries.push(entry)
+        this._entries.push(entry);
       }
     } else {
       this._map.set(key, this._entries.length);
@@ -197,22 +197,22 @@ export class PersistentUnorderedMap<K, V> {
    */
   delete(key: K): void {
     // make sure the item is in the set
-    assert(this._map.contains(key), "The item was not found in the set")
+    assert(this._map.contains(key), "The item was not found in the set");
 
     // swap_remove requires at least 2 elements to work so a single element
     // is the same as clearing
-    if(this._entries.length == 1) {
-      this.clear()
-      return
+    if (this._entries.length == 1) {
+      this.clear();
+      return;
     }
 
     // remove the item from the set
     const swapKey = this._entries.last.key;
-    const index = this._map.getSome(key)
-    this._entries.swap_remove(index)
-    
+    const index = this._map.getSome(key);
+    this._entries.swap_remove(index);
+
     // update our accounting of items in the set
-    this._map.set(swapKey, index)
+    this._map.set(swapKey, index);
     this._map.delete(key);
   }
 
@@ -220,7 +220,7 @@ export class PersistentUnorderedMap<K, V> {
    * Deletes all entries.
    */
   clear(): void {
-    while(this._entries.length > 0) {
+    while (this._entries.length > 0) {
       let entry = this._entries.popBack();
       this._map.delete(entry.key);
     }

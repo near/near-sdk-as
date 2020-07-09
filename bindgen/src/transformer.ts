@@ -13,10 +13,12 @@ class JSONTransformer extends Transform {
     let newParser = new Parser(parser.diagnostics);
 
     // Filter for near files
-    let files = JSONBindingsBuilder.nearFiles(parser);
-    JSONTransformer.isTest = files.map(source => source.normalizedPath).some(path => path.includes("spec"));
+    let files = JSONBindingsBuilder.nearFiles(this.parser.sources);
+    JSONTransformer.isTest = files
+      .map((source) => source.normalizedPath)
+      .some((path) => path.includes("spec"));
     // Visit each file
-    files.forEach(source => {
+    files.forEach((source) => {
       let writeOut = /\/\/.*@nearfile .*out/.test(source.text);
       // Remove from logs in parser
       parser.donelog.delete(source.internalPath);
@@ -45,12 +47,12 @@ class JSONTransformer extends Transform {
       parser.seenlog.add(source.internalPath);
       parser.sources.push(newSource);
     });
-   
+
     if (!JSONTransformer.isTest) {
       TypeChecker.check(parser);
     }
   }
-  
+
   /** Check for floats */
   afterCompile(module: Module): void {
     if (!JSONTransformer.isTest) {

@@ -1,4 +1,4 @@
-import { collections } from "../collections";
+import { collections } from ".";
 import { storage } from "../storage";
 
 /**
@@ -117,9 +117,9 @@ export class PersistentVector<T> {
   }
 
   /**
-  * Internally sets the length of the vector
-  * @internal
-  */
+   * Internally sets the length of the vector
+   * @internal
+   */
   //@ts-ignore TS doesn't like property accessors with different levels of visibility
   private set length(value: i32) {
     this._length = value;

@@ -1,6 +1,4 @@
-import {
-  u128
-} from "near-sdk-as"
+import { u128 } from "near-sdk-as";
 export class FooBar {
   foo: i32 = 0;
   bar: u32 = 1;
@@ -22,8 +20,11 @@ export class FooBar {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -33,24 +34,49 @@ export class FooBar {
   }
 
   private _decode(obj: JSON.Obj): FooBar {
-    this.foo = obj.has("foo") ? decode<i32, JSON.Obj>(obj, "foo"): 0;
-    this.bar = obj.has("bar") ? decode<u32, JSON.Obj>(obj, "bar"): 1;
-    this.u64Val = obj.has("u64Val") ? decode<u64, JSON.Obj>(obj, "u64Val"): 4294967297;
-    this.u64_zero = obj.has("u64_zero") ? decode<u64, JSON.Obj>(obj, "u64_zero"): this.u64_zero;
-    this.i64Val = obj.has("i64Val") ? decode<i64, JSON.Obj>(obj, "i64Val"): -64;
-    this.flag = obj.has("flag") ? decode<bool, JSON.Obj>(obj, "flag"): this.flag;
-    this.baz = obj.has("baz") ? decode<string, JSON.Obj>(obj, "baz"): "123";
-    this.uint8array = obj.has("uint8array") ? decode<Uint8Array, JSON.Obj>(obj, "uint8array"): this.uint8array;
-    this.arr = obj.has("arr") ? decode<Array<Array<string>>, JSON.Obj>(obj, "arr"): this.arr;
-    this.u32Arr = obj.has("u32Arr") ? decode<Array<u32>, JSON.Obj>(obj, "u32Arr"): this.u32Arr;
-    this.i32Arr = obj.has("i32Arr") ? decode<Array<i32>, JSON.Obj>(obj, "i32Arr"): this.i32Arr;
-    this.u128Val = obj.has("u128Val") ? decode<u128, JSON.Obj>(obj, "u128Val"): this.u128Val;
-    this.uint8arrays = obj.has("uint8arrays") ? decode<Array<Uint8Array>, JSON.Obj>(obj, "uint8arrays"): this.uint8arrays;
-    this.u64Arr = obj.has("u64Arr") ? decode<Array<u64>, JSON.Obj>(obj, "u64Arr"): this.u64Arr;
+    this.foo = obj.has("foo") ? decode<i32, JSON.Obj>(obj, "foo") : 0;
+    this.bar = obj.has("bar") ? decode<u32, JSON.Obj>(obj, "bar") : 1;
+    this.u64Val = obj.has("u64Val")
+      ? decode<u64, JSON.Obj>(obj, "u64Val")
+      : 4294967297;
+    this.u64_zero = obj.has("u64_zero")
+      ? decode<u64, JSON.Obj>(obj, "u64_zero")
+      : this.u64_zero;
+    this.i64Val = obj.has("i64Val")
+      ? decode<i64, JSON.Obj>(obj, "i64Val")
+      : -64;
+    this.flag = obj.has("flag")
+      ? decode<bool, JSON.Obj>(obj, "flag")
+      : this.flag;
+    this.baz = obj.has("baz") ? decode<string, JSON.Obj>(obj, "baz") : "123";
+    this.uint8array = obj.has("uint8array")
+      ? decode<Uint8Array, JSON.Obj>(obj, "uint8array")
+      : this.uint8array;
+    this.arr = obj.has("arr")
+      ? decode<Array<Array<string>>, JSON.Obj>(obj, "arr")
+      : this.arr;
+    this.u32Arr = obj.has("u32Arr")
+      ? decode<Array<u32>, JSON.Obj>(obj, "u32Arr")
+      : this.u32Arr;
+    this.i32Arr = obj.has("i32Arr")
+      ? decode<Array<i32>, JSON.Obj>(obj, "i32Arr")
+      : this.i32Arr;
+    this.u128Val = obj.has("u128Val")
+      ? decode<u128, JSON.Obj>(obj, "u128Val")
+      : this.u128Val;
+    this.uint8arrays = obj.has("uint8arrays")
+      ? decode<Array<Uint8Array>, JSON.Obj>(obj, "uint8arrays")
+      : this.uint8arrays;
+    this.u64Arr = obj.has("u64Arr")
+      ? decode<Array<u64>, JSON.Obj>(obj, "u64Arr")
+      : this.u64Arr;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<i32, JSONEncoder>(this.foo, "foo", encoder);
@@ -65,7 +91,11 @@ export class FooBar {
     encode<Array<u32>, JSONEncoder>(this.u32Arr, "u32Arr", encoder);
     encode<Array<i32>, JSONEncoder>(this.i32Arr, "i32Arr", encoder);
     encode<u128, JSONEncoder>(this.u128Val, "u128Val", encoder);
-    encode<Array<Uint8Array>, JSONEncoder>(this.uint8arrays, "uint8arrays", encoder);
+    encode<Array<Uint8Array>, JSONEncoder>(
+      this.uint8arrays,
+      "uint8arrays",
+      encoder
+    );
     encode<Array<u64>, JSONEncoder>(this.u64Arr, "u64Arr", encoder);
     encoder.popObject();
     return encoder;
@@ -92,8 +122,11 @@ export class Nullables {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -103,13 +136,20 @@ export class Nullables {
   }
 
   private _decode(obj: JSON.Obj): Nullables {
-    this.str = obj.has("str") ? decode<string, JSON.Obj>(obj, "str"): this.str;
-    this.u128 = obj.has("u128") ? decode<u128, JSON.Obj>(obj, "u128"): this.u128;
-    this.uint8Array = obj.has("uint8Array") ? decode<Uint8Array, JSON.Obj>(obj, "uint8Array"): this.uint8Array;
+    this.str = obj.has("str") ? decode<string, JSON.Obj>(obj, "str") : this.str;
+    this.u128 = obj.has("u128")
+      ? decode<u128, JSON.Obj>(obj, "u128")
+      : this.u128;
+    this.uint8Array = obj.has("uint8Array")
+      ? decode<Uint8Array, JSON.Obj>(obj, "uint8Array")
+      : this.uint8Array;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<string, JSONEncoder>(this.str, "str", encoder);
@@ -138,8 +178,11 @@ export class ContainerClass {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -149,11 +192,16 @@ export class ContainerClass {
   }
 
   private _decode(obj: JSON.Obj): ContainerClass {
-    this.foobar = obj.has("foobar") ? decode<FooBar, JSON.Obj>(obj, "foobar"): this.foobar;
+    this.foobar = obj.has("foobar")
+      ? decode<FooBar, JSON.Obj>(obj, "foobar")
+      : this.foobar;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<FooBar, JSONEncoder>(this.foobar, "foobar", encoder);
@@ -180,8 +228,11 @@ export class AnotherContainerClass {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -191,11 +242,16 @@ export class AnotherContainerClass {
   }
 
   private _decode(obj: JSON.Obj): AnotherContainerClass {
-    this.foobars = obj.has("foobars") ? decode<Array<Array<FooBar>>, JSON.Obj>(obj, "foobars"): this.foobars;
+    this.foobars = obj.has("foobars")
+      ? decode<Array<Array<FooBar>>, JSON.Obj>(obj, "foobars")
+      : this.foobars;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<Array<Array<FooBar>>, JSONEncoder>(this.foobars, "foobars", encoder);
@@ -228,8 +284,11 @@ export class PromiseArgs {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -239,17 +298,34 @@ export class PromiseArgs {
   }
 
   private _decode(obj: JSON.Obj): PromiseArgs {
-    this.receiver = obj.has("receiver") ? decode<string, JSON.Obj>(obj, "receiver"): this.receiver;
-    this.methodName = obj.has("methodName") ? decode<string, JSON.Obj>(obj, "methodName"): this.methodName;
-    this.args = obj.has("args") ? decode<PromiseArgs, JSON.Obj>(obj, "args"): this.args;
-    this.balance = obj.has("balance") ? decode<i32, JSON.Obj>(obj, "balance"): this.balance;
-    this.callback = obj.has("callback") ? decode<string, JSON.Obj>(obj, "callback"): this.callback;
-    this.callbackArgs = obj.has("callbackArgs") ? decode<PromiseArgs, JSON.Obj>(obj, "callbackArgs"): this.callbackArgs;
-    this.callbackBalance = obj.has("callbackBalance") ? decode<i32, JSON.Obj>(obj, "callbackBalance"): this.callbackBalance;
+    this.receiver = obj.has("receiver")
+      ? decode<string, JSON.Obj>(obj, "receiver")
+      : this.receiver;
+    this.methodName = obj.has("methodName")
+      ? decode<string, JSON.Obj>(obj, "methodName")
+      : this.methodName;
+    this.args = obj.has("args")
+      ? decode<PromiseArgs, JSON.Obj>(obj, "args")
+      : this.args;
+    this.balance = obj.has("balance")
+      ? decode<i32, JSON.Obj>(obj, "balance")
+      : this.balance;
+    this.callback = obj.has("callback")
+      ? decode<string, JSON.Obj>(obj, "callback")
+      : this.callback;
+    this.callbackArgs = obj.has("callbackArgs")
+      ? decode<PromiseArgs, JSON.Obj>(obj, "callbackArgs")
+      : this.callbackArgs;
+    this.callbackBalance = obj.has("callbackBalance")
+      ? decode<i32, JSON.Obj>(obj, "callbackBalance")
+      : this.callbackBalance;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<string, JSONEncoder>(this.receiver, "receiver", encoder);
@@ -257,7 +333,11 @@ export class PromiseArgs {
     encode<PromiseArgs, JSONEncoder>(this.args, "args", encoder);
     encode<i32, JSONEncoder>(this.balance, "balance", encoder);
     encode<string, JSONEncoder>(this.callback, "callback", encoder);
-    encode<PromiseArgs, JSONEncoder>(this.callbackArgs, "callbackArgs", encoder);
+    encode<PromiseArgs, JSONEncoder>(
+      this.callbackArgs,
+      "callbackArgs",
+      encoder
+    );
     encode<i32, JSONEncoder>(this.callbackBalance, "callbackBalance", encoder);
     encoder.popObject();
     return encoder;
@@ -283,8 +363,11 @@ export class MyContractPromiseResult {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -294,12 +377,17 @@ export class MyContractPromiseResult {
   }
 
   private _decode(obj: JSON.Obj): MyContractPromiseResult {
-    this.ok = obj.has("ok") ? decode<bool, JSON.Obj>(obj, "ok"): this.ok;
-    this.r = obj.has("r") ? decode<MyCallbackResult, JSON.Obj>(obj, "r"): this.r;
+    this.ok = obj.has("ok") ? decode<bool, JSON.Obj>(obj, "ok") : this.ok;
+    this.r = obj.has("r")
+      ? decode<MyCallbackResult, JSON.Obj>(obj, "r")
+      : this.r;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<bool, JSONEncoder>(this.ok, "ok", encoder);
@@ -328,8 +416,11 @@ export class MyCallbackResult {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -339,12 +430,17 @@ export class MyCallbackResult {
   }
 
   private _decode(obj: JSON.Obj): MyCallbackResult {
-    this.rs = obj.has("rs") ? decode<Array<MyContractPromiseResult>, JSON.Obj>(obj, "rs"): this.rs;
-    this.n = obj.has("n") ? decode<string, JSON.Obj>(obj, "n"): this.n;
+    this.rs = obj.has("rs")
+      ? decode<Array<MyContractPromiseResult>, JSON.Obj>(obj, "rs")
+      : this.rs;
+    this.n = obj.has("n") ? decode<string, JSON.Obj>(obj, "n") : this.n;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<Array<MyContractPromiseResult>, JSONEncoder>(this.rs, "rs", encoder);
@@ -372,8 +468,11 @@ export class Generic<T> {
     if (buf instanceof Uint8Array) {
       json = JSON.parse(buf);
     } else {
-      assert(buf instanceof JSON.Obj, "argument must be Uint8Array or Json Object");
-      json = <JSON.Obj> buf;
+      assert(
+        buf instanceof JSON.Obj,
+        "argument must be Uint8Array or Json Object"
+      );
+      json = <JSON.Obj>buf;
     }
     return this._decode(json);
   }
@@ -383,11 +482,16 @@ export class Generic<T> {
   }
 
   private _decode(obj: JSON.Obj): Generic<T> {
-    this.value = obj.has("value") ? decode<T, JSON.Obj>(obj, "value"): this.value;
+    this.value = obj.has("value")
+      ? decode<T, JSON.Obj>(obj, "value")
+      : this.value;
     return this;
   }
 
-  _encode(name: string | null = "", _encoder: JSONEncoder | null = null): JSONEncoder {
+  _encode(
+    name: string | null = "",
+    _encoder: JSONEncoder | null = null
+  ): JSONEncoder {
     let encoder = (_encoder == null ? new JSONEncoder() : _encoder)!;
     encoder.pushObject(name);
     encode<T, JSONEncoder>(this.value, "value", encoder);

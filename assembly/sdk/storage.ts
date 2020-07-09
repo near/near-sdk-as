@@ -1,14 +1,12 @@
-import { env } from './env';
+import { env } from "./env";
 import { util } from "./util";
-
-
 
 /**
  * This class represents contract storage.
  *
  * It is a key-value store that is persisted on the NEAR blockchain.
  */
-export class Storage {
+export class storage {
   /**
    * Store string value under given key. Both key and value are encoded as UTF-8 strings.
    *
@@ -19,11 +17,16 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @param value The value stored at a particular key in a key-value store
    */
-  setString(key: string, value: string): void {
+  static setString(key: string, value: string): void {
     let key_encoded = util.stringToBytes(key);
     let value_encoded = util.stringToBytes(value);
-    const storage_write_result =
-      env.storage_write(key_encoded.byteLength, key_encoded.dataStart, value_encoded.byteLength, value_encoded.dataStart, 0);
+    const storage_write_result = env.storage_write(
+      key_encoded.byteLength,
+      key_encoded.dataStart,
+      value_encoded.byteLength,
+      value_encoded.dataStart,
+      0
+    );
     // TODO: handle return value?
   }
 
@@ -37,7 +40,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns String value stored under given key
    */
-  getString(key: string): string | null {
+  static getString(key: string): string | null {
     return util.bytesToString(this._internalReadBytes(key));
   }
 
@@ -55,10 +58,15 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @param value The value stored at a particular key in a key-value store
    */
-  setBytes(key: string, value: Uint8Array): void {
+  static setBytes(key: string, value: Uint8Array): void {
     let key_encoded = util.stringToBytes(key);
-    const storage_write_result =
-      env.storage_write(key_encoded.byteLength, key_encoded.dataStart, value.byteLength, value.dataStart, 0);
+    const storage_write_result = env.storage_write(
+      key_encoded.byteLength,
+      key_encoded.dataStart,
+      value.byteLength,
+      value.dataStart,
+      0
+    );
     // TODO: handle return value?
   }
 
@@ -75,7 +83,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns Byte array stored under given key
    */
-  getBytes(key: string): Uint8Array | null {
+  static getBytes(key: string): Uint8Array | null {
     return this._internalReadBytes(key);
   }
 
@@ -89,9 +97,11 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns True if the given key is present in the storage.
    */
-  contains(key: string): bool {
+  static contains(key: string): bool {
     let key_encoded = util.stringToBytes(key);
-    return (bool)(env.storage_has_key(key_encoded.byteLength, key_encoded.dataStart));
+    return bool(
+      env.storage_has_key(key_encoded.byteLength, key_encoded.dataStart)
+    );
   }
 
   /**
@@ -105,7 +115,7 @@ export class Storage {
    * @returns True if the given key is present in the storage.
    */
   @inline
-  hasKey(key: string): bool {
+  static hasKey(key: string): bool {
     return this.contains(key);
   }
 
@@ -118,7 +128,7 @@ export class Storage {
    *
    * @param key The unique identifier associated with a value in a key-value store
    */
-  delete(key: string): void {
+  static delete(key: string): void {
     let key_encoded = util.stringToBytes(key);
     env.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
   }
@@ -136,7 +146,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @param value The value stored at a particular key in a key-value store
    */
-  set<T>(key: string, value: T): void {
+  static set<T>(key: string, value: T): void {
     if (isString<T>()) {
       //@ts-ignore
       this.setString(key, value);
@@ -144,7 +154,7 @@ export class Storage {
       //@ts-ignore
       this.setString(key, value.toString());
     } else {
-       //@ts-ignore
+      //@ts-ignore
       this.setBytes(key, encode<T>(value));
     }
   }
@@ -165,13 +175,17 @@ export class Storage {
    * @param defaultValue The default value if the key is not available
    * @returns A value of type T stored under the given key.
    */
-  get<T>(key: string, defaultValue: T | null = null): T | null {
+  static get<T>(key: string, defaultValue: T | null = null): T | null {
     if (isString<T>()) {
       const strValue = this.getString(key);
-      return strValue == null ? defaultValue : util.parseFromString<T>(<string>strValue);
+      return strValue == null
+        ? defaultValue
+        : util.parseFromString<T>(<string>strValue);
     } else {
       const byteValue = this.getBytes(key);
-      return byteValue == null ? defaultValue : util.parseFromBytes<T>(byteValue);
+      return byteValue == null
+        ? defaultValue
+        : util.parseFromBytes<T>(byteValue);
     }
   }
 
@@ -190,29 +204,33 @@ export class Storage {
    * @param defaultValue The default value if the key is not available
    * @returns A value of type T stored under the given key.
    */
-  getPrimitive<T>(key: string, defaultValue: T): T {
+  static getPrimitive<T>(key: string, defaultValue: T): T {
     if (!isInteger<T>() && !isString<T>()) {
-      ERROR("Operation not supported. Please use storage.get<T> for non-primitives");
-    } 
+      ERROR(
+        "Operation not supported. Please use storage.get<T> for non-primitives"
+      );
+    }
     const strValue = this.getString(key);
-    return strValue == null ? defaultValue : util.parseFromString<T>(<string>strValue);
+    return strValue == null
+      ? defaultValue
+      : util.parseFromString<T>(<string>strValue);
   }
 
   /**
-  * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
-  * Supported types: bool, integer, string and data objects defined in model.ts.
-  *
-  * This function will throw if the key does not exist in the storage.
-  *
-  * ```ts
-  * storage.getSome<string>("myKey")
-  * storage.getSome<u16>("myKey")
-  * ```
-  *
-  * @param key The unique identifier associated with a value in a key-value store
-  * @returns A value of type T stored under the given key.
-  */
-  getSome<T>(key: string): T {
+   * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
+   *
+   * This function will throw if the key does not exist in the storage.
+   *
+   * ```ts
+   * storage.getSome<string>("myKey")
+   * storage.getSome<u16>("myKey")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @returns A value of type T stored under the given key.
+   */
+  static getSome<T>(key: string): T {
     if (!this.hasKey(key)) {
       assert(false, "Key '" + key + "' is not present in the storage");
     }
@@ -223,9 +241,13 @@ export class Storage {
     }
   }
 
-  private _internalReadBytes(key: string): Uint8Array | null {
+  private static _internalReadBytes(key: string): Uint8Array | null {
     let key_encoded = util.stringToBytes(key);
-    let res = env.storage_read(key_encoded.byteLength, key_encoded.dataStart, 0);
+    let res = env.storage_read(
+      key_encoded.byteLength,
+      key_encoded.dataStart,
+      0
+    );
     if (res == 1) {
       return util.read_register(0);
     } else {
@@ -233,8 +255,3 @@ export class Storage {
     }
   }
 }
-
-/**
-* An instance of a Storage class that is used for working with contract storage on the blockchain.
-*/
-export const storage: Storage = new Storage();

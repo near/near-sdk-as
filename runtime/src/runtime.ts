@@ -1,10 +1,16 @@
-import { encodeBs58, assign, decodeState, encodeState, stateSize } from './utils';
+import {
+  encodeBs58,
+  assign,
+  decodeState,
+  encodeState,
+  stateSize,
+} from "./utils";
 import {
   AccountContext,
   defaultAccountContext,
   createContext,
   VMContext,
-  defaultContext
+  defaultContext,
 } from "./context";
 import { spawnSync } from "child_process";
 import * as os from "os";
@@ -222,7 +228,7 @@ export class Runtime {
   }
 
   setContext(context: Partial<VMContext>) {
-    this.context = {...defaultContext(), ...context };
+    this.context = { ...defaultContext(), ...context };
   }
 
   call_step(

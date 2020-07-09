@@ -1,15 +1,14 @@
-
 import { Base64 } from "js-base64";
 
 export interface VMContext {
   current_account_id: string;
   signer_account_id: string;
-  signer_account_pk: string
-  predecessor_account_id: string
+  signer_account_pk: string;
+  predecessor_account_id: string;
   //Base64 encoded
   // input_str: string;
-  input: string // = bs64.encode(input_str);
-  block_index: number
+  input: string; // = bs64.encode(input_str);
+  block_index: number;
   block_timestamp: number;
   epoch_height: number;
   account_balance: string;
@@ -17,16 +16,16 @@ export interface VMContext {
   storage_usage: number;
   attached_deposit: string;
   prepaid_gas: number;
-  random_seed: string 
+  random_seed: string;
   is_view: boolean;
-  output_data_receivers: Array<any>
+  output_data_receivers: Array<any>;
 }
 
 export function defaultContext(): VMContext {
   return {
-    input:"{}",
+    input: "{}",
     output_data_receivers: [],
-    prepaid_gas: 10**15,
+    prepaid_gas: 10 ** 15,
     attached_deposit: "0",
     is_view: false,
     block_index: 1,
@@ -39,9 +38,8 @@ export function defaultContext(): VMContext {
     predecessor_account_id: "bob",
     account_balance: "1000",
     signer_account_pk: "KuTCtARNzxZQ3YvXDeLjx83FDqxv2SdQTSbiq876zR7",
-    account_locked_balance: "10"
-  }
-
+    account_locked_balance: "10",
+  };
 }
 
 export interface AccountContext {
@@ -62,13 +60,13 @@ export interface AccountContext {
 
 export function defaultAccountContext(): Partial<AccountContext> {
   return {
-    input:"{}",
+    input: "{}",
     input_data: [],
     output_data_receivers: [],
-    prepaid_gas: 10**15,
+    prepaid_gas: 10 ** 15,
     attached_deposit: "0",
-    is_view: false 
-  }
+    is_view: false,
+  };
 }
 
 export function prepareContext(vmcontext: VMContext): VMContext {
@@ -76,7 +74,10 @@ export function prepareContext(vmcontext: VMContext): VMContext {
   return vmcontext;
 }
 
-export function createContext(accountContext: AccountContext, context: VMContext = defaultContext()): VMContext {
+export function createContext(
+  accountContext: AccountContext,
+  context: VMContext = defaultContext()
+): VMContext {
   for (let key of Object.getOwnPropertyNames(context)) {
     //@ts-ignore
     if (accountContext[key] != undefined) {
@@ -86,4 +87,3 @@ export function createContext(accountContext: AccountContext, context: VMContext
   }
   return prepareContext(context);
 }
- 

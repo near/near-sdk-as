@@ -1,4 +1,12 @@
-import { context, logging, ContractPromise, ContractPromiseBatch, u128, storage, env } from "..";
+import {
+  Context,
+  logging,
+  ContractPromise,
+  ContractPromiseBatch,
+  u128,
+  storage,
+  env,
+} from "..";
 import { Word } from "./model";
 
 export function SetWord(word: Word): void {
@@ -9,43 +17,36 @@ export function GetWord(): Word {
   return <Word>storage.get<Word>("word", new Word("DEFAULT"));
 }
 
-
 export function sample(): string {
   return "hello world";
 }
 
 export function reverseWordThree(): void {
-  const word = new Word("sample")
-  const contract = "words.examples"
-  const method = "reverse"
+  const word = new Word("sample");
+  const contract = "words.examples";
+  const method = "reverse";
 
   // setup args object for cross-contract call as key-value of contract method parameters
   // note: the method signature in the words contract is reverse(word: Word)
-  let reverseArgs = new ReverseArgs(word)
+  let reverseArgs = new ReverseArgs(word);
 
   let promise = ContractPromise.create(
-    contract,                             // contract account name
-    method,                               // contract method name
-    reverseArgs,                          // serialized contract method arguments encoded as Uint8Array
-    10000000,                             // gas attached to the call
-    u128.Zero                             // attached deposit to be sent with the call
-  )
+    contract, // contract account name
+    method, // contract method name
+    reverseArgs, // serialized contract method arguments encoded as Uint8Array
+    10000000, // gas attached to the call
+    u128.Zero // attached deposit to be sent with the call
+  );
 
   // Setting up args for the callback
   let responseArgs = new ReverseArgs(new Word("elpmas"));
   logging.log(responseArgs);
   let args = responseArgs;
 
-
-  logging.log(context.contractName)
+  logging.log(Context.contractName);
   let methodName = "_onReverseCalledThree";
 
-  let callbackPromise = promise.then(
-    context.contractName,
-    methodName,
-    args,
-    2
-  );
+  let callbackPromise = promise.then(Context.contractName, methodName, args, 2);
 
   callbackPromise.returnAsResult();
 }
@@ -61,36 +62,36 @@ export function _onReverseCalledThree(word: Word): bool {
     // Decoding data from the bytes buffer into the local object.
     let word = decode<Word>(reverseResult.buffer);
     logging.log(word);
-    return word.text == drow.text
+    return word.text == drow.text;
   }
 
-  return false
+  return false;
 }
 
 export function reverseWordTwo(): void {
-  const word = new Word("sample")
-  const contract = "words.examples"
-  const method = "reverse"
+  const word = new Word("sample");
+  const contract = "words.examples";
+  const method = "reverse";
 
   // setup args object for cross-contract call as key-value of contract method parameters
   // note: the method signature in the words contract is reverse(word: Word)
-  let reverseArgs = new ReverseArgs(word)
+  let reverseArgs = new ReverseArgs(word);
 
   let promise = ContractPromise.create(
-    contract,                             // contract account name
-    method,                               // contract method name
-    reverseArgs.encode(),                 // serialized contract method arguments encoded as Uint8Array
-    10000000,                                    // gas attached to the call
-    u128.Zero                             // attached deposit to be sent with the call
-  )
+    contract, // contract account name
+    method, // contract method name
+    reverseArgs.encode(), // serialized contract method arguments encoded as Uint8Array
+    10000000, // gas attached to the call
+    u128.Zero // attached deposit to be sent with the call
+  );
 
   // Setting up args for the callback
   // let responseArgs = new ReverseArgs(new Word("elpmas"))
 
-  logging.log(context.contractName)
+  logging.log(Context.contractName);
 
   let callbackPromise = promise.then(
-    context.contractName,
+    Context.contractName,
     "_onReverseCalledTwo",
     new Uint8Array(0),
     2
@@ -109,39 +110,35 @@ export function _onReverseCalledTwo(): bool {
     // Decoding data from the bytes buffer into the local object.
     let word = decode<Word>(reverseResult.buffer);
     logging.log(word);
-    return word.text == drow.text
+    return word.text == drow.text;
   }
 
-  return false
+  return false;
 }
 
-
 export function reverseWordOne(): void {
-  const word = new Word("sample")
-  const contract = "words.examples"
-  const method = "reverse"
+  const word = new Word("sample");
+  const contract = "words.examples";
+  const method = "reverse";
 
   // setup args object for cross-contract call as key-value of contract method parameters
   // note: the method signature in the words contract is reverse(word: Word)
-  let reverseArgs = new ReverseArgs(word)
+  let reverseArgs = new ReverseArgs(word);
 
   let promise = ContractPromise.create(
-    contract,                             // contract account name
-    method,                               // contract method name
-    reverseArgs,                 // serialized contract method arguments encoded as Uint8Array
-    0,                                    // gas attached to the call
-    u128.Zero                             // attached deposit to be sent with the call
-  )
+    contract, // contract account name
+    method, // contract method name
+    reverseArgs, // serialized contract method arguments encoded as Uint8Array
+    0, // gas attached to the call
+    u128.Zero // attached deposit to be sent with the call
+  );
 
   promise.returnAsResult();
 }
 
-
 @nearBindgen
 class ReverseArgs {
-  constructor(
-    public word: Word
-  ) { }
+  constructor(public word: Word) {}
 }
 
 export function getBlock_timestamp(): u64 {
@@ -149,13 +146,16 @@ export function getBlock_timestamp(): u64 {
 }
 
 export function contractPromiseBatch(): ContractPromiseBatch {
-  const word = new Word("sample")
-  const contract = "words.examples"
-  const method = "reverse"
+  const word = new Word("sample");
+  const contract = "words.examples";
+  const method = "reverse";
 
-  let reverseArgs = new ReverseArgs(word)
+  let reverseArgs = new ReverseArgs(word);
 
-  return ContractPromiseBatch
-            .create(contract)
-            .function_call(method, reverseArgs.encode(), u128.Zero, 0)
+  return ContractPromiseBatch.create(contract).function_call(
+    method,
+    reverseArgs.encode(),
+    u128.Zero,
+    0
+  );
 }

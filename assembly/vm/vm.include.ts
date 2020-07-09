@@ -5,7 +5,6 @@ import "../bindgen";
 export * from "./outcome";
 import { VM } from "./vm";
 
-
 export function newStringArray(): Array<string> {
   return new Array<string>();
 }
@@ -18,7 +17,6 @@ export function pushString(arr: string[], str: string): Array<string> {
 /**
  * Ensure that state of the VM is restored before each test.
  */
-beforeEach(()=> {
+beforeEach(() => {
   VM.restoreState();
-})
-
+});

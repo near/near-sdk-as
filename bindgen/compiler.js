@@ -1,4 +1,3 @@
-let semver = require("semver");
 let path = require("path");
 let relPathToBindgen = path.relative(process.cwd(), path.join(__dirname, '../assembly/bindgen.ts'));
 
@@ -28,14 +27,8 @@ function getAsc(config) {
     asc = require("assemblyscript/dist/asc");
   } else {
     asc = require("assemblyscript/cli/asc");
-  } 
-
-  // Check asc version
-  if (semver.ltr(asc.version, requiredRange) ) {
-    throw Error("The current version of AssemblyScript is " + asc.version + 
-                " which must be " + semver.validRange(requiredRange));
   }
-  
+
   // Wrap the main function to automatically inject options.
   asc.main = (main => (args, options, fn) => {
     if (typeof options === "function") {

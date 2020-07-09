@@ -1,5 +1,5 @@
-import { context, logging } from "..";
-import { Word } from "./model"
+import { Context, logging } from "..";
+import { Word } from "./model";
 
 // ----------------------------------------------------------------------------
 // Contract methods
@@ -11,8 +11,10 @@ import { Word } from "./model"
  * @returns a Word whose text attribute is the same characters but reversed
  */
 export function reverse(word: Word): Word {
-  logging.log("[" + context.sender + "] invoked function reverse(" + word.text + ")")
-  return new Word(_reverse(word.text))
+  logging.log(
+    "[" + Context.sender + "] invoked function reverse(" + word.text + ")"
+  );
+  return new Word(_reverse(word.text));
 }
 
 /**
@@ -21,10 +23,11 @@ export function reverse(word: Word): Word {
  * @returns a Word whose text attribute is the same characters but upper cased
  */
 export function upcase(word: Word): Word {
-  logging.log("[" + context.sender + "] invoked function upcase(" + word.text + ")")
-  return new Word(_upcase(word.text)  )
+  logging.log(
+    "[" + Context.sender + "] invoked function upcase(" + word.text + ")"
+  );
+  return new Word(_upcase(word.text));
 }
-
 
 // ----------------------------------------------------------------------------
 // Helper functions
@@ -32,20 +35,20 @@ export function upcase(word: Word): Word {
 
 /**
  * Reverse an incoming string of letters
- * 
+ *
  * @param text the incoming string
  * @returns the reversed string
  */
 function _reverse(text: string): string {
-  return text.split("").reverse().join("")
+  return text.split("").reverse().join("");
 }
 
 /**
  * Convert an incoming string of letters
- * 
+ *
  * @param text the incoming string
  * @returns the upper case version of the string
  */
 function _upcase(text: string): string {
-  return text.toUpperCase()
+  return text.toUpperCase();
 }
