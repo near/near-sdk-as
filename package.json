@@ -1,6 +1,6 @@
 {
   "name": "near-sdk-as",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Collection of packages for developming NEAR smart contracts",
   "main": "index.js",
   "types": "assembly/index.ts",
