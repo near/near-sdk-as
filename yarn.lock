@@ -796,10 +796,10 @@ assemblyscript-json@^0.3.2:
   resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-0.3.2.tgz#3b526d3837729882baf05c223b6ee8fc45ced633"
   integrity sha512-3dzsc0cn47GzzHoYTWVN9lsaTCcNTrxWHk2s+O9x3nA6q82TYeihfSpr91+NdAnnRdE9UinVz4C2eER3x8I/fQ==
 
-assemblyscript@^0.13.4:
-  version "0.13.4"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.13.4.tgz#700be60e218b2aa07e7df58fb77473653e5b7880"
-  integrity sha512-uTCjAQ6LcMuw+zMeJn8o9x10cyUuEPFladzxQ6/1ZvaJk9X1toeQICMARso8tlYhEY9Zjbhlv23EtLH2z1NWWQ==
+assemblyscript@^0.13.5:
+  version "0.13.5"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.13.5.tgz#0c3d8cf4d6d78075b0133c0efd7c01ce7c4dea9f"
+  integrity sha512-S1ITys7v0auAc8/KQJDrVS9oDcLBPYNqKuzRJLYi5NQmPdKqTuVVjTLNCiL10pp5mT3yp2L5QzX9sm2hqMTnlQ==
   dependencies:
     binaryen "93.0.0-nightly.20200609"
     long "^4.0.0"
