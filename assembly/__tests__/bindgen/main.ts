@@ -65,3 +65,7 @@ export function stringOrNull(): string | null {
 export function classOrNull(): FooBar | null {
   return new FooBar();
 }
+
+export function defaultArgs(x: i32 = 42): i32 {
+  return x + 1;
+}

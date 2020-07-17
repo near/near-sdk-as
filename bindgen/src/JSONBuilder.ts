@@ -148,7 +148,16 @@ export class JSONBindingsBuilder extends BaseVisitor {
     }
     if (params.length > 0) {
       this.sb[this.sb.length - 1] += params
-        .map((param) => createDecodeStatement(param))
+        .map((param) => {
+          let name = toString(param.name);
+          let type = toString(param.type);
+          let res = `obj.has('${name}') ? 
+             ${createDecodeStatement(param)} : 
+             assertNonNull<${type}>('${name}', <${type}>${
+            param.initializer ? toString(param.initializer) : "null"
+          })`;
+          return res;
+        })
         .join(", ");
     }
     this.sb[this.sb.length - 1] += ");";

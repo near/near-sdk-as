@@ -557,3 +557,10 @@ export function setValue(value: string): string {
 export function getValue(): string | null {
   return storage.get<string>("name");
 }
+
+export function getDefaultValue(y: string = "hello world", x: i32 = 42): i32 {
+  assert(x == 42, "x is not default value of 42");
+  assert(y == "hello world", "y is not default value of hello world");
+  logging.log(y);
+  return x;
+}
