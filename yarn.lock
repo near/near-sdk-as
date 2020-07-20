@@ -52,10 +52,10 @@
     diff "^4.0.2"
     nearley "^2.19.3"
 
-"@assemblyscript/loader@^0.13.1":
-  version "0.13.4"
-  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.13.4.tgz#ff46eefbd7d327c2b6928969681257fdd6ecd33a"
-  integrity sha512-3GCdrXIePzv1k93Ni3KnXpXcfJk3EetNYdBdOQW4uVd9p7+0owthzNFdwz1rnVJB3OUnYLsHVlp8ZPyyqAeJJQ==
+"@assemblyscript/loader@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.14.1.tgz#b0a77245b27d4d20ded82c9d836ee62ef9f9421a"
+  integrity sha512-2uzfNiSvcVB+6hr9CX//VBL/aqh2h7MrLRIStZkV/6MddziW1J9+IPe0SYRK16XYkcRD8Pw1N8py7mM9HX6XUw==
 
 "@assemblyscript/loader@^0.9.4":
   version "0.9.4"

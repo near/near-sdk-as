@@ -43,7 +43,7 @@
     "check:pretty": "yarn prettier --check '**/*.ts'"
   },
   "devDependencies": {
-    "@assemblyscript/loader": "^0.13.1",
+    "@assemblyscript/loader": "^0.14.1",
     "@types/bn.js": "^4.11.6",
     "@types/bs58": "^4.0.1",
     "@types/jest": "^26.0.0",
