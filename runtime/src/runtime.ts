@@ -1,3 +1,6 @@
+import { spawnSync } from "child_process";
+import * as os from "os";
+import * as fs from "fs";
 import {
   encodeBs58,
   assign,
@@ -12,9 +15,6 @@ import {
   VMContext,
   defaultContext,
 } from "./context";
-import { spawnSync } from "child_process";
-import * as os from "os";
-import * as fs from "fs";
 import {
   InternalState,
   DEFAULT_GAS,
@@ -111,17 +111,23 @@ export class Account {
    * @param method_name Method to call.
    * @param input object of input to method.
    * @param prepaid_gas How much gas to use.
+   * @param attached_deposit How many tokens to send to the contract
    */
   call_other(
     account_id: string,
     method_name: string,
     input?: any,
-    prepaid_gas?: number
+    prepaid_gas: number = DEFAULT_GAS,
+    attached_deposit: string = "0"
   ) {
     if (this.runtime == null) throw new Error("Runtime is not set");
     let accountContext = this.createAccountContext(input, prepaid_gas);
     accountContext.signer_account_id = this.account_id;
+    if (attached_deposit) {
+      accountContext.attached_deposit = attached_deposit;
+    }
     this.runtime.log("Account Signer ID: " + accountContext.signer_account_id);
+    this.runtime.log(accountContext);
     return this.runtime.call(
       account_id,
       method_name,
@@ -243,10 +249,9 @@ export class Runtime {
     accountContext.predecessor_account_id =
       accountContext.predecessor_account_id || accountContext.signer_account_id;
     const context = assign<AccountContext>(
-      accountContext,
-      defaultAccountContext()
+      defaultAccountContext(),
+      accountContext
     );
-
     const signer_account = this.getOrCreateAccount(context.signer_account_id);
     const predecessor_account = this.getAccount(context.predecessor_account_id);
     const account = this.getAccount(account_id);

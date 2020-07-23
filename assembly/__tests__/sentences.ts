@@ -20,6 +20,7 @@ export function GetWord(): Word {
 export function sample(): string {
   return "hello world";
 }
+export const DEFAULT_GAS: u64 = 10_000_000_000_000;
 
 export function reverseWordThree(): void {
   const word = new Word("sample");
@@ -34,7 +35,7 @@ export function reverseWordThree(): void {
     contract, // contract account name
     method, // contract method name
     reverseArgs, // serialized contract method arguments encoded as Uint8Array
-    10000000, // gas attached to the call
+    DEFAULT_GAS, // gas attached to the call
     u128.Zero // attached deposit to be sent with the call
   );
 
@@ -46,7 +47,12 @@ export function reverseWordThree(): void {
   logging.log(Context.contractName);
   let methodName = "_onReverseCalledThree";
 
-  let callbackPromise = promise.then(Context.contractName, methodName, args, 2);
+  let callbackPromise = promise.then(
+    Context.contractName,
+    methodName,
+    args,
+    DEFAULT_GAS
+  );
 
   callbackPromise.returnAsResult();
 }
@@ -81,7 +87,7 @@ export function reverseWordTwo(): void {
     contract, // contract account name
     method, // contract method name
     reverseArgs.encode(), // serialized contract method arguments encoded as Uint8Array
-    10000000, // gas attached to the call
+    DEFAULT_GAS, // gas attached to the call
     u128.Zero // attached deposit to be sent with the call
   );
 
@@ -94,7 +100,7 @@ export function reverseWordTwo(): void {
     Context.contractName,
     "_onReverseCalledTwo",
     new Uint8Array(0),
-    2
+    DEFAULT_GAS
   );
 
   callbackPromise.returnAsResult();
@@ -129,7 +135,7 @@ export function reverseWordOne(): void {
     contract, // contract account name
     method, // contract method name
     reverseArgs, // serialized contract method arguments encoded as Uint8Array
-    0, // gas attached to the call
+    DEFAULT_GAS, // gas attached to the call
     u128.Zero // attached deposit to be sent with the call
   );
 
@@ -156,6 +162,13 @@ export function contractPromiseBatch(): ContractPromiseBatch {
     method,
     reverseArgs.encode(),
     u128.Zero,
-    0
+    DEFAULT_GAS
   );
+}
+
+export function payableFunction(): void {}
+
+export function nonPayableFunction(): void {
+  notPayable();
+  throw new Error("shouldn't see this " + Context.attachedDeposit.toString());
 }

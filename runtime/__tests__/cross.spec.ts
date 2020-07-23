@@ -1,4 +1,5 @@
 import { Runtime, Account, stateSize } from "..";
+import { throws } from "assert";
 
 let runtime: Runtime;
 let sentences: Account, words: Account, alice: Account;
@@ -63,9 +64,8 @@ describe("cross contract calls", () => {
   });
 
   test("getting view with arg", () => {
-    expect(
-      words.view("reverse", { word: { text: "hello" } }).return_data.text
-    ).toBe("olleh");
+    const res = words.view("reverse", { word: { text: "hello" } });
+    expect(res.return_data.text).toBe("olleh");
   });
 
   test("get block_timestanp", () => {
@@ -74,5 +74,20 @@ describe("cross contract calls", () => {
 
   test("contract promise batch", () => {
     sentences.call("contractPromiseBatch").result.outcome;
+  });
+
+  test("contract should throw if attached deposit and non-payable method", () => {
+    let res = alice.call_other(
+      "sentences",
+      "nonPayableFunction",
+      {},
+      10000000000000,
+      "10"
+    );
+    expect(
+      res.err.FunctionCallError.HostError.GuestPanic.panic_msg.startsWith(
+        "Method doesn't accept deposit"
+      )
+    ).toBe(true);
   });
 });

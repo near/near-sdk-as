@@ -90,6 +90,9 @@ async function loadModule(path) {
             },
             input(register_id) {
 
+            },
+            attached_deposit() {
+              return 0;
             }
         }
     });

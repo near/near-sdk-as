@@ -1,5 +1,5 @@
 import "./sdk/env/imports";
-import { base64, runtime_api, u128, util } from "./sdk";
+import { base64, runtime_api, u128, util, Context } from "./sdk";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 
 // Runtime functions
@@ -12,6 +12,12 @@ function isNull<T>(t: T): bool {
     return changetype<usize>(t) == 0;
   }
   return false;
+}
+
+//@ts-ignore
+@global
+function notPayable(): void {
+  assert(Context.attachedDeposit == u128.Zero, "Method doesn't accept deposit");
 }
 
 @global
@@ -129,8 +135,8 @@ function encode<T, Output = Uint8Array>(
         if (value instanceof u128) {
           encoder.setString(name, value.toString());
         } else if (value instanceof Map) {
-          //@ts-ignore
           assert(
+            //@ts-ignore
             nameof<indexof<T>>() == "String",
             "Can only encode maps with string keys"
           );
@@ -171,9 +177,10 @@ function encode<T, Output = Uint8Array>(
     //@ts-ignore
     return <Output>encoder.serialize();
   }
-  //@ts-ignore
   assert(
+    //@ts-ignore
     output instanceof JSONEncoder,
+    //@ts-ignore
     "Bad return type " + nameof < Output > +" for encoder"
   );
   //@ts-ignore
@@ -374,12 +381,13 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         " of type map expected a JSON.Obj, but recevied " +
         JSONTypeToString(val)
     );
-    //@ts-ignore
     assert(
+      //@ts-ignore
       nameof<indexof<T>>() == "String",
       "Value with Key: " +
         name +
         " cannot decode a map which has an index type " +
+        //@ts-ignore
         nameof<indexof<T>>() +
         ", it must be a string"
     );
