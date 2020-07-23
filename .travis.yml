@@ -4,6 +4,7 @@ os:
   - osx
 node_js:
   - 12
+  - 13
 env:
   - YARN_GPG=no
 cache: yarn
