@@ -8,6 +8,8 @@ import {
   Source,
   SourceKind,
   Statement,
+  ASTBuilder,
+  Node,
 } from "visitor-as/as";
 
 export class SimpleParser {
@@ -37,4 +39,8 @@ export class SimpleParser {
 export function posixRelativePath(from: string, to: string): string {
   const relativePath = path.relative(from, to);
   return relativePath.split(path.sep).join(path.posix.sep);
+}
+
+export function toString(node: Node): string {
+  return ASTBuilder.build(node);
 }

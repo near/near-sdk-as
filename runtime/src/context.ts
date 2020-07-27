@@ -1,4 +1,5 @@
 import { Base64 } from "js-base64";
+import { DEFAULT_GAS } from "./types";
 
 export interface VMContext {
   current_account_id: string;
@@ -25,7 +26,7 @@ export function defaultContext(): VMContext {
   return {
     input: "{}",
     output_data_receivers: [],
-    prepaid_gas: 10 ** 15,
+    prepaid_gas: DEFAULT_GAS,
     attached_deposit: "0",
     is_view: false,
     block_index: 1,
@@ -63,7 +64,7 @@ export function defaultAccountContext(): Partial<AccountContext> {
     input: "{}",
     input_data: [],
     output_data_receivers: [],
-    prepaid_gas: 10 ** 15,
+    prepaid_gas: DEFAULT_GAS,
     attached_deposit: "0",
     is_view: false,
   };

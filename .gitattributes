@@ -1,0 +1,5 @@
+yarn.lock linguist-generated=true -diff
+bindgen/dist/**/*.js linguist-generated=true -diff
+bindgen/dist/**/*.ts linguist-generated=true -diff
+runtime/dist/**/*.js linguist-generated=true -diff
+runtime/dist/**/*.ts linguist-generated=true -diff

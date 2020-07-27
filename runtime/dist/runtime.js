@@ -20,11 +20,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Runtime = exports.Account = void 0;
-const utils_1 = require("./utils");
-const context_1 = require("./context");
 const child_process_1 = require("child_process");
 const os = __importStar(require("os"));
 const fs = __importStar(require("fs"));
+const utils_1 = require("./utils");
+const context_1 = require("./context");
 const types_1 = require("./types");
 const DEFAULT_BALANCE = 1000000000000;
 /**
@@ -89,13 +89,18 @@ class Account {
      * @param method_name Method to call.
      * @param input object of input to method.
      * @param prepaid_gas How much gas to use.
+     * @param attached_deposit How many tokens to send to the contract
      */
-    call_other(account_id, method_name, input, prepaid_gas) {
+    call_other(account_id, method_name, input, prepaid_gas = types_1.DEFAULT_GAS, attached_deposit = "0") {
         if (this.runtime == null)
             throw new Error("Runtime is not set");
         let accountContext = this.createAccountContext(input, prepaid_gas);
         accountContext.signer_account_id = this.account_id;
+        if (attached_deposit) {
+            accountContext.attached_deposit = attached_deposit;
+        }
         this.runtime.log("Account Signer ID: " + accountContext.signer_account_id);
+        this.runtime.log(accountContext);
         return this.runtime.call(account_id, method_name, accountContext.input, accountContext);
     }
     /**
@@ -191,7 +196,7 @@ class Runtime {
         accountContext.input = input;
         accountContext.predecessor_account_id =
             accountContext.predecessor_account_id || accountContext.signer_account_id;
-        const context = utils_1.assign(accountContext, context_1.defaultAccountContext());
+        const context = utils_1.assign(context_1.defaultAccountContext(), accountContext);
         const signer_account = this.getOrCreateAccount(context.signer_account_id);
         const predecessor_account = this.getAccount(context.predecessor_account_id);
         const account = this.getAccount(account_id);
