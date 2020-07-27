@@ -127,12 +127,12 @@ describe("avl tree contract calls", () => {
     alice = runtime.newAccount("alice");
     avlTreeContract = runtime.newAccount(
       "avlTreeContract",
-      __dirname + "/../out/avlTreeContract.wasm"
+      __dirname + "/../build/debug/avlTreeContract.wasm"
     );
   });
 
   it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", () => {
-    const n = 20;
+    const n = 10;
     const map = generateRandomTree(n);
     const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
     const sortedValues = [];

@@ -16,11 +16,6 @@ function createImports(memory, createImports, instantiateSync, binary) {
 
 
 
-// add an extra entry file
-let includePath = path.join(__dirname, "assembly", "vm", "vm.include.ts");
-const flags = {}
-flags[posixRelativePath(process.cwd(), includePath)] = [];
-
 module.exports = {
   /**
    * A set of globs passed to the glob package that qualify typescript files for testing.
@@ -34,7 +29,6 @@ module.exports = {
    * All the compiler flags needed for this test suite. Make sure that a binary file is output.
    */
   flags: {
-    ...flags,
     "--debug": [],
     /** 
      * This is required. Do not change this. 
@@ -47,7 +41,8 @@ module.exports = {
     "--runtime": ["stub"], // Acceptable values are: full, half, stub (arena),
     "--baseDir": process.cwd(),
     "--runPasses": ["inlining,dce"],
-    "--transform": [path.join(__dirname, "bindgen")],
+    "--config": "asp.asconfig.json",
+    // "--showConfig": []
   },
   /**
    * A set of regexp that will disclude source files from testing.

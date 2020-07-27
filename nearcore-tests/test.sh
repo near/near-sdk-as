@@ -3,7 +3,7 @@ TESTS=(mapTestsWithArray base58Test base64Test logTest storageStringRoundtripTes
 DISABLED_TESTS=(contextTests)
 
 [[ -e /tmp/main.wasm ]] && rm /tmp/main.wasm
-cp "$(dirname "$0")"/out/main.wasm /tmp/
+cp "$(dirname "$0")"/build/release/main.wasm /tmp/
 cp "$(dirname "$0")"/*.json /tmp/
 errormsg="FunctionCallError"
 errors=0
