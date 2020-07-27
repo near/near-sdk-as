@@ -4,9 +4,6 @@
   "description": "Collection of packages for developming NEAR smart contracts",
   "main": "index.js",
   "types": "assembly/index.ts",
-  "bin": {
-    "near-asc": "./bin/near-asc"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com:near/near-sdk-as",
