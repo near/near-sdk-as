@@ -7,8 +7,6 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.platform }}
-    env:
-      YARN_GPG: no 
     name: "${{ matrix.platform }}"
     strategy:
       matrix:
@@ -22,4 +20,6 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: test
+        env:
+          YARN_GPG: no 
         run: yarn test
