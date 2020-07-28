@@ -41,7 +41,7 @@ module.exports = {
     "--runtime": ["stub"], // Acceptable values are: full, half, stub (arena),
     "--baseDir": process.cwd(),
     "--runPasses": ["inlining,dce"],
-    "--config": "asp.asconfig.json",
+    "--config": path.join(__dirname, "asp.asconfig.json"),
     // "--showConfig": []
   },
   /**
