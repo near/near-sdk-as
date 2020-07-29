@@ -2,6 +2,7 @@ const compile = require("asbuild").main;
 
 compile(["../assembly/__tests__/bindgen/test.ts", "--target", "debug"]);
 
+// Tests where the compiler should failed to compile
 function buildFail(msg, args) {
   var failed = false;
   try {
@@ -18,11 +19,11 @@ function buildFail(msg, args) {
     }
   }
 }
-buildFail("Failing to compiling should fail.", [
+buildFail("Setting a string to be a an int should fail.", [
   "../assembly/__tests__/bindgen/bad.ts",
   "--verbose",
 ]);
-buildFail("Failing with bad types compiling should fail.", [
+buildFail("Using ERROR in generic function should fail if wrong type passed.", [
   "../assembly/__tests__/bindgen/badType.ts",
   "verbose",
 ]);
