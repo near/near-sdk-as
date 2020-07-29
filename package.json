@@ -14,7 +14,7 @@
   "dependencies": {
     "@as-pect/cli": "^4.0.0",
     "as-bignum": "^0.2.0",
-    "asbuild": "^0.0.5",
+    "asbuild": "^0.0.6",
     "assemblyscript": "^0.14.4",
     "assemblyscript-json": "^0.3.2",
     "bn.js": "^5.1.1",
