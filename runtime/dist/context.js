@@ -2,11 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createContext = exports.prepareContext = exports.defaultAccountContext = exports.defaultContext = void 0;
 const js_base64_1 = require("js-base64");
+const types_1 = require("./types");
 function defaultContext() {
     return {
         input: "{}",
         output_data_receivers: [],
-        prepaid_gas: 10 ** 15,
+        prepaid_gas: types_1.DEFAULT_GAS,
         attached_deposit: "0",
         is_view: false,
         block_index: 1,
@@ -28,7 +29,7 @@ function defaultAccountContext() {
         input: "{}",
         input_data: [],
         output_data_receivers: [],
-        prepaid_gas: 10 ** 15,
+        prepaid_gas: types_1.DEFAULT_GAS,
         attached_deposit: "0",
         is_view: false,
     };

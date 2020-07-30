@@ -1,4 +1,4 @@
-import { Expression, Statement } from "visitor-as/as";
+import { Expression, Statement, Node } from "visitor-as/as";
 export declare class SimpleParser {
     private static parser;
     private static getTokenizer;
@@ -6,3 +6,4 @@ export declare class SimpleParser {
     static parseStatement(s: string, topLevel?: boolean): Statement;
 }
 export declare function posixRelativePath(from: string, to: string): string;
+export declare function toString(node: Node): string;

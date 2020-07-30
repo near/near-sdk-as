@@ -30,3 +30,8 @@ declare function isNull<T>(t: T): bool;
 declare function nearBindgen(_class: any): void;
 
 declare function defaultValue<T>(): T;
+
+/**
+ * Throw if attached deposit.
+ */
+declare function notPayable(): void;

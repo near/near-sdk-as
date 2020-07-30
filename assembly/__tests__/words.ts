@@ -12,7 +12,7 @@ import { Word } from "./model";
  */
 export function reverse(word: Word): Word {
   logging.log(
-    "[" + Context.sender + "] invoked function reverse(" + word.text + ")"
+    "[" + Context.contractName + "] invoked function reverse(" + word.text + ")"
   );
   return new Word(_reverse(word.text));
 }
@@ -24,7 +24,7 @@ export function reverse(word: Word): Word {
  */
 export function upcase(word: Word): Word {
   logging.log(
-    "[" + Context.sender + "] invoked function upcase(" + word.text + ")"
+    "[" + Context.contractName + "] invoked function upcase(" + word.text + ")"
   );
   return new Word(_upcase(word.text));
 }

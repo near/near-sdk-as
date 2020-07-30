@@ -10,9 +10,10 @@ import {
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
+  BlockStatement,
 } from "visitor-as/as";
-import { ASTBuilder, BaseVisitor, utils } from "visitor-as";
-import { SimpleParser } from "./utils";
+import { BaseVisitor, utils } from "visitor-as";
+import { SimpleParser, toString } from "./utils";
 
 const NEAR_DECORATOR = "nearBindgen";
 
@@ -33,10 +34,6 @@ function hasNearDecorator(stmt: Source): boolean {
   );
 }
 
-export function toString(node: Node): string {
-  return ASTBuilder.build(node);
-}
-
 export function isEntry(source: Source | Node): boolean {
   return source.range.source.sourceKind == SourceKind.USER_ENTRY;
 }
@@ -47,6 +44,13 @@ function isClass(type: Node): boolean {
 
 function isField(mem: DeclarationStatement) {
   return mem.kind == NodeKind.FIELDDECLARATION;
+}
+
+function isPayable(func: FunctionDeclaration): boolean {
+  return (
+    func.decorators != null &&
+    func.decorators.some((s) => toString(s.name) != "payable")
+  );
 }
 
 function createDecodeStatements(_class: ClassDeclaration): string[] {

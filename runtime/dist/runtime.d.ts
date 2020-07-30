@@ -41,8 +41,9 @@ export declare class Account {
      * @param method_name Method to call.
      * @param input object of input to method.
      * @param prepaid_gas How much gas to use.
+     * @param attached_deposit How many tokens to send to the contract
      */
-    call_other(account_id: string, method_name: string, input?: any, prepaid_gas?: number): {
+    call_other(account_id: string, method_name: string, input?: any, prepaid_gas?: number, attached_deposit?: string): {
         return_data: any;
         err: any;
         result: StandaloneOutput;
