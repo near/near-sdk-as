@@ -19,3 +19,7 @@ docs/
 **/*/tsconfig.tsbuildinfo*
 
 out/
+**/out/
+build/
+
+!runtime/node_modules

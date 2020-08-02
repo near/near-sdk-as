@@ -1,12 +1,9 @@
 {
   "name": "near-sdk-as",
-  "version": "0.5.0",
+  "version": "1.0.0-3",
   "description": "Collection of packages for developming NEAR smart contracts",
   "main": "index.js",
   "types": "assembly/index.ts",
-  "bin": {
-    "near-asc": "./bin/near-asc"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com:near/near-sdk-as",
@@ -17,7 +14,8 @@
   "dependencies": {
     "@as-pect/cli": "^4.0.0",
     "as-bignum": "^0.2.0",
-    "assemblyscript": "^0.13.5",
+    "asbuild": "^0.0.6",
+    "assemblyscript": "^0.14.7",
     "assemblyscript-json": "^0.3.2",
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",
@@ -34,7 +32,7 @@
     "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:runtime && yarn check:pretty",
     "test:nearcore": "(cd nearcore-tests; yarn test)",
     "test:bindgen": "(cd bindgen; yarn test)",
-    "test:runtime": "(cd runtime; node asconfig) && jest",
+    "test:runtime": "(cd runtime; yarn build) && jest",
     "asp:ci": "asp",
     "asp": "yarn asp:ci --verbose",
     "doc": "rm -rf docs; typedoc assembly --tsconfig assembly/tsconfig.json && touch docs/.nojekyll",

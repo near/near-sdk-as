@@ -784,6 +784,13 @@ as-bignum@^0.2.0:
   resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.2.tgz#8eccc70a5007175f4b8903160e1f7742158f579a"
   integrity sha512-Tc3pJLrXNiqgXOY/SNC3g2D7x7shOpK9g7Zc2R88NOHVUqugqHcXnR/KmWOUerh4hKIl6fHI65Mnf6EFHjQG6Q==
 
+asbuild@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.6.tgz#886f959816262156197d793ab7814327e67a71dc"
+  integrity sha512-g5R/oJy2IXLvfa1cMIH9y8M2T4hSHOusjk31Jczyc+U6eD9knI6qrZlAIkkPO8f2k931YxmkNTBjtkAfGhS8bg==
+  dependencies:
+    yargs "^15.4.1"
+
 asn1@~0.2.3:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/asn1/-/asn1-0.2.4.tgz#8d2475dfab553bb33e77b54e59e880bb8ce23136"
@@ -796,12 +803,12 @@ assemblyscript-json@^0.3.2:
   resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-0.3.2.tgz#3b526d3837729882baf05c223b6ee8fc45ced633"
   integrity sha512-3dzsc0cn47GzzHoYTWVN9lsaTCcNTrxWHk2s+O9x3nA6q82TYeihfSpr91+NdAnnRdE9UinVz4C2eER3x8I/fQ==
 
-assemblyscript@^0.13.5:
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.13.5.tgz#0c3d8cf4d6d78075b0133c0efd7c01ce7c4dea9f"
-  integrity sha512-S1ITys7v0auAc8/KQJDrVS9oDcLBPYNqKuzRJLYi5NQmPdKqTuVVjTLNCiL10pp5mT3yp2L5QzX9sm2hqMTnlQ==
+assemblyscript@^0.14.7:
+  version "0.14.7"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.14.7.tgz#fe033f35c9f341874229e122a8ed8b3e9959e01c"
+  integrity sha512-QTCGBmZHvLAvZZ/sezo/2xMNXg0sgoICGTS5PSg1KPCp8QEYwNuh795Zzad/kxZTlhG6u7EHaX5Bh+Upytvbnw==
   dependencies:
-    binaryen "93.0.0-nightly.20200609"
+    binaryen "95.0.0-nightly.20200723"
     long "^4.0.0"
 
 assert-no-diff@^3.0.4:
@@ -952,10 +959,10 @@ binary-install@^0.0.1:
     tar "^5.0.5"
     universal-url "^2.0.0"
 
-binaryen@93.0.0-nightly.20200609:
-  version "93.0.0-nightly.20200609"
-  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-93.0.0-nightly.20200609.tgz#e7c9211911c0cff94b8682e895e4de630f110cd5"
-  integrity sha512-CIaeav05u+fWRN2h1ecwIoSaOF/Mk6U85M/G6eg1nOHAXYYmOuh9TztF9Fu8krRWnl98J3W+VfDClApMV5zCtw==
+binaryen@95.0.0-nightly.20200723:
+  version "95.0.0-nightly.20200723"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-95.0.0-nightly.20200723.tgz#a6fa324a51e01df41a951c0275b1ffc9b5f3a8f6"
+  integrity sha512-IUO89yU4l20ocuf7RvcBj2T1ZGafO0XNcbqTFne9Dbp63FOLafDSuV7U22n0bTbK4H6qqGogTQtQJQbrV054lQ==
 
 bn.js@^5.1.1:
   version "5.1.2"
@@ -4186,7 +4193,7 @@ yaml@^1.7.2:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.0.tgz#3b593add944876077d4d683fee01081bd9fff31e"
   integrity sha512-yr2icI4glYaNG+KWONODapy2/jDdMSDnrONSjblABjD9B4Z5LgiircSt8m8sRZFNi08kG9Sm0uSHtEmP3zaEGg==
 
-yargs-parser@18.x, yargs-parser@^18.1.1:
+yargs-parser@18.x, yargs-parser@^18.1.1, yargs-parser@^18.1.2:
   version "18.1.3"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-18.1.3.tgz#be68c4975c6b2abf469236b0c870362fab09a7b0"
   integrity sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==
@@ -4210,6 +4217,23 @@ yargs@^15.3.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.1"
+
+yargs@^15.4.1:
+  version "15.4.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.4.1.tgz#0d87a16de01aee9d8bec2bfbf74f67851730f4f8"
+  integrity sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
+  dependencies:
+    cliui "^6.0.0"
+    decamelize "^1.2.0"
+    find-up "^4.1.0"
+    get-caller-file "^2.0.1"
+    require-directory "^2.1.1"
+    require-main-filename "^2.0.0"
+    set-blocking "^2.0.0"
+    string-width "^4.2.0"
+    which-module "^2.0.0"
+    y18n "^4.0.0"
+    yargs-parser "^18.1.2"
 
 yn@3.1.1:
   version "3.1.1"

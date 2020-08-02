@@ -139,7 +139,7 @@ async function loadModule(path) {
 
 async function testFloatDetection(file){
   return new Promise( (resolve, reject)=>
-    asc.main([file, "--runtime", "none", "--noEmit", "--transform", "."], error => {
+    asc.main([file, "--noEmit"], error => {
       if (error == null || !/Floating point numbers are not allowed/g.test(error.message)) {
         if (error == null){
             error = "Couldn't find float";
@@ -152,7 +152,7 @@ async function testFloatDetection(file){
 }
 
 (async function() {
-    const module = await loadModule('./out/test.wasm');
+    const module = await loadModule('./build/debug/test.wasm');
     await module.runTest();
     assert.deepEqual(await module.convertFoobars({ foobars: [] }), []);
     assert.deepEqual(

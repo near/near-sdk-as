@@ -10,11 +10,11 @@ describe("cross contract calls", () => {
     alice = runtime.newAccount("alice");
     sentences = runtime.newAccount(
       "sentences",
-      __dirname + "/../out/sentences.wasm"
+      __dirname + "/../build/debug/sentences.wasm"
     );
     words = runtime.newAccount(
       "words.examples",
-      __dirname + "/../out/words.wasm"
+      __dirname + "/../build/debug/words.wasm"
     );
   });
 

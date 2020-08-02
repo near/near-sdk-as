@@ -1,0 +1,15 @@
+{
+  "targets": {
+    "release": {
+      "-O3z": true
+    },
+    "debug": {
+      "debug": true
+    }
+  },
+  "options": {
+    "runtime": "none",
+    "transform": ["./bindgen"]
+  },
+  "entries": ["assembly/bindgen.ts"]
+}
