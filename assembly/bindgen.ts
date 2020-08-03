@@ -21,6 +21,19 @@ function notPayable(): void {
 }
 
 @global
+function assertNonNull<T>(name: string, t: T): T {
+  assert(
+    !isNull<T>(t),
+    "Parameter " +
+      name +
+      " with type " +
+      nameof<T>() +
+      " is required but missing"
+  );
+  return t;
+}
+
+@global
 class JSONEncoder extends _JSONEncoder {
   encode<T>(name: string, val: T): void {
     encode<T, JSONEncoder>(val, name, this);
