@@ -634,10 +634,10 @@
     jest-diff "^25.2.1"
     pretty-format "^25.2.1"
 
-"@types/js-base64@^2.3.1":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@types/js-base64/-/js-base64-2.3.2.tgz#266be882b28b52649b1d34db9515e54c8ef783f2"
-  integrity sha512-iGjZEnheu9n53fhlU+QLovdKHsdwPJ79iammNM0opTEp18zcJ/nNAIthuMilJoDPNUQHoqRAJdDNI5rxHY4nkA==
+"@types/js-base64@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/js-base64/-/js-base64-3.0.0.tgz#b7b4c130facefefd5c57ba82664c41e2995f91be"
+  integrity sha512-BnEyOcDE4H6bkg8m84xhdbkYoAoCg8sYERmAvE4Ff50U8jTfbmOinRdJpauBn1P9XsCCQgCLuSiyz3PM4WHYOA==
 
 "@types/node@*", "@types/node@^14.0.9":
   version "14.0.27"
@@ -785,9 +785,9 @@ array-unique@^0.3.2:
   integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
 
 as-bignum@^0.2.0:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.2.tgz#8eccc70a5007175f4b8903160e1f7742158f579a"
-  integrity sha512-Tc3pJLrXNiqgXOY/SNC3g2D7x7shOpK9g7Zc2R88NOHVUqugqHcXnR/KmWOUerh4hKIl6fHI65Mnf6EFHjQG6Q==
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.3.tgz#b6f59c24293f935926eb8c3e9f64eb9f6305503b"
+  integrity sha512-nFUJAlh3K71sx8b29N4/yNJ9k08GyV8UN7mIm2jG1h97muS+fAxs54bhqslWVR/sk2SEuGRHW516U6e3vGZsDg==
 
 asbuild@^0.0.6:
   version "0.0.6"
@@ -3961,9 +3961,9 @@ typedoc@^0.17.3:
     typedoc-default-themes "^0.10.2"
 
 typescript@^3.6.4:
-  version "3.9.6"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.6.tgz#8f3e0198a34c3ae17091b35571d3afd31999365a"
-  integrity sha512-Pspx3oKAPJtjNwE92YS05HQoY7z2SFyOpHo9MqJor3BXAGNaPUs83CuVp9VISFkSjyRfiTpmKuAYGJB7S7hOxw==
+  version "3.9.7"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
+  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 uglify-js@^3.1.4:
   version "3.9.4"
