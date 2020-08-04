@@ -43,6 +43,40 @@ export namespace env {
   }
   //@ts-ignore
   @inline
+  export function isValidAccountID(accountId: Uint8Array): bool {  
+    const length: u64 = accountId ? accountId.length : 0;
+
+    if (length < 2 || length > 64) {
+      return false;
+    }
+
+    let last_char_is_separator =  true;
+    
+    for (let i = 0; i < length; ++i) {
+      let current_char_is_separator;
+      switch(accountId[i]) {
+        case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case: 8 case: 9
+          current_char_is_separator = false;
+          break;
+        case 'a': case 'b': case 'c': case 'd': case 'e': case 'f': case 'g': case 'h': case: 'i' case: 'j' case: 'k' case: 'l' case: 'm' case: 'n' case: 'o' p q r s t u v w x y z
+          current_char_is_separator = false;
+          break;
+        case '-': case: '_' case: '.'
+          current_char_is_separator = true;
+          break;
+        case _:
+          current_char_is_separator = false;
+      };
+      if current_char_is_separator && last_char_is_separator {
+        return false;
+      }
+      last_char_is_separator = current_char_is_separator;
+    }
+    // The account can't end as separator.
+    !last_char_is_separator
+  }
+  //@ts-ignore
+  @inline
   export function block_index(): u64 {
     return _block_index();
   }
