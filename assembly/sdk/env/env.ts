@@ -62,6 +62,32 @@ export namespace env {
     return _storage_usage();
   }
 
+  // ############
+  // # Accounts #
+  // ############
+  export function isValidAccountID(accountId: string): boolean {
+    const MIN_ACCOUNT_ID_LEN=2;
+    const MAX_ACCOUNT_ID_LEN=64;
+    if (accountId.length< MIN_ACCOUNT_ID_LEN
+        || accountId.length > MAX_ACCOUNT_ID_LEN)   {
+        return false;
+    }
+
+    // The valid account ID regex is /^(([a-z\d]+[-_])*[a-z\d]+\.)*([a-z\d]+[-_])*[a-z\d]+$/
+
+    // We can safely assume that last char was a separator.
+    var last_char_is_separator:boolean = true;
+
+      if (
+        if (current_char_is_separator && last_char_is_separator) {
+            return false; //do not allow 2 separs together
+        }
+        last_char_is_separator = current_char_is_separator;
+    }
+    // The account can't end as separator.
+    return !last_char_is_separator
+  }
+
   // #################
   // # Economics API #
   // #################
