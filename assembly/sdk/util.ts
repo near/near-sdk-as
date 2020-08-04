@@ -93,6 +93,26 @@ export namespace util {
     return res != null ? <string>res : "";
   }
 
+  /**
+   * @package
+   * This method is a simple string validation of accountId's
+   *
+   * @param accountId Id of Account
+   */
+  export function isValidAccountID(accountId: string): boolean {
+    const length: u64 = accountId ? accountId.length : 0;
+    if (
+      length < 2 ||
+      length > 64 ||
+      accountId.includes("@") ||
+      accountId.substring(0, 1).includes("-") ||
+      accountId.substring(0, 1).includes(".")
+    ) {
+      return false;
+    }
+    return !!accountId;
+  }
+
   // Private helpers
   function toUTF8(str: string, nullTerminated: boolean = false): usize {
     return changetype<usize>(String.UTF8.encode(str, nullTerminated));

@@ -43,14 +43,45 @@ export namespace env {
   }
   //@ts-ignore
   @inline
-  export function isValidAccountID(accountId: String): Boolean{  
-    const length: u64 = accountId ? accountId.length : 0;
+  export function isValidAccountID(accountId: string): boolean {
+    const length: i32 = accountId ? accountId.length : 0;
 
-    if (length < 2 || length > 64) {
+    let last_char: string = "." || "@" || "-" || "_0";
+    let first_char: string = ".." || "-" || "_" || "0_" || ".";
+    let invalid_char: string = " " || "@" || "..";
+
+    if (
+      length < 2 ||
+      length > 64 ||
+      accountId.substring(0, 1).includes(first_char) ||
+      accountId.includes(invalid_char) ||
+      accountId === accountId.toUpperCase() ||
+      accountId
+        .substring(accountId.length - 1, accountId.length)
+        .includes(last_char)
+    ) {
       return false;
-    } 
+    }
 
-    return !!accountId;
+    let last_char_is_separator: boolean = true;
+
+    for (let y: i32 = 0; y < length; ++y) {
+      let c: string = accountId.charAt(y);
+      let current_char_is_separator: boolean = c == "-" || c == "_" || c == ".";
+      let valid_char: boolean =
+        (c >= "a" && c <= "z") || (c >= "0" && c <= "9");
+
+      if (!current_char_is_separator && !valid_char) {
+        return false;
+      }
+
+      if (last_char_is_separator && current_char_is_separator) {
+        return false;
+      }
+      last_char_is_separator = current_char_is_separator;
+    }
+
+    return !last_char_is_separator;
   }
   //@ts-ignore
   @inline

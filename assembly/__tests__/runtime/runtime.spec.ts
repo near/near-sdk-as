@@ -944,6 +944,78 @@ describe("Math should handle", () => {
   });
 });
 
+describe("test isValidAccountID function", () => {
+  it("test is validAccountId strings", () => {
+    const accountValidList = [
+      "aa",
+      "a-a",
+      "a-aa",
+      "100",
+      "0o",
+      "com",
+      "near",
+      "bowen",
+      "b-o_w_e-n",
+      "b.owen",
+      "bro.wen",
+      "a.ha",
+      "a.b-a.ra",
+      "system",
+      "over.9000",
+      "google.com",
+      "illia.cheapaccounts.near",
+      "0o0ooo00oo00o",
+      "alex-skidanov",
+      "10-4.8-2",
+      "b-o_w_e-n",
+      "no_lols",
+      "0123456789012345678901234567890123456789012345678901234567890123",
+      // Valid, but can't be created
+      "near.a",
+      "a.a",
+    ];
+    for (let i = 0; i < accountValidList.length; i++) {
+      let isValid = env.isValidAccountID(accountValidList[i]);
+      expect(isValid).toBeTruthy(" AccountID is valid");
+    }
+  });
+
+  it("Should be AccountId False", () => {
+    const accountInvalidList = [
+      "",
+      "a",
+      "A",
+      "Abc",
+      "-near",
+      "near-",
+      "-near-",
+      "near.",
+      ".near",
+      "near@",
+      "@near",
+      "неар",
+      "@@@@@",
+      "0__0",
+      "0_-_0",
+      "0_-_0",
+      "..",
+      "a..near",
+      "nEar",
+      "_bowen",
+      "hello world",
+      "abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz",
+      "01234567890123456789012345678901234567890123456789012345678901234",
+      // `@` separators are banned now
+      "some-complex-address@gmail.com",
+      "sub.buy_d1gitz@atata@b0-rg.c_0_m",
+    ];
+    for (let i = 0; i < accountInvalidList.length; i++) {
+      let isNot = env.isValidAccountID(accountInvalidList[i]);
+      expect(isNot).toBe(false, "AccountID is invalid");
+    }
+  });
+});
+
 // cruft to compare test objects. TODO: use something standard
 function _arrayEqual(
   first: Uint8Array | null,

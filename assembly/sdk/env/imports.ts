@@ -34,6 +34,9 @@ declare function _predecessor_account_id(register_id: u64): void;
 @global
 declare function _input(register_id: u64): void;
 //@ts-ignore
+@external("env", "isValidAccountID")
+declare function isValidAccountID(accountId: string): boolean;
+//@ts-ignore
 @external("env", "block_index")
 @global
 declare function _block_index(): u64;
