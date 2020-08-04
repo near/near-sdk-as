@@ -67,7 +67,7 @@ describe("Encodings", () => {
 
 describe("Account env util", () => {
   it("isValidAccountID", () => {
-    var accounts=[
+    var accounts = [
       "aa",
       "a-a",
       "a-aa",
@@ -95,11 +95,14 @@ describe("Account env util", () => {
       "near.a",
       "a.a",
     ];
-    for (var i=0;i<accounts.length;i++) {
-      expect(env.isValidAccountID(accounts[i])).toBe(true, "valid accountId not recognized "+accounts[i]);
+    for (var i = 0; i < accounts.length; i++) {
+      expect(env.isValidAccountID(accounts[i])).toBe(
+        true,
+        "valid accountId not recognized " + accounts[i]
+      );
     }
 
-    accounts=[
+    accounts = [
       "",
       "a",
       "A",
@@ -127,8 +130,11 @@ describe("Account env util", () => {
       "some-complex-address@gmail.com",
       "sub.buy_d1gitz@atata@b0-rg.c_0_m",
     ];
-    for (i=0;i<accounts.length;i++) {
-      expect(env.isValidAccountID(accounts[i])).toBe(false, "invalid accountId not detected "+accounts[i]);
+    for (i = 0; i < accounts.length; i++) {
+      expect(env.isValidAccountID(accounts[i])).toBe(
+        false,
+        "invalid accountId not detected " + accounts[i]
+      );
     }
   });
 });
