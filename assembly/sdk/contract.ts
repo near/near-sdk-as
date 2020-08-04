@@ -362,3 +362,5 @@ export class ContractPromiseResult {
     public buffer: Uint8Array = defaultValue<Uint8Array>()
   ) {}
 }
+
+export { Context as context };

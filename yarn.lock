@@ -2472,7 +2472,7 @@ jest-snapshot@^26.2.2:
     pretty-format "^26.2.0"
     semver "^7.3.2"
 
-jest-util@^26.2.0:
+jest-util@26.x, jest-util@^26.2.0:
   version "26.2.0"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-26.2.0.tgz#0597d2a27c559340957609f106c408c17c1d88ac"
   integrity sha512-YmDwJxLZ1kFxpxPfhSJ0rIkiZOM0PQbRcfH0TzJOhqCisCAsI1WcmoQqO83My9xeVA2k4n+rzg2UuexVKzPpig==
@@ -2904,10 +2904,10 @@ near-mock-vm@^0.1.1:
     js-base64 "^2.5.2"
     yargs "^15.3.1"
 
-near-vm@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/near-vm/-/near-vm-0.0.8.tgz#9b1cec1fd875886fcbf45333744f81e0f288d795"
-  integrity sha512-w20MTgQ+EZi92qi5hkPTBVVS0+macU4ZqlxIZ/n+W+me2WLl7jg/7OMM1Vg7bpA+V2m9R+BIOchFBTCDrij8Aw==
+near-vm@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/near-vm/-/near-vm-1.1.0.tgz#3166bdef13e7071829d2f5621b16ddfe298e011c"
+  integrity sha512-7L8pmtoBJXJ5+ETdXKuFM8E9tvOd5r3IXAxF4khhg73/HC58fCTQVUZKxfF4P6tXx2j3V+gFMnioOgbr2KrpnA==
   dependencies:
     binary-install "^0.0.1"
 
