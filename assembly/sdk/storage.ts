@@ -6,7 +6,7 @@ import { util } from "./util";
  *
  * It is a key-value store that is persisted on the NEAR blockchain.
  */
-export class storage {
+export class Storage {
   /**
    * Store string value under given key. Both key and value are encoded as UTF-8 strings.
    *
@@ -255,3 +255,8 @@ export class storage {
     }
   }
 }
+
+// @ts-ignore
+// prettier-ignore
+@deprecation
+export { Storage as storage }

@@ -363,4 +363,7 @@ export class ContractPromiseResult {
   ) {}
 }
 
+// @ts-ignore
+// prettier-ignore
+@deprecated
 export { Context as context };
