@@ -35,3 +35,8 @@ declare function defaultValue<T>(): T;
  * Throw if attached deposit.
  */
 declare function notPayable(): void;
+
+/**
+ * Produces a warning during transform that element is deprecated.
+ */
+declare function deprecated(_any: any): void;
