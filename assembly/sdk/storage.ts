@@ -256,7 +256,4 @@ export class Storage {
   }
 }
 
-// @ts-ignore
-// prettier-ignore
-@deprecation
-export { Storage as storage }
+export { Storage as storage };
