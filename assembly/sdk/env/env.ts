@@ -78,11 +78,11 @@ export namespace env {
     // The valid account ID regex is /^(([a-z\d]+[-_])*[a-z\d]+\.)*([a-z\d]+[-_])*[a-z\d]+$/
 
     // We can safely assume that last char was a separator.
-    var last_char_is_separator: boolean = true;
+    var last_char_is_separator = true;
 
-    for (var i: i32 = 0; i < accountId.length; i++) {
-      let c: string = accountId.charAt(i);
-      let current_char_is_separator: boolean = c == "-" || c == "_" || c == ".";
+    for (let n = 0; n < accountId.length; n++) {
+      let c = accountId.charAt(n);
+      let current_char_is_separator = c == "-" || c == "_" || c == ".";
       if (
         !current_char_is_separator &&
         !((c >= "a" && c <= "z") || (c >= "0" && c <= "9"))
