@@ -81,7 +81,7 @@ export namespace env {
     var last_char_is_separator = true;
 
     for (var i: i32 = 0; i < accountId.length; i++) {
-      let c: string = accountId.charAt(i);
+      let c = accountId.charAt(i);
       let current_char_is_separator = c == "-" || c == "_" || c == ".";
       if (
         !current_char_is_separator &&
