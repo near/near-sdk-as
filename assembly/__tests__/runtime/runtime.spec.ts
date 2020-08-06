@@ -65,6 +65,80 @@ describe("Encodings", () => {
   });
 });
 
+describe("Account env util", () => {
+  it("isValidAccountID", () => {
+    var accounts = [
+      "aa",
+      "a-a",
+      "a-aa",
+      "100",
+      "0o",
+      "com",
+      "near",
+      "bowen",
+      "b-o_w_e-n",
+      "b.owen",
+      "bro.wen",
+      "a.ha",
+      "a.b-a.ra",
+      "system",
+      "over.9000",
+      "google.com",
+      "illia.cheapaccounts.near",
+      "0o0ooo00oo00o",
+      "alex-skidanov",
+      "10-4.8-2",
+      "b-o_w_e-n",
+      "no_lols",
+      "0123456789012345678901234567890123456789012345678901234567890123",
+      // Valid, but can't be created
+      "near.a",
+      "a.a",
+    ];
+    for (var i = 0; i < accounts.length; i++) {
+      expect(env.isValidAccountID(accounts[i])).toBe(
+        true,
+        "valid accountId not recognized " + accounts[i]
+      );
+    }
+
+    accounts = [
+      "",
+      "a",
+      "A",
+      "Abc",
+      "-near",
+      "near-",
+      "-near-",
+      "near.",
+      ".near",
+      "near@",
+      "@near",
+      "неар",
+      "@@@@@",
+      "0__0",
+      "0_-_0",
+      "0_-_0",
+      "..",
+      "a..near",
+      "nEar",
+      "_bowen",
+      "hello world",
+      "abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz",
+      "01234567890123456789012345678901234567890123456789012345678901234",
+      // `@` separators are banned now
+      "some-complex-address@gmail.com",
+      "sub.buy_d1gitz@atata@b0-rg.c_0_m",
+    ];
+    for (i = 0; i < accounts.length; i++) {
+      expect(env.isValidAccountID(accounts[i])).toBe(
+        false,
+        "invalid accountId not detected " + accounts[i]
+      );
+    }
+  });
+});
+
 let outcome: Outcome;
 describe("outcome", () => {
   afterAll(() => {
