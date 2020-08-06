@@ -157,9 +157,9 @@ export class JSONBindingsBuilder extends BaseVisitor {
           let type = toString(param.type);
           let res = `obj.has('${name}') ? 
              ${createDecodeStatement(param)} : 
-             assertNonNull<${type}>('${name}', <${type}>${
-            param.initializer ? toString(param.initializer) : "null"
-          })`;
+             assertNonNull<${type}>('${name}', changetype<${type}>(${
+            param.initializer ? toString(param.initializer) : "0"
+          }))`;
           return res;
         })
         .join(", ");
