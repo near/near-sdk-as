@@ -54,7 +54,7 @@
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.6.2",
-    "typedoc": "^0.17.3",
+    "typedoc": "^0.18.0",
     "typescript": "^3.6.4"
   },
   "engines": {
