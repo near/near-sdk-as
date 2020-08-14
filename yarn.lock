@@ -4056,10 +4056,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-visitor-as@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/visitor-as/-/visitor-as-0.2.0.tgz#18d586e28d1c16364a1cc55a0af8813e48711878"
-  integrity sha512-ZAU/5oEj0B5dOTsOLsDEpj3IW8CDRX1/k9aIdBVf3JHoud0gH8xF1KBBXCv7di6UNL69kzqv3ZZzafQOYMrN7g==
+visitor-as@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/visitor-as/-/visitor-as-0.3.0.tgz#36b627bd6e5a23f98fc27c107ccef0a79014171d"
+  integrity sha512-NVCCJNVzJ96MASfTMlNRw7EHJSH7yNWN2v96Gfmm7E2J2bFew6UeH0OvBliH4OvEGOR37EVr9I3zrVnwRvOktg==
   dependencies:
     lodash.clonedeep "^4.5.0"
     ts-mixer "^5.1.0"

@@ -22,7 +22,7 @@
     "js-base64": "^3.4.3",
     "near-mock-vm": "^0.1.1",
     "near-vm": "^1.1.0",
-    "visitor-as": "^0.2.0"
+    "visitor-as": "^0.3.0"
   },
   "scripts": {
     "build": "yarn build:bindgen && yarn build:runtime",
