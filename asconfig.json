@@ -9,7 +9,7 @@
   },
   "options": {
     "runtime": "none",
-    "transform": ["./bindgen"]
+    "transform": ["visitor-as/dist/examples/includeBytesTransform.js","./bindgen"]
   },
   "entries": ["assembly/bindgen.ts"]
 }
