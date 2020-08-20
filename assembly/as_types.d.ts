@@ -40,3 +40,8 @@ declare function notPayable(): void;
  * Produces a warning during transform that element is deprecated.
  */
 declare function deprecated(_any: any): void;
+
+/**
+ * Inject data from a file as a StaticArray of bytes.
+ */
+declare function includeBytes(path: string): StaticArray<u8>;

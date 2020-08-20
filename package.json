@@ -22,7 +22,7 @@
     "js-base64": "^3.4.3",
     "near-mock-vm": "^0.1.1",
     "near-vm": "^1.1.0",
-    "visitor-as": "^0.2.0"
+    "visitor-as": "^0.3.1"
   },
   "scripts": {
     "build": "yarn build:bindgen && yarn build:runtime",
@@ -54,7 +54,7 @@
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.6.2",
-    "typedoc": "^0.17.3",
+    "typedoc": "^0.18.0",
     "typescript": "^3.6.4"
   },
   "engines": {
