@@ -811,11 +811,11 @@ assemblyscript-json@^0.3.2:
   integrity sha512-3dzsc0cn47GzzHoYTWVN9lsaTCcNTrxWHk2s+O9x3nA6q82TYeihfSpr91+NdAnnRdE9UinVz4C2eER3x8I/fQ==
 
 assemblyscript@^0.14.7:
-  version "0.14.8"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.14.8.tgz#6db8a149d44013181075dada78aab55af0ce2943"
-  integrity sha512-a8qQ1MWpebqHQvZFdg7rjp+mIlAJKGDivNFOmKUfu5B8u2deNTBhg3xOrp7Ka3irg+zAmGK3JcpJ+ZofqnebqQ==
+  version "0.14.9"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.14.9.tgz#f738c228e68d52c9b5f2ca40d1614c0118b7eea2"
+  integrity sha512-4e67IC2hQ1XOwOp+Sz9w84y7uAMCiU4GHw0J9+A5aWeEDM0lYp8knYCRw1DCJTj1mZVLdpsD5mIIrXcmcVb+FA==
   dependencies:
-    binaryen "95.0.0-nightly.20200723"
+    binaryen "95.0.0-nightly.20200813"
     long "^4.0.0"
 
 assert-no-diff@^3.0.4:
@@ -972,10 +972,10 @@ binary-install@^0.0.1:
     tar "^5.0.5"
     universal-url "^2.0.0"
 
-binaryen@95.0.0-nightly.20200723:
-  version "95.0.0-nightly.20200723"
-  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-95.0.0-nightly.20200723.tgz#a6fa324a51e01df41a951c0275b1ffc9b5f3a8f6"
-  integrity sha512-IUO89yU4l20ocuf7RvcBj2T1ZGafO0XNcbqTFne9Dbp63FOLafDSuV7U22n0bTbK4H6qqGogTQtQJQbrV054lQ==
+binaryen@95.0.0-nightly.20200813:
+  version "95.0.0-nightly.20200813"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-95.0.0-nightly.20200813.tgz#c84b332a7b06d4a9a2096c57b29c3e889130bcfb"
+  integrity sha512-xY+fhSAkVxptBoQAn9X4o21zTFycOjc+PeqbWSwcDqrSmXBXUMeq7qHhz4EWSWlFDKobHeUaiIbzLzlmciDWHw==
 
 bn.js@^5.1.1:
   version "5.1.3"
