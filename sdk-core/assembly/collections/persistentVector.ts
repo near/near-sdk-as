@@ -290,6 +290,81 @@ export class PersistentVector<T> {
   }
 
   /**
+   * Pushes the contents of the specified register to the vector.
+   * Increases the length of the vector.
+   *
+   * ```ts
+   * let vec = new PersistentVector<string>("v")
+   *
+   * vec.length // 0
+   * vec.push_raw(0)
+   * vec.length // 1
+   * ```
+   *
+   * @param register_id The register ID in which the new element is stored.
+   * @returns The index of a newly added element
+   */
+  push_raw(register_id: u64): i32 {
+    const index = this.length;
+    this.length = index + 1;
+    storage.write_raw(this._key(index), register_id);
+    return index;
+  }
+
+  /**
+   * Removes the last element from the vector and puts it in the register specified.
+   * Asserts that the vector is not empty.
+   * Decreases the length of the vector.
+   *
+   * ```ts
+   * let vec = new PersistentVector<string>("v")
+   *
+   * let text = "hello world"
+   *
+   * vec.push(text)
+   * vec.length // 1
+   *
+   * let reg = vec.pop_raw()
+   * vec.length // 0
+   * ```
+   *
+   * @param register_id The register ID that should be used to hold the popped element. Defaults to 0.
+   * @returns The register ID used to store the popped element.
+   */
+  pop_raw(register_id: u64 = 0): u64 {
+    assert(this.length > 0, "Vector is empty");
+    const index = this.length - 1;
+    this.length = index;
+    storage.read_raw(this._key(index), register_id);
+    storage.delete(this._key(index));
+    return register_id;
+  }
+
+  /**
+   * Stores the element of the vector for a given index in the specified register.
+   * Asserts the given index is within the range of the vector.
+   *
+   * ```ts
+   * let vec = PersistentVector<string>("v")
+   *
+   * vec.push("hello world")
+   * vec.get_raw(0, 1)
+   * util.read_register_string(1) // "hello world"
+   *
+   * vec.get_raw(1) // will throw with failed assertion: "Index out of range"
+   * ```
+   *
+   * @param index The index of the element to return.
+   * @param register_id The register to store the element. Defaults to 0.
+   * @returns The element at the given index.
+   */
+  get_raw(index: i32, register_id: u64 = 0): u64 {
+    assert(this.containsIndex(index), "Index out of range");
+    storage.read_raw(this._key(index), register_id);
+    return register_id;
+  }
+
+  /**
    * Removes an element from the vector and returns it. The removed element is replaced by the last element of the
    * vector. Does not preserve ordering, but is O(1). Panics if index is out of bounds.
    *
@@ -329,6 +404,30 @@ export class PersistentVector<T> {
   }
 
   /**
+   * Removes an element from the vector and puts it in the specified register.
+   * The removed element is replaced by the last element of the vector.
+   * Does not preserve ordering, but is O(1). Panics if index is out of bounds.
+   *
+   * @param index
+   * @param register_id The register to store the removed element. Defaults to 0.
+   * @return The register used to store the removed element.
+   */
+  swap_remove_raw(index: i32, register_id: u64 = 0): u64 {
+    assert(index <= this.length, "Index out of bounds");
+    if (index + 1 == this.length) {
+      return this.pop_raw(register_id);
+    } else {
+      // Swap last element with this one.
+      this.get_raw(index, register_id);
+      let last_value = this.__unchecked_get(this.length - 1);
+      storage.delete(this._key(this.length - 1));
+      this.__unchecked_set(index, last_value);
+      this.length -= 1;
+      return register_id;
+    }
+  }
+
+  /**
    * Inserts the element at index, returns evicted element. Panics if index is out of bounds.
    *
    * ```ts
@@ -356,6 +455,21 @@ export class PersistentVector<T> {
     let evicted = this.__unchecked_get(index);
     storage.set(this._key(index), new_element);
     return evicted;
+  }
+
+  /**
+   * Inserts the contents of the register at index, and puts the evicted element in the same register.
+   * Panics if index is out of bounds.
+   *
+   * @param index The index of the element to replace
+   * @param register_id The register containing the new value of the element to replace
+   * @returns The register ID used to hold the evicted element
+   */
+  replace_raw(index: i32, register_id: u64): u64 {
+    assert(index >= this.length, "Index out of bounds");
+    storage.write_raw(this._key(index), register_id);
+    this.get_raw(index, register_id);
+    return register_id;
   }
 
   /**
