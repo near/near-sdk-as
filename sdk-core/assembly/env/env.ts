@@ -10,6 +10,11 @@ export namespace env {
   // @ts-ignore
   @external("env", "register_len")
   export declare function register_len(register_id: u64): u64;
+  //@ts-ignore
+  @inline
+  export function return_raw(register_id: u64): void {
+    return value_return(0, register_id);
+  }
 
   // ###############
   // # Context API #
