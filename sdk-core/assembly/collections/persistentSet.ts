@@ -1,6 +1,7 @@
 import { PersistentMap } from "./persistentMap";
 import { PersistentVector } from "./persistentVector";
 import { math } from "../math";
+import { util } from "../util";
 
 /**
  * A vector class that implements a persistent array.
@@ -54,6 +55,21 @@ export class PersistentSet<T> {
 
     this._map.set(this._hashedItem(item), this._vector.length);
     this._vector.push(item);
+  }
+
+  /**
+   * @param register_id The register to read the new item from
+   */
+  add_raw(register_id: u64): void {
+    const item = util.read_register(register_id);
+    const hashedItem = math.keccak256(item);
+
+    if (this._map.contains(hashedItem)) {
+      return;
+    }
+
+    this._map.set(hashedItem, this._vector.length);
+    this._vector.push(decode<T>(item));
   }
 
   /**
@@ -111,6 +127,16 @@ export class PersistentSet<T> {
    */
   has(item: T): bool {
     return this._map.contains(this._hashedItem(item));
+  }
+
+  /**
+   * Returns whether the set contains the contents of the specified register
+   *
+   * @param register_id The register containing the item to check for
+   * @returns Boolean indicating whether the set contains the contents of the specified register
+   */
+  has_raw(register_id: u64): bool {
+    return this._map.contains(math.keccak256(util.read_register(register_id)));
   }
 
   /**
