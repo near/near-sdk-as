@@ -3,7 +3,10 @@
  * base64 encoding/decoding
  */
 export namespace base64 {
-  const PADCHAR: string = "=";
+  // @ts-ignore: decorator
+  @lazy const PADCHAR: string = "=";
+  // @ts-ignore: decorator
+  @lazy
   const ALPHA: string =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 

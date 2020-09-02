@@ -40,10 +40,12 @@ export namespace math {
       ((0xff & data[3]) << 0)
     );
   }
-
-  const _BLOCK_INDEX_SEED_AT_KEY = "block_index_seeded_at";
-  const _RANDOM_BUFFER_KEY = "random_buffer_key";
-  const _RANDOM_BUFFER_INDEX_KEY = "random_buffer_index_key";
+  // @ts-ignore: decorator
+  @lazy const _BLOCK_INDEX_SEED_AT_KEY = "block_index_seeded_at";
+  // @ts-ignore: decorator
+  @lazy const _RANDOM_BUFFER_KEY = "random_buffer_key";
+  // @ts-ignore: decorator
+  @lazy const _RANDOM_BUFFER_INDEX_KEY = "random_buffer_index_key";
 
   export function randomBuffer(
     len: u32,

@@ -17,9 +17,17 @@ export class ReceiptIndex extends ReturnData {
 /// Method hasn't returned any data or promise.
 export class None extends ReturnData {}
 
+// @ts-ignore
+@lazy
 export const NONE = new None();
+// @ts-ignore
+@lazy
 export const ValueID = idof<Value>();
+// @ts-ignore
+@lazy
 export const ReceiptIndexID = idof<ReceiptIndex>();
+// @ts-ignore
+@lazy
 export const NoneID = idof<None>();
 
 export class Outcome {
