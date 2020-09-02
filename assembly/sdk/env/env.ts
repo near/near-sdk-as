@@ -1,3 +1,5 @@
+import { u128 } from "..";
+
 export namespace env {
   // #############
   // # Registers #
@@ -453,5 +455,20 @@ export namespace env {
   @inline
   export function storage_has_key(key_len: u64, key_ptr: u64): u64 {
     return _storage_has_key(key_len, key_ptr);
+  }
+
+  export function validator_stake(account_id: string): u128 {
+    let data = new Uint8Array(sizeof<u128>());
+    let id = String.UTF8.encode(account_id);
+    let id_ptr = changetype<u64>(id);
+    _validator_stake(id.byteLength, id_ptr, data.dataStart);
+    return u128.from(data);
+  }
+
+  // /// Returns the total stake of validators in the current epoch.
+  export function validator_total_stake(): u128 {
+    let data = new Uint8Array(sizeof<u128>());
+    _validator_total_stake(data.dataStart);
+    return u128.from(data);
   }
 }

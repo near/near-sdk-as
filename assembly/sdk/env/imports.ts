@@ -315,3 +315,19 @@ declare function _storage_remove(
 @external("env", "storage_has_key")
 @global
 declare function _storage_has_key(key_len: u64, key_ptr: u64): u64;
+
+// ###############
+// # Validator API #
+// ###############
+
+/// For a given account return its current stake. If the account is not a validator, returns 0.
+//@ts-ignore
+@external("env", "validator_stake")
+@global
+declare function _validator_stake(id_len: u64, id_ptr: u64, data_ptr: u64): u64;
+
+/// Returns the total stake of validators in the current epoch.
+//@ts-ignore
+@external("env", "validator_total_stake")
+@global
+declare function _validator_total_stake(data_ptr: u64): u64;
