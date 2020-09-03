@@ -196,23 +196,28 @@ export class PersistentUnorderedMap<K, V> {
    * @param key Key to remove.
    */
   delete(key: K): void {
-    // make sure the item is in the set
-    assert(this._map.contains(key), "The item was not found in the set");
+    // get index and also make sure the item is in the set
+    const index = this._map.getSome(key);
 
-    // swap_remove requires at least 2 elements to work so a single element
-    // is the same as clearing
-    if (this._entries.length == 1) {
-      this.clear();
-      return;
+    if (index == this._entries.length - 1) {
+      //deleting the last entry (or the only element left)
+      //we avoid using swap_remove in order to use fewer operations to remove the entry
+      let entry = this._entries.popBack(); //remove the last entry
+      this._map.delete(entry.key); //remove the key=>index map
+      return; //early exit
     }
 
-    // remove the item from the set
-    const swapKey = this._entries.last.key;
-    const index = this._map.getSome(key);
-    this._entries.swap_remove(index);
+    //Here we're removing a key in the middle [0..length-2]
+    //we'll use swap_remove, which removes the item from the vec
+    //by placing the last item in its position (O(1))
 
-    // update our accounting of items in the set
-    this._map.set(swapKey, index);
+    // get the key of the last item in the vec
+    const lastKey = this._entries.last.key;
+    // remove the entry from the vec by placing the last item in its position (swap_remove)
+    this._entries.swap_remove(index);
+    // update the new position of the now moved lastKey
+    this._map.set(lastKey, index);
+    // delete the key from the key=>index map
     this._map.delete(key);
   }
 
