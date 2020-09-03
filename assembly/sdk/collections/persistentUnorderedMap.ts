@@ -7,13 +7,13 @@ export class PersistentUnorderedMap<K, V> {
   private _entries: PersistentVector<MapEntry<K, V>>;
 
   /**
-   * Creates or restores a persistent map with a given storage prefix.
+   * Creates or restores a persistent unordered map with a given storage prefix.
    * Always use a unique storage prefix for different collections.
    *
    * Example
    *
    * ```ts
-   * let map = new PersistentMap<string, string>("m") // note the prefix must be unique (per NEAR account)
+   * let map = new PersistentUnorderedMap<string, string>("m") // note the prefix must be unique (per NEAR account)
    * ```
    *
    * @param prefix A prefix to use for every key of this map.
@@ -27,7 +27,7 @@ export class PersistentUnorderedMap<K, V> {
    * Retrieves the related value for a given key, or uses the `defaultValue` if not key is found
    *
    * ```ts
-   * let map = new PersistentMap<string, string>("m")
+   * let map = new PersistentUnorderedMap<string, string>("m")
    *
    * map.set("hello", "world")
    * let found = map.get("hello")
@@ -52,7 +52,7 @@ export class PersistentUnorderedMap<K, V> {
    * Retrieves a related value for a given key or fails assertion with "key not found"
    *
    * ```ts
-   * let map = new PersistentMap<string, string>("m")
+   * let map = new PersistentUnorderedMap<string, string>("m")
    *
    * map.set("hello", "world")
    * let result = map.getSome("hello")
@@ -62,7 +62,7 @@ export class PersistentUnorderedMap<K, V> {
    * ```
    *
    * @param key Key of the element.
-   * @returns Value for the given key or the default value.
+   * @returns Value for the given key or throws
    */
   getSome(key: K): V {
     let index = this._map.getSome(key);
@@ -70,7 +70,7 @@ export class PersistentUnorderedMap<K, V> {
   }
 
   /**
-   * returns a map of number of last entries.
+   * returns a MapEntry array of number of last entries.
    * @param count
    */
   last(count: i32): MapEntry<K, V>[] {
@@ -88,7 +88,7 @@ export class PersistentUnorderedMap<K, V> {
    * Checks whether the map contains a given key
    *
    * ```ts
-   * let map = new PersistentMap<string, string>("m")
+   * let map = new PersistentUnorderedMap<string, string>("m")
    *
    * map.contains("hello")      // false
    * map.set("hello", "world")
@@ -160,7 +160,7 @@ export class PersistentUnorderedMap<K, V> {
 
   /**
    * ```ts
-   * let map = new PersistentMap<string, string>("m")
+   * let map = new PersistentUnorderedMap<string, string>("m")
    *
    * map.set("hello", "world")
    * ```
@@ -186,7 +186,7 @@ export class PersistentUnorderedMap<K, V> {
    * Removes the given key and related value from the map
    *
    * ```ts
-   * let map = new PersistentMap<string, string>("m")
+   * let map = new PersistentUnorderedMap<string, string>("m")
    *
    * map.set("hello", "world")
    * map.delete("hello")
