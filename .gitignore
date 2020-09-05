@@ -1,6 +1,7 @@
 node_modules
 \.idea/
 \.vs/
+\.vscode/
 
 *.wasm
 

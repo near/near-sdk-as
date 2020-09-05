@@ -259,7 +259,7 @@ class Runtime {
                         break;
                     }
                 }
-                if (input_data.length < c.input_data.length) {
+                if (input_data.length > 0 && input_data.length < c.input_data.length) {
                     q.push(c);
                     continue;
                 }
@@ -312,36 +312,38 @@ class Runtime {
                         for (let i in result.receipts) {
                             const receipt = result.receipts[i];
                             if (receipt.actions.length != 1) {
-                                throw new Error("reciept actions must have length 1");
+                                this.log("WARN: reciept actions must have length 1");
                             }
-                            const action = receipt.actions[0];
-                            const fca = action["FunctionCall"];
-                            let new_input_data = [];
-                            for (let ind of receipt["receipt_indices"]) {
-                                let data_id = num_data++;
-                                new_input_data.push(data_id);
-                                let adj_index = ind + numReceipts;
-                                if (all_output_data[adj_index] == undefined) {
-                                    all_output_data[adj_index] = [];
+                            else {
+                                const action = receipt.actions[0];
+                                const fca = action["FunctionCall"] || {};
+                                let new_input_data = [];
+                                for (let ind of receipt["receipt_indices"]) {
+                                    let data_id = num_data++;
+                                    new_input_data.push(data_id);
+                                    let adj_index = ind + numReceipts;
+                                    if (all_output_data[adj_index] == undefined) {
+                                        all_output_data[adj_index] = [];
+                                    }
+                                    all_output_data[adj_index].push({
+                                        account_id: receipt["receiver_id"],
+                                        data_id,
+                                    });
+                                    // }
                                 }
-                                all_output_data[adj_index].push({
+                                let next = {
+                                    index: parseInt(i) + numReceipts,
                                     account_id: receipt["receiver_id"],
-                                    data_id,
-                                });
-                                // }
+                                    method_name: fca["method_name"],
+                                    input: fca["args"],
+                                    signer_account_id: accountContext.signer_account_id,
+                                    predecessor_account_id: c["account_id"],
+                                    input_data: new_input_data,
+                                    prepaid_gas: fca["gas"],
+                                    attached_deposit: fca["deposit"],
+                                };
+                                q.push(next);
                             }
-                            let next = {
-                                index: parseInt(i) + numReceipts,
-                                account_id: receipt["receiver_id"],
-                                method_name: fca["method_name"],
-                                input: fca["args"],
-                                signer_account_id: accountContext.signer_account_id,
-                                predecessor_account_id: c["account_id"],
-                                input_data: new_input_data,
-                                prepaid_gas: fca["gas"],
-                                attached_deposit: fca["deposit"],
-                            };
-                            q.push(next);
                         }
                         this.log(ret);
                         numReceipts += result["receipts"].length;
