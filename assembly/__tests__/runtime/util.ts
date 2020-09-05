@@ -30,6 +30,13 @@ export function _testTextMessageTwo(): TextMessage {
   message.number = 20;
   return message;
 }
+export function _testTextMessageThree(): TextMessage {
+  const message = new TextMessage();
+  message.sender = "Carol";
+  message.text = "Hi";
+  message.number = 33;
+  return message;
+}
 
 export function roundtrip<T>(obj: T): T {
   return decode<T>(encode<T>(obj));
