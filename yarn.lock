@@ -791,10 +791,10 @@ as-bignum@^0.2.4:
   resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.4.tgz#f030554c4cb0b8c7dd1323659ea24401724c4625"
   integrity sha512-hwrhAw0Yv/yWusSMLnS6rYrRBgVpGahcJnJhEwuKPRUeQU1c/hfl7Zpo01aLQEQtF79YByCPxQ+bo6t+c/X/8g==
 
-asbuild@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.6.tgz#886f959816262156197d793ab7814327e67a71dc"
-  integrity sha512-g5R/oJy2IXLvfa1cMIH9y8M2T4hSHOusjk31Jczyc+U6eD9knI6qrZlAIkkPO8f2k931YxmkNTBjtkAfGhS8bg==
+asbuild@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.7.tgz#730738ac832aa71800da2b84d8d9a2657ec311b1"
+  integrity sha512-iFOJkVl5jAgdjZT+UsorcTRcqgHmMi0HAn+/M0nkOrPYJtpYQbbt9NxQPuWWNUXV3pVdXagF+u2JWQPYHWt21A==
   dependencies:
     yargs "^15.4.1"
 
