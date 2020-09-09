@@ -1,7 +1,7 @@
 const compile = require("../compiler").compile;
 
 
-compile("../assembly/__tests__/runtime/main.ts", // input file
+compile("../sdk/assembly/__tests__/runtime/main.ts", // input file
         "out/main.wasm",    // output file
         [
         //   "-O1",            // Optional arguments

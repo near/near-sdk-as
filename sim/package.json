@@ -1,0 +1,16 @@
+{
+  "name": "@near-sdk/sim",
+  "version": "1.2.1",
+  "description": "Mock Near Runtime for integration testing.",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Willem Wyndham <willem@nearprotocol.com>",
+  "scripts": {
+    "asb": "../node_modules/.bin/asb --target debug",
+    "build": "yarn asb assembly/__tests__/sentences.ts && yarn asb assembly/__tests__/words.ts && yarn asb assembly/__tests__/avlTreeContract.ts & yarn asb assembly/__tests__/empty.ts --wat"
+  },
+  "dependencies": {
+    "near-sdk-as": "^1.2.1"
+  }
+}

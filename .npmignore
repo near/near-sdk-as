@@ -9,3 +9,8 @@ bindgen/asconfig.js
 bindgen/test.js
 runtime/dist/tsconfig.tsbuildinfo
 **/*/__tests__
+near-mock-vm/assembly/
+near-mock-vm/vm/tests/
+near-mock-vm/Cargo.*
+near-mock-vm/vm/src/
+near-mock-vm/src/
