@@ -7,8 +7,10 @@
   "types": "dist/index.d.ts",
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "scripts": {
-    "asb": "../node_modules/.bin/asb --target debug",
-    "build": "yarn asb assembly/__tests__/sentences.ts && yarn asb assembly/__tests__/words.ts && yarn asb assembly/__tests__/avlTreeContract.ts & yarn asb assembly/__tests__/empty.ts --wat"
+    "asb": "asb --target debug",
+    "build": "yarn asb assembly/__tests__/sentences.ts && yarn asb assembly/__tests__/words.ts && yarn asb assembly/__tests__/avlTreeContract.ts & yarn asb --wat assembly/__tests__/empty.ts",
+    "test": "yarn jest",
+    "pretest": "yarn build"
   },
   "dependencies": {
     "near-sdk-as": "^1.2.1"
