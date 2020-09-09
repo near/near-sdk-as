@@ -8,7 +8,7 @@ let bin = fs.readFileSync(__dirname + "/../../build/debug/main.wasm");
 // console.log(bin.length)
 let instd = Buffer.from(runner.instrumentBinary(bin));
 assert(WebAssembly.validate(instd), "binary is valid wasm");
-assert(instd.length - bin.length > 0 , "instrumented binary should be bigger");
+// assert(instd.length - bin.length > 0 , "instrumented binary should be bigger");
 // const original = new WebAssembly.Module(bin);
 const instrumented = new WebAssembly.Module(instd);
 // console.log(WebAssembly.Module.imports(original));
