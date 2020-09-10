@@ -1813,13 +1813,6 @@ asap@^2.0.0:
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
-asbuild@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.6.tgz#886f959816262156197d793ab7814327e67a71dc"
-  integrity sha512-g5R/oJy2IXLvfa1cMIH9y8M2T4hSHOusjk31Jczyc+U6eD9knI6qrZlAIkkPO8f2k931YxmkNTBjtkAfGhS8bg==
-  dependencies:
-    yargs "^15.4.1"
-
 asbuild@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.8.tgz#9f2b30297fdb0f03679903e1996f46a39e4308a4"
@@ -4551,11 +4544,6 @@ jest@^26.4.2:
     import-local "^3.0.2"
     jest-cli "^26.4.2"
 
-js-base64@^2.5.2:
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.6.4.tgz#f4e686c5de1ea1f867dbcad3d46d969428df98c4"
-  integrity sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ==
-
 js-base64@^3.4.3:
   version "3.4.5"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.4.5.tgz#6d1921e65a172cfd924604e1416dfaff45752c3e"
@@ -5279,33 +5267,6 @@ near-hello@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/near-hello/-/near-hello-0.5.1.tgz#68621928857afc21f5a7e0c21a47069a5dc058ef"
   integrity sha512-k7S8VFyESWgkKYDso99B4XbxAdo0VX9b3+GAaO5PvMgQjNr/6o09PHRywg/NkBQpf+ZYj7nNpJcyrNJGQsvA3w==
-
-near-mock-vm@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/near-mock-vm/-/near-mock-vm-0.1.1.tgz#be08d75bf19842cb5b63dc61d6cb201afc6d2876"
-  integrity sha512-tI2Bg35PKA0RBh64XBkqld7ktE+0WE0Ykb4RoKRgkHNPMRDeQhlBPn5CDveBRHchD68VbEkKftJ6/OpYEjXXNg==
-  dependencies:
-    "@assemblyscript/loader" "^0.9.4"
-    bn.js "^5.1.1"
-    js-base64 "^2.5.2"
-    yargs "^15.3.1"
-
-near-sdk-as@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/near-sdk-as/-/near-sdk-as-1.2.1.tgz#2f97cca69ca989b57b0ddcb9bbe7064400828cba"
-  integrity sha512-RkOI9Is4avlJnn/Zsqe81mI7W7neqydPz2uVNs8p/HUcyFEKTqRyJS/kZuuxw3e8uMKiBeEdcy62j20kPdp7vw==
-  dependencies:
-    "@as-pect/cli" "^4.0.0"
-    as-bignum "^0.2.4"
-    asbuild "^0.0.6"
-    assemblyscript "^0.14.9"
-    assemblyscript-json "^0.3.3"
-    bn.js "^5.1.1"
-    bs58 "^4.0.1"
-    js-base64 "^3.4.3"
-    near-mock-vm "^0.1.1"
-    near-vm "^1.1.0"
-    visitor-as "^0.3.1"
 
 near-vm@^1.1.0:
   version "1.1.0"
