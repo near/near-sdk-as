@@ -1,4 +1,4 @@
-import { u128 } from "near-sdk-as";
+import { u128 } from "near-sdk-core";
 
 export abstract class ReturnData {}
 

@@ -1,5 +1,5 @@
 {
-  "name": "@near-sdk/bindgen",
+  "name": "near-sdk-bindgen",
   "version": "1.2.1",
   "description": "Bindings for serializing contract functions.",
   "main": "index.js",
@@ -37,7 +37,7 @@
   "peerDependencies": {
     "assemblyscript": "^0.9.4"
   },
-  "dependencies": {
-    "near-sdk-as": "^1.2.1"
+  "devDependencies": {
+    "near-sdk-core": "^1.2.1"
   }
 }

@@ -7,7 +7,7 @@
     "build": "yarn asb ../sdk/assembly/__tests__/main.ts"
   },
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "near-sdk-as": "^1.2.1"
   }
 }

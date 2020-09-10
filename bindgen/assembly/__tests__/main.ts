@@ -1,5 +1,5 @@
 // These imports need to be copied properly
-import { storage, Context, ContractPromise, logging } from "near-sdk-as";
+import { storage, Context, ContractPromise, logging } from "near-sdk-core";
 import {
   FooBar,
   ContainerClass,

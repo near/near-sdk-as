@@ -1,5 +1,5 @@
 {
-  "name": "near-sdk",
+  "name": "near-sdk-as",
   "version": "1.2.1",
   "repository": {
     "type": "git",
@@ -21,8 +21,10 @@
     "@types/node": "^14.6.2",
     "husky": "^4.2.5",
     "jest": "^26.4.2",
+    "lerna": "^3.22.1",
     "prettier": "^2.1.1",
-    "ts-jest": "^26.3.0"
+    "ts-jest": "^26.3.0",
+    "near-sdk-as": "^1.2.1"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -32,12 +34,13 @@
       "pre-commit": "yarn check:pretty || (yarn prettify && exit 1)"
     }
   },
+  "private": true,
   "workspaces": [
     "bindgen",
     "sdk",
-    "sim",
+    "sdk-core",
+    "simulator",
     "nearcore-tests",
     "near-mock-vm"
-  ],
-  "private": true
+  ]
 }

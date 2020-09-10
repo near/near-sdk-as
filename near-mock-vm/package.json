@@ -16,7 +16,7 @@
   "devDependencies": {
     "@types/yargs": "^15.0.4",
     "wasm-pack": "^0.9.1",
-    "near-sdk-as": "1.2.1"
+    "near-sdk-core": "1.2.1"
   },
   "scripts": {
     "build": "yarn build:wasm && yarn build:vm",

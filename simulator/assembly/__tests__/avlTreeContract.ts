@@ -1,4 +1,4 @@
-import { AVLTree } from "near-sdk-as";
+import { AVLTree } from "near-sdk-core";
 
 const tree = new AVLTree<u32, u32>("tree");
 

@@ -1,4 +1,4 @@
-import { Context, logging } from "near-sdk-as";
+import { Context, logging } from "near-sdk-core";
 import { Word } from "./model";
 
 // ----------------------------------------------------------------------------

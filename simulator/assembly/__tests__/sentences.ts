@@ -6,7 +6,7 @@ import {
   u128,
   storage,
   env,
-} from "near-sdk-as";
+} from "near-sdk-core";
 import { Word } from "./model";
 
 export function SetWord(word: Word): void {

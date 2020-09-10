@@ -1,1 +1,1 @@
-import "@near-sdk/bindgen";
+import "near-sdk-bindgen";

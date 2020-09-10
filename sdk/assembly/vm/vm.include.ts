@@ -1,7 +1,7 @@
 //@notNearfile
 /// <reference types="@as-pect/assembly/types/as-pect" />
 
-import "@near-sdk/bindgen";
+import "near-sdk-bindgen";
 export * from "near-mock-vm/outcome";
 import { VM } from "near-mock-vm";
 

@@ -1,4 +1,4 @@
-import { u128 } from "near-sdk-as";
+import { u128 } from "near-sdk-core";
 
 @nearBindgen
 export class FooBar {
