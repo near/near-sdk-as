@@ -1,12 +1,12 @@
 {
   "name": "near-sdk-core",
   "version": "2.0.0-next.0",
-  "description": "Collection of packages for developming NEAR smart contracts",
+  "description": "Core AssemblyScript package for developming NEAR smart contracts",
   "types": "assembly/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com:near/near-sdk-as",
-    "directory": "packages/sdk"
+    "directory": "packages/sdk-core"
   },
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "license": "(MIT AND Apache-2.0)",

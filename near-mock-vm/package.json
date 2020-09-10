@@ -9,7 +9,8 @@
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "repository": {
     "type": "git",
-    "url": "git@:nearprotocol/wasm-mock-vm.git"
+    "url": "git+ssh://git@github.com/nearprotocol/near-sdk-as.git",
+    "directory": "near-mock-vm"
   },
   "license": "MIT",
   "private": false,
@@ -30,7 +31,10 @@
   "files": [
     "pkg/",
     "dist/",
-    "bin/"
+    "bin/",
+    "assembly/",
+    "vm/dist/",
+    "vm/index.js"
   ],
   "engines": {
     "node": ">=12.0.0"

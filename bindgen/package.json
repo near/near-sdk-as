@@ -29,10 +29,10 @@
   },
   "homepage": "https://github.com/nearprotocol/near-sdk-as/tree/master/bindgen#readme",
   "files": [
-    "bin/near-asc",
     "index.js",
     "compiler.js",
-    "dist/"
+    "dist/",
+    "assembly/index.ts"
   ],
   "peerDependencies": {
     "assemblyscript": "^0.9.4"
