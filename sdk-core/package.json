@@ -24,8 +24,7 @@
   },
   "scripts": {
     "test": "yarn build",
-    "build": "asb ../sdk/assembly/__tests__/main.ts --verbose -- --noEmit",
-    "asp": "yarn asp:ci --verbose"
+    "build": "asb ../sdk/assembly/__tests__/main.ts --verbose -- --noEmit"
   },
   "devDependencies": {
     "@assemblyscript/loader": "^0.14.9",

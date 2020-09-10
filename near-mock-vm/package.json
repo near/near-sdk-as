@@ -12,7 +12,7 @@
     "url": "git+ssh://git@github.com/nearprotocol/near-sdk-as.git",
     "directory": "near-mock-vm"
   },
-  "license": "MIT",
+  "license": "(MIT AND Apache-2.0)",
   "private": false,
   "devDependencies": {
     "@types/yargs": "^15.0.4",
