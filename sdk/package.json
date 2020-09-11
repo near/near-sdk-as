@@ -1,6 +1,6 @@
 {
   "name": "near-sdk-as",
-  "version": "2.0.0-next.2",
+  "version": "2.0.0-next.3",
   "description": "Collection of packages for developing NEAR smart contracts in AssemblyScript",
   "types": "assembly/index.ts",
   "repository": {
@@ -11,10 +11,10 @@
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
-    "near-mock-vm": "^2.0.0-next.2",
-    "near-sdk-bindgen": "^2.0.0-next.2",
-    "near-sdk-core": "^2.0.0-next.2",
-    "near-sdk-simulator": "^2.0.0-next.2"
+    "near-mock-vm": "^2.0.0-next.3",
+    "near-sdk-bindgen": "^2.0.0-next.3",
+    "near-sdk-core": "^2.0.0-next.3",
+    "near-sdk-simulator": "^2.0.0-next.3"
   },
   "scripts": {
     "test": "yarn asp",
