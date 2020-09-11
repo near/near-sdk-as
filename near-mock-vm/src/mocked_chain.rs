@@ -1,13 +1,16 @@
+use near_sdk::{
+    BlockchainInterface, Gas, MockedBlockchain, PromiseIndex, ReturnData, RuntimeFeesConfig,
+    StorageUsage, VMConfig, VMContext,
+};
 use serde::Serialize;
 
-use crate::memory::*;
-use crate::utils::*;
+use crate::memory::{MockedMemory, NearMemory};
 use crate::runner;
-use near_sdk::*;
+
+use crate::utils::*;
 use near_vm_logic::MemoryLike;
 use std::collections::HashMap;
-use wasm_bindgen::prelude::*;
-
+use wasm_bindgen::prelude::{wasm_bindgen, JsValue};
 
 // lifted from the `console_log` example
 #[wasm_bindgen]
@@ -16,19 +19,27 @@ extern "C" {
     fn log(a: &str);
 }
 
-// macro_rules! console_log {
-//     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
-// }
 type Storage = HashMap<Vec<u8>, Vec<u8>>;
 
-
-fn new_chain(context: VMContext, storage: Option<Storage>, memory: MockedMemory) -> MockedBlockchain {
+fn new_chain(
+    context: VMContext,
+    storage: Option<Storage>,
+    memory: MockedMemory,
+) -> MockedBlockchain {
     let storage = storage.unwrap_or_default();
     let config = VMConfig::free();
     let fees_config = RuntimeFeesConfig::free();
     let memory_opt: Option<Box<dyn MemoryLike>> = Some(Box::new(memory));
     let hash_map = HashMap::new();
-    MockedBlockchain::new(context, config, fees_config, vec![], storage, hash_map, memory_opt)
+    MockedBlockchain::new(
+        context,
+        config,
+        fees_config,
+        vec![],
+        storage,
+        hash_map,
+        memory_opt,
+    )
 }
 
 #[wasm_bindgen]
@@ -53,12 +64,6 @@ pub struct VM {
     memory: MockedMemory,
 }
 
-// #[allow(dead_code)]
-// fn print_str(s: String) {
-//   log(&format_args!($($t)*).to_string());
-//     // console_log!("{}", s);
-// }
-
 #[wasm_bindgen]
 impl VM {
     #[wasm_bindgen(constructor)]
@@ -70,7 +75,12 @@ impl VM {
         let original: VMContext = context.clone();
         let stor_opt: Option<Storage> = None;
         let chain = new_chain(_context, stor_opt, memory.clone());
-        Self { chain, context, original, memory}
+        Self {
+            chain,
+            context,
+            original,
+            memory,
+        }
     }
 
     fn take_storage(&mut self) -> HashMap<Vec<u8>, Vec<u8>> {
@@ -78,7 +88,7 @@ impl VM {
     }
 
     pub fn reset(&mut self) {
-      self.chain = new_chain(self.original.clone(), None, self.memory.clone());
+        self.chain = new_chain(self.original.clone(), None, self.memory.clone());
     }
 
     pub fn set_context(&mut self, context: JsValue) {
@@ -87,7 +97,11 @@ impl VM {
     }
 
     fn switch_context(&mut self) {
-        self.chain = new_chain(self.context.clone(), Some(self.take_storage()), self.memory.clone());
+        self.chain = new_chain(
+            self.context.clone(),
+            Some(self.take_storage()),
+            self.memory.clone(),
+        );
     }
 
     pub fn set_current_account_id(&mut self, s: JsValue) {
@@ -131,7 +145,8 @@ impl VM {
 
     pub fn set_account_balance(&mut self, u_128: JsValue) {
         let balance: String = serde_wasm_bindgen::from_value(u_128).unwrap();
-        self.context.account_balance = u128::from_str_radix(&balance, 10).unwrap() + self.context.attached_deposit; // TODO: serde_wasm_bindgen::from_value(_u128).unwrap()
+        self.context.account_balance =
+            u128::from_str_radix(&balance, 10).unwrap() + self.context.attached_deposit; // TODO: serde_wasm_bindgen::from_value(_u128).unwrap()
         self.switch_context()
     }
 
@@ -172,6 +187,11 @@ impl VM {
         self.switch_context();
     }
 
+    pub fn set_epoch_height(&mut self, _u64: u64) {
+        self.context.epoch_height = _u64;
+        self.switch_context();
+    }
+
     /// #################
     /// # Registers API #
     /// #################
@@ -197,14 +217,7 @@ impl VM {
     ///
     /// `base + read_register_base + read_register_byte * num_bytes + write_memory_base + write_memory_byte * num_bytes`
     pub fn read_register(&mut self, register_id: u64, ptr: u64) {
-        // let data = &vec![42];
-        //self.chain.wrapped_internal_write_register(register_id, &data);
         unsafe { self.chain.read_register(register_id, ptr) }
-        // match res {
-        //     Ok(()) => (),
-        //     // Err(VMLogicError::HostError(_e)) => console_log!("Host Error"),
-        //     Err(e) => panic!(e)
-        // }
     }
 
     // Returns the size of the blob stored in the given register.
@@ -364,7 +377,7 @@ impl VM {
         unsafe { self.chain.block_timestamp() }
     }
 
-    pub fn epoch_height(&mut self) ->  u64 {
+    pub fn epoch_height(&mut self) -> u64 {
         unsafe { self.chain.epoch_height() }
     }
 
@@ -508,7 +521,6 @@ impl VM {
     pub fn gas(&mut self, gas_amount: u32) -> () {
         self.chain.gas(gas_amount)
     }
-    
 
     /// ################
     /// # Promises API #
@@ -666,7 +678,10 @@ impl VM {
     /// `burnt_gas := base + cost of reading and decoding the account id + dispatch cost of the receipt`.
     /// `used_gas := burnt_gas + exec cost of the receipt`.
     pub fn promise_batch_create(&mut self, account_id_len: u64, account_id_ptr: u64) -> u64 {
-        unsafe { self.chain.promise_batch_create(account_id_len, account_id_ptr) }
+        unsafe {
+            self.chain
+                .promise_batch_create(account_id_len, account_id_ptr)
+        }
     }
 
     /// Creates a new promise towards given `account_id` without any actions attached, that is
@@ -694,7 +709,10 @@ impl VM {
         account_id_len: u64,
         account_id_ptr: u64,
     ) -> u64 {
-        unsafe { self.chain.promise_batch_then(promise_idx, account_id_len, account_id_ptr) }
+        unsafe {
+            self.chain
+                .promise_batch_then(promise_idx, account_id_len, account_id_ptr)
+        }
     }
 
     /// Appends `CreateAccount` action to the batch of actions for the given promise pointed by
@@ -736,7 +754,10 @@ impl VM {
         code_len: u64,
         code_ptr: u64,
     ) -> () {
-        unsafe { self.chain.promise_batch_action_deploy_contract(promise_idx, code_len, code_ptr) }
+        unsafe {
+            self.chain
+                .promise_batch_action_deploy_contract(promise_idx, code_len, code_ptr)
+        }
     }
 
     /// Appends `FunctionCall` action to the batch of actions for the given promise pointed by
@@ -797,7 +818,10 @@ impl VM {
     /// `burnt_gas := base + dispatch action base fee + dispatch action per byte fee * num bytes + cost of reading u128 from memory `
     /// `used_gas := burnt_gas + exec action base fee + exec action per byte fee * num bytes`
     pub fn promise_batch_action_transfer(&mut self, promise_idx: u64, amount_ptr: u64) -> () {
-        unsafe { self.chain.promise_batch_action_transfer(promise_idx, amount_ptr) }
+        unsafe {
+            self.chain
+                .promise_batch_action_transfer(promise_idx, amount_ptr)
+        }
     }
 
     /// Appends `Stake` action to the batch of actions for the given promise pointed by
@@ -938,7 +962,8 @@ impl VM {
         public_key_ptr: u64,
     ) -> () {
         unsafe {
-            self.chain.promise_batch_action_delete_key(promise_idx, public_key_len, public_key_ptr)
+            self.chain
+                .promise_batch_action_delete_key(promise_idx, public_key_len, public_key_ptr)
         }
     }
 
@@ -1148,10 +1173,8 @@ impl VM {
         register_id: u64,
     ) -> u64 {
         unsafe {
-            // console::log_1(&vm.current_storage_usage.to_string().into());
-            let res = self.chain.storage_write(key_len, key_ptr, value_len, value_ptr, register_id);
-            // console::log_1(&vm.current_storage_usage.to_string().into());
-            res
+            self.chain
+                .storage_write(key_len, key_ptr, value_len, value_ptr, register_id)
         }
     }
 
@@ -1210,7 +1233,10 @@ impl VM {
     }
 
     pub fn validator_stake(&self, account_id_len: u64, account_id_ptr: u64, stake_ptr: u64) {
-      unsafe { self.chain.validator_stake(account_id_len, account_id_ptr, stake_ptr) }
+        unsafe {
+            self.chain
+                .validator_stake(account_id_len, account_id_ptr, stake_ptr)
+        }
     }
 
     pub fn validator_total_stake(&self, stake_ptr: u64) {

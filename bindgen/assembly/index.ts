@@ -1,4 +1,3 @@
-import "near-sdk-core/env/imports";
 import { base64, runtime_api, u128, util, Context } from "near-sdk-core";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 

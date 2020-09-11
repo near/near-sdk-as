@@ -126,6 +126,12 @@ class VMRunner {
                 setIs_view(b) {
                     vm.set_is_view(b == 1);
                 },
+                setEpoch_height(_u64) {
+                    vm.set_epoch_height(_u64);
+                }
+                // setOutput_data_receivers(arr) {
+                //   vm.set_output_data_receivers(arr);
+                // },
             },
             env: {
                 memory,
@@ -165,7 +171,7 @@ class VMRunner {
                 block_timestamp() {
                     return vm.block_timestamp();
                 },
-                epochHeight() {
+                epoch_height() {
                     return vm.epoch_height();
                 },
                 storage_usage() {
@@ -303,7 +309,7 @@ class VMRunner {
                 validator_total_stake(data_ptr) {
                     return vm.validator_total_stake(data_ptr);
                 },
-            }
+            },
         };
         return _imports;
     }
@@ -331,7 +337,7 @@ class VMRunner {
         let after = runner.outcome();
         // console.log(after);
         console.log("calls to injected gas: " + runner.gas);
-        console.log("Gas used after startup: " + ((after.used_gas) / (10 ** 12)));
+        console.log("Gas used after startup: " + after.used_gas / 10 ** 12);
         console.log("Outcome:");
         console.log(after);
         const receipts = runner.created_receipts();

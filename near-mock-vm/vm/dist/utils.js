@@ -41,15 +41,13 @@ function UTF8toStr(array) {
             case 13:
                 // 110x xxxx   10xx xxxx
                 char2 = array[i++];
-                out += String.fromCharCode(((c & 0x1F) << 6) | (char2 & 0x3F));
+                out += String.fromCharCode(((c & 0x1f) << 6) | (char2 & 0x3f));
                 break;
             case 14:
                 // 1110 xxxx  10xx xxxx  10xx xxxx
                 char2 = array[i++];
                 char3 = array[i++];
-                out += String.fromCharCode(((c & 0x0F) << 12) |
-                    ((char2 & 0x3F) << 6) |
-                    ((char3 & 0x3F) << 0));
+                out += String.fromCharCode(((c & 0x0f) << 12) | ((char2 & 0x3f) << 6) | ((char3 & 0x3f) << 0));
                 break;
         }
     }
@@ -74,15 +72,14 @@ function StrtoUTF8(str) {
             // UTF-16 encodes 0x10000-0x10FFFF by
             // subtracting 0x10000 and splitting the
             // 20 bits of 0x0-0xFFFFF into two halves
-            charcode = 0x10000 + (((charcode & 0x3ff) << 10)
-                | (str.charCodeAt(i) & 0x3ff));
+            charcode =
+                0x10000 + (((charcode & 0x3ff) << 10) | (str.charCodeAt(i) & 0x3ff));
             utf8.push(0xf0 | (charcode >> 18), 0x80 | ((charcode >> 12) & 0x3f), 0x80 | ((charcode >> 6) & 0x3f), 0x80 | (charcode & 0x3f));
         }
     }
     return new Uint8Array(utf8);
 }
 exports.StrtoUTF8 = StrtoUTF8;
-;
 function createU128Str(lo, hi) {
     const num = new bn_js_1.default(hi.toString());
     return num.shln(64).add(new bn_js_1.default(lo.toString())).toString();

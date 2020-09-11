@@ -5,64 +5,296 @@ export namespace env {
   // # Registers #
   // #############
   //@ts-ignore
-  @inline
-  export function read_register(register_id: u64, ptr: u64): void {
-    _read_register(register_id, ptr);
-  }
+  @external("env", "read_register")
+  export declare function read_register(register_id: u64, ptr: u64): void;
   //@ts-ignore
-  @inline
-  export function register_len(register_id: u64): u64 {
-    return _register_len(register_id);
-  }
+  @external("env", "register_len")
+  export declare function register_len(register_id: u64): u64;
 
   // ###############
   // # Context API #
   // ###############
   //@ts-ignore
-  @inline
-  export function current_account_id(register_id: u64): void {
-    _current_account_id(register_id);
-  }
+  @external("env", "current_account_id")
+  export declare function current_account_id(register_id: u64): void;
   //@ts-ignore
-  @inline
-  export function signer_account_id(register_id: u64): void {
-    _signer_account_id(register_id);
-  }
+  @external("env", "signer_account_id")
+  export declare function signer_account_id(register_id: u64): void;
   //@ts-ignore
-  @inline
-  export function signer_account_pk(register_id: u64): void {
-    _signer_account_pk(register_id);
-  }
+  @external("env", "signer_account_pk")
+  export declare function signer_account_pk(register_id: u64): void;
   //@ts-ignore
-  @inline
-  export function predecessor_account_id(register_id: u64): void {
-    _predecessor_account_id(register_id);
-  }
+  @external("env", "predecessor_account_id")
+  export declare function predecessor_account_id(register_id: u64): void;
   //@ts-ignore
-  @inline
-  export function input(register_id: u64): void {
-    _input(register_id);
-  }
+  @external("env", "input")
+  export declare function input(register_id: u64): void;
   //@ts-ignore
-  @inline
-  export function block_index(): u64 {
-    return _block_index();
-  }
+  @external("env", "block_index")
+  export declare function block_index(): u64;
   //@ts-ignore
-  @inline
-  export function block_timestamp(): u64 {
-    return _block_timestamp();
-  }
+  @external("env", "block_timestamp")
+  export declare function block_timestamp(): u64;
   //@ts-ignore
-  @inline
-  export function epoch_height(): u64 {
-    return _epoch_height();
-  }
+  @external("env", "epoch_height")
+  export declare function epoch_height(): u64;
   //@ts-ignore
-  @inline
-  export function storage_usage(): u64 {
-    return _storage_usage();
-  }
+  @external("env", "storage_usage")
+  export declare function storage_usage(): u64;
+
+  // #################
+  // # Economics API #
+  // #################
+  //@ts-ignore
+  @external("env", "account_balance")
+  export declare function account_balance(balance_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "account_locked_balance")
+  export declare function account_locked_balance(balance_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "attached_deposit")
+  export declare function attached_deposit(balance_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "prepaid_gas")
+  export declare function prepaid_gas(): u64;
+  //@ts-ignore
+  @external("env", "used_gas")
+  export declare function used_gas(): u64;
+
+  // ############
+  // # Math API #
+  // ############
+  //@ts-ignore
+  @external("env", "random_seed")
+  export declare function random_seed(register_id: u64): void;
+  //@ts-ignore
+  @external("env", "sha256")
+  export declare function sha256(
+    value_len: u64,
+    value_ptr: u64,
+    register_id: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "keccak256")
+  export declare function keccak256(
+    value_len: u64,
+    value_ptr: u64,
+    register_id: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "keccak512")
+  export declare function keccak512(
+    value_len: u64,
+    value_ptr: u64,
+    register_id: u64
+  ): void;
+
+  // #####################
+  // # Miscellaneous API #
+  // #####################
+  //@ts-ignore
+  @external("env", "value_return")
+  export declare function value_return(value_len: u64, value_ptr: u64): void;
+  //@ts-ignore
+  @external("env", "panic")
+  export declare function panic(): void;
+  //@ts-ignore
+  @external("env", "panic_utf8")
+  export declare function panic_utf8(len: u64, ptr: u64): void;
+  //@ts-ignore
+  @external("env", "log_utf8")
+  export declare function log_utf8(len: u64, ptr: u64): void;
+  //@ts-ignore
+  @external("env", "log_utf16")
+  export declare function log_utf16(len: u64, ptr: u64): void;
+
+  // ################
+  // # Promises API #
+  // ################
+  //@ts-ignore
+  @external("env", "promise_create")
+  export declare function promise_create(
+    account_id_len: u64,
+    account_id_ptr: u64,
+    method_name_len: u64,
+    method_name_ptr: u64,
+    arguments_len: u64,
+    arguments_ptr: u64,
+    amount_ptr: u64,
+    gas: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "promise_then")
+  export declare function promise_then(
+    promise_index: u64,
+    account_id_len: u64,
+    account_id_ptr: u64,
+    method_name_len: u64,
+    method_name_ptr: u64,
+    arguments_len: u64,
+    arguments_ptr: u64,
+    amount_ptr: u64,
+    gas: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "promise_and")
+  export declare function promise_and(
+    promise_idx_ptr: u64,
+    promise_idx_count: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "promise_batch_create")
+  export declare function promise_batch_create(
+    account_id_len: u64,
+    account_id_ptr: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "promise_batch_then")
+  export declare function promise_batch_then(
+    promise_index: u64,
+    account_id_len: u64,
+    account_id_ptr: u64
+  ): u64;
+
+  // #######################
+  // # Promise API actions #
+  // #######################
+  //@ts-ignore
+  @external("env", "promise_batch_action_create_account")
+  export declare function promise_batch_action_create_account(
+    promise_index: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_deploy_contract")
+  export declare function promise_batch_action_deploy_contract(
+    promise_index: u64,
+    code_len: u64,
+    code_ptr: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_function_call")
+  export declare function promise_batch_action_function_call(
+    promise_index: u64,
+    method_name_len: u64,
+    method_name_ptr: u64,
+    arguments_len: u64,
+    arguments_ptr: u64,
+    amount_ptr: u64,
+    gas: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_transfer")
+  export declare function promise_batch_action_transfer(
+    promise_index: u64,
+    amount_ptr: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_stake")
+  export declare function promise_batch_action_stake(
+    promise_index: u64,
+    amount_ptr: u64,
+    public_key_len: u64,
+    public_key_ptr: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_add_key_with_full_access")
+  export declare function promise_batch_action_add_key_with_full_access(
+    promise_index: u64,
+    public_key_len: u64,
+    public_key_ptr: u64,
+    nonce: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_add_key_with_function_call")
+  export declare function promise_batch_action_add_key_with_function_call(
+    promise_index: u64,
+    public_key_len: u64,
+    public_key_ptr: u64,
+    nonce: u64,
+    allowance_ptr: u64,
+    receiver_id_len: u64,
+    receiver_id_ptr: u64,
+    method_names_len: u64,
+    method_names_ptr: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_delete_key")
+  export declare function promise_batch_action_delete_key(
+    promise_index: u64,
+    public_key_len: u64,
+    public_key_ptr: u64
+  ): void;
+  //@ts-ignore
+  @external("env", "promise_batch_action_delete_account")
+  export declare function promise_batch_action_delete_account(
+    promise_index: u64,
+    beneficiary_id_len: u64,
+    beneficiary_id_ptr: u64
+  ): void;
+
+  // #######################
+  // # Promise API results #
+  // #######################
+  //@ts-ignore
+  @external("env", "promise_results_count")
+  export declare function promise_results_count(): u64;
+  //@ts-ignore
+  @external("env", "promise_result")
+  export declare function promise_result(
+    result_idx: u64,
+    register_id: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "promise_return")
+  export declare function promise_return(promise_id: u64): void;
+
+  // ###############
+  // # Storage API #
+  // ###############
+  //@ts-ignore
+  @external("env", "storage_write")
+  export declare function storage_write(
+    key_len: u64,
+    key_ptr: u64,
+    value_len: u64,
+    value_ptr: u64,
+    register_id: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "storage_read")
+  export declare function storage_read(
+    key_len: u64,
+    key_ptr: u64,
+    register_id: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "storage_remove")
+  export declare function storage_remove(
+    key_len: u64,
+    key_ptr: u64,
+    register_id: u64
+  ): u64;
+  //@ts-ignore
+  @external("env", "storage_has_key")
+  export declare function storage_has_key(key_len: u64, key_ptr: u64): u64;
+
+  // ###############
+  // # Validator API #
+  // ###############
+
+  /// For a given account return its current stake. If the account is not a validator, returns 0.
+  //@ts-ignore
+  @external("env", "validator_stake")
+  export declare function _validator_stake(
+    id_len: u64,
+    id_ptr: u64,
+    data_ptr: u64
+  ): u64;
+
+  /// Returns the total stake of validators in the current epoch.
+  //@ts-ignore
+  @external("env", "validator_total_stake")
+  export declare function _validator_total_stake(data_ptr: u64): u64;
 
   // ############
   // # Accounts #
@@ -97,364 +329,6 @@ export namespace env {
     }
     // The account can't end as separator.
     return !last_char_is_separator;
-  }
-
-  // #################
-  // # Economics API #
-  // #################
-  //@ts-ignore
-  @inline
-  export function account_balance(balance_ptr: u64): void {
-    _account_balance(balance_ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function account_locked_balance(balance_ptr: u64): void {
-    _account_locked_balance(balance_ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function attached_deposit(balance_ptr: u64): void {
-    _attached_deposit(balance_ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function prepaid_gas(): u64 {
-    return _prepaid_gas();
-  }
-  //@ts-ignore
-  @inline
-  export function used_gas(): u64 {
-    return _used_gas();
-  }
-
-  // ############
-  // # Math API #
-  // ############
-  //@ts-ignore
-  @inline
-  export function random_seed(register_id: u64): void {
-    _random_seed(register_id);
-  }
-  //@ts-ignore
-  @inline
-  export function sha256(
-    value_len: u64,
-    value_ptr: u64,
-    register_id: u64
-  ): void {
-    _sha256(value_len, value_ptr, register_id);
-  }
-  //@ts-ignore
-  @inline
-  export function keccak256(
-    value_len: u64,
-    value_ptr: u64,
-    register_id: u64
-  ): void {
-    _keccak256(value_len, value_ptr, register_id);
-  }
-  //@ts-ignore
-  @inline
-  export function keccak512(
-    value_len: u64,
-    value_ptr: u64,
-    register_id: u64
-  ): void {
-    _keccak512(value_len, value_ptr, register_id);
-  }
-
-  // #####################
-  // # Miscellaneous API #
-  // #####################
-  //@ts-ignore
-  @inline
-  export function value_return(value_len: u64, value_ptr: u64): void {
-    _value_return(value_len, value_ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function panic(): void {
-    _panic();
-  }
-  //@ts-ignore
-  @inline
-  export function panic_utf8(len: u64, ptr: u64): void {
-    _panic_utf8(len, ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function log_utf8(len: u64, ptr: u64): void {
-    _log_utf8(len, ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function log_utf16(len: u64, ptr: u64): void {
-    _log_utf16(len, ptr);
-  }
-
-  // ################
-  // # Promises API #
-  // ################
-  //@ts-ignore
-  @inline
-  export function promise_create(
-    account_id_len: u64,
-    account_id_ptr: u64,
-    method_name_len: u64,
-    method_name_ptr: u64,
-    arguments_len: u64,
-    arguments_ptr: u64,
-    amount_ptr: u64,
-    gas: u64
-  ): u64 {
-    return _promise_create(
-      account_id_len,
-      account_id_ptr,
-      method_name_len,
-      method_name_ptr,
-      arguments_len,
-      arguments_ptr,
-      amount_ptr,
-      gas
-    );
-  }
-  //@ts-ignore
-  @inline
-  export function promise_then(
-    promise_index: u64,
-    account_id_len: u64,
-    account_id_ptr: u64,
-    method_name_len: u64,
-    method_name_ptr: u64,
-    arguments_len: u64,
-    arguments_ptr: u64,
-    amount_ptr: u64,
-    gas: u64
-  ): u64 {
-    return _promise_then(
-      promise_index,
-      account_id_len,
-      account_id_ptr,
-      method_name_len,
-      method_name_ptr,
-      arguments_len,
-      arguments_ptr,
-      amount_ptr,
-      gas
-    );
-  }
-  //@ts-ignore
-  @inline
-  export function promise_and(
-    promise_idx_ptr: u64,
-    promise_idx_count: u64
-  ): u64 {
-    return _promise_and(promise_idx_ptr, promise_idx_count);
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_create(
-    account_id_len: u64,
-    account_id_ptr: u64
-  ): u64 {
-    return _promise_batch_create(account_id_len, account_id_ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_then(
-    promise_index: u64,
-    account_id_len: u64,
-    account_id_ptr: u64
-  ): u64 {
-    return _promise_batch_then(promise_index, account_id_len, account_id_ptr);
-  }
-
-  // #######################
-  // # Promise API actions #
-  // #######################
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_create_account(
-    promise_index: u64
-  ): void {
-    _promise_batch_action_create_account(promise_index);
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_deploy_contract(
-    promise_index: u64,
-    code_len: u64,
-    code_ptr: u64
-  ): void {
-    _promise_batch_action_deploy_contract(promise_index, code_len, code_ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_function_call(
-    promise_index: u64,
-    method_name_len: u64,
-    method_name_ptr: u64,
-    arguments_len: u64,
-    arguments_ptr: u64,
-    amount_ptr: u64,
-    gas: u64
-  ): void {
-    _promise_batch_action_function_call(
-      promise_index,
-      method_name_len,
-      method_name_ptr,
-      arguments_len,
-      arguments_ptr,
-      amount_ptr,
-      gas
-    );
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_transfer(
-    promise_index: u64,
-    amount_ptr: u64
-  ): void {
-    _promise_batch_action_transfer(promise_index, amount_ptr);
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_stake(
-    promise_index: u64,
-    amount_ptr: u64,
-    public_key_len: u64,
-    public_key_ptr: u64
-  ): void {
-    _promise_batch_action_stake(
-      promise_index,
-      amount_ptr,
-      public_key_len,
-      public_key_ptr
-    );
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_add_key_with_full_access(
-    promise_index: u64,
-    public_key_len: u64,
-    public_key_ptr: u64,
-    nonce: u64
-  ): void {
-    _promise_batch_action_add_key_with_full_access(
-      promise_index,
-      public_key_len,
-      public_key_ptr,
-      nonce
-    );
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_add_key_with_function_call(
-    promise_index: u64,
-    public_key_len: u64,
-    public_key_ptr: u64,
-    nonce: u64,
-    allowance_ptr: u64,
-    receiver_id_len: u64,
-    receiver_id_ptr: u64,
-    method_names_len: u64,
-    method_names_ptr: u64
-  ): void {
-    _promise_batch_action_add_key_with_function_call(
-      promise_index,
-      public_key_len,
-      public_key_ptr,
-      nonce,
-      allowance_ptr,
-      receiver_id_len,
-      receiver_id_ptr,
-      method_names_len,
-      method_names_ptr
-    );
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_delete_key(
-    promise_index: u64,
-    public_key_len: u64,
-    public_key_ptr: u64
-  ): void {
-    _promise_batch_action_delete_key(
-      promise_index,
-      public_key_len,
-      public_key_ptr
-    );
-  }
-  //@ts-ignore
-  @inline
-  export function promise_batch_action_delete_account(
-    promise_index: u64,
-    beneficiary_id_len: u64,
-    beneficiary_id_ptr: u64
-  ): void {
-    _promise_batch_action_delete_account(
-      promise_index,
-      beneficiary_id_len,
-      beneficiary_id_ptr
-    );
-  }
-
-  // #######################
-  // # Promise API results #
-  // #######################
-  //@ts-ignore
-  @inline
-  export function promise_results_count(): u64 {
-    return _promise_results_count();
-  }
-  //@ts-ignore
-  @inline
-  export function promise_result(result_idx: u64, register_id: u64): u64 {
-    return _promise_result(result_idx, register_id);
-  }
-  //@ts-ignore
-  @inline
-  export function promise_return(promise_id: u64): void {
-    _promise_return(promise_id);
-  }
-
-  // ###############
-  // # Storage API #
-  // ###############
-  //@ts-ignore
-  @inline
-  export function storage_write(
-    key_len: u64,
-    key_ptr: u64,
-    value_len: u64,
-    value_ptr: u64,
-    register_id: u64
-  ): u64 {
-    return _storage_write(key_len, key_ptr, value_len, value_ptr, register_id);
-  }
-  //@ts-ignore
-  @inline
-  export function storage_read(
-    key_len: u64,
-    key_ptr: u64,
-    register_id: u64
-  ): u64 {
-    return _storage_read(key_len, key_ptr, register_id);
-  }
-  //@ts-ignore
-  @inline
-  export function storage_remove(
-    key_len: u64,
-    key_ptr: u64,
-    register_id: u64
-  ): u64 {
-    return _storage_remove(key_len, key_ptr, register_id);
-  }
-  //@ts-ignore
-  @inline
-  export function storage_has_key(key_len: u64, key_ptr: u64): u64 {
-    return _storage_has_key(key_len, key_ptr);
   }
 
   export function validator_stake(account_id: string): u128 {

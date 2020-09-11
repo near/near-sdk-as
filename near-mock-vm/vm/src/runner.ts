@@ -125,6 +125,9 @@ export class VMRunner {
         setIs_view(b: number) {
           vm.set_is_view(b == 1);
         },
+        setEpoch_height(_u64: BigInt) {
+          vm.set_epoch_height(_u64);
+        },
         // setOutput_data_receivers(arr) {
         //   vm.set_output_data_receivers(arr);
         // },
@@ -167,7 +170,7 @@ export class VMRunner {
         block_timestamp(): BigInt {
           return vm.block_timestamp();
         },
-        epochHeight(): BigInt {
+        epoch_height(): BigInt {
           return vm.epoch_height();
         },
         storage_usage(): BigInt {
