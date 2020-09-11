@@ -36,6 +36,11 @@ export function base58Test(): void {
     _arrayEqual(decoded, array),
     "Wrong decoded value for base58 encoding"
   );
+
+  const realKey = "7VY9Zidrta8jmthaH4wnsqXZ498Hx5tX3uY8MkaCzcwH"
+  const reencoded = base58.encode(base58.decode(realKey))
+  assert(reencoded==realKey,"decode-reencode failed")
+
 }
 
 export function base64Test(): void {
