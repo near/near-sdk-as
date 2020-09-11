@@ -1,0 +1,8 @@
+{
+  "options": {
+    "runtime": "none",
+    "transform": ["../bindgen/src/exportAs.ts"]
+  },
+  "entry": "assembly/__tests__/exportAs.ts"
+}
+

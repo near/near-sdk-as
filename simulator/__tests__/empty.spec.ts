@@ -1,5 +1,5 @@
-let fs = require("fs");
-let path = require("path");
+import * as fs from "fs";
+import * as path from "path";
 
 describe("empty wat", () => {
   it("should be mostly empty", () => {
