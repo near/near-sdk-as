@@ -27,15 +27,14 @@ function findContext(_path = "") {
         _path,
         path.join(process.cwd(), "assembly", "__tests__"),
         process.cwd(),
-        __dirname
-    ]
-        .map(p => {
+        __dirname,
+    ].map((p) => {
         if (!p.endsWith("context.json")) {
             return path.join(p, "context.json");
         }
         return p;
     });
-    let _paths = paths.filter(p => {
+    let _paths = paths.filter((p) => {
         try {
             require.resolve(p);
         }
@@ -55,7 +54,7 @@ const current_account_id = "alice";
 const signer_account_id = "bob";
 const signer_account_pk = "HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK";
 const predecessor_account_id = "carol";
-const input_str = "{\"a\":21,\"b\":21}";
+const input_str = '{"a":21,"b":21}';
 const block_index = 10;
 const block_timestamp = 42;
 const epoch_height = 20;
@@ -63,7 +62,7 @@ const account_balance = "2";
 const account_locked_balance = "1";
 const storage_usage = 12;
 const attached_deposit = "2";
-const prepaid_gas = 10 ** (14);
+const prepaid_gas = 10 ** 14;
 const random_seed = "HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK";
 const is_view = false;
 const output_data_receivers = new Uint8Array([]);

@@ -165,6 +165,11 @@ function debugString(val) {
     // TODO we could test for more things here, like `Set`s and `Map`s.
     return className;
 }
+/**
+*/
+module.exports.main = function() {
+    wasm.main();
+};
 
 const u32CvtShim = new Uint32Array(2);
 
@@ -392,6 +397,17 @@ class VM {
         if (this.ptr == 0) throw new Error('Attempt to use a moved value');
         _assertNum(this.ptr);
         wasm.vm_set_output_data_receivers(this.ptr, addHeapObject(arr));
+    }
+    /**
+    * @param {BigInt} _u64
+    */
+    set_epoch_height(_u64) {
+        if (this.ptr == 0) throw new Error('Attempt to use a moved value');
+        _assertNum(this.ptr);
+        uint64CvtShim[0] = _u64;
+        const low0 = u32CvtShim[0];
+        const high0 = u32CvtShim[1];
+        wasm.vm_set_epoch_height(this.ptr, low0, high0);
     }
     /**
     * #################
@@ -2379,4 +2395,6 @@ const wasmModule = new WebAssembly.Module(bytes);
 const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
 wasm = wasmInstance.exports;
 module.exports.__wasm = wasm;
+
+wasm.__wbindgen_start();
 

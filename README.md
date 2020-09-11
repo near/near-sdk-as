@@ -3,7 +3,7 @@
 Collection of packages used in developing NEAR smart contracts in AssemblyScript including:
 
 
-- [`sdk`](./sdk) - AssemblyScript near runtime library
+- [`runtime library`](./sdk-core) - AssemblyScript near runtime library
 - [`bindgen`](./bindgen) - AssemblyScript transformer that adds the bindings needed to (de)serialize input and outputs.
 - [`near-mock-vm`](./near-mock-vm) - Core of the NEAR VM compiled to WebAssembly used for writing unit tests.
 - [`simulator`](./simulator) - A NearVM Simulator for making contract calls.
@@ -43,7 +43,7 @@ will create a debug build and place it in `./build/debug/..`
 
 ### Unit Testing
 
-See [sdk's as-pect tests for an example](./sdk/assembly/__tests__) of creating unit tests.  Must be ending in `.spec.ts` in a `assembly/__tests__`.
+See the [sdk's as-pect tests for an example](./sdk/assembly/__tests__) of creating unit tests.  Must be ending in `.spec.ts` in a `assembly/__tests__`.
 
 ### Simulation Testing
 

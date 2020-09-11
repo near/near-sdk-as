@@ -1,6 +1,9 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+ */
+export function main(): void;
+/**
  * @param {any} wasm_bytes
  * @returns {any}
  */
@@ -87,6 +90,10 @@ export class VM {
    * @param {any} arr
    */
   set_output_data_receivers(arr: any): void;
+  /**
+   * @param {BigInt} _u64
+   */
+  set_epoch_height(_u64: BigInt): void;
   /**
    * #################
    * # Registers API #

@@ -1,11 +1,7 @@
 import { Outcome } from "./outcome";
 
-//@ts-ignore
-@external("vm", "outcome")
 declare function _outcome(): Outcome;
 
-//@ts-ignore
-@external("vm", "restoreState")
 declare function _restoreState(): void;
 
 /**
@@ -17,18 +13,16 @@ export namespace VM {
    * Restores the internal state of the VM.
    *
    */
-
-  export function restoreState(): void {
-    _restoreState();
-  }
+  //@ts-ignore
+  @external("vm", "restoreState")
+  export declare function restoreState(): void;
 
   /**
    * Return the VM Outcome of the current running contract
    */
-
-  export function outcome(): Outcome {
-    return _outcome();
-  }
+  //@ts-ignore
+  @external("vm", "outcome")
+  export declare function outcome(): Outcome;
 
   export function logs(): string[] {
     return outcome().logs;

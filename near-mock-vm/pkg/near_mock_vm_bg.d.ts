@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
+export function main(): void;
 export function inject_contract(a: number): number;
 export function test_memory(a: number): void;
 export function __wbg_vm_free(a: number): void;
@@ -22,6 +23,7 @@ export function vm_set_prepaid_gas(a: number, b: number, c: number): void;
 export function vm_set_random_seed(a: number, b: number): void;
 export function vm_set_is_view(a: number, b: number): void;
 export function vm_set_output_data_receivers(a: number, b: number): void;
+export function vm_set_epoch_height(a: number, b: number, c: number): void;
 export function vm_read_register(
   a: number,
   b: number,
@@ -357,3 +359,4 @@ export function __wbindgen_malloc(a: number): number;
 export function __wbindgen_realloc(a: number, b: number, c: number): number;
 export function __wbindgen_free(a: number, b: number): void;
 export function __wbindgen_exn_store(a: number): void;
+export function __wbindgen_start(): void;

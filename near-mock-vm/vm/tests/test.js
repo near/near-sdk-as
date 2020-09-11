@@ -1,6 +1,6 @@
 let runner = require("..").VMRunner;
 let assert = require("assert");
-let utils = require('./utils');
+let utils = require('../dist/utils');
 
 
 let vm = runner.create();

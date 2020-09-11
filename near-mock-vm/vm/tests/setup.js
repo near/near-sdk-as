@@ -1,5 +1,5 @@
 
-const utils = require('./utils');
+const utils = require('../dist/utils');
 
 module.exports = async () => {
   const res = {
