@@ -1,7 +1,7 @@
 {
   "name": "near-sdk-as",
   "version": "2.0.0-next.1",
-  "description": "Collection of packages for developming NEAR smart contracts",
+  "description": "Collection of packages for developing NEAR smart contracts in AssemblyScript",
   "types": "assembly/index.ts",
   "repository": {
     "type": "git",

@@ -26,7 +26,7 @@
     "test": "yarn asb assembly/__tests__/main.ts --target debug && node vm/tests/test && yarn test:bin",
     "test:ci": "yarn build:vm && yarn test",
     "near-vm": "node bin/bin.js",
-    "test:bin": "yarn near-vm build/debug/main.wasm add \"{\\\"a\\\":1000,\\\"b\\\":1000}\""
+    "test:bin": "yarn near-vm build/debug/main.wasm add '{\"a\":1000,\"b\":1000}'"
   },
   "files": [
     "pkg/",
