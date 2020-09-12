@@ -70,6 +70,29 @@ export class PersistentUnorderedMap<K, V> {
   }
 
   /**
+   * Retrieves a related entry for a given key or fails assertion with "key not found"
+   *
+   * ```ts
+   * let map = new PersistentUnorderedMap<string, string>("m")
+   *
+   * map.set("hello", "world")
+   * let reg = map.get_raw("hello")
+   * let result = util.read_register_string(0)
+   *
+   * assert(result == "world")
+   * ```
+   *
+   * @param key Key of the element.
+   * @param register_id The register used to store the entry. Defaults to 0.
+   * @returns The register used to store the entry.
+   */
+  get_raw(key: K, register_id: u64 = 0): u64 {
+    let index = this._map.getSome(key);
+    this._entries.get_raw(index, register_id);
+    return register_id;
+  }
+
+  /**
    * returns a MapEntry array of number of last entries.
    * @param count
    */
@@ -183,6 +206,23 @@ export class PersistentUnorderedMap<K, V> {
   }
 
   /**
+   * ```ts
+   * let map = new PersistentUnorderedMap<string, string>("m")
+   *
+   * map.set_raw("hello", 1)
+   * ```
+   *
+   * Sets the new value for the given key.
+   * It is assumed that the value under the key is not equal to the new element's value.
+   * @param key Key of the element.
+   * @param register_id The register where the new entry element is stored.
+   */
+  set_raw(key: K, register_id: u64): void {
+    this._map.set(key, this._entries.length);
+    this._entries.push_raw(register_id);
+  }
+
+  /**
    * Removes the given key and related value from the map
    *
    * ```ts
@@ -196,7 +236,7 @@ export class PersistentUnorderedMap<K, V> {
    * @param key Key to remove.
    */
   delete(key: K): void {
-    // get index and also make sure the item is in the set
+    // get index and also make sure the item is in the map
     const index = this._map.getSome(key);
 
     if (index == this._entries.length - 1) {
