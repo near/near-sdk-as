@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "release": {
+      "-O3z": true
+    },
+    "debug": {
+      "debug": true
+    }
+  },
+  "options": {
+    "runtime": "none",
+    "transform": ["visitor-as/dist/examples/includeBytesTransform.js", "near-sdk-bindgen"]
+  },
+  "entries": ["./assembly/bindgen.ts"]
+  
+}

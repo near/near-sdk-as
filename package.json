@@ -1,61 +1,29 @@
 {
   "name": "near-sdk-as",
   "version": "1.2.1",
-  "description": "Collection of packages for developming NEAR smart contracts",
-  "main": "index.js",
-  "types": "assembly/index.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:near/near-sdk-as",
-    "directory": "packages/sdk"
+    "url": "git+https://github.com:near/near-sdk-as"
   },
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "license": "(MIT AND Apache-2.0)",
-  "dependencies": {
-    "@as-pect/cli": "^4.0.0",
-    "as-bignum": "^0.2.4",
-    "asbuild": "^0.0.6",
-    "assemblyscript": "^0.14.9",
-    "assemblyscript-json": "^0.3.3",
-    "bn.js": "^5.1.1",
-    "bs58": "^4.0.1",
-    "js-base64": "^3.4.3",
-    "near-mock-vm": "^0.1.1",
-    "near-vm": "^1.1.0",
-    "visitor-as": "^0.3.1"
-  },
   "scripts": {
-    "build": "yarn build:bindgen && yarn build:runtime",
-    "pretest": "yarn build",
-    "build:bindgen": "(cd bindgen; yarn build)",
-    "build:runtime": "(cd runtime; tsc)",
-    "test": "yarn test:bindgen && yarn asp:ci && yarn test:nearcore && yarn test:runtime && yarn check:pretty",
-    "test:nearcore": "(cd nearcore-tests; yarn test)",
-    "test:bindgen": "(cd bindgen; yarn test)",
-    "test:runtime": "(cd runtime; yarn build) && jest",
-    "asp:ci": "asp",
-    "asp": "yarn asp:ci --verbose",
+    "build": "yarn workspaces run build",
+    "build:vm": "yarn workspace near-mock-vm run build:wasm",
+    "test": "yarn workspaces run test && yarn check:pretty",
     "doc": "rm -rf docs; typedoc assembly --tsconfig assembly/tsconfig.json && touch docs/.nojekyll",
-    "prepublish": "yarn build",
     "prettify": "prettier --write '**/*.ts'",
     "check:pretty": "yarn prettier --check '**/*.ts'"
   },
   "devDependencies": {
-    "@assemblyscript/loader": "^0.14.9",
-    "@types/bn.js": "^4.11.6",
-    "@types/bs58": "^4.0.1",
     "@types/jest": "^26.0.0",
     "@types/js-base64": "^3.0.0",
     "@types/node": "^14.6.2",
-    "assert-no-diff": "^3.0.4",
     "husky": "^4.2.5",
     "jest": "^26.4.2",
-    "near-hello": "^0.5.0",
+    "lerna": "^3.22.1",
     "prettier": "^2.1.1",
-    "ts-jest": "^26.3.0",
-    "ts-node": "^9.0.0",
-    "typedoc": "^0.18.0",
-    "typescript": "^3.6.4"
+    "ts-jest": "^26.3.0"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -64,5 +32,14 @@
     "hooks": {
       "pre-commit": "yarn check:pretty || (yarn prettify && exit 1)"
     }
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "bindgen",
+    "sdk",
+    "sdk-core",
+    "simulator",
+    "nearcore-tests",
+    "near-mock-vm"
+  ]
 }

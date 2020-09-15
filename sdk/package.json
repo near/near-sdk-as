@@ -1,0 +1,45 @@
+{
+  "name": "near-sdk-as",
+  "version": "2.0.0-next.3",
+  "description": "Collection of packages for developing NEAR smart contracts in AssemblyScript",
+  "types": "assembly/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:near/near-sdk-as",
+    "directory": "packages/sdk"
+  },
+  "author": "Willem Wyndham <willem@nearprotocol.com>",
+  "license": "(MIT AND Apache-2.0)",
+  "dependencies": {
+    "near-mock-vm": "^2.0.0-next.3",
+    "near-sdk-bindgen": "^2.0.0-next.3",
+    "near-sdk-core": "^2.0.0-next.3",
+    "near-sdk-simulator": "^2.0.0-next.3"
+  },
+  "scripts": {
+    "test": "yarn asp",
+    "asp:ci": "asp",
+    "asp": "yarn asp:ci --verbose",
+    "build": "asb assembly/__tests__/main.ts -- --noEmit"
+  },
+  "devDependencies": {
+    "@assemblyscript/loader": "^0.14.9",
+    "@types/bn.js": "^4.11.6",
+    "@types/bs58": "^4.0.1",
+    "@types/jest": "^26.0.0",
+    "@types/js-base64": "^3.0.0",
+    "@types/node": "^14.6.2",
+    "assert-no-diff": "^3.0.4",
+    "husky": "^4.2.5",
+    "jest": "^26.4.2",
+    "near-hello": "^0.5.0",
+    "prettier": "^2.1.1",
+    "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.18.0",
+    "typescript": "^3.6.4"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

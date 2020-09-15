@@ -4,6 +4,9 @@ const fs = require('fs');
 const assert = require('assert');
 let asc = require("assemblyscript/cli/asc");
 const loader = require('@assemblyscript/loader');
+const path = require('path');
+
+function localize(p) { return path.join(__dirname, p); }
 
 function toNum(x) { return parseInt(x.toString());}
 // http://www.onicos.com/staff/iz/amuse/javascript/expert/utf.txt
@@ -152,7 +155,7 @@ async function testFloatDetection(file){
 }
 
 (async function() {
-    const module = await loadModule('./build/debug/test.wasm');
+    const module = await loadModule(localize("/build/debug/test.wasm"));
     await module.runTest();
     assert.deepEqual(await module.convertFoobars({ foobars: [] }), []);
     assert.deepEqual(
@@ -279,8 +282,8 @@ async function testFloatDetection(file){
     );
     assert.deepEqual(await module.classAndNull(), null);
 
-    await testFloatDetection("../assembly/__tests__/bindgen/f32.ts");
-    await testFloatDetection("../assembly/__tests__/bindgen/f64.ts");
+    await testFloatDetection(localize("./assembly/__tests__/f32.ts"));
+    await testFloatDetection(localize("./assembly/__tests__/f64.ts"));
 
 })().catch(e => {
     console.error('Error during test execution:', e);

@@ -1,9 +1,9 @@
 {
-  "name": "bindgen",
-  "version": "0.0.1-alpha.0",
+  "name": "near-sdk-bindgen",
+  "version": "2.0.0-next.3",
   "description": "Bindings for serializing contract functions.",
   "main": "index.js",
-  "ascMain": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "build:asconfig": "node asconfig.js",
@@ -23,19 +23,21 @@
     "crypto"
   ],
   "author": "Willem Wyndham",
-  "license": "MIT",
+  "license": "(MIT AND Apache-2.0)",
   "bugs": {
     "url": "https://github.com/nearprotocol/near-sdk-as/issues"
   },
   "homepage": "https://github.com/nearprotocol/near-sdk-as/tree/master/bindgen#readme",
   "files": [
-    "bin/near-asc",
     "index.js",
     "compiler.js",
-    "dist/"
+    "dist/",
+    "assembly/index.ts"
   ],
   "peerDependencies": {
     "assemblyscript": "^0.9.4"
   },
-  "private": true
+  "devDependencies": {
+    "near-sdk-core": "^2.0.0-next.3"
+  }
 }

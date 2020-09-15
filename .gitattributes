@@ -3,3 +3,5 @@ bindgen/dist/**/*.js linguist-generated=true -diff
 bindgen/dist/**/*.ts linguist-generated=true -diff
 runtime/dist/**/*.js linguist-generated=true -diff
 runtime/dist/**/*.ts linguist-generated=true -diff
+near-mock-vm/vm/dist/**/*.js linguist-generated=true -diff
+near-mock-vm/vm/dist/**/*.ts linguist-generated=true -diff
