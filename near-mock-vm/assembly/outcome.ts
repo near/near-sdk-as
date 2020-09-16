@@ -30,6 +30,10 @@ export const ReceiptIndexID = idof<ReceiptIndex>();
 @lazy
 export const NoneID = idof<None>();
 
+/**
+ * Object returned by VM.outcome().
+ * Gas and storage returned are not necessarly accurate.
+ */
 export class Outcome {
   balance: u128;
   constructor(
