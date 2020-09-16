@@ -1,12 +1,13 @@
 {
   "extends": "assemblyscript/std/assembly.json",
-  "include": ["**/assembly/**/*.ts"],
+  "include": ["*/assembly/**/*.ts",],
   "typedocOptions": {
-    "exclude": "assembly/__tests__",
+    "exclude": "**/*/__tests__",
     "ignoreCompilerErrors": true,
     "excludePrivate": true,
     "excludeProtected": true,
     "excludeExternals": true,
-    "stripInternal": true    
+    "stripInternal": true,
+    "inputFiles": ["sdk-core/assembly", "sdk/assembly", "near-mock-vm/assembly"]
   }
 }

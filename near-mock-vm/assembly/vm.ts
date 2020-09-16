@@ -1,9 +1,5 @@
 import { Outcome } from "./outcome";
 
-declare function _outcome(): Outcome;
-
-declare function _restoreState(): void;
-
 /**
  * Methods on the current VM
  */
@@ -24,6 +20,7 @@ export namespace VM {
   @external("vm", "outcome")
   export declare function outcome(): Outcome;
 
+  /** Returns the logs outputed by the VM outcome */
   export function logs(): string[] {
     return outcome().logs;
   }

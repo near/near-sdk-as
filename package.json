@@ -11,7 +11,7 @@
     "build": "yarn workspaces run build",
     "build:vm": "yarn workspace near-mock-vm run build:wasm",
     "test": "yarn workspaces run test && yarn check:pretty",
-    "doc": "rm -rf docs; typedoc assembly --tsconfig assembly/tsconfig.json && touch docs/.nojekyll",
+    "doc": "rm -rf docs; typedoc --tsconfig tsconfig.json && touch docs/.nojekyll",
     "prettify": "prettier --write '**/*.ts'",
     "check:pretty": "yarn prettier --check '**/*.ts'"
   },

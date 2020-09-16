@@ -1,4 +1,4 @@
 {
   "extends": "./asconfig.json",
-  "entries": ["assembly/vm/vm.include.ts"]
+  "entries": ["assembly/vm/__tests__/vm.include.ts"]
 }

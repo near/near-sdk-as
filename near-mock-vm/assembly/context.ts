@@ -1,65 +1,82 @@
 import { u128 } from "near-sdk-core";
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setCurrent_account_id")
 declare function _setCurrent_account_id(id: usize): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setInput")
 declare function _setInput(input: usize): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setSigner_account_id")
 declare function _setSigner_account_id(s: usize): void;
 /// The public key that was used to sign the original transaction that led to
 /// this execution.
+/** @internal */
 //@ts-ignore
 @external("vm", "setSigner_account_pk")
 declare function _setSigner_account_pk(s: usize): void;
+/** @internal */
 //@ts-ignore
 @external("vm", "setPredecessor_account_id")
 declare function _setPredecessor_account_id(s: usize): void;
+/** @internal */
 //@ts-ignore
 @external("vm", "setRandom_seed")
 declare function _setRandom_seed(s: string): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setAttached_deposit")
 declare function _setAttached_deposit(lo: u64, hi: u64): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setAccount_balance")
 declare function _setAccount_balance(lo: u64, hi: u64): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setAccount_locked_balance")
 declare function _setAccount_locked_balance(lo: u64, hi: u64): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "saveContext")
 declare function _saveContext(): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "restoreContext")
 declare function _restoreContext(): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setBlock_index")
 declare function _setBlock_index(block_height: u64): void;
+/** @internal */
 //@ts-ignore
 @external("vm", "setBlock_timestamp")
 declare function _setBlock_timestamp(stmp: u64): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setPrepaid_gas")
 declare function _setPrepaid_gas(_u64: u64): void;
 
+/** @internal */
 //@ts-ignore
 @external("vm", "setIs_view")
 declare function _setIs_view(b: bool): void;
+/** @internal */
 //@ts-ignore
 @external("vm", "setOutput_data_receivers")
 declare function _setOutput_data_receivers(arrA: Array<string>): void;
+/** @internal */
 //@ts-ignore
 @external("vm", "setStorage_usage")
 declare function _setStorage_usage(amt: u64): void;

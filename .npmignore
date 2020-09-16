@@ -13,3 +13,4 @@ near-mock-vm/vm/tests/
 near-mock-vm/Cargo.*
 near-mock-vm/vm/src/
 near-mock-vm/src/
+!sdk/assembly/vm/__tests__/vm.include.ts
