@@ -13,6 +13,7 @@ import {
   math,
   ContractPromiseBatch,
   env,
+  util,
 } from "..";
 import { TextMessage } from "./model";
 import {
@@ -169,6 +170,41 @@ export function storageGenericGetSetRoundtripTest(): void {
   assert(
     storage.get<string>("nonexistent", null) == null,
     "Incorrect data value for get<T> string nonexistent key"
+  );
+}
+
+export function storageRawRoundtripTest(): void {
+  logging.log("storageRawRoundtripTest");
+
+  storage.setString("message1", "Hello World");
+  storage.read_raw("message1", 0);
+  const stringRegGet = util.read_register_string(0);
+  assert(
+    stringRegGet == "Hello World",
+    "Incorrect string value from register"
+  );
+
+  storage.write_raw("message2", 0);
+  const stringGetResult = storage.getString("message2");
+  assert(
+    stringGetResult == "Hello World",
+    "Incorrect string value for roundtrip"
+  );
+
+  const bytes = _testBytes();
+  storage.setBytes("bytes1", bytes);
+  storage.read_raw("bytes1", 0);
+  const bytesRegGet = util.read_register(0);
+  assert(
+    _arrayEqual(bytes, bytesRegGet),
+    "Incorrect bytes value from register"
+  );
+
+  storage.write_raw("bytes2", 0);
+  const bytesGetResult = storage.getBytes("bytes2");
+  assert(
+    _arrayEqual(bytes, bytesGetResult),
+    "Incorrect bytes value for roundtrip"
   );
 }
 
