@@ -706,6 +706,29 @@ describe("Deque should handle", () => {
     expect(deque.last).toBe("1", "wrong last element");
   });
 
+  it("raw operations", () => {
+    deque.pushBack("1");
+    deque.pushFront("-2");
+
+    let reg = deque.popBack_raw();
+    expect(deque.length).toBe(1, "deque length is wrong");
+    expect(util.read_register_string(reg)).toBe("1", "wrong value for evicted element");
+
+    deque.pushFront_raw(reg);
+    expect(deque.length).toBe(2, "deque length is wrong");
+    expect(deque.front).toBe("1", "wrong front element");
+    expect(deque.back).toBe("-2", "wrong back element");
+
+    reg = deque.popFront_raw();
+    expect(deque.length).toBe(1, "deque length is wrong");
+    expect(util.read_register_string(reg)).toBe("1", "wrong value for evicted element");
+
+    deque.pushBack_raw(reg);
+    expect(deque.length).toBe(2, "deque length is wrong");
+    expect(deque.front).toBe("-2", "wrong front element");
+    expect(deque.back).toBe("1", "wrong back element");
+  });
+
   it("popping front", () => {
     deque.pushBack("1");
     deque.pushFront("-2");
