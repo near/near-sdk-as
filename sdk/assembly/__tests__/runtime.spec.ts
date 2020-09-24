@@ -1,3 +1,4 @@
+import { util } from "near-sdk-core";
 import {
   Context,
   storage,
@@ -393,6 +394,29 @@ describe("Map should handle", () => {
       "Incorrect result on get with nonexistent key"
     );
   });
+
+  it("raw operations", () => {
+    const map = new PersistentMap<u32, string>("mapId");
+
+    map.set(1, "testString");
+    const reg = map.get_raw(1);
+
+    expect(util.read_register_string(reg)).toStrictEqual(
+      "testString",
+      "Incorrect result from raw map get"
+    );
+
+    map.set_raw(2, reg);
+
+    expect(map.contains(2)).toBe(
+      true,
+      "Map does not contain a key that was added (1)"
+    );
+    expect(map.getSome(2)).toStrictEqual(
+      "testString",
+      "Incorrect result from map get"
+    );
+  })
 
   it("some entries", () => {
     const map = new PersistentMap<string, TextMessage>("mapId");
