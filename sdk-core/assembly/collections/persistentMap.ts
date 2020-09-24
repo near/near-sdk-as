@@ -147,4 +147,35 @@ export class PersistentMap<K, V> {
   set(key: K, value: V): void {
     storage.set<V>(this._key(key), value);
   }
+
+  /**
+   * Retrieves a related value for a given key and puts it in the specified register.
+   * Defaults to putting the value to register 0.
+   * Fails assertion with "key not found" if key is not found in the map.
+   *
+   * @param key Key of the element.
+   * @param register_id The ID of the register to store the value of the key to, defaults to 0.
+   * @returns The ID of the register used.
+   */
+  get_raw(key: K, register_id: u64 = 0): u64 {
+    if (!this.contains(key)) {
+      assert(
+        false,
+        "Key '" + this._key(key) + "' is not present in the storage"
+      );
+    }
+    storage.read_raw(this._key(key), register_id);
+    return register_id;
+  }
+
+  /**
+   * Write contents of register to corresponding key.
+   *
+   * @param key Key of the element.
+   * @param register_id The ID of the register from which the value is obtained.
+   * @returns An errorcode. A value of `1` means success.
+   */
+  set_raw(key: K, register_id: u64): u64 {
+    return storage.write_raw(this._key(key), register_id);
+  }
 }
