@@ -1,3 +1,4 @@
+import { util } from "near-sdk-core";
 import { AVLTree, MapEntry, RNG, VMContext } from "..";
 
 let tree: AVLTree<u32, u32>;
@@ -108,6 +109,24 @@ describe("AVLTrees should handle", () => {
     expect(tree.has(key)).toBeTruthy("The tree should have the key");
     expect(tree.containsKey(key)).toBeTruthy("The tree should contain the key");
     expect(tree.getSome(key)).toStrictEqual(value);
+  });
+
+  it("adds and reads key-value pairs from register", () => {
+    const key = 3;
+    const value = 4;
+    const newKey = 5;
+
+    tree.set(key, value);
+    const reg = tree.get_raw(key);
+
+    expect(util.parseFromBytes<u32>(util.read_register(reg))).toStrictEqual(value);
+
+    tree.set_raw(newKey, 0);
+
+    expect(tree.has(newKey)).toBeTruthy("The tree should have the key");
+    expect(tree.containsKey(newKey)).toBeTruthy("The tree should contain the key");
+    expect(tree.getSome(newKey)).toStrictEqual(value);
+
   });
 
   it("checks for non-existent keys", () => {
