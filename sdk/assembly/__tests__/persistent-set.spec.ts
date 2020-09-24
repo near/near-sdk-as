@@ -1,3 +1,4 @@
+import { storage } from "near-sdk-core";
 import { PersistentSet } from "..";
 
 let set: PersistentSet<string>;
@@ -16,6 +17,15 @@ describe("Sets should handle", () => {
     addItem();
     expect(set.has(item)).toBeTruthy("The set should have the item");
   });
+
+  it("can add and read item from register", () => {
+    storage.setString("key", item);
+    storage.read_raw("key", 0);
+    set.add_raw(0);
+
+    expect(set.has(item)).toBeTruthy("The set should have the item");
+    expect(set.has_raw(0)).toBeTruthy("The set should have the item as specified in the register");
+  })
 
   it("checks for items", () => {
     expect(set.has(item)).toBeFalsy("The set should not have the item");
