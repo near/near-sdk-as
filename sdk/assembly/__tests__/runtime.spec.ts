@@ -573,6 +573,47 @@ describe("Vectors should handle", () => {
     expect(vector.first).toBe("bb", "Incorrect first entry");
   });
 
+  it("raw operations", () => {
+    vector.push("a");
+    vector.push("b");
+    vector.push("c");
+
+    let reg = vector.pop_raw();
+    expect(_vectorHasContents(vector, ["a", "b"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [a, b]"
+    );
+    expect(vector.length).toBe(2, "Vector has incorrect length after pop_raw");
+    expect(util.read_register_string(reg)).toBe("c", "Incorrect evicted entry");
+    
+    reg = vector.get_raw(0);
+    expect(util.read_register_string(reg)).toBe("a", "Incorrect first entry");
+
+    vector.push_raw(0);
+    expect(_vectorHasContents(vector, ["a", "b", "a"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [a, b, a]"
+    );
+    expect(vector.length).toBe(3, "Vector has incorrect length after push_raw");
+
+    storage.setString("key", "d");
+    storage.read_raw("key", 0);
+    vector.replace_raw(2, 0);
+    expect(_vectorHasContents(vector, ["a", "b", "d"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [a, b, d]"
+    );
+    expect(vector.length).toBe(3, "Vector has incorrect length after replace_raw");
+    
+    reg = vector.swap_remove_raw(0);
+    expect(_vectorHasContents(vector, ["d", "b"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [d, b]"
+    );
+    expect(vector.length).toBe(2, "Vector has incorrect length after swap_remove_raw");
+    expect(util.read_register_string(reg)).toBe("a", "Incorrect evicted entry after swap_remove_raw");
+  });
+
   it("popping from the front", () => {
     vector.push("bb");
     vector.pushBack("bc");
