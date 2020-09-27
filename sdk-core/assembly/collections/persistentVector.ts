@@ -314,7 +314,7 @@ export class PersistentVector<T> {
    * @return The element that was removed
    */
   swap_remove(index: i32): T {
-    assert(index <= this.length, "Index out of bounds");
+    assert(index < this.length, "Index out of bounds");
     if (index + 1 == this.length) {
       return this.pop();
     } else {
@@ -352,7 +352,7 @@ export class PersistentVector<T> {
    * @returns The element that was replaced
    */
   replace(index: i32, new_element: T): T {
-    assert(index <= this.length, "Index out of bounds");
+    assert(index < this.length, "Index out of bounds");
     let evicted = this.__unchecked_get(index);
     storage.set(this._key(index), new_element);
     return evicted;
