@@ -140,7 +140,11 @@ export class JSONBindingsBuilder extends BaseVisitor {
       .join("|");
     let hasNull = toString(returnType).includes("null");
     let name = func.name.text;
-
+    if (func.decorators && func.decorators.length > 0) {
+      this.sb.push(
+        func.decorators.map((decorator) => toString(decorator)).join("\n")
+      );
+    }
     this.sb.push(`function __wrapper_${name}(): void {`);
     if (params.length > 0) {
       this.sb.push(`  const obj = getInput();`);
