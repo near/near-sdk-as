@@ -75,6 +75,27 @@ describe("Unordered Map should handle", () => {
     );
   });
 
+  it("should replace value on set(key, value)", () => {
+    // add an entry to the map
+    const message = _testTextMessage();
+    const message2 = _testTextMessageTwo();
+    unOrderedMap.set("mapKey1", message);
+    expect(unOrderedMap.length).toBe(1, "length after set");
+    expect(unOrderedMap.contains("mapKey1")).toBe(true);
+    expect(unOrderedMap.getSome("mapKey1")).toStrictEqual(
+      message,
+      "Incorrect result from map get"
+    );
+    // set a new value for the key
+    unOrderedMap.set("mapKey1", message2);
+    expect(unOrderedMap.contains("mapKey1")).toBe(true);
+    expect(unOrderedMap.length).toBe(1, "length after replace");
+    expect(unOrderedMap.getSome("mapKey1")).toStrictEqual(
+      message2,
+      "Incorrect result from map get"
+    );
+  });
+
   it("deleting last entry", () => {
     // add some entries to the map
     const message = _testTextMessage();
