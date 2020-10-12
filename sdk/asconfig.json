@@ -1,7 +1,8 @@
 {
   "targets": {
     "release": {
-      "-O3z": true
+      "optimizeLevel": 3,
+      "shrinkLevel": 3
     },
     "debug": {
       "debug": true
