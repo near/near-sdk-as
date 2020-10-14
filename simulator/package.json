@@ -8,7 +8,7 @@
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "scripts": {
     "asb": "asb --target debug --wat",
-    "build": "yarn asb assembly/__tests__/sentences.ts && yarn asb assembly/__tests__/words.ts && yarn asb assembly/__tests__/avlTreeContract.ts && yarn asb assembly/__tests__/empty.ts",
+    "build": "yarn asb assembly/__tests__/sentences.ts && yarn asb assembly/__tests__/words.ts && yarn asb assembly/__tests__/avlTreeContract.ts && yarn asb assembly/__tests__/empty.ts && yarn asb assembly/__tests__/exportAs.ts",
     "test": "yarn jest",
     "pretest": "yarn build"
   },
