@@ -19,8 +19,8 @@ export class PersistentUnorderedMap<K, V> {
    * @param prefix A prefix to use for every key of this map.
    */
   constructor(prefix: string) {
-    this._map = new PersistentMap<K, i32>(prefix + ":map");
-    this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ":entries");
+    this._map = new PersistentMap<K, i32>(prefix + ":map"); //stores key=>index
+    this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ":entries"); //stores vec[index]=<key,value>
   }
 
   /**
@@ -172,11 +172,11 @@ export class PersistentUnorderedMap<K, V> {
   set(key: K, value: V): void {
     let entry = new MapEntry<K, V>(key, value);
     if (this._map.contains(key)) {
-      if (this.getSome(key) != value) {
-        this._map.set(key, this._entries.length);
-        this._entries.push(entry);
-      }
+      //key already exists
+      const index = this._map.getSome(key); //get index
+      this._entries[index] = entry; //replace entry
     } else {
+      //new key
       this._map.set(key, this._entries.length);
       this._entries.push(entry);
     }
