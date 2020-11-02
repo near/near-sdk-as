@@ -166,14 +166,29 @@ function debugString(val) {
     return className;
 }
 /**
+* @param {any} wasm_bytes
+* @returns {any}
 */
-module.exports.main = function() {
-    wasm.main();
+module.exports.inject_contract = function(wasm_bytes) {
+    var ret = wasm.inject_contract(addHeapObject(wasm_bytes));
+    return takeObject(ret);
+};
+
+/**
+* @param {any} mem
+*/
+module.exports.test_memory = function(mem) {
+    wasm.test_memory(addHeapObject(mem));
 };
 
 const u32CvtShim = new Uint32Array(2);
 
 const uint64CvtShim = new BigUint64Array(u32CvtShim.buffer);
+/**
+*/
+module.exports.main = function() {
+    wasm.main();
+};
 
 function logError(f) {
     return function () {
@@ -197,21 +212,6 @@ function logError(f) {
 function getArrayU8FromWasm0(ptr, len) {
     return getUint8Memory0().subarray(ptr / 1, ptr / 1 + len);
 }
-/**
-* @param {any} wasm_bytes
-* @returns {any}
-*/
-module.exports.inject_contract = function(wasm_bytes) {
-    var ret = wasm.inject_contract(addHeapObject(wasm_bytes));
-    return takeObject(ret);
-};
-
-/**
-* @param {any} mem
-*/
-module.exports.test_memory = function(mem) {
-    wasm.test_memory(addHeapObject(mem));
-};
 
 function handleError(f) {
     return function () {
@@ -2107,7 +2107,9 @@ class VM {
         wasm.vm_validator_total_stake(this.ptr, low0, high0);
     }
     /**
-    * Utilities
+    *
+    *     * Utilities
+    *
     *Computes the outcome of execution.
     * @returns {any}
     */
@@ -2128,6 +2130,11 @@ class VM {
     }
 }
 module.exports.VM = VM;
+
+module.exports.__wbindgen_object_clone_ref = function(arg0) {
+    var ret = getObject(arg0);
+    return addHeapObject(ret);
+};
 
 module.exports.__wbg_fitsmemory_8e38756424432b8d = logError(function(arg0, arg1, arg2, arg3, arg4) {
     u32CvtShim[0] = arg1;
@@ -2164,15 +2171,6 @@ module.exports.__wbg_writememory_ac21b7d629311fbb = logError(function(arg0, arg1
     getObject(arg0).write_memory(n0, getArrayU8FromWasm0(arg3, arg4));
 });
 
-module.exports.__wbindgen_object_clone_ref = function(arg0) {
-    var ret = getObject(arg0);
-    return addHeapObject(ret);
-};
-
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
-};
-
 module.exports.__wbg_error_4bb6c2a97407129a = logError(function(arg0, arg1) {
     try {
         console.error(getStringFromWasm0(arg0, arg1));
@@ -2194,14 +2192,9 @@ module.exports.__wbg_stack_558ba5917b466edd = logError(function(arg0, arg1) {
     getInt32Memory0()[arg0 / 4 + 0] = ptr0;
 });
 
-module.exports.__wbg_new_68adb0d58759a4ed = logError(function() {
-    var ret = new Object();
-    return addHeapObject(ret);
-});
-
-module.exports.__wbg_set_2e79e744454afade = logError(function(arg0, arg1, arg2) {
-    getObject(arg0)[takeObject(arg1)] = takeObject(arg2);
-});
+module.exports.__wbindgen_object_drop_ref = function(arg0) {
+    takeObject(arg0);
+};
 
 module.exports.__wbindgen_is_undefined = function(arg0) {
     var ret = getObject(arg0) === undefined;
@@ -2231,6 +2224,15 @@ module.exports.__wbindgen_is_object = function(arg0) {
     _assertBoolean(ret);
     return ret;
 };
+
+module.exports.__wbg_new_68adb0d58759a4ed = logError(function() {
+    var ret = new Object();
+    return addHeapObject(ret);
+});
+
+module.exports.__wbg_set_2e79e744454afade = logError(function(arg0, arg1, arg2) {
+    getObject(arg0)[takeObject(arg1)] = takeObject(arg2);
+});
 
 module.exports.__wbg_new_17534eac4df3cd22 = logError(function() {
     var ret = new Array();
@@ -2329,16 +2331,16 @@ module.exports.__wbg_set_478951586c457484 = logError(function(arg0, arg1, arg2) 
     getObject(arg0).set(getObject(arg1), arg2 >>> 0);
 });
 
-module.exports.__wbg_buffer_88f603259d7a7b82 = logError(function(arg0) {
-    var ret = getObject(arg0).buffer;
-    return addHeapObject(ret);
-});
-
 module.exports.__wbindgen_is_function = function(arg0) {
     var ret = typeof(getObject(arg0)) === 'function';
     _assertBoolean(ret);
     return ret;
 };
+
+module.exports.__wbg_buffer_88f603259d7a7b82 = logError(function(arg0) {
+    var ret = getObject(arg0).buffer;
+    return addHeapObject(ret);
+});
 
 module.exports.__wbg_get_2e96a823c1c5a5bd = handleError(function(arg0, arg1) {
     var ret = Reflect.get(getObject(arg0), getObject(arg1));

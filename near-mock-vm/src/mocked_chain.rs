@@ -146,7 +146,7 @@ impl VM {
     pub fn set_account_balance(&mut self, u_128: JsValue) {
         let balance: String = serde_wasm_bindgen::from_value(u_128).unwrap();
         self.context.account_balance =
-            u128::from_str_radix(&balance, 10).unwrap() + self.context.attached_deposit; // TODO: serde_wasm_bindgen::from_value(_u128).unwrap()
+            u128::from_str_radix(&balance, 10).unwrap(); // TODO: serde_wasm_bindgen::from_value(_u128).unwrap()
         self.switch_context()
     }
 
