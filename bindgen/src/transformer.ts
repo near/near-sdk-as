@@ -1,6 +1,7 @@
 import { Transform, Parser, Source, Module } from "visitor-as/as";
 import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
+import { ClassExporter } from "./classExporter";
 
 class JSONTransformer extends Transform {
   parser: Parser;
@@ -19,6 +20,7 @@ class JSONTransformer extends Transform {
       .some((path) => path.includes("spec"));
     // Visit each file
     files.forEach((source) => {
+      ClassExporter.visit(source);
       let writeOut = /\/\/.*@nearfile .*out/.test(source.text);
       // Remove from logs in parser
       parser.donelog.delete(source.internalPath);
