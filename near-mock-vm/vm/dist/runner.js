@@ -34,6 +34,7 @@ class VMRunner {
         const context = context_1.createContext(contextPath);
         this.vm = new near_mock_vm_1.VM(context, memory);
         this.memory = memory;
+        this.savedMemory = memory.memory.buffer;
     }
     static create(memory, contextPath) {
         let mem = new memory_1.Memory(memory);
@@ -58,6 +59,12 @@ class VMRunner {
         let memory = this.memory.Memory;
         let _imports = {
             vm: {
+                saveMem() {
+                    self.savedMemory = memory.buffer.slice(0, memory.buffer.byteLength);
+                },
+                restoreMem() {
+                    new Uint8Array(memory.buffer).set(new Uint8Array(self.savedMemory, 0, memory.buffer.byteLength / 4));
+                },
                 restoreState() {
                     vm.reset();
                 },

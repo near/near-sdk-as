@@ -14,11 +14,13 @@ export class VMRunner {
   wasm: stringKeys | null = null;
   memory: Memory;
   gas: number = 0;
+  savedMemory: ArrayBuffer;
 
   constructor(memory: Memory, contextPath?: string) {
     const context = createContext(contextPath);
     this.vm = new VM(context, memory);
     this.memory = memory;
+    this.savedMemory = memory.memory.buffer;
   }
 
   static create(memory?: WebAssembly.Memory, contextPath?: string): VMRunner {
@@ -47,6 +49,14 @@ export class VMRunner {
     let memory = this.memory.Memory;
     let _imports = {
       vm: {
+        saveMem() {
+          self.savedMemory = memory.buffer.slice(0, memory.buffer.byteLength);
+        },
+        restoreMem() {
+          new Uint8Array(memory.buffer).set(
+            new Uint8Array(self.savedMemory, 0, memory.buffer.byteLength / 4)
+          );
+        },
         restoreState() {
           vm.reset();
         },

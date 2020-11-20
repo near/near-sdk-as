@@ -24,4 +24,11 @@ export namespace VM {
   export function logs(): string[] {
     return outcome().logs;
   }
+
+  //@ts-ignore
+  @external("vm", "saveMem")
+  export declare function saveMem(): void;
+  //@ts-ignore
+  @external("vm", "restoreMem")
+  export declare function restoreMem(): void;
 }

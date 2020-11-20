@@ -20,4 +20,9 @@ export function pushString(arr: string[], str: string): Array<string> {
  */
 beforeEach(() => {
   VM.restoreState();
+  VM.saveMem();
+});
+
+afterEach(() => {
+  VM.restoreMem();
 });

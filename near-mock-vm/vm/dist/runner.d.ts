@@ -9,6 +9,7 @@ export declare class VMRunner {
     wasm: stringKeys | null;
     memory: Memory;
     gas: number;
+    savedMemory: ArrayBuffer;
     constructor(memory: Memory, contextPath?: string);
     static create(memory?: WebAssembly.Memory, contextPath?: string): VMRunner;
     static instrumentBinary(binary: Uint8Array): Uint8Array;
