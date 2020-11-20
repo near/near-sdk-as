@@ -74,12 +74,7 @@ export class VMRunner {
           );
           return outcomePtr.valueOf();
         },
-        // saveContext() {
-        //   vm.save_context();
-        // },
-        // restoreContext() {
-        //   vm.restore_context();
-        // },
+
         setCurrent_account_id(s: number) {
           vm.set_current_account_id(self.readUTF8Str(s));
         },
@@ -103,18 +98,17 @@ export class VMRunner {
         setBlock_timestamp(stmp: BigInt) {
           vm.set_block_timestamp(stmp);
         },
-        setAccount_balance(lo: BigInt, hi: BigInt) {
-          //TODO: actually  u128
-          vm.set_account_balance(utils.createU128Str(lo, hi));
+        setAccount_balance(s: number) {
+          vm.set_account_balance(self.readUTF8Str(s));
         },
-        setAccount_locked_balance(lo: BigInt, hi: BigInt) {
-          vm.set_account_locked_balance(utils.createU128Str(lo, hi));
+        setAccount_locked_balance(s: number) {
+          vm.set_account_locked_balance(self.readUTF8Str(s));
         },
         setStorage_usage(amt: BigInt) {
           vm.set_storage_usage(amt);
         },
-        setAttached_deposit(lo: BigInt, hi: BigInt) {
-          vm.set_attached_deposit(utils.createU128Str(lo, hi));
+        setAttached_deposit(s: number) {
+          vm.set_attached_deposit(self.readUTF8Str(s));
         },
         setPrepaid_gas(_u64: BigInt) {
           vm.set_prepaid_gas(_u64);

@@ -37,3 +37,5 @@ export class Collections {
 export class Word {
   constructor(public text: string) {}
 }
+
+export let vector = new PersistentVector<u32>("");
