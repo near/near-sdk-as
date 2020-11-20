@@ -454,7 +454,7 @@ export class VMRunner {
         },
 
         // Validator API
-        validtor_stake(id_len: BigInt, id_ptr: BigInt, data_ptr: BigInt) {
+        validator_stake(id_len: BigInt, id_ptr: BigInt, data_ptr: BigInt) {
           return vm.validator_stake(id_len, id_ptr, data_ptr);
         },
         validator_total_stake(data_ptr: BigInt) {

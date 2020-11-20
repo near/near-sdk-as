@@ -300,7 +300,7 @@ class VMRunner {
                     return vm.gas(gas_amount);
                 },
                 // Validator API
-                validtor_stake(id_len, id_ptr, data_ptr) {
+                validator_stake(id_len, id_ptr, data_ptr) {
                     return vm.validator_stake(id_len, id_ptr, data_ptr);
                 },
                 validator_total_stake(data_ptr) {
