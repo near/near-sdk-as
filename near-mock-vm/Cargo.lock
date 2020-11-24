@@ -287,7 +287,7 @@ checksum = "1bd4d93a20f7ac0472731fdf00726d1292c25ae96ea784edfa05d61ac77b7448"
 [[package]]
 name = "near-sdk"
 version = "2.0.0"
-source = "git+https://github.com/near/near-sdk-rs?branch=add_wasm_mock_vm#10b2b0906a0fb28a912df98120b156e1df43ce31"
+source = "git+https://github.com/near/near-sdk-rs?branch=add_wasm_mock_vm#4ffe99c7b57e1a3c4072f730e7513ff627ff8f23"
 dependencies = [
  "base64 0.11.0",
  "borsh",
@@ -303,7 +303,7 @@ dependencies = [
 [[package]]
 name = "near-sdk-core"
 version = "2.0.0"
-source = "git+https://github.com/near/near-sdk-rs?branch=add_wasm_mock_vm#10b2b0906a0fb28a912df98120b156e1df43ce31"
+source = "git+https://github.com/near/near-sdk-rs?branch=add_wasm_mock_vm#4ffe99c7b57e1a3c4072f730e7513ff627ff8f23"
 dependencies = [
  "Inflector",
  "proc-macro2",
@@ -314,7 +314,7 @@ dependencies = [
 [[package]]
 name = "near-sdk-macros"
 version = "2.0.0"
-source = "git+https://github.com/near/near-sdk-rs?branch=add_wasm_mock_vm#10b2b0906a0fb28a912df98120b156e1df43ce31"
+source = "git+https://github.com/near/near-sdk-rs?branch=add_wasm_mock_vm#4ffe99c7b57e1a3c4072f730e7513ff627ff8f23"
 dependencies = [
  "near-sdk-core",
  "proc-macro2",

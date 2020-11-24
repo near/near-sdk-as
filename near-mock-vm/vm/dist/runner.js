@@ -34,6 +34,7 @@ class VMRunner {
         const context = context_1.createContext(contextPath);
         this.vm = new near_mock_vm_1.VM(context, memory);
         this.memory = memory;
+        this.savedMemory = memory.memory.buffer;
     }
     static create(memory, contextPath) {
         let mem = new memory_1.Memory(memory);
@@ -58,6 +59,12 @@ class VMRunner {
         let memory = this.memory.Memory;
         let _imports = {
             vm: {
+                saveMem() {
+                    self.savedMemory = memory.buffer.slice(0, memory.buffer.byteLength);
+                },
+                restoreMem() {
+                    new Uint8Array(memory.buffer).set(new Uint8Array(self.savedMemory, 0, memory.buffer.byteLength / 4));
+                },
                 restoreState() {
                     vm.reset();
                 },
@@ -75,12 +82,6 @@ class VMRunner {
                     let outcomePtr = new self.wasm.Outcome(balancePtr, BigInt(outcome.burnt_gas), BigInt(outcome.used_gas), strArrPtr, BigInt(outcome.storage_usage), return_data_ptr);
                     return outcomePtr.valueOf();
                 },
-                // saveContext() {
-                //   vm.save_context();
-                // },
-                // restoreContext() {
-                //   vm.restore_context();
-                // },
                 setCurrent_account_id(s) {
                     vm.set_current_account_id(self.readUTF8Str(s));
                 },
@@ -104,18 +105,17 @@ class VMRunner {
                 setBlock_timestamp(stmp) {
                     vm.set_block_timestamp(stmp);
                 },
-                setAccount_balance(lo, hi) {
-                    //TODO: actually  u128
-                    vm.set_account_balance(utils.createU128Str(lo, hi));
+                setAccount_balance(s) {
+                    vm.set_account_balance(self.readUTF8Str(s));
                 },
-                setAccount_locked_balance(lo, hi) {
-                    vm.set_account_locked_balance(utils.createU128Str(lo, hi));
+                setAccount_locked_balance(s) {
+                    vm.set_account_locked_balance(self.readUTF8Str(s));
                 },
                 setStorage_usage(amt) {
                     vm.set_storage_usage(amt);
                 },
-                setAttached_deposit(lo, hi) {
-                    vm.set_attached_deposit(utils.createU128Str(lo, hi));
+                setAttached_deposit(s) {
+                    vm.set_attached_deposit(self.readUTF8Str(s));
                 },
                 setPrepaid_gas(_u64) {
                     vm.set_prepaid_gas(_u64);
@@ -128,10 +128,7 @@ class VMRunner {
                 },
                 setEpoch_height(_u64) {
                     vm.set_epoch_height(_u64);
-                }
-                // setOutput_data_receivers(arr) {
-                //   vm.set_output_data_receivers(arr);
-                // },
+                },
             },
             env: {
                 memory,
@@ -303,7 +300,7 @@ class VMRunner {
                     return vm.gas(gas_amount);
                 },
                 // Validator API
-                validtor_stake(id_len, id_ptr, data_ptr) {
+                validator_stake(id_len, id_ptr, data_ptr) {
                     return vm.validator_stake(id_len, id_ptr, data_ptr);
                 },
                 validator_total_stake(data_ptr) {

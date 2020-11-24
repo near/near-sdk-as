@@ -1,9 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- */
-export function main(): void;
-/**
  * @param {any} wasm_bytes
  * @returns {any}
  */
@@ -12,6 +9,9 @@ export function inject_contract(wasm_bytes: any): any;
  * @param {any} mem
  */
 export function test_memory(mem: any): void;
+/**
+ */
+export function main(): void;
 /**
  */
 export class VM {
@@ -1117,7 +1117,9 @@ export class VM {
    */
   validator_total_stake(stake_ptr: BigInt): void;
   /**
-   * Utilities
+   *
+   *     * Utilities
+   *
    *Computes the outcome of execution.
    * @returns {any}
    */

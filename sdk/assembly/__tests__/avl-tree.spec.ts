@@ -95,12 +95,8 @@ function generateRandomTree(t: AVLTree<u32, u32>, n: u32): Map<u32, u32> {
 }
 
 describe("AVLTrees should handle", () => {
-  beforeAll(() => {
+  beforeEach(() => {
     tree = new AVLTree<u32, u32>("tree1");
-  });
-
-  afterEach(() => {
-    tree.clear();
   });
 
   it("adds key-value pairs", () => {
@@ -253,7 +249,7 @@ describe("AVLTrees should handle", () => {
 
       expect(tree.height).toBeLessThanOrEqual(maxTreeHeight(n));
 
-      tree.clear();
+      // tree.clear();
     });
   });
 

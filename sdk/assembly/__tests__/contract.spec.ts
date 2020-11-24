@@ -2,10 +2,6 @@ import { storage, VM } from "..";
 import { Contract } from "./contract";
 
 describe("Contract", () => {
-  afterEach(() => {
-    VM.restoreState();
-  });
-
   it("should be able to be stored and retrieved", () => {
     const contract = new Contract("unique name!");
     expect(storage.contains("contract")).toBe(

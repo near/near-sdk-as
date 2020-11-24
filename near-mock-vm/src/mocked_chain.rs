@@ -70,11 +70,10 @@ impl VM {
     pub fn new(context: JsValue, mem: NearMemory) -> Self {
         set_panic_hook();
         let memory: MockedMemory = MockedMemory { mem };
-        let _context: VMContext = serde_wasm_bindgen::from_value(context).unwrap();
-        let context: VMContext = _context.clone();
+        let context: VMContext = serde_wasm_bindgen::from_value(context).unwrap();
         let original: VMContext = context.clone();
         let stor_opt: Option<Storage> = None;
-        let chain = new_chain(_context, stor_opt, memory.clone());
+        let chain = new_chain(context.clone(), stor_opt, memory.clone());
         Self {
             chain,
             context,
@@ -89,6 +88,7 @@ impl VM {
 
     pub fn reset(&mut self) {
         self.chain = new_chain(self.original.clone(), None, self.memory.clone());
+        self.context = self.original.clone();
     }
 
     pub fn set_context(&mut self, context: JsValue) {
@@ -146,7 +146,7 @@ impl VM {
     pub fn set_account_balance(&mut self, u_128: JsValue) {
         let balance: String = serde_wasm_bindgen::from_value(u_128).unwrap();
         self.context.account_balance =
-            u128::from_str_radix(&balance, 10).unwrap() + self.context.attached_deposit; // TODO: serde_wasm_bindgen::from_value(_u128).unwrap()
+            u128::from_str_radix(&balance, 10).unwrap(); // TODO: serde_wasm_bindgen::from_value(_u128).unwrap()
         self.switch_context()
     }
 
@@ -248,7 +248,7 @@ impl VM {
     // # Cost
     //
     // `base + read_memory_base + read_memory_bytes * num_bytes + write_register_base + write_register_bytes * num_bytes`
-    // pub fn write_register(&mut self, register_id: u64, data_len: u64, data_ptr: u64) -> () {
+    // pub fn write_register(&mut self, register_id: u64, data_len: u64, data_ptr: u64) {
     //    self.chain.write_register(register_id, data_len, data_ptr))
     // }
     // TODO
@@ -300,7 +300,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes`
-    pub fn current_account_id(&mut self, register_id: u64) -> () {
+    pub fn current_account_id(&mut self, register_id: u64) {
         unsafe { self.chain.current_account_id(register_id) }
     }
     /// All contract calls are a result of some transaction that was signed by some account using
@@ -316,7 +316,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes`
-    pub fn signer_account_id(&mut self, register_id: u64) -> () {
+    pub fn signer_account_id(&mut self, register_id: u64) {
         unsafe { self.chain.signer_account_id(register_id) }
     }
     /// Saves the public key fo the access key that was used by the signer into the register. In
@@ -331,7 +331,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes`
-    pub fn signer_account_pk(&mut self, register_id: u64) -> () {
+    pub fn signer_account_pk(&mut self, register_id: u64) {
         unsafe { self.chain.signer_account_pk(register_id) }
     }
     /// All contract calls are a result of a receipt, this receipt might be created by a transaction
@@ -346,7 +346,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes`
-    pub fn predecessor_account_id(&mut self, register_id: u64) -> () {
+    pub fn predecessor_account_id(&mut self, register_id: u64) {
         unsafe { self.chain.predecessor_account_id(register_id) }
     }
     /// Reads input to the contract call into the register. Input is expected to be in JSON-format.
@@ -356,7 +356,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes`
-    pub fn input(&mut self, register_id: u64) -> () {
+    pub fn input(&mut self, register_id: u64) {
         unsafe { self.chain.input(register_id) }
     }
     /// Returns the current block height.
@@ -404,7 +404,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + memory_write_base + memory_write_size * 16`
-    pub fn account_balance(&mut self, balance_ptr: u64) -> () {
+    pub fn account_balance(&mut self, balance_ptr: u64) {
         // self.builder.memory.write_memory(balance_ptr, &self.context.account_balance.to_le_bytes())
         unsafe { self.chain.account_balance(balance_ptr) }
     }
@@ -413,7 +413,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + memory_write_base + memory_write_size * 16`
-    pub fn account_locked_balance(&mut self, balance_ptr: u64) -> () {
+    pub fn account_locked_balance(&mut self, balance_ptr: u64) {
         unsafe { self.chain.account_locked_balance(balance_ptr) }
     }
     /// The balance that was attached to the call that will be immediately deposited before the
@@ -426,7 +426,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + memory_write_base + memory_write_size * 16`
-    pub fn attached_deposit(&mut self, balance_ptr: u64) -> () {
+    pub fn attached_deposit(&mut self, balance_ptr: u64) {
         unsafe { self.chain.attached_deposit(balance_ptr) }
     }
     /// The amount of gas attached to the call that can be used to pay for the gas fees.
@@ -466,7 +466,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes`.
-    pub fn random_seed(&mut self, register_id: u64) -> () {
+    pub fn random_seed(&mut self, register_id: u64) {
         unsafe { self.chain.random_seed(register_id) }
     }
     /// Hashes the random sequence of bytes using sha256 and returns it into `register_id`.
@@ -479,7 +479,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes + sha256_base + sha256_byte * num_bytes`
-    pub fn sha256(&mut self, value_len: u64, value_ptr: u64, register_id: u64) -> () {
+    pub fn sha256(&mut self, value_len: u64, value_ptr: u64, register_id: u64) {
         unsafe { self.chain.sha256(value_len, value_ptr, register_id) }
     }
 
@@ -493,7 +493,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes + keccak256_base + keccak256_byte * num_bytes`
-    pub fn keccak256(&mut self, value_len: u64, value_ptr: u64, register_id: u64) -> () {
+    pub fn keccak256(&mut self, value_len: u64, value_ptr: u64, register_id: u64) {
         unsafe { self.chain.keccak256(value_len, value_ptr, register_id) }
     }
 
@@ -507,7 +507,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + write_register_base + write_register_byte * num_bytes + keccak512_base + keccak512_byte * num_bytes`
-    pub fn keccak512(&mut self, value_len: u64, value_ptr: u64, register_id: u64) -> () {
+    pub fn keccak512(&mut self, value_len: u64, value_ptr: u64, register_id: u64) {
         unsafe { self.chain.keccak512(value_len, value_ptr, register_id) }
     }
 
@@ -518,7 +518,7 @@ impl VM {
     /// * If passed gas amount somehow overflows internal gas counters returns `IntegerOverflow`;
     /// * If we exceed usage limit imposed on burnt gas returns `GasLimitExceeded`;
     /// * If we exceed the `prepaid_gas` then returns `GasExceeded`.
-    pub fn gas(&mut self, gas_amount: u32) -> () {
+    pub fn gas(&mut self, gas_amount: u32) {
         self.chain.gas(gas_amount)
     }
 
@@ -729,7 +729,7 @@ impl VM {
     ///
     /// `burnt_gas := base + dispatch action fee`
     /// `used_gas := burnt_gas + exec action fee`
-    pub fn promise_batch_action_create_account(&mut self, promise_idx: u64) -> () {
+    pub fn promise_batch_action_create_account(&mut self, promise_idx: u64) {
         unsafe { self.chain.promise_batch_action_create_account(promise_idx) }
     }
     /// Appends `DeployContract` action to the batch of actions for the given promise pointed by
@@ -753,7 +753,7 @@ impl VM {
         promise_idx: u64,
         code_len: u64,
         code_ptr: u64,
-    ) -> () {
+    ) {
         unsafe {
             self.chain
                 .promise_batch_action_deploy_contract(promise_idx, code_len, code_ptr)
@@ -787,7 +787,7 @@ impl VM {
         arguments_ptr: u64,
         amount_ptr: u64,
         gas: Gas,
-    ) -> () {
+    ) {
         unsafe {
             self.chain.promise_batch_action_function_call(
                 promise_idx,
@@ -817,7 +817,7 @@ impl VM {
     ///
     /// `burnt_gas := base + dispatch action base fee + dispatch action per byte fee * num bytes + cost of reading u128 from memory `
     /// `used_gas := burnt_gas + exec action base fee + exec action per byte fee * num bytes`
-    pub fn promise_batch_action_transfer(&mut self, promise_idx: u64, amount_ptr: u64) -> () {
+    pub fn promise_batch_action_transfer(&mut self, promise_idx: u64, amount_ptr: u64) {
         unsafe {
             self.chain
                 .promise_batch_action_transfer(promise_idx, amount_ptr)
@@ -847,7 +847,7 @@ impl VM {
         amount_ptr: u64,
         public_key_len: u64,
         public_key_ptr: u64,
-    ) -> () {
+    ) {
         unsafe {
             self.chain.promise_batch_action_stake(
                 promise_idx,
@@ -881,7 +881,7 @@ impl VM {
         public_key_len: u64,
         public_key_ptr: u64,
         nonce: u64,
-    ) -> () {
+    ) {
         unsafe {
             self.chain.promise_batch_action_add_key_with_full_access(
                 promise_idx,
@@ -922,7 +922,7 @@ impl VM {
         receiver_id_ptr: u64,
         method_names_len: u64,
         method_names_ptr: u64,
-    ) -> () {
+    ) {
         unsafe {
             self.chain.promise_batch_action_add_key_with_function_call(
                 promise_idx,
@@ -960,7 +960,7 @@ impl VM {
         promise_idx: u64,
         public_key_len: u64,
         public_key_ptr: u64,
-    ) -> () {
+    ) {
         unsafe {
             self.chain
                 .promise_batch_action_delete_key(promise_idx, public_key_len, public_key_ptr)
@@ -988,7 +988,7 @@ impl VM {
         promise_idx: u64,
         beneficiary_id_len: u64,
         beneficiary_id_ptr: u64,
-    ) -> () {
+    ) {
         unsafe {
             self.chain.promise_batch_action_delete_account(
                 promise_idx,
@@ -1051,7 +1051,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + promise_return`
-    pub fn promise_return(&mut self, promise_idx: u64) -> () {
+    pub fn promise_return(&mut self, promise_idx: u64) {
         unsafe { self.chain.promise_return(promise_idx) }
     }
     /// #####################
@@ -1067,7 +1067,7 @@ impl VM {
     ///
     /// # Cost
     /// `base + cost of reading return value from memory or register + dispatch&exec cost per byte of the data sent * num data receivers`
-    pub fn value_return(&mut self, value_len: u64, value_ptr: u64) -> () {
+    pub fn value_return(&mut self, value_len: u64, value_ptr: u64) {
         unsafe { self.chain.value_return(value_len, value_ptr) }
     }
     /// Terminates the execution of the program with panic `GuestPanic`.
@@ -1075,7 +1075,7 @@ impl VM {
     /// # Cost
     ///
     /// `base`
-    pub fn panic(&mut self) -> () {
+    pub fn panic(&mut self) {
         unsafe { self.chain.panic() }
     }
     /// Guest panics with the UTF-8 encoded string.
@@ -1089,7 +1089,7 @@ impl VM {
     ///
     /// # Cost
     /// `base + cost of reading and decoding a utf8 string`
-    pub fn panic_utf8(&mut self, len: u64, ptr: u64) -> () {
+    pub fn panic_utf8(&mut self, len: u64, ptr: u64) {
         unsafe { self.chain.panic_utf8(len, ptr) }
     }
     /// Logs the UTF-8 encoded string.
@@ -1104,7 +1104,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + log_base + log_byte + num_bytes + utf8 decoding cost`
-    pub fn log_utf8(&mut self, len: u64, ptr: u64) -> () {
+    pub fn log_utf8(&mut self, len: u64, ptr: u64) {
         unsafe { self.chain.log_utf8(len, ptr) }
     }
     /// Logs the UTF-16 encoded string. If `len == u64::MAX` then treats the string as
@@ -1118,7 +1118,7 @@ impl VM {
     /// # Cost
     ///
     /// `base + log_base + log_byte * num_bytes + utf16 decoding cost`
-    pub fn log_utf16(&mut self, len: u64, ptr: u64) -> () {
+    pub fn log_utf16(&mut self, len: u64, ptr: u64) {
         unsafe { self.chain.log_utf16(len, ptr) }
     }
     /// Special import kept for compatibility with AssemblyScript contracts. Not called by smart
@@ -1127,7 +1127,7 @@ impl VM {
     /// # Cost
     ///
     /// `base +  log_base + log_byte * num_bytes + utf16 decoding cost`
-    pub fn abort(&mut self, msg_ptr: u32, filename_ptr: u32, line: u32, col: u32) -> () {
+    pub fn abort(&mut self, msg_ptr: u32, filename_ptr: u32, line: u32, col: u32) {
         unsafe { self.chain.abort(msg_ptr, filename_ptr, line, col) }
     }
 

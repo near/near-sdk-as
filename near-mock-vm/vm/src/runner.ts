@@ -14,11 +14,13 @@ export class VMRunner {
   wasm: stringKeys | null = null;
   memory: Memory;
   gas: number = 0;
+  savedMemory: ArrayBuffer;
 
   constructor(memory: Memory, contextPath?: string) {
     const context = createContext(contextPath);
     this.vm = new VM(context, memory);
     this.memory = memory;
+    this.savedMemory = memory.memory.buffer;
   }
 
   static create(memory?: WebAssembly.Memory, contextPath?: string): VMRunner {
@@ -47,6 +49,14 @@ export class VMRunner {
     let memory = this.memory.Memory;
     let _imports = {
       vm: {
+        saveMem() {
+          self.savedMemory = memory.buffer.slice(0, memory.buffer.byteLength);
+        },
+        restoreMem() {
+          new Uint8Array(memory.buffer).set(
+            new Uint8Array(self.savedMemory, 0, memory.buffer.byteLength / 4)
+          );
+        },
         restoreState() {
           vm.reset();
         },
@@ -74,12 +84,7 @@ export class VMRunner {
           );
           return outcomePtr.valueOf();
         },
-        // saveContext() {
-        //   vm.save_context();
-        // },
-        // restoreContext() {
-        //   vm.restore_context();
-        // },
+
         setCurrent_account_id(s: number) {
           vm.set_current_account_id(self.readUTF8Str(s));
         },
@@ -103,18 +108,17 @@ export class VMRunner {
         setBlock_timestamp(stmp: BigInt) {
           vm.set_block_timestamp(stmp);
         },
-        setAccount_balance(lo: BigInt, hi: BigInt) {
-          //TODO: actually  u128
-          vm.set_account_balance(utils.createU128Str(lo, hi));
+        setAccount_balance(s: number) {
+          vm.set_account_balance(self.readUTF8Str(s));
         },
-        setAccount_locked_balance(lo: BigInt, hi: BigInt) {
-          vm.set_account_locked_balance(utils.createU128Str(lo, hi));
+        setAccount_locked_balance(s: number) {
+          vm.set_account_locked_balance(self.readUTF8Str(s));
         },
         setStorage_usage(amt: BigInt) {
           vm.set_storage_usage(amt);
         },
-        setAttached_deposit(lo: BigInt, hi: BigInt) {
-          vm.set_attached_deposit(utils.createU128Str(lo, hi));
+        setAttached_deposit(s: number) {
+          vm.set_attached_deposit(self.readUTF8Str(s));
         },
         setPrepaid_gas(_u64: BigInt) {
           vm.set_prepaid_gas(_u64);
@@ -450,7 +454,7 @@ export class VMRunner {
         },
 
         // Validator API
-        validtor_stake(id_len: BigInt, id_ptr: BigInt, data_ptr: BigInt) {
+        validator_stake(id_len: BigInt, id_ptr: BigInt, data_ptr: BigInt) {
           return vm.validator_stake(id_len, id_ptr, data_ptr);
         },
         validator_total_stake(data_ptr: BigInt) {
