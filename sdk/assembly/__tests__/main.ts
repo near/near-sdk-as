@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   u128,
   Context,
@@ -116,7 +117,7 @@ export function storageGenericGetSetRoundtripTest(): void {
 
   storage.set<TextMessage>("message2", new TextMessage());
   // TODO: fix this
-  //assert(_modelObjectEqual(storage.get<TextMessage>("message2"), new TextMessage()), "Incorrect empty message on storage roundtrip");
+  // assert(_modelObjectEqual(storage.get<TextMessage>("message2"), new TextMessage()), "Incorrect empty message on storage roundtrip");
 
   storage.set<u64>("u64key", 20);
   assert(
@@ -158,8 +159,8 @@ export function storageGenericGetSetRoundtripTest(): void {
     "Incorrect data value for bool get nonexistent key"
   );
 
-  storage.set<String>("stringkey", "StringValue");
-  const stringGet = storage.get<String>("stringkey");
+  storage.set<string>("stringkey", "StringValue");
+  const stringGet = storage.get<string>("stringkey");
   assert(
     stringGet == "StringValue",
     "Incorrect data value for string roundtrip"
@@ -246,7 +247,7 @@ export function vectorTests(): void {
   assert(vector.length == 0, "Empty vector has incorrect length");
   assert(!vector.containsIndex(0), "Empty vector incorrectly has index 0");
   assert(vector.isEmpty, "isEmpty incorrect on empty vector");
-  //try { assert(vector[0] == null, "");} catch (e) {} not possible to test due to lack of try catch
+  // try { assert(vector[0] == null, "");} catch (e) {} not possible to test due to lack of try catch
 
   vector.push("bb");
   assert(vector.length == 1, "Vector has incorrect length");
@@ -296,7 +297,7 @@ export function vectorTests(): void {
   assert(vector.front == "aa", "Incorrect front entry");
   assert(vector.first == "aa", "Incorrect first entry");
 
-  //pop an entry and then try various other methods
+  // pop an entry and then try various other methods
   vector.pop();
   assert(
     _vectorHasContents(vector, ["aa", "bd"]),
@@ -398,7 +399,7 @@ export function contextTests(): void {
   assert(Context.prepaidGas == 1000000000, "Wrong prepaid gas");
   assert(Context.usedGas <= 1000000000, "Wrong used gas");
   assert(Context.usedGas > 0, "Wrong used gas");
-  //assert(Context.storageUsage == 0, "Wrong storage usage"); TODO: test when implemented
+  // assert(Context.storageUsage == 0, "Wrong storage usage"); TODO: test when implemented
 }
 
 export function promiseTests(): void {
@@ -417,7 +418,7 @@ export function promiseTests(): void {
     new Uint8Array(0),
     10000000000000
   );
-  const promise3 = ContractPromise.all([promise2]);
+  const _promise3 = ContractPromise.all([promise2]);
 }
 
 export function mathTests(): void {
@@ -530,7 +531,7 @@ function _vectorHasContents(
   }
   for (let i = 0; i < expectedContents.length; i++) {
     if (expectedContents[i] != vector[i]) {
-      //return false;
+      // return false;
       logging.log("wrong" + expectedContents[i] + "," + vector[i]);
     }
   }
@@ -562,4 +563,8 @@ export function getDefaultValue(y: string = "hello world", x: i32 = 42): i32 {
   assert(x == 42, "expected default of 42, got: " + x.toString());
   assert(y == "hello world", "y is not default value of hello world");
   return x;
+}
+
+export function mixDefaults(x: u64, y: u64 = 1): i32 {
+  return <i32>(x + y);
 }

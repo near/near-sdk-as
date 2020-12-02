@@ -20,7 +20,7 @@ export class Storage {
   static setString(key: string, value: string): void {
     let key_encoded = util.stringToBytes(key);
     let value_encoded = util.stringToBytes(value);
-    const storage_write_result = env.storage_write(
+    const _storage_write_result = env.storage_write(
       key_encoded.byteLength,
       key_encoded.dataStart,
       value_encoded.byteLength,
@@ -60,7 +60,7 @@ export class Storage {
    */
   static setBytes(key: string, value: Uint8Array): void {
     let key_encoded = util.stringToBytes(key);
-    const storage_write_result = env.storage_write(
+    const _storage_write_result = env.storage_write(
       key_encoded.byteLength,
       key_encoded.dataStart,
       value.byteLength,
@@ -148,13 +148,13 @@ export class Storage {
    */
   static set<T>(key: string, value: T): void {
     if (isString<T>()) {
-      //@ts-ignore
+      // @ts-ignore
       this.setString(key, value);
     } else if (isInteger<T>()) {
-      //@ts-ignore
+      // @ts-ignore
       this.setString(key, value.toString());
     } else {
-      //@ts-ignore
+      // @ts-ignore
       this.setBytes(key, encode<T>(value));
     }
   }

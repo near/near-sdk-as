@@ -1,5 +1,5 @@
 import * as main from "./main";
-import { base64, logging, u128, util } from "near-sdk-as";
+import { base64, logging, u128 } from "near-sdk-as";
 import {
   FooBar,
   Nullables,
@@ -33,11 +33,11 @@ export function runTest(): void {
   original.uint8arrays[0] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
   original.uint8arrays[1] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
   original.u64Arr = [10000000000, 100000000000];
-  //@ts-ignore
+  // @ts-ignore
   logging.log("Before: " + original.toJSON());
-  //@ts-ignore
+  // @ts-ignore
   const encoded = original.encode();
-  //@ts-ignore
+  // @ts-ignore
   let decoded: FooBar = decode<FooBar>(encoded);
   logging.log("After:  " + decoded.toJSON());
   let decodedStatic: FooBar = FooBar.decode(encoded);
@@ -57,7 +57,7 @@ export function runTest(): void {
 
   const nullable = new Nullables();
   logging.log(String.UTF8.decode(nullable.encode().buffer));
-  //@ts-ignore
+  // @ts-ignore
   const nullable2 = decode<Nullables>(nullable.encode());
   assert(nullable2.str == null);
   logging.log(isNull(nullable2.u128).toString());
@@ -90,12 +90,12 @@ export function runTest(): void {
 }
 
 export function convertFoobars(foobars: Array<FooBar>): Array<ContainerClass> {
-  //@ts-ignore will be converted when parsed
+  // @ts-ignore will be converted when parsed
   return main.convertFoobars(foobars);
 }
 
 export function getStringArrayLength(arr: string[]): i32 {
-  //@ts-ignore will be converted when parsed
+  // @ts-ignore will be converted when parsed
   return main.getStringArrayLength(arr);
 }
 export function rewrapFoobar(container: ContainerClass): AnotherContainerClass {
@@ -103,7 +103,7 @@ export function rewrapFoobar(container: ContainerClass): AnotherContainerClass {
 }
 
 export function unwrapFoobar(container: AnotherContainerClass): FooBar {
-  //@ts-ignore will be converted when parsed
+  // @ts-ignore will be converted when parsed
   return main.unwrapFoobar(container);
 }
 

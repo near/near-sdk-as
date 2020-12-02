@@ -58,7 +58,7 @@ export class ContractPromiseBatch {
       accountIdArr.dataStart
     );
 
-    //@ts-ignore: Typescript expects the object to have a function to match the type
+    // @ts-ignore: Typescript expects the object to have a function to match the type
     // Wheras as only cares about the fields.
     return {
       id,
@@ -181,7 +181,7 @@ export class ContractPromiseBatch {
       accountIdArr.byteLength,
       accountIdArr.dataStart
     );
-    //@ts-ignore: See above ignore comment
+    // @ts-ignore: See above ignore comment
     return {
       id,
     };

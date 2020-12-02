@@ -1,4 +1,3 @@
-//@nearfile
 import { base64, util } from "..";
 
 function testBase64(original: string, expectedEncoding: string): void {

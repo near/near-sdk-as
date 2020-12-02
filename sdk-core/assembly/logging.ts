@@ -16,9 +16,9 @@ export namespace logging {
    */
   export function log<T = string>(msg: T): void {
     let msg_encoded: Uint8Array;
-    //@ts-ignore
+    // @ts-ignore
     if (isString<T>() || isDefined(msg.toString)) {
-      //@ts-ignore
+      // @ts-ignore
       let message = msg.toString();
       msg_encoded = util.stringToBytes(message);
     } else {

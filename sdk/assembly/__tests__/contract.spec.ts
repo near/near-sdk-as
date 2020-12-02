@@ -1,4 +1,4 @@
-import { storage, VM } from "..";
+import { storage } from "..";
 import { Contract } from "./contract";
 
 describe("Contract", () => {

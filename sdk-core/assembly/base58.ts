@@ -103,11 +103,9 @@ function decodeUnsafe(source: string): Uint8Array {
   }
 
   // Skip and count leading '1's.
-  let zeroes = 0;
   let length = 0;
 
   while (source.charAt(psz) === LEADER) {
-    zeroes++;
     psz++;
   }
 

@@ -160,13 +160,14 @@ export class JSONBindingsBuilder extends BaseVisitor {
           let name = toString(param.name);
           let type = toString(param.type);
           let res = `obj.has('${name}') ? 
-             ${createDecodeStatement(param)} : 
-             assertNonNull<${type}>('${name}', changetype<${type}>(${
-            param.initializer ? toString(param.initializer) : "0"
-          }))`;
+             ${createDecodeStatement(param)} : ${
+            param.initializer
+              ? toString(param.initializer)
+              : `requireParameter<${type}>("${name}")`
+          }`;
           return res;
         })
-        .join(", ");
+        .join(",\n    ");
     }
     this.sb[this.sb.length - 1] += ");";
     if (toString(returnType) !== "void") {

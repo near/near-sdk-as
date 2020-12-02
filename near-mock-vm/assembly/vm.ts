@@ -9,14 +9,14 @@ export namespace VM {
    * Restores the internal state of the VM.
    *
    */
-  //@ts-ignore
+  // @ts-ignore
   @external("vm", "restoreState")
   export declare function restoreState(): void;
 
   /**
    * Return the VM Outcome of the current running contract
    */
-  //@ts-ignore
+  // @ts-ignore
   @external("vm", "outcome")
   export declare function outcome(): Outcome;
 
@@ -25,10 +25,10 @@ export namespace VM {
     return outcome().logs;
   }
 
-  //@ts-ignore
+  // @ts-ignore
   @external("vm", "saveMem")
   export declare function saveMem(): void;
-  //@ts-ignore
+  // @ts-ignore
   @external("vm", "restoreMem")
   export declare function restoreMem(): void;
 }

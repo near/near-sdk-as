@@ -30,7 +30,7 @@ export namespace util {
    */
   export function UTF8Length(
     str: string,
-    nullTerminated: boolean = false
+    nullTerminated = false
   ): usize {
     return String.UTF8.byteLength(str, nullTerminated);
   }
@@ -55,21 +55,21 @@ export namespace util {
    */
   export function parseFromString<T>(s: string): T {
     if (isString<T>()) {
-      //@ts-ignore
+      // @ts-ignore
       return s;
     } else if (isInteger<T>()) {
       if (isBoolean<T>()) {
-        //@ts-ignore
+        // @ts-ignore
         return <T>(s == "true");
       } else if (isSigned<T>()) {
-        //@ts-ignore
+        // @ts-ignore
         return <T>I64.parseInt(s);
       } else {
-        //@ts-ignore
+        // @ts-ignore
         return <T>U64.parseInt(s);
       }
     } else {
-      //@ts-ignore v will have decode method
+      // @ts-ignore v will have decode method
       return decode<T>(stringToBytes(s));
     }
   }
@@ -94,7 +94,7 @@ export namespace util {
   }
 
   // Private helpers
-  function toUTF8(str: string, nullTerminated: boolean = false): usize {
+  function toUTF8(str: string, nullTerminated = false): usize {
     return changetype<usize>(String.UTF8.encode(str, nullTerminated));
   }
 

@@ -108,7 +108,7 @@ export class PersistentVector<T> {
    *
    * @returns The length of the vector.
    */
-  //@ts-ignore TS doesn't like property accessors with different levels of visibility
+  // @ts-ignore TS doesn't like property accessors with different levels of visibility
   get length(): i32 {
     if (this._length < 0) {
       this._length = storage.getPrimitive<i32>(this._lengthKey, 0);
@@ -120,7 +120,7 @@ export class PersistentVector<T> {
    * Internally sets the length of the vector
    * @internal
    */
-  //@ts-ignore TS doesn't like property accessors with different levels of visibility
+  // @ts-ignore TS doesn't like property accessors with different levels of visibility
   private set length(value: i32) {
     this._length = value;
     storage.set<i32>(this._lengthKey, value);

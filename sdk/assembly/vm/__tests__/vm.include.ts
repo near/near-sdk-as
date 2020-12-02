@@ -1,4 +1,4 @@
-//@notNearfile
+// @notNearfile
 /// <reference types="@as-pect/assembly/types/as-pect" />
 
 import "near-sdk-bindgen";

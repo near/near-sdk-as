@@ -12,7 +12,7 @@ import { Box } from "./generic";
 describe("Round Trip", () => {
   it("should return the same TextMessage", () => {
     const message = _testTextMessage();
-    //@ts-ignore
+    // @ts-ignore
     const messageFromStorage = util.parseFromBytes<TextMessage>(
       message.serialize()
     );
@@ -33,7 +33,7 @@ describe("Round Trip", () => {
   it("should handle empty Message", () => {
     const message = new TextMessage();
     log<TextMessage>(message);
-    //@ts-ignore
+    // @ts-ignore
     const messageFromStorage = util.parseFromBytes<TextMessage>(
       message.serialize()
     );
@@ -54,7 +54,7 @@ describe("Round Trip", () => {
   it("should handle generics", () => {
     const u32 = new Box<u32>();
     u32.t = 42;
-    //@ts-ignore
+    // @ts-ignore
     const u32_2 = util.parseFromBytes<Box<u32>>(u32.serialize());
     expect<u32>(u32.t).toBe(u32_2.t);
   });
@@ -155,14 +155,14 @@ export const Foo_ID = idof<Foo>();
 export const Generic_i32_ID = idof<Generic<i32>>();
 export const Generic_Foo_ID = idof<Generic<Foo>>();
 
-function foo<T>(): string {
+function _foo<T>(): string {
   return nameof<T>();
 }
 
 function makeArray<T>(): T {
   let t = instantiate<T>();
   if (isArray<T>()) {
-    //@ts-ignore
+    // @ts-ignore
     t.push(42);
   }
   return t;
@@ -179,14 +179,14 @@ describe("Instantiated array", () => {
   });
 });
 
-function isBox<T>(): bool {
+function _isBox<T>(): bool {
   return nameof<T>().startsWith("Box");
 }
 
 describe("Generic classes", () => {
   it("can use instanceof", () => {
     let genericFoo = new Generic<Foo>(new Foo());
-    //@ts-ignore
+    // @ts-ignore
     expect<boolean>(genericFoo instanceof Generic).toBe(true);
   });
 });

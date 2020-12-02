@@ -4,10 +4,10 @@
  */
 export namespace base64 {
   // @ts-ignore: decorator
-  @lazy const PADCHAR: string = "=";
+  @lazy const PADCHAR = "=";
   // @ts-ignore: decorator
   @lazy
-  const ALPHA: string =
+    const ALPHA =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
   /**
@@ -17,7 +17,7 @@ export namespace base64 {
   export function decode(s: string): Uint8Array {
     let i: u32, b10: u32;
     let pads = 0,
-      imax = s.length as u32;
+        imax = s.length as u32;
 
     if (imax == 0) {
       return new Uint8Array(0);
@@ -36,7 +36,7 @@ export namespace base64 {
     let size = main_chunk + pad_size;
 
     let x = new Uint8Array(size),
-      index = 0;
+        index = 0;
 
     for (i = 0; i < imax; i += 4) {
       b10 =
@@ -73,7 +73,7 @@ export namespace base64 {
   export function encode(bytes: Uint8Array): string {
     let i: i32, b10: u32;
     let x = new Array<string>(),
-      imax = bytes.length - (bytes.length % 3);
+        imax = bytes.length - (bytes.length % 3);
 
     if (bytes.length == 0) {
       return "";

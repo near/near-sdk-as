@@ -9,6 +9,7 @@ import {
   MyContractPromiseResult,
 } from "./model";
 
+/* eslint-disable @typescript-eslint/no-empty-function */
 export function doNothing(): void {}
 
 export function add(x: i32, y: i32): i32 {
@@ -26,7 +27,7 @@ export function unwrapFoobar(container: AnotherContainerClass): FooBar {
 
 export function getStringArrayLength(arr: string[]): i32 {
   let length: i32 = arr.length;
-  //@ts-ignore
+  // @ts-ignore
   logging.log("getStringArrayLength: " + length.toString());
   return arr.length;
 }
@@ -66,6 +67,6 @@ export function classOrNull(): FooBar | null {
   return new FooBar();
 }
 
-export function defaultArgs(x: i32 = 42): i32 {
+export function defaultArgs(y: u64, x: i32 = 42): i32 {
   return x + 1;
 }
