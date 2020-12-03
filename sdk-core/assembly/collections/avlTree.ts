@@ -148,7 +148,7 @@ export class AVLTree<K, V> {
    * @param inclusive Set to false if upper bound should be exclusive, true if upper bound should be inclusive
    * @returns Range of values corresponding to keys within start and end bounds.
    */
-  values(start: K, end: K, inclusive = false): V[] {
+  values(start: K, end: K, inclusive: boolean = false): V[] {
     const keys = this.keys(start, end, inclusive);
     const values: V[] = [];
     for (let i = 0; i < keys.length; ++i) {
@@ -167,7 +167,7 @@ export class AVLTree<K, V> {
    * @param inclusive Set to false if upper bound should be exclusive, true if upper bound should be inclusive
    * @returns Range of keys within start and end bounds.
    */
-  keys(start: K, end: K, inclusive = false): K[] {
+  keys(start: K, end: K, inclusive: boolean = false): K[] {
     const rootNode = this.rootNode;
     const sorted: K[] = [];
     if (rootNode) {
@@ -218,7 +218,7 @@ export class AVLTree<K, V> {
    * @param inclusive Set to false if upper bound should be exclusive, true if upper bound should be inclusive
    * @returns Range of entries corresponding to keys within start and end bounds.
    */
-  entries(start: K, end: K, inclusive = false): MapEntry<K, V>[] {
+  entries(start: K, end: K, inclusive: boolean = false): MapEntry<K, V>[] {
     const keys = this.keys(start, end, inclusive);
     const entries: MapEntry<K, V>[] = [];
     for (let i = 0; i < keys.length; ++i) {
@@ -228,7 +228,7 @@ export class AVLTree<K, V> {
     return entries;
   }
   // alias to match rust sdk
-  range(start: K, end: K, inclusive = false): MapEntry<K, V>[] {
+  range(start: K, end: K, inclusive: boolean = false): MapEntry<K, V>[] {
     return this.entries(start, end, inclusive);
   }
 

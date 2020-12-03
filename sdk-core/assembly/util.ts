@@ -94,7 +94,7 @@ export namespace util {
   }
 
   // Private helpers
-  function toUTF8(str: string, nullTerminated = false): usize {
+  function toUTF8(str: string, nullTerminated: boolean = false): usize {
     return changetype<usize>(String.UTF8.encode(str, nullTerminated));
   }
 
