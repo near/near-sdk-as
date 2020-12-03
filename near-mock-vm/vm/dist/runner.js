@@ -72,13 +72,13 @@ class VMRunner {
                     let outcome = vm.outcome();
                     let strArrPtr = self.wasm.newStringArray();
                     for (let str of outcome.logs) {
-                        strArrPtr = self.wasm.pushString(strArrPtr, self.wasm.__allocString(str));
+                        strArrPtr = self.wasm.pushString(strArrPtr, self.wasm.__newString(str));
                     }
                     let return_data_ptr;
                     if (outcome.return_data === "None") {
-                        return_data_ptr = self.wasm.NONE;
+                        return_data_ptr = self.wasm.None;
                     }
-                    const balancePtr = self.wasm.__allocString(outcome.balance);
+                    const balancePtr = self.wasm.__newString(outcome.balance);
                     let outcomePtr = new self.wasm.Outcome(balancePtr, BigInt(outcome.burnt_gas), BigInt(outcome.used_gas), strArrPtr, BigInt(outcome.storage_usage), return_data_ptr);
                     return outcomePtr.valueOf();
                 },
