@@ -157,8 +157,8 @@ async function testFloatDetection(file){
 (async function() {
     const module = await loadModule(localize("/build/debug/test.wasm"));
     await module.runTest();
-    assert.deepEqual(await module.convertFoobars({ foobars: [] }), []);
-    assert.deepEqual(
+    assert.deepStrictEqual(await module.convertFoobars({ foobars: [] }), []);
+    assert.deepStrictEqual(
       await module.convertFoobars({
         foobars: [{ foo: -12345, bar: 123, flag: true, baz: "bazinga" }]
       }),
@@ -183,7 +183,7 @@ async function testFloatDetection(file){
         }
       ]
     );
-    assert.deepEqual(
+    assert.deepStrictEqual(
       await module.convertFoobars({
         foobars: [{ arr: [["1", "2"], ["3"]] }]
       }),
@@ -212,7 +212,7 @@ async function testFloatDetection(file){
       await module.getStringArrayLength({ arr: ["1", "2", "3"] }),
       3
     );
-    assert.deepEqual(
+    assert.deepStrictEqual(
       await module.rewrapFoobar({ container: { foobar: { foo: 123 } } }),
       {
         foobars: [
@@ -237,7 +237,7 @@ async function testFloatDetection(file){
         ]
       }
     );
-    assert.deepEqual(
+    assert.deepStrictEqual(
       await module.unwrapFoobar({ container: { foobars: [[{ foo: 123 }]] } }),
       {
         foo: 123,
@@ -256,7 +256,7 @@ async function testFloatDetection(file){
         u64_zero: "0"
       }
     );
-    assert.deepEqual(await module.stringOrNull(), null);
+    assert.deepStrictEqual(await module.stringOrNull(), null);
     assert.deepStrictEqual(
       await module.stringAliasTest({ str: "Hello" }),
       "Hello World"
@@ -280,7 +280,7 @@ async function testFloatDetection(file){
         u64_zero: "0"
       }
     );
-    assert.deepEqual(await module.classAndNull(), null);
+    assert.deepStrictEqual(await module.classAndNull(), null);
 
     await testFloatDetection(localize("./assembly/__tests__/f32.ts"));
     await testFloatDetection(localize("./assembly/__tests__/f64.ts"));

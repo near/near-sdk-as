@@ -52,7 +52,7 @@ export class PersistentMap<K, V> {
    * @returns An internal string key for a given key of type K.
    */
   private _key(key: K): string {
-    //@ts-ignore: TODO: Add interface that forces all K types to have toString
+    // @ts-ignore: TODO: Add interface that forces all K types to have toString
     return this._elementPrefix + key.toString();
   }
 

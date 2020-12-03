@@ -198,7 +198,7 @@ export class ContractPromise {
       amount_arr.dataStart,
       gas
     );
-    //@ts-ignore: Typescript expects the object to have a function to match the type
+    // @ts-ignore: Typescript expects the object to have a function to match the type
     // Wheras as only cares about the fields.
     return {
       id,
@@ -237,7 +237,7 @@ export class ContractPromise {
       amount_arr.dataStart,
       gas
     );
-    //@ts-ignore: See above ignore comment
+    // @ts-ignore: See above ignore comment
     return {
       id,
     };
@@ -306,7 +306,7 @@ export class ContractPromise {
       ids[i] = promises[i].id;
     }
     const id = env.promise_and(ids.dataStart, ids.length);
-    //@ts-ignore doesn't need methods
+    // @ts-ignore doesn't need methods
     return { id };
   }
 

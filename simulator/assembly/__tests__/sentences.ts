@@ -165,7 +165,7 @@ export function contractPromiseBatch(): ContractPromiseBatch {
     DEFAULT_GAS
   );
 }
-
+/* eslint-disable @typescript-eslint/no-empty-function */
 export function payableFunction(): void {}
 
 export function nonPayableFunction(): void {

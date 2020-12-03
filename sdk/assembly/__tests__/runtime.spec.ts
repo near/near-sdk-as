@@ -139,7 +139,7 @@ describe("Account env util", () => {
   });
 });
 
-let outcome: Outcome;
+let _outcome: Outcome;
 describe("outcome", () => {
   afterAll(() => {
     VM.restoreState();
@@ -307,8 +307,8 @@ describe("Storage", (): void => {
       "Incorrect data value for bool get nonexistent key"
     );
 
-    storage.set<String>("stringkey", "StringValue");
-    const stringGet = storage.get<String>("stringkey");
+    storage.set<string>("stringkey", "StringValue");
+    const stringGet = storage.get<string>("stringkey");
     expect(stringGet).toBe(
       "StringValue",
       "Incorrect data value for string roundtrip"
@@ -451,7 +451,7 @@ describe("Vectors should handle", () => {
   beforeEach(() => {
     vector = new PersistentVector<string>("vector1");
   });
-  //TODO: Improve tests
+  // TODO: Improve tests
   it("no items", () => {
     expect(vector != null).toBe(true, "Vector not initialized");
     expect(vector.length).toBe(0, "Empty vector has incorrect length");
@@ -460,7 +460,7 @@ describe("Vectors should handle", () => {
       "Empty vector incorrectly has index 0"
     );
     expect(vector.isEmpty).toBe(true, "isEmpty incorrect on empty vector");
-    //try { expect(vector[0]).toBeNull("");} catch (e) {} not possible to test due to lack of try catch
+    // try { expect(vector[0]).toBeNull("");} catch (e) {} not possible to test due to lack of try catch
   });
 
   it("single items", () => {
@@ -541,7 +541,7 @@ describe("Vectors should handle", () => {
     vector.pushBack("bc");
     vector.pushBack("be");
 
-    //pop an entry and then try various other methods
+    // pop an entry and then try various other methods
     vector.pop();
     expect(_vectorHasContents(vector, ["bb", "bc"])).toBe(
       true,
@@ -715,7 +715,7 @@ describe("Context", () => {
     expect(Context.prepaidGas).toBe(1000000000, "Wrong prepaid gas");
     expect(Context.usedGas <= 1000000000).toBe(true, "Wrong used gas");
     // expect(Context.usedGas > 0).toBe(true, "Wrong used gas");
-    //expect(Context.storageUsage).toBe(0, "Wrong storage usage"); TODO: test when implemented
+    // expect(Context.storageUsage).toBe(0, "Wrong storage usage"); TODO: test when implemented
   });
 });
 
@@ -760,7 +760,7 @@ describe("promises", () => {
       new Uint8Array(0),
       10000000000000
     );
-    const promise3 = ContractPromise.all([promise, promise2]);
+    const _promise3 = ContractPromise.all([promise, promise2]);
   });
 });
 
@@ -845,7 +845,7 @@ describe("Math should handle", () => {
 
   it("hash Uint8Aray from string", () => {
     const hash256 = math.hash(stringValue);
-    let x: i32[] = [1, 6, 7];
+    let _x: i32[] = [1, 6, 7];
     expect(hash256.length).toBe(32, "wrong output length for hash256");
     expect(hash256[0]).toBe(202, "wrong contents of hash256");
     expect(hash256[1]).toBe(76, "wrong contents of hash256");
@@ -890,7 +890,7 @@ function _vectorHasContents(
   }
   for (let i = 0; i < expectedContents.length; i++) {
     if (expectedContents[i] != vector[i]) {
-      //return false;
+      // return false;
     }
   }
   return true;

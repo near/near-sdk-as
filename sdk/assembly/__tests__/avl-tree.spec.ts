@@ -646,7 +646,7 @@ describe("AVLTrees should handle", () => {
     const keysToRemove: u32[] = [0, 0, 0, 3, 5, 6, 7, 4];
 
     insertThenRemove(tree, keysToInsert, keysToRemove);
-    //@ts-ignore
+    // @ts-ignore
     expect(tree.isBalanced()).toBeTruthy();
   });
 

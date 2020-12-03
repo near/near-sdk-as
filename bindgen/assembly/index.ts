@@ -3,8 +3,9 @@ import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 
 // Runtime functions
 // tslint:disable: no-unsafe-any
+/* eslint-disable  @typescript-eslint/no-unused-vars */
 
-//@ts-ignore
+// @ts-ignore
 @global
 function isNull<T>(t: T): bool {
   if (isNullable<T>() || isReference<T>()) {
@@ -13,24 +14,24 @@ function isNull<T>(t: T): bool {
   return false;
 }
 
-//@ts-ignore
+// @ts-ignore
 @global
 function notPayable(): void {
   assert(Context.attachedDeposit == u128.Zero, "Method doesn't accept deposit");
 }
 
-//@ts-ignore
+// @ts-ignore
 @global
-function assertNonNull<T>(name: string, t: T): T {
+function requireParameter<T>(name: string): T {
   assert(
-    !isNull<T>(t),
+    false,
     "Parameter " +
       name +
       " with type " +
       nameof<T>() +
       " is required but missing"
   );
-  return t;
+  return defaultValue<T>();
 }
 
 @global
@@ -41,39 +42,39 @@ class JSONEncoder extends _JSONEncoder {
 }
 
 type Usize = u64;
-//@ts-ignore
+// @ts-ignore
 @global
 function read_register(register_id: Usize, ptr: Usize): void {
   runtime_api.read_register(register_id, ptr);
 }
-//@ts-ignore
+// @ts-ignore
 @global
 function register_len(register_id: Usize): Usize {
   return runtime_api.register_len(register_id);
 }
 
-//@ts-ignore
+// @ts-ignore
 @global
 function input(register_id: Usize): void {
   runtime_api.input(register_id);
 }
-//@ts-ignore
+// @ts-ignore
 @global
 function value_return(value_len: Usize, value_ptr: Usize): void {
   runtime_api.value_return(value_len, value_ptr);
 }
-//@ts-ignore
+// @ts-ignore
 @global
 function panic(): void {
   runtime_api.panic();
 }
-//@ts-ignore
+// @ts-ignore
 @global
 function panic_utf8(len: Usize, ptr: Usize): void {
   runtime_api.panic_utf8(len, ptr);
 }
 
-//@ts-ignore
+// @ts-ignore
 @global
 function getInput(): JSON.Obj {
   // Reading input bytes.
@@ -83,12 +84,12 @@ function getInput(): JSON.Obj {
     panic();
   }
   let json = new Uint8Array(json_len as u32);
-  //@ts-ignore
+  // @ts-ignore
   read_register(0, json.dataStart);
   return <JSON.Obj>JSON.parse(json);
 }
 
-//@ts-ignore
+// @ts-ignore
 @global
 function encode<T, Output = Uint8Array>(
   value: T,
@@ -96,49 +97,49 @@ function encode<T, Output = Uint8Array>(
   encoder: JSONEncoder = new JSONEncoder()
 ): Output {
   if (isBoolean<T>()) {
-    //@ts-ignore
+    // @ts-ignore
     encoder.setBoolean(name, value);
   } else if (isInteger<T>()) {
     if (value instanceof i64 || value instanceof u64) {
-      //@ts-ignore
+      // @ts-ignore
       encoder.setString(name, value.toString());
     } else {
-      //@ts-ignore
+      // @ts-ignore
       encoder.setInteger(name, value);
     }
   } else if (isString<T>()) {
     if (isNull<T>(value)) {
       encoder.setNull(name);
     } else {
-      //@ts-ignore
+      // @ts-ignore
       encoder.setString(name, value);
     }
   } else if (isReference<T>()) {
-    //@ts-ignore
+    // @ts-ignore
     if (isNull<T>(value)) {
       encoder.setNull(name);
     } else {
-      //@ts-ignore
+      // @ts-ignore
       if (isDefined(value._encode)) {
         if (isNullable<T>()) {
           if (value != null) {
-            //@ts-ignore
+            // @ts-ignore
             value._encode(name, encoder);
           } else {
             encoder.setNull(name);
           }
         } else {
-          //@ts-ignore
+          // @ts-ignore
           value._encode(name, encoder);
         }
       } else if (isArrayLike<T>(value)) {
         if (value instanceof Uint8Array) {
-          //@ts-ignore
+          // @ts-ignore
           encoder.setString(name, base64.encode(<Uint8Array>value));
         } else {
           encoder.pushArray(name);
           for (let i: i32 = 0; i < value.length; i++) {
-            //@ts-ignore
+            // @ts-ignore
             encode<valueof<T>, JSONEncoder>(value[i], null, encoder);
           }
           encoder.popArray();
@@ -146,18 +147,18 @@ function encode<T, Output = Uint8Array>(
       } else {
         // Is an object
         if (value instanceof u128) {
-          //@ts-ignore
+          // @ts-ignore
           encoder.setString(name, value.toString());
         } else if (value instanceof Map) {
           assert(
-            //@ts-ignore
+            // @ts-ignore
             nameof<indexof<T>>() == "String",
             "Can only encode maps with string keys"
           );
           let keys = value.keys();
           encoder.pushObject(name);
           for (let i = 0; i < keys.length; i++) {
-            //@ts-ignore
+            // @ts-ignore
             encode<valueof<T>, JSONEncoder>(
               value.get(keys[i]),
               keys[i],
@@ -170,7 +171,7 @@ function encode<T, Output = Uint8Array>(
           let values: Array<indexof<T>> = value.values();
           encoder.pushArray(name);
           for (let i = 0; i < values.length; i++) {
-            //@ts-ignore
+            // @ts-ignore
             encode<indexof<T>, JSONEncoder>(values[i], null, encoder);
           }
           encoder.popArray();
@@ -186,24 +187,24 @@ function encode<T, Output = Uint8Array>(
     );
   }
   var output: Output;
-  //@ts-ignore
+  // @ts-ignore
   if (output instanceof Uint8Array) {
-    //@ts-ignore
+    // @ts-ignore
     return <Output>encoder.serialize();
   }
   assert(
-    //@ts-ignore
+    // @ts-ignore
     output instanceof JSONEncoder,
-    //@ts-ignore
+    // @ts-ignore
     "Bad return type " + nameof < Output > +" for encoder"
   );
-  //@ts-ignore
+  // @ts-ignore
   return <Output>encoder;
 }
 
-//@ts-ignore
+// @ts-ignore
 @inline
-function getStr(val: JSON.Value, name: String): string {
+function getStr(val: JSON.Value, name: string): string {
   assert(
     val instanceof JSON.Str,
     "Value with Key: " + name + " is not a string or null"
@@ -281,7 +282,7 @@ function JSONTypeToString<T>(t: T): string {
   return "UNKNOWN TYPE";
 }
 
-//@ts-ignore
+// @ts-ignore
 @global
 function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   const buffer = <JSON.Value>(
@@ -296,7 +297,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         if (isInteger<T>()) {
           throw new Error("type " + nameof<T>() + " cannot be null.");
         } else {
-          //@ts-ignore
+          // @ts-ignore
           return <T>null;
         }
       } else {
@@ -316,12 +317,12 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         nameof<T>() +
         " is not a string"
     );
-    //@ts-ignore
+    // @ts-ignore
     return (<JSON.Bool>val)._bool;
   }
   var value: T;
   if (isInteger<T>()) {
-    //@ts-ignore
+    // @ts-ignore
     if (value instanceof u64 || value instanceof i64) {
       assert(
         val instanceof JSON.Str,
@@ -332,7 +333,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
           " is an 64-bit integer and is expected to be encoded as a string"
       );
       let str = (<JSON.Str>val)._str;
-      //@ts-ignore
+      // @ts-ignore
       return <T>(isSigned<T>() ? I64.parseInt(str) : U64.parseInt(str));
     }
     assert(
@@ -343,7 +344,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         nameof<T>() +
         " is not an Integer"
     );
-    //@ts-ignore
+    // @ts-ignore
     return <T>(<JSON.Num>val)._num;
   }
   if (val instanceof JSON.Null) {
@@ -351,11 +352,11 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
       isReallyNullable<T>(),
       "Key: " + name + " with type " + nameof<T>() + "is not nullable"
     );
-    //@ts-ignore
+    // @ts-ignore
     return changetype<T>(<usize>0);
   }
   if (isString<T>()) {
-    //@ts-ignore
+    // @ts-ignore
     return getStr(val, name);
   }
   assert(
@@ -365,7 +366,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
       nameof<T>() +
       " must be an integer, boolean, string, object, or array"
   );
-  //@ts-ignore
+  // @ts-ignore
   if (isDefined(value.decode)) {
     assert(
       val instanceof JSON.Obj,
@@ -378,15 +379,15 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     value = util.allocate<T>();
     if (isNullable<T>()) {
       if (value != null) {
-        //@ts-ignore
+        // @ts-ignore
         return value.decode<JSON.Obj>(<JSON.Obj>val);
       }
     } else {
-      //@ts-ignore
+      // @ts-ignore
       return value.decode<JSON.Obj>(<JSON.Obj>val);
     }
   }
-  //@ts-ignore
+  // @ts-ignore
   if (value instanceof Map) {
     assert(
       val instanceof JSON.Obj,
@@ -396,19 +397,19 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         JSONTypeToString(val)
     );
     assert(
-      //@ts-ignore
+      // @ts-ignore
       nameof<indexof<T>>() == "String",
       "Value with Key: " +
         name +
         " cannot decode a map which has an index type " +
-        //@ts-ignore
+        // @ts-ignore
         nameof<indexof<T>>() +
         ", it must be a string"
     );
-    //@ts-ignore
+    // @ts-ignore
     return <T>decodeMap<valueof<T>>(<JSON.Obj>val, name);
   }
-  //@ts-ignore
+  // @ts-ignore
   if (value instanceof Set) {
     assert(
       val instanceof JSON.Arr,
@@ -417,21 +418,21 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         " of type map expected a JSON.Obj, but recevied " +
         JSONTypeToString(val)
     );
-    //@ts-ignore
+    // @ts-ignore
     return <T>decodeSet<indexof<T>>(val, name);
   }
   if (isArrayLike<T>()) {
-    //@ts-ignore
+    // @ts-ignore
     if (value instanceof Uint8Array) {
-      //@ts-ignore
+      // @ts-ignore
       return base64.decode(getStr(val, name));
     }
-    //@ts-ignore
+    // @ts-ignore
     // assert(val instanceof Arr, "Value with Key: " +  name + " with type " + nameof<T>()  + " is expected to be an array")
-    //@ts-ignore only checking the instance
+    // @ts-ignore only checking the instance
     return <T>decodeArray<valueof<T>>(val, name);
   }
-  //@ts-ignore
+  // @ts-ignore
   if (value instanceof u128) {
     assert(
       val instanceof JSON.Str,
@@ -440,7 +441,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         " expected type string to decode u128 but got " +
         JSONTypeToString(val)
     );
-    //@ts-ignore
+    // @ts-ignore
     return u128.fromString(getStr(val, name));
   }
   throw new Error(
@@ -455,11 +456,11 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   );
 }
 
-//@ts-ignore
+// @ts-ignore
 @global
 function defaultValue<T>(): T {
   if (isInteger<T>()) {
-    //@ts-ignore
+    // @ts-ignore
     return <T>0;
   }
   return changetype<T>(0);

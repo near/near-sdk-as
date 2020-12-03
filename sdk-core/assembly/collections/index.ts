@@ -22,23 +22,23 @@
  */
 export namespace collections {
   /** @internal */
-  //@ts-ignore: decorator
+  // @ts-ignore: decorator
   @lazy
   export const _KEY_LENGTH_SUFFIX = ":len";
   /** @internal */
-  //@ts-ignore: decorator
+  // @ts-ignore: decorator
   @lazy
   export const _KEY_FRONT_INDEX_SUFFIX = ":front";
   /** @internal */
-  //@ts-ignore: decorator
+  // @ts-ignore: decorator
   @lazy
   export const _KEY_BACK_INDEX_SUFFIX = ":back";
   /** @internal */
-  //@ts-ignore: decorator
+  // @ts-ignore: decorator
   @lazy
   export const _KEY_ELEMENT_SUFFIX = "::";
   /** @internal */
-  //@ts-ignore: decorator
+  // @ts-ignore: decorator
   @lazy
   export const _RATING_OFFSET: u64 = 2147483648;
 }

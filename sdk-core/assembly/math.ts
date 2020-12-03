@@ -23,7 +23,7 @@ export namespace math {
    * @param data data can be passed as anything with .toString (hashed as UTF-8 string).
    */
   export function hash<T>(data: T): Uint8Array {
-    //@ts-ignore
+    // @ts-ignore
     const dataAsBytes = util.stringToBytes(data.toString());
     return sha256(dataAsBytes);
   }
@@ -169,7 +169,7 @@ export class RNG<T> {
     }
     const index = this.index;
     this.index += sizeof<T>();
-    //@ts-ignore
+    // @ts-ignore
     return <T>(load<T>(this.buffer.dataStart + index) % this.max);
   }
 }

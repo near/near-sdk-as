@@ -10,15 +10,21 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "build:vm": "yarn workspace near-mock-vm run build:wasm",
-    "test": "yarn workspaces run test && yarn check:pretty",
+    "test": "yarn workspaces run test && yarn check:all",
     "doc": "rm -rf docs; typedoc --tsconfig tsconfig.json && touch docs/.nojekyll",
-    "prettify": "prettier --write '**/*.ts'",
-    "check:pretty": "yarn prettier --check '**/*.ts'"
+    "prettify": "prettier --write '**/src/**/*.ts'",
+    "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
+    "check:pretty": "yarn prettier --check '**/src/**/*.ts'",
+    "check:all": "yarn lint && yarn check:pretty",
+    "fix:all": "yarn lint --fix && yarn prettify"
   },
   "devDependencies": {
     "@types/jest": "^26.0.0",
     "@types/js-base64": "^3.0.0",
     "@types/node": "^14.6.2",
+    "eslint": "^7.14.0",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
     "husky": "^4.2.5",
     "jest": "^26.4.2",
     "lerna": "^3.22.1",
@@ -30,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn check:pretty || (yarn prettify && exit 1)"
+      "pre-commit": "yarn check:all || (yarn fix:all && exit 1)"
     }
   },
   "private": true,

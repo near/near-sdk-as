@@ -19,8 +19,8 @@ export class PersistentUnorderedMap<K, V> {
    * @param prefix A prefix to use for every key of this map.
    */
   constructor(prefix: string) {
-    this._map = new PersistentMap<K, i32>(prefix + ":map"); //stores key=>index
-    this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ":entries"); //stores vec[index]=<key,value>
+    this._map = new PersistentMap<K, i32>(prefix + ":map"); // stores key=>index
+    this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ":entries"); // stores vec[index]=<key,value>
   }
 
   /**
@@ -172,11 +172,11 @@ export class PersistentUnorderedMap<K, V> {
   set(key: K, value: V): void {
     let entry = new MapEntry<K, V>(key, value);
     if (this._map.contains(key)) {
-      //key already exists
-      const index = this._map.getSome(key); //get index
-      this._entries[index] = entry; //replace entry
+      // key already exists
+      const index = this._map.getSome(key); // get index
+      this._entries[index] = entry; // replace entry
     } else {
-      //new key
+      // new key
       this._map.set(key, this._entries.length);
       this._entries.push(entry);
     }
@@ -200,16 +200,16 @@ export class PersistentUnorderedMap<K, V> {
     const index = this._map.getSome(key);
 
     if (index == this._entries.length - 1) {
-      //deleting the last entry (or the only element left)
-      //we avoid using swap_remove in order to use fewer operations to remove the entry
-      let entry = this._entries.popBack(); //remove the last entry
-      this._map.delete(entry.key); //remove the key=>index map
-      return; //early exit
+      // deleting the last entry (or the only element left)
+      // we avoid using swap_remove in order to use fewer operations to remove the entry
+      let entry = this._entries.popBack(); // remove the last entry
+      this._map.delete(entry.key); // remove the key=>index map
+      return; // early exit
     }
 
-    //Here we're removing a key in the middle [0..length-2]
-    //we'll use swap_remove, which removes the item from the vec
-    //by placing the last item in its position (O(1))
+    // Here we're removing a key in the middle [0..length-2]
+    // we'll use swap_remove, which removes the item from the vec
+    // by placing the last item in its position (O(1))
 
     // get the key of the last item in the vec
     const lastKey = this._entries.last.key;

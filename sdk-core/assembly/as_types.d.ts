@@ -1,5 +1,5 @@
 /// <reference types="assemblyscript/std/assembly" />
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare interface Uint8Array {
   dataStart: usize;
 }

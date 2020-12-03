@@ -1,5 +1,3 @@
-import { collections } from ".";
-import { storage } from "../storage";
 import { PersistentMap } from "./persistentMap";
 import { PersistentVector } from "./persistentVector";
 import { math } from "../math";

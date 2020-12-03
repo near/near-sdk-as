@@ -27,7 +27,7 @@ export function values(): u32[] {
 }
 
 export function isBalanced(): bool {
-  //@ts-ignore
+  // @ts-ignore
   return tree.isBalanced();
 }
 

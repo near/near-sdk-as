@@ -1,6 +1,6 @@
 import { TextMessage } from "./model";
 
-//Testing helper functions
+// Testing helper functions
 export function _testBytes(): Uint8Array {
   const array = new Uint8Array(4);
   array[0] = 0;
