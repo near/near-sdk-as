@@ -284,7 +284,7 @@ function JSONTypeToString<T>(t: T): string {
 
 // @ts-ignore
 @global
-function decode<T, V = Uint8Array>(buf: V, name = ""): T {
+function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   const buffer = <JSON.Value>(
     (buf instanceof Uint8Array ? JSON.parse(buf) : buf)
   );
