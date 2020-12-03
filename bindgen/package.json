@@ -34,9 +34,6 @@
     "dist/",
     "assembly/index.ts"
   ],
-  "peerDependencies": {
-    "assemblyscript": "^0.9.4"
-  },
   "devDependencies": {
     "near-sdk-core": "^2.1.2-next.0"
   }
