@@ -41,6 +41,6 @@
   },
   "dependencies": {
     "@assemblyscript/loader": "^0.9.4",
-    "yargs": "^15.3.1"
+    "yargs": "^16.1.1"
   }
 }
