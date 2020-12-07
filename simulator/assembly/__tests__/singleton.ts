@@ -26,4 +26,8 @@ export class Singleton {
     return this.visitors.has(visitor);
   }
 
+  private hasNotVisited(visitor: string): boolean {
+    return !this.hasNotVisited(visitor);
+  }
+
 } 

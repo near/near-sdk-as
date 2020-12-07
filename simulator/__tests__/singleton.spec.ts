@@ -43,8 +43,13 @@ describe("cross contract calls", () => {
     init()
     const bob = runtime.newAccount("bob");
     let res = bob.call_other("singleton", "visit");
-    
     expect(res.result.outcome.logs).toContainEqual("Visited by bob");
     expect(singleton.view("hasVisited", {visitor: "bob"}).return_data).toBe(true)
+  });
+
+  it("should not have private methods", () => {
+    init()
+    let res = alice.call_other("singleton", "hasNotVisited", {});
+    expect(res.err["FunctionCallError"]["MethodResolveError"]).toContain("MethodNotFound");
   })
 });

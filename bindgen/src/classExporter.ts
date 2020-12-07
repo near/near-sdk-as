@@ -52,6 +52,10 @@ export class ClassExporter extends ClassDecorator {
           node.name.text
       );
     }
+    // Private methods should be skipped.
+    if (node.is(CommonFlags.PRIVATE) || !node.is(CommonFlags.PUBLIC)) {
+      return;
+    }
     let name = toString(node.name);
     let decorators = (node.decorators || []).map(toString);
     let returnType = toString(node.signature.returnType);
