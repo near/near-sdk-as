@@ -10,7 +10,6 @@ import {
   CommonFlags,
   FieldDeclaration,
   ParameterNode,
-  BlockStatement,
 } from "visitor-as/as";
 import { BaseVisitor, utils } from "visitor-as";
 import { SimpleParser, toString } from "./utils";
@@ -110,12 +109,11 @@ export class JSONBindingsBuilder extends BaseVisitor {
   }
 
   visitFunctionDeclaration(node: FunctionDeclaration): void {
-    if (
-      !isEntry(node) ||
-      this.wrappedFuncs.has(toString(node.name)) ||
-      !node.is(CommonFlags.EXPORT) ||
-      (numOfParameters(node) == 0 && returnsVoid(node))
-    ) {
+    let isNotEntry = !isEntry(node);
+    let alreadyWrapped = this.wrappedFuncs.has(toString(node.name));
+    let isNotExport = !node.is(CommonFlags.EXPORT);
+    let noInputOrOutput = numOfParameters(node) == 0 && returnsVoid(node);
+    if (isNotEntry || alreadyWrapped || isNotExport || noInputOrOutput) {
       super.visitFunctionDeclaration(node);
       return;
     }

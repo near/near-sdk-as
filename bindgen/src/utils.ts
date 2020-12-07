@@ -2,6 +2,7 @@
 let path = require("path");
 
 import {
+  Token,
   Expression,
   Tokenizer,
   Parser,
@@ -10,6 +11,8 @@ import {
   Statement,
   ASTBuilder,
   Node,
+  MethodDeclaration,
+  ClassDeclaration,
 } from "visitor-as/as";
 
 export class SimpleParser {
@@ -31,6 +34,35 @@ export class SimpleParser {
     let res = this.parser.parseStatement(this.getTokenizer(s), topLevel);
     if (res == null) {
       throw new Error("Failed to parse the expression: '" + s + "'");
+    }
+    return res;
+  }
+
+  static parseTopLevel(s: string): Statement[] {
+    let tn = this.getTokenizer(s);
+    let statements: Statement[] = [];
+    while (!tn.skip(Token.ENDOFFILE)) {
+      let statement = this.parser.parseTopLevelStatement(tn);
+      if (statement) {
+        statements.push(statement);
+      } else {
+        this.parser.skipStatement(tn);
+      }
+    }
+    return statements;
+  }
+
+  static parseMethodDeclaration(
+    s: string,
+    parent: ClassDeclaration
+  ): MethodDeclaration {
+    let tn = this.getTokenizer(s);
+    let res = this.parser.parseClassMember(tn, parent);
+    if (res == null) {
+      throw new Error("Failed to parse class member: '" + s + "'");
+    }
+    if (!(res instanceof MethodDeclaration)) {
+      throw new Error("'" + s + "' is not a method declaration");
     }
     return res;
   }

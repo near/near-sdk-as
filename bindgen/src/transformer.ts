@@ -1,7 +1,8 @@
-import { Transform, Parser, Source, Module } from "visitor-as/as";
+import { Transform, Parser, Source, Module, SourceKind } from "visitor-as/as";
 import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
 import { ClassExporter } from "./classExporter";
+import { utils } from "visitor-as";
 
 class JSONTransformer extends Transform {
   parser: Parser;
@@ -20,7 +21,6 @@ class JSONTransformer extends Transform {
       .some((path) => path.includes("spec"));
     // Visit each file
     files.forEach((source) => {
-      ClassExporter.visit(source);
       let writeOut = /\/\/.*@nearfile .*out/.test(source.text);
       // Remove from logs in parser
       parser.donelog.delete(source.internalPath);
@@ -32,6 +32,8 @@ class JSONTransformer extends Transform {
       this.program.sources = this.program.sources.filter(
         (_source: Source) => _source !== source
       );
+      // Export main singleton class if one is present
+      ClassExporter.visit(source);
       // Build new Source
       let sourceText = JSONBindingsBuilder.build(source);
       if (writeOut) {

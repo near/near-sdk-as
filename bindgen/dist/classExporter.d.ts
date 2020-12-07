@@ -2,7 +2,8 @@ import { ClassDeclaration, FieldDeclaration, MethodDeclaration, Source } from "v
 import { ClassDecorator } from "visitor-as";
 export declare class ClassExporter extends ClassDecorator {
     sb: string[];
-    static classSeen: string;
+    static classSeen: ClassDeclaration;
+    get className(): string;
     visitFieldDeclaration(node: FieldDeclaration): void;
     visitMethodDeclaration(node: MethodDeclaration): void;
     visitClassDeclaration(node: ClassDeclaration): void;

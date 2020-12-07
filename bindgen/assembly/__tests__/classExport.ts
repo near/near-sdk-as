@@ -1,6 +1,6 @@
 @nearBindgen
 export class Foo {
-  //@ts-ignore
+  // @ts-ignore
   @exportAs("new")
   constructor(private name: string = ""){}
 

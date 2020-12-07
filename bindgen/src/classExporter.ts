@@ -4,9 +4,12 @@ import {
   MethodDeclaration,
   Source,
   CommonFlags,
+  SourceKind,
+  FunctionDeclaration,
 } from "visitor-as/as";
-import { utils, ClassDecorator, registerDecorator } from "visitor-as";
+import { utils, ClassDecorator } from "visitor-as";
 import { isEntry } from "./JSONBuilder";
+import { SimpleParser } from "./utils";
 
 const toString = utils.toString;
 
@@ -18,27 +21,63 @@ export class ClassExporter extends ClassDecorator {
     return toString(ClassExporter.classSeen.name);
   }
 
-  visitFieldDeclaration(node: FieldDeclaration): void {}
+  visitFieldDeclaration(node: FieldDeclaration): void {
+    let orgName = node.name.text;
+    let type = toString(node.type!);
+    if (node.is(CommonFlags.PUBLIC)) {
+      node.flags = node.flags ^ CommonFlags.PUBLIC;
+      node.flags = node.flags | CommonFlags.PRIVATE;
+    }
+    node.name.text = `__${orgName}`;
+    let setter = `
+  private set ${orgName}(${orgName}: ${type}) {
+    __updated = true;
+    this.${node.name.text} = ${orgName};
+  }`;
+    let getter = `
+    private get ${orgName}(): ${type} {
+      return this.${node.name.text};
+    }`;
+    let parent = ClassExporter.classSeen;
+    let methods = [setter, getter].map((m) =>
+      SimpleParser.parseMethodDeclaration(m, parent)
+    );
+    parent.members.push(...methods);
+  }
 
   visitMethodDeclaration(node: MethodDeclaration): void {
+    if (node.is(CommonFlags.SET) || node.is(CommonFlags.GET)) {
+      throw new Error(
+        "Exported Singleton class cannot have properties. Found " +
+          node.name.text
+      );
+    }
     let name = toString(node.name);
     let decorators = (node.decorators || []).map(toString);
     let returnType = toString(node.signature.returnType);
-    let parameters = node.signature.parameters.map(toString);
-    let pramNames = node.signature.parameters.map((node) =>
-      toString(node.name)
-    );
+    let origParams = node.signature.parameters.map(utils.cloneNode);
+    let parameters = origParams.map((param) => {
+      if (param.implicitFieldDeclaration) {
+        param.name.text = param.name.text.substring(2);
+      }
+      return toString(param);
+    });
+    let pramNames = origParams.map((param) => {
+      return toString(param.name);
+    });
     let isInit = name === "constructor";
     let assertStr = isInit
       ? `assert(isNull(__contract), "contract is already initialized");`
       : `assert(!isNull(__contract), "contract is not initialized");`;
+    let isVoid = returnType === "void";
     let body = isInit
-      ? `__contract = new ${this.className}(${pramNames.join(", ")});
-setState(__contract);`
-      : `return __contract.${name}(${pramNames.join(", ")});`;
+      ? `__contract = new ${this.className}(${pramNames.join(", ")});`
+      : `${!isVoid ? "let res =  " : ""}__contract.${name}(${pramNames.join(
+          ", "
+        )});`;
     if (isInit) {
       name = "init";
-      parameters = node.signature.parameters.map(
+      parameters = origParams.map(
         (node) =>
           `${toString(node.name)}: ${toString(node.type)}${
             node.initializer ? " = " + toString(node.initializer) : ""
@@ -46,35 +85,50 @@ setState(__contract);`
       );
       returnType = "void";
     }
+    if (isInit) {
+      if (!decorators.some((decorator) => decorator.includes("exportAs"))) {
+        decorators.push(`@exportAs("new")`);
+      }
+    }
     this.sb.push(
-      `${decorators.join("\n")}export function ${name}(${parameters.join(
-        ", "
-      )}): ${returnType} {
+      `${decorators.join("\n")}
+      export function ${name}(${parameters.join(", ")}): ${returnType} {
   ${assertStr}
-  
+  ${body}
+  ${isInit ? `__setState(__contract)` : "__updateState(__contract)"};
+  ${isVoid || isInit ? "" : "return res"}
 }`
     );
   }
 
   visitClassDeclaration(node: ClassDeclaration): void {
     if (isEntry(node) && node.is(CommonFlags.EXPORT)) {
+      let name = toString(node.name);
       if (ClassExporter.classSeen) {
         throw new Error(
-          `Cannot export class ${toString(node.name)}. ${
-            ClassExporter.classSeen
-          } already exported. `
+          `Cannot export class ${name}. ${ClassExporter.classSeen} already exported. `
         );
       }
       ClassExporter.classSeen = node;
       this.sb.push(
-        `let __contract: ${toString(node.name)};
+        `let __contract: ${name};
 if (__checkState()) {
-  __contract = __getState();
-}
-`
+  __contract = __getState<${name}>();
+}`
       );
       this.visit(node.members);
-      node.set(node.flags ^ CommonFlags.EXPORT);
+      node.flags = node.flags ^ CommonFlags.EXPORT;
+      let newStatements = SimpleParser.parseTopLevel(this.sb.join("\n")).map(
+        (n) => {
+          if (n instanceof FunctionDeclaration) {
+            n.flags = n.flags | CommonFlags.EXPORT;
+            n.flags = n.flags | CommonFlags.MODULE_EXPORT;
+          }
+          n.range = node.range;
+          return n;
+        }
+      );
+      node.range.source.statements.push(...newStatements);
     }
   }
 
@@ -83,6 +137,9 @@ if (__checkState()) {
   }
 
   static visit(source: Source): void {
+    if (source.sourceKind != SourceKind.USER_ENTRY) {
+      return;
+    }
     let visitor = new ClassExporter();
     visitor.visit(source);
   }
