@@ -4,7 +4,11 @@ let runtime: Runtime;
 let singleton: Account, alice: Account;
 
 function getErrorMsg(res: any) {
-  return res.err["FunctionCallError"]["HostError"]["GuestPanic"].panic_msg;
+  try {
+    return res.err["FunctionCallError"]["HostError"]["GuestPanic"].panic_msg;
+  } catch (e) {
+    throw new Error(JSON.stringify(res.err, null, 2));
+  }
 }
 
 

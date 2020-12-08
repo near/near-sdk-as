@@ -22,7 +22,7 @@ export class Singleton {
     }
   }
 
-  hasVisited(visitor: string): boolean {
+  hasVisited(visitor: string): bool {
     return this.visitors.has(visitor);
   }
 

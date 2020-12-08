@@ -53,7 +53,7 @@ export class ClassExporter extends ClassDecorator {
       );
     }
     // Private methods should be skipped.
-    if (node.is(CommonFlags.PRIVATE) || !node.is(CommonFlags.PUBLIC)) {
+    if (node.is(CommonFlags.PRIVATE)) {
       return;
     }
     let name = toString(node.name);
