@@ -1,6 +1,6 @@
 {
   "name": "near-sdk-bindgen",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Bindings for serializing contract functions.",
   "main": "index.js",
   "types": "dist/index.d.ts",
@@ -38,6 +38,6 @@
     "assemblyscript": "^0.9.4"
   },
   "devDependencies": {
-    "near-sdk-core": "^2.1.1"
+    "near-sdk-core": "^2.1.2"
   }
 }
