@@ -11,12 +11,13 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest]
+        nodeversion: ['12.x', '13.x', '14.x', '15.x']
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
+      - name: Use Node.js v"${{ matrix.nodeversion }}""
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: ${{ matrix.nodeversion }}
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: test

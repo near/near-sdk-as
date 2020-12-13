@@ -1,6 +1,4 @@
-// @nearfile out
 import { logging, PersistentSet, Context } from "near-sdk-as";
-
 
 @nearBindgen
 export class Singleton {
@@ -39,5 +37,9 @@ export class Singleton {
 
   private hasNotVisited(visitor: string): boolean {
     return !this.hasNotVisited(visitor);
+  }
+
+  new(owner: string): void {
+
   }
 } 

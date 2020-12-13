@@ -1930,10 +1930,10 @@ asap@^2.0.0:
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
-asbuild@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.8.tgz#9f2b30297fdb0f03679903e1996f46a39e4308a4"
-  integrity sha512-JlxO/cdotqCLCJrRlzPYsgzdy5qa0NPAXxH6IZNgLLJwLerIOtCx10tFUBGaO7VS7YwuLony83hH60J2iskxHA==
+asbuild@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.9.tgz#202f225a7f1ff2175ae7eed6e5ed454a4245d714"
+  integrity sha512-UkBTuPAVTybbRMTOJ9eU/tLS/MRsu7CUIBAwVo4GM+UevILWylNtpxp2dNmEqWuZACsKxy3k6hk7HekSoEH5qg==
   dependencies:
     yargs "^15.4.1"
 

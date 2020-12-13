@@ -17,33 +17,29 @@ export class ClassExporter extends ClassDecorator {
   sb: string[] = [];
   static classSeen: ClassDeclaration;
 
-  get className(): string {
+  static get className(): string {
     return toString(ClassExporter.classSeen.name);
   }
 
-  visitFieldDeclaration(node: FieldDeclaration): void {
-    let orgName = node.name.text;
-    let type = toString(node.type!);
-    if (node.is(CommonFlags.PUBLIC)) {
-      node.flags = node.flags ^ CommonFlags.PUBLIC;
-      node.flags = node.flags | CommonFlags.PRIVATE;
-    }
-    node.name.text = `__${orgName}`;
-    let setter = `
-  private set ${orgName}(${orgName}: ${type}) {
-    __updated = true;
-    this.${node.name.text} = ${orgName};
-  }`;
-    let getter = `
-    private get ${orgName}(): ${type} {
-      return this.${node.name.text};
-    }`;
-    let parent = ClassExporter.classSeen;
-    let methods = [setter, getter].map((m) =>
-      SimpleParser.parseMethodDeclaration(m, parent)
-    );
-    parent.members.push(...methods);
+  checkMethods(name: string) {
+    let _class = ClassExporter.classSeen;
+    _class.members.forEach((member) => {
+      if (
+        member instanceof MethodDeclaration &&
+        !member.is(CommonFlags.PRIVATE)
+      ) {
+        if (toString(member.name) === name) {
+          throw new Error(
+            `Method "${toString(
+              member.name
+            )}" already used cannot export constructor using the same name.`
+          );
+        }
+      }
+    });
   }
+
+  visitFieldDeclaration(node: FieldDeclaration): void {}
 
   visitMethodDeclaration(node: MethodDeclaration): void {
     if (node.is(CommonFlags.SET) || node.is(CommonFlags.GET)) {
@@ -75,7 +71,7 @@ export class ClassExporter extends ClassDecorator {
       : `assert(!isNull(__contract), "contract is not initialized");`;
     let isVoid = returnType === "void";
     let body = isInit
-      ? `__contract = new ${this.className}(${pramNames.join(", ")});`
+      ? `__contract = new ${ClassExporter.className}(${pramNames.join(", ")});`
       : `${!isVoid ? "let res =  " : ""}__contract.${name}(${pramNames.join(
           ", "
         )});`;
@@ -92,15 +88,26 @@ export class ClassExporter extends ClassDecorator {
     if (isInit) {
       if (!decorators.some((decorator) => decorator.includes("exportAs"))) {
         decorators.push(`@exportAs("new")`);
+        this.checkMethods("new");
+      } else {
+        let decorator = node.decorators!.find(
+          (d) => toString(d.name) === "exportAs"
+        )!;
+        if (decorator.args!.length == 1) {
+          this.checkMethods(toString(decorator.args![0]));
+        }
       }
     }
+    const isChangeMethod = decorators.some((decorator) =>
+      decorator.includes("change")
+    );
     this.sb.push(
       `${decorators.join("\n")}
       export function ${name}(${parameters.join(", ")}): ${returnType} {
   ${assertStr}
   ${body}
-  ${isInit ? `__setState(__contract)` : "__updateState(__contract)"};
-  ${isVoid || isInit ? "" : "return res"}
+  ${isInit || isChangeMethod ? `__setState(__contract);` : ""}
+  ${isVoid || isInit ? "" : "return res;"}
 }`
     );
   }
@@ -110,7 +117,7 @@ export class ClassExporter extends ClassDecorator {
       let name = toString(node.name);
       if (ClassExporter.classSeen) {
         throw new Error(
-          `Cannot export class ${name}. ${ClassExporter.classSeen} already exported. `
+          `Cannot export class ${name}. ${ClassExporter.className} already exported. `
         );
       }
       ClassExporter.classSeen = node;

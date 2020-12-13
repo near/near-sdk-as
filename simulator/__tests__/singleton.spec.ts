@@ -1,4 +1,7 @@
 import { Runtime, Account } from "..";
+import { main } from "asbuild";
+import { promisify } from "util";
+import { join } from "path";
 
 let runtime: Runtime;
 let singleton: Account, alice: Account;
@@ -10,6 +13,34 @@ function getErrorMsg(res: any) {
     throw new Error(JSON.stringify(res.err, null, 2));
   }
 }
+
+async function compile(contract: string): Promise<void> {
+  function asb(succ: any, fail: any) {
+    main([join(__dirname,"../assembly/__tests__", contract + ".ts",), "--target", "debug", "--wat"], {
+    },
+    (err) => {
+      if (err) {
+        throw(err);
+        return -1;
+      } else {
+        succ();
+        return 1;
+      }
+    })
+  }
+  return new Promise(asb);
+}
+
+describe("Complier fails", () => {
+  it("shouldn't allow methods with the same name as init function", async () => {
+    try {
+      await compile("singleton-fail")
+      expect(true).toBe(false);
+    } catch (e) {
+      expect(e.message).toContain(`Method "new" already used cannot export constructor using the same name.`);
+    }
+  })
+})
 
 
 describe("cross contract calls", () => {
@@ -48,7 +79,17 @@ describe("cross contract calls", () => {
     const bob = runtime.newAccount("bob");
     let res = bob.call_other("singleton", "visit");
     expect(res.result.outcome.logs).toContainEqual("Visited by bob");
-    expect(singleton.view("hasVisited", {visitor: "bob"}).return_data).toBe(true)
+    expect(singleton.view("hasVisited", {visitor: "bob"}).return_data).toBe(true);
+    expect(singleton.view("lastVisited", {}).return_data).toBe("bob");
+  });
+
+
+  it("should not update state to visit_without_change decorator", () => {
+    init()
+    const bob = runtime.newAccount("bob");
+    let res = bob.call_other("singleton", "visit_without_change");
+    expect(res.result.outcome.logs).toContainEqual("Visited by bob");
+    expect(singleton.view("lastVisited", {}).return_data).toBe("NULL")
   });
 
   it("should not have private methods", () => {
@@ -56,4 +97,6 @@ describe("cross contract calls", () => {
     let res = alice.call_other("singleton", "hasNotVisited", {});
     expect(res.err["FunctionCallError"]["MethodResolveError"]).toContain("MethodNotFound");
   })
+
+
 });

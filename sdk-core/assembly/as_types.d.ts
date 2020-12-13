@@ -50,3 +50,12 @@ declare function includeBytes(path: string): StaticArray<u8>;
  * Rename Wasm module export to any string including keywords.
  */
 declare function exportAs(_func: any, name: string): void;
+
+
+/**
+ * Declare that a singleton method is a change method
+ * which should update the contract state after execution.
+ */
+declare function change(): (target: any,
+  propertyKey: string,
+  descriptor: any) => void;

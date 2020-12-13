@@ -1,8 +1,8 @@
 import { storage } from "near-sdk-core";
-// @ts-ignore
+
 /* eslint-disable indent */
+// @ts-ignore
 @lazy
-@global
 const __STATE_KEY = "STATE";
 
 // @ts-ignore
@@ -18,19 +18,7 @@ function __getState<T>(): T {
 }
 
 // @ts-ignore
-@lazy
-@global
-let __updated = false;
-// @ts-ignore
-
 @global
 function __setState<T>(state: T): void {
     storage.set(__STATE_KEY, state);
-}
-
-@global
-function __updateState<T>(state: T): void {
-  if (__updated) {
-    __setState(state);
-  }
 }
