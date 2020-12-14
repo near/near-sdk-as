@@ -1,6 +1,6 @@
 {
   "name": "near-sdk-simulator",
-  "version": "2.2.0-next.0",
+  "version": "2.1.2",
   "description": "Mock Near Runtime for integration testing.",
   "license": "(MIT AND Apache-2.0)",
   "main": "dist/index.js",
@@ -14,6 +14,6 @@
     "pretest": "yarn build"
   },
   "devDependencies": {
-    "near-sdk-core": "^2.2.0-next.0"
+    "near-sdk-core": "^2.1.2"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "near-sdk-core",
-  "version": "2.2.0-next.0",
+  "version": "2.1.2",
   "description": "Core AssemblyScript package for developing NEAR smart contracts in AssemblyScript",
   "types": "assembly/index.ts",
   "repository": {
@@ -14,7 +14,7 @@
     "@as-pect/cli": "^5.0.0",
     "as-bignum": "^0.2.4",
     "asbuild": "^0.0.9",
-    "assemblyscript": "^0.17.4",
+    "assemblyscript": "^0.14.9",
     "assemblyscript-json": "^0.3.3",
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",

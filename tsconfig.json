@@ -8,6 +8,6 @@
     "excludeProtected": true,
     "excludeExternals": true,
     "stripInternal": true,
-    "inputFiles": ["sdk-core/assembly", "sdk/assembly", "near-mock-vm/assembly"]
+    "inputFiles": ["**/*/assembly"]
   }
 }

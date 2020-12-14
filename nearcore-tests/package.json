@@ -1,6 +1,6 @@
 {
   "name": "nearcore-tests",
-  "version": "2.2.0-next.0",
+  "version": "2.1.2",
   "scripts": {
     "pretest": "yarn build",
     "test": "./test.sh",
@@ -8,6 +8,6 @@
   },
   "private": true,
   "devDependencies": {
-    "near-sdk-as": "^2.2.0-next.0"
+    "near-sdk-as": "^2.1.2"
   }
 }
