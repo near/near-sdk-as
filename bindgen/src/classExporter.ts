@@ -98,15 +98,16 @@ export class ClassExporter extends ClassDecorator {
         }
       }
     }
-    const isChangeMethod = decorators.some((decorator) =>
-      decorator.includes("change")
-    );
+    const hasUpdateState = decorators.some((decorator) => {
+      let res = decorator.includes("updateState");
+      return res;
+    });
     this.sb.push(
       `${decorators.join("\n")}
-      export function ${name}(${parameters.join(", ")}): ${returnType} {
+export function ${name}(${parameters.join(", ")}): ${returnType} {
   ${assertStr}
   ${body}
-  ${isInit || isChangeMethod ? `__setState(__contract);` : ""}
+  ${isInit || hasUpdateState ? `__setState(__contract);` : ""}
   ${isVoid || isInit ? "" : "return res;"}
 }`
     );

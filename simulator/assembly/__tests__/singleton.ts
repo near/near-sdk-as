@@ -1,5 +1,5 @@
 // @nearfile out
-import { logging, PersistentSet, Context } from "near-sdk-as";
+import { logging, PersistentSet, Context, commit } from "near-sdk-as";
 
 
 @nearBindgen
@@ -16,13 +16,18 @@ export class Singleton {
     return this._owner;
   }
 
-  @change()
+  @updateState()
   visit(): void {
     if (!this.visitors.has(Context.sender)) {
-      logging.log("Visited by " + Context.sender);
+      logging.log("Visited the first time by " + Context.sender);
       this.visitors.add(Context.sender);
     }
     this.last_visited = Context.sender;
+  }
+
+  visit_without_updated_decorator(): void {
+    this.visit();
+    commit(this);
   }
 
   visit_without_change(): void {

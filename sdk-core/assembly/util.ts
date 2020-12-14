@@ -112,3 +112,12 @@ export namespace util {
     return changetype<T>(__new(offsetof<T>(), idof<T>()));
   }
 }
+
+/**
+ * This commits updates to the state of the singleton contract so that changes persist.
+ * @param state Contract Singleton
+ */
+export function commit<T>(state: T): void {
+  // @ts-ignore
+  __setState<T>(state);
+}

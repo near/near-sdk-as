@@ -78,17 +78,25 @@ describe("cross contract calls", () => {
     init()
     const bob = runtime.newAccount("bob");
     let res = bob.call_other("singleton", "visit");
-    expect(res.result.outcome.logs).toContainEqual("Visited by bob");
+    expect(res.result.outcome.logs).toContainEqual("Visited the first time by bob");
     expect(singleton.view("hasVisited", {visitor: "bob"}).return_data).toBe(true);
     expect(singleton.view("lastVisited", {}).return_data).toBe("bob");
   });
 
+  it("should be able to visit without decorator", () => {
+    init()
+    const bob = runtime.newAccount("bob");
+    let res = bob.call_other("singleton", "visit_without_updated_decorator");
+    expect(res.result.outcome.logs).toContainEqual("Visited the first time by bob");
+    expect(singleton.view("hasVisited", {visitor: "bob"}).return_data).toBe(true);
+    expect(singleton.view("lastVisited", {}).return_data).toBe("bob");
+  });
 
   it("should not update state to visit_without_change decorator", () => {
     init()
     const bob = runtime.newAccount("bob");
     let res = bob.call_other("singleton", "visit_without_change");
-    expect(res.result.outcome.logs).toContainEqual("Visited by bob");
+    expect(res.result.outcome.logs).toContainEqual("Visited the first time by bob");
     expect(singleton.view("lastVisited", {}).return_data).toBe("NULL")
   });
 

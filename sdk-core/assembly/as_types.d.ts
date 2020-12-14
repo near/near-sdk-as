@@ -53,9 +53,9 @@ declare function exportAs(_func: any, name: string): void;
 
 
 /**
- * Declare that a singleton method is a change method
- * which should update the contract state after execution.
+ * Declare that a singleton method should commit updates 
+ * to the state of the singleton contract so that changes persist.
  */
-declare function change(): (target: any,
+declare function updateState(): (target: any,
   propertyKey: string,
   descriptor: any) => void;
