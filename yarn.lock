@@ -1974,12 +1974,12 @@ assemblyscript-json@^0.3.3:
   resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-0.3.3.tgz#cc2d05d432d5df290768c51f72a1f00ff8b52a0d"
   integrity sha512-TTYZK3rbfan7w5i0lv7bZS4rlXNDe8r/38kjzrQqF6dJaSE/fqSJOnpHsiBTtRgwkLRPL0NAen7ItD/3j9I6eg==
 
-assemblyscript@^0.14.9:
-  version "0.14.10"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.14.10.tgz#dc17f5f1b8ba34cf17d79a587f10f250733ddcd3"
-  integrity sha512-XQT2Hpf6bZtf9Cd1OdJ4rVQF3m80WBQUERnNRjymzKAFCYBpgKVAlVG8TDEhfzct+Bs4hsiS736G02K9cNzMaA==
+assemblyscript@^0.17.7:
+  version "0.17.7"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.17.7.tgz#8e142a26102cacc88e1b11f73e257fddadfc9987"
+  integrity sha512-HyFy/9FAXO/Q1HclibD6OsTleMfHJd3+gQRQtjLd9CbFmNeINxaxFHYlmzES2nqeSk9Jqxs29OOQaq13yboG4A==
   dependencies:
-    binaryen "95.0.0-nightly.20200813"
+    binaryen "98.0.0-nightly.20201109"
     long "^4.0.0"
 
 assert-no-diff@^3.0.4:
@@ -2151,10 +2151,10 @@ binary-install@0.0.1, binary-install@^0.0.1:
     tar "^5.0.5"
     universal-url "^2.0.0"
 
-binaryen@95.0.0-nightly.20200813:
-  version "95.0.0-nightly.20200813"
-  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-95.0.0-nightly.20200813.tgz#c84b332a7b06d4a9a2096c57b29c3e889130bcfb"
-  integrity sha512-xY+fhSAkVxptBoQAn9X4o21zTFycOjc+PeqbWSwcDqrSmXBXUMeq7qHhz4EWSWlFDKobHeUaiIbzLzlmciDWHw==
+binaryen@98.0.0-nightly.20201109:
+  version "98.0.0-nightly.20201109"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-98.0.0-nightly.20201109.tgz#512bf6ca15c67bf7402144734a4836e63993aa05"
+  integrity sha512-iRarAqdH5lMWlMBzrDuJgLYJR2g4QXk93iYE2zpr6gEZkb/jCgDpPUXdhuN11Ge1zZ/6By4DwA1mmifcx7FWaw==
 
 bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5:
   version "3.7.2"
