@@ -14,13 +14,13 @@ export class VMRunner {
   wasm: stringKeys | null = null;
   memory: Memory;
   gas: number = 0;
-  savedMemory: ArrayBuffer;
+  savedMemory: Uint8Array;
 
   constructor(memory: Memory, contextPath?: string) {
     const context = createContext(contextPath);
     this.vm = new VM(context, memory);
     this.memory = memory;
-    this.savedMemory = memory.memory.buffer;
+    this.savedMemory = new Uint8Array(memory.memory.buffer);
   }
 
   static create(memory?: WebAssembly.Memory, contextPath?: string): VMRunner {
@@ -50,12 +50,18 @@ export class VMRunner {
     let _imports = {
       vm: {
         saveMem() {
-          self.savedMemory = memory.buffer.slice(0, memory.buffer.byteLength);
+          self.savedMemory = new Uint8Array(
+            memory.buffer.slice(0, memory.buffer.byteLength)
+          );
         },
         restoreMem() {
-          new Uint8Array(memory.buffer).set(
-            new Uint8Array(self.savedMemory, 0, memory.buffer.byteLength / 4)
-          );
+          new Uint8Array(memory.buffer).set(self.savedMemory);
+          if (memory.buffer.byteLength > self.savedMemory.byteLength) {
+            new Uint8Array(memory.buffer).fill(0, self.savedMemory.byteLength);
+            self.savedMemory = new Uint8Array(
+              memory.buffer.slice(0, memory.buffer.byteLength)
+            );
+          }
         },
         restoreState() {
           vm.reset();
@@ -66,14 +72,14 @@ export class VMRunner {
           for (let str of outcome.logs) {
             strArrPtr = self.wasm.pushString(
               strArrPtr,
-              self.wasm.__allocString(str)
+              self.wasm.__newString(str)
             );
           }
           let return_data_ptr;
           if (outcome.return_data === "None") {
-            return_data_ptr = self.wasm.NONE;
+            return_data_ptr = self.wasm.None;
           }
-          const balancePtr = self.wasm.__allocString(outcome.balance);
+          const balancePtr = self.wasm.__newString(outcome.balance);
           let outcomePtr = new self.wasm.Outcome(
             balancePtr,
             BigInt(outcome.burnt_gas),

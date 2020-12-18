@@ -186,6 +186,7 @@ describe("AVLTrees should handle", () => {
       const k = cases[i];
       if (k % 2 === 0) {
         counter += 1;
+        debug();
         tree.insert(k, counter);
       }
     }

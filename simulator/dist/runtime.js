@@ -360,9 +360,6 @@ class Runtime {
                     ? JSON.parse(return_data.Value)
                     : null;
         }
-        if (result["err"] != null) {
-            console.error("ERROR: ", result.err);
-        }
         return {
             return_data,
             err: result["err"],

@@ -88,7 +88,7 @@ function insertKeys(keysToInsert: number[], map: Map<number, number>): void {
 
     if (map) {
       map.set(key, i);
-      expect(getSome(key)).toStrictEqual(map.get(key));
+      expect(getSome(key)).toStrictEqual(map.get(key)!);
     }
   }
 }
@@ -98,7 +98,7 @@ function removeKeys(keysToRemove: number[], map: Map<number, number>): void {
     const key = keysToRemove[i];
 
     if (map && map.has(key)) {
-      expect(getSome(key)).toStrictEqual(map.get(key));
+      expect(getSome(key)).toStrictEqual(map.get(key)!);
       map.delete(key);
     }
 
@@ -137,7 +137,7 @@ describe("avl tree contract calls", () => {
     const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
     const sortedValues = [];
     for (let i = 0; i < sortedKeys.length; ++i) {
-      sortedValues.push(map.get(sortedKeys[i]));
+      sortedValues.push(map.get(sortedKeys[i])!);
     }
 
     expect(size()).toStrictEqual(n);

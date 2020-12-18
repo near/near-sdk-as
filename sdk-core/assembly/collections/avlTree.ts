@@ -4,17 +4,14 @@ import { storage } from "../storage";
 
 @nearBindgen
 class Nullable<T> {
-  constructor(public val: T) {
-    this.val = val;
-  }
+  constructor(public val: T) {}
 }
 
 type NodeId = i32;
 
+@nearBindgen
 class ChildParentPair<K> {
   constructor(public child: AVLTreeNode<K>, public parent: AVLTreeNode<K>) {
-    this.child = child;
-    this.parent = parent;
   }
 }
 
@@ -26,13 +23,7 @@ class AVLTreeNode<K> {
     public left: Nullable<NodeId> | null = null,
     public right: Nullable<NodeId> | null = null,
     public height: u32 = 1
-  ) {
-    this.id = id;
-    this.key = key;
-    this.left = left;
-    this.right = right;
-    this.height = height;
-  }
+  ) {}
 }
 
 @nearBindgen

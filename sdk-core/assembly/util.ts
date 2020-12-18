@@ -109,6 +109,15 @@ export namespace util {
    * Unsafe function that alocates a new type T with no initialization.
    */
   export function allocate<T>(): T {
-    return changetype<T>(__alloc(offsetof<T>(), idof<T>()));
+    return changetype<T>(__new(offsetof<T>(), idof<T>()));
   }
+}
+
+/**
+ * This commits updates to the state of the singleton contract so that changes persist.
+ * @param state Contract Singleton
+ */
+export function persist<T>(state: T): void {
+  // @ts-ignore
+  __setState<T>(state);
 }
