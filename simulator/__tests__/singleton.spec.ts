@@ -37,7 +37,7 @@ describe("Complier fails", () => {
       await compile("singleton-fail")
       expect(true).toBe(false);
     } catch (e) {
-      expect(e.message).toContain(`Method "new" already used cannot export constructor using the same name.`);
+      expect(e.message).toContain(`Method "new" already used; cannot export constructor using the same name.`);
     }
   })
 })
