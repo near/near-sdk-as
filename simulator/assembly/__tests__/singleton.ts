@@ -1,5 +1,4 @@
-// @nearfile out
-import { logging, PersistentSet, Context, commit } from "near-sdk-as";
+import { logging, PersistentSet, Context, persist } from "near-sdk-as";
 
 
 @nearBindgen
@@ -27,7 +26,7 @@ export class Singleton {
 
   visit_without_updated_decorator(): void {
     this.visit();
-    commit(this);
+    persist(this);
   }
 
   visit_without_change(): void {

@@ -117,7 +117,7 @@ export namespace util {
  * This commits updates to the state of the singleton contract so that changes persist.
  * @param state Contract Singleton
  */
-export function commit<T>(state: T): void {
+export function persist<T>(state: T): void {
   // @ts-ignore
   __setState<T>(state);
 }
