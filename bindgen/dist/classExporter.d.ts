@@ -3,6 +3,7 @@ import { ClassDecorator } from "visitor-as";
 export declare class ClassExporter extends ClassDecorator {
     sb: string[];
     static classSeen: ClassDeclaration;
+    static hasConstructor: boolean;
     static get className(): string;
     checkMethods(name: string): void;
     visitFieldDeclaration(node: FieldDeclaration): void;

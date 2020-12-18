@@ -1,8 +1,6 @@
 import { base64, runtime_api, u128, util, Context } from "near-sdk-core";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
-
-// Import globals needed for singleton
-import "./singleton";
+import { storage } from "near-sdk-core";
 
 // Runtime functions
 // tslint:disable: no-unsafe-any
@@ -469,3 +467,29 @@ function defaultValue<T>(): T {
   return changetype<T>(0);
 }
 
+/**
+ * Singleton support functions
+ */
+
+/* eslint-disable indent */
+// @ts-ignore
+@lazy
+const __STATE_KEY = "STATE";
+
+// @ts-ignore
+@global
+function __checkState(): bool {
+  return storage.contains(__STATE_KEY);
+}
+
+// @ts-ignore
+@global
+function __getState<T>(): T {
+  return storage.getSome<T>(__STATE_KEY);
+}
+
+// @ts-ignore
+@global
+function __setState<T>(state: T): void {
+    storage.set(__STATE_KEY, state);
+}

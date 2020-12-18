@@ -52,6 +52,8 @@ class JSONTransformer extends Transform {
       parser.sources.push(newSource);
     });
 
+    ClassExporter.classSeen = null!;
+
     if (!JSONTransformer.isTest) {
       TypeChecker.check(parser);
     }

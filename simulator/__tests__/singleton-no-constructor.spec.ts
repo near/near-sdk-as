@@ -1,7 +1,4 @@
-import { Runtime, Account } from "..";
-import { main } from "asbuild";
-import { promisify } from "util";
-import { join } from "path";
+import { Runtime, Account } from "../dist";
 
 let runtime: Runtime;
 let singleton: Account, alice: Account;
@@ -14,34 +11,6 @@ function getErrorMsg(res: any) {
   }
 }
 
-async function compile(contract: string): Promise<void> {
-  function asb(succ: any, fail: any) {
-    main([join(__dirname,"../assembly/__tests__", contract + ".ts",), "--target", "debug", "--wat"], {
-    },
-    (err) => {
-      if (err) {
-        throw(err);
-        return -1;
-      } else {
-        succ();
-        return 1;
-      }
-    })
-  }
-  return new Promise(asb);
-}
-
-describe("Complier fails", () => {
-  it("shouldn't allow methods with the same name as init function", async () => {
-    try {
-      await compile("singleton-fail")
-      expect(true).toBe(false);
-    } catch (e) {
-      expect(e.message).toContain(`Method "new" already used cannot export constructor using the same name.`);
-    }
-  })
-})
-
 
 describe("cross contract calls", () => {
   beforeEach(() => {
@@ -49,12 +18,12 @@ describe("cross contract calls", () => {
     alice = runtime.newAccount("alice");
     singleton = runtime.newAccount(
       "singleton",
-      __dirname + "/../build/debug/singleton.wasm"
+      __dirname + "/../build/debug/singleton-no-constructor.wasm"
     );
   });
 
   function init() {
-    return alice.call_other("singleton", "new", { owner: "alice" });
+    return alice.call_other("singleton", "setOwner", { owner: "alice" });
   }
 
   it("should only initialize once", () => {
@@ -108,3 +77,4 @@ describe("cross contract calls", () => {
 
 
 });
+

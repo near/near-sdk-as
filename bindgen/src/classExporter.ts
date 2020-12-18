@@ -16,6 +16,7 @@ const toString = utils.toString;
 export class ClassExporter extends ClassDecorator {
   sb: string[] = [];
   static classSeen: ClassDeclaration;
+  static hasConstructor: boolean;
 
   static get className(): string {
     return toString(ClassExporter.classSeen.name);
@@ -32,7 +33,7 @@ export class ClassExporter extends ClassDecorator {
           throw new Error(
             `Method "${toString(
               member.name
-            )}" already used cannot export constructor using the same name.`
+            )}" already used; cannot export constructor using the same name.`
           );
         }
       }
@@ -66,9 +67,12 @@ export class ClassExporter extends ClassDecorator {
       return toString(param.name);
     });
     let isInit = name === "constructor";
-    let assertStr = isInit
-      ? `assert(isNull(__contract), "contract is already initialized");`
-      : `assert(!isNull(__contract), "contract is not initialized");`;
+    let assertStr: string = "";
+    if (isInit) {
+      assertStr = `assert(isNull(__contract), "contract is already initialized");`;
+    } else if (ClassExporter.hasConstructor) {
+      assertStr = `assert(!isNull(__contract), "contract is not initialized");`;
+    }
     let isVoid = returnType === "void";
     let body = isInit
       ? `__contract = new ${ClassExporter.className}(${pramNames.join(", ")});`
@@ -122,11 +126,23 @@ export function ${name}(${parameters.join(", ")}): ${returnType} {
         );
       }
       ClassExporter.classSeen = node;
+      ClassExporter.hasConstructor = node.members.some((member) => {
+        if (member instanceof MethodDeclaration) {
+          return toString(member.name) === "constructor";
+        }
+        return false;
+      });
       this.sb.push(
         `let __contract: ${name};
 if (__checkState()) {
   __contract = __getState<${name}>();
+}${
+          !ClassExporter.hasConstructor
+            ? ` else {
+  __contract = new ${name}();
 }`
+            : ""
+        }`
       );
       this.visit(node.members);
       node.flags = node.flags ^ CommonFlags.EXPORT;
