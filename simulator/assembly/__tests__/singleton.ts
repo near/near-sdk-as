@@ -16,7 +16,7 @@ export class Singleton {
     return this._owner;
   }
 
-  @updateState()
+  @mutateState()
   visit(): void {
     if (!this.visitors.has(Context.sender)) {
       logging.log("Visited the first time by " + Context.sender);

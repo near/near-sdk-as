@@ -2331,12 +2331,6 @@ module.exports.__wbg_set_478951586c457484 = logError(function(arg0, arg1, arg2) 
     getObject(arg0).set(getObject(arg1), arg2 >>> 0);
 });
 
-module.exports.__wbindgen_is_function = function(arg0) {
-    var ret = typeof(getObject(arg0)) === 'function';
-    _assertBoolean(ret);
-    return ret;
-};
-
 module.exports.__wbg_buffer_88f603259d7a7b82 = logError(function(arg0) {
     var ret = getObject(arg0).buffer;
     return addHeapObject(ret);
@@ -2346,6 +2340,12 @@ module.exports.__wbg_get_2e96a823c1c5a5bd = handleError(function(arg0, arg1) {
     var ret = Reflect.get(getObject(arg0), getObject(arg1));
     return addHeapObject(ret);
 });
+
+module.exports.__wbindgen_is_function = function(arg0) {
+    var ret = typeof(getObject(arg0)) === 'function';
+    _assertBoolean(ret);
+    return ret;
+};
 
 module.exports.__wbindgen_number_get = function(arg0, arg1) {
     const obj = getObject(arg1);

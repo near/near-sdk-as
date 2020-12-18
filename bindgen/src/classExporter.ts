@@ -98,8 +98,8 @@ export class ClassExporter extends ClassDecorator {
         }
       }
     }
-    const hasUpdateState = decorators.some((decorator) => {
-      let res = decorator.includes("updateState");
+    const hasMutateState = decorators.some((decorator) => {
+      let res = decorator.includes("mutateState");
       return res;
     });
     this.sb.push(
@@ -107,7 +107,7 @@ export class ClassExporter extends ClassDecorator {
 export function ${name}(${parameters.join(", ")}): ${returnType} {
   ${assertStr}
   ${body}
-  ${isInit || hasUpdateState ? `__setState(__contract);` : ""}
+  ${isInit || hasMutateState ? `__setState(__contract);` : ""}
   ${isVoid || isInit ? "" : "return res;"}
 }`
     );
