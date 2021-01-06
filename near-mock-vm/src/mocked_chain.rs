@@ -21,12 +21,18 @@ extern "C" {
 
 type Storage = HashMap<Vec<u8>, Vec<u8>>;
 
+fn size_of_hashmap(hash: &Storage) -> StorageUsage {
+    hash.iter()
+        .fold(0, |acc, (k, v)| acc + k.len() as u64 + v.len() as u64)
+}
+
 fn new_chain(
-    context: VMContext,
+    mut context: VMContext,
     storage: Option<Storage>,
     memory: MockedMemory,
 ) -> MockedBlockchain {
     let storage = storage.unwrap_or_default();
+    context.storage_usage = size_of_hashmap(&storage);
     let config = VMConfig::free();
     let fees_config = RuntimeFeesConfig::free();
     let memory_opt: Option<Box<dyn MemoryLike>> = Some(Box::new(memory));
@@ -145,8 +151,7 @@ impl VM {
 
     pub fn set_account_balance(&mut self, u_128: JsValue) {
         let balance: String = serde_wasm_bindgen::from_value(u_128).unwrap();
-        self.context.account_balance =
-            u128::from_str_radix(&balance, 10).unwrap(); // TODO: serde_wasm_bindgen::from_value(_u128).unwrap()
+        self.context.account_balance = u128::from_str_radix(&balance, 10).unwrap();
         self.switch_context()
     }
 

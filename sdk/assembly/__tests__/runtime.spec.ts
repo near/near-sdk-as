@@ -691,6 +691,16 @@ describe("Context", () => {
     });
   });
 
+  it("should be consistent after modification", () => {
+    storage.set("key", "value");
+    log(VM.outcome());
+    let before = Context.storageUsage;
+    VMContext.setAttached_deposit(u128.Zero); // creates a copy of the context with new attached deposit
+    log(VM.outcome());
+    let after = Context.storageUsage;
+    expect(before).toBe(after);
+  });
+
   it("should be editable", () => {
     VMContext.setCurrent_account_id("contractaccount");
     expect(Context.contractName).toBe("contractaccount", "Wrong contract name");
