@@ -8,4 +8,6 @@ export * from "./base58";
 export * from "./logging";
 export * from "./math";
 export * from "./promise";
-export * from "as-bignum";
+
+export * from "as-bignum/integer/safe/u128";
+export * from "as-bignum/integer/safe/u256";
