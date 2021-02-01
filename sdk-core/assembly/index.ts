@@ -9,5 +9,7 @@ export * from "./logging";
 export * from "./math";
 export * from "./promise";
 
-export * from "as-bignum/integer/safe/u128";
-export * from "as-bignum/integer/safe/u256";
+// Imports requre assembly since export isn't directly 
+// exported from main types path
+export * from "as-bignum/assembly/integer/safe/u128";
+export * from "as-bignum/assembly/integer/safe/u256";
