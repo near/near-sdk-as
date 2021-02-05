@@ -1920,10 +1920,10 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-as-bignum@^0.2.10:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.10.tgz#cba10a318d2eb731709220db47455fb430c4621d"
-  integrity sha512-uTB/06+xoAQSzVlF/8CQHhbIrdEet6oqjIrZ7RemWGeIDdjwHOyra9cyjedmf0UpcyHp0kY82zKab0fLNTxcvQ==
+as-bignum@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.11.tgz#f650afdad2bbb796388ae5063c89b29d96ff14b5"
+  integrity sha512-lMz8ltqyFzVUb9SvQQH5OXK8oT0xjRyNyi8zMSWTbq7RGu+wd9VRAtyZ5NyvMrwA7/5umVSDCx3pQkL0Jmd21Q==
 
 asap@^2.0.0:
   version "2.0.6"

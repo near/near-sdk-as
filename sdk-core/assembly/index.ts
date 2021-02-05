@@ -8,8 +8,4 @@ export * from "./base58";
 export * from "./logging";
 export * from "./math";
 export * from "./promise";
-
-// Imports requre assembly since export isn't directly 
-// exported from main types path
-export * from "as-bignum/assembly/integer/safe/u128";
-export * from "as-bignum/assembly/integer/safe/u256";
+export * from "./bignum";

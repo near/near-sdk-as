@@ -12,7 +12,7 @@
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
     "@as-pect/cli": "^5.0.0",
-    "as-bignum": "^0.2.10",
+    "as-bignum": "^0.2.11",
     "asbuild": "^0.0.10",
     "assemblyscript": "^0.17.3",
     "assemblyscript-json": "^0.3.3",
