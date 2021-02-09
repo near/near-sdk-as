@@ -6,7 +6,6 @@ import { utils } from "visitor-as";
 
 class JSONTransformer extends Transform {
   parser: Parser;
-  static isTest: boolean = false;
 
   afterParse(parser: Parser): void {
     this.parser = parser;
@@ -16,9 +15,6 @@ class JSONTransformer extends Transform {
 
     // Filter for near files
     let files = JSONBindingsBuilder.nearFiles(this.parser.sources);
-    JSONTransformer.isTest = files
-      .map((source) => source.normalizedPath)
-      .some((path) => path.includes("spec"));
     // Visit each file
     files.forEach((source) => {
       let writeOut = /\/\/.*@nearfile .*out/.test(source.text);
@@ -53,17 +49,6 @@ class JSONTransformer extends Transform {
     });
 
     ClassExporter.classSeen = null!;
-
-    if (!JSONTransformer.isTest) {
-      TypeChecker.check(parser);
-    }
-  }
-
-  /** Check for floats */
-  afterCompile(module: Module): void {
-    if (!JSONTransformer.isTest) {
-      TypeChecker.checkBinary(module);
-    }
   }
 }
 
