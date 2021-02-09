@@ -15,6 +15,15 @@ describe("big num division", () => {
     const _div10 = u128.div10(mul);
     const _div100 = u128.div10(_div10);
     expect(_div100).toBe(div100);
+
+    const amount = u128.from("100");
+    const result: u128 = u128.div(
+      u128.mul(amount, amount),
+      amount
+    );
+    expect(result).toStrictEqual(amount);
   
   });
+
+
 });
