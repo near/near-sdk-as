@@ -138,22 +138,6 @@ async function loadModule(path) {
 }
 
 
-
-
-async function testFloatDetection(file){
-  return new Promise( (resolve, reject)=>
-    asc.main([file, "--noEmit"], error => {
-      if (error == null || !/Floating point numbers are not allowed/g.test(error.message)) {
-        if (error == null){
-            error = "Couldn't find float";
-            }
-        reject(file + error);
-      }
-      console.error(error.message);
-      resolve();
-    }));
-}
-
 (async function() {
     const module = await loadModule(localize("/build/debug/test.wasm"));
     await module.runTest();
@@ -281,9 +265,6 @@ async function testFloatDetection(file){
       }
     );
     assert.deepStrictEqual(await module.classAndNull(), null);
-
-    await testFloatDetection(localize("./assembly/__tests__/f32.ts"));
-    await testFloatDetection(localize("./assembly/__tests__/f64.ts"));
 
 })().catch(e => {
     console.error('Error during test execution:', e);
