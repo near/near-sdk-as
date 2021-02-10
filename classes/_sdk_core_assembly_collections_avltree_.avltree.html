@@ -1,0 +1,1046 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AVLTree | near-sdk-core</title>
+	<meta name="description" content="Documentation for near-sdk-core">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">near-sdk-core</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_sdk_core_assembly_collections_avltree_.html">&quot;sdk-core/assembly/collections/avlTree&quot;</a>
+				</li>
+				<li>
+					<a href="_sdk_core_assembly_collections_avltree_.avltree.html">AVLTree</a>
+				</li>
+			</ul>
+			<h1>Class AVLTree&lt;K, V&gt;</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>K</h4>
+					</li>
+					<li>
+						<h4>V</h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">AVLTree</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#height" class="tsd-kind-icon">height</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#len" class="tsd-kind-icon">len</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#rootkey" class="tsd-kind-icon">root<wbr>Key</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#size" class="tsd-kind-icon">size</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#ceilkey" class="tsd-kind-icon">ceil<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#clear" class="tsd-kind-icon">clear</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#containskey" class="tsd-kind-icon">contains<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#entries" class="tsd-kind-icon">entries</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#floorkey" class="tsd-kind-icon">floor<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#getsome" class="tsd-kind-icon">get<wbr>Some</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#has" class="tsd-kind-icon">has</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#higher" class="tsd-kind-icon">higher</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#higherorequal" class="tsd-kind-icon">higher<wbr>OrEqual</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#insert" class="tsd-kind-icon">insert</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#keys" class="tsd-kind-icon">keys</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#lower" class="tsd-kind-icon">lower</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#lowerorequal" class="tsd-kind-icon">lower<wbr>OrEqual</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#max" class="tsd-kind-icon">max</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#min" class="tsd-kind-icon">min</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#range" class="tsd-kind-icon">range</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_collections_avltree_.avltree.html#values" class="tsd-kind-icon">values</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new AVLTree<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_sdk_core_assembly_collections_avltree_.avltree.html" class="tsd-signature-type">AVLTree</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L34">sdk-core/assembly/collections/avlTree.ts:34</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A string name is used as a prefix for writing keys to storage.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_sdk_core_assembly_collections_avltree_.avltree.html" class="tsd-signature-type">AVLTree</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="height" class="tsd-anchor"></a>
+					<h3>height</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> height<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">u32</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L62">sdk-core/assembly/collections/avlTree.ts:62</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">u32</span></h4>
+							<p>Height of the tree.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="len" class="tsd-anchor"></a>
+					<h3>len</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> len<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">u32</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L55">sdk-core/assembly/collections/avlTree.ts:55</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">u32</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="rootkey" class="tsd-anchor"></a>
+					<h3>root<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> rootKey<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L370">sdk-core/assembly/collections/avlTree.ts:370</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<hr>
+									<pre><code> AVL <span class="hljs-built_in">Tree</span> core routines
+</code></pre>
+									<hr>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="size" class="tsd-anchor"></a>
+					<h3>size</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">u32</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L51">sdk-core/assembly/collections/avlTree.ts:51</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">u32</span></h4>
+							<p>Number of elements in the tree.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="ceilkey" class="tsd-anchor"></a>
+					<h3>ceil<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">ceil<wbr>Key<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L322">sdk-core/assembly/collections/avlTree.ts:322</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="clear" class="tsd-anchor"></a>
+					<h3>clear</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L329">sdk-core/assembly/collections/avlTree.ts:329</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes all key-value pairs from the tree</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="containskey" class="tsd-anchor"></a>
+					<h3>contains<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">contains<wbr>Key<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">bool</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L73">sdk-core/assembly/collections/avlTree.ts:73</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">bool</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L122">sdk-core/assembly/collections/avlTree.ts:122</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Delete element with key if present, otherwise do nothing.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key to remove.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="entries" class="tsd-anchor"></a>
+					<h3>entries</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">entries<span class="tsd-signature-symbol">(</span>start<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, end<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, inclusive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MapEntry</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L212">sdk-core/assembly/collections/avlTree.ts:212</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a range of entries from a start key (inclusive) to an end key (exclusive by default).
+									If end is greater than max key, include start to max inclusive.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>start: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for lower bound (inclusive).</p>
+									</div>
+								</li>
+								<li>
+									<h5>end: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for upper bound (exclusive by default).</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> inclusive: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Set to false if upper bound should be exclusive, true if upper bound should be inclusive</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">MapEntry</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Range of entries corresponding to keys within start and end bounds.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="floorkey" class="tsd-anchor"></a>
+					<h3>floor<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">floor<wbr>Key<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L308">sdk-core/assembly/collections/avlTree.ts:308</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="get" class="tsd-anchor"></a>
+					<h3>get</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, defaultValue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L102">sdk-core/assembly/collections/avlTree.ts:102</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves a related value for a given key or uses the <code>defaultValue</code> if not key is found</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key of the element.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> defaultValue: <span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
+							<p>Value for the given key or the default value.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getsome" class="tsd-anchor"></a>
+					<h3>get<wbr>Some</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Some<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L113">sdk-core/assembly/collections/avlTree.ts:113</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves the related value for a given key, or throws error &quot;key not found&quot;</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key of the element.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">V</span></h4>
+							<p>Value for the given key or the default value.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="has" class="tsd-anchor"></a>
+					<h3>has</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">has<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">bool</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L69">sdk-core/assembly/collections/avlTree.ts:69</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">bool</span></h4>
+							<p>Whether the key is present in the tree.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="higher" class="tsd-anchor"></a>
+					<h3>higher</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">higher<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L277">sdk-core/assembly/collections/avlTree.ts:277</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the minimum key that is strictly greater than the key.
+									Throws if empty or if key is higher than or equal to <code>this.max()</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for upper bound (exclusive).</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+							<p>Minimum key that is strictly greater than given key.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="higherorequal" class="tsd-anchor"></a>
+					<h3>higher<wbr>OrEqual</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">higher<wbr>OrEqual<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L318">sdk-core/assembly/collections/avlTree.ts:318</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the minimum key that is greater or equal than the key.
+									Throws if empty or if key is higher than <code>this.max()</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for upper bound (inclusive).</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+							<p>Minimum key that is greater or equal to given key.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="insert" class="tsd-anchor"></a>
+					<h3>insert</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">insert<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L92">sdk-core/assembly/collections/avlTree.ts:92</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+								</li>
+								<li>
+									<h5>value: <span class="tsd-signature-type">V</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="keys" class="tsd-anchor"></a>
+					<h3>keys</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">keys<span class="tsd-signature-symbol">(</span>start<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, end<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, inclusive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L161">sdk-core/assembly/collections/avlTree.ts:161</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a range of keys from a start key (inclusive) to an end key (exclusive by default).
+									If end is greater than max key, include start to max inclusive.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>start: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for lower bound (inclusive).</p>
+									</div>
+								</li>
+								<li>
+									<h5>end: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for upper bound (exclusive by default).</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> inclusive: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Set to false if upper bound should be exclusive, true if upper bound should be inclusive</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Range of keys within start and end bounds.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lower" class="tsd-anchor"></a>
+					<h3>lower</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">lower<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L250">sdk-core/assembly/collections/avlTree.ts:250</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the maximum key that is strictly less than the key.
+									Throws if empty or if key is lower than or equal to <code>this.min()</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for lower bound (exclusive).</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+							<p>Maximum key that is strictly less than given key.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lowerorequal" class="tsd-anchor"></a>
+					<h3>lower<wbr>OrEqual</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">lower<wbr>OrEqual<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L304">sdk-core/assembly/collections/avlTree.ts:304</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the maximum key that is less or equal than the key.
+									Throws if empty or if key is lower than <code>this.min()</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for lower bound (inclusive).</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+							<p>Maximum key that is less than or equal to given key.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="max" class="tsd-anchor"></a>
+					<h3>max</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L240">sdk-core/assembly/collections/avlTree.ts:240</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns maximum key.
+									Throws if tree is empty.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+							<p>Maximum key.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="min" class="tsd-anchor"></a>
+					<h3>min</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">min<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L231">sdk-core/assembly/collections/avlTree.ts:231</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns minimum key.
+									Throws if tree is empty.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+							<p>Minimum key.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="range" class="tsd-anchor"></a>
+					<h3>range</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">range<span class="tsd-signature-symbol">(</span>start<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, end<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, inclusive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MapEntry</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L222">sdk-core/assembly/collections/avlTree.ts:222</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>start: <span class="tsd-signature-type">K</span></h5>
+								</li>
+								<li>
+									<h5>end: <span class="tsd-signature-type">K</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> inclusive: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">MapEntry</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L129">sdk-core/assembly/collections/avlTree.ts:129</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="set" class="tsd-anchor"></a>
+					<h3>set</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L84">sdk-core/assembly/collections/avlTree.ts:84</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>If key is not present in the tree, a new node is added with the value.
+									Otherwise update the node with the new value.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key of the element.</p>
+									</div>
+								</li>
+								<li>
+									<h5>value: <span class="tsd-signature-type">V</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The new value of the element.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="values" class="tsd-anchor"></a>
+					<h3>values</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">values<span class="tsd-signature-symbol">(</span>start<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, end<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, inclusive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/collections/avlTree.ts#L142">sdk-core/assembly/collections/avlTree.ts:142</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a range of values from a start key (inclusive) to an end key (exclusive by default).
+									If end is greater than max key, include start to max inclusive.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>start: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for lower bound (inclusive).</p>
+									</div>
+								</li>
+								<li>
+									<h5>end: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Key for upper bound (exclusive by default).</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> inclusive: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Set to false if upper bound should be exclusive, true if upper bound should be inclusive</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Range of values corresponding to keys within start and end bounds.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_sdk_core_assembly_collections_avltree_.html">&quot;sdk-<wbr>core/assembly/collections/avl<wbr>Tree&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_sdk_core_assembly_collections_avltree_.avltree.html" class="tsd-kind-icon">AVLTree</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#height" class="tsd-kind-icon">height</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#len" class="tsd-kind-icon">len</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#rootkey" class="tsd-kind-icon">root<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#size" class="tsd-kind-icon">size</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#ceilkey" class="tsd-kind-icon">ceil<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#clear" class="tsd-kind-icon">clear</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#containskey" class="tsd-kind-icon">contains<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#delete" class="tsd-kind-icon">delete</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#entries" class="tsd-kind-icon">entries</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#floorkey" class="tsd-kind-icon">floor<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#get" class="tsd-kind-icon">get</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#getsome" class="tsd-kind-icon">get<wbr>Some</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#has" class="tsd-kind-icon">has</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#higher" class="tsd-kind-icon">higher</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#higherorequal" class="tsd-kind-icon">higher<wbr>OrEqual</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#insert" class="tsd-kind-icon">insert</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#keys" class="tsd-kind-icon">keys</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#lower" class="tsd-kind-icon">lower</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#lowerorequal" class="tsd-kind-icon">lower<wbr>OrEqual</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#max" class="tsd-kind-icon">max</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#min" class="tsd-kind-icon">min</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#range" class="tsd-kind-icon">range</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#remove" class="tsd-kind-icon">remove</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#set" class="tsd-kind-icon">set</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_collections_avltree_.avltree.html#values" class="tsd-kind-icon">values</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_sdk_core_assembly_collections_avltree_.avltreenode.html" class="tsd-kind-icon">AVLTree<wbr>Node</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_sdk_core_assembly_collections_avltree_.childparentpair.html" class="tsd-kind-icon">Child<wbr>Parent<wbr>Pair</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_sdk_core_assembly_collections_avltree_.nullable.html" class="tsd-kind-icon">Nullable</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_sdk_core_assembly_collections_avltree_.html#nodeid" class="tsd-kind-icon">Node<wbr>Id</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ContractPromise | near-sdk-core</title>
+	<meta name="description" content="Documentation for near-sdk-core">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">near-sdk-core</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_sdk_core_assembly_contract_.html">&quot;sdk-core/assembly/contract&quot;</a>
+				</li>
+				<li>
+					<a href="_sdk_core_assembly_contract_.contractpromise.html">ContractPromise</a>
+				</li>
+			</ul>
+			<h1>Class ContractPromise</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Class to make asynchronous calls to other contracts and receive callbacks.
+						Here is an example on how to create a new async call with the callback.</p>
+						<pre><code>export <span class="hljs-keyword">function</span> call<span class="hljs-constructor">MetaNear()</span>: void {
+  <span class="hljs-keyword">let</span> itemArgs: AddItemArgs = {
+    accountId: <span class="hljs-string">&quot;alice.near&quot;</span>,
+    itemId: <span class="hljs-string">&quot;Sword +9000&quot;</span>,s
+  };
+  <span class="hljs-keyword">let</span> promise = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContractPromise</span>.</span></span>create(
+    <span class="hljs-string">&quot;metanear&quot;</span>,
+    <span class="hljs-string">&quot;addItem&quot;</span>,
+    itemArgs.encode<span class="hljs-literal">()</span>,
+    <span class="hljs-number">0</span>,
+  );
+  <span class="hljs-comment">// Setting up args for the callback</span>
+  <span class="hljs-keyword">let</span> requestArgs: OnItemAddedArgs = {
+    <span class="hljs-string">&quot;itemAddedRequestId&quot;</span>: <span class="hljs-string">&quot;UNIQUE_REQUEST_ID&quot;</span>,
+  };
+  <span class="hljs-keyword">let</span> callbackPromise = promise.<span class="hljs-keyword">then</span>(
+     <span class="hljs-string">&quot;_onItemAdded&quot;</span>,
+     requestArgs.encode<span class="hljs-literal">()</span>,
+     <span class="hljs-number">2</span>,  <span class="hljs-comment">// Attaching 2 additional requests, in case we need to do another call</span>
+  );
+  callbackPromise.return<span class="hljs-constructor">AsResult()</span>;
+}
+</code></pre>
+						<p>See docs on used methods for more details.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ContractPromise</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_sdk_core_assembly_contract_.contractpromise.html#id" class="tsd-kind-icon">id</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_sdk_core_assembly_contract_.contractpromise.html#returnasresult" class="tsd-kind-icon">return<wbr>AsResult</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_sdk_core_assembly_contract_.contractpromise.html#then" class="tsd-kind-icon">then</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_sdk_core_assembly_contract_.contractpromise.html#all" class="tsd-kind-icon">all</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_sdk_core_assembly_contract_.contractpromise.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_sdk_core_assembly_contract_.contractpromise.html#getresults" class="tsd-kind-icon">get<wbr>Results</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">u64</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/contract.ts#L159">sdk-core/assembly/contract.ts:159</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="returnasresult" class="tsd-anchor"></a>
+					<h3>return<wbr>AsResult</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">return<wbr>AsResult<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/contract.ts#L292">sdk-core/assembly/contract.ts:292</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the promise as a result of your function. Don&#39;t return any other results from the function.
+									Your current function should be <code>void</code> and shouldn&#39;t return anything else. E.g.</p>
+									<pre><code>export <span class="hljs-keyword">function</span> call<span class="hljs-constructor">MetaNear()</span>: void {
+  <span class="hljs-keyword">let</span> itemArgs: AddItemArgs = {
+    accountId: <span class="hljs-string">&quot;alice.near&quot;</span>,
+    itemId: <span class="hljs-string">&quot;Sword +9000&quot;</span>,
+  };
+  <span class="hljs-keyword">let</span> promise = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContractPromise</span>.</span></span>create(
+    <span class="hljs-string">&quot;metanear&quot;</span>,
+    <span class="hljs-string">&quot;addItem&quot;</span>,
+    itemArgs,
+    <span class="hljs-number">0</span>,
+    <span class="hljs-number">0</span>,
+  );
+  promise.return<span class="hljs-constructor">AsResult()</span>;
+}
+</code></pre>
+								</div>
+								<p>Now when you call <code>callMetaNear</code> method, it creates new promise to <code>metanear</code> contract.
+									And saying that the result of the current execution depends on the result <code>addItem</code>.
+									Even though this contract is not going to be called with a callback, the contract which
+									calling <code>callMetaNear</code> would receive the result from <code>addItem</code>. This call essentially acts
+								as a proxy.</p>
+								<p>You can also attach a callback on top of the promise before returning it, e.g.</p>
+								<pre><code><span class="hljs-operator">  ...
+  </span><span class="hljs-keyword">let</span> promise = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContractPromise</span>.</span></span>create(<span class="hljs-operator">
+     ...
+  </span>);
+  <span class="hljs-comment">// Setting up args for the callback</span>
+  <span class="hljs-keyword">let</span> requestArgs: OnItemAddedArgs = {
+    <span class="hljs-string">&quot;itemAddedRequestId&quot;</span>: <span class="hljs-string">&quot;UNIQUE_REQUEST_ID&quot;</span>,
+  };
+  <span class="hljs-keyword">let</span> callbackPromise = promise.<span class="hljs-keyword">then</span>(
+     <span class="hljs-string">&quot;_onItemAdded&quot;</span>,
+     requestArgs,
+     <span class="hljs-number">2</span>,  <span class="hljs-comment">// Attaching 2 additional requests, in case we need to do another call</span>
+  );
+  callbackPromise.return<span class="hljs-constructor">AsResult()</span>;
+}
+</code></pre>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="then" class="tsd-anchor"></a>
+					<h3>then</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">then&lt;T&gt;<span class="tsd-signature-symbol">(</span>contractName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, methodName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, gas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">u64</span>, amount<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">u128</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/contract.ts#L218">sdk-core/assembly/contract.ts:218</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creating a callback for the AsyncCall Promise created with <code>create</code> method.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>contractName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of your contract.</p>
+									</div>
+								</li>
+								<li>
+									<h5>methodName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Method name on your contract to be called to receive the callback.
+											NOTE: Your callback method name can start with <code>_</code>, which would prevent other
+										contracts from calling it directly. Only callbacks can call methods with <code>_</code> prefix.</p>
+									</div>
+								</li>
+								<li>
+									<h5>args: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Arguments object on your callback method, see <code>create</code> for details.</p>
+									</div>
+								</li>
+								<li>
+									<h5>gas: <span class="tsd-signature-type">u64</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount of gas attached to the call.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> amount: <span class="tsd-signature-type">u128</span><span class="tsd-signature-symbol"> = u128.Zero</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount of tokens from the called contract to be sent to the current contract with this call.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="all" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> all</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">all<span class="tsd-signature-symbol">(</span>promises<span class="tsd-signature-symbol">: </span><a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/contract.ts#L302">sdk-core/assembly/contract.ts:302</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>promises: <a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="create" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create&lt;T&gt;<span class="tsd-signature-symbol">(</span>contractName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, methodName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, gas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">u64</span>, amount<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">u128</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/contract.ts#L180">sdk-core/assembly/contract.ts:180</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new async call promise. Returns an instance of <code>ContractPromise</code>.
+										The call would be scheduled if the this current execution of the contract succeeds
+									without errors or failed asserts.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>contractName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Account ID of the remote contract to call. E.g. <code>metanear</code>.</p>
+									</div>
+								</li>
+								<li>
+									<h5>methodName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Method name on the remote contract to call. E.g. <code>addItem</code>.</p>
+									</div>
+								</li>
+								<li>
+									<h5>args: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Arguments object to pass into the method. To get them create a new model
+											specific for the method you calling, e.g. <code>AddItemArgs</code>. Then create an instance of it
+											and populate arguments. After this, serialize it into bytes. E.g.
+										<code>    let itemArgs: AddItemArgs = {       accountId: &quot;alice.near&quot;,       itemId: &quot;Sword +9000&quot;,     };     ContractPromise.create(&quot;metanear&quot;, &quot;addItem&quot;, itemArgs, 100)    </code></p>
+									</div>
+								</li>
+								<li>
+									<h5>gas: <span class="tsd-signature-type">u64</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount of gas attached to the call</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> amount: <span class="tsd-signature-type">u128</span><span class="tsd-signature-symbol"> = u128.Zero</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount of tokens from your contract to be sent to the remote contract with this call.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-signature-type">ContractPromise</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getresults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Results</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Results<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_sdk_core_assembly_contract_.contractpromiseresult.html" class="tsd-signature-type">ContractPromiseResult</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/near/near-sdk-as/blob/43916bd/sdk-core/assembly/contract.ts#L336">sdk-core/assembly/contract.ts:336</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Method to receive async (one or multiple) results from the remote contract in the callback.
+									Example of using it.</p>
+									<pre><code><span class="hljs-comment">// This function is prefixed with `_`, so other contracts or people can&#x27;t call it directly.</span>
+export <span class="hljs-keyword">function</span> <span class="hljs-constructor">_onItemAdded(<span class="hljs-params">itemAddedRequestId</span>: <span class="hljs-params">string</span>)</span>: <span class="hljs-built_in">bool</span> {
+  <span class="hljs-comment">// Get all results</span>
+  <span class="hljs-keyword">let</span> results = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContractPromise</span>.</span></span>get<span class="hljs-constructor">Results()</span>;
+  <span class="hljs-keyword">let</span> addItemResult = results<span class="hljs-literal">[<span class="hljs-number">0</span>]</span>;
+  <span class="hljs-comment">// Verifying the remote contract call succeeded.</span>
+  <span class="hljs-keyword">if</span> (addItemResult.success) {
+    <span class="hljs-comment">// Decoding data from the bytes buffer into the local object.</span>
+    <span class="hljs-keyword">let</span> data = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AddItemResult</span>.</span></span>decode(addItemResult.buffer);
+    <span class="hljs-keyword">if</span> (data.itemPower &gt; <span class="hljs-number">9000</span>) {
+      return <span class="hljs-literal">true</span>;
+    }
+  }
+  return <span class="hljs-literal">false</span>;
+}
+</code></pre>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_sdk_core_assembly_contract_.contractpromiseresult.html" class="tsd-signature-type">ContractPromiseResult</a><span class="tsd-signature-symbol">[]</span></h4>
+							<p>An array of results based on the number of promises the callback was created on.
+							If the callback using <code>then</code> was scheduled only on one result, then one result will be returned.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_sdk_core_assembly_contract_.html">&quot;sdk-<wbr>core/assembly/contract&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-reference tsd-parent-kind-module">
+						<a href="../modules/_sdk_core_assembly_contract_.html#context" class="tsd-kind-icon">context</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="_sdk_core_assembly_contract_.context-1.html" class="tsd-kind-icon">Context</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
+						<a href="_sdk_core_assembly_contract_.contractpromise.html" class="tsd-kind-icon">Contract<wbr>Promise</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_contract_.contractpromise.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_sdk_core_assembly_contract_.contractpromise.html#returnasresult" class="tsd-kind-icon">return<wbr>AsResult</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="_sdk_core_assembly_contract_.contractpromise.html#then" class="tsd-kind-icon">then</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_sdk_core_assembly_contract_.contractpromise.html#all" class="tsd-kind-icon">all</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="_sdk_core_assembly_contract_.contractpromise.html#create" class="tsd-kind-icon">create</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_sdk_core_assembly_contract_.contractpromise.html#getresults" class="tsd-kind-icon">get<wbr>Results</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="_sdk_core_assembly_contract_.contractpromiseresult.html" class="tsd-kind-icon">Contract<wbr>Promise<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../modules/_sdk_core_assembly_contract_.html#encodeargs" class="tsd-kind-icon">encode<wbr>Args</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
