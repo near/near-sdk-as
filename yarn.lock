@@ -52,15 +52,10 @@
     diff "^5.0.0"
     nearley "^2.20.1"
 
-"@assemblyscript/loader@^0.14.9":
-  version "0.14.13"
-  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.14.13.tgz#a0d0acad5130cbb533477716d8d7fb3871f77c24"
-  integrity sha512-D772X1nUJLWBArGB8Y82dgUnXcZGS7eGdCvgj/9GqKI0w3/lq6vjF+9DqXITu+m25Hd0YVBFbotkU1BfgRKTLw==
-
-"@assemblyscript/loader@^0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.9.4.tgz#a483c54c1253656bb33babd464e3154a173e1577"
-  integrity sha512-HazVq9zwTVwGmqdwYzu7WyQ6FQVZ7SwET0KKQuKm55jD0IfUpZgN0OPIiZG3zV1iSrVYcN0bdwLRXI/VNCYsUA==
+"@assemblyscript/loader@^0.18.9":
+  version "0.18.9"
+  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.18.9.tgz#ed50d59216c0257811152b6a0028e51f0c99cf75"
+  integrity sha512-E49ZYGudAsDZG78mj59/OysLHait0igAm0PPx/Q21aT6qtgJC4RWYo8kaY/w6OV5TndX6ugEa9RDBSyx0lGDnQ==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13":
   version "7.12.13"
