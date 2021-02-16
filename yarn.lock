@@ -2,55 +2,55 @@
 # yarn lockfile v1
 
 
-"@as-pect/assembly@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@as-pect/assembly/-/assembly-5.0.0.tgz#aa85efbedb93ea79f7236769bd96e3ba7824189e"
-  integrity sha512-tFPFxBCyiC4vMqZHxanhIxJL9nX7TqUCa91aty1poFGwyfbLr5/XEVnPRTwfTn8pNEtcfJ99lTjUDdYxhmv8qA==
+"@as-pect/assembly@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/assembly/-/assembly-6.0.0.tgz#c8df070dadf1732d27cbefdf07d60a782a34a9ec"
+  integrity sha512-B1bBMg2onl+RomWLlsWfrHdB8d4Xu7GOJn5eMwI4gjXvDKfbNXeSrL1gdkL7oZAHCf04XJ0XRWdUXfPdqTZdGA==
 
-"@as-pect/cli@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@as-pect/cli/-/cli-5.0.0.tgz#83325bad5fcd813f7e07f91cfff8b99595378216"
-  integrity sha512-gpS/Zt1NBN2O1zvhbqQwXiu6hmAQxhPubdFkWWVmQamcHy42uDVdUesqmHwSQTOSBtTSTYHFK4GJbg6yipUbEA==
+"@as-pect/cli@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/cli/-/cli-6.0.0.tgz#eee9862709d23dffcee4bb7573866d7109e50840"
+  integrity sha512-YlRP56oflSwal03VXG/e08Ov8RsTvSYRajXh8Bb3HTLJaaoQhoodgHkQJPTZQy1rhIvJvYRN1uqZkZdppB8M/A==
   dependencies:
-    "@as-pect/assembly" "^5.0.0"
-    "@as-pect/core" "^5.0.0"
+    "@as-pect/assembly" "^6.0.0"
+    "@as-pect/core" "^6.0.0"
     chalk "^4.1.0"
     glob "^7.1.6"
   optionalDependencies:
-    "@as-pect/csv-reporter" "^5.0.0"
-    "@as-pect/json-reporter" "^5.0.0"
+    "@as-pect/csv-reporter" "^6.0.0"
+    "@as-pect/json-reporter" "^6.0.0"
 
-"@as-pect/core@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@as-pect/core/-/core-5.0.0.tgz#0126843e6cb5792537102aafddbcb9f7832364e9"
-  integrity sha512-uTtOSVXfoJyAQA6Gp+sYTzGHq/XSK31/OHNR8lpT6KkpZ0ij5B1RrqcpoVU29MF/PujOihmXxXqr6o86rz5Oqw==
+"@as-pect/core@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/core/-/core-6.0.0.tgz#e522a85738829c1d4872136b1b647b2c5b0ace7b"
+  integrity sha512-48KVLSZvUbIk0tjhwE6AIrnPICdWoziex0fmmvoXHHnNOoXv5lZPYwS/CjZcl8SAQlIgj6Qe692yo85BfCxE9g==
   dependencies:
-    "@as-pect/assembly" "^5.0.0"
-    "@as-pect/snapshots" "^5.0.0"
+    "@as-pect/assembly" "^6.0.0"
+    "@as-pect/snapshots" "^6.0.0"
     chalk "^4.1.0"
     long "^4.0.0"
 
-"@as-pect/csv-reporter@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@as-pect/csv-reporter/-/csv-reporter-5.0.0.tgz#bbbf29a9615aa78206596a02ffb13e9496fc7f95"
-  integrity sha512-I/JBRtxGeGLdAN4WeDMBNkmgTRebAyuQBzPjcYOca4dqCgT3BlfDnL+iZeVt9vcJUXxUqaXidRvFYqNJnG+UMQ==
+"@as-pect/csv-reporter@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/csv-reporter/-/csv-reporter-6.0.0.tgz#7c0eb306dfa59acececd36ecef5a333a914f4744"
+  integrity sha512-2SrSN0UstjUlFCW7L/Z33tufTfWDOwPAZZ8WJNiiWbOgPSh0ML899DabR8UbH7eVQe1aeyS2LCSjhVKtmb7uSg==
   dependencies:
-    "@as-pect/core" "^5.0.0"
+    "@as-pect/core" "^6.0.0"
 
-"@as-pect/json-reporter@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@as-pect/json-reporter/-/json-reporter-5.0.0.tgz#0295bd04212ba6ee18ce45bdc074b4d50379317c"
-  integrity sha512-3FGmSqKbHTWL9Aj5iYT/T64NLVg9WR+NoFNfGaRnIXVCsmHZ/9Ee1CXGqGZrcAh586VZskhqvYZKZ+rD79X3OQ==
+"@as-pect/json-reporter@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/json-reporter/-/json-reporter-6.0.0.tgz#462323c8b23ac823cff3e377988983de65980ee1"
+  integrity sha512-MW+bocR8Ys859oZwMighOY5ZWv0MDUGs1FToLwXOXk93EzlOyToDZ2ntEODpZW2zU8xX5rLv6zU/n1yr263i1g==
   dependencies:
-    "@as-pect/core" "^5.0.0"
+    "@as-pect/core" "^6.0.0"
 
-"@as-pect/snapshots@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@as-pect/snapshots/-/snapshots-5.0.0.tgz#e888dde1f9d47631c45b48da79b574d22032c0fa"
-  integrity sha512-2HQH4w9d32ZnNF7HKVTiYQHsMgPV2+FRnhVE13qhm5BsBrrNkHVlJODdKhMXTg5HovITA4azZSu2A/ZQV7Mmjw==
+"@as-pect/snapshots@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@as-pect/snapshots/-/snapshots-6.0.0.tgz#083b2b43571c8cbca3462dff1780de4e31a830d7"
+  integrity sha512-5OMKJWYm3cfEX28TroY9j5CIhwO6q/300GShrxpDaNYva/HgA8iPY4dGdbiI4xcCf8xaHuBq2HQi0kYS+1wqjQ==
   dependencies:
     diff "^5.0.0"
-    nearley "^2.19.9"
+    nearley "^2.20.1"
 
 "@assemblyscript/loader@^0.14.9":
   version "0.14.13"
@@ -5657,16 +5657,15 @@ near-vm@^1.1.0:
   dependencies:
     binary-install "^0.0.1"
 
-nearley@^2.19.9:
-  version "2.19.9"
-  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.19.9.tgz#a6a06362025be043d3b06bca65355c75af45dc4e"
-  integrity sha512-KpCXvcVWPmZrEs95tIkqWi+CgL48O8CJDVDgY/AQGWXR1O8KQPHt5iQrTLior0k0v3PGKIV2xPi879wR1sawwg==
+nearley@^2.20.1:
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.20.1.tgz#246cd33eff0d012faf197ff6774d7ac78acdd474"
+  integrity sha512-+Mc8UaAebFzgV+KpI5n7DasuuQCHA89dmwm7JXw3TV43ukfNQ9DnBH3Mdb2g/I4Fdxc26pwimBWvjIw0UAILSQ==
   dependencies:
     commander "^2.19.0"
     moo "^0.5.0"
     railroad-diagrams "^1.0.0"
     randexp "0.4.6"
-    semver "^5.4.1"
 
 neo-async@^2.6.0:
   version "2.6.2"
