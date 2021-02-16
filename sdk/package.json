@@ -23,8 +23,8 @@
     "build": "asb assembly/__tests__/main.ts -- --noEmit"
   },
   "devDependencies": {
-    "@assemblyscript/loader": "^0.14.9",
-    "@types/bn.js": "^4.11.6",
+    "@assemblyscript/loader": "^0.18.9",
+    "@types/bn.js": "^5.1.0",
     "@types/bs58": "^4.0.1",
     "@types/jest": "^26.0.0",
     "@types/js-base64": "^3.0.0",
@@ -36,8 +36,8 @@
     "prettier": "^2.1.1",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
-    "typedoc": "^0.18.0",
-    "typescript": "^3.6.4"
+    "typedoc": "^0.20.25",
+    "typescript": "^4.1.5"
   },
   "engines": {
     "node": ">=12.0.0"

@@ -11,23 +11,23 @@
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
-    "@as-pect/cli": "^5.0.0",
+    "@as-pect/cli": "^6.0.0",
     "as-bignum": "^0.2.12",
     "asbuild": "^0.0.10",
-    "assemblyscript": "^0.17.3",
+    "assemblyscript": "^0.18.9",
     "assemblyscript-json": "^0.3.3",
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",
     "js-base64": "^3.4.3",
     "near-vm": "^1.1.0",
-    "visitor-as": "^0.3.2"
+    "visitor-as": "^0.4.0"
   },
   "scripts": {
     "test": "yarn build",
     "build": "asb ../sdk/assembly/__tests__/main.ts --verbose -- --noEmit"
   },
   "devDependencies": {
-    "@types/bn.js": "^4.11.6",
+    "@types/bn.js": "^5.1.0",
     "@types/bs58": "^4.0.1",
     "@types/jest": "^26.0.0",
     "@types/js-base64": "^3.0.0",
@@ -39,8 +39,8 @@
     "prettier": "^2.1.1",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
-    "typedoc": "^0.18.0",
-    "typescript": "^3.6.4"
+    "typedoc": "^0.20.25",
+    "typescript": "^4.1.5"
   },
   "engines": {
     "node": ">=12.0.0"
