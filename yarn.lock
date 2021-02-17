@@ -1948,10 +1948,10 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-assemblyscript-json@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-0.3.3.tgz#cc2d05d432d5df290768c51f72a1f00ff8b52a0d"
-  integrity sha512-TTYZK3rbfan7w5i0lv7bZS4rlXNDe8r/38kjzrQqF6dJaSE/fqSJOnpHsiBTtRgwkLRPL0NAen7ItD/3j9I6eg==
+assemblyscript-json@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-0.4.0.tgz#f70991fe0df5981a5d0bbd4a0537c6e9b294f316"
+  integrity sha512-mB6JboIc8UEch4sIss84DjkZqCvGVK+O6HGLaYqwncBm/nvjLYuH8ZRLZdEZNFl2/cF1aAVQ5qw5MpHPgcV4NA==
 
 assemblyscript@^0.18.9:
   version "0.18.9"

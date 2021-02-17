@@ -15,7 +15,7 @@
     "as-bignum": "^0.2.12",
     "asbuild": "^0.0.10",
     "assemblyscript": "^0.18.9",
-    "assemblyscript-json": "^0.3.3",
+    "assemblyscript-json": "^0.4.0",
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",
     "js-base64": "^3.4.3",
