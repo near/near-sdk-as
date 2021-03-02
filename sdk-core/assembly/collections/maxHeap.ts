@@ -79,26 +79,28 @@ export class MaxHeap<T> {
    * Recursively fixes max-heap violations
    * @param current Current node index
    */
-  private _maxHeapify(current: i32): void {
+  private _maxHeapify(current: i32, currentValue: T): void {
     if (this._isLeaf(current)) {
       return;
     }
 
-    const currentValue = this._heap[current];
-    const left = this._left(current);
-    const leftValue = this._heap[left];
-
     // Find the index with the largest value among the current nodes and its children
     let largest = current, largestValue = currentValue;
 
-    if (left < this._heap.length && leftValue > currentValue) {
+    const left = this._left(current);
+    let leftValue: T;
+
+    if (left < this._heap.length && (leftValue = this._heap[left]) > currentValue) {
       largest = left;
       largestValue = leftValue;
     }
 
     const right = this._right(current);
-    if (right < this._heap.length && this._heap[right] > largestValue) {
+    let rightValue: T;
+
+    if (right < this._heap.length && (rightValue = this._heap[right]) > largestValue) {
       largest = right;
+      largestValue = rightValue;
     }
 
     // If the current index does not hold the largest value among the current
@@ -106,13 +108,14 @@ export class MaxHeap<T> {
     // recurse on that child
     if (largest != current) {
       this._swap(current, largest);
-      this._maxHeapify(largest);
+      this._maxHeapify(largest, currentValue);
     }
   }
 
   /**
    * The first (maximum) item on the heap
    */
+  @inline
   public get top(): T {
     return this._heap.first;
   }
@@ -120,6 +123,7 @@ export class MaxHeap<T> {
   /**
    * The total number of items in the heap
    */
+  @inline
   public get length(): i32 {
     return this._heap.length;
   }
@@ -127,6 +131,7 @@ export class MaxHeap<T> {
   /**
    * Is the heap empty?
    */
+  @inline
   public get isEmpty(): bool {
     return this._heap.isEmpty;
   }
@@ -176,7 +181,9 @@ export class MaxHeap<T> {
   public pop(): T {
     const popped = this._heap.swap_remove(0);
 
-    this._maxHeapify(0);
+    if (this._heap.length > 0) {
+      this._maxHeapify(0, this._heap.first);
+    }
 
     return popped;
   }
@@ -201,7 +208,7 @@ export class MaxHeap<T> {
   public replace(item: T): T {
     const replaced = this._heap.replace(0, item);
 
-    this._maxHeapify(0);
+    this._maxHeapify(0, item);
 
     return replaced;
   }
