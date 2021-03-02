@@ -350,6 +350,8 @@ export class ContractPromise {
   }
 }
 
+// @ts-ignore
+@lazy
 export enum PromiseStatus {
   Pending = 0,
   Successful = 1,
