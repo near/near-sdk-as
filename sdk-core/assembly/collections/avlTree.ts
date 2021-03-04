@@ -264,7 +264,7 @@ export class AVLTree<K, V> {
     }
 
     if (root.key >= key)
-      throw new Error(`key is less than mininum key in tree`);
+      throw new Error("key is less than mininum key in tree");
     else return root.key;
   }
 
@@ -291,7 +291,7 @@ export class AVLTree<K, V> {
     }
 
     if (root.key <= key)
-      throw new Error(`key is greater than maximum key in tree`);
+      throw new Error("key is greater than maximum key in tree");
     else return root.key;
   }
 
