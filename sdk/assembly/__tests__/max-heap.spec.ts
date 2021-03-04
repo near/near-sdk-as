@@ -7,7 +7,7 @@ class StringLengthWrapper {
   ) { }
 
   @operator(">")
-  public __gt(right: StringLengthWrapper): bool {
+  private __gt(right: StringLengthWrapper): bool {
     return this.value.length > right.value.length;
   }
 
@@ -71,6 +71,53 @@ describe('MaxHeap', () => {
     for (let x: u64 = 6, i = 0; x >= 1; x--, i++) {
       expect(numHeap.pop()).toBe(x, 'Popping ' + i.toString() + ' should be ' + x.toString());
     }
+  });
+
+  it('finds and deletes items by index', () => {
+    const array = [1, 2, 8, 7, 2, 2, 80, 44, 14, 67, 3, 2];
+
+    array.forEach(n => {
+      numHeap.push(n);
+    });
+
+    array.forEach(n => {
+      expect(numHeap.contains(n)).toBe(true);
+    });
+
+    expect(numHeap.indexOf(0)).toBe(-1);
+    expect(numHeap.indexOf(10)).toBe(-1);
+    expect(numHeap.indexOf(79)).toBe(-1);
+    expect(numHeap.indexOf(1000)).toBe(-1);
+
+    expect(numHeap.contains(0)).toBe(false);
+    expect(numHeap.contains(20)).toBe(false);
+    expect(numHeap.contains(200)).toBe(false);
+
+    const values = numHeap.values();
+
+    values.forEach((n, i, a) => {
+      expect(a[numHeap.indexOf(n)]).toBe(n);
+    });
+
+    // There is only one 3 in our heap
+    numHeap.delete(3);
+    expect(numHeap.indexOf(3)).toBe(-1);
+
+    // There is more than one 2 in our heap
+    numHeap.delete(2);
+    expect(numHeap.indexOf(2)).not.toBe(-1);
+
+    numHeap.deleteAt(numHeap.indexOf(80));
+    expect(numHeap.contains(80)).toBe(false);
+
+    numHeap.deleteAt(numHeap.indexOf(14));
+    expect(numHeap.contains(14)).toBe(false);
+
+    numHeap.deleteAt(numHeap.indexOf(44));
+    expect(numHeap.contains(44)).toBe(false);
+
+    expect(() => { numHeap.deleteAt(-1); }).toThrow();
+    expect(() => { numHeap.deleteAt(600); }).toThrow();
   });
 
   it('replaces the top of the heap', () => {
