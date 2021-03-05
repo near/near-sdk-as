@@ -6,8 +6,19 @@ import {
   PersistentSet,
   PersistentMap,
   PersistentDeque,
+  RNG,
 } from "..";
 import { Box } from "./generic";
+
+const NUM_RANDOM_FLOATS = 100;
+
+function testFloat<T>(): void {
+  let rng = new RNG<T>(NUM_RANDOM_FLOATS);
+  for (let i = 0; i < NUM_RANDOM_FLOATS; i++) {
+    expect(rng.next()).toBeCloseTo(roundtrip<T>(rng.last()));
+  }
+}
+
 
 describe("Round Trip", () => {
   it("should return the same TextMessage", () => {
@@ -80,6 +91,16 @@ describe("Round Trip", () => {
 
   it("sholud handle null", () => {
     expect<TextMessage | null>(roundtrip<TextMessage | null>(null)).toBeNull();
+  });
+
+  describe("should handle floats", () => {
+    it("f32", () => {
+      testFloat<f32>();
+    });
+
+    it("f64", () => {
+      testFloat<f64>();
+    });
   });
 
   describe("Persistent Collections are serializable ", () => {

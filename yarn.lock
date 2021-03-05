@@ -1924,20 +1924,20 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-as-bignum@^0.2.12:
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.14.tgz#b05a540b4e6f4c7d489595e87b0982b27f286c80"
-  integrity sha512-hjomo5gzddFVpQMnY5cIR+Iu6Po9L1E9SzbLvVLc+KZI1oBn0ND/xU9XGr4FhkbyaJQNXXcq+L3DJc2/w1Gvag==
+as-bignum@^0.2.15:
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.15.tgz#34c9787d096943a8d3ded5ef3a89844bce27b2ac"
+  integrity sha512-pGUyKIQ/KQa5L44IStjuZLJPJAPeuFK6SvlhlhTIvqMHdc2OTfxJbWaz4Zx2dczOMaOq8ohPAMa/qq1N+k3yQg==
 
 asap@^2.0.0:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
-asbuild@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.10.tgz#393df07f8287e90ffd10812805408fbf84d4656c"
-  integrity sha512-pSBYULxYuOjFVfcyeMgnJLsFbFbwqONxn9yYwMj7F44HcdVvsJzDx7wdg49uG8KmIuiQc7vjoMg3bg6oC/Al7g==
+asbuild@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.0.11.tgz#45890d205b193eeeceb68e4154427b5ccaa69058"
+  integrity sha512-j+4UQ/o3QP/0G3Awyir0EyS2prs1EcPgDWQq2y5i5Ygw7rWr938JNOuFk4rV7Yxj0MLwDZC78rZ9DlKB2zut9A==
   dependencies:
     yargs "^15.4.1"
 
@@ -1948,10 +1948,10 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-assemblyscript-json@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-0.3.3.tgz#cc2d05d432d5df290768c51f72a1f00ff8b52a0d"
-  integrity sha512-TTYZK3rbfan7w5i0lv7bZS4rlXNDe8r/38kjzrQqF6dJaSE/fqSJOnpHsiBTtRgwkLRPL0NAen7ItD/3j9I6eg==
+assemblyscript-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-1.0.0.tgz#2211f53987f377ef90dd5425b14e09bd1fdea74a"
+  integrity sha512-Cv96RESaVbCJn6jqVPXJlrClb3ZoLwcoSNFPDpHMXxi7NqLBeUGhV6zitSjLIgPHXVocIuYYH+SnykzEtErrBg==
 
 assemblyscript@^0.18.9:
   version "0.18.9"

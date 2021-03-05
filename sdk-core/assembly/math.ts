@@ -147,13 +147,12 @@ export class RNG<T> {
   private buffer: Uint8Array;
   private index: i32 = 0;
   private tripsAround: u32 = 0;
+  private _last: T;
 
   constructor(len: u32, public max: u32 = 10_000) {
-    if (!isInteger<T>()) {
-      throw new Error("Only Integer types can be created");
-    }
     let real_len = len * sizeof<T>();
     this.buffer = math.randomBuffer(real_len);
+    this._last = this.get(0);
   }
 
   next(): T {
@@ -169,7 +168,16 @@ export class RNG<T> {
     }
     const index = this.index;
     this.index += sizeof<T>();
+    this._last = this.get(index);
+    return this._last;
+  }
+  
+  private get(index: usize): T {
     // @ts-ignore
-    return <T>(load<T>(this.buffer.dataStart + index) % this.max);
+    return <T>(load<T>(this.buffer.dataStart + index) % <T>(this.max));
+  }
+
+  last(): T {
+    return this._last;
   }
 }
