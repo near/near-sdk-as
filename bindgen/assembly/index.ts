@@ -108,6 +108,9 @@ function encode<T, Output = Uint8Array>(
       // @ts-ignore
       encoder.setInteger(name, value);
     }
+  } else if (isFloat<T>()) {
+    // @ts-ignore
+    encoder.setFloat(name, value);
   } else if (isString<T>()) {
     if (isNull<T>(value)) {
       encoder.setNull(name);
@@ -277,10 +280,17 @@ function JSONTypeToString<T>(t: T): string {
   if (t instanceof JSON.Null) {
     return "Null";
   }
-  if (t instanceof JSON.Num) {
-    return "Number";
+  if (t instanceof JSON.Integer) {
+    return "Integer";
+  }
+  if (t instanceof JSON.Float) {
+    return "Float";
   }
   return "UNKNOWN TYPE";
+}
+
+function isNumber<T>(): boolean {
+  return isFloat<T>() || isInteger<T>();
 }
 
 // @ts-ignore
@@ -294,12 +304,14 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
     const obj: JSON.Obj = <JSON.Obj>buffer;
     let res = obj.get(name);
     if (res == null) {
-      if (isReallyNullable<T>() && !isInteger<T>()) {
-        if (isInteger<T>()) {
+      if (isReallyNullable<T>() && !isNumber<T>()) {
+        if (isFloat<T>()) {
+          throw new Error("type " + nameof<T>() + " cannot be null.");
+        } else if (isInteger<T>()) {
           throw new Error("type " + nameof<T>() + " cannot be null.");
         } else {
           // @ts-ignore
-          return <T>null;
+          return changetype<T>(res);
         }
       } else {
         throw new Error("type " + nameof<T>() + " cannot be null.");
@@ -338,7 +350,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
       return <T>(isSigned<T>() ? I64.parseInt(str) : U64.parseInt(str));
     }
     assert(
-      val instanceof JSON.Num,
+      val instanceof JSON.Integer,
       "Value with Key: " +
         name +
         " with type " +
@@ -346,7 +358,18 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
         " is not an Integer"
     );
     // @ts-ignore
-    return <T>(<JSON.Num>val)._num;
+    return <T>(<JSON.Integer>val)._num;
+  } else if (isFloat<T>()) {
+    assert(
+      val instanceof JSON.Float,
+      "Value with Key: " +
+        name +
+        " with type " +
+        nameof<T>() +
+        " is not a Float"
+    );
+    // @ts-ignore
+    return <T>(<JSON.Float>val)._num;
   }
   if (val instanceof JSON.Null) {
     assert(
@@ -370,12 +393,13 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
   // @ts-ignore
   if (isDefined(value.decode)) {
     assert(
-      val instanceof JSON.Obj,
+      val instanceof JSON.Obj || val instanceof JSON.Obj,
       "Value with Key: " +
         name +
         " with type " +
         nameof<T>() +
-        " is not an object or null"
+        " is not an object or null " +
+        (val instanceof JSON.Obj).toString()
     );
     value = util.allocate<T>();
     if (isNullable<T>()) {

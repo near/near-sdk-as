@@ -3,7 +3,7 @@ v8.setFlagsFromString('--experimental-wasm-bigint');
 const fs = require('fs');
 const assert = require('assert');
 let asc = require("assemblyscript/cli/asc");
-const loader = require('@assemblyscript/loader');
+const loader = require('assemblyscript/lib/loader');
 const path = require('path');
 
 function localize(p) { return path.join(__dirname, p); }
@@ -65,10 +65,10 @@ async function loadModule(path) {
             abort(msg, file, line, column) {
                 if (module) {
                     if (msg) {
-                        msg = module.__getString(msg);
+                        msg = module.exports.__getString(msg);
                     }
                     if (file) {
-                        file = module.__getString(file);
+                        file = module.exports.__getString(file);
                     }
                 }
                 console.log("abort called: %s %s:%s:%s", msg, file, line, column);
@@ -153,6 +153,8 @@ async function loadModule(path) {
             bar: 123,
             u64Val: (2 ** 32 + 1).toString(),
             i64Val: "-64",
+            f32: 3.140000104904175,
+            f64: 3.141592653589793238462643383279,
             flag: true,
             baz: "bazinga",
             uint8array: null,
@@ -162,7 +164,7 @@ async function loadModule(path) {
             u128Val: null,
             uint8arrays: null,
             u64Arr: null,
-            u64_zero: "0"
+            u64_zero: "0",
           }
         }
       ]
@@ -178,6 +180,8 @@ async function loadModule(path) {
             bar: 1,
             u64Val: "4294967297",
             i64Val: "-64",
+            f32: 3.140000104904175,
+            f64: 3.141592653589793238462643383279,
             flag: false,
             baz: "123",
             uint8array: null,
@@ -206,6 +210,8 @@ async function loadModule(path) {
               bar: 1,
               u64Val: "4294967297",
               i64Val: "-64",
+              f32: 3.140000104904175,
+              f64: 3.141592653589793238462643383279,
               flag: false,
               baz: "123",
               uint8array: null,
@@ -228,6 +234,8 @@ async function loadModule(path) {
         bar: 1,
         u64Val: "4294967297",
         i64Val: "-64",
+        f32: 3.140000104904175,
+        f64: 3.141592653589793238462643383279,
         u128Val: null,
         flag: false,
         baz: "123",
@@ -252,6 +260,8 @@ async function loadModule(path) {
         bar: 1,
         u64Val: "4294967297",
         i64Val: "-64",
+        f32: 3.140000104904175,
+        f64: 3.141592653589793238462643383279,
         flag: false,
         baz: "123",
         uint8array: null,

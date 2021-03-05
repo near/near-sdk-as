@@ -7,6 +7,8 @@ export class FooBar {
   u64Val: u64 = 4294967297;
   u64_zero: u64;
   i64Val: i64 = -64;
+  f32: f32 = 3.14;
+  f64: f64 = 3.141592653589793238462643383279
   flag: bool;
   baz: string = "123";
   uint8array: Uint8Array;

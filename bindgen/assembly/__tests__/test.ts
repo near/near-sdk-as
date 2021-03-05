@@ -18,6 +18,12 @@ function isNull<T>(t: T): bool {
   return false;
 }
 
+const SMALL_FLOAT = 0.0000000001;
+
+function equalFloat(f: f64, f1: f64): boolean {
+  return Math.abs(f - f1) < SMALL_FLOAT;
+}
+
 export function runTest(): void {
   logging.log("starting test");
   const original = new FooBar();
@@ -76,6 +82,9 @@ export function runTest(): void {
   const encodedArr: Uint8Array = encode<u64[]>(arr);
   const arr2: u64[] = decode<u64[]>(encodedArr);
   assert(arr[0] == arr2[0]);
+  assert(original.f32 == decoded.f32);
+  assert(original.f64 == decoded.f64);
+  assert(roundtrip<f32>(3.4) == 3.4);
 
   assert(roundtrip<u64[]>([]).length == 0);
   assert(roundtrip<i32>(42) == 42);
