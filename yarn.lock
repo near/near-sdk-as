@@ -53,9 +53,9 @@
     nearley "^2.20.1"
 
 "@assemblyscript/loader@^0.18.9":
-  version "0.18.9"
-  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.18.9.tgz#ed50d59216c0257811152b6a0028e51f0c99cf75"
-  integrity sha512-E49ZYGudAsDZG78mj59/OysLHait0igAm0PPx/Q21aT6qtgJC4RWYo8kaY/w6OV5TndX6ugEa9RDBSyx0lGDnQ==
+  version "0.18.13"
+  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.18.13.tgz#e4171e0da7a5ad6f99daceba0cccdb2b5826765e"
+  integrity sha512-cLbpMm+LFfDI0ePvNoynr38I5GEYgEgnDv+V/bD4IYeait8/DzXe2CDWfulIEgSCJ6ubSKS9PhpFPlxVapk11Q==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13":
   version "7.12.13"
