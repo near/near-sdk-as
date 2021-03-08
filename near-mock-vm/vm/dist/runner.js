@@ -15,7 +15,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -25,7 +25,7 @@ const near_mock_vm_1 = require("../../pkg/near_mock_vm");
 const context_1 = require("./context");
 const memory_1 = require("./memory");
 const js_base64_1 = require("js-base64");
-const loader = __importStar(require("@assemblyscript/loader"));
+const loader = __importStar(require("assemblyscript/lib/loader"));
 const utils = __importStar(require("./utils"));
 class VMRunner {
     constructor(memory, contextPath) {
@@ -132,6 +132,12 @@ class VMRunner {
                 },
                 setEpoch_height(_u64) {
                     vm.set_epoch_height(_u64);
+                },
+                // setOutput_data_receivers(arr) {
+                //   vm.set_output_data_receivers(arr);
+                // },
+                setValidator(s, b) {
+                    vm.set_validator(self.readUTF8Str(s), self.readUTF8Str(b));
                 },
             },
             env: {
@@ -316,14 +322,14 @@ class VMRunner {
     }
     run(method, input) {
         this.vm.set_input(js_base64_1.Base64.encode(input));
-        this.wasm[method]();
+        this.wasm.exports[method]();
     }
     static setup(binary, contextPath, memory) {
         const vm = VMRunner.create(memory, contextPath);
         const instrumented_bin = VMRunner.instrumentBinary(binary);
         const wasm = loader.instantiateSync(instrumented_bin, vm.createImports());
         vm.wasm = wasm;
-        vm.memory = new memory_1.Memory(wasm.memory);
+        vm.memory = new memory_1.Memory(wasm.exports.memory);
         return vm;
     }
     outcome() {

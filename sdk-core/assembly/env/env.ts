@@ -1,4 +1,4 @@
-import { u128 } from "..";
+import { u128, util } from "..";
 
 export namespace env {
   // #############
@@ -334,10 +334,12 @@ export namespace env {
 
   export function validator_stake(account_id: string): u128 {
     let data = new Uint8Array(offsetof<u128>());
-    let id = String.UTF8.encode(account_id);
-    let id_ptr = changetype<usize>(id);
-    _validator_stake(id.byteLength, id_ptr, data.dataStart);
-    return u128.from(data);
+    let id = util.stringToBytes(account_id);
+    let id_ptr = id.dataStart as u64;
+    let id_len: u64 = id.byteLength;
+    _validator_stake(id_len, id_ptr, data.dataStart);
+    let res = u128.from(data);
+    return res
   }
 
   // /// Returns the total stake of validators in the current epoch.

@@ -95,6 +95,11 @@ export class VM {
 */
   set_epoch_height(_u64: BigInt): void;
 /**
+* @param {any} s
+* @param {any} u_128
+*/
+  set_validator(s: any, u_128: any): void;
+/**
 * #################
 * # Registers API #
 * #################
