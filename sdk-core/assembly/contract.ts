@@ -116,6 +116,13 @@ export class Context {
   static get storageUsage(): u64 {
     return env.storage_usage();
   }
+
+  /**
+   * Assert that only this current contract is calling itself
+   */
+  static assert_self(): void {
+    assert(this.contractName == this.predecessor, "This method is private to the contract.")
+  }
 }
 
 function encodeArgs<T>(t: T): Uint8Array {
