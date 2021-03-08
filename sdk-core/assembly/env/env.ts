@@ -338,8 +338,7 @@ export namespace env {
     let id_ptr = id.dataStart as u64;
     let id_len: u64 = id.byteLength;
     _validator_stake(id_len, id_ptr, data.dataStart);
-    let res = u128.from(data);
-    return res
+    return u128.from(data);
   }
 
   // /// Returns the total stake of validators in the current epoch.
