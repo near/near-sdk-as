@@ -7,5 +7,5 @@ before_script:
 
 script:
   - fossa init
-  - fossa analyze --server-scan
+  - fossa analyze --server-scan --output
   - fossa test
