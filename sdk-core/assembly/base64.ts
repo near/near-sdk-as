@@ -6,6 +6,8 @@
 const PADCHAR = "=";
 const ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
  
+// @ts-ignore: decorator
+@lazy
 const ALPHAVALUES = new Uint8Array(128);
 for (let n=0;n<ALPHA.length;n++) {
   ALPHAVALUES[ALPHA.charCodeAt(n)] = n;
