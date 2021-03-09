@@ -3,6 +3,8 @@
  * base64 encoding/decoding
  */
 
+// @ts-ignore: decorator
+@lazy
 const PADCHAR = "=";
 // @ts-ignore: decorator
 @lazy
