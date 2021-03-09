@@ -1924,10 +1924,10 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-as-bignum@^0.2.12:
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.14.tgz#b05a540b4e6f4c7d489595e87b0982b27f286c80"
-  integrity sha512-hjomo5gzddFVpQMnY5cIR+Iu6Po9L1E9SzbLvVLc+KZI1oBn0ND/xU9XGr4FhkbyaJQNXXcq+L3DJc2/w1Gvag==
+as-bignum@^0.2.15:
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.15.tgz#34c9787d096943a8d3ded5ef3a89844bce27b2ac"
+  integrity sha512-pGUyKIQ/KQa5L44IStjuZLJPJAPeuFK6SvlhlhTIvqMHdc2OTfxJbWaz4Zx2dczOMaOq8ohPAMa/qq1N+k3yQg==
 
 asap@^2.0.0:
   version "2.0.6"

@@ -12,6 +12,7 @@ import {
   ContractPromise,
   math,
   ContractPromiseBatch,
+  env,
 } from "..";
 import { TextMessage } from "./model";
 import {
@@ -567,4 +568,9 @@ export function getDefaultValue(y: string = "hello world", x: i32 = 42): i32 {
 
 export function mixDefaults(x: u64, y: u64 = 1): i32 {
   return <i32>(x + y);
+}
+
+export function get_validator(): void {
+  env.validator_stake("hello");
+  env.validator_total_stake();
 }

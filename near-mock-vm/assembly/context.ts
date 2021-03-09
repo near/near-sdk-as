@@ -81,6 +81,11 @@ declare function _setOutput_data_receivers(arrA: Array<string>): void;
 @external("vm", "setStorage_usage")
 declare function _setStorage_usage(amt: u64): void;
 
+/** @internal */
+// @ts-ignore
+@external("vm", "setValidator")
+declare function _setValidator(account_id: usize, u128: u64): void;
+
 function toUTF8(str: string): usize {
   return changetype<usize>(String.UTF8.encode(str));
 }
@@ -154,5 +159,9 @@ export namespace VMContext {
 
   export function setOutput_data_receivers(arrA: Array<string>): void {
     _setOutput_data_receivers(arrA);
+  }
+
+  export function setValidator(account_id: string, stake_balance: u128): void {
+    _setValidator(toUTF8(account_id), toUTF8(stake_balance.toString()));
   }
 }

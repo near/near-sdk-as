@@ -1,15 +1,15 @@
 use near_sdk::{
-    BlockchainInterface, Gas, MockedBlockchain, PromiseIndex, ReturnData, RuntimeFeesConfig,
-    StorageUsage, VMConfig, VMContext,
+    AccountId, BlockchainInterface, Gas, MockedBlockchain, PromiseIndex, ReturnData,
+    RuntimeFeesConfig, StorageUsage, VMConfig, VMContext,
 };
 use serde::Serialize;
 
 use crate::memory::{MockedMemory, NearMemory};
 use crate::runner;
-
 use crate::utils::*;
+
 use near_vm_logic::MemoryLike;
-use std::collections::HashMap;
+use std::{borrow::BorrowMut, collections::HashMap};
 use wasm_bindgen::prelude::{wasm_bindgen, JsValue};
 
 // lifted from the `console_log` example
@@ -17,6 +17,12 @@ use wasm_bindgen::prelude::{wasm_bindgen, JsValue};
 extern "C" {
     #[wasm_bindgen(js_namespace = console)]
     fn log(a: &str);
+}
+#[allow(unused_macros)]
+macro_rules! console_log {
+  // Note that this is using the `log` function imported above during
+  // `bare_bones`
+  ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }
 
 type Storage = HashMap<Vec<u8>, Vec<u8>>;
@@ -30,20 +36,21 @@ fn new_chain(
     mut context: VMContext,
     storage: Option<Storage>,
     memory: MockedMemory,
+    validators: Option<HashMap<String, u128>>,
 ) -> MockedBlockchain {
     let storage = storage.unwrap_or_default();
     context.storage_usage = size_of_hashmap(&storage);
     let config = VMConfig::free();
     let fees_config = RuntimeFeesConfig::free();
     let memory_opt: Option<Box<dyn MemoryLike>> = Some(Box::new(memory));
-    let hash_map = HashMap::new();
+    let validators = validators.unwrap_or(HashMap::new()).clone();
     MockedBlockchain::new(
         context,
         config,
         fees_config,
         vec![],
         storage,
-        hash_map,
+        validators,
         memory_opt,
     )
 }
@@ -68,6 +75,7 @@ pub struct VM {
     context: VMContext,
     original: VMContext,
     memory: MockedMemory,
+    validators: HashMap<String, u128>,
 }
 
 #[wasm_bindgen]
@@ -79,12 +87,13 @@ impl VM {
         let context: VMContext = serde_wasm_bindgen::from_value(context).unwrap();
         let original: VMContext = context.clone();
         let stor_opt: Option<Storage> = None;
-        let chain = new_chain(context.clone(), stor_opt, memory.clone());
+        let chain = new_chain(context.clone(), stor_opt, memory.clone(), None);
         Self {
             chain,
             context,
             original,
             memory,
+            validators: HashMap::new(),
         }
     }
 
@@ -93,7 +102,13 @@ impl VM {
     }
 
     pub fn reset(&mut self) {
-        self.chain = new_chain(self.original.clone(), None, self.memory.clone());
+        self.validators = HashMap::new();
+        self.chain = new_chain(
+            self.original.clone(),
+            None,
+            self.memory.clone(),
+            Some(self.validators.clone()),
+        );
         self.context = self.original.clone();
     }
 
@@ -107,6 +122,7 @@ impl VM {
             self.context.clone(),
             Some(self.take_storage()),
             self.memory.clone(),
+            Some(self.validators.clone()),
         );
     }
 
@@ -167,8 +183,7 @@ impl VM {
     }
 
     pub fn set_attached_deposit(&mut self, u_128: JsValue) {
-        let balance: String = serde_wasm_bindgen::from_value(u_128).unwrap();
-        self.context.attached_deposit = u128::from_str_radix(&balance, 10).unwrap();
+        self.context.attached_deposit = to_u128(u_128);
         self.switch_context();
     }
 
@@ -194,6 +209,14 @@ impl VM {
 
     pub fn set_epoch_height(&mut self, _u64: u64) {
         self.context.epoch_height = _u64;
+        self.switch_context();
+    }
+
+    pub fn set_validator(&mut self, s: JsValue, u_128: JsValue) {
+        let account_id: AccountId = serde_wasm_bindgen::from_value(s).unwrap();
+        self.validators
+            .borrow_mut()
+            .insert(account_id.clone(), to_u128(u_128));
         self.switch_context();
     }
 

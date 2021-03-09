@@ -1,3 +1,4 @@
+use wasm_bindgen::JsValue;
 
 pub fn set_panic_hook() {
     // When the `console_error_panic_hook` feature is enabled, we can call the
@@ -10,3 +11,7 @@ pub fn set_panic_hook() {
     console_error_panic_hook::set_once();
 }
 
+pub fn to_u128(u_128: JsValue) -> u128 {
+  let balance: String = serde_wasm_bindgen::from_value(u_128).unwrap();
+   u128::from_str_radix(&balance, 10).unwrap()
+}

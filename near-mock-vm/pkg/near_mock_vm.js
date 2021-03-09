@@ -410,6 +410,15 @@ class VM {
         wasm.vm_set_epoch_height(this.ptr, low0, high0);
     }
     /**
+    * @param {any} s
+    * @param {any} u_128
+    */
+    set_validator(s, u_128) {
+        if (this.ptr == 0) throw new Error('Attempt to use a moved value');
+        _assertNum(this.ptr);
+        wasm.vm_set_validator(this.ptr, addHeapObject(s), addHeapObject(u_128));
+    }
+    /**
     * #################
     * # Registers API #
     * #################

@@ -727,6 +727,18 @@ describe("Context", () => {
     // expect(Context.usedGas > 0).toBe(true, "Wrong used gas");
     // expect(Context.storageUsage).toBe(0, "Wrong storage usage"); TODO: test when implemented
   });
+
+  
+  it("should handle adding validators", () => {
+    VMContext.setValidator("john.near", u128.One);
+    expect(env.validator_stake("john.near")).toStrictEqual(u128.One);
+    expect(env.validator_total_stake()).toStrictEqual(u128.One);
+  });
+  
+  it("should handle no validators", () => {
+    expect(env.validator_stake("john.near")).toStrictEqual(u128.Zero);
+    expect(env.validator_total_stake()).toStrictEqual(u128.Zero);
+  });
 });
 
 describe("Account Balance", () => {
