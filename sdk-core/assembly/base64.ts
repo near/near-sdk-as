@@ -13,17 +13,25 @@ const ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 // @ts-ignore: decorator
 @lazy
 const ALPHAVALUES = new Uint8Array(128);
-for (let n=0;n<ALPHA.length;n++) {
-  ALPHAVALUES[ALPHA.charCodeAt(n)] = n;
-}
- 
+
 export namespace base64 {
+  // @ts-ignore: decorator
+  @lazy
+  let initialized = false;
+
+  function initialize(): void {
+    for (let n=0;n<ALPHA.length;n++) {
+      ALPHAVALUES[ALPHA.charCodeAt(n)] = n;
+    }
+    initialized = true;
+  }
   
    /**
     * Decode a base64-encoded string and return a Uint8Array.
     * @param s Base64 encoded string.
     */
    export function decode(s: string): Uint8Array {
+     if (!initialized) initialize();
      let i: u32, b10: u32;
      let pads = 0,
          imax = s.length as u32;
@@ -85,7 +93,7 @@ export namespace base64 {
      const extrabytes = (bytes.length % 3);
      let imax = bytes.length - extrabytes;
      const len = ((bytes.length / 3) as i32) * 4 + (extrabytes == 0 ? 0 : 4);
-     let x = changetype<String>(__new(<usize>(len << 1), idof<String>()));
+     let x = changetype<string>(__new(<usize>(len << 1), idof<string>()));
  
      if (bytes.length == 0) {
        return "";
@@ -123,6 +131,7 @@ export namespace base64 {
      return x;
    }
  
+  // @ts-ignore: decorator
    @inline
    function getByte64(s: string, i: u32): u32 {
      return ALPHAVALUES[s.charCodeAt(i)];
