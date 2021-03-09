@@ -4,6 +4,8 @@
  */
 
 const PADCHAR = "=";
+// @ts-ignore: decorator
+@lazy
 const ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
  
 // @ts-ignore: decorator
