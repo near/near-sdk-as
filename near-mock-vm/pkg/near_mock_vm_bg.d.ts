@@ -23,6 +23,7 @@ export function vm_set_random_seed(a: number, b: number): void;
 export function vm_set_is_view(a: number, b: number): void;
 export function vm_set_output_data_receivers(a: number, b: number): void;
 export function vm_set_epoch_height(a: number, b: number, c: number): void;
+export function vm_set_validator(a: number, b: number, c: number): void;
 export function vm_read_register(a: number, b: number, c: number, d: number, e: number): void;
 export function vm_register_len(a: number, b: number, c: number, d: number): void;
 export function vm_current_account_id(a: number, b: number, c: number): void;

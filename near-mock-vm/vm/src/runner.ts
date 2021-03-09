@@ -4,7 +4,7 @@ import { VM, inject_contract } from "../../pkg/near_mock_vm";
 import { createContext } from "./context";
 import { Memory } from "./memory";
 import { Base64 } from "js-base64";
-import * as loader from "@assemblyscript/loader";
+import * as loader from "assemblyscript/lib/loader";
 import * as utils from "./utils";
 
 type stringKeys = { [key: number]: () => void } & any;
@@ -141,6 +141,9 @@ export class VMRunner {
         // setOutput_data_receivers(arr) {
         //   vm.set_output_data_receivers(arr);
         // },
+        setValidator(s: number, b: number) {
+          vm.set_validator(self.readUTF8Str(s), self.readUTF8Str(b));
+        },
       },
       env: {
         memory,
@@ -473,7 +476,7 @@ export class VMRunner {
 
   run(method: string, input: string): void {
     this.vm.set_input(Base64.encode(input));
-    this.wasm[method]();
+    this.wasm.exports[method]();
   }
 
   static setup(
@@ -485,7 +488,7 @@ export class VMRunner {
     const instrumented_bin = VMRunner.instrumentBinary(binary);
     const wasm = loader.instantiateSync(instrumented_bin, vm.createImports());
     vm.wasm = wasm;
-    vm.memory = new Memory(wasm.memory);
+    vm.memory = new Memory(wasm.exports.memory);
     return vm;
   }
 

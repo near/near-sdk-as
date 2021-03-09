@@ -1,4 +1,4 @@
-import { u128 } from "..";
+import { u128, util } from "..";
 
 export namespace env {
   // #############
@@ -282,19 +282,20 @@ export namespace env {
   // # Validator API #
   // ###############
 
-  /// For a given account return its current stake. If the account is not a validator, returns 0.
+  /// For a given account sets data_ptr to its current stake.
+  // If the account is not a validator, sets data_ptr to 0
   // @ts-ignore
   @external("env", "validator_stake")
   export declare function _validator_stake(
     id_len: u64,
     id_ptr: u64,
     data_ptr: u64
-  ): u64;
+  ): void;
 
-  /// Returns the total stake of validators in the current epoch.
+  /// Sets data_ptr to the total stake of validators in the current epoch.
   // @ts-ignore
   @external("env", "validator_total_stake")
-  export declare function _validator_total_stake(data_ptr: u64): u64;
+  export declare function _validator_total_stake(data_ptr: u64): void;
 
   // ############
   // # Accounts #
@@ -332,16 +333,17 @@ export namespace env {
   }
 
   export function validator_stake(account_id: string): u128 {
-    let data = new Uint8Array(sizeof<u128>());
-    let id = String.UTF8.encode(account_id);
-    let id_ptr = changetype<u64>(id);
-    _validator_stake(id.byteLength, id_ptr, data.dataStart);
+    let data = new Uint8Array(offsetof<u128>());
+    let id = util.stringToBytes(account_id);
+    let id_ptr = id.dataStart as u64;
+    let id_len: u64 = id.byteLength;
+    _validator_stake(id_len, id_ptr, data.dataStart);
     return u128.from(data);
   }
 
   // /// Returns the total stake of validators in the current epoch.
   export function validator_total_stake(): u128 {
-    let data = new Uint8Array(sizeof<u128>());
+    let data = new Uint8Array(offsetof<u128>());
     _validator_total_stake(data.dataStart);
     return u128.from(data);
   }
