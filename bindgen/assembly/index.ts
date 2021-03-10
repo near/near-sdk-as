@@ -484,7 +484,7 @@ function decode<T, V = Uint8Array>(buf: V, name: string = ""): T {
 // @ts-ignore
 @global
 function defaultValue<T>(): T {
-  if (isInteger<T>()) {
+  if (isInteger<T>() || isFloat<T>()) {
     // @ts-ignore
     return <T>0;
   }
