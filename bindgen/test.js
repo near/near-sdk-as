@@ -29,7 +29,7 @@ function UTF8toStr(array) {
     while(i < len) {
     c = array[i++];
     switch(c >> 4)
-    { 
+    {
       case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7:
         // 0xxxxxxx
         out += String.fromCharCode(c);
@@ -155,6 +155,8 @@ async function loadModule(path) {
             i64Val: "-64",
             f32: 3.140000104904175,
             f64: 3.141592653589793238462643383279,
+            f32_zero: 0,
+            f64_zero: 0,
             flag: true,
             baz: "bazinga",
             uint8array: null,
@@ -182,6 +184,8 @@ async function loadModule(path) {
             i64Val: "-64",
             f32: 3.140000104904175,
             f64: 3.141592653589793238462643383279,
+            f32_zero: 0,
+            f64_zero: 0,
             flag: false,
             baz: "123",
             uint8array: null,
@@ -212,6 +216,8 @@ async function loadModule(path) {
               i64Val: "-64",
               f32: 3.140000104904175,
               f64: 3.141592653589793238462643383279,
+              f32_zero: 0,
+              f64_zero: 0,
               flag: false,
               baz: "123",
               uint8array: null,
@@ -236,6 +242,8 @@ async function loadModule(path) {
         i64Val: "-64",
         f32: 3.140000104904175,
         f64: 3.141592653589793238462643383279,
+        f32_zero: 0,
+        f64_zero: 0,
         u128Val: null,
         flag: false,
         baz: "123",
@@ -262,6 +270,8 @@ async function loadModule(path) {
         i64Val: "-64",
         f32: 3.140000104904175,
         f64: 3.141592653589793238462643383279,
+        f32_zero: 0,
+        f64_zero: 0,
         flag: false,
         baz: "123",
         uint8array: null,

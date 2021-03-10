@@ -84,6 +84,9 @@ export function runTest(): void {
   assert(arr[0] == arr2[0]);
   assert(original.f32 == decoded.f32);
   assert(original.f64 == decoded.f64);
+  assert(original.f32_zero == decoded.f32_zero);
+  assert(original.f64_zero == decoded.f64_zero);
+
   assert(roundtrip<f32>(3.4) == 3.4);
 
   assert(roundtrip<u64[]>([]).length == 0);
