@@ -337,8 +337,8 @@ export class ContractPromise {
     let count = <i64>env.promise_results_count();
     let results = new Array<ContractPromiseResult>(count as i32);
     for (let i = 0; i < count; i++) {
-      const promise_status = env.promise_result(i, 0) as i32;
-      let isOk = promise_status == 1;
+      const promise_status = env.promise_result(i, 0) as PromiseStatus;
+      let isOk = promise_status == PromiseStatus.Successful;
       if (!isOk) {
         results[i] = new ContractPromiseResult(promise_status);
         continue;
@@ -350,17 +350,49 @@ export class ContractPromise {
   }
 }
 
+// @ts-ignore
+@lazy
+export enum PromiseStatus {
+  Pending = 0,
+  Successful = 1,
+  Failed = 2
+}
+
+
 /**
  * Class to store results of the async calls on the remote contracts.
  */
 export class ContractPromiseResult {
   constructor(
     // Whether the execution of the remote call succeeded.
-    public status: i32,
+    public status: PromiseStatus,
     // Bytes data returned by the remote contract. Can be empty or null, if the remote
     // method returns `void`.
     public buffer: Uint8Array = defaultValue<Uint8Array>()
   ) {}
+
+  /**
+   * Test whether result was successful
+   */
+  get succeeded(): boolean { return this.status == PromiseStatus.Successful; }
+  
+  /**
+   * Test whether result is pending
+   */
+  get pending(): boolean { return this.status == PromiseStatus.Pending; }
+  
+  /**
+   * /**
+   * Test whether result failed
+   */
+  get failed(): boolean { return this.status == PromiseStatus.Failed; }
+
+  /**
+   * Decode buffer into type `T`
+   */
+  decode<T>(): T {
+    return decode<T>(this.buffer);
+  }
 }
 
 export { Context as context };
