@@ -59,7 +59,20 @@ describe("Encodings", () => {
     expect(encoded).toBe("AAFaZA==", "Incorrect keys contents");
     const decoded = base64.decode("AAFaZA==");
     expect(decoded).toStrictEqual(
-      decoded,
+      array,
+      "Incorrect decoded value after base64 roundtrip"
+    );
+  });
+
+  it("base64 large array", () => {
+    const bytes = new Uint8Array(20000);
+    for(let n=0; n<bytes.length; n++) {
+      bytes[n] = n & 0xff;
+    }
+    const encoded = base64.encode(bytes);  
+    const decoded = base64.decode(encoded);
+    expect(decoded).toStrictEqual(
+      bytes,
       "Incorrect decoded value after base64 roundtrip"
     );
   });
