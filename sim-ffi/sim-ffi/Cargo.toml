@@ -1,0 +1,20 @@
+[package]
+name = "sim-ffi"
+version = "0.1.0"
+description = "node bindings for near-sdk-sim"
+authors = ["Willem Wyndham"]
+license = "MIT"
+edition = "2018"
+exclude = ["index.node"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies.neon]
+version = "0.8"
+default-features = false
+features = ["napi-6"]
+
+[dependencies]
+near-sdk-sim = { version = "3.0.1"}
+near-sdk = { version = "3.0.1" }

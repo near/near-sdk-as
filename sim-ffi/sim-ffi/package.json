@@ -1,0 +1,18 @@
+{
+  "name": "sim-ffi",
+  "version": "0.1.0",
+  "description": "node bindings for near-sdk-sim",
+  "main": "index.node",
+  "scripts": {
+    "build": "cargo-cp-artifact -nc index.node -- cargo build --release --message-format=json-render-diagnostics",
+    "install": "npm run build",
+    "test": "cargo test"
+  },
+  "author": "Willem Wyndham",
+  "license": "MIT",
+  "devDependencies": {
+    "cargo-cp-artifact": "^0.1",
+    "node-pre-gyp": "^0.17.0",
+    "node-pre-gyp-github": "^1.4.3"
+  }
+}
