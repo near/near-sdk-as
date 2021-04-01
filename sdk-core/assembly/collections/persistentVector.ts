@@ -328,10 +328,10 @@ export class PersistentVector<T> {
    * vec.length // 0
    * ```
    *
-   * @param register_id The register ID that should be used to hold the popped element. Defaults to 0.
+   * @param register_id The register ID that should be used to hold the popped element. Defaults to 1.
    * @returns The register ID used to store the popped element.
    */
-  pop_raw(register_id: u64 = 0): u64 {
+  pop_raw(register_id: u64 = 1): u64 {
     assert(this.length > 0, "Vector is empty");
     const index = this.length - 1;
     this.length = index;
@@ -355,10 +355,10 @@ export class PersistentVector<T> {
    * ```
    *
    * @param index The index of the element to return.
-   * @param register_id The register to store the element. Defaults to 0.
+   * @param register_id The register to store the element. Defaults to 1.
    * @returns The element at the given index.
    */
-  get_raw(index: i32, register_id: u64 = 0): u64 {
+  get_raw(index: i32, register_id: u64 = 1): u64 {
     assert(this.containsIndex(index), "Index out of range");
     storage.read_raw(this._key(index), register_id);
     return register_id;
@@ -409,10 +409,10 @@ export class PersistentVector<T> {
    * Does not preserve ordering, but is O(1). Panics if index is out of bounds.
    *
    * @param index
-   * @param register_id The register to store the removed element. Defaults to 0.
+   * @param register_id The register to store the removed element. Defaults to 1.
    * @return The register used to store the removed element.
    */
-  swap_remove_raw(index: i32, register_id: u64 = 0): u64 {
+  swap_remove_raw(index: i32, register_id: u64 = 1): u64 {
     assert(index <= this.length, "Index out of bounds");
     if (index + 1 == this.length) {
       return this.pop_raw(register_id);

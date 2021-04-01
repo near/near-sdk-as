@@ -286,10 +286,10 @@ export class PersistentDeque<T> {
    * Removes the first/front element from the deque and put it in the specified register.
    * Asserts that the deque is not empty. Decreases the length of the deque.
    *
-   * @param register_id The register to hold the popped element. Defaults to 0.
+   * @param register_id The register to hold the popped element. Defaults to 1.
    * @returns The register ID used to store the popped element.
    */
-  popFront_raw(register_id: u64 = 0): u64 {
+  popFront_raw(register_id: u64 = 1): u64 {
     assert(this.length > 0, "Deque is empty");
     storage.read_raw(this._key(this.frontIndex), register_id);
     storage.delete(this._key(this.frontIndex));
@@ -395,10 +395,10 @@ export class PersistentDeque<T> {
    * Removes the last/back element from the deque and puts it in the specified register.
    * Asserts that the deque is not empty. Decreases the length of the deque.
    *
-   * @param register_id The register to hold the popped element. Defaults to 0.
+   * @param register_id The register to hold the popped element. Defaults to 1.
    * @returns The register ID used to store the popped element.
    */
-  popBack_raw(register_id: u64 = 0): u64 {
+  popBack_raw(register_id: u64 = 1): u64 {
     let index = this.length - 1;
     assert(index >= 0, "Deque is empty");
     storage.read_raw(this._key(index + this.frontIndex), register_id);

@@ -165,7 +165,7 @@ describe("Unordered Map should handle", () => {
     let reg = map.get_raw(1);
     expect(util.read_register_string(reg)).toBe("{\"key\":1,\"value\":\"testString\"}");
 
-    map.set_raw(2, 0);
+    map.set_raw(2, reg);
     expect(map.getSome(2)).toBe("testString");
   });
 

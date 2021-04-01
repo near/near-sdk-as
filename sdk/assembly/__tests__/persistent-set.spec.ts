@@ -20,11 +20,11 @@ describe("Sets should handle", () => {
 
   it("can add and read item from register", () => {
     storage.setString("key", item);
-    storage.read_raw("key", 0);
-    set.add_raw(0);
+    storage.read_raw("key", 1);
+    set.add_raw(1);
 
     expect(set.has(item)).toBeTruthy("The set should have the item");
-    expect(set.has_raw(0)).toBeTruthy("The set should have the item as specified in the register");
+    expect(set.has_raw(1)).toBeTruthy("The set should have the item as specified in the register");
   })
 
   it("checks for items", () => {

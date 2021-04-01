@@ -83,10 +83,10 @@ export class PersistentUnorderedMap<K, V> {
    * ```
    *
    * @param key Key of the element.
-   * @param register_id The register used to store the entry. Defaults to 0.
+   * @param register_id The register used to store the entry. Defaults to 1.
    * @returns The register used to store the entry.
    */
-  get_raw(key: K, register_id: u64 = 0): u64 {
+  get_raw(key: K, register_id: u64 = 1): u64 {
     let index = this._map.getSome(key);
     this._entries.get_raw(index, register_id);
     return register_id;

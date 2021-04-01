@@ -121,7 +121,7 @@ describe("AVLTrees should handle", () => {
 
     expect(util.parseFromBytes<u32>(util.read_register(reg))).toStrictEqual(value);
 
-    tree.set_raw(newKey, 0);
+    tree.set_raw(newKey, 1);
 
     expect(tree.has(newKey)).toBeTruthy("The tree should have the key");
     expect(tree.containsKey(newKey)).toBeTruthy("The tree should contain the key");

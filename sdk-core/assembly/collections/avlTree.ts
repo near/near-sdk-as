@@ -135,10 +135,10 @@ export class AVLTree<K, V> {
    * Stores the related value for a given key in the specified register, or throws error "key not found"
    *
    * @param key Key of the element.
-   * @param register_id The register to store the value. Defaults to 0.
+   * @param register_id The register to store the value. Defaults to 1.
    * @returns The register used to store the value.
    */
-  get_raw(key: K, register_id: u64 = 0): u64 {
+  get_raw(key: K, register_id: u64 = 1): u64 {
     this._val.get_raw(key, register_id);
     return register_id;
   }

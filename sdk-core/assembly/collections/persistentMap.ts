@@ -150,14 +150,14 @@ export class PersistentMap<K, V> {
 
   /**
    * Retrieves a related value for a given key and puts it in the specified register.
-   * Defaults to putting the value to register 0.
+   * Defaults to putting the value to register 1.
    * Fails assertion with "key not found" if key is not found in the map.
    *
    * @param key Key of the element.
-   * @param register_id The ID of the register to store the value of the key to, defaults to 0.
+   * @param register_id The ID of the register to store the value of the key to, defaults to 1.
    * @returns The ID of the register used.
    */
-  get_raw(key: K, register_id: u64 = 0): u64 {
+  get_raw(key: K, register_id: u64 = 1): u64 {
     if (!this.contains(key)) {
       assert(
         false,

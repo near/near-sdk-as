@@ -289,14 +289,14 @@ export class Storage {
    * Write input into register and then write that into storage under the key.
    *
    * ```ts
-   * storage.write_input("myKey"); // Defaults to using register 0
+   * storage.write_input("myKey"); // Defaults to using register 1
    * storage.write_input("myKey", 1);
    * ```
    *
    * @param key The unique identifier associated with a value in a key-value store
-   * @param register_id The ID of the register from which the input value is stored, defaults to 0
+   * @param register_id The ID of the register from which the input value is stored, defaults to 1
    */
-  static write_input(key: string, register_id: u64 = 0): void {
+  static write_input(key: string, register_id: u64 = 1): void {
     let key_encoded = util.stringToBytes(key);
     env.input(register_id);
     env.storage_write(

@@ -589,7 +589,7 @@ describe("Vectors should handle", () => {
     reg = vector.get_raw(0);
     expect(util.read_register_string(reg)).toBe("a", "Incorrect first entry");
 
-    vector.push_raw(0);
+    vector.push_raw(reg);
     expect(_vectorHasContents(vector, ["a", "b", "a"])).toBe(
       true,
       "Unexpected vector contents. Expected [a, b, a]"
@@ -597,8 +597,8 @@ describe("Vectors should handle", () => {
     expect(vector.length).toBe(3, "Vector has incorrect length after push_raw");
 
     storage.setString("key", "d");
-    storage.read_raw("key", 0);
-    vector.replace_raw(2, 0);
+    storage.read_raw("key", 1);
+    vector.replace_raw(2, 1);
     expect(_vectorHasContents(vector, ["a", "b", "d"])).toBe(
       true,
       "Unexpected vector contents. Expected [a, b, d]"
