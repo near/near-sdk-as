@@ -1,6 +1,6 @@
 {
   "name": "near-mock-vm",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "bin": {
     "near-vm-as": "bin/bin.js"
   },
@@ -16,7 +16,7 @@
   "private": false,
   "devDependencies": {
     "@types/yargs": "^15.0.4",
-    "near-sdk-core": "^3.0.0",
+    "near-sdk-core": "^3.1.0",
     "wasm-pack": "^0.9.1"
   },
   "scripts": {
