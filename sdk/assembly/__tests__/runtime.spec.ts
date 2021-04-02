@@ -160,10 +160,14 @@ describe("outcome", () => {
 
   it("should return acturate logs", () => {
     logging.log("hello world");
+    let nine = 9;
+    const str = `should handle string interpolation ${nine} ${false}`;
+    logging.log(str);
     expect(VM.logs()).toIncludeEqual(
       "hello world",
       'log should include "hello world"'
     );
+    expect(VM.logs()).toIncludeEqual(str);
   });
 
   it("should increase the storage usage more when first added", () => {
