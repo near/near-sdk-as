@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.platform }}
-    name: "${{ matrix.platform }}"
+    name: "${{ matrix.platform }} ${{ matrix.nodeversion }}"
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest]
