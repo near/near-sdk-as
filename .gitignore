@@ -25,3 +25,6 @@ build/
 
 !runtime/node_modules
 !near-mock-vm/pkg/*.wasm
+sim-ffi/sim-ffi/target/
+
+sim-ffi/sim-ffi/index.node
