@@ -12,9 +12,9 @@
     "build:vm": "yarn workspace near-mock-vm run build:wasm",
     "test": "yarn workspaces run test && yarn check:all",
     "doc": "rm -rf docs; typedoc --tsconfig tsconfig.json && touch docs/.nojekyll",
-    "prettify": "prettier --write '**/src/**/*.ts'",
+    "prettify": "prettier --write **/assembly/**/*.ts'",
     "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "check:pretty": "yarn prettier --check '**/src/**/*.ts'",
+    "check:pretty": "prettier --check **/assembly/**/*.ts",
     "check:all": "yarn lint && yarn check:pretty",
     "fix:all": "yarn lint --fix && yarn prettify"
   },
