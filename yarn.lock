@@ -1954,9 +1954,9 @@ assemblyscript-json@^1.0.0:
   integrity sha512-Cv96RESaVbCJn6jqVPXJlrClb3ZoLwcoSNFPDpHMXxi7NqLBeUGhV6zitSjLIgPHXVocIuYYH+SnykzEtErrBg==
 
 assemblyscript@^0.18.20:
-  version "0.18.20"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.20.tgz#19c68c25d902289c28f09d6c72bf2bbc718409af"
-  integrity sha512-g7FyAgseEgs6HfDmh5dsaf1P7KnY5Xz5j4BS0DVZ+0IUqsVcwfvFgaVsWUZS0AjjLSMIctnx1ZtdZeWhGXr7eQ==
+  version "0.18.23"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.23.tgz#c7d4a6c28a7d63cc2d788bc73896304f726b628a"
+  integrity sha512-INs8ZuV+L9E77UFZB2mK3u+85StkB/H2/kjQV0282IKgzojCH6Rw+NyS1SN5im2rT6/RmMtouWvpmHoet18IjQ==
   dependencies:
     binaryen "100.0.0"
     long "^4.0.0"
