@@ -39,7 +39,7 @@ class JSONTransformer extends Transform {
       // Parses file and any new imports added to the source
       newParser.parseFile(
         sourceText,
-        path.join((isEntry(source) ? "" : "./"), source.normalizedPath),
+        path.join(isEntry(source) ? "" : "./", source.normalizedPath),
         isEntry(source)
       );
       let newSource = newParser.sources.pop()!;
