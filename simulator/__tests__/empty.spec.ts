@@ -2,7 +2,7 @@ let fs = require("fs");
 let path = require("path");
 
 describe("empty wat", () => {
-  it("should be mostly empty", () => {
+  xit("should be mostly empty", () => {
     let x = new String(
       fs.readFileSync(path.join(__dirname, "..", "build", "debug", "empty.wat"))
     );

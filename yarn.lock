@@ -1953,6 +1953,18 @@ assemblyscript-json@^1.0.0:
   resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-1.0.0.tgz#2211f53987f377ef90dd5425b14e09bd1fdea74a"
   integrity sha512-Cv96RESaVbCJn6jqVPXJlrClb3ZoLwcoSNFPDpHMXxi7NqLBeUGhV6zitSjLIgPHXVocIuYYH+SnykzEtErrBg==
 
+assemblyscript-regex@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/assemblyscript-regex/-/assemblyscript-regex-1.6.2.tgz#9861c92b3f5fdf5ade26a712837f97d5eb9c7e13"
+  integrity sha512-II+9XKLa1jzrUTJO9i2S0BvzL/qkhUlUdQA3Ptqezd4JRPvNa74u8ITIzOnstPULyKfKqaYILiByeC9NFu9t1g==
+
+assemblyscript-temporal@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/assemblyscript-temporal/-/assemblyscript-temporal-1.5.0.tgz#8d11e3683b21b46eede49a3b84628093e07e0230"
+  integrity sha512-qdV/EkPN/e1sRVrBMKL+Qbu7t1qc0DxVIbnj0qFs3oRuEs/odlw/537m3yEBGUka5+wS92zWddfQLefJUNlMpA==
+  dependencies:
+    assemblyscript-regex "^1.6.2"
+
 assemblyscript@^0.18.20:
   version "0.18.20"
   resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.20.tgz#19c68c25d902289c28f09d6c72bf2bbc718409af"
