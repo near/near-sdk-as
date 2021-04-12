@@ -9,7 +9,7 @@ import { Date } from "../../../node_modules/assemblyscript-temporal/assembly/dat
 export namespace datetime {
     /**
    * Current block date time. Returns PlainDateTime object initializes with current 
-   * block timestamp
+   * block's timestamp
    */
   export function block_datetime(): PlainDateTime {
     return getDateTimeFromEpoch(env.block_timestamp());
