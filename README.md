@@ -34,7 +34,7 @@ yarn asb
 will create a release build and place it `./build/release/<name-in-package.json>.wasm`
 
 ```sh
-yarn asd --target debug
+yarn asb --target debug
 ```
 
 will create a debug build and place it in `./build/debug/..`
