@@ -14,7 +14,7 @@
     "@as-pect/cli": "^6.0.0",
     "as-bignum": "^0.2.15",
     "asbuild": "^0.0.11",
-    "assemblyscript": "^0.18.20",
+    "assemblyscript": "^0.18.25",
     "assemblyscript-json": "^1.0.0",
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",
