@@ -1965,10 +1965,10 @@ assemblyscript-temporal@^1.5.0:
   dependencies:
     assemblyscript-regex "^1.6.2"
 
-assemblyscript@^0.18.20:
-  version "0.18.20"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.20.tgz#19c68c25d902289c28f09d6c72bf2bbc718409af"
-  integrity sha512-g7FyAgseEgs6HfDmh5dsaf1P7KnY5Xz5j4BS0DVZ+0IUqsVcwfvFgaVsWUZS0AjjLSMIctnx1ZtdZeWhGXr7eQ==
+assemblyscript@^0.18.25:
+  version "0.18.25"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.25.tgz#8a259f7d63fc38f792045f15b66d9b359a46b628"
+  integrity sha512-bp9lykMFhFnsmjABmr5NO2F5LR1i8hQ0omp6G3rZcyei+2Nl64n5x9NxM8a2QT/QS3HnNAfHhanp/9GO9X1gEw==
   dependencies:
     binaryen "100.0.0"
     long "^4.0.0"

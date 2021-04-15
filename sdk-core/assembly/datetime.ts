@@ -1,11 +1,6 @@
 import { env } from "./env";
 import { PlainDateTime } from "assemblyscript-temporal";
 
-// can be removed once https://github.com/AssemblyScript/assemblyscript/pull/1768
-// is merged in assemblyscript.
-import { Date } from "../../../node_modules/assemblyscript-temporal/assembly/date";
-
-
 export namespace datetime {
     /**
    * Current block date time. Returns PlainDateTime object initializes with current 
