@@ -14,7 +14,7 @@
     "doc": "rm -rf docs; typedoc --tsconfig tsconfig.json && touch docs/.nojekyll",
     "prettify": "prettier --write **/src/**/*.ts",
     "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "check:pretty": "yarn prettify --check **/src/**/*.ts",
+    "check:pretty": "prettier --check **/src/**/*.ts",
     "check:all": "yarn lint && yarn check:pretty",
     "fix:all": "yarn lint --fix && yarn prettify"
   },
