@@ -3,6 +3,7 @@ import { JSONBindingsBuilder, isEntry } from "./JSONBuilder";
 import { TypeChecker } from "./typeChecker";
 import { ClassExporter } from "./classExporter";
 import { utils } from "visitor-as";
+import * as path from "path";
 
 class JSONTransformer extends Transform {
   parser: Parser;
@@ -33,12 +34,12 @@ class JSONTransformer extends Transform {
       // Build new Source
       let sourceText = JSONBindingsBuilder.build(source);
       if (writeOut) {
-        writeFile("out/" + source.normalizedPath, sourceText, baseDir);
+        writeFile(path.join("out", source.normalizedPath), sourceText, baseDir);
       }
       // Parses file and any new imports added to the source
       newParser.parseFile(
         sourceText,
-        (isEntry(source) ? "" : "./") + source.normalizedPath,
+        path.join(isEntry(source) ? "" : "./", source.normalizedPath),
         isEntry(source)
       );
       let newSource = newParser.sources.pop()!;
