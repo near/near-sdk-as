@@ -1,4 +1,4 @@
-import { logging, PersistentSet, Context, persist } from "near-sdk-as";
+import { storage, logging, PersistentSet, Context, persist } from "near-sdk-as";
 
 
 @nearBindgen
@@ -39,6 +39,11 @@ export class Singleton {
 
   lastVisited(): string {
     return this.last_visited || "";
+  }
+
+  // test to make sure we don't get compiler error
+  storageCheck(): void {
+    storage.hasKey('key');
   }
 
   private hasNotVisited(visitor: string): boolean {
