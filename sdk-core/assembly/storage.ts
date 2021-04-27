@@ -114,7 +114,6 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns True if the given key is present in the storage.
    */
-  @inline
   static hasKey(key: string): bool {
     return this.contains(key);
   }
