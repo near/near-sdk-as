@@ -43,7 +43,7 @@ export class Singleton {
 
   // test to make sure we don't get compiler error
   storageCheck(): void {
-    storage.hasKey('key')
+    storage.hasKey('key');
   }
 
   private hasNotVisited(visitor: string): boolean {
