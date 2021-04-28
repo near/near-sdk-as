@@ -53,9 +53,9 @@
     nearley "^2.20.1"
 
 "@assemblyscript/loader@^0.18.9":
-  version "0.18.9"
-  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.18.9.tgz#ed50d59216c0257811152b6a0028e51f0c99cf75"
-  integrity sha512-E49ZYGudAsDZG78mj59/OysLHait0igAm0PPx/Q21aT6qtgJC4RWYo8kaY/w6OV5TndX6ugEa9RDBSyx0lGDnQ==
+  version "0.18.29"
+  resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.18.29.tgz#42861e26e49aaab897588d8f54e950a3304204ef"
+  integrity sha512-XtjVY/oUb8Rk1D9Lu82gYgv7DqEgwXgOL7WxxF05oYi5QhPFv29BijK00b6MGiTTel11lnFra/GuUvTMQx3fzg==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13":
   version "7.12.13"
@@ -6365,7 +6365,7 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@^2.1.1, prettier@^2.2.1:
+prettier@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
   integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
