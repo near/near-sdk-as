@@ -26,9 +26,13 @@ function numOfParameters(node: FunctionDeclaration): number {
 
 function hasNearDecorator(stmt: Source): boolean {
   return (
-    (stmt.text.includes("@nearfile") ||
-      stmt.text.includes("@" + NEAR_DECORATOR) ||
-      isEntry(stmt)) &&
+    (isEntry(stmt) ||
+      stmt.text.includes("@nearfile") ||
+      stmt.statements.some(
+        (s) =>
+          s instanceof DeclarationStatement &&
+          utils.hasDecorator(s, NEAR_DECORATOR)
+      )) &&
     !stmt.text.includes("@notNearfile")
   );
 }
@@ -91,6 +95,7 @@ function createEncodeStatements(_class: ClassDeclaration): string[] {
 export class JSONBindingsBuilder extends BaseVisitor {
   private sb: string[] = [];
   private exportedClasses: Map<string, ClassDeclaration> = new Map();
+  static isTest: boolean = false;
   wrappedFuncs: Set<string> = new Set();
 
   static build(source: Source): string {
@@ -101,6 +106,10 @@ export class JSONBindingsBuilder extends BaseVisitor {
     return sources.filter(hasNearDecorator);
   }
 
+  static checkTestBuild(sources: Source[]) {
+    this.isTest = sources.some((s) => s.normalizedPath.includes(".spec."));
+  }
+
   visitClassDeclaration(node: ClassDeclaration): void {
     if (!this.exportedClasses.has(toString(node.name))) {
       this.exportedClasses.set(toString(node.name), node);
@@ -108,12 +117,22 @@ export class JSONBindingsBuilder extends BaseVisitor {
     super.visitClassDeclaration(node);
   }
 
-  visitFunctionDeclaration(node: FunctionDeclaration): void {
-    let isNotEntry = !isEntry(node);
+  needsWrapper(node: FunctionDeclaration): boolean {
+    let isExport = node.is(CommonFlags.EXPORT);
     let alreadyWrapped = this.wrappedFuncs.has(toString(node.name));
-    let isNotExport = !node.is(CommonFlags.EXPORT);
     let noInputOrOutput = numOfParameters(node) == 0 && returnsVoid(node);
-    if (isNotEntry || alreadyWrapped || isNotExport || noInputOrOutput) {
+    if (
+      !isExport ||
+      alreadyWrapped ||
+      noInputOrOutput ||
+      JSONBindingsBuilder.isTest
+    )
+      return false;
+    return isEntry(node) || utils.hasDecorator(node, NEAR_DECORATOR);
+  }
+
+  visitFunctionDeclaration(node: FunctionDeclaration): void {
+    if (!this.needsWrapper(node)) {
       super.visitFunctionDeclaration(node);
       return;
     }

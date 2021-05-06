@@ -90,4 +90,11 @@ describe("cross contract calls", () => {
       )
     ).toBe(true);
   });
+
+  test("exported from submodule", () => {
+    const str = "hello";
+    const res = words.view("capitalize", { s: str}).result.outcome as any;
+    expect(res.return_data.Value.substr(1, str.length)).toStrictEqual(str.toUpperCase());
+
+  })
 });
