@@ -1,4 +1,3 @@
-// @nearfile out
 import { storage, logging, PersistentSet, Context, persist } from "near-sdk-as";
 
 
