@@ -65,6 +65,7 @@ describe("cross contract calls", () => {
 
   test("getting view with arg", () => {
     const res = words.view("reverse", { word: { text: "hello" } });
+    console.log(JSON.stringify(res, null, 2));
     expect(res.return_data.text).toBe("olleh");
   });
 
@@ -90,4 +91,12 @@ describe("cross contract calls", () => {
       )
     ).toBe(true);
   });
+
+  test("exported from submodule", () => {
+    const str = "hello";
+    const res = words.view("capitalize", { s: str}).result.outcome as any;
+    console.log(JSON.stringify(res, null, 2));
+    expect(res.return_data.Value.replace('"', '')).toStrictEqual(str.toUpperCase());
+
+  })
 });

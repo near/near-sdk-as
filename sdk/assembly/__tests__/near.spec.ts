@@ -1,4 +1,5 @@
 import { base64, util } from "..";
+import { foo } from "./model";
 
 function testBase64(original: string, expectedEncoding: string): void {
   let bytes = util.stringToBytes(original);
@@ -38,6 +39,10 @@ describe("base64 encoding/decoding", (): void => {
 describe("calling exports internally", () => {
   it("should not call the wrapper function ", () => {
     expect<string>(simple("hello")).toStrictEqual("hello world");
+  });
+
+  it("should handle decorated exported functions", () => {
+    expect<string>(foo()).toStrictEqual("Foo");
   });
 });
 

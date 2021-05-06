@@ -11,3 +11,9 @@ export class TextMessage {
 export class Word {
   constructor(public text: string) {}
 }
+
+// @ts-ignore
+@nearBindgen
+export function capitalize(s: string): string {
+  return s.toUpperCase();
+}
