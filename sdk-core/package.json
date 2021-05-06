@@ -13,7 +13,7 @@
   "dependencies": {
     "@as-pect/cli": "^6.0.0",
     "as-bignum": "^0.2.15",
-    "asbuild": "^0.1.2-0",
+    "asbuild": "^0.2.0",
     "assemblyscript": "^0.18.25",
     "assemblyscript-json": "^1.0.0",
     "assemblyscript-temporal": "^1.11.0",

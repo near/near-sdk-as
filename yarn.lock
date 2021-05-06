@@ -1985,10 +1985,10 @@ asap@^2.0.0:
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
-asbuild@^0.1.2-0:
-  version "0.1.2-0"
-  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.1.2-0.tgz#7a4789deb8d9d34e9ed3bd5546eb883f83357e0f"
-  integrity sha512-4nE9cX+YAo+Y9QTSoysRwMO9bRx61saU+Sc7lr48syDaE0lKL2l5Zak43EX2Awpu01qXLfx0yMGsrlZBYV743A==
+asbuild@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.2.0.tgz#da3cb71b8136bc8fa67e0f417cdb08b55e5def6e"
+  integrity sha512-c6kE8RQORy8aGFw04NNx2IsH2jCcYwnjha9yOJ1Tv/guymky3EXZJ7thkTIjdxF1Qe3+I4ab8ku2Rqn/Xyym4A==
   dependencies:
     "@as-pect/cli" "^6.0.0"
     assemblyscript "^0.18.31"
