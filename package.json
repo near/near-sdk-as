@@ -12,11 +12,12 @@
     "build:vm": "yarn workspace near-mock-vm run build:wasm",
     "test": "yarn workspaces run test && yarn check:all",
     "doc": "rm -rf docs; typedoc --tsconfig tsconfig.json && touch docs/.nojekyll",
-    "prettify": "prettier --write **/src/**/*.ts",
+    "prettify": "prettier --write \"**/src/**/*.ts\"",
     "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "check:pretty": "prettier --check **/src/**/*.ts",
+    "check:pretty": "prettier --check \"**/src/**/*.ts\"",
     "check:all": "yarn lint && yarn check:pretty",
-    "fix:all": "yarn lint --fix && yarn prettify"
+    "fix:all": "yarn lint --fix && yarn prettify",
+    "precommit": "yarn check:all || yarn fix:all && exit 1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.0",
@@ -41,8 +42,11 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "yarn check:all || (yarn fix:all && exit 1)"
+    "*/assembly/**/*.ts": [
+      "eslint --ext ts --fix", "eslint --max-warnings 0 --ext ts"
+    ],
+    "**/src/**/*.ts": [
+      "prettier --write", "prettier --check"
     ]
   },
   "private": true,
