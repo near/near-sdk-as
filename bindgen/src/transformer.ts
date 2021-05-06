@@ -16,6 +16,7 @@ class JSONTransformer extends Transform {
 
     // Filter for near files
     let files = JSONBindingsBuilder.nearFiles(this.parser.sources);
+    JSONBindingsBuilder.checkTestBuild(parser.sources);
     // Visit each file
     files.forEach((source) => {
       let writeOut = /\/\/.*@nearfile .*out/.test(source.text);

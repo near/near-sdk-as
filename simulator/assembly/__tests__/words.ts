@@ -52,3 +52,5 @@ function _reverse(text: string): string {
 function _upcase(text: string): string {
   return text.toUpperCase();
 }
+
+export { capitalize } from "./model";

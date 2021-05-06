@@ -39,3 +39,9 @@ export class Word {
 }
 
 export let vector = new PersistentVector<u32>("");
+
+// @ts-ignore
+@nearBindgen
+export function foo(): string {
+  return "Foo";
+}
