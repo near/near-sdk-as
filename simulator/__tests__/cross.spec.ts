@@ -96,7 +96,7 @@ describe("cross contract calls", () => {
     const str = "hello";
     const res = words.view("capitalize", { s: str}).result.outcome as any;
     console.log(JSON.stringify(res, null, 2));
-    expect(res.return_data.Value.replace('"', '')).toStrictEqual(str.toUpperCase());
+    expect(res.return_data.Value.substr(1, str.length)).toStrictEqual(str.toUpperCase());
 
   })
 });
