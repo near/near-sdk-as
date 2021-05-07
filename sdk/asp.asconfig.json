@@ -2,6 +2,9 @@
   "extends": "./asconfig.json",
   "entries": ["assembly/vm/__tests__/vm.include.ts"],
   "options": {
-    "exportRuntime": true
+    "exportRuntime": true,
+    "use": [
+      "ASON_INITIAL_DATA_SEGMENT_TABLE_LENGTH=32768,ASON_EFFECTIVE_INITIAL_ARRAY_DATA_SEGMENT_TABLE_LENGTH=32768"
+    ]
   }
 }

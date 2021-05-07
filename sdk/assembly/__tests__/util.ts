@@ -39,5 +39,8 @@ export function _testTextMessageThree(): TextMessage {
 }
 
 export function roundtrip<T>(obj: T): T {
-  return decode<T>(encode<T>(obj));
+  return ASON.deserialize<T>(ASON.serialize<T>(obj));
+  // return decode<T>(encode<T>(obj));
 }
+
+

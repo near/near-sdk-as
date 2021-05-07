@@ -12,6 +12,8 @@
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
     "@as-pect/cli": "^6.0.0",
+    "@ason/assembly": "^0.0.4",
+    "@ason/transform": "^0.0.1",
     "as-bignum": "^0.2.15",
     "asbuild": "^0.2.0",
     "assemblyscript": "^0.18.25",
