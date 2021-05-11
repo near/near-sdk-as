@@ -1,4 +1,4 @@
-import { base64, runtime_api, u128, util, Context } from "near-sdk-core";
+import { base64, env, u128, util, Context } from "near-sdk-core";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 import { storage } from "near-sdk-core";
 
@@ -46,33 +46,33 @@ type Usize = u64;
 // @ts-ignore
 @global
 function read_register(register_id: Usize, ptr: Usize): void {
-  runtime_api.read_register(register_id, ptr);
+  env.read_register(register_id, ptr);
 }
 // @ts-ignore
 @global
 function register_len(register_id: Usize): Usize {
-  return runtime_api.register_len(register_id);
+  return env.register_len(register_id);
 }
 
 // @ts-ignore
 @global
 function input(register_id: Usize): void {
-  runtime_api.input(register_id);
+  env.input(register_id);
 }
 // @ts-ignore
 @global
 function value_return(value_len: Usize, value_ptr: Usize): void {
-  runtime_api.value_return(value_len, value_ptr);
+  env.value_return(value_len, value_ptr);
 }
 // @ts-ignore
 @global
 function panic(): void {
-  runtime_api.panic();
+  env.panic();
 }
 // @ts-ignore
 @global
 function panic_utf8(len: Usize, ptr: Usize): void {
-  runtime_api.panic_utf8(len, ptr);
+  env.panic_utf8(len, ptr);
 }
 
 // @ts-ignore
@@ -516,4 +516,11 @@ function __getState<T>(): T {
 @global
 function __setState<T>(state: T): void {
     storage.set(__STATE_KEY, state);
+}
+
+
+@global
+function __assertPrivate(): void {
+  let contractName = Context.contractName;
+  assert(contractName == Context.predecessor, `Only ${contractName} can call this method.`);
 }

@@ -12,6 +12,7 @@ import { isEntry } from "./JSONBuilder";
 import { SimpleParser } from "./utils";
 
 const toString = utils.toString;
+const privateDecorator = "contractPrivate";
 
 export class ClassExporter extends ClassDecorator {
   sb: string[] = [];
@@ -53,6 +54,9 @@ export class ClassExporter extends ClassDecorator {
     if (node.is(CommonFlags.PRIVATE)) {
       return;
     }
+    let privateCheck = utils.hasDecorator(node, privateDecorator)
+      ? `__assertPrivate();`
+      : "";
     let name = toString(node.name);
     let decorators = (node.decorators || []).map(toString);
     let returnType = toString(node.signature.returnType);
@@ -109,6 +113,7 @@ export class ClassExporter extends ClassDecorator {
     this.sb.push(
       `${decorators.join("\n")}
 export function ${name}(${parameters.join(", ")}): ${returnType} {
+  ${privateCheck}
   ${assertStr}
   ${body}
   ${isInit || hasMutateState ? `__setState(__contract);` : ""}
