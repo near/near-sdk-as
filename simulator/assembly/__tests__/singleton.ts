@@ -4,6 +4,7 @@ import { DEFAULT_GAS } from "./sentences";
 
 @nearBindgen
 export class Singleton {
+  static STORAGE_KEY: string = 'key';
 
   private visitors: PersistentSet<string> = new PersistentSet("v");
   private _owner: string
@@ -44,7 +45,11 @@ export class Singleton {
 
   // test to make sure we don't get compiler error
   storageCheck(): void {
-    storage.hasKey('key');
+    storage.hasKey(Singleton.STORAGE_KEY);
+  }
+
+  get_storage_key(): string {
+    return Singleton.STORAGE_KEY;
   }
 
   private hasNotVisited(visitor: string): boolean {
@@ -60,4 +65,4 @@ export class Singleton {
     let promise = ContractPromise.create(Context.contractName, "privateMethod", "{}", DEFAULT_GAS);
     promise.returnAsResult();
   }
-} 
+}

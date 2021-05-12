@@ -9,6 +9,11 @@ import {
   MyContractPromiseResult,
 } from "./model";
 
+@nearBindgen
+class Contract {
+  static foo: string = "bar";
+}
+
 /* eslint-disable @typescript-eslint/no-empty-function */
 export function doNothing(): void {}
 

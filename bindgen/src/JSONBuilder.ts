@@ -49,6 +49,14 @@ function isField(mem: DeclarationStatement) {
   return mem.kind == NodeKind.FIELDDECLARATION;
 }
 
+function isStatic(mem: DeclarationStatement) {
+  return mem.is(CommonFlags.STATIC);
+}
+
+function isEncodable(mem: DeclarationStatement) {
+  return isField(mem) && !isStatic(mem);
+}
+
 function isPayable(func: FunctionDeclaration): boolean {
   return (
     func.decorators != null &&
@@ -58,7 +66,7 @@ function isPayable(func: FunctionDeclaration): boolean {
 
 function createDecodeStatements(_class: ClassDeclaration): string[] {
   return _class.members
-    .filter(isField)
+    .filter(isEncodable)
     .map((field: FieldDeclaration): string => {
       const name = toString(field.name);
       return (
@@ -74,7 +82,7 @@ function createDecodeStatements(_class: ClassDeclaration): string[] {
 
 function createDecodeStatement(
   field: FieldDeclaration | ParameterNode,
-  setterPrefix: string = ""
+  setterPrefix = ""
 ): string {
   let T = toString(field.type!);
   let name = toString(field.name);
@@ -83,7 +91,7 @@ function createDecodeStatement(
 
 function createEncodeStatements(_class: ClassDeclaration): string[] {
   return _class.members
-    .filter(isField)
+    .filter(isEncodable)
     .map((field: FieldDeclaration): string => {
       let T = toString(field.type!);
       let name = toString(field.name);
@@ -95,7 +103,7 @@ function createEncodeStatements(_class: ClassDeclaration): string[] {
 export class JSONBindingsBuilder extends BaseVisitor {
   private sb: string[] = [];
   private exportedClasses: Map<string, ClassDeclaration> = new Map();
-  static isTest: boolean = false;
+  static isTest = false;
   wrappedFuncs: Set<string> = new Set();
 
   static build(source: Source): string {
@@ -176,7 +184,7 @@ export class JSONBindingsBuilder extends BaseVisitor {
         .map((param) => {
           let name = toString(param.name);
           let type = toString(param.type);
-          let res = `obj.has('${name}') ? 
+          let res = `obj.has('${name}') ?
              ${createDecodeStatement(param)} : ${
             param.initializer
               ? toString(param.initializer)
@@ -226,7 +234,7 @@ export { __wrapper_${name} as ${name} }`);
           .filter(isField)
           .map((field: FieldDeclaration) => field);
         if (fields.some((field) => field.type == null)) {
-          throw new Error("All Fields must have explict type declaration.");
+          throw new Error("All Fields must have explicit type declaration.");
         }
         fields.forEach((field) => {
           if (field.initializer == null) {
