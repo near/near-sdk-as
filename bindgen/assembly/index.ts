@@ -2,6 +2,8 @@ import { base64, env, u128, util, Context } from "near-sdk-core";
 import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
 import { storage } from "near-sdk-core";
 
+import "@ason/assembly";
+
 // Runtime functions
 // tslint:disable: no-unsafe-any
 /* eslint-disable  @typescript-eslint/no-unused-vars */

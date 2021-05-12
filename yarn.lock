@@ -52,6 +52,20 @@
     diff "^5.0.0"
     nearley "^2.20.1"
 
+"@ason/assembly@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@ason/assembly/-/assembly-0.0.4.tgz#af3f19098f380b4995fe75daafcdf1a4b98a5e39"
+  integrity sha512-WakXn3jRnmkOvTuQv4fjen8cW9yG/G8fH2TCyMW7xHDbuXONMeCb2RymALGcbx6OpD/YP3M3jIR7pXkB9cEJvA==
+  dependencies:
+    "@ason/transform" "0.0.1"
+
+"@ason/transform@0.0.1", "@ason/transform@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@ason/transform/-/transform-0.0.1.tgz#c3cadb36e24fc1a70eca986563ed6e44a14cf2ba"
+  integrity sha512-IL4OzbqMKx2UAAT64b87zCZq1apjICPA7E/LEiwdmBa72PJR0M+ilaikHOtk4yRZxLuTM6UNAer2hniETRRktQ==
+  dependencies:
+    visitor-as "^0.5.0"
+
 "@assemblyscript/loader@^0.18.9":
   version "0.18.9"
   resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.18.9.tgz#ed50d59216c0257811152b6a0028e51f0c99cf75"
@@ -7383,7 +7397,7 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.5.17, source-map-support@^0.5.6:
+source-map-support@^0.5.17, source-map-support@^0.5.19, source-map-support@^0.5.6:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
