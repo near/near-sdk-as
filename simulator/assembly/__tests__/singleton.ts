@@ -1,4 +1,5 @@
-import { storage, logging, PersistentSet, Context, persist } from "near-sdk-as";
+import { storage, logging, PersistentSet, Context, persist, ContractPromise } from "near-sdk-as";
+import { DEFAULT_GAS } from "./sentences";
 
 
 @nearBindgen
@@ -53,5 +54,15 @@ export class Singleton {
 
   private hasNotVisited(visitor: string): boolean {
     return !this.hasNotVisited(visitor);
+  }
+
+  @contractPrivate()
+  privateMethod(): string {
+    return "in private method";
+  }
+
+  callPrivate(): void {
+    let promise = ContractPromise.create(Context.contractName, "privateMethod", "{}", DEFAULT_GAS);
+    promise.returnAsResult();
   }
 }

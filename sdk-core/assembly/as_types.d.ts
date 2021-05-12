@@ -59,3 +59,12 @@ declare function exportAs(_func: any, name: string): void;
 declare function mutateState(): (target: any,
   propertyKey: string,
   descriptor: any) => void;
+
+/**
+ * 
+ * Asserts that a contract method is private, e.i.
+ * Context.contractName == Context.predecessor
+ */
+declare function contractPrivate(): (target: any,
+propertyKey: string,
+descriptor: any) => void;

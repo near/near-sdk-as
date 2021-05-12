@@ -125,6 +125,21 @@ describe("Singleton Contract", () => {
     );
   });
 
+  it("should not allow contract private methods", () => {
+    init();
+    let res = alice.call_other("singleton", "privateMethod", {});
+    expect(
+      res.err["FunctionCallError"]["HostError"]["GuestPanic"]["panic_msg"]
+    ).toContain("Only singleton can call this method.");
+  });
+
+  it("should allow contract private methods if called by contract", () => {
+    init();
+    let res = alice.call_other("singleton", "callPrivate", {});
+    let value: string = res.return_data;
+    expect(value).toStrictEqual("in private method");
+  });
+
   it("works with static members", () => {
     init();
     let res = singleton.view("get_storage_key");
