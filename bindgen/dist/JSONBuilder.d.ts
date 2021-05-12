@@ -12,6 +12,7 @@ export declare class JSONBindingsBuilder extends BaseVisitor {
     visitClassDeclaration(node: ClassDeclaration): void;
     needsWrapper(node: FunctionDeclaration): boolean;
     visitFunctionDeclaration(node: FunctionDeclaration): void;
+    make_camel_case_export(name: string): string;
     private generateWrapperFunction;
     private typeName;
     build(source: Source): string;

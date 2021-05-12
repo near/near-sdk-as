@@ -12,9 +12,10 @@ import {
   ParameterNode,
 } from "visitor-as/as";
 import { BaseVisitor, utils } from "visitor-as";
-import { SimpleParser, toString } from "./utils";
+import { SimpleParser, toString, make_snake_case } from "./utils";
 
 const NEAR_DECORATOR = "nearBindgen";
+const WRAPPER_PREFIX = "__wrapper_";
 
 function returnsVoid(node: FunctionDeclaration): boolean {
   return toString(node.signature.returnType) === "void";
@@ -151,6 +152,14 @@ export class JSONBindingsBuilder extends BaseVisitor {
     super.visit(node);
   }
 
+  make_camel_case_export(name: string): string {
+    let s = make_snake_case(name);
+    if (s.normalize() === name.normalize()) {
+      return "";
+    }
+    return `export { ${WRAPPER_PREFIX + name} as ${s} }`;
+  }
+
   /*
   Create a wrapper function that will be export in the function's place.
   */
@@ -202,7 +211,9 @@ export class JSONBindingsBuilder extends BaseVisitor {
   value_return(val.byteLength, val.dataStart);`);
     }
     this.sb.push(`}
-export { __wrapper_${name} as ${name} }`);
+export { ${WRAPPER_PREFIX + name} as ${name} }
+${this.make_camel_case_export(name)}
+`);
   }
 
   private typeName(type: TypeNode | ClassDeclaration): string {

@@ -76,3 +76,9 @@ export function posixRelativePath(from: string, to: string): string {
 export function toString(node: Node): string {
   return ASTBuilder.build(node);
 }
+
+const captialPattern = /([A-Z])/g;
+
+export function make_snake_case(s: string): string {
+  return s.replace(captialPattern, "_$1").toLowerCase();
+}

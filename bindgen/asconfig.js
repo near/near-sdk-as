@@ -1,6 +1,6 @@
 const compile = require("asbuild").main;
 
-compile(["assembly/__tests__/test.ts", "--target", "debug"], (err) => {
+compile(["assembly/__tests__/test.ts", "--debug", "--wat"], (err) => {
   if (err) {
     throw err;
   }
