@@ -3,6 +3,7 @@ import { storage, logging, PersistentSet, Context, persist } from "near-sdk-as";
 
 @nearBindgen
 export class Singleton {
+  static STORAGE_KEY: string = 'key';
 
   private visitors: PersistentSet<string> = new PersistentSet("v");
   private _owner: string
@@ -43,10 +44,14 @@ export class Singleton {
 
   // test to make sure we don't get compiler error
   storageCheck(): void {
-    storage.hasKey('key');
+    storage.hasKey(Singleton.STORAGE_KEY);
+  }
+
+  get_storage_key(): string {
+    return Singleton.STORAGE_KEY;
   }
 
   private hasNotVisited(visitor: string): boolean {
     return !this.hasNotVisited(visitor);
   }
-} 
+}

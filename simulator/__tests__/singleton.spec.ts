@@ -1,6 +1,5 @@
 import { Runtime, Account } from "..";
 import { main } from "asbuild";
-import { promisify } from "util";
 import { join } from "path";
 
 let runtime: Runtime;
@@ -16,17 +15,24 @@ function getErrorMsg(res: any) {
 
 async function compile(contract: string): Promise<void> {
   function asb(succ: any, fail: any) {
-    main([join(__dirname,"../assembly/__tests__", contract + ".ts",), "--target", "debug", "--wat"], {
-    },
-    (err) => {
-      if (err) {
-        throw(err);
-        return -1;
-      } else {
-        succ();
-        return 1;
+    main(
+      [
+        join(__dirname, "../assembly/__tests__", contract + ".ts"),
+        "--target",
+        "debug",
+        "--wat",
+      ],
+      {},
+      (err) => {
+        if (err) {
+          throw err;
+          return -1;
+        } else {
+          succ();
+          return 1;
+        }
       }
-    })
+    );
   }
   return new Promise(asb);
 }
@@ -34,16 +40,17 @@ async function compile(contract: string): Promise<void> {
 describe("Complier fails", () => {
   it("shouldn't allow methods with the same name as init function", async () => {
     try {
-      await compile("singleton-fail")
+      await compile("singleton-fail");
       expect(true).toBe(false);
     } catch (e) {
-      expect(e.message).toContain(`Method "new" already used; cannot export constructor using the same name.`);
+      expect(e.message).toContain(
+        `Method "new" already used; cannot export constructor using the same name.`
+      );
     }
-  })
-})
+  });
+});
 
-
-describe("cross contract calls", () => {
+describe("Singleton Contract", () => {
   beforeEach(() => {
     runtime = new Runtime();
     alice = runtime.newAccount("alice");
@@ -69,42 +76,58 @@ describe("cross contract calls", () => {
   });
 
   it("should return owner", () => {
-    init()
+    init();
     let res = singleton.view("owner");
     expect(res.return_data).toStrictEqual("alice");
-  })
+  });
 
   it("should be able to visit", () => {
-    init()
+    init();
     const bob = runtime.newAccount("bob");
     let res = bob.call_other("singleton", "visit");
-    expect(res.result.outcome.logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view("hasVisited", {visitor: "bob"}).return_data).toBe(true);
+    expect(res.result.outcome.logs).toContainEqual(
+      "Visited the first time by bob"
+    );
+    expect(singleton.view("hasVisited", { visitor: "bob" }).return_data).toBe(
+      true
+    );
     expect(singleton.view("lastVisited", {}).return_data).toBe("bob");
   });
 
   it("should be able to visit without decorator", () => {
-    init()
+    init();
     const bob = runtime.newAccount("bob");
     let res = bob.call_other("singleton", "visit_without_updated_decorator");
-    expect(res.result.outcome.logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view("hasVisited", {visitor: "bob"}).return_data).toBe(true);
+    expect(res.result.outcome.logs).toContainEqual(
+      "Visited the first time by bob"
+    );
+    expect(singleton.view("hasVisited", { visitor: "bob" }).return_data).toBe(
+      true
+    );
     expect(singleton.view("lastVisited", {}).return_data).toBe("bob");
   });
 
   it("should not update state to visit_without_change decorator", () => {
-    init()
+    init();
     const bob = runtime.newAccount("bob");
     let res = bob.call_other("singleton", "visit_without_change");
-    expect(res.result.outcome.logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view("lastVisited", {}).return_data).toBe("NULL")
+    expect(res.result.outcome.logs).toContainEqual(
+      "Visited the first time by bob"
+    );
+    expect(singleton.view("lastVisited", {}).return_data).toBe("NULL");
   });
 
   it("should not have private methods", () => {
-    init()
+    init();
     let res = alice.call_other("singleton", "hasNotVisited", {});
-    expect(res.err["FunctionCallError"]["MethodResolveError"]).toContain("MethodNotFound");
-  })
+    expect(res.err["FunctionCallError"]["MethodResolveError"]).toContain(
+      "MethodNotFound"
+    );
+  });
 
-
+  it("works with static members", () => {
+    init();
+    let res = singleton.view("get_storage_key");
+    expect(res.return_data).toEqual("key");
+  });
 });
