@@ -141,6 +141,7 @@ async function loadModule(path) {
 (async function() {
     const module = await loadModule(localize("/build/debug/test.wasm"));
     await module.runTest();
+    assert(module.run_test);
     assert.deepStrictEqual(await module.convertFoobars({ foobars: [] }), []);
     assert.deepStrictEqual(
       await module.convertFoobars({

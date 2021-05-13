@@ -142,6 +142,14 @@ export class JSONBindingsBuilder extends BaseVisitor {
 
   visitFunctionDeclaration(node: FunctionDeclaration): void {
     if (!this.needsWrapper(node)) {
+      if (
+        (isEntry(node) || utils.hasDecorator(node, NEAR_DECORATOR)) &&
+        !this.wrappedFuncs.has(toString(node.name)) &&
+        node.is(CommonFlags.EXPORT)
+      ) {
+        this.sb.push(this.make_camel_case_export(toString(node.name), ""));
+        this.wrappedFuncs.add(toString(node.name));
+      }
       super.visitFunctionDeclaration(node);
       return;
     }
@@ -152,12 +160,15 @@ export class JSONBindingsBuilder extends BaseVisitor {
     super.visit(node);
   }
 
-  make_camel_case_export(name: string): string {
+  make_camel_case_export(
+    name: string,
+    prefix: string = WRAPPER_PREFIX
+  ): string {
     let s = make_snake_case(name);
     if (s.normalize() === name.normalize()) {
       return "";
     }
-    return `export { ${WRAPPER_PREFIX + name} as ${s} }`;
+    return `export { ${prefix + name} as ${s} }`;
   }
 
   /*
