@@ -9,4 +9,4 @@ export declare class SimpleParser {
 }
 export declare function posixRelativePath(from: string, to: string): string;
 export declare function toString(node: Node): string;
-export declare function make_snake_case(s: string): string;
+export declare function makeSnakeCase(s: string): string;

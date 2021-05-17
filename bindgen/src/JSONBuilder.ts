@@ -147,7 +147,7 @@ export class JSONBindingsBuilder extends BaseVisitor {
         !this.wrappedFuncs.has(toString(node.name)) &&
         node.is(CommonFlags.EXPORT)
       ) {
-        this.sb.push(this.make_camel_case_export(toString(node.name), ""));
+        this.sb.push(this.camelCaseToSnakeCaseExport(toString(node.name), ""));
         this.wrappedFuncs.add(toString(node.name));
       }
       super.visitFunctionDeclaration(node);
