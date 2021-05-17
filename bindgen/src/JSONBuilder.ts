@@ -12,7 +12,7 @@ import {
   ParameterNode,
 } from "visitor-as/as";
 import { BaseVisitor, utils } from "visitor-as";
-import { SimpleParser, toString, make_snake_case } from "./utils";
+import { SimpleParser, toString, makeSnakeCase } from "./utils";
 
 const NEAR_DECORATOR = "nearBindgen";
 const WRAPPER_PREFIX = "__wrapper_";
@@ -160,11 +160,11 @@ export class JSONBindingsBuilder extends BaseVisitor {
     super.visit(node);
   }
 
-  make_camel_case_export(
+  camelCaseToSnakeCaseExport(
     name: string,
     prefix: string = WRAPPER_PREFIX
   ): string {
-    let s = make_snake_case(name);
+    let s = makeSnakeCase(name);
     if (s.normalize() === name.normalize()) {
       return "";
     }
@@ -223,7 +223,7 @@ export class JSONBindingsBuilder extends BaseVisitor {
     }
     this.sb.push(`}
 export { ${WRAPPER_PREFIX + name} as ${name} }
-${this.make_camel_case_export(name)}
+${this.camelCaseToSnakeCaseExport(name)}
 `);
   }
 

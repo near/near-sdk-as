@@ -79,6 +79,6 @@ export function toString(node: Node): string {
 
 const captialPattern = /([A-Z])/g;
 
-export function make_snake_case(s: string): string {
+export function makeSnakeCase(s: string): string {
   return s.replace(captialPattern, "_$1").toLowerCase();
 }
