@@ -5,6 +5,11 @@ use near_sdk_sim::{
 };
 use neon::prelude::*;
 
+pub mod helper;
+pub mod outcome;
+pub mod runtime;
+pub mod user;
+
 pub struct User(UserAccount);
 impl Finalize for User {}
 
