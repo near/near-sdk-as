@@ -333,6 +333,13 @@ describe("Storage", (): void => {
     expect(storage.get<string>("nonexistent", null)).toBeNull(
       "Incorrect data value for get<T> string nonexistent key"
     );
+    const bigPi: f64 = 3.14159265358979323851280895940618620443274267017841339111328125;
+    storage.set("f64", bigPi);
+    expect(storage.getPrimitive<f64>("f64", 0)).toBeCloseTo(bigPi);
+
+    const pi: f32 = 3.14159265358979323851280895940;
+    storage.set("f32", pi);
+    expect(storage.getPrimitive<f32>("f32", 0)).toBeCloseTo(pi);
   });
 
   it("Keys", () => {

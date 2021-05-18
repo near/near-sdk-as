@@ -121,3 +121,9 @@ export function persist<T>(state: T): void {
   // @ts-ignore
   __setState<T>(state);
 }
+
+// @ts-ignore
+@inline
+export function isPrimitive<T>(): boolean {
+  return isInteger<T>() || isFloat<T>() || isString<T>();
+}
