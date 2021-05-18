@@ -1,10 +1,7 @@
-use near_sdk::{
-    serde_json,
-    Balance, Gas,
-};
+use near_sdk::{serde_json, Balance, Gas};
 use near_sdk_sim::{
     hash::CryptoHash, init_simulator as i_s, near_crypto::PublicKey, ExecutionResult as ER,
-    UserAccount, UserTransaction as UT, DEFAULT_GAS, STORAGE_AMOUNT
+    UserAccount, UserTransaction as UT, DEFAULT_GAS, STORAGE_AMOUNT,
 };
 use neon::prelude::*;
 
@@ -80,61 +77,59 @@ fn create_user(mut cx: FunctionContext) -> JsResult<JsBox<User>> {
 }
 
 mod user {
-  use super::*;
-  pub fn account_id(mut cx: FunctionContext) -> JsResult<JsString> {
-    let user = cx.argument::<JsBox<User>>(0)?;
-    Ok(cx.string(user.0.account_id()))
-  }
-  pub fn amount(mut cx: FunctionContext) -> JsResult<JsString> {
-      let user = cx.argument::<JsBox<User>>(0)?;
-      let balance = user.0.account().unwrap().amount;
-      // let balance: u128 = cx.borrow(&user, |user| user.0.account().unwrap().amount);
-  
-      Ok(cx.string(balance.to_string()))
-  }
-  
-  pub fn deploy(mut cx: FunctionContext) -> JsResult<JsBox<User>> {
-      let user = cx.argument::<JsBox<User>>(0)?;
-      let wasm_bytes: Vec<u8> = read_bytes(&mut cx, 1);
-      let account_id: String = cx.argument::<JsString>(2)?.value(&mut cx);
-      // let deposit_str = cx.argument::<JsString>(3)?.value(&mut cx);
-      let deposit: u128 = read_u128(&mut cx, 3);
-      let _user = user.0.deploy(&wasm_bytes, account_id, deposit);
-  
-      Ok(cx.boxed(User(_user)))
-  }
-  
-  pub fn view(mut cx: FunctionContext) -> JsResult<JsString> {
-      let user = cx.argument::<JsBox<User>>(0)?;
-      let account_id: String = cx.argument::<JsString>(1)?.value(&mut cx);
-      let method: String = cx.argument::<JsString>(2)?.value(&mut cx);
-      let args = cx.argument::<JsString>(3)?.value(&mut cx).into_bytes();
-      let res = user.0.view(account_id, &method, &args);
-      // println!("{:#?}", res.unwrap_json_value());
-      Ok(cx.string(serde_json::to_string(&res.unwrap_json_value()).unwrap()))
-  }
-  
-  pub fn call(mut cx: FunctionContext) -> JsResult<JsBox<ExecutionResult>> {
-      let user = cx.argument::<JsBox<User>>(0)?;
-      let account_id: String = cx.argument::<JsString>(1)?.value(&mut cx);
-      let method: String = cx.argument::<JsString>(2)?.value(&mut cx);
-      let args_str = cx.argument::<JsString>(3)?.value(&mut cx);
-      let args = args_str.clone().into_bytes();
-      let gas: Gas = read_u64(&mut cx, 4);
-      let deposit: Balance = read_u128(&mut cx, 5);
-      let res = user.0.call(account_id, &method, &args, gas, deposit);
-      Ok(cx.boxed(ExecutionResult(res)))
-  }
+    use super::*;
+    pub fn account_id(mut cx: FunctionContext) -> JsResult<JsString> {
+        let user = cx.argument::<JsBox<User>>(0)?;
+        Ok(cx.string(user.0.account_id()))
+    }
+    pub fn amount(mut cx: FunctionContext) -> JsResult<JsString> {
+        let user = cx.argument::<JsBox<User>>(0)?;
+        let balance = user.0.account().unwrap().amount;
+        // let balance: u128 = cx.borrow(&user, |user| user.0.account().unwrap().amount);
 
-  pub fn create_user(mut cx: FunctionContext) -> JsResult<JsBox<User>> {
-    let user = cx.argument::<JsBox<User>>(0)?;
-    let account_id: String = cx.argument::<JsString>(1)?.value(&mut cx);
-    let initial_balance = read_u128(&mut cx, 2);
-    Ok(cx.boxed(User(user.0.create_user(account_id, initial_balance))))
-  }
+        Ok(cx.string(balance.to_string()))
+    }
+
+    pub fn deploy(mut cx: FunctionContext) -> JsResult<JsBox<User>> {
+        let user = cx.argument::<JsBox<User>>(0)?;
+        let wasm_bytes: Vec<u8> = read_bytes(&mut cx, 1);
+        let account_id: String = cx.argument::<JsString>(2)?.value(&mut cx);
+        // let deposit_str = cx.argument::<JsString>(3)?.value(&mut cx);
+        let deposit: u128 = read_u128(&mut cx, 3);
+        let _user = user.0.deploy(&wasm_bytes, account_id, deposit);
+
+        Ok(cx.boxed(User(_user)))
+    }
+
+    pub fn view(mut cx: FunctionContext) -> JsResult<JsString> {
+        let user = cx.argument::<JsBox<User>>(0)?;
+        let account_id: String = cx.argument::<JsString>(1)?.value(&mut cx);
+        let method: String = cx.argument::<JsString>(2)?.value(&mut cx);
+        let args = cx.argument::<JsString>(3)?.value(&mut cx).into_bytes();
+        let res = user.0.view(account_id, &method, &args);
+        // println!("{:#?}", res.unwrap_json_value());
+        Ok(cx.string(serde_json::to_string(&res.unwrap_json_value()).unwrap()))
+    }
+
+    pub fn call(mut cx: FunctionContext) -> JsResult<JsBox<ExecutionResult>> {
+        let user = cx.argument::<JsBox<User>>(0)?;
+        let account_id: String = cx.argument::<JsString>(1)?.value(&mut cx);
+        let method: String = cx.argument::<JsString>(2)?.value(&mut cx);
+        let args_str = cx.argument::<JsString>(3)?.value(&mut cx);
+        let args = args_str.clone().into_bytes();
+        let gas: Gas = read_u64(&mut cx, 4);
+        let deposit: Balance = read_u128(&mut cx, 5);
+        let res = user.0.call(account_id, &method, &args, gas, deposit);
+        Ok(cx.boxed(ExecutionResult(res)))
+    }
+
+    pub fn create_user(mut cx: FunctionContext) -> JsResult<JsBox<User>> {
+        let user = cx.argument::<JsBox<User>>(0)?;
+        let account_id: String = cx.argument::<JsString>(1)?.value(&mut cx);
+        let initial_balance = read_u128(&mut cx, 2);
+        Ok(cx.boxed(User(user.0.create_user(account_id, initial_balance))))
+    }
 }
-
-
 mod transaction {
     use super::*;
     pub fn submit(mut cx: FunctionContext) -> JsResult<JsUndefined> {
@@ -366,7 +361,10 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
     cx.export_function("transaction_add_key", transaction::add_key)?;
     cx.export_function("transaction_delete_key", transaction::delete_key)?;
     cx.export_function("transaction_delete_account", transaction::delete_account)?;
-    cx.export_function("executionResult_unwrap_json_value", execution_result::unwrap_json_value)?;
+    cx.export_function(
+        "executionResult_unwrap_json_value",
+        execution_result::unwrap_json_value,
+    )?;
     cx.export_function("executionResult_is_ok", execution_result::is_ok)?;
     cx.export_function("executionResult_has_value", execution_result::has_value)?;
     cx.export_function("executionResult_lookup_hash", execution_result::lookup_hash)?;

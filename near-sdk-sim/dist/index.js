@@ -33,7 +33,9 @@ class RustRef {
     }
 }
 class User extends RustRef {
-    account_id() { return sim.user_account_id(this.ref); }
+    account_id() {
+        return sim.user_account_id(this.ref);
+    }
     amount() {
         return sim.user_amount(this.ref);
     }
@@ -67,9 +69,15 @@ class User extends RustRef {
 }
 exports.User = User;
 class ExecutionResult extends RustRef {
-    is_ok() { return sim.executionResult_is_ok(this.ref); }
-    has_value() { return sim.executionResult_has_value(this.ref); }
-    outcome() { return JSON.parse(sim.executionResult_outcome(this.ref)); }
+    is_ok() {
+        return sim.executionResult_is_ok(this.ref);
+    }
+    has_value() {
+        return sim.executionResult_has_value(this.ref);
+    }
+    outcome() {
+        return JSON.parse(sim.executionResult_outcome(this.ref));
+    }
 }
 exports.ExecutionResult = ExecutionResult;
 exports.DEFAULT_GAS = sim.DEFAULT_GAS;
