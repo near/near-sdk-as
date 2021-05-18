@@ -1,4 +1,4 @@
-use super::helper::read_crypto_hash;
+use crate::helper::read_crypto_hash;
 use near_sdk::serde_json;
 use near_sdk_sim::ExecutionResult as ER;
 use neon::prelude::*;
