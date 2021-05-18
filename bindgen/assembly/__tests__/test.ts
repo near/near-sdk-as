@@ -136,3 +136,9 @@ export function classOrNull(): FooBar | null {
 export function classAndNull(): FooBar | null {
   return null;
 }
+
+export function SomeExport(): void {}
+
+export function changeUserAPIKey(): string {
+  return "";
+}

@@ -77,8 +77,12 @@ export function toString(node: Node): string {
   return ASTBuilder.build(node);
 }
 
-const captialPattern = /([A-Z])/g;
+const capitalPattern = /([a-z])([A-Z])/g;
+const doubleCapital = /([A-Z])([A-Z][a-z])/g;
 
 export function makeSnakeCase(s: string): string {
-  return s.replace(captialPattern, "_$1").toLowerCase();
+  return s
+    .replace(capitalPattern, "$1_$2")
+    .replace(doubleCapital, "$1_$2")
+    .toLowerCase();
 }
