@@ -20,7 +20,7 @@ impl Deref for ExecutionResult {
     }
 }
 
-mod execution_result {
+pub mod execution_result {
     use super::*;
 
     pub fn unwrap_json_value(mut cx: FunctionContext) -> JsResult<JsString> {

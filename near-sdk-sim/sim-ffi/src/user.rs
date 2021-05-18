@@ -24,7 +24,7 @@ impl Deref for UserAccount {
     }
 }
 
-mod user_account {
+pub mod user_account {
     use super::*;
 
     pub fn account_id(mut cx: FunctionContext) -> JsResult<JsString> {
@@ -210,7 +210,7 @@ impl UserTransaction {
     }
 }
 
-mod user_transcation {
+pub mod user_transcation {
     use super::*;
 
     pub fn submit(mut cx: FunctionContext) -> JsResult<BoxedExecutionResult> {
@@ -226,14 +226,14 @@ mod user_transcation {
         Ok(tx)
     }
 
-    fn deploy_contract(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
+    pub fn deploy_contract(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
         let wasm_bytes = read_bytes(&mut cx, 1);
         tx.borrow_mut().deploy_contract(wasm_bytes);
         Ok(tx)
     }
 
-    fn function_call(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
+    pub fn function_call(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
         let method_name = cx.argument::<JsString>(1)?.value(&mut cx);
         let args = cx
@@ -248,14 +248,14 @@ mod user_transcation {
         Ok(tx)
     }
 
-    fn transfer(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
+    pub fn transfer(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
         let deposit = read_u128(&mut cx, 1);
         tx.borrow_mut().transfer(deposit);
         Ok(tx)
     }
 
-    fn stake(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
+    pub fn stake(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
         let stake = read_u128(&mut cx, 1);
         let public_key = read_public_key(&mut cx, 2);
@@ -263,7 +263,7 @@ mod user_transcation {
         Ok(tx)
     }
 
-    fn add_key(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
+    pub fn add_key(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
         let public_key = read_public_key(&mut cx, 1);
         let access_key = read_access_key(&mut cx, 2);
@@ -271,14 +271,14 @@ mod user_transcation {
         Ok(tx)
     }
 
-    fn delete_key(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
+    pub fn delete_key(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
         let public_key = read_public_key(&mut cx, 1);
         tx.borrow_mut().delete_key(public_key);
         Ok(tx)
     }
 
-    fn delete_account(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
+    pub fn delete_account(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
         let beneficiary_id = cx.argument::<JsString>(1)?.value(&mut cx);
         tx.borrow_mut().delete_account(beneficiary_id);
