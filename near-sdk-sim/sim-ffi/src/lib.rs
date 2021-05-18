@@ -382,32 +382,32 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
     // New wrapper functions
     cx.export_function("$init_simulator", user::init_simulator)?;
     // UserAccount
-    cx.export_function("$ua#account", user::user_account::account)?;
-    cx.export_function("$ua#account_id", user::user_account::account_id)?;
-    cx.export_function("$ua#call", user::user_account::call)?;
-    cx.export_function("$ua#create_transaction", user::user_account::create_transaction)?;
-    cx.export_function("$ua#create_user", user::user_account::create_user)?;
-    cx.export_function("$ua#create_user_from", user::user_account::create_user_from)?;
-    cx.export_function("$ua#deploy", user::user_account::deploy)?;
-    cx.export_function("$ua#deploy_and_init", user::user_account::deploy_and_init)?;
-    cx.export_function("$ua#transfer", user::user_account::transfer)?;
-    cx.export_function("$ua#view", user::user_account::view)?;
+    cx.export_function("$ua$account", user::user_account::account)?;
+    cx.export_function("$ua$account_id", user::user_account::account_id)?;
+    cx.export_function("$ua$call", user::user_account::call)?;
+    cx.export_function("$ua$create_transaction", user::user_account::create_transaction)?;
+    cx.export_function("$ua$create_user", user::user_account::create_user)?;
+    cx.export_function("$ua$create_user_from", user::user_account::create_user_from)?;
+    cx.export_function("$ua$deploy", user::user_account::deploy)?;
+    cx.export_function("$ua$deploy_and_init", user::user_account::deploy_and_init)?;
+    cx.export_function("$ua$transfer", user::user_account::transfer)?;
+    cx.export_function("$ua$view", user::user_account::view)?;
     // UserTranscation
-    cx.export_function("$ut#add_key", user::user_transcation::add_key)?;
-    cx.export_function("$ut#create_account", user::user_transcation::create_account)?;
-    cx.export_function("$ut#delete_account", user::user_transcation::delete_account)?;
-    cx.export_function("$ut#delete_key", user::user_transcation::delete_key)?;
-    cx.export_function("$ut#deploy_contract", user::user_transcation::deploy_contract)?;
-    cx.export_function("$ut#function_call", user::user_transcation::function_call)?;
-    cx.export_function("$ut#stake", user::user_transcation::stake)?;
-    cx.export_function("$ut#submit", user::user_transcation::submit)?;
-    cx.export_function("$ut#transfer", user::user_transcation::transfer)?;
+    cx.export_function("$ut$add_key", user::user_transcation::add_key)?;
+    cx.export_function("$ut$create_account", user::user_transcation::create_account)?;
+    cx.export_function("$ut$delete_account", user::user_transcation::delete_account)?;
+    cx.export_function("$ut$delete_key", user::user_transcation::delete_key)?;
+    cx.export_function("$ut$deploy_contract", user::user_transcation::deploy_contract)?;
+    cx.export_function("$ut$function_call", user::user_transcation::function_call)?;
+    cx.export_function("$ut$stake", user::user_transcation::stake)?;
+    cx.export_function("$ut$submit", user::user_transcation::submit)?;
+    cx.export_function("$ut$transfer", user::user_transcation::transfer)?;
     // ExecutionResult
-    cx.export_function("$er#has_value", execution_result::has_value)?;
-    cx.export_function("$er#is_ok", execution_result::is_ok)?;
-    cx.export_function("$er#lookup_hash", execution_result::lookup_hash)?;
-    cx.export_function("$er#outcome", execution_result::outcome)?;
-    cx.export_function("$er#unwrap_json_value", execution_result::unwrap_json_value)?;
+    cx.export_function("$er$has_value", execution_result::has_value)?;
+    cx.export_function("$er$is_ok", execution_result::is_ok)?;
+    cx.export_function("$er$lookup_hash", execution_result::lookup_hash)?;
+    cx.export_function("$er$outcome", execution_result::outcome)?;
+    cx.export_function("$er$unwrap_json_value", execution_result::unwrap_json_value)?;
 
     Ok(())
 }
