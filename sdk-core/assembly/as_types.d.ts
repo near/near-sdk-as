@@ -37,6 +37,11 @@ declare function defaultValue<T>(): T;
 declare function notPayable(): void;
 
 /**
+ * Throw if attached deposit does not equal 1 yoctoNEAR..
+ */
+ declare function oneYocto(): void;
+
+/**
  * Produces a warning during transform that element is deprecated.
  */
 declare function deprecated(_any: any): void;

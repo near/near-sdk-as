@@ -91,10 +91,26 @@ describe("cross contract calls", () => {
     ).toBe(true);
   });
 
+  test("contract should throw if attached deposit is not 1 yoctoNEAR and one yocto method", () => {
+    let res = alice.call_other(
+      "sentences",
+      "oneYoctoFunction",
+      {},
+      10000000000000,
+      "2"
+    );
+    expect(res.err.FunctionCallError.HostError.GuestPanic.panic_msg).toEqual(
+      expect.stringContaining(
+        "Requires attached deposit of exactly 1 yoctoNEAR"
+      )
+    );
+  });
+
   test("exported from submodule", () => {
     const str = "hello";
-    const res = words.view("capitalize", { s: str}).result.outcome as any;
-    expect(res.return_data.Value.substr(1, str.length)).toStrictEqual(str.toUpperCase());
-
-  })
+    const res = words.view("capitalize", { s: str }).result.outcome as any;
+    expect(res.return_data.Value.substr(1, str.length)).toStrictEqual(
+      str.toUpperCase()
+    );
+  });
 });

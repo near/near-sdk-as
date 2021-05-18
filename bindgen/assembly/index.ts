@@ -23,6 +23,12 @@ function notPayable(): void {
 
 // @ts-ignore
 @global
+function oneYocto(): void {
+  assert(Context.attachedDeposit == u128.One, "Requires attached deposit of exactly 1 yoctoNEAR");
+}
+
+// @ts-ignore
+@global
 function requireParameter<T>(name: string): T {
   assert(
     false,

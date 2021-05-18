@@ -172,3 +172,8 @@ export function nonPayableFunction(): void {
   notPayable();
   throw new Error("shouldn't see this " + Context.attachedDeposit.toString());
 }
+
+export function oneYoctoFunction(): void {
+  oneYocto();
+  throw new Error("shouldn't see this " + Context.attachedDeposit.toString());
+}
