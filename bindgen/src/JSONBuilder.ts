@@ -12,9 +12,10 @@ import {
   ParameterNode,
 } from "visitor-as/as";
 import { BaseVisitor, utils } from "visitor-as";
-import { SimpleParser, toString } from "./utils";
+import { SimpleParser, toString, makeSnakeCase } from "./utils";
 
 const NEAR_DECORATOR = "nearBindgen";
+const WRAPPER_PREFIX = "__wrapper_";
 
 function returnsVoid(node: FunctionDeclaration): boolean {
   return toString(node.signature.returnType) === "void";
@@ -141,6 +142,14 @@ export class JSONBindingsBuilder extends BaseVisitor {
 
   visitFunctionDeclaration(node: FunctionDeclaration): void {
     if (!this.needsWrapper(node)) {
+      if (
+        (isEntry(node) || utils.hasDecorator(node, NEAR_DECORATOR)) &&
+        !this.wrappedFuncs.has(toString(node.name)) &&
+        node.is(CommonFlags.EXPORT)
+      ) {
+        this.sb.push(this.camelCaseToSnakeCaseExport(toString(node.name), ""));
+        this.wrappedFuncs.add(toString(node.name));
+      }
       super.visitFunctionDeclaration(node);
       return;
     }
@@ -149,6 +158,17 @@ export class JSONBindingsBuilder extends BaseVisitor {
     node.flags = node.flags ^ CommonFlags.EXPORT;
     this.wrappedFuncs.add(toString(node.name));
     super.visit(node);
+  }
+
+  camelCaseToSnakeCaseExport(
+    name: string,
+    prefix: string = WRAPPER_PREFIX
+  ): string {
+    let s = makeSnakeCase(name);
+    if (s.normalize() === name.normalize()) {
+      return "";
+    }
+    return `export { ${prefix + name} as ${s} }`;
   }
 
   /*
@@ -202,7 +222,9 @@ export class JSONBindingsBuilder extends BaseVisitor {
   value_return(val.byteLength, val.dataStart);`);
     }
     this.sb.push(`}
-export { __wrapper_${name} as ${name} }`);
+export { ${WRAPPER_PREFIX + name} as ${name} }
+${this.camelCaseToSnakeCaseExport(name)}
+`);
   }
 
   private typeName(type: TypeNode | ClassDeclaration): string {

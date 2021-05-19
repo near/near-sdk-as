@@ -1,11 +1,12 @@
 const compile = require("asbuild").main;
 
-compile(["assembly/__tests__/test.ts", "--target", "debug"], (err) => {
+compile(["assembly/__tests__/test.ts", "--target", "debug", "--wat"], (err) => {
   if (err) {
     throw err;
   }
-
+  
 });
+
 // Tests where the compiler should failed to compile
 function buildFail(msg, args) {
   var failed = false;
