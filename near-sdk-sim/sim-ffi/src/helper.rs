@@ -36,7 +36,8 @@ pub fn read_access_key(cx: &mut FunctionContext, index: i32) -> AccessKey {
 
 pub fn read_crypto_hash(cx: &mut FunctionContext, index: i32) -> CryptoHash {
     let str = cx.argument::<JsString>(index).unwrap().value(cx);
-    near_sdk::serde_json::from_str(&str).unwrap()
+    // near_sdk::serde_json::from_str::<CryptoHash>(&str).unwrap()
+    CryptoHash::try_from(str).unwrap()
 }
 
 // pub fn pack_option_as_js_obj(cx: &mut FunctionContext) -> Handle<JsObject> {

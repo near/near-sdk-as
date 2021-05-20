@@ -171,7 +171,8 @@ pub mod execution_result {
         let ids = res.receipt_ids();
         let js_array = JsArray::new(&mut cx, ids.len() as u32);
         for (i, v) in ids.iter().enumerate() {
-            let js_str = cx.string(serde_json::to_string(&v).unwrap());
+            // let js_str = cx.string(serde_json::to_string(&v).unwrap());
+            let js_str = cx.string(String::from(v));
             js_array.set(&mut cx, i as u32, js_str).unwrap();
         }
         Ok(js_array)
