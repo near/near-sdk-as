@@ -1,83 +1,43 @@
+/// <reference path="./types.ts" />
+
 import * as sim from "../sim-ffi";
-import * as fs from "fs";
-import { join } from "path";
+import { UserAccount, UserTransaction } from "./user";
+import { DEFAULT_RUNTIME_CONFIG } from "./config";
 
-export function init_simulator(): User {
-  return new User(sim.init());
+// From v3.2.0 near-sdk-sim crate cache contract storage
+// for that it uses "CARGO_MANIFEST_DIR" env, which is set by
+// cargo when running "cargo run", "cargo test".
+// https://github.com/near/near-sdk-rs/blob/5a8f4dcac44598db19532cdbd6c492bd42e1e777/near-sdk-sim/src/cache.rs#L25
+process.env["CARGO_MANIFEST_DIR"] = "sim-ffi";
+
+function fixGenesisConfigToJSON(config: GenesisConfig): string {
+  let json_str = JSON.stringify(config);
+  return json_str.replace(/"(-{0,1}[0-9]+\.{0,1}[0-9]?)"/g, "$1");
 }
 
-abstract class RustRef {
-  constructor(protected ref: any) {}
+function appendRuntimeConfig(json: string): string {
+  json = json.trim().slice(0, -1);
+  json += `,"runtime_config": ${JSON.stringify(DEFAULT_RUNTIME_CONFIG)}}`;
+  return json;
 }
 
-export class User extends RustRef {
-  account_id(): string {
-    return sim.user_account_id(this.ref);
-  }
-
-  amount(): string {
-    return sim.user_amount(this.ref);
-  }
-
-  deploy(
-    wasm_bytes: Uint8Array | string | string[],
-    account_id: string,
-    deposit: string = "112897800000000000000000000000"
-  ): User {
-    if (!(wasm_bytes instanceof Uint8Array)) {
-      if (typeof wasm_bytes !== "string") {
-        wasm_bytes = join(...wasm_bytes);
-      }
-      wasm_bytes = fs.readFileSync(wasm_bytes);
-    }
-    return new User(sim.user_deploy(this.ref, wasm_bytes, account_id, deposit));
-  }
-
-  view(account_id: string, method: string, args: string | object = "{}"): any {
-    if (!(typeof args === "string")) {
-      args = JSON.stringify(args);
-    }
-    return JSON.parse(sim.user_view(this.ref, account_id, method, args));
-  }
-
-  call(
-    account_id: string,
-    method: string,
-    args: string | object = "{}",
-    gas: string = sim.DEFAULT_GAS,
-    deposit: string = "0"
-  ): ExecutionResult {
-    if (!(typeof args === "string")) {
-      args = JSON.stringify(args);
-    }
-    return new ExecutionResult(
-      sim.user_call(this.ref, account_id, method, args, gas, deposit)
-    );
-  }
-
-  view_self(method: string, args: string | object = "{}"): any {
-    return this.view(this.account_id(), method, args);
-  }
-
-  create_user(account_id: string, initial_balance: string): User {
-    return new User(
-      sim.user_create_user(this.ref, account_id, initial_balance)
-    );
+export function init_simulator(genesis_config?: GenesisConfig): UserAccount {
+  if (genesis_config) {
+    const config_str = fixGenesisConfigToJSON(genesis_config);
+    const complete_config_str = appendRuntimeConfig(config_str);
+    return new UserAccount(sim.$init_simulator(complete_config_str));
+  } else {
+    return new UserAccount(sim.$init_simulator());
   }
 }
 
-export class ExecutionResult extends RustRef {
-  is_ok(): boolean {
-    return sim.executionResult_is_ok(this.ref);
-  }
-
-  has_value(): boolean {
-    return sim.executionResult_has_value(this.ref);
-  }
-
-  outcome(): any {
-    return JSON.parse(sim.executionResult_outcome(this.ref));
-  }
+// utils
+export function to_yocto(value: string): string {
+  return sim.$to_yocto(value);
 }
 
-export const DEFAULT_GAS = sim.DEFAULT_GAS;
+// Exports
+export const DEFAULT_GAS = sim.$DEFAULT_GAS;
+export const STORAGE_AMOUNT = sim.$STORAGE_AMOUNT;
+export { UserAccount, UserTransaction } from "./user";
+export { ExecutionResult } from "./outcome";

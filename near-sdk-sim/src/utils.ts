@@ -2,6 +2,11 @@ import BN from "bn.js";
 import * as base58 from "bs58";
 import { Base64 } from "js-base64";
 
+export type Ref = any;
+export abstract class RustRef {
+  constructor(protected ref: Ref) {}
+}
+
 export function toNum(x: number | BigInt) {
   return parseInt(x.toString());
 }
