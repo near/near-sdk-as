@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
+export function main(): void;
 export function inject_contract(a: number): number;
-export function test_memory(a: number): void;
 export function __wbg_vm_free(a: number): void;
 export function vm_new(a: number, b: number): number;
 export function vm_reset(a: number): void;
@@ -355,7 +355,7 @@ export function vm_validator_stake(
 export function vm_validator_total_stake(a: number, b: number, c: number): void;
 export function vm_outcome(a: number): number;
 export function vm_created_receipts(a: number): number;
-export function main(): void;
+export function test_memory(a: number): void;
 export function __wbindgen_malloc(a: number): number;
 export function __wbindgen_realloc(a: number, b: number, c: number): number;
 export function __wbindgen_free(a: number, b: number): void;
