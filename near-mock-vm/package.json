@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "yarn build:wasm && yarn build:vm",
-    "build:wasm": "yarn wasm-pack build --target nodejs --debug",
+    "build:wasm": "yarn wasm-pack build --target nodejs --release",
     "build:vm": "yarn tsc -p vm",
     "test": "yarn asb assembly/__tests__/main.ts --target debug && node vm/tests/test && yarn test:bin",
     "test:ci": "yarn build:vm && yarn test",
