@@ -1,10 +1,10 @@
-import { DEFAULT_GAS, ExecutionResult, init_simulator, User } from "..";
+import { DEFAULT_GAS, ExecutionResult, init_simulator, UserAccount } from "..";
 import { main } from "asbuild";
 import { promisify } from "util";
 import { join } from "path";
 
-let root: User;
-let counter: User, alice: User;
+let root: UserAccount;
+let counter: UserAccount, alice: UserAccount;
 
 
 function getErrorMsg(res: any) {

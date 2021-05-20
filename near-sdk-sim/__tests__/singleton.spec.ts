@@ -1,10 +1,10 @@
-import { DEFAULT_GAS, init_simulator, User } from "..";
+import { DEFAULT_GAS, init_simulator, UserAccount } from "..";
 import { main } from "asbuild";
 import { promisify } from "util";
 import { join } from "path";
 
-let root: User;
-let singleton: User, alice: User;
+let root: UserAccount;
+let singleton: UserAccount, alice: UserAccount;
 
 
 function getErrorMsg(res: any) {
@@ -52,11 +52,11 @@ describe("cross contract calls", () => {
   beforeEach(() => {
     root = init_simulator();
     alice = root;
-    singleton = root.deploy(join(__dirname,"..","build","release","singleton.wasm"), "singleton");
+    singleton = root.deploy(join(__dirname,"..","build","debug","singleton.wasm"), "singleton");
     init();
   });
 
-  function create_user(str: string): User {
+  function create_user(str: string): UserAccount {
     return root.create_user(str, "1654280000000000000000000")
   }
 
