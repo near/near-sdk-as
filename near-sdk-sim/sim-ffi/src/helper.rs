@@ -1,5 +1,14 @@
-use near_sdk_sim::{account::AccessKey, hash::CryptoHash, near_crypto::PublicKey};
+use near_sdk_sim::{
+    account::AccessKey, hash::CryptoHash, near_crypto::PublicKey, to_yocto as to_y,
+};
 use neon::prelude::*;
+use std::convert::TryFrom;
+
+pub fn to_yocto(mut cx: FunctionContext) -> JsResult<JsString> {
+    let value = cx.argument::<JsString>(0)?.value(&mut cx);
+    let yocto_str = cx.string(to_y(&value).to_string());
+    return Ok(yocto_str);
+}
 
 // TODO: handle error better
 pub fn read_bytes(cx: &mut FunctionContext, index: i32) -> Vec<u8> {
@@ -26,12 +35,12 @@ pub fn read_u64(cx: &mut FunctionContext, index: i32) -> u64 {
 
 pub fn read_public_key(cx: &mut FunctionContext, index: i32) -> PublicKey {
     let str = cx.argument::<JsString>(index).unwrap().value(cx);
-    near_sdk::serde_json::from_str(&str).unwrap()
+    near_sdk::serde_json::from_str::<PublicKey>(&str).unwrap()
 }
 
 pub fn read_access_key(cx: &mut FunctionContext, index: i32) -> AccessKey {
     let str = cx.argument::<JsString>(index).unwrap().value(cx);
-    near_sdk::serde_json::from_str(&str).unwrap()
+    near_sdk::serde_json::from_str::<AccessKey>(&str).unwrap()
 }
 
 pub fn read_crypto_hash(cx: &mut FunctionContext, index: i32) -> CryptoHash {

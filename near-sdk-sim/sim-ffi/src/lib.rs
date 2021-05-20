@@ -70,5 +70,8 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
         outcome::execution_result::unwrap_json_value,
     )?;
 
+    // utils
+    cx.export_function("$to_yocto", helper::to_yocto)?;
+
     Ok(())
 }
