@@ -1,4 +1,5 @@
 "use strict";
+/// <reference path="./types.ts" />
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -19,66 +20,46 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DEFAULT_GAS = exports.ExecutionResult = exports.User = exports.init_simulator = void 0;
+exports.ExecutionResult = exports.UserTransaction = exports.UserAccount = exports.STORAGE_AMOUNT = exports.DEFAULT_GAS = exports.to_yocto = exports.init_simulator = void 0;
 const sim = __importStar(require("../sim-ffi"));
-const fs = __importStar(require("fs"));
-const path_1 = require("path");
-function init_simulator() {
-    return new User(sim.init());
+const user_1 = require("./user");
+const config_1 = require("./config");
+// From v3.2.0 near-sdk-sim crate cache contract storage
+// for that it uses "CARGO_MANIFEST_DIR" env, which is set by
+// cargo when running "cargo run", "cargo test".
+// https://github.com/near/near-sdk-rs/blob/5a8f4dcac44598db19532cdbd6c492bd42e1e777/near-sdk-sim/src/cache.rs#L25
+process.env["CARGO_MANIFEST_DIR"] = "sim-ffi";
+function fixGenesisConfigToJSON(config) {
+    let json_str = JSON.stringify(config);
+    return json_str.replace(/"(-{0,1}[0-9]+\.{0,1}[0-9]?)"/g, "$1");
+}
+function appendRuntimeConfig(json) {
+    json = json.trim().slice(0, -1);
+    json += `,"runtime_config": ${JSON.stringify(config_1.DEFAULT_RUNTIME_CONFIG)}}`;
+    return json;
+}
+function init_simulator(genesis_config) {
+    if (genesis_config) {
+        const config_str = fixGenesisConfigToJSON(genesis_config);
+        const complete_config_str = appendRuntimeConfig(config_str);
+        return new user_1.UserAccount(sim.$init_simulator(complete_config_str));
+    }
+    else {
+        return new user_1.UserAccount(sim.$init_simulator());
+    }
 }
 exports.init_simulator = init_simulator;
-class RustRef {
-    constructor(ref) {
-        this.ref = ref;
-    }
+// utils
+function to_yocto(value) {
+    return sim.$to_yocto(value);
 }
-class User extends RustRef {
-    account_id() {
-        return sim.user_account_id(this.ref);
-    }
-    amount() {
-        return sim.user_amount(this.ref);
-    }
-    deploy(wasm_bytes, account_id, deposit = "112897800000000000000000000000") {
-        if (!(wasm_bytes instanceof Uint8Array)) {
-            if (typeof wasm_bytes !== "string") {
-                wasm_bytes = path_1.join(...wasm_bytes);
-            }
-            wasm_bytes = fs.readFileSync(wasm_bytes);
-        }
-        return new User(sim.user_deploy(this.ref, wasm_bytes, account_id, deposit));
-    }
-    view(account_id, method, args = "{}") {
-        if (!(typeof args === "string")) {
-            args = JSON.stringify(args);
-        }
-        return JSON.parse(sim.user_view(this.ref, account_id, method, args));
-    }
-    call(account_id, method, args = "{}", gas = sim.DEFAULT_GAS, deposit = "0") {
-        if (!(typeof args === "string")) {
-            args = JSON.stringify(args);
-        }
-        return new ExecutionResult(sim.user_call(this.ref, account_id, method, args, gas, deposit));
-    }
-    view_self(method, args = "{}") {
-        return this.view(this.account_id(), method, args);
-    }
-    create_user(account_id, initial_balance) {
-        return new User(sim.user_create_user(this.ref, account_id, initial_balance));
-    }
-}
-exports.User = User;
-class ExecutionResult extends RustRef {
-    is_ok() {
-        return sim.executionResult_is_ok(this.ref);
-    }
-    has_value() {
-        return sim.executionResult_has_value(this.ref);
-    }
-    outcome() {
-        return JSON.parse(sim.executionResult_outcome(this.ref));
-    }
-}
-exports.ExecutionResult = ExecutionResult;
-exports.DEFAULT_GAS = sim.DEFAULT_GAS;
+exports.to_yocto = to_yocto;
+// Exports
+exports.DEFAULT_GAS = sim.$DEFAULT_GAS;
+exports.STORAGE_AMOUNT = sim.$STORAGE_AMOUNT;
+var user_2 = require("./user");
+Object.defineProperty(exports, "UserAccount", { enumerable: true, get: function () { return user_2.UserAccount; } });
+Object.defineProperty(exports, "UserTransaction", { enumerable: true, get: function () { return user_2.UserTransaction; } });
+var outcome_1 = require("./outcome");
+Object.defineProperty(exports, "ExecutionResult", { enumerable: true, get: function () { return outcome_1.ExecutionResult; } });
 //# sourceMappingURL=index.js.map

@@ -22,10 +22,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.assign = exports.decodeBs64 = exports.encodeBs64 = exports.decodeBs58 = exports.encodeBs58 = exports.createU128Str = exports.StrtoUTF8 = exports.UTF8toStr = exports.toNum = void 0;
+exports.assign = exports.decodeBs64 = exports.encodeBs64 = exports.decodeBs58 = exports.encodeBs58 = exports.createU128Str = exports.StrtoUTF8 = exports.UTF8toStr = exports.toNum = exports.RustRef = void 0;
 const bn_js_1 = __importDefault(require("bn.js"));
 const base58 = __importStar(require("bs58"));
 const js_base64_1 = require("js-base64");
+class RustRef {
+    constructor(ref) {
+        this.ref = ref;
+    }
+}
+exports.RustRef = RustRef;
 function toNum(x) {
     return parseInt(x.toString());
 }
