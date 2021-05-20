@@ -53,3 +53,4 @@ export const DEFAULT_GAS = sim.$DEFAULT_GAS;
 export const STORAGE_AMOUNT = sim.$STORAGE_AMOUNT;
 export { UserAccount, UserTransaction } from "./user";
 export { ExecutionResult } from "./outcome";
+export * as utils from "./utils";
