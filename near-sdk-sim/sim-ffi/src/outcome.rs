@@ -20,6 +20,12 @@ impl Deref for ExecutionResult {
     }
 }
 
+impl<'a> ExecutionResult {
+    pub fn new_ref(inner: ER) -> RefCell<ExecutionResult> {
+        RefCell::new(ExecutionResult(inner))
+    }
+}
+
 pub mod execution_result {
     use super::*;
 
@@ -59,13 +65,18 @@ pub mod execution_result {
     //     assert!(self.is_ok(), "Outcome {:#?} was a failure", self.outcome);
     // }
 
-    pub fn lookup_hash(mut cx: FunctionContext) -> JsResult<BoxedExecutionResult> {
+    pub fn lookup_hash(mut cx: FunctionContext) -> JsResult<JsArray> {
         let self_ref = cx.argument::<BoxedExecutionResult>(0)?;
         let hash = read_crypto_hash(&mut cx, 1);
         let lookup_res = self_ref.borrow().lookup_hash(&hash);
         match lookup_res {
-            None => panic!(),
-            Some(r) => Ok(cx.boxed(RefCell::new(ExecutionResult(r)))),
+            None => Ok(cx.empty_array()),
+            Some(r) => {
+                let array = JsArray::new(&mut cx, 1);
+                let boxed = cx.boxed(ExecutionResult::new_ref(r));
+                array.set(&mut cx, 0, boxed).unwrap();
+                Ok(array)
+            }
         }
     }
 
