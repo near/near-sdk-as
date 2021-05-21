@@ -1,14 +1,6 @@
-use near_sdk_sim::{
-    account::AccessKey, hash::CryptoHash, near_crypto::PublicKey, to_yocto as to_y,
-};
+use near_sdk_sim::{account::AccessKey, hash::CryptoHash, near_crypto::PublicKey};
 use neon::prelude::*;
 use std::convert::TryFrom;
-
-pub fn to_yocto(mut cx: FunctionContext) -> JsResult<JsString> {
-    let value = cx.argument::<JsString>(0)?.value(&mut cx);
-    let yocto_str = cx.string(to_y(&value).to_string());
-    return Ok(yocto_str);
-}
 
 // TODO: handle error better
 pub fn read_bytes(cx: &mut FunctionContext, index: i32) -> Vec<u8> {

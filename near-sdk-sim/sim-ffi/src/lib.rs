@@ -1,9 +1,10 @@
 use near_sdk_sim::{DEFAULT_GAS, STORAGE_AMOUNT};
 use neon::prelude::*;
 
-pub mod helper;
+mod helper;
 pub mod outcome;
 pub mod runtime;
+pub mod units;
 pub mod user;
 
 #[neon::main]
@@ -71,7 +72,7 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
     )?;
 
     // utils
-    cx.export_function("$to_yocto", helper::to_yocto)?;
+    cx.export_function("$to_yocto", units::to_yocto)?;
 
     Ok(())
 }
