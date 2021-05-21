@@ -1,4 +1,5 @@
 use crate::helper::read_crypto_hash;
+use crate::json_wrappers::ExecutionOutcomeWrapper;
 use near_sdk::serde_json;
 use near_sdk_sim::ExecutionResult as ER;
 use neon::prelude::*;
@@ -82,7 +83,10 @@ pub mod execution_result {
 
     pub fn outcome(mut cx: FunctionContext) -> JsResult<JsString> {
         let res = cx.argument::<BoxedExecutionResult>(0)?;
-        let outcome_json = serde_json::to_string(&res.borrow().outcome()).unwrap();
+        // let out = res.borrow().outcome();
+        let outcome_json =
+            serde_json::to_string(&ExecutionOutcomeWrapper(res.borrow().outcome())).unwrap();
+        // let outcome_json = serde_json::to_string(&res.borrow().outcome()).unwrap();
         Ok(cx.string(outcome_json))
     }
 

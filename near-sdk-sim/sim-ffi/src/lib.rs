@@ -2,8 +2,8 @@ use near_sdk_sim::{DEFAULT_GAS, STORAGE_AMOUNT};
 use neon::prelude::*;
 
 mod helper;
+mod json_wrappers;
 pub mod outcome;
-pub mod runtime;
 pub mod units;
 pub mod user;
 

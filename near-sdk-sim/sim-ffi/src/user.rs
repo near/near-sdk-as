@@ -1,7 +1,7 @@
 use crate::{
     helper::{read_access_key, read_bytes, read_public_key, read_u128, read_u64},
+    json_wrappers::GenesisConfigDef,
     outcome::{BoxedExecutionResult, ExecutionResult},
-    runtime::GenesisConfigDef,
 };
 use near_sdk::{serde_json, Balance, Gas};
 use near_sdk_sim::{
