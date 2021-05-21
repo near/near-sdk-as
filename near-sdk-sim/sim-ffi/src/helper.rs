@@ -13,16 +13,14 @@ pub fn read_bytes(cx: &mut FunctionContext, index: i32) -> Vec<u8> {
     wasm_bytes
 }
 
-// TODO: improve error handling
 pub fn read_u128(cx: &mut FunctionContext, index: i32) -> u128 {
     let str = cx.argument::<JsString>(index).unwrap().value(cx);
-    u128::from_str_radix(&str, 10).unwrap()
+    u128::from_str_radix(&str, 10).expect(&format!("cannot convert {} to u128", str))
 }
 
-// TODO: improve error handling
 pub fn read_u64(cx: &mut FunctionContext, index: i32) -> u64 {
     let str = cx.argument::<JsString>(index).unwrap().value(cx);
-    u64::from_str_radix(&str, 10).unwrap()
+    u64::from_str_radix(&str, 10).expect(&format!("cannot convert {} to u64", str))
 }
 
 pub fn read_public_key(cx: &mut FunctionContext, index: i32) -> PublicKey {
