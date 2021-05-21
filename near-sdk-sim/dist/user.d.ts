@@ -1,13 +1,14 @@
+/// <reference path="types.d.ts" />
 /// <reference types="node" />
 import { RustRef } from "./utils";
 import { ExecutionResult } from "./outcome";
 export declare class UserAccount extends RustRef {
-    account_id(): string;
+    account_id(): AccountId;
     account(): Account | null;
     transfer(to: string, deposit: string): ExecutionResult;
     call(account_id: string, method: string, args?: string | object, gas?: string, deposit?: string): ExecutionResult;
     deploy(wasm_bytes: Uint8Array | string | string[], account_id: string, deposit?: string): UserAccount;
-    deploy_and_init(wasm_bytes: Uint8Array | string | string[], account_id: string, method: string, args?: string | object, gas?: string, deposit?: string): UserAccount;
+    deploy_and_init(wasm_bytes: Uint8Array | string | string[], account_id: string, method: string, args?: string | object, deposit?: string, gas?: string): UserAccount;
     create_transaction(receiver_id: string): UserTransaction;
     view(account_id: string, method: string, args?: string | object): any;
     view_self(method: string, args?: string | object): any;

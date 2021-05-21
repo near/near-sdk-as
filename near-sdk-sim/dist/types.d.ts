@@ -49,7 +49,7 @@ interface AccountInfo {
     amount: Balance;
 }
 interface GenesisConfig {
-    genesis_time: number;
+    genesis_time: string;
     gas_price: Balance;
     gas_limit: Gas;
     genesis_height: string;
@@ -57,4 +57,25 @@ interface GenesisConfig {
     block_prod_time: Duration;
     state_records: Array<StateRecord>;
     validators: Array<AccountInfo>;
+    runtime_config?: any;
+}
+declare type TxExecutionError = {
+    ActionError: any;
+} | {
+    InvalidTxError: any;
+};
+declare type ExecutionStatus = {
+    SuccessValue: Array<any>;
+} | {
+    SuccessReceiptId: CryptoHash;
+} | {
+    Failure: TxExecutionError;
+};
+interface ExecutionOutcome {
+    logs: string[];
+    receipt_ids: CryptoHash[];
+    gas_burnt: Gas;
+    tokens_burnt: Balance;
+    executor_id: AccountId;
+    status: ExecutionStatus;
 }

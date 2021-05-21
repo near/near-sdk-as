@@ -1,4 +1,5 @@
 "use strict";
+/// <reference path="./types.ts" />
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -50,7 +51,7 @@ class UserAccount extends utils_1.RustRef {
         }
         return new UserAccount(sim.$ua$deploy(this.ref, wasm_bytes, account_id, deposit));
     }
-    deploy_and_init(wasm_bytes, account_id, method, args = "{}", gas = sim.$DEFAULT_GAS, deposit = "112897800000000000000000000000") {
+    deploy_and_init(wasm_bytes, account_id, method, args = "{}", deposit = "112897800000000000000000000000", gas = sim.$DEFAULT_GAS) {
         if (!(wasm_bytes instanceof Uint8Array)) {
             if (typeof wasm_bytes !== "string") {
                 wasm_bytes = path_1.join(...wasm_bytes);
@@ -60,7 +61,7 @@ class UserAccount extends utils_1.RustRef {
         if (!(typeof args === "string")) {
             args = JSON.stringify(args);
         }
-        return new UserAccount(sim.$ua$deploy_and_init(this.ref, wasm_bytes, account_id, method, args, gas, deposit));
+        return new UserAccount(sim.$ua$deploy_and_init(this.ref, wasm_bytes, account_id, method, args, deposit, gas));
     }
     create_transaction(receiver_id) {
         return new UserTransaction(sim.$ua$create_transaction(this.ref, receiver_id));

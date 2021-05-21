@@ -1,4 +1,5 @@
 "use strict";
+/// <reference path="./types.ts" />
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -56,7 +57,7 @@ class ExecutionResult extends utils_1.RustRef {
         return sim.$er$promise_errors(this.ref).map((r) => new ExecutionResult(r));
     }
     status() {
-        return sim.$er$status(this.ref);
+        return JSON.parse(sim.$er$status(this.ref));
     }
     gas_burnt() {
         return sim.$er$gas_burnt(this.ref);

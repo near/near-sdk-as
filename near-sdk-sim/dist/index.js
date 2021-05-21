@@ -20,29 +20,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ExecutionResult = exports.UserTransaction = exports.UserAccount = exports.STORAGE_AMOUNT = exports.DEFAULT_GAS = exports.to_yocto = exports.init_simulator = void 0;
+exports.utils = exports.ExecutionResult = exports.UserTransaction = exports.UserAccount = exports.STORAGE_AMOUNT = exports.DEFAULT_GAS = exports.to_yocto = exports.init_simulator = void 0;
 const sim = __importStar(require("../sim-ffi"));
 const user_1 = require("./user");
 const config_1 = require("./config");
-// From v3.2.0 near-sdk-sim crate cache contract storage
+// From v3.2.0 near-sdk-sim crate cache contract storage, and
 // for that it uses "CARGO_MANIFEST_DIR" env, which is set by
 // cargo when running "cargo run", "cargo test".
 // https://github.com/near/near-sdk-rs/blob/5a8f4dcac44598db19532cdbd6c492bd42e1e777/near-sdk-sim/src/cache.rs#L25
 process.env["CARGO_MANIFEST_DIR"] = "sim-ffi";
-function fixGenesisConfigToJSON(config) {
-    let json_str = JSON.stringify(config);
-    return json_str.replace(/"(-{0,1}[0-9]+\.{0,1}[0-9]?)"/g, "$1");
-}
-function appendRuntimeConfig(json) {
-    json = json.trim().slice(0, -1);
-    json += `,"runtime_config": ${JSON.stringify(config_1.DEFAULT_RUNTIME_CONFIG)}}`;
-    return json;
-}
 function init_simulator(genesis_config) {
     if (genesis_config) {
-        const config_str = fixGenesisConfigToJSON(genesis_config);
-        const complete_config_str = appendRuntimeConfig(config_str);
-        return new user_1.UserAccount(sim.$init_simulator(complete_config_str));
+        if (!genesis_config.runtime_config)
+            genesis_config.runtime_config = config_1.DEFAULT_RUNTIME_CONFIG;
+        return new user_1.UserAccount(sim.$init_simulator(JSON.stringify(genesis_config)));
     }
     else {
         return new user_1.UserAccount(sim.$init_simulator());
@@ -62,4 +53,5 @@ Object.defineProperty(exports, "UserAccount", { enumerable: true, get: function 
 Object.defineProperty(exports, "UserTransaction", { enumerable: true, get: function () { return user_2.UserTransaction; } });
 var outcome_1 = require("./outcome");
 Object.defineProperty(exports, "ExecutionResult", { enumerable: true, get: function () { return outcome_1.ExecutionResult; } });
+exports.utils = __importStar(require("./utils"));
 //# sourceMappingURL=index.js.map
