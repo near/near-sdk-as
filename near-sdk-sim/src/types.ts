@@ -51,7 +51,7 @@ interface AccountInfo {
 }
 
 interface GenesisConfig {
-  genesis_time: number;
+  genesis_time: string;
   gas_price: Balance;
   gas_limit: Gas;
   genesis_height: string; //u64
@@ -59,5 +59,5 @@ interface GenesisConfig {
   block_prod_time: Duration;
   state_records: Array<StateRecord>;
   validators: Array<AccountInfo>;
-  //   runtime_config: any; // RuntimeConfig
+  runtime_config?: any; // RuntimeConfig
 }
