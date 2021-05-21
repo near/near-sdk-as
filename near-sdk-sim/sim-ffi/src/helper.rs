@@ -1,6 +1,7 @@
 use near_sdk_sim::{account::AccessKey, hash::CryptoHash, near_crypto::PublicKey};
 use neon::prelude::*;
 use std::convert::TryFrom;
+use std::str::FromStr;
 
 // TODO: handle error better
 pub fn read_bytes(cx: &mut FunctionContext, index: i32) -> Vec<u8> {
@@ -25,7 +26,7 @@ pub fn read_u64(cx: &mut FunctionContext, index: i32) -> u64 {
 
 pub fn read_public_key(cx: &mut FunctionContext, index: i32) -> PublicKey {
     let str = cx.argument::<JsString>(index).unwrap().value(cx);
-    near_sdk::serde_json::from_str::<PublicKey>(&str).unwrap()
+    PublicKey::from_str(&str).expect(&format!("cannot parse {} as PublicKey", str))
 }
 
 pub fn read_access_key(cx: &mut FunctionContext, index: i32) -> AccessKey {
