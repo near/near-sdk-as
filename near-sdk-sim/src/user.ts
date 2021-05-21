@@ -1,3 +1,5 @@
+/// <reference path="./types.ts" />
+
 import { Ref, RustRef } from "./utils";
 import * as sim from "../sim-ffi";
 import * as fs from "fs";
@@ -5,7 +7,7 @@ import { join } from "path";
 import { ExecutionResult } from "./outcome";
 
 export class UserAccount extends RustRef {
-  account_id(): string {
+  account_id(): AccountId {
     return sim.$ua$account_id(this.ref);
   }
 
@@ -53,8 +55,8 @@ export class UserAccount extends RustRef {
     account_id: string,
     method: string,
     args: string | object = "{}",
-    gas: string = sim.$DEFAULT_GAS,
-    deposit: string = "112897800000000000000000000000"
+    deposit: string = "112897800000000000000000000000",
+    gas: string = sim.$DEFAULT_GAS
   ): UserAccount {
     if (!(wasm_bytes instanceof Uint8Array)) {
       if (typeof wasm_bytes !== "string") {
@@ -72,8 +74,8 @@ export class UserAccount extends RustRef {
         account_id,
         method,
         args,
-        gas,
-        deposit
+        deposit,
+        gas
       )
     );
   }

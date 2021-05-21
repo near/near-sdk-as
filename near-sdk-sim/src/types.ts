@@ -61,3 +61,19 @@ interface GenesisConfig {
   validators: Array<AccountInfo>;
   runtime_config?: any; // RuntimeConfig
 }
+
+type TxExecutionError = { ActionError: any } | { InvalidTxError: any };
+
+type ExecutionStatus =
+  | { SuccessValue: Array<any> }
+  | { SuccessReceiptId: CryptoHash }
+  | { Failure: TxExecutionError };
+
+interface ExecutionOutcome {
+  logs: string[];
+  receipt_ids: CryptoHash[];
+  gas_burnt: Gas;
+  tokens_burnt: Balance;
+  executor_id: AccountId;
+  status: ExecutionStatus;
+}

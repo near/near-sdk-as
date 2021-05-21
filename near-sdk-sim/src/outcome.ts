@@ -1,3 +1,5 @@
+/// <reference path="./types.ts" />
+
 import { Ref, RustRef } from "./utils";
 import * as sim from "../sim-ffi";
 
@@ -23,7 +25,7 @@ export class ExecutionResult extends RustRef {
     }
   }
 
-  outcome(): any {
+  outcome(): ExecutionOutcome {
     return JSON.parse(sim.$er$outcome(this.ref));
   }
 
@@ -41,15 +43,15 @@ export class ExecutionResult extends RustRef {
     return sim.$er$promise_errors(this.ref).map((r) => new ExecutionResult(r));
   }
 
-  status(): string {
-    return sim.$er$status(this.ref);
+  status(): ExecutionStatus {
+    return JSON.parse(sim.$er$status(this.ref));
   }
 
-  gas_burnt(): string {
+  gas_burnt(): Gas {
     return sim.$er$gas_burnt(this.ref);
   }
 
-  tokens_burnt(): string {
+  tokens_burnt(): Balance {
     return sim.$er$gas_burnt(this.ref);
   }
 
@@ -57,11 +59,11 @@ export class ExecutionResult extends RustRef {
     return sim.$er$logs(this.ref);
   }
 
-  executor_id(): string {
+  executor_id(): AccountId {
     return sim.$er$executor_id(this.ref);
   }
 
-  receipt_ids(): string[] {
+  receipt_ids(): CryptoHash[] {
     return sim.$er$receipt_ids(this.ref);
   }
 }
