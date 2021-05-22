@@ -20,10 +20,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.utils = exports.ExecutionResult = exports.UserTransaction = exports.UserAccount = exports.STORAGE_AMOUNT = exports.DEFAULT_GAS = exports.to_yocto = exports.init_simulator = void 0;
+exports.utils = exports.ExecutionResult = exports.UserTransaction = exports.UserAccount = exports.DEFAULT_GENESIS_CONFIG = exports.STORAGE_AMOUNT = exports.DEFAULT_GAS = exports.to_yocto = exports.init_simulator = void 0;
 const sim = __importStar(require("../sim-ffi"));
 const user_1 = require("./user");
-const config_1 = require("./config");
 // From v3.2.0 near-sdk-sim crate cache contract storage, and
 // for that it uses "CARGO_MANIFEST_DIR" env, which is set by
 // cargo when running "cargo run", "cargo test".
@@ -37,7 +36,7 @@ process.env["CARGO_MANIFEST_DIR"] = "sim-ffi";
 function init_simulator(genesis_config) {
     if (genesis_config) {
         if (!genesis_config.runtime_config)
-            genesis_config.runtime_config = config_1.DEFAULT_RUNTIME_CONFIG;
+            genesis_config.runtime_config = exports.DEFAULT_GENESIS_CONFIG.runtime_config;
         return new user_1.UserAccount(sim.$init_simulator(JSON.stringify(genesis_config)));
     }
     else {
@@ -65,6 +64,10 @@ exports.DEFAULT_GAS = sim.$DEFAULT_GAS;
  * Default storage amount
  */
 exports.STORAGE_AMOUNT = sim.$STORAGE_AMOUNT;
+/**
+ * Default genesis config
+ */
+exports.DEFAULT_GENESIS_CONFIG = JSON.parse(sim.$DEFAULT_GENESIS_CONFIG);
 var user_2 = require("./user");
 Object.defineProperty(exports, "UserAccount", { enumerable: true, get: function () { return user_2.UserAccount; } });
 Object.defineProperty(exports, "UserTransaction", { enumerable: true, get: function () { return user_2.UserTransaction; } });

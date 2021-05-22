@@ -21,6 +21,10 @@ export declare const DEFAULT_GAS: string;
  * Default storage amount
  */
 export declare const STORAGE_AMOUNT: string;
+/**
+ * Default genesis config
+ */
+export declare const DEFAULT_GENESIS_CONFIG: GenesisConfig;
 export { UserAccount, UserTransaction } from "./user";
 export { ExecutionResult } from "./outcome";
 export * as utils from "./utils";
