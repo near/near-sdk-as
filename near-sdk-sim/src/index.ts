@@ -2,7 +2,6 @@
 
 import * as sim from "../sim-ffi";
 import { UserAccount } from "./user";
-import { DEFAULT_RUNTIME_CONFIG } from "./config";
 
 // From v3.2.0 near-sdk-sim crate cache contract storage, and
 // for that it uses "CARGO_MANIFEST_DIR" env, which is set by
@@ -18,7 +17,7 @@ process.env["CARGO_MANIFEST_DIR"] = "sim-ffi";
 export function init_simulator(genesis_config?: GenesisConfig): UserAccount {
   if (genesis_config) {
     if (!genesis_config.runtime_config)
-      genesis_config.runtime_config = DEFAULT_RUNTIME_CONFIG;
+      genesis_config.runtime_config = DEFAULT_GENESIS_CONFIG.runtime_config;
     return new UserAccount(sim.$init_simulator(JSON.stringify(genesis_config)));
   } else {
     return new UserAccount(sim.$init_simulator());
@@ -48,6 +47,14 @@ export const DEFAULT_GAS = sim.$DEFAULT_GAS;
  * Default storage amount
  */
 export const STORAGE_AMOUNT = sim.$STORAGE_AMOUNT;
+
+/**
+ * Default genesis config
+ */
+export const DEFAULT_GENESIS_CONFIG: GenesisConfig = JSON.parse(
+  sim.$DEFAULT_GENESIS_CONFIG
+);
+
 export { UserAccount, UserTransaction } from "./user";
 export { ExecutionResult } from "./outcome";
 export * as utils from "./utils";

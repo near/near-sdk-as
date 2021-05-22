@@ -1,3 +1,6 @@
+use crate::json_wrappers::GenesisConfigWrapper;
+use near_sdk::serde_json;
+use near_sdk_sim::runtime::GenesisConfig;
 use near_sdk_sim::{DEFAULT_GAS, STORAGE_AMOUNT};
 use neon::prelude::*;
 
@@ -13,6 +16,11 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
     cx.export_value("$DEFAULT_GAS", default_gas)?;
     let storage_amount = cx.string(STORAGE_AMOUNT.to_string());
     cx.export_value("$STORAGE_AMOUNT", storage_amount)?;
+
+    // default genesis config
+    let default_genesis =
+        cx.string(serde_json::to_string(&GenesisConfigWrapper(&GenesisConfig::default())).unwrap());
+    cx.export_value("$DEFAULT_GENESIS_CONFIG", default_genesis)?;
 
     // New wrapper functions
     cx.export_function("$init_simulator", user::init_simulator)?;

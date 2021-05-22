@@ -23,16 +23,22 @@ use near_sdk::serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 #[serde(remote = "GenesisConfig")]
 pub struct GenesisConfigDef {
     #[serde(deserialize_with = "de_from_str")]
+    #[serde(serialize_with = "se_to_str")]
     pub genesis_time: u64,
     #[serde(deserialize_with = "de_from_str")]
+    #[serde(serialize_with = "se_to_str")]
     pub gas_price: Balance,
     #[serde(deserialize_with = "de_from_str")]
+    #[serde(serialize_with = "se_to_str")]
     pub gas_limit: Gas,
     #[serde(deserialize_with = "de_from_str")]
+    #[serde(serialize_with = "se_to_str")]
     pub genesis_height: u64,
     #[serde(deserialize_with = "de_from_str")]
+    #[serde(serialize_with = "se_to_str")]
     pub epoch_length: u64,
     #[serde(deserialize_with = "de_from_str")]
+    #[serde(serialize_with = "se_to_str")]
     pub block_prod_time: Duration,
     pub runtime_config: RuntimeConfig,
     pub state_records: Vec<StateRecord>,

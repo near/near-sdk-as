@@ -141,4 +141,5 @@ export declare function $er$receipt_ids(er: any): Array<string>;
 
 // Constants
 export declare const $DEFAULT_GAS: string;
+export declare const $DEFAULT_GENESIS_CONFIG: string;
 export declare const $STORAGE_AMOUNT: string;
