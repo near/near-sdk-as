@@ -140,6 +140,12 @@ class UserTransaction extends utils_1.RustRef {
      * Deploy WASM binary
      */
     deploy_contract(wasm_bytes) {
+        if (!(wasm_bytes instanceof Uint8Array)) {
+            if (typeof wasm_bytes !== "string") {
+                wasm_bytes = path_1.join(...wasm_bytes);
+            }
+            wasm_bytes = fs.readFileSync(wasm_bytes);
+        }
         this.ref = sim.$ut$deploy_contract(this.ref, wasm_bytes);
         return this;
     }
@@ -150,7 +156,10 @@ class UserTransaction extends utils_1.RustRef {
      * @param gas gas amount for transaction
      * @param deposit deposit amount
      */
-    function_call(method, args, gas, deposit) {
+    function_call(method, args = "{}", gas = sim.$DEFAULT_GAS, deposit = "0") {
+        if (!(typeof args === "string")) {
+            args = JSON.stringify(args);
+        }
         this.ref = sim.$ut$function_call(this.ref, method, args, gas, deposit);
         return this;
     }

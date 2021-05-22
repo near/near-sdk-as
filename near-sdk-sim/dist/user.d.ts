@@ -1,5 +1,4 @@
 /// <reference path="types.d.ts" />
-/// <reference types="node" />
 import { RustRef } from "./utils";
 import { ExecutionResult } from "./outcome";
 /**
@@ -66,7 +65,7 @@ export declare class UserTransaction extends RustRef {
     /**
      * Deploy WASM binary
      */
-    deploy_contract(wasm_bytes: Buffer): UserTransaction;
+    deploy_contract(wasm_bytes: Uint8Array | string | string[]): UserTransaction;
     /**
      * Execute contract call to receiver
      * @param method methods name to call
@@ -74,7 +73,7 @@ export declare class UserTransaction extends RustRef {
      * @param gas gas amount for transaction
      * @param deposit deposit amount
      */
-    function_call(method: string, args: string, gas: string, deposit: string): UserTransaction;
+    function_call(method: string, args?: string | object, gas?: string, deposit?: string): UserTransaction;
     /**
      * Transfer deposit to receiver
      */

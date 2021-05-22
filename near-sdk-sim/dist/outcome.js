@@ -62,7 +62,26 @@ class ExecutionResult extends utils_1.RustRef {
      * Returns the internal ExecutionOutcome
      */
     outcome() {
-        return JSON.parse(sim.$er$outcome(this.ref));
+        const outcome = JSON.parse(sim.$er$outcome(this.ref));
+        const raw_status = outcome.status;
+        let status;
+        if (raw_status["SuccessValue"]) {
+            status = { value: raw_status["SuccessValue"], type: "SuccessValue" };
+        }
+        else if (raw_status["Failure"]) {
+            status = { error: raw_status["Failure"], type: "Failure" };
+        }
+        else if (raw_status["SuccessReceiptId"]) {
+            status = {
+                receipt: raw_status["SuccessReceiptId"],
+                type: "SuccessReceiptId",
+            };
+        }
+        else {
+            throw new Error(`Failed to process outcome - ${JSON.stringify(raw_status)}`);
+        }
+        outcome["status"] = status;
+        return outcome;
     }
     /**
      * Return results of promises from the `receipt_ids` in the ExecutionOutcome
@@ -85,7 +104,7 @@ class ExecutionResult extends utils_1.RustRef {
      * Execution status. Contains the result in case of successful execution.
      */
     status() {
-        return JSON.parse(sim.$er$status(this.ref));
+        return this.outcome().status;
     }
     /**
      * The amount of the gas burnt by the given transaction or receipt.
