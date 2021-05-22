@@ -177,7 +177,13 @@ export class UserTransaction extends RustRef {
   /**
    * Deploy WASM binary
    */
-  deploy_contract(wasm_bytes: Buffer): UserTransaction {
+  deploy_contract(wasm_bytes: Uint8Array | string | string[]): UserTransaction {
+    if (!(wasm_bytes instanceof Uint8Array)) {
+      if (typeof wasm_bytes !== "string") {
+        wasm_bytes = join(...wasm_bytes);
+      }
+      wasm_bytes = fs.readFileSync(wasm_bytes);
+    }
     this.ref = sim.$ut$deploy_contract(this.ref, wasm_bytes);
     return this;
   }
@@ -191,10 +197,13 @@ export class UserTransaction extends RustRef {
    */
   function_call(
     method: string,
-    args: string,
-    gas: string,
-    deposit: string
+    args: string | object = "{}",
+    gas: string = sim.$DEFAULT_GAS,
+    deposit: string = "0"
   ): UserTransaction {
+    if (!(typeof args === "string")) {
+      args = JSON.stringify(args);
+    }
     this.ref = sim.$ut$function_call(this.ref, method, args, gas, deposit);
     return this;
   }
