@@ -68,10 +68,27 @@ interface GenesisConfig {
 
 type TxExecutionError = { ActionError: any } | { InvalidTxError: any };
 
-type ExecutionStatus =
-  | { SuccessValue: Array<any> }
-  | { SuccessReceiptId: CryptoHash }
-  | { Failure: TxExecutionError };
+// type ExecutionStatus =
+//   | { SuccessValue: Array<any> }
+//   | { SuccessReceiptId: CryptoHash }
+//   | { Failure: TxExecutionError };
+
+interface SuccessValue {
+  type: "SuccessValue";
+  value: any[];
+}
+
+interface SuccessReceiptId {
+  type: "SuccessReceiptId";
+  receipt: CryptoHash;
+}
+
+interface Failure {
+  type: "Failure";
+  error: TxExecutionError;
+}
+
+type ExecutionStatus = SuccessValue | SuccessReceiptId | Failure;
 
 interface ExecutionOutcome {
   logs: string[];

@@ -45,7 +45,26 @@ export class ExecutionResult extends RustRef {
    * Returns the internal ExecutionOutcome
    */
   outcome(): ExecutionOutcome {
-    return JSON.parse(sim.$er$outcome(this.ref));
+    const outcome = JSON.parse(sim.$er$outcome(this.ref));
+    const raw_status = outcome.status;
+    let status: ExecutionStatus;
+    if (raw_status["SuccessValue"]) {
+      status = { value: raw_status["SuccessValue"], type: "SuccessValue" };
+    } else if (raw_status["Failure"]) {
+      status = { error: raw_status["Failure"], type: "Failure" };
+    } else if (raw_status["SuccessReceiptId"]) {
+      status = {
+        receipt: raw_status["SuccessReceiptId"],
+        type: "SuccessReceiptId",
+      };
+    } else {
+      throw new Error(
+        `Failed to process outcome - ${JSON.stringify(raw_status)}`
+      );
+    }
+
+    outcome["status"] = status;
+    return outcome;
   }
 
   /**
@@ -72,7 +91,7 @@ export class ExecutionResult extends RustRef {
    * Execution status. Contains the result in case of successful execution.
    */
   status(): ExecutionStatus {
-    return JSON.parse(sim.$er$status(this.ref));
+    return this.outcome().status;
   }
 
   /**
