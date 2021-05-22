@@ -1,22 +1,22 @@
 [package]
-name = "sim-ffi"
-version = "0.1.0"
-description = "node bindings for near-sdk-sim"
 authors = ["Willem Wyndham"]
-license = "MIT"
+description = "node bindings for near-sdk-sim"
 edition = "2018"
 exclude = ["index.node"]
+license = "MIT"
+name = "sim-ffi"
+version = "0.1.0"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies.neon]
-version = "0.8"
 default-features = false
 features = ["napi-6"]
+version = "0.8"
 
 [dependencies]
-near-sdk-sim = { version = "3.2.0"}
-near-sdk = { version = "3.1.0" }
 near-primitives = "=0.1.0-pre.1"
-serde = { version = "1", features = ["derive"] }
+near-sdk = {version = "3.1.0"}
+near-sdk-sim = {version = "3.2.0"}
+serde = {version = "1", features = ["derive"]}
