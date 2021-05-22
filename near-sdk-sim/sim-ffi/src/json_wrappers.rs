@@ -1,8 +1,9 @@
+use near_primitives::account::Account;
 use near_primitives::transaction::{ExecutionOutcome, ExecutionStatus};
 use near_primitives::{
     runtime::config::RuntimeConfig,
     state_record::StateRecord,
-    types::{AccountId, AccountInfo, Balance, Gas},
+    types::{AccountId, AccountInfo, Balance, Gas, StorageUsage},
 };
 use near_sdk::Duration;
 use near_sdk_sim::hash::CryptoHash;
@@ -57,6 +58,23 @@ pub struct ExecutionOutcomeDef {
 pub struct ExecutionOutcomeWrapper<'a>(
     #[serde(with = "ExecutionOutcomeDef")] pub &'a ExecutionOutcome,
 );
+
+//
+// Account wrapper where StorageUsage is serialised as string
+#[derive(Serialize, Deserialize)]
+#[serde(remote = "Account")]
+pub struct AccountDef {
+    #[serde(serialize_with = "se_to_str")]
+    pub amount: Balance,
+    #[serde(serialize_with = "se_to_str")]
+    pub locked: Balance,
+    pub code_hash: CryptoHash,
+    #[serde(serialize_with = "se_to_str")]
+    pub storage_usage: StorageUsage,
+}
+
+#[derive(Serialize)]
+pub struct AccountWrapper<'a>(#[serde(with = "AccountDef")] pub &'a Account);
 
 //
 // generic string serialise and deserialise helpers

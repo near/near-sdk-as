@@ -2,18 +2,22 @@ type AccountId = string;
 type PublicKey = string;
 type AccessKey = string;
 type CryptoHash = string;
+
 /**
  * u128
  */
 type Gas = string;
+
 /**
  * u128
  */
 type Balance = string;
+
 /**
  * u64
  */
 type StorageUsage = string;
+
 /**
  * u64
  */

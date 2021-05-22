@@ -1,6 +1,6 @@
 use crate::{
     helper::{read_access_key, read_bytes, read_public_key, read_u128, read_u64},
-    json_wrappers::GenesisConfigDef,
+    json_wrappers::{AccountWrapper, GenesisConfigDef},
     outcome::{BoxedExecutionResult, ExecutionResult},
 };
 use near_sdk::{serde_json, Balance, Gas};
@@ -38,7 +38,7 @@ pub mod user_account {
         let user_ref = cx.argument::<BoxedUserAccount>(0)?;
         let user = user_ref.borrow();
         let acc = match user.account() {
-            Some(a) => serde_json::to_string(&a).unwrap(),
+            Some(a) => serde_json::to_string(&AccountWrapper(&a)).unwrap(),
             None => "null".to_string(),
         };
         Ok(cx.string(acc))
