@@ -21,7 +21,7 @@ impl Deref for ExecutionResult {
     }
 }
 
-impl<'a> ExecutionResult {
+impl ExecutionResult {
     pub fn new_ref(inner: ER) -> RefCell<ExecutionResult> {
         RefCell::new(ExecutionResult(inner))
     }
@@ -68,7 +68,7 @@ pub mod execution_result {
 
     pub fn lookup_hash(mut cx: FunctionContext) -> JsResult<JsArray> {
         let self_ref = cx.argument::<BoxedExecutionResult>(0)?;
-        let hash = read_crypto_hash(&mut cx, 1);
+        let hash = read_crypto_hash(&mut cx, 1)?;
         let lookup_res = self_ref.borrow().lookup_hash(&hash);
         match lookup_res {
             None => Ok(cx.empty_array()),

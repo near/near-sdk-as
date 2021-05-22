@@ -47,7 +47,7 @@ pub mod user_account {
         let user_ref = cx.argument::<BoxedUserAccount>(0)?;
         let user = user_ref.borrow();
         let to = cx.argument::<JsString>(1)?.value(&mut cx);
-        let deposit = read_u128(&mut cx, 2);
+        let deposit = read_u128(&mut cx, 2)?;
         let res = user.transfer(to, deposit);
         Ok(cx.boxed(RefCell::new(ExecutionResult(res))))
     }
@@ -62,8 +62,8 @@ pub mod user_account {
             .value(&mut cx)
             .clone()
             .into_bytes();
-        let gas = read_u64(&mut cx, 4);
-        let deposit = read_u128(&mut cx, 5);
+        let gas = read_u64(&mut cx, 4)?;
+        let deposit = read_u128(&mut cx, 5)?;
         let res = user.call(account_id, &method, &args, gas, deposit);
         Ok(cx.boxed(RefCell::new(ExecutionResult(res))))
     }
@@ -71,9 +71,9 @@ pub mod user_account {
     pub fn deploy(mut cx: FunctionContext) -> JsResult<BoxedUserAccount> {
         let user_ref = cx.argument::<BoxedUserAccount>(0)?;
         let user = user_ref.borrow();
-        let wasm_bytes = read_bytes(&mut cx, 1);
+        let wasm_bytes = read_bytes(&mut cx, 1)?;
         let account_id = cx.argument::<JsString>(2)?.value(&mut cx);
-        let deposit = read_u128(&mut cx, 3);
+        let deposit = read_u128(&mut cx, 3)?;
         let new_user = user.deploy(&wasm_bytes, account_id, deposit);
         Ok(cx.boxed(RefCell::new(UserAccount(new_user))))
     }
@@ -81,7 +81,7 @@ pub mod user_account {
     pub fn deploy_and_init(mut cx: FunctionContext) -> JsResult<BoxedUserAccount> {
         let user_ref = cx.argument::<BoxedUserAccount>(0)?;
         let user = user_ref.borrow();
-        let wasm_bytes = read_bytes(&mut cx, 1);
+        let wasm_bytes = read_bytes(&mut cx, 1)?;
         let account_id = cx.argument::<JsString>(2)?.value(&mut cx);
         let method: String = cx.argument::<JsString>(3)?.value(&mut cx);
         let args = cx
@@ -89,8 +89,8 @@ pub mod user_account {
             .value(&mut cx)
             .clone()
             .into_bytes();
-        let deposit = read_u128(&mut cx, 5);
-        let gas = read_u64(&mut cx, 6);
+        let deposit = read_u128(&mut cx, 5)?;
+        let gas = read_u64(&mut cx, 6)?;
         let new_user = user.deploy_and_init(&wasm_bytes, account_id, &method, &args, deposit, gas);
         Ok(cx.boxed(RefCell::new(UserAccount(new_user))))
     }
@@ -110,7 +110,14 @@ pub mod user_account {
         let method: String = cx.argument::<JsString>(2)?.value(&mut cx);
         let args = cx.argument::<JsString>(3)?.value(&mut cx).into_bytes();
         let res = user.view(account_id, &method, &args);
-        Ok(cx.string(serde_json::to_string(&res.unwrap_json_value()).unwrap()))
+        if res.is_ok() {
+            match serde_json::to_string(&res.unwrap_json_value()) {
+                Ok(v) => Ok(cx.string(v)),
+                Err(e) => cx.throw_error(format!("{}", e)),
+            }
+        } else {
+            cx.throw_error("ViewResult is an error")
+        }
     }
 
     pub fn create_user_from(mut cx: FunctionContext) -> JsResult<BoxedUserAccount> {
@@ -119,7 +126,7 @@ pub mod user_account {
         let user = user_ref.borrow();
         let signer_user = signer_user_ref.borrow();
         let account_id: String = cx.argument::<JsString>(2)?.value(&mut cx);
-        let initial_balance = read_u128(&mut cx, 3);
+        let initial_balance = read_u128(&mut cx, 3)?;
         let new_user = user.create_user_from(&signer_user.0, account_id, initial_balance);
         Ok(cx.boxed(RefCell::new(UserAccount(new_user))))
     }
@@ -128,7 +135,7 @@ pub mod user_account {
         let user_ref = cx.argument::<BoxedUserAccount>(0)?;
         let user = user_ref.borrow();
         let account_id: String = cx.argument::<JsString>(1)?.value(&mut cx);
-        let initial_balance = read_u128(&mut cx, 2);
+        let initial_balance = read_u128(&mut cx, 2)?;
         let new_user = user.create_user(account_id, initial_balance);
         Ok(cx.boxed(RefCell::new(UserAccount(new_user))))
     }
@@ -229,7 +236,7 @@ pub mod user_transcation {
 
     pub fn deploy_contract(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
-        let wasm_bytes = read_bytes(&mut cx, 1);
+        let wasm_bytes = read_bytes(&mut cx, 1)?;
         tx.borrow_mut().deploy_contract(wasm_bytes);
         Ok(tx)
     }
@@ -242,8 +249,8 @@ pub mod user_transcation {
             .value(&mut cx)
             .clone()
             .into_bytes();
-        let gas = read_u64(&mut cx, 3);
-        let deposit = read_u128(&mut cx, 4);
+        let gas = read_u64(&mut cx, 3)?;
+        let deposit = read_u128(&mut cx, 4)?;
         tx.borrow_mut()
             .function_call(method_name, args, gas, deposit);
         Ok(tx)
@@ -251,30 +258,30 @@ pub mod user_transcation {
 
     pub fn transfer(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
-        let deposit = read_u128(&mut cx, 1);
+        let deposit = read_u128(&mut cx, 1)?;
         tx.borrow_mut().transfer(deposit);
         Ok(tx)
     }
 
     pub fn stake(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
-        let stake = read_u128(&mut cx, 1);
-        let public_key = read_public_key(&mut cx, 2);
+        let stake = read_u128(&mut cx, 1)?;
+        let public_key = read_public_key(&mut cx, 2)?;
         tx.borrow_mut().stake(stake, public_key);
         Ok(tx)
     }
 
     pub fn add_key(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
-        let public_key = read_public_key(&mut cx, 1);
-        let access_key = read_access_key(&mut cx, 2);
+        let public_key = read_public_key(&mut cx, 1)?;
+        let access_key = read_access_key(&mut cx, 2)?;
         tx.borrow_mut().add_key(public_key, access_key);
         Ok(tx)
     }
 
     pub fn delete_key(mut cx: FunctionContext) -> JsResult<BoxedUserTransaction> {
         let tx = cx.argument::<BoxedUserTransaction>(0)?;
-        let public_key = read_public_key(&mut cx, 1);
+        let public_key = read_public_key(&mut cx, 1)?;
         tx.borrow_mut().delete_key(public_key);
         Ok(tx)
     }
@@ -288,17 +295,19 @@ pub mod user_transcation {
 }
 
 pub fn init_simulator(mut cx: FunctionContext) -> JsResult<BoxedUserAccount> {
-    let config = match cx.argument_opt(0) {
+    match cx.argument_opt(0) {
         Some(arg) => {
             let config_str = arg
                 .downcast::<JsString, FunctionContext>(&mut cx)
                 .or_throw(&mut cx)?
                 .value(&mut cx);
             let mut de = serde_json::Deserializer::from_str(&config_str);
-            Some(GenesisConfigDef::deserialize(&mut de).unwrap())
+            let se_res = GenesisConfigDef::deserialize(&mut de);
+            match se_res {
+                Ok(v) => Ok(cx.boxed(RefCell::new(UserAccount(i_r(Some(v)))))),
+                Err(e) => cx.throw_type_error(format!("Invalid Genisis Config.\n{}", e)),
+            }
         }
-        _ => None,
-    };
-    let user = i_r(config);
-    Ok(cx.boxed(RefCell::new(UserAccount(user))))
+        _ => Ok(cx.boxed(RefCell::new(UserAccount(i_r(None))))),
+    }
 }

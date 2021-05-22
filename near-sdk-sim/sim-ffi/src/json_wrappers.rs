@@ -8,10 +8,13 @@ use near_primitives::{
 use near_sdk::Duration;
 use near_sdk_sim::hash::CryptoHash;
 use near_sdk_sim::runtime::GenesisConfig;
+// use neon::handle::Managed;
+// use neon::prelude::*;
 use std::fmt::Display;
 use std::str::FromStr;
 
-use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
+use near_sdk::serde::{de, Deserialize, Deserializer, Serialize, Serializer};
+// use near_sdk::serde_json;
 
 //
 // GenesisConfig Wrapper, where u128 and u64 are serialzed as strings
@@ -96,3 +99,18 @@ where
 {
     s.serialize_str(&x.to_string())
 }
+
+// pub fn deserialise<'de, T, J: Managed>(
+//     cx: &mut FunctionContext,
+//     json: &'de str,
+//     err_msg: &str,
+// ) -> JsResult<'de, J>
+// where
+//     T: Deserialize<'de>,
+// {
+//     let mut de = serde_json::Deserializer::from_str(json);
+//     match T::deserialize(&mut de) {
+//         Ok(v) => Ok(v),
+//         Err(e) => cx.throw_type_error(format!("{}.\n{}", err_msg, e)),
+//     }
+// }
