@@ -49,7 +49,10 @@ export class ExecutionResult extends RustRef {
     const raw_status = outcome.status;
     let status: ExecutionStatus;
     if (raw_status["SuccessValue"]) {
-      status = { value: raw_status["SuccessValue"], type: "SuccessValue" };
+      status = {
+        value: Uint8Array.from(raw_status["SuccessValue"]),
+        type: "SuccessValue",
+      };
     } else if (raw_status["Failure"]) {
       status = { error: raw_status["Failure"], type: "Failure" };
     } else if (raw_status["SuccessReceiptId"]) {
@@ -130,5 +133,14 @@ export class ExecutionResult extends RustRef {
    */
   receipt_ids(): CryptoHash[] {
     return sim.$er$receipt_ids(this.ref);
+  }
+
+  /**
+   * Throw error if outcome is failure.
+   */
+  assert_success() {
+    if (!this.is_ok()) {
+      throw new Error(JSON.stringify(this.outcome()));
+    }
   }
 }

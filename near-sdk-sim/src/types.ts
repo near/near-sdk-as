@@ -70,7 +70,7 @@ type TxExecutionError = any;
 
 interface SuccessValue {
   type: "SuccessValue";
-  value: any[];
+  value: Uint8Array;
 }
 
 interface SuccessReceiptId {
