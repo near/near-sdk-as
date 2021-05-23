@@ -1,6 +1,6 @@
 /// <reference path="./types.ts" />
 
-import { RustRef } from "./utils";
+import { RustRef, UTF8toStr } from "./utils";
 import * as sim from "../sim-ffi";
 
 /**
@@ -50,7 +50,7 @@ export class ExecutionResult extends RustRef {
     let status: ExecutionStatus;
     if (raw_status["SuccessValue"]) {
       status = {
-        value: Uint8Array.from(raw_status["SuccessValue"]),
+        value: UTF8toStr(Uint8Array.from(raw_status["SuccessValue"])),
         type: "SuccessValue",
       };
     } else if (raw_status["Failure"]) {
