@@ -66,12 +66,7 @@ interface GenesisConfig {
   runtime_config?: any; // RuntimeConfig
 }
 
-type TxExecutionError = { ActionError: any } | { InvalidTxError: any };
-
-// type ExecutionStatus =
-//   | { SuccessValue: Array<any> }
-//   | { SuccessReceiptId: CryptoHash }
-//   | { Failure: TxExecutionError };
+type TxExecutionError = any;
 
 interface SuccessValue {
   type: "SuccessValue";

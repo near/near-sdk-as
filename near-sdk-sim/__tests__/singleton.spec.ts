@@ -1,112 +1,98 @@
 import { DEFAULT_GAS, init_simulator, UserAccount } from "..";
-import { main } from "asbuild";
-import { promisify } from "util";
 import { join } from "path";
+import { compile, getGuestPanicMsg } from "./common";
 
 let root: UserAccount;
 let singleton: UserAccount, alice: UserAccount;
 
-
-function getErrorMsg(res: any) {
-  try {
-    return res.status.Failure.ActionError.kind["FunctionCallError"]["HostError"]["GuestPanic"].panic_msg;
-  } catch (e) {
-    throw new Error(JSON.stringify(res.status, null, 2));
-  }
-}
-
-async function compile(contract: string): Promise<void> {
-  function asb(succ: any, fail: any) {
-    main([join(__dirname,"../assembly/__tests__", contract + ".ts",), "--target", "debug", "--wat"], {
-    },
-    (err) => {
-      if (err) {
-        throw(err);
-        return -1;
-      } else {
-        succ();
-        return 1;
-      }
-    })
-  }
-  return new Promise(asb);
-}
-
 describe("Complier fails", () => {
   it("shouldn't allow methods with the same name as init function", async () => {
     try {
-      await compile("singleton-fail")
+      await compile("singleton-fail");
       expect(true).toBe(false);
     } catch (e) {
-      expect(e.message).toContain(`Method "new" already used; cannot export constructor using the same name.`);
+      expect(e.message).toContain(
+        `Method "new" already used; cannot export constructor using the same name.`
+      );
     }
-  })
-})
+  });
+});
 
 function log(s: any) {
   console.log(JSON.stringify(s, null, 2));
 }
 
-
 describe("cross contract calls", () => {
   beforeEach(() => {
     root = init_simulator();
     alice = root;
-    singleton = root.deploy(join(__dirname,"..","build","debug","singleton.wasm"), "singleton");
-    init();
+    singleton = root.deploy(
+      join(__dirname, "..", "build", "debug", "singleton.wasm"),
+      "singleton"
+    );
   });
 
   function create_user(str: string): UserAccount {
-    return root.create_user(str, "1654280000000000000000000")
+    return root.create_user(str, "1654280000000000000000000");
   }
 
   function init() {
-    return root.call("singleton", "new", { owner: "alice" }, DEFAULT_GAS, "0");
+    return root.call("singleton", "new", { owner: "alice" });
   }
 
   it("should only initialize once", () => {
-    expect(getErrorMsg(init().outcome())).toContain("contract is already initialized");
+    init();
+    expect(getGuestPanicMsg(init().outcome())).toContain(
+      "contract is already initialized"
+    );
   });
 
   it("shouldn't work if not initialized", () => {
     let res = alice.call("singleton", "owner", {}, DEFAULT_GAS, "0");
-    expect(getErrorMsg(res)).toContain("contract is not initialized");
+    expect(getGuestPanicMsg(res.outcome())).toContain(
+      "contract is not initialized"
+    );
   });
 
   it("should return owner", () => {
+    init();
     let res = singleton.view_self("owner");
-    expect(res.return_data).toStrictEqual("alice");
-  })
+    expect(res).toStrictEqual("alice");
+  });
 
-
-
-  fit("should be able to visit", () => {
+  it("should be able to visit", () => {
+    init();
     const bob = create_user("bob");
     let res = bob.call("singleton", "visit");
     expect(res.outcome().logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view_self("hasVisited", {visitor: "bob"})).toBe(true);
+    expect(singleton.view_self("hasVisited", { visitor: "bob" })).toBe(true);
     expect(singleton.view_self("lastVisited", {})).toBe("bob");
   });
 
   it("should be able to visit without decorator", () => {
+    init();
     const bob = create_user("bob");
     let res = bob.call("singleton", "visit_without_updated_decorator");
     expect(res.outcome().logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view_self("hasVisited", {visitor: "bob"})).toBe(true);
+    expect(singleton.view_self("hasVisited", { visitor: "bob" })).toBe(true);
     expect(singleton.view_self("lastVisited", {})).toBe("bob");
   });
 
   it("should not update state to visit_without_change decorator", () => {
+    init();
     const bob = create_user("bob");
     let res = bob.call("singleton", "visit_without_change");
     expect(res.outcome().logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view_self("lastVisited", {})).toBe("NULL")
+    expect(singleton.view_self("lastVisited", {})).toBe("NULL");
   });
 
   it("should not have private methods", () => {
+    init();
     let res = alice.call("singleton", "hasNotVisited", {}).outcome();
-    expect(res.err["FunctionCallError"]["MethodResolveError"]).toContain("MethodNotFound");
-  })
-
-
+    expect(
+      (res.status as Failure).error["ActionError"]["kind"]["FunctionCallError"][
+        "MethodResolveError"
+      ]
+    ).toContain("MethodNotFound");
+  });
 });
