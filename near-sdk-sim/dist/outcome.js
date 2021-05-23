@@ -67,7 +67,7 @@ class ExecutionResult extends utils_1.RustRef {
         let status;
         if (raw_status["SuccessValue"]) {
             status = {
-                value: Uint8Array.from(raw_status["SuccessValue"]),
+                value: utils_1.UTF8toStr(Uint8Array.from(raw_status["SuccessValue"])),
                 type: "SuccessValue",
             };
         }
