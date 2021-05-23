@@ -1,6 +1,6 @@
-import { ExecutionResult, init_simulator, UserAccount } from "..";
+import { ExecutionResult, init_simulator, UserAccount } from "../../dist";
 import { join } from "path";
-import { getGuestPanicMsg } from "./common";
+import { getGuestPanicMsg } from "../common";
 
 let root: UserAccount;
 let counter: UserAccount, alice: UserAccount;
@@ -13,7 +13,7 @@ describe("counter", () => {
   beforeEach(() => {
     root = init_simulator();
     counter = root.deploy(
-      join(__dirname, "..", "build", "debug", "counter.wasm"),
+      join(__dirname, "..", "..", "build", "debug", "counter.wasm"),
       "counter",
       "112897800000000000000000000000"
     );

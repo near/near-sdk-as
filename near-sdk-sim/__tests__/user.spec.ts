@@ -73,7 +73,7 @@ describe("user_account", () => {
     expect(contract.account()?.amount).toBe(to_yocto("10"));
 
     const txRes = alice.call(contract.account_id(), "incrementCounter");
-    expect(txRes.status().type).toBe("SuccessValue");
+    txRes.assert_success();
   });
 
   it("user.deploy_and_init()", () => {
@@ -88,7 +88,7 @@ describe("user_account", () => {
     expect(contract.account_id()).toBe("singleton");
 
     const txRes = alice.call(contract.account_id(), "visit");
-    expect(txRes.status()).toHaveProperty("type", "SuccessValue");
+    txRes.assert_success();
   });
 
   it("user.view()", () => {
@@ -109,6 +109,6 @@ describe("user_transaction", () => {
       .transfer(to_yocto("100"))
       .function_call("getCounter")
       .submit();
-    expect(txRes.status()).toHaveProperty("type", "SuccessValue");
+    txRes.assert_success();
   });
 });

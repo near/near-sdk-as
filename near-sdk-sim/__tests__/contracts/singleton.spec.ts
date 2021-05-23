@@ -1,6 +1,6 @@
-import { DEFAULT_GAS, init_simulator, UserAccount } from "..";
+import { DEFAULT_GAS, init_simulator, UserAccount } from "../../dist";
 import { join } from "path";
-import { compile, getGuestPanicMsg } from "./common";
+import { compile, getGuestPanicMsg } from "../common";
 
 let root: UserAccount;
 let singleton: UserAccount, alice: UserAccount;
@@ -27,7 +27,7 @@ describe("cross contract calls", () => {
     root = init_simulator();
     alice = root;
     singleton = root.deploy(
-      join(__dirname, "..", "build", "debug", "singleton.wasm"),
+      join(__dirname, "..", "..", "build", "debug", "singleton.wasm"),
       "singleton"
     );
   });

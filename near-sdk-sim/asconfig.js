@@ -5,8 +5,8 @@ function compile_file(f) {
 }
 
 let tests = [
-  // "sentences.ts",
-  // "words.ts",
+  "sentences.ts",
+  "words.ts",
   // "avlTreeContract.ts",
   // "empty.ts",
   // "exportAs.ts",
