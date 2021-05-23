@@ -66,7 +66,10 @@ class ExecutionResult extends utils_1.RustRef {
         const raw_status = outcome.status;
         let status;
         if (raw_status["SuccessValue"]) {
-            status = { value: raw_status["SuccessValue"], type: "SuccessValue" };
+            status = {
+                value: Uint8Array.from(raw_status["SuccessValue"]),
+                type: "SuccessValue",
+            };
         }
         else if (raw_status["Failure"]) {
             status = { error: raw_status["Failure"], type: "Failure" };
@@ -138,6 +141,14 @@ class ExecutionResult extends utils_1.RustRef {
      */
     receipt_ids() {
         return sim.$er$receipt_ids(this.ref);
+    }
+    /**
+     * Throw error if outcome is failure.
+     */
+    assert_success() {
+        if (!this.is_ok()) {
+            throw new Error(JSON.stringify(this.outcome()));
+        }
     }
 }
 exports.ExecutionResult = ExecutionResult;

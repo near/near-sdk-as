@@ -59,14 +59,10 @@ interface GenesisConfig {
     validators: Array<AccountInfo>;
     runtime_config?: any;
 }
-declare type TxExecutionError = {
-    ActionError: any;
-} | {
-    InvalidTxError: any;
-};
+declare type TxExecutionError = any;
 interface SuccessValue {
     type: "SuccessValue";
-    value: any[];
+    value: Uint8Array;
 }
 interface SuccessReceiptId {
     type: "SuccessReceiptId";
