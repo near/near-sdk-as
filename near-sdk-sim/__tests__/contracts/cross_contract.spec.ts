@@ -27,17 +27,17 @@ describe("cross contract calls", () => {
 
   it("single promise", () => {
     let res = alice.call("sentences", "reverseWordOne");
-    expect((res.status() as SuccessValue).value).toBe('{"text":"elpmas"}');
+    expect(res.unwrap_json_value()).toBe('{"text":"elpmas"}');
   });
 
   it("promise + then with no arguments", () => {
     let res = alice.call("sentences", "reverseWordTwo");
-    expect((res.status() as SuccessValue).value).toBe("true");
+    expect(res.unwrap_json_value()).toBe("true");
   });
 
   it("promise + then with arguments", () => {
     let res = alice.call("sentences", "reverseWordThree");
-    expect((res.status() as SuccessValue).value).toBe("true");
+    expect(res.unwrap_json_value()).toBe("true");
   });
 
   it("add to storage", () => {
