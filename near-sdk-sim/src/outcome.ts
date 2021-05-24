@@ -12,7 +12,18 @@ export class ExecutionResult extends RustRef {
    * Interpret the SuccessValue as a JSON value
    */
   unwrap_json_value(): string {
-    return sim.$er$unwrap_json_value(this.ref);
+    // check if is not Failure
+    this.assert_success();
+    // make sure it is SuccessValue
+    if (this.has_value()) {
+      return (this.status() as SuccessValue).value;
+    } else {
+      throw new Error(
+        `ExecutionStatus is a not a SuccessValue.\n${JSON.stringify(
+          this.status()
+        )}`
+      );
+    }
   }
 
   /**
@@ -140,7 +151,9 @@ export class ExecutionResult extends RustRef {
    */
   assert_success() {
     if (!this.is_ok()) {
-      throw new Error(JSON.stringify(this.outcome()));
+      throw new Error(
+        `ExecutionResult is a Failure.\n${JSON.stringify(this.outcome())}`
+      );
     }
   }
 }

@@ -32,7 +32,15 @@ class ExecutionResult extends utils_1.RustRef {
      * Interpret the SuccessValue as a JSON value
      */
     unwrap_json_value() {
-        return sim.$er$unwrap_json_value(this.ref);
+        // check if is not Failure
+        this.assert_success();
+        // make sure it is SuccessValue
+        if (this.has_value()) {
+            return this.status().value;
+        }
+        else {
+            throw new Error(`ExecutionStatus is a not a SuccessValue.\n${JSON.stringify(this.status())}`);
+        }
     }
     /**
      * Check if transaction was successful
@@ -147,7 +155,7 @@ class ExecutionResult extends utils_1.RustRef {
      */
     assert_success() {
         if (!this.is_ok()) {
-            throw new Error(JSON.stringify(this.outcome()));
+            throw new Error(`ExecutionResult is a Failure.\n${JSON.stringify(this.outcome())}`);
         }
     }
 }
