@@ -7,11 +7,11 @@ function compile_file(f) {
 let tests = [
   "sentences.ts",
   "words.ts",
-  // "avlTreeContract.ts",
-  // "empty.ts",
-  // "exportAs.ts",
+  "avlTreeContract.ts",
+  "empty.ts",
+  "exportAs.ts",
   "singleton.ts",
-  // "singleton-no-constructor.ts",
+  "singleton-no-constructor.ts",
   "counter.ts",
 ];
 
