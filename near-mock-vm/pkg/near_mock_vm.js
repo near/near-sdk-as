@@ -2051,6 +2051,16 @@ module.exports.__wbindgen_string_new = function(arg0, arg1) {
     return addHeapObject(ret);
 };
 
+module.exports.__wbindgen_is_null = function(arg0) {
+    var ret = getObject(arg0) === null;
+    return ret;
+};
+
+module.exports.__wbindgen_is_undefined = function(arg0) {
+    var ret = getObject(arg0) === undefined;
+    return ret;
+};
+
 module.exports.__wbg_new_68adb0d58759a4ed = function() {
     var ret = new Object();
     return addHeapObject(ret);
@@ -2068,16 +2078,6 @@ module.exports.__wbg_set_2e79e744454afade = function(arg0, arg1, arg2) {
 module.exports.__wbindgen_is_object = function(arg0) {
     const val = getObject(arg0);
     var ret = typeof(val) === 'object' && val !== null;
-    return ret;
-};
-
-module.exports.__wbindgen_is_null = function(arg0) {
-    var ret = getObject(arg0) === null;
-    return ret;
-};
-
-module.exports.__wbindgen_is_undefined = function(arg0) {
-    var ret = getObject(arg0) === undefined;
     return ret;
 };
 
