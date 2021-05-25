@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="./types.ts" />
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -22,7 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserTransaction = exports.UserAccount = void 0;
 const utils_1 = require("./utils");
-const sim = __importStar(require("../sim-ffi"));
+const sim = __importStar(require("sim-ffi"));
 const fs = __importStar(require("fs"));
 const path_1 = require("path");
 const outcome_1 = require("./outcome");

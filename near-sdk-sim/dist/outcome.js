@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="./types.ts" />
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -22,7 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExecutionResult = void 0;
 const utils_1 = require("./utils");
-const sim = __importStar(require("../sim-ffi"));
+const sim = __importStar(require("sim-ffi"));
 /**
  * An ExecutionResult is created by a UserAccount submitting a transaction.
  * It wraps an ExecutionOutcome which is the same object returned from an RPC call.
@@ -36,7 +35,7 @@ class ExecutionResult extends utils_1.RustRef {
         this.assert_success();
         // make sure it is SuccessValue
         if (this.has_value()) {
-            return this.status().value;
+            return JSON.parse(this.status().value);
         }
         else {
             throw new Error(`ExecutionStatus is a not a SuccessValue.\n${JSON.stringify(this.status())}`);

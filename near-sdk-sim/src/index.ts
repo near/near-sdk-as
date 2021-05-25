@@ -1,6 +1,4 @@
-/// <reference path="./types.ts" />
-
-import * as sim from "../sim-ffi";
+import * as sim from "sim-ffi";
 import { UserAccount } from "./user";
 
 // From v3.2.0 near-sdk-sim crate cache contract storage, and

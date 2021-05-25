@@ -1,4 +1,3 @@
-/// <reference path="types.d.ts" />
 import { RustRef } from "./utils";
 import { ExecutionResult } from "./outcome";
 /**

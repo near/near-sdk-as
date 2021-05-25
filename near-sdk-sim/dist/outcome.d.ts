@@ -1,4 +1,3 @@
-/// <reference path="types.d.ts" />
 import { RustRef } from "./utils";
 /**
  * An ExecutionResult is created by a UserAccount submitting a transaction.
@@ -8,7 +7,7 @@ export declare class ExecutionResult extends RustRef {
     /**
      * Interpret the SuccessValue as a JSON value
      */
-    unwrap_json_value(): string;
+    unwrap_json_value<T>(): T;
     /**
      * Check if transaction was successful
      */

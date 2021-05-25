@@ -27,7 +27,7 @@ describe("execution_result", () => {
 
   it("result.unwrap_json_value() when success", () => {
     let txRes = alice.call(sentences.account_id(), "reverseWordOne");
-    expect(txRes.unwrap_json_value()).toBe('{"text":"elpmas"}');
+    expect(txRes.unwrap_json_value()).toStrictEqual({"text":"elpmas"});
   });
 
   it("result.unwrap_json_value() when failure", () => {
@@ -62,5 +62,9 @@ describe("execution_result", () => {
 
     txRes = alice.call(sentences.account_id(), "abc");
     expect(() => txRes.assert_success()).toThrow();
+  });
+
+  it("failure in view call", () => {
+    expect(() => sentences.view_self("view_fail")).toThrowError(/Failure is the only option[^]*.*this log should still be returned/gm);
   });
 });

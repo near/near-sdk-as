@@ -3,7 +3,10 @@ use crate::{
     json_wrappers::{AccountWrapper, GenesisConfigDef},
     outcome::{BoxedExecutionResult, ExecutionResult},
 };
-use near_sdk::{serde_json, Balance, Gas};
+use near_sdk::{
+    serde_json::{self, json},
+    Balance, Gas,
+};
 use near_sdk_sim::{
     account::AccessKey, init_simulator as i_r, near_crypto::PublicKey, types::AccountId,
     ExecutionResult as ER, UserAccount as UA, UserTransaction as UT,
@@ -111,12 +114,21 @@ pub mod user_account {
         let args = cx.argument::<JsString>(3)?.value(&mut cx).into_bytes();
         let res = user.view(account_id, &method, &args);
         if res.is_ok() {
-            match serde_json::to_string(&res.unwrap_json_value()) {
+            let unwrapped_json = json! ({
+              "value": res.unwrap_json_value(),
+              "logs": res.logs()
+            });
+            match serde_json::to_string(&unwrapped_json) {
                 Ok(v) => Ok(cx.string(v)),
                 Err(e) => cx.throw_error(format!("{}", e)),
             }
         } else {
-            cx.throw_error("ViewResult is an error")
+            let error_str = res.unwrap_err().to_string();
+            cx.throw_error(format!(
+                "ViewResult is an error.\nError:{}\nLogs:\n{:#?}",
+                error_str,
+                res.logs()
+            ))
         }
     }
 

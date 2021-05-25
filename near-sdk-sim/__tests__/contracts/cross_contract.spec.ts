@@ -1,4 +1,4 @@
-import { UserAccount, init_simulator, utils } from "../..";
+import { UserAccount, init_simulator, utils } from "../../src";
 import * as path from "path";
 import { getGuestPanicMsg } from "../common";
 
@@ -27,17 +27,17 @@ describe("cross contract calls", () => {
 
   it("single promise", () => {
     let res = alice.call("sentences", "reverseWordOne");
-    expect(res.unwrap_json_value()).toBe('{"text":"elpmas"}');
+    expect(res.unwrap_json_value()).toStrictEqual({"text":"elpmas"});
   });
 
   it("promise + then with no arguments", () => {
     let res = alice.call("sentences", "reverseWordTwo");
-    expect(res.unwrap_json_value()).toBe("true");
+    expect(res.unwrap_json_value()).toBe(true);
   });
 
   it("promise + then with arguments", () => {
     let res = alice.call("sentences", "reverseWordThree");
-    expect(res.unwrap_json_value()).toBe("true");
+    expect(res.unwrap_json_value()).toBe(true);
   });
 
   it("add to storage", () => {
@@ -46,20 +46,20 @@ describe("cross contract calls", () => {
   });
 
   it("read from storage with default", () => {
-    const word = sentences.view_self("GetWord");
+    const word = sentences.view_self("GetWord").value;
     expect(word.text).toBe("DEFAULT");
     // expect(sentences.state["word"]).toBe(undefined);
   });
 
   it("read from storage", () => {
     addWord("hello");
-    const word = sentences.view_self("GetWord");
+    const word = sentences.view_self("GetWord").value;
     expect(word.text).toBe("hello");
     // expect(sentences.state["word"]).toStrictEqual(word);
   });
 
   it("getting view with arg", () => {
-    const res = words.view_self("reverse", { word: { text: "hello" } });
+    const res = words.view_self("reverse", { word: { text: "hello" } }).value;
     expect(res.text).toBe("olleh");
   });
 

@@ -1,10 +1,9 @@
-/// <reference path="./types.ts" />
-
-import { Ref, RustRef } from "./utils";
-import * as sim from "../sim-ffi";
+import { RustRef } from "./utils";
+import * as sim from "sim-ffi";
 import * as fs from "fs";
 import { join } from "path";
 import { ExecutionResult } from "./outcome";
+import { STORAGE_AMOUNT } from ".";
 
 /**
  * A user that can sign transactions.  It includes a signer and an account id.
@@ -131,7 +130,7 @@ export class UserAccount extends RustRef {
   create_user_from(
     signer_user: UserAccount,
     account_id: string,
-    initial_balance: string
+    initial_balance: string = STORAGE_AMOUNT
   ): UserAccount {
     return new UserAccount(
       sim.$ua$create_user_from(
@@ -146,7 +145,10 @@ export class UserAccount extends RustRef {
   /**
    * Create a new user where the signer is this user account
    */
-  create_user(account_id: string, initial_balance: string): UserAccount {
+  create_user(
+    account_id: string,
+    initial_balance: string = STORAGE_AMOUNT
+  ): UserAccount {
     return new UserAccount(
       sim.$ua$create_user(this.ref, account_id, initial_balance)
     );

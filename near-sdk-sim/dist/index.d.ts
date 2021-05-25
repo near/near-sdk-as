@@ -1,4 +1,3 @@
-/// <reference path="types.d.ts" />
 import { UserAccount } from "./user";
 /**
  * The simulator takes an optional GenesisConfig, which sets up the fees and other settings.

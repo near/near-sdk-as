@@ -172,3 +172,8 @@ export function nonPayableFunction(): void {
   notPayable();
   throw new Error("shouldn't see this " + Context.attachedDeposit.toString());
 }
+
+export function view_fail(): void {
+  logging.log("this log should still be returned.");
+  throw new Error("Failure is the only option");
+}

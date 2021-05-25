@@ -1,7 +1,5 @@
-/// <reference path="./types.ts" />
-
 import { RustRef, UTF8toStr } from "./utils";
-import * as sim from "../sim-ffi";
+import * as sim from "sim-ffi";
 
 /**
  * An ExecutionResult is created by a UserAccount submitting a transaction.
@@ -11,12 +9,12 @@ export class ExecutionResult extends RustRef {
   /**
    * Interpret the SuccessValue as a JSON value
    */
-  unwrap_json_value(): string {
+  unwrap_json_value<T>(): T {
     // check if is not Failure
     this.assert_success();
     // make sure it is SuccessValue
     if (this.has_value()) {
-      return (this.status() as SuccessValue).value;
+      return JSON.parse((this.status() as SuccessValue).value) as T;
     } else {
       throw new Error(
         `ExecutionStatus is a not a SuccessValue.\n${JSON.stringify(

@@ -94,7 +94,7 @@ describe("user_account", () => {
   it("user.view()", () => {
     const alice = root.create_user("alice", to_yocto("9999999"));
     const contract = alice.deploy(counter_path, "counter", to_yocto("10"));
-    const value = alice.view(contract.account_id(), "getCounter");
+    const value = alice.view(contract.account_id(), "getCounter").value;
     expect(value).toBe(0);
   });
 });

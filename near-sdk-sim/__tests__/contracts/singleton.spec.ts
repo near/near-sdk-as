@@ -1,4 +1,4 @@
-import { DEFAULT_GAS, init_simulator, UserAccount } from "../../dist";
+import { DEFAULT_GAS, init_simulator, UserAccount } from "../../src";
 import { join } from "path";
 import { compile, getGuestPanicMsg } from "../common";
 
@@ -20,6 +20,10 @@ describe("Complier fails", () => {
 
 function log(s: any) {
   console.log(JSON.stringify(s, null, 2));
+}
+
+function view(method: string, args?: any): any {
+  return singleton.view_self(method, args).value
 }
 
 describe("cross contract calls", () => {
@@ -56,7 +60,7 @@ describe("cross contract calls", () => {
 
   it("should return owner", () => {
     init();
-    let res = singleton.view_self("owner");
+    let res = view("owner");
     expect(res).toStrictEqual("alice");
   });
 
@@ -65,8 +69,8 @@ describe("cross contract calls", () => {
     const bob = create_user("bob");
     let res = bob.call("singleton", "visit");
     expect(res.outcome().logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view_self("hasVisited", { visitor: "bob" })).toBe(true);
-    expect(singleton.view_self("lastVisited", {})).toBe("bob");
+    expect(view("hasVisited", { visitor: "bob" })).toBe(true);
+    expect(view("lastVisited", {})).toBe("bob");
   });
 
   it("should be able to visit without decorator", () => {
@@ -74,8 +78,8 @@ describe("cross contract calls", () => {
     const bob = create_user("bob");
     let res = bob.call("singleton", "visit_without_updated_decorator");
     expect(res.outcome().logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view_self("hasVisited", { visitor: "bob" })).toBe(true);
-    expect(singleton.view_self("lastVisited", {})).toBe("bob");
+    expect(view("hasVisited", { visitor: "bob" })).toBe(true);
+    expect(view("lastVisited", {})).toBe("bob");
   });
 
   it("should not update state to visit_without_change decorator", () => {
@@ -83,7 +87,7 @@ describe("cross contract calls", () => {
     const bob = create_user("bob");
     let res = bob.call("singleton", "visit_without_change");
     expect(res.outcome().logs).toContainEqual("Visited the first time by bob");
-    expect(singleton.view_self("lastVisited", {})).toBe("NULL");
+    expect(view("lastVisited", {})).toBe("NULL");
   });
 
   it("should not have private methods", () => {

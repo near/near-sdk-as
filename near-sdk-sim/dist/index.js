@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="./types.ts" />
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -21,7 +20,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.utils = exports.ExecutionResult = exports.UserTransaction = exports.UserAccount = exports.DEFAULT_GENESIS_CONFIG = exports.STORAGE_AMOUNT = exports.DEFAULT_GAS = exports.to_yocto = exports.init_simulator = void 0;
-const sim = __importStar(require("../sim-ffi"));
+const sim = __importStar(require("sim-ffi"));
 const user_1 = require("./user");
 // From v3.2.0 near-sdk-sim crate cache contract storage, and
 // for that it uses "CARGO_MANIFEST_DIR" env, which is set by
