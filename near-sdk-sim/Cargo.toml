@@ -20,3 +20,9 @@ near-primitives = "=0.1.0-pre.1"
 near-sdk = {version = "3.1.0"}
 near-sdk-sim = {version = "3.2.0"}
 serde = {version = "1", features = ["derive"]}
+
+[profile.release]
+opt-level = 'z'     # Optimize for size.
+lto = true          # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = 'abort'     # Abort on panic
