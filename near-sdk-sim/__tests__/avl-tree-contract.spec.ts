@@ -1,4 +1,4 @@
-import { ExecutionResult, init_simulator, to_yocto, UserAccount } from "../src";
+import { ExecutionResult, init_simulator, to_yocto, UserAccount } from "..";
 
 import * as path from "path";
 

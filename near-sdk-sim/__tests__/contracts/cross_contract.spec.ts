@@ -1,4 +1,4 @@
-import { UserAccount, init_simulator, utils } from "../../src";
+import { UserAccount, init_simulator } from "../..";
 import * as path from "path";
 import { getGuestPanicMsg } from "../common";
 

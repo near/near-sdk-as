@@ -1,4 +1,4 @@
-import { DEFAULT_GAS, init_simulator, UserAccount } from "../../src";
+import { DEFAULT_GAS, init_simulator, UserAccount } from "../..";
 import { join } from "path";
 import { compile, getGuestPanicMsg } from "../common";
 

@@ -56,7 +56,6 @@
     "sdk-core",
     "nearcore-tests",
     "near-mock-vm",
-    "near-sdk-sim",
-    "near-sdk-sim/sim-ffi"
+    "near-sdk-sim"
   ]
 }

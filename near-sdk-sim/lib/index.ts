@@ -1,12 +1,12 @@
-import * as sim from "sim-ffi";
+import * as sim from "../native.node";
 import { UserAccount } from "./user";
+import * as path from "path";
 
 // From v3.2.0 near-sdk-sim crate cache contract storage, and
 // for that it uses "CARGO_MANIFEST_DIR" env, which is set by
 // cargo when running "cargo run", "cargo test".
 // https://github.com/near/near-sdk-rs/blob/5a8f4dcac44598db19532cdbd6c492bd42e1e777/near-sdk-sim/src/cache.rs#L25
-process.env["CARGO_MANIFEST_DIR"] = "sim-ffi";
-
+process.env["CARGO_MANIFEST_DIR"] = path.resolve(path.join(__dirname, ".."));
 /**
  * The simulator takes an optional GenesisConfig, which sets up the fees and other settings.
  * It returns the `master_account` which can then create accounts and deploy contracts.

@@ -1,5 +1,5 @@
 import { RustRef, UTF8toStr } from "./utils";
-import * as sim from "sim-ffi";
+import * as sim from "../native.node";
 
 /**
  * An ExecutionResult is created by a UserAccount submitting a transaction.
