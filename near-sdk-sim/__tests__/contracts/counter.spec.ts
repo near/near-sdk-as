@@ -1,4 +1,4 @@
-import { ExecutionResult, init_simulator, UserAccount } from "../../src";
+import { ExecutionResult, init_simulator, UserAccount } from "../..";
 import { join } from "path";
 import { getGuestPanicMsg } from "../common";
 

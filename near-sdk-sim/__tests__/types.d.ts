@@ -1,1 +1,1 @@
-/// <reference types="../src/types" />
+/// <reference types="../lib/types" />

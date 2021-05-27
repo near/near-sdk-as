@@ -41,11 +41,11 @@ export declare class UserAccount extends RustRef {
     /**
      * Creates a user and is signed by the `signer_user`
      */
-    create_user_from(signer_user: UserAccount, account_id: string, initial_balance: string): UserAccount;
+    create_user_from(signer_user: UserAccount, account_id: string, initial_balance?: string): UserAccount;
     /**
      * Create a new user where the signer is this user account
      */
-    create_user(account_id: string, initial_balance: string): UserAccount;
+    create_user(account_id: string, initial_balance?: string): UserAccount;
 }
 /**
  * A transaction to be signed by the user which created it.

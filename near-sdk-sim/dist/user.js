@@ -21,10 +21,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserTransaction = exports.UserAccount = void 0;
 const utils_1 = require("./utils");
-const sim = __importStar(require("sim-ffi"));
+const sim = __importStar(require("../native.node"));
 const fs = __importStar(require("fs"));
 const path_1 = require("path");
 const outcome_1 = require("./outcome");
+const _1 = require(".");
 /**
  * A user that can sign transactions.  It includes a signer and an account id.
  */
@@ -105,13 +106,13 @@ class UserAccount extends utils_1.RustRef {
     /**
      * Creates a user and is signed by the `signer_user`
      */
-    create_user_from(signer_user, account_id, initial_balance) {
+    create_user_from(signer_user, account_id, initial_balance = _1.STORAGE_AMOUNT) {
         return new UserAccount(sim.$ua$create_user_from(this.ref, signer_user, account_id, initial_balance));
     }
     /**
      * Create a new user where the signer is this user account
      */
-    create_user(account_id, initial_balance) {
+    create_user(account_id, initial_balance = _1.STORAGE_AMOUNT) {
         return new UserAccount(sim.$ua$create_user(this.ref, account_id, initial_balance));
     }
 }
