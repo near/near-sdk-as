@@ -389,6 +389,18 @@ describe("Storage", (): void => {
       "Some other key got deleted"
     );
   });
+
+  it("deletes from storage and return status", () => {
+    storage.setString("someApple", "myApple");
+    expect(storage.delete("someApple")).toBe(
+      true,
+      "Delete key returns true when key present"
+    );
+    expect(storage.delete("anotherApple")).toBe(
+      false,
+      "Delete key returns false when key not present"
+    );
+  });
 });
 
 describe("Map should handle", () => {

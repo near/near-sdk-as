@@ -125,11 +125,14 @@ export class Storage {
    * storage.delete("myKey")
    * ```
    *
-   * @param key The unique identifier associated with a value in a key-value store
+   * @param key The unique identifier associated with a value in a key-value Store
+   * @returns True if the given key was present in storage
    */
-  static delete(key: string): void {
+  static delete(key: string): bool {
     let key_encoded = util.stringToBytes(key);
-    env.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
+    let status = env.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
+
+    return <bool>status;
   }
 
   /**
