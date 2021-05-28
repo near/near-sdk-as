@@ -132,7 +132,7 @@ export class Storage {
     let key_encoded = util.stringToBytes(key);
     let status = env.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
 
-    return status == 1;
+    return status;
   }
 
   /**
