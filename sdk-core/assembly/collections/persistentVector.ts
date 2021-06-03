@@ -1,5 +1,6 @@
 import { collections } from ".";
-import { storage } from "../storage";
+import { Storage } from "..";
+import { PrefixedCollection } from "./collection";
 
 /**
  * This class is one of several convenience collections built on top of the `Storage` class
@@ -26,8 +27,7 @@ import { storage } from "../storage";
  * @typeParam T The generic type parameter `T` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
  */
 @nearBindgen
-export class PersistentVector<T> {
-  private _elementPrefix: string;
+export class PersistentVector<T>  extends PrefixedCollection<i32>{
   private _lengthKey: string;
   private _length: i32;
 
@@ -44,20 +44,10 @@ export class PersistentVector<T> {
    *
    * @param prefix A prefix to use for every key of this vector.
    */
-  constructor(prefix: string) {
+  constructor(prefix: string, storage: Storage = Storage.cachingStorage) {
+    super(prefix, storage);
     this._lengthKey = prefix + collections._KEY_LENGTH_SUFFIX;
-    this._elementPrefix = prefix + collections._KEY_ELEMENT_SUFFIX;
     this._length = -1;
-  }
-
-  /**
-   * @param index The index of the element to return
-   * @returns An internal key for a given index.
-   * @internal
-   */
-  @inline
-  private _key(index: i32): string {
-    return this._elementPrefix + index.toString();
   }
 
   /**
@@ -111,7 +101,7 @@ export class PersistentVector<T> {
   // @ts-ignore TS doesn't like property accessors with different levels of visibility
   get length(): i32 {
     if (this._length < 0) {
-      this._length = storage.getPrimitive<i32>(this._lengthKey, 0);
+      this._length = this.storage.getPrimitive<i32>(this._lengthKey, 0);
     }
     return this._length;
   }
@@ -123,7 +113,7 @@ export class PersistentVector<T> {
   // @ts-ignore TS doesn't like property accessors with different levels of visibility
   private set length(value: i32) {
     this._length = value;
-    storage.set<i32>(this._lengthKey, value);
+    this.storage.set<i32>(this._lengthKey, value);
   }
 
   /**
@@ -165,7 +155,7 @@ export class PersistentVector<T> {
    */
   @operator("{}")
   private __unchecked_get(index: i32): T {
-    return storage.getSome<T>(this._key(index));
+    return this.storage.getSome<T>(this._key(index));
   }
 
   /**
@@ -206,7 +196,7 @@ export class PersistentVector<T> {
    */
   @operator("{}=")
   private __unchecked_set(index: i32, value: T): void {
-    storage.set<T>(this._key(index), value);
+    this.storage.set<T>(this._key(index), value);
   }
 
   /**
@@ -270,7 +260,7 @@ export class PersistentVector<T> {
     let index = this.length - 1;
     this.length = index;
     let result = this.__unchecked_get(index);
-    storage.delete(this._key(index));
+    this.storage.delete(this._key(index));
     return result;
   }
 
@@ -321,7 +311,7 @@ export class PersistentVector<T> {
       // Swap last element with this one.
       let curr_value = this.__unchecked_get(index);
       let last_value = this.__unchecked_get(this.length - 1);
-      storage.delete(this._key(this.length - 1));
+      this.storage.delete(this._key(this.length - 1));
       this.__unchecked_set(index, last_value);
       this.length -= 1;
       return curr_value;
@@ -354,7 +344,7 @@ export class PersistentVector<T> {
   replace(index: i32, new_element: T): T {
     assert(index < this.length, "Index out of bounds");
     let evicted = this.__unchecked_get(index);
-    storage.set(this._key(index), new_element);
+    this.storage.set(this._key(index), new_element);
     return evicted;
   }
 

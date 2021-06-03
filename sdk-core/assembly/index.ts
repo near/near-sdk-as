@@ -14,3 +14,9 @@ export { JSON };
 export * from "@serial-as/borsh";
 
 export { u128, u256 } from "./bignum";
+
+import { Storage } from "./storage";
+
+// @ts-ignore
+@lazy
+export const storage = Storage.cachingStorage;

@@ -1,6 +1,6 @@
 import { env } from "./env";
 import { util } from "./util";
-import { storage } from "./storage";
+import { storage } from ".";
 
 export namespace math {
   /**

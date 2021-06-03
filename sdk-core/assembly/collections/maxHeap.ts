@@ -1,4 +1,4 @@
-import { PersistentVector } from "./persistentVector";
+import { PersistentVector } from ".";
 
 /**
  * A max heap. Maintains a tree structure on an underlying vector. Storage cost Θ(n)

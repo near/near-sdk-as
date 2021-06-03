@@ -1,5 +1,5 @@
 import { env } from "./env";
-import { isPrimitive, util } from "./util";
+import { isNumber, isPrimitive, util } from "./util";
 
 /**
  * This class represents contract storage.
@@ -7,6 +7,10 @@ import { isPrimitive, util } from "./util";
  * It is a key-value store that is persisted on the NEAR blockchain.
  */
 export class Storage {
+  @lazy static readonly storage: Storage = new Storage();
+  // @ts-ignore will exist when initialized
+  @lazy static readonly cachingStorage: CachingStorage = new CachingStorage();
+
   /**
    * Store string value under given key. Both key and value are encoded as UTF-8 strings.
    *
@@ -17,10 +21,10 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @param value The value stored at a particular key in a key-value store
    */
-  static setString(key: string, value: string): void {
+  setString(key: string, value: string): u64 {
     let key_encoded = util.stringToBytes(key);
     let value_encoded = util.stringToBytes(value);
-    const _storage_write_result = env.storage_write(
+    return env.storage_write(
       key_encoded.byteLength,
       key_encoded.dataStart,
       value_encoded.byteLength,
@@ -40,7 +44,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns String value stored under given key
    */
-  static getString(key: string): string | null {
+  getString(key: string): string | null {
     return util.bytesToString(this._internalReadBytes(key));
   }
 
@@ -58,16 +62,15 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @param value The value stored at a particular key in a key-value store
    */
-  static setBytes(key: string, value: Uint8Array): void {
+  setBytes(key: string, value: Uint8Array): u64 {
     let key_encoded = util.stringToBytes(key);
-    const _storage_write_result = env.storage_write(
+    return env.storage_write(
       key_encoded.byteLength,
       key_encoded.dataStart,
       value.byteLength,
       value.dataStart,
       0
     );
-    // TODO: handle return value?
   }
 
   /**
@@ -83,7 +86,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns Byte array stored under given key
    */
-  static getBytes(key: string): Uint8Array | null {
+  getBytes(key: string): Uint8Array | null {
     return this._internalReadBytes(key);
   }
 
@@ -97,7 +100,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns True if the given key is present in the storage.
    */
-  static contains(key: string): bool {
+  contains(key: string): bool {
     let key_encoded = util.stringToBytes(key);
     return bool(
       env.storage_has_key(key_encoded.byteLength, key_encoded.dataStart)
@@ -114,7 +117,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns True if the given key is present in the storage.
    */
-  static hasKey(key: string): bool {
+  hasKey(key: string): bool {
     return this.contains(key);
   }
 
@@ -128,10 +131,9 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value Store
    * @returns True if the given key was present in storage
    */
-  static delete(key: string): bool {
+  delete(key: string): bool {
     let key_encoded = util.stringToBytes(key);
     let status = env.storage_remove(key_encoded.byteLength, key_encoded.dataStart, 0);
-
     return <bool>status;
   }
 
@@ -148,16 +150,16 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @param value The value stored at a particular key in a key-value store
    */
-  static set<T>(key: string, value: T): void {
+  set<T>(key: string, value: T): u64 {
     if (isString<T>()) {
       // @ts-ignore
-      this.setString(key, value);
+      return this.setString(key, value);
     } else if (isInteger<T>()) {
       // @ts-ignore
-      this.setString(key, value.toString());
+      return this.setString(key, value.toString());
     } else {
       // @ts-ignore
-      this.setBytes(key, encode<T>(value));
+      return this.setBytes(key, encode<T>(value));
     }
   }
 
@@ -177,7 +179,13 @@ export class Storage {
    * @param defaultValue The default value if the key is not available
    * @returns A value of type T stored under the given key.
    */
-  static get<T>(key: string, defaultValue: T | null = null): T | null {
+  get<T>(key: string, defaultValue: T | null = null): T | null {
+    if (isPrimitive<T>()) {
+      ERROR(
+        "Operation not supported. Please use storage.get<T> for non-primitives"
+      );
+      return null;
+    }
     if (isString<T>()) {
       const strValue = this.getString(key);
       return strValue == null
@@ -206,7 +214,7 @@ export class Storage {
    * @param defaultValue The default value if the key is not available
    * @returns A value of type T stored under the given key.
    */
-  static getPrimitive<T>(key: string, defaultValue: T): T {
+  getPrimitive<T>(key: string, defaultValue: T): T {
     if (!isPrimitive<T>()) {
       ERROR(
         "Operation not supported. Please use storage.get<T> for non-primitives"
@@ -232,7 +240,7 @@ export class Storage {
    * @param key The unique identifier associated with a value in a key-value store
    * @returns A value of type T stored under the given key.
    */
-  static getSome<T>(key: string): T {
+  getSome<T>(key: string): T {
     if (!this.hasKey(key)) {
       assert(false, "Key '" + key + "' is not present in the storage");
     }
@@ -243,7 +251,7 @@ export class Storage {
     }
   }
 
-  private static _internalReadBytes(key: string): Uint8Array | null {
+  private _internalReadBytes(key: string): Uint8Array | null {
     let key_encoded = util.stringToBytes(key);
     let res = env.storage_read(
       key_encoded.byteLength,
@@ -258,4 +266,241 @@ export class Storage {
   }
 }
 
-export { Storage as storage };
+
+function ptrAs<T>(value: u64): T {
+  if (isNumber<T>()) {
+    // @ts-ignore
+    return <T>value;
+  }
+  return changetype<T>(<usize>value);
+}
+
+/**
+ * This class represents contract storage.
+ *
+ * It is a key-value store that is persisted on the NEAR blockchain.
+ */
+export class CachingStorage extends Storage {
+
+  private cache: Map<string, u64> = new Map();
+
+  private cacheGet<T>(s: string): T {
+    return ptrAs<T>(this.cache.get(s));
+  }
+
+  private cacheSet<T>(key: string, value: T): T {
+    if (isInteger<T>() || isFloat<T>()) {
+      // @ts-ignore
+      this.cache.set(key, <u64>(value));
+    } else {
+      this.cache.set(key, <u64>changetype<usize>(value));
+    }
+    return value;
+  }
+
+  /**
+   * Store string value under given key. Both key and value are encoded as UTF-8 strings.
+   *
+   * ```ts
+   * storage.setString("myKey", "myValue")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param value The value stored at a particular key in a key-value store
+   */
+  setString(key: string, value: string): u64 {
+    this.cacheSet(key, value);
+    return super.setString(key, value);
+    // TODO: handle return value?
+  }
+
+  /**
+   * Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
+   *
+   * ```ts
+   * let value = storage.getString("myKey")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @returns String value stored under given key
+   */
+  getString(key: string): string | null {
+    if (this.cache.has(key)) {
+      return changetype<string>(<usize>this.cache.get(key));
+    }
+    return this.cacheSet(key, super.getString(key));
+  }
+
+  /**
+   * Store byte array under given key. Key is encoded as UTF-8 strings.
+   * Byte array stored as is.
+   *
+   * It's convenient to use this together with `domainObject.encode()`.
+   *
+   * ```ts
+   * let data = new Uint8Array([1,2,3])
+   * storage.setBytes("myKey", data)
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param value The value stored at a particular key in a key-value store
+   */
+  setBytes(key: string, value: Uint8Array): u64 {
+    return super.setBytes(key, this.cacheSet(key, value));
+    // TODO: handle return value?
+  }
+
+  /**
+   * Get byte array stored under given key. Key is encoded as UTF-8 strings.
+   * Byte array stored as is.
+   *
+   * It's convenient to use this together with `DomainObject.decode()`.
+   *
+   * ```ts
+   * storage.getBytes("myKey")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @returns Byte array stored under given key
+   */
+  getBytes(key: string): Uint8Array | null {
+    if (this.cache.has(key)) {
+      return this.cacheGet<Uint8Array>(key);
+    }
+    return this.cacheSet(key, super.getBytes(key));
+  }
+
+  /**
+   * Returns true if the given key is present in the storage.
+   *
+   * ```ts
+   * storage.contains("myKey")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @returns True if the given key is present in the storage.
+   */
+  contains(key: string): bool {
+    if (this.cache.has(key)) {
+      return true;
+    }
+    let key_encoded = util.stringToBytes(key);
+    return bool(
+      env.storage_has_key(key_encoded.byteLength, key_encoded.dataStart)
+    );
+  }
+
+  /**
+   * Returns true if the given key is present in the storage.
+   *
+   * ```ts
+   * // alias for method contains()
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @returns True if the given key is present in the storage.
+   */
+  hasKey(key: string): bool {
+    return this.contains(key);
+  }
+
+  /**
+   * Deletes a given key from the storage.
+   *
+   * ```ts
+   * storage.delete("myKey")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value Store
+   * @returns True if the given key was present in storage
+   */
+  delete(key: string): bool {
+    this.cache.delete(key);
+    return super.delete(key);
+  }
+
+  /**
+   * Stores given generic value under the key. Key is encoded as UTF-8 strings.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
+   *
+   * ```ts
+   * storage.set<string>("myKey", "myValue")
+   * storage.set<u16>("myKey", 123)
+   * storage.set<MyCustomObject>("myKey", new MyCustomObject())
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param value The value stored at a particular key in a key-value store
+   */
+  set<T>(key: string, value: T): u64 {
+    this.cacheSet(key, value);
+    return super.set(key, value);
+  }
+
+  /**
+   * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+   * Supported types: string and data objects defined in model.ts.
+   * Please use getPrimitive<T> for getting primitives with a default value, and
+   * getSome<T> for primitives and non-primitives in case it's known that a particular key exists.
+   *
+   * ```ts
+   * storage.get<string>("myKey")
+   * storage.get<u16>("myKey")
+   * storage.get<MyCustomObject>("myKey")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param defaultValue The default value if the key is not available
+   * @returns A value of type T stored under the given key.
+   */
+  get<T>(key: string, defaultValue: T | null = null): T | null {
+    if (this.cache.has(key)) {
+      return this.cacheGet<T | null>(key);
+    }
+    return this.cacheSet(key, super.get<T>(key, defaultValue));
+  }
+
+  /**
+   * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+   * Supported types: bool, integer.
+   *
+   * This function will throw if type T can not be cast as integer
+   *
+   * ```ts
+   * storage.getPrimitive<string>("myKey", "default value")
+   * storage.getPrimitive<u16>("myKey", 123)
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param defaultValue The default value if the key is not available
+   * @returns A value of type T stored under the given key.
+   */
+  getPrimitive<T>(key: string, defaultValue: T): T {
+    if (this.cache.has(key)) {
+      return this.cacheGet<T>(key);
+    }
+    return this.cacheSet<T>(key, super.getPrimitive<T>(key, defaultValue));
+  }
+
+  /**
+   * Gets given generic value stored under the key. Key is encoded as UTF-8 strings.
+   * Supported types: bool, integer, string and data objects defined in model.ts.
+   *
+   * This function will throw if the key does not exist in the storage.
+   *
+   * ```ts
+   * storage.getSome<string>("myKey")
+   * storage.getSome<u16>("myKey")
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @returns A value of type T stored under the given key.
+   */
+  getSome<T>(key: string): T {
+    if (this.cache.has(key)) {
+      return this.cacheGet<T>(key);
+    }
+    return this.cacheSet(key, super.getSome<T>(key));
+  }
+}
+
