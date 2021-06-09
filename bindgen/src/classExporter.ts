@@ -6,13 +6,11 @@ import {
   CommonFlags,
   SourceKind,
   FunctionDeclaration,
+  BlockStatement,
 } from "visitor-as/as";
 import { utils, ClassDecorator } from "visitor-as";
-import { isEntry } from "./JSONBuilder";
-import { SimpleParser } from "./utils";
-
-const toString = utils.toString;
-const privateDecorator = "contractPrivate";
+import { isEntry, parseTopLevelStatements, PRIVATE_DECORATOR } from "./common";
+import { toString } from "./utils";
 
 export class ClassExporter extends ClassDecorator {
   sb: string[] = [];
@@ -54,7 +52,7 @@ export class ClassExporter extends ClassDecorator {
     if (node.is(CommonFlags.PRIVATE)) {
       return;
     }
-    let privateCheck = utils.hasDecorator(node, privateDecorator)
+    let privateCheck = utils.hasDecorator(node, PRIVATE_DECORATOR)
       ? `__assertPrivate();`
       : "";
     let name = toString(node.name);
@@ -151,17 +149,16 @@ if (__checkState()) {
       );
       this.visit(node.members);
       node.flags = node.flags ^ CommonFlags.EXPORT;
-      let newStatements = SimpleParser.parseTopLevel(this.sb.join("\n")).map(
-        (n) => {
-          if (n instanceof FunctionDeclaration) {
-            n.flags = n.flags | CommonFlags.EXPORT;
-            n.flags = n.flags | CommonFlags.MODULE_EXPORT;
-          }
-          n.range = node.range;
-          return n;
+      let newStatements = parseTopLevelStatements(this.sb.join("\n"));
+      let statements = newStatements.map((n) => {
+        if (n instanceof FunctionDeclaration) {
+          n.flags = n.flags | CommonFlags.EXPORT;
+          n.flags = n.flags | CommonFlags.MODULE_EXPORT;
         }
-      );
-      node.range.source.statements.push(...newStatements);
+        n.range = node.range;
+        return n;
+      });
+      node.range.source.statements.push(...statements);
     }
   }
 
@@ -169,11 +166,15 @@ if (__checkState()) {
     return "nearBindgen";
   }
 
-  static visit(source: Source): void {
-    if (source.sourceKind != SourceKind.USER_ENTRY) {
+  visitSource(node: Source): void {
+    if (node.sourceKind != SourceKind.USER_ENTRY) {
       return;
     }
+  }
+
+  static visit(sources: Source[]): Source[] {
     let visitor = new ClassExporter();
-    visitor.visit(source);
+    visitor.visit(sources);
+    return sources;
   }
 }

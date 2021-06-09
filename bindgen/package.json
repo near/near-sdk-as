@@ -36,5 +36,8 @@
   ],
   "devDependencies": {
     "near-sdk-core": "^3.2.0"
+  },
+  "dependencies": {
+    "visitor-as": "^0.6.0"
   }
 }

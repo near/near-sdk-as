@@ -28,3 +28,4 @@ build/
 sim-ffi/sim-ffi/target/
 
 sim-ffi/sim-ffi/index.node
+sim-ffi
