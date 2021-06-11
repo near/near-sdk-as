@@ -98,6 +98,28 @@ function getInput(): JSON.Obj {
 
 // @ts-ignore
 @global
+function getInputArray(): ArrayBuffer {
+  // Reading input bytes.
+  input(0);
+  let json_len = register_len(0);
+  if (json_len == U32.MAX_VALUE) {
+    panic();
+  }
+  let json = new ArrayBuffer(json_len as u32);
+  // @ts-ignore
+  read_register(0, changetype<usize>(json));
+  return json;
+}
+
+// @ts-ignore
+@global
+function getInputString(): string {
+  const buffer = getInputArray();
+  return String.UTF8.decode(buffer);
+}
+
+// @ts-ignore
+@global
 function encode<T, Output = Uint8Array>(
   value: T,
   name: string | null = "",

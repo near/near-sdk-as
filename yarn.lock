@@ -1975,6 +1975,11 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
+as-base64@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/as-base64/-/as-base64-0.2.0.tgz#b4bed937c93bfb6524b932b517e1b8571a0dd518"
+  integrity sha512-j6JxprAVN4SXUcZiSChuMBf0JJOCdh5OfrHAepluxmFWuDZZm+YjmfNSk8djUHRPEB+Ui5HGvrz46GLvTJf3ig==
+
 as-bignum@^0.2.15:
   version "0.2.15"
   resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.15.tgz#34c9787d096943a8d3ded5ef3a89844bce27b2ac"
@@ -1985,10 +1990,9 @@ asap@^2.0.0:
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
-asbuild@^0.2.0:
+asbuild@assemblyscript/asbuild#feat/default_asc:
   version "0.2.0"
-  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.2.0.tgz#da3cb71b8136bc8fa67e0f417cdb08b55e5def6e"
-  integrity sha512-c6kE8RQORy8aGFw04NNx2IsH2jCcYwnjha9yOJ1Tv/guymky3EXZJ7thkTIjdxF1Qe3+I4ab8ku2Rqn/Xyym4A==
+  resolved "https://codeload.github.com/assemblyscript/asbuild/tar.gz/37dcc759c5e824733aa039d5ee8d936f891f94e1"
   dependencies:
     "@as-pect/cli" "^6.0.0"
     assemblyscript "^0.18.31"
@@ -2020,20 +2024,20 @@ assemblyscript-temporal@^1.11.0:
   dependencies:
     assemblyscript-regex "^1.6.3"
 
-assemblyscript@^0.18.25:
-  version "0.18.25"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.25.tgz#8a259f7d63fc38f792045f15b66d9b359a46b628"
-  integrity sha512-bp9lykMFhFnsmjABmr5NO2F5LR1i8hQ0omp6G3rZcyei+2Nl64n5x9NxM8a2QT/QS3HnNAfHhanp/9GO9X1gEw==
-  dependencies:
-    binaryen "100.0.0"
-    long "^4.0.0"
-
 assemblyscript@^0.18.31:
   version "0.18.31"
   resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.31.tgz#ceee70fb75c78bc009831c25680967f3c089c9cc"
   integrity sha512-4MtKf1nnmY0eh+v4PKVnIjT8HPTRBqJqACW3kXQoDztyFBLHN1WxGSgZ9iPsLbm/6xKNYD0l6j9y03PoMv+Qog==
   dependencies:
     binaryen "100.0.0-nightly.20210413"
+    long "^4.0.0"
+
+assemblyscript@^0.19.2:
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.19.2.tgz#952e185d170d5da3ee3a5314734f6244c3619488"
+  integrity sha512-0ETRv6oSOhqgPmf23KrD+111QL685IxY/k3UHlC7NzGK2VAi+3Em1U2E06zCPnb45tjUD86wBANlDJDGEZisBg==
+  dependencies:
+    binaryen "101.0.0-nightly.20210604"
     long "^4.0.0"
 
 assert-no-diff@^3.0.4:
@@ -2206,15 +2210,15 @@ binary-install@0.0.1, binary-install@^0.0.1:
     tar "^5.0.5"
     universal-url "^2.0.0"
 
-binaryen@100.0.0:
-  version "100.0.0"
-  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-100.0.0.tgz#8ed91955eff14eb4758d68d593869cbc1a9a0dff"
-  integrity sha512-nxOt8d8/VXAuSVEtAWUdKrqpqCy365QqD223EzzB1GzS5himiZAfM/R5lXx+M/5q8TB8cYp3tYxv5rTjNTJveQ==
-
 binaryen@100.0.0-nightly.20210413:
   version "100.0.0-nightly.20210413"
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-100.0.0-nightly.20210413.tgz#b7f2a5bb1f76b2d6f9c67486ca218714b3766790"
   integrity sha512-EeGLIxQmJS0xnYl+SH34mNBqVMoixKd9nsE7S7z+CtS9A4eoWn3Qjav+XElgunUgXIHAI5yLnYT2TUGnLX2f1w==
+
+binaryen@101.0.0-nightly.20210604:
+  version "101.0.0-nightly.20210604"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-101.0.0-nightly.20210604.tgz#3498a0a0c1108f3386b15ca79f1608425057db9e"
+  integrity sha512-aTgX1JDN8m3tTFK8g9hazJcEOdQl7mK4yVfElkKAh7q+TRUCaea4a2SMLr1z2xZL7s9N4lkrvrBblxRuEPvxWQ==
 
 bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5:
   version "3.7.2"
@@ -7202,6 +7206,14 @@ semver@^6.0.0, semver@^6.2.0, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+"serial-as@https://github.com/gagdiez/serial-as":
+  version "1.0.0"
+  resolved "https://github.com/gagdiez/serial-as#4fd9dee4888a9ed2d0c92dc81799105ab08889b4"
+
+serial-as@willemneal/encoder-as#feat/split_workspace:
+  version "1.0.0"
+  resolved "https://codeload.github.com/willemneal/encoder-as/tar.gz/2a38a7dd1efb779e5d5a9ebf63446c9f47d5c50c"
 
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"

@@ -1,12 +1,12 @@
-import { Transform, Parser, Source, Module, SourceKind } from "visitor-as/as";
+import { Transform, Parser, Program, Module, SourceKind } from "visitor-as/as";
 import { JSONBindingsBuilder } from "./JSONBuilder";
-import { TypeChecker } from "./typeChecker";
 import { ClassExporter } from "./classExporter";
 import { utils } from "visitor-as";
 import * as path from "path";
 import { nearFiles } from "./common";
 import { FunctionExportWrapper } from "./functionWrapper";
 
+const regex = /\/\/.*@nearfile .*out/;
 class JSONTransformer extends Transform {
   parser: Parser;
 
@@ -16,12 +16,11 @@ class JSONTransformer extends Transform {
     const baseDir = this.baseDir;
 
     // Filter for near files
-    let sources = nearFiles(this.parser.sources);
+    const sources = nearFiles(this.parser.sources);
     ClassExporter.visit(sources);
     JSONBindingsBuilder.visit(sources);
     FunctionExportWrapper.visit(sources);
 
-    let regex = /\/\/.*@nearfile .*out/;
     sources.forEach((source) => {
       if (regex.test(source.text))
         writeFile(

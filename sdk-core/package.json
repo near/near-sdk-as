@@ -13,14 +13,15 @@
   "dependencies": {
     "@as-pect/cli": "^6.0.0",
     "as-bignum": "^0.2.15",
-    "asbuild": "^0.2.0",
-    "assemblyscript": "^0.18.25",
+    "asbuild": "assemblyscript/asbuild#feat/default_asc",
+    "assemblyscript": "^0.19.2",
     "assemblyscript-json": "^1.0.0",
     "assemblyscript-temporal": "^1.11.0",
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",
     "js-base64": "^3.4.3",
     "near-vm": "^1.1.0",
+    "serial-as": "willemneal/encoder-as#feat/split_workspace",
     "visitor-as": "^0.5.0"
   },
   "scripts": {

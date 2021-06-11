@@ -1,3 +1,3 @@
-import { JSON } from "assemblyscript-json";
+import { JSON } from "../../node_modules/serial-as/json/assembly/index";
 
 export { JSON };

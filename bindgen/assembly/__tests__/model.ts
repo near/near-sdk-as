@@ -13,57 +13,57 @@ export class FooBar {
   f64_zero: f64;
   flag: bool;
   baz: string = "123";
-  uint8array: Uint8Array;
-  arr: Array<Array<string>>;
-  u32Arr: u32[];
-  i32Arr: i32[];
-  u128Val: u128;
-  uint8arrays: Array<Uint8Array>;
+  uint8array: Uint8Array = new Uint8Array(0);
+  arr: Array<Array<string>> | null;
+  u32Arr: u32[] = [];
+  i32Arr: i32[] = [];
+  u128Val: u128 = u128.Zero;
+  uint8arrays: Array<Uint8Array> = [];
   // TODO: Fix u64 arrays
-  u64Arr: u64[];
+  u64Arr: u64[] = [];
 }
 
-@nearBindgen
-export class Nullables {
-  str: string;
-  u128: u128;
-  uint8Array: Uint8Array;
-}
+// @nearBindgen
+// export class Nullables {
+//   str: string;
+//   u128: u128;
+//   uint8Array: Uint8Array;
+// }
 
 @nearBindgen
 export class ContainerClass {
   foobar: FooBar;
 }
 
-@nearBindgen
-export class AnotherContainerClass {
-  constructor(public foobars: Array<Array<FooBar>>) {}
-}
+// @nearBindgen
+// export class AnotherContainerClass {
+//   constructor(public foobars: Array<Array<FooBar>>) {}
+// }
 
-@nearBindgen
-export class PromiseArgs {
-  receiver: string;
-  methodName: string;
-  args: PromiseArgs;
-  balance: i32;
-  callback: string;
-  callbackArgs: PromiseArgs;
-  callbackBalance: i32;
-}
+// @nearBindgen
+// export class PromiseArgs {
+//   receiver: string;
+//   methodName: string;
+//   args: PromiseArgs;
+//   balance: i32;
+//   callback: string;
+//   callbackArgs: PromiseArgs;
+//   callbackBalance: i32;
+// }
 
-@nearBindgen
-export class MyContractPromiseResult {
-  ok: bool;
-  r: MyCallbackResult;
-}
+// @nearBindgen
+// export class MyContractPromiseResult {
+//   ok: bool;
+//   r: MyCallbackResult;
+// }
 
-@nearBindgen
-export class MyCallbackResult {
-  rs: MyContractPromiseResult[];
-  n: string;
-}
+// @nearBindgen
+// export class MyCallbackResult {
+//   rs: MyContractPromiseResult[];
+//   n: string;
+// }
 
-@nearBindgen
-export class Generic<T> {
-  value: T;
-}
+// @nearBindgen
+// export class Generic<T> {
+//   value: T;
+// }

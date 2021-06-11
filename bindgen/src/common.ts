@@ -107,8 +107,8 @@ export function numOfParameters(node: FunctionDeclaration): number {
 }
 
 export function parseTopLevelStatements(sourceCode: string): Statement[] {
-  const block = SimpleParser.parseStatement(sourceCode, true);
-  console.log(`BLOCK: 
+  const block = SimpleParser.parseTopLevelStatement(sourceCode);
+  console.log(`BLOCK: ${NodeKind[block.kind]}
     ${utils.toString(block)}`);
   if (block instanceof BlockStatement) {
     return block.statements;

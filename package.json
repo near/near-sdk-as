@@ -25,6 +25,7 @@
     "@types/node": "^14.6.2",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
+    "as-base64": "^0.2.0",
     "eslint": "^7.14.0",
     "husky": "^4.2.5",
     "jest": "^26.4.2",
@@ -43,10 +44,12 @@
   },
   "lint-staged": {
     "*/assembly/**/*.ts": [
-      "eslint --ext ts --fix", "eslint --max-warnings 0 --ext ts"
+      "eslint --ext ts --fix",
+      "eslint --max-warnings 0 --ext ts"
     ],
     "**/src/**/*.ts": [
-      "prettier --write", "prettier --check"
+      "prettier --write",
+      "prettier --check"
     ]
   },
   "private": true,
