@@ -1,3 +1,3 @@
-import { JSON } from "../../node_modules/serial-as/json/assembly/index";
+import { JSON } from "@serial-as/json";
 
 export { JSON };

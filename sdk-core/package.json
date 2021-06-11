@@ -21,7 +21,7 @@
     "bs58": "^4.0.1",
     "js-base64": "^3.4.3",
     "near-vm": "^1.1.0",
-    "serial-as": "willemneal/encoder-as#feat/split_workspace",
+    "serial-as": "gagdiez/serial-as#feat/method_injector",
     "visitor-as": "^0.5.0"
   },
   "scripts": {

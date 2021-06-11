@@ -20,7 +20,7 @@ import {
 } from "./common";
 import { getName, makeSnakeCase, toString } from "./utils";
 import { RangeTransform } from "visitor-as/dist/transformRange";
-import { MethodInjector } from "@serial-as/transform/dist/MethodInjector";
+import { MethodInjector } from "@serial-as/transform/dist/methodInjector";
 import { isLibrary } from "visitor-as/dist/utils";
 
 export class FunctionClass extends BaseVisitor {
