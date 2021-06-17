@@ -23,7 +23,7 @@
     "build": "asb assembly/__tests__/main.ts -- --noEmit"
   },
   "devDependencies": {
-    "@assemblyscript/loader": "^0.18.9",
+    "@assemblyscript/loader": "^0.19.3",
     "@types/bn.js": "^5.1.0",
     "@types/bs58": "^4.0.1",
     "@types/jest": "^26.0.0",
