@@ -1999,9 +1999,10 @@ asap@^2.0.0:
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
-asbuild@assemblyscript/asbuild#feat/default_asc:
-  version "0.2.0"
-  resolved "https://codeload.github.com/assemblyscript/asbuild/tar.gz/37dcc759c5e824733aa039d5ee8d936f891f94e1"
+asbuild@^0.2.1-0:
+  version "0.2.1-0"
+  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.2.1-0.tgz#92e1c2eb607cb2e91eb9fdcfcbb21fe28e24d22a"
+  integrity sha512-Okd6qKHdLCC1D0OuHFOxav/9rOFB7Tf3z88fD/56XzLmDsuGdy3ohdmNSZy1kT93HVpmhfJEzyI8/nneI3YpnQ==
   dependencies:
     "@as-pect/cli" "^6.0.0"
     assemblyscript "^0.18.31"
@@ -2041,10 +2042,10 @@ assemblyscript@^0.18.31:
     binaryen "100.0.0-nightly.20210413"
     long "^4.0.0"
 
-assemblyscript@^0.19.2:
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.19.2.tgz#952e185d170d5da3ee3a5314734f6244c3619488"
-  integrity sha512-0ETRv6oSOhqgPmf23KrD+111QL685IxY/k3UHlC7NzGK2VAi+3Em1U2E06zCPnb45tjUD86wBANlDJDGEZisBg==
+assemblyscript@^0.19.3:
+  version "0.19.3"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.19.3.tgz#4600db7a7f46bb0f6bb8a1342791264033605282"
+  integrity sha512-IfRqQ7nYDY/UzbGnRrFwKnClR1ITha6nhHGqr/3Jzwof9BdgfqANhpqTmRcKJ5o02WAmghkjQwfJqzDfnDd1VA==
   dependencies:
     binaryen "101.0.0-nightly.20210604"
     long "^4.0.0"

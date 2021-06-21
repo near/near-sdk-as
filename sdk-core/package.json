@@ -13,8 +13,8 @@
   "dependencies": {
     "@as-pect/cli": "^6.0.0",
     "as-bignum": "^0.2.15",
-    "asbuild": "assemblyscript/asbuild#feat/default_asc",
-    "assemblyscript": "^0.19.2",
+    "asbuild": "^0.2.1-0",
+    "assemblyscript": "^0.19.3",
     "assemblyscript-json": "^1.0.0",
     "assemblyscript-temporal": "^1.11.0",
     "bn.js": "^5.1.1",
