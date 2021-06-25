@@ -4,6 +4,7 @@ import { TypeChecker } from "./typeChecker";
 import { ClassExporter } from "./classExporter";
 import { utils } from "visitor-as";
 import * as path from "path";
+import { posixRelativePath } from "./utils";
 
 class JSONTransformer extends Transform {
   parser: Parser;
@@ -19,6 +20,7 @@ class JSONTransformer extends Transform {
     JSONBindingsBuilder.checkTestBuild(parser.sources);
     // Visit each file
     files.forEach((source) => {
+      if (source.internalPath.includes("index-stub")) return;
       let writeOut = /\/\/.*@nearfile .*out/.test(source.text);
       // Remove from logs in parser
       parser.donelog.delete(source.internalPath);
@@ -35,12 +37,16 @@ class JSONTransformer extends Transform {
       // Build new Source
       let sourceText = JSONBindingsBuilder.build(source);
       if (writeOut) {
-        writeFile(path.join("out", source.normalizedPath), sourceText, baseDir);
+        writeFile(
+          posixRelativePath("out", source.normalizedPath),
+          sourceText,
+          baseDir
+        );
       }
       // Parses file and any new imports added to the source
       newParser.parseFile(
         sourceText,
-        path.join(isEntry(source) ? "" : "./", source.normalizedPath),
+        posixRelativePath(isEntry(source) ? "" : "./", source.normalizedPath),
         isEntry(source)
       );
       let newSource = newParser.sources.pop()!;
