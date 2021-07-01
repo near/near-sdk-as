@@ -14,7 +14,7 @@ import {
   ContractPromiseBatch,
   VMContext,
   VM,
-  Outcome,
+  Outcome
 } from "..";
 import { TextMessage } from "./model";
 import {
@@ -742,9 +742,16 @@ describe("Context", () => {
     expect(Context.contractName).toBe("contractaccount", "Wrong contract name");
     VMContext.setSigner_account_id("signeraccount");
     expect(Context.sender).toBe("signeraccount", "Wrong signer account");
-    // VMContext.setSigner_account_pk(base58.encode(util.parseFromString<Uint8Array>("public-key-as-string")));
+
+    const publicKeyBytes: u8[] = [104, 23, 238, 78, 102, 154, 119, 156, 147, 233, 85, 84, 14, 223, 244, 203, 234, 190, 98, 146, 166, 49, 187, 192, 242, 206, 161, 29, 53, 174, 80, 131];
+    const publicKeyArray = new Uint8Array(publicKeyBytes.length);
+    for (var n=0; n<publicKeyBytes.length; n++) {
+      publicKeyArray[n] = publicKeyBytes[n];
+    }
+
+    VMContext.setSigner_account_pk(base58.encode(publicKeyArray));
     expect(Context.senderPublicKey).toBe(
-      "HuxUynD5GdrcZ5MauxJuu74sGHgS6wLfCqqhQkLWK",
+      "81LZnCurP3ZekNr1AcgiedmaXoxQUy354oz2fbEyjs8v",
       "Wrong public key"
     ); // haha, where is this coming from?!
     VMContext.setBlock_index(113);
