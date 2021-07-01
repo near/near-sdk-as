@@ -1,6 +1,6 @@
 use near_sdk::{
     AccountId, BlockchainInterface, Gas, MockedBlockchain, PromiseIndex, ReturnData,
-    RuntimeFeesConfig, StorageUsage, VMConfig, VMContext,
+    RuntimeFeesConfig, StorageUsage, VMConfig, VMContext, bs58
 };
 use serde::Serialize;
 
@@ -146,7 +146,7 @@ impl VM {
     /// The public key that was used to sign the original transaction that led to
     /// this execution.
     pub fn set_signer_account_pk(&mut self, s: JsValue) {
-        self.context.signer_account_pk = serde_wasm_bindgen::from_value(s).unwrap();
+        self.context.signer_account_pk = bs58::decode(s.as_string().unwrap()).into_vec().unwrap();
         self.switch_context();
     }
     // string base58
