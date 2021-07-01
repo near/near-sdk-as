@@ -5,7 +5,7 @@ Collection of packages used in developing NEAR smart contracts in AssemblyScript
 
 - [`runtime library`](https://github.com/near/near-sdk-as/tree/master/sdk-core) - AssemblyScript near runtime library
 - [`bindgen`](https://github.com/near/near-sdk-as/tree/master/bindgen) - AssemblyScript transformer that adds the bindings needed to (de)serialize input and outputs.
-- [`near-mock-vm`](https://github.com/near/near-sdk-as/tree/master/near-mock-vm) - Core of the NEAR VM compiled to WebAssembly used for writing unit tests.
+- [`near-mock-vm`](https://github.com/near/near-sdk-as/tree/master/near-mock-vm) - Core of the NEAR VM compiled to WebAssembly used for running unit tests.
 - [`@as-pect/cli`](https://github.com/jtenner/as-pect) - AssemblyScript testing framework similar to jest.
 
 ## To Install

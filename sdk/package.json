@@ -6,8 +6,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com:near/near-sdk-as",
-    "directory": "packages/sdk"
+    "directory": "sdk"
   },
+  "homepage": "https://github.com/near/near-sdk-as/tree/master/sdk",
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
