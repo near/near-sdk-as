@@ -26,7 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "eslint": "^7.14.0",
-    "husky": "^4.2.5",
+    "husky": "^7.0.1",
     "jest": "^26.4.2",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.4",
