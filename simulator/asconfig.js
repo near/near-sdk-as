@@ -12,6 +12,7 @@ let tests = [
   "exportAs.ts",
   "singleton.ts",
   "singleton-no-constructor.ts",
+  "transfer.ts",
 ];
 
 tests.map(compile_file);
