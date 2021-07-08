@@ -396,18 +396,20 @@ export class Runtime {
                 });
                 // }
               }
-              let next = {
-                index: parseInt(i) + numReceipts,
-                account_id: receipt["receiver_id"],
-                method_name: fca["method_name"],
-                input: fca["args"],
-                signer_account_id: accountContext.signer_account_id,
-                predecessor_account_id: c["account_id"],
-                input_data: new_input_data,
-                prepaid_gas: fca["gas"],
-                attached_deposit: fca["deposit"],
-              };
-              q.push(next);
+              if (fca) {
+                let next = {
+                  index: parseInt(i) + numReceipts,
+                  account_id: receipt["receiver_id"],
+                  method_name: fca["method_name"],
+                  input: fca["args"],
+                  signer_account_id: accountContext.signer_account_id,
+                  predecessor_account_id: c["account_id"],
+                  input_data: new_input_data,
+                  prepaid_gas: fca["gas"],
+                  attached_deposit: fca["deposit"],
+                };
+                q.push(next);
+              }
             }
             this.log(ret);
             numReceipts += result["receipts"].length;
