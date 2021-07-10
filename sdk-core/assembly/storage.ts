@@ -177,6 +177,8 @@ export class Storage {
    * @param defaultValue The default value if the key is not available
    * @returns A value of type T stored under the given key.
    */
+  static get<T>(key: string): T | null;
+  static get<T>(key: string, defaultValue: T): T;
   static get<T>(key: string, defaultValue: T | null = null): T | null {
     if (isString<T>()) {
       const strValue = this.getString(key);
