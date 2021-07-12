@@ -1,0 +1,19 @@
+{
+  "name": "near-sdk-sim",
+  "version": "3.1.0",
+  "description": "Mock Near Runtime for integration testing.",
+  "license": "(MIT AND Apache-2.0)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Willem Wyndham <willem@nearprotocol.com>",
+  "scripts": {
+    "build:release": "node asconfig.js",
+    "build": "tsc && node asconfig.js --target debug --wat",
+    "test": "yarn jest",
+    "build:tsc": "tsc",
+    "pretest": "yarn build"
+  },
+  "devDependencies": {
+    "near-sdk-core": "^3.1.0"
+  }
+}
