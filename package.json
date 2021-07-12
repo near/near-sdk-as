@@ -54,8 +54,8 @@
     "bindgen",
     "sdk",
     "sdk-core",
-    "simulator",
     "nearcore-tests",
-    "near-mock-vm"
+    "near-mock-vm",
+    "near-sdk-sim"
   ]
 }

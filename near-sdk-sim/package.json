@@ -1,0 +1,37 @@
+{
+  "name": "near-sdk-sim",
+  "version": "3.1.0",
+  "description": "Mock Near Runtime for integration testing.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/near/near-sdk-as"
+  },
+  "author": "Willem Wyndham <willem@nearprotocol.com> & Ashutosh Varma <ashutoshvarma11@live.com>",
+  "license": "(MIT AND Apache-2.0)",
+  "dependencies": {
+    "neon-cli": "^0.8.1",
+    "@mapbox/node-pre-gyp": "^1.0.5",
+    "node-pre-gyp-github": "^1.4.3"
+  },
+  "devDependencies": {
+    "near-sdk-core": "^3.1.0",
+    "cargo-cp-artifact": "^0.1.4"
+  },
+  "scripts": {
+    "install": "yarn build",
+    "build:native": "cargo-cp-artifact -a cdylib near_sim_bindings native.node -- cargo build --message-format=json-render-diagnostics",
+    "build:native:release": "yarn build:native --release && strip native.node",
+    "build:lib": "tsc && node asconfig.js --target debug --wat",
+    "build:release": "yarn build:native:release && tsc && node asconfig.js",
+    "build": "yarn build:lib && yarn build:native",
+    "test": "yarn jest --verbose",
+    "pretest": "yarn build"
+  },
+  "files": [
+    "native.node",
+    "native.node.d.ts",
+    "dist"
+  ]
+}
