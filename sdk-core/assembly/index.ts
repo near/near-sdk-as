@@ -11,3 +11,9 @@ export * from "./promise";
 export * from "./datetime";
 
 export { u128, u256 } from "./bignum";
+
+import { Storage } from "./storage";
+
+// @ts-ignore
+@lazy
+export const storage = Storage.cachingStorage;

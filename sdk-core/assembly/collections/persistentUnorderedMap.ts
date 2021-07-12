@@ -1,8 +1,10 @@
+import { Storage } from "..";
+import { Collection } from "./collection";
 import { PersistentMap } from "./persistentMap";
 import { PersistentVector } from "./persistentVector";
 import { MapEntry } from "./util";
 
-export class PersistentUnorderedMap<K, V> {
+export class PersistentUnorderedMap<K, V> extends Collection {
   private _map: PersistentMap<K, i32>;
   private _entries: PersistentVector<MapEntry<K, V>>;
 
@@ -18,7 +20,8 @@ export class PersistentUnorderedMap<K, V> {
    *
    * @param prefix A prefix to use for every key of this map.
    */
-  constructor(prefix: string) {
+  constructor(prefix: string, storage: Storage = Storage.cachingStorage) {
+    super(storage);
     this._map = new PersistentMap<K, i32>(prefix + ":map"); // stores key=>index
     this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ":entries"); // stores vec[index]=<key,value>
   }

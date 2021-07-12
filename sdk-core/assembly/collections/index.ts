@@ -44,6 +44,8 @@ export namespace collections {
 }
 
 /** @internal */
+export * from "./collection";
+/** @internal */
 export * from "./persistentDeque";
 /** @internal */
 export * from "./persistentMap";

@@ -1,6 +1,8 @@
 import { PersistentMap } from "./persistentMap";
 import { PersistentVector } from "./persistentVector";
 import { math } from "../math";
+import { Collection } from "./collection";
+import { Storage } from '../storage';
 
 /**
  * A vector class that implements a persistent array.
@@ -23,7 +25,7 @@ import { math } from "../math";
  *
  */
 @nearBindgen
-export class PersistentSet<T> {
+export class PersistentSet<T> extends Collection {
   private _map: PersistentMap<Uint8Array, i32>;
   private _vector: PersistentVector<T>;
 
@@ -32,7 +34,8 @@ export class PersistentSet<T> {
    * Always use a unique storage prefix for different collections.
    * @param prefix A prefix to use for every key of this set.
    */
-  constructor(prefix: string) {
+  constructor(prefix: string, storage: Storage = Storage.cachingStorage ) {
+    super(storage);
     this._map = new PersistentMap<Uint8Array, i32>("_map" + prefix);
     this._vector = new PersistentVector<T>("_vector" + prefix);
   }

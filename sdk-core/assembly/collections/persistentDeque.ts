@@ -1,5 +1,5 @@
 import { collections } from ".";
-import { storage } from "../storage";
+import { PrefixedCollection } from "./collection";
 
 /**
  * This class is one of several convenience collections built on top of the `Storage` class
@@ -26,12 +26,17 @@ import { storage } from "../storage";
  * @typeParam T The generic type parameter `T` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
  */
 @nearBindgen
-export class PersistentDeque<T> {
-  private _elementPrefix: string;
-  private _frontIndexKey: string;
-  private _backIndexKey: string;
-  private _frontIndex: i32;
-  private _backIndex: i32;
+export class PersistentDeque<T> extends PrefixedCollection<i32> {
+  private _frontIndex: i32 = i32.MIN_VALUE;
+  private _backIndex: i32 = i32.MAX_VALUE;
+  
+  private get _frontIndexKey(): string  {
+    return this.prefix + collections._KEY_FRONT_INDEX_SUFFIX;
+  }
+  
+  private get _backIndexKey(): string {
+    return this.prefix + collections._KEY_BACK_INDEX_SUFFIX;
+  }
 
   /** @ignore */
   [key: number]: T;
@@ -49,19 +54,7 @@ export class PersistentDeque<T> {
    * @param prefix A prefix to use for every key of this deque.
    */
   constructor(prefix: string) {
-    this._elementPrefix = prefix + collections._KEY_ELEMENT_SUFFIX;
-    this._frontIndexKey = prefix + collections._KEY_FRONT_INDEX_SUFFIX;
-    this._backIndexKey = prefix + collections._KEY_BACK_INDEX_SUFFIX;
-    this._frontIndex = i32.MIN_VALUE;
-    this._backIndex = i32.MAX_VALUE;
-  }
-
-  /**
-   * @returns An internal key for a given index.
-   */
-  @inline
-  private _key(index: i32): string {
-    return this._elementPrefix + index.toString();
+    super(prefix);
   }
 
   /**
@@ -69,7 +62,7 @@ export class PersistentDeque<T> {
    */
   private get frontIndex(): i32 {
     if (this._frontIndex == i32.MIN_VALUE) {
-      this._frontIndex = storage.getPrimitive<i32>(this._frontIndexKey, 0);
+      this._frontIndex = this.storage.getPrimitive<i32>(this._frontIndexKey, 0);
     }
     return this._frontIndex;
   }
@@ -79,7 +72,7 @@ export class PersistentDeque<T> {
    */
   private set frontIndex(value: i32) {
     this._frontIndex = value;
-    storage.set<i32>(this._frontIndexKey, value);
+    this.storage.set<i32>(this._frontIndexKey, value);
   }
 
   /**
@@ -87,7 +80,7 @@ export class PersistentDeque<T> {
    */
   private get backIndex(): i32 {
     if (this._backIndex == i32.MAX_VALUE) {
-      this._backIndex = storage.getPrimitive<i32>(this._backIndexKey, -1);
+      this._backIndex = this.storage.getPrimitive<i32>(this._backIndexKey, -1);
     }
     return this._backIndex;
   }
@@ -97,7 +90,7 @@ export class PersistentDeque<T> {
    */
   private set backIndex(value: i32) {
     this._backIndex = value;
-    storage.set<i32>(this._backIndexKey, value);
+    this.storage.set<i32>(this._backIndexKey, value);
   }
 
   /**
@@ -191,7 +184,7 @@ export class PersistentDeque<T> {
    */
   @operator("{}")
   private __unchecked_get(index: i32): T {
-    return storage.getSome<T>(this._key(index + this.frontIndex));
+    return this.storage.getSome<T>(this._key(index + this.frontIndex));
   }
 
   //   /**
@@ -221,7 +214,7 @@ export class PersistentDeque<T> {
    */
   @operator("{}=")
   private __unchecked_set(index: i32, value: T): void {
-    storage.set<T>(this._key(index + this.frontIndex), value);
+    this.storage.set<T>(this._key(index + this.frontIndex), value);
   }
 
   /**
@@ -264,7 +257,7 @@ export class PersistentDeque<T> {
   popFront(): T {
     assert(this.length > 0, "Deque is empty");
     let result = this.__unchecked_get(0);
-    storage.delete(this._key(this.frontIndex));
+    this.storage.delete(this._key(this.frontIndex));
     this.frontIndex += 1;
     return result;
   }
@@ -344,7 +337,7 @@ export class PersistentDeque<T> {
     let index = this.length - 1;
     assert(index >= 0, "Deque is empty");
     let result = this.__unchecked_get(index);
-    storage.delete(this._key(this.backIndex));
+    this.storage.delete(this._key(this.backIndex));
     this.backIndex -= 1;
     return result;
   }

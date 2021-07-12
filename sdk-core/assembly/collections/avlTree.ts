@@ -1,6 +1,6 @@
-import { PersistentMap, PersistentVector, collections } from ".";
+import { collections, PersistentMap, PersistentVector } from ".";
 import { MapEntry } from "./util";
-import { storage } from "../storage";
+import { Storage } from "..";
 
 @nearBindgen
 class Nullable<T> {
@@ -28,21 +28,23 @@ class AVLTreeNode<K> {
 
 @nearBindgen
 export class AVLTree<K, V> {
-  private _elementPrefix: string;
   private _val: PersistentMap<K, V>;
   private _tree: PersistentVector<AVLTreeNode<K>>;
   private _rootId: Nullable<NodeId> | null;
 
   /**
-   * A string name is used as a prefix for writing keys to storage.
+   * A string used as a prefix for writing keys to storage.
    */
-  constructor(name: string) {
-    this._elementPrefix = name + collections._KEY_ELEMENT_SUFFIX;
+  constructor(private prefix: string, private storage: Storage = Storage.cachingStorage) {
     this._val = new PersistentMap<K, V>(this._elementPrefix + "val");
     this._tree = new PersistentVector<AVLTreeNode<K>>(
       this._elementPrefix + "tree"
     );
-    this._rootId = storage.get<Nullable<NodeId>>(this._elementPrefix + "root");
+    this._rootId = this.storage.get<Nullable<NodeId>>(this._elementPrefix + "root");
+  }
+
+  get _elementPrefix(): string {
+    return this.prefix + collections._KEY_ELEMENT_SUFFIX;
   }
 
   /**
@@ -374,7 +376,7 @@ export class AVLTree<K, V> {
 
   private set rootId(rootId: Nullable<NodeId> | null) {
     this._rootId = rootId;
-    storage.set(this._elementPrefix + "root", this._rootId);
+    this.storage.set(this._elementPrefix + "root", this._rootId);
   }
 
   private get rootId(): Nullable<NodeId> | null {
