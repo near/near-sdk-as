@@ -6,6 +6,7 @@ import * as path from "path";
 import { nearFiles } from "./common";
 import { FunctionExportWrapper } from "./functionWrapper";
 import { MethodInjector } from "@serial-as/transform/dist/methodInjector";
+import { posixRelativePath } from "./utils";
 
 const regex = /\/\/.*@nearfile .*out/;
 class JSONTransformer extends Transform {
@@ -25,7 +26,7 @@ class JSONTransformer extends Transform {
     sources.forEach((source) => {
       if (regex.test(source.text))
         writeFile(
-          path.join("out", source.normalizedPath),
+          posixRelativePath("out", source.normalizedPath),
           utils.toString(source),
           baseDir
         );

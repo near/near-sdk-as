@@ -18,10 +18,8 @@ import {
   returnsVoid,
   WRAPPER_PREFIX,
 } from "./common";
-import { getName, getTypeName, makeSnakeCase, toString } from "./utils";
+import { getName, makeSnakeCase, toString } from "./utils";
 import { RangeTransform } from "visitor-as/dist/transformRange";
-import { MethodInjector } from "@serial-as/transform/dist/methodInjector";
-import { isLibrary } from "visitor-as/dist/utils";
 
 export class FunctionClass extends BaseVisitor {
   _class: ClassDeclaration;
@@ -40,11 +38,10 @@ export class FunctionClass extends BaseVisitor {
     const fieldStrs = fields.join(";\n");
     let _classStr = `class ${name}__class {
   ${fieldStrs}
-  call(): ${getTypeName(node.signature.returnType)} {
+  call(): ${getName(node.signature.returnType)} {
     ${returnsVoid(node) ? "" : "return "}${name}(${params.join(",")});
   }
 }`;
-    console.log(_classStr);
     let _class = <ClassDeclaration>(
       SimpleParser.parseTopLevelStatement(_classStr)
     );

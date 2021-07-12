@@ -1,6 +1,9 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+*/
+export function main(): void;
+/**
 * @param {any} wasm_bytes
 * @returns {any}
 */
@@ -9,9 +12,6 @@ export function inject_contract(wasm_bytes: any): any;
 * @param {any} mem
 */
 export function test_memory(mem: any): void;
-/**
-*/
-export function main(): void;
 /**
 */
 export class VM {

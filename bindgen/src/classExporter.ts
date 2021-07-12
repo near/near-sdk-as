@@ -150,7 +150,6 @@ export function ${name}(${parameters.join(", ")}): ${returnType} {
       );
       this.visit(node.members);
       node.flags = node.flags ^ CommonFlags.EXPORT;
-      let newStatements = parseTopLevelStatements(this.sb.join("\n"));
       let newStatements = this.sb
         .map(parseTopLevelStatements)
         .flat()
