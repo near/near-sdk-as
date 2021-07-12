@@ -9,6 +9,7 @@ import {
   BlockStatement,
 } from "visitor-as/as";
 import { utils, ClassDecorator } from "visitor-as";
+import { RangeTransform } from "visitor-as/dist/transformRange";
 import { isEntry, parseTopLevelStatements, PRIVATE_DECORATOR } from "./common";
 import { toString } from "./utils";
 
@@ -121,7 +122,7 @@ export function ${name}(${parameters.join(", ")}): ${returnType} {
   }
 
   visitClassDeclaration(node: ClassDeclaration): void {
-    if (isEntry(node) && node.is(CommonFlags.EXPORT)) {
+    if (node.is(CommonFlags.EXPORT)) {
       let name = toString(node.name);
       if (ClassExporter.classSeen) {
         throw new Error(
@@ -135,9 +136,9 @@ export function ${name}(${parameters.join(", ")}): ${returnType} {
         }
         return false;
       });
+      this.sb.push(`let __contract: ${name};`);
       this.sb.push(
-        `let __contract: ${name};
-if (__checkState()) {
+        `if (__checkState()) {
   __contract = __getState<${name}>();
 }${
           !ClassExporter.hasConstructor
@@ -150,6 +151,10 @@ if (__checkState()) {
       this.visit(node.members);
       node.flags = node.flags ^ CommonFlags.EXPORT;
       let newStatements = parseTopLevelStatements(this.sb.join("\n"));
+      let newStatements = this.sb
+        .map(parseTopLevelStatements)
+        .flat()
+        .map((s) => RangeTransform.visit(s, node));
       let statements = newStatements.map((n) => {
         if (n instanceof FunctionDeclaration) {
           n.flags = n.flags | CommonFlags.EXPORT;
@@ -170,6 +175,7 @@ if (__checkState()) {
     if (node.sourceKind != SourceKind.USER_ENTRY) {
       return;
     }
+    super.visitSource(node);
   }
 
   static visit(sources: Source[]): Source[] {

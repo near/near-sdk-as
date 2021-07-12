@@ -9,5 +9,8 @@ export * from "./logging";
 export * from "./math";
 export * from "./promise";
 export * from "./datetime";
+import * as JSON from "@serial-as/json";
+export { JSON };
+export * from "@serial-as/borsh";
 
 export { u128, u256 } from "./bignum";

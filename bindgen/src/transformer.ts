@@ -1,10 +1,11 @@
 import { Transform, Parser, Program, Module, SourceKind } from "visitor-as/as";
-import { JSONBindingsBuilder } from "./JSONBuilder";
+// import { JSONBindingsBuilder } from "./JSONBuilder";
 import { ClassExporter } from "./classExporter";
 import { utils } from "visitor-as";
 import * as path from "path";
 import { nearFiles } from "./common";
 import { FunctionExportWrapper } from "./functionWrapper";
+import { MethodInjector } from "@serial-as/transform/dist/methodInjector";
 
 const regex = /\/\/.*@nearfile .*out/;
 class JSONTransformer extends Transform {
@@ -18,8 +19,8 @@ class JSONTransformer extends Transform {
     // Filter for near files
     const sources = nearFiles(this.parser.sources);
     ClassExporter.visit(sources);
-    JSONBindingsBuilder.visit(sources);
     FunctionExportWrapper.visit(sources);
+    this.parser.sources.forEach(MethodInjector.visit);
 
     sources.forEach((source) => {
       if (regex.test(source.text))
@@ -29,38 +30,6 @@ class JSONTransformer extends Transform {
           baseDir
         );
     });
-
-    // Visit each file
-    // files.forEach((source) => {
-    //   // Remove from logs in parser
-    //   parser.donelog.delete(source.internalPath);
-    //   parser.seenlog.delete(source.internalPath);
-    //   // Remove from programs sources
-    //   this.parser.sources = this.parser.sources.filter(
-    //     (_source: Source) => _source !== source
-    //   );
-    //   this.program.sources = this.program.sources.filter(
-    //     (_source: Source) => _source !== source
-    //   );
-    //   // Export main singleton class if one is present
-
-    //   // Build new Source
-    //   let sourceText = JSONBindingsBuilder.build(source);
-    //   if (writeOut) {
-    //
-    //   }
-    //   // Parses file and any new imports added to the source
-    //   newParser.parseFile(
-    //     sourceText,
-    //     path.join(isEntry(source) ? "" : "./", source.normalizedPath),
-    //     isEntry(source)
-    //   );
-    //   let newSource = newParser.sources.pop()!;
-    //   this.program.sources.push(newSource);
-    //   parser.donelog.add(source.internalPath);
-    //   parser.seenlog.add(source.internalPath);
-    //   parser.sources.push(newSource);
-    // });
 
     ClassExporter.classSeen = null!;
   }

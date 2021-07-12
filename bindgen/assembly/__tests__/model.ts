@@ -1,8 +1,9 @@
+// @nearfile out
 import { u128 } from "near-sdk-core";
 
 @nearBindgen
 export class FooBar {
-  foo: i32 = 0;
+  foo: i32 = 42;
   bar: u32 = 1;
   u64Val: u64 = 4294967297;
   u64_zero: u64;
@@ -17,53 +18,53 @@ export class FooBar {
   arr: Array<Array<string>> | null;
   u32Arr: u32[] = [];
   i32Arr: i32[] = [];
-  u128Val: u128 = u128.Zero;
+  u128Val: u128 | null;
   uint8arrays: Array<Uint8Array> = [];
   // TODO: Fix u64 arrays
   u64Arr: u64[] = [];
 }
 
-// @nearBindgen
-// export class Nullables {
-//   str: string;
-//   u128: u128;
-//   uint8Array: Uint8Array;
-// }
+@nearBindgen
+export class Nullables {
+  str: string | null;
+  u128: u128 | null;
+  uint8Array: Uint8Array | null;
+}
 
 @nearBindgen
 export class ContainerClass {
-  foobar: FooBar;
+  foobar: FooBar | null;
 }
 
-// @nearBindgen
-// export class AnotherContainerClass {
-//   constructor(public foobars: Array<Array<FooBar>>) {}
-// }
+@nearBindgen
+export class AnotherContainerClass {
+  constructor(public foobars: Array<Array<FooBar>>) {}
+}
 
-// @nearBindgen
-// export class PromiseArgs {
-//   receiver: string;
-//   methodName: string;
-//   args: PromiseArgs;
-//   balance: i32;
-//   callback: string;
-//   callbackArgs: PromiseArgs;
-//   callbackBalance: i32;
-// }
+@nearBindgen
+export class PromiseArgs {
+  receiver: string;
+  methodName: string;
+  args: PromiseArgs;
+  balance: i32;
+  callback: string;
+  callbackArgs: PromiseArgs;
+  callbackBalance: i32;
+}
 
-// @nearBindgen
-// export class MyContractPromiseResult {
-//   ok: bool;
-//   r: MyCallbackResult;
-// }
+@nearBindgen
+export class MyContractPromiseResult {
+  ok: bool;
+  r: MyCallbackResult;
+}
 
-// @nearBindgen
-// export class MyCallbackResult {
-//   rs: MyContractPromiseResult[];
-//   n: string;
-// }
+@nearBindgen
+export class MyCallbackResult {
+  rs: MyContractPromiseResult[];
+  n: string;
+}
 
-// @nearBindgen
-// export class Generic<T> {
-//   value: T;
-// }
+@nearBindgen
+export class Generic<T> {
+  value: T;
+}

@@ -18,7 +18,7 @@ import {
   returnsVoid,
   WRAPPER_PREFIX,
 } from "./common";
-import { getName, makeSnakeCase, toString } from "./utils";
+import { getName, getTypeName, makeSnakeCase, toString } from "./utils";
 import { RangeTransform } from "visitor-as/dist/transformRange";
 import { MethodInjector } from "@serial-as/transform/dist/methodInjector";
 import { isLibrary } from "visitor-as/dist/utils";
@@ -29,24 +29,26 @@ export class FunctionClass extends BaseVisitor {
   visitFunctionDeclaration(node: FunctionDeclaration): void {
     let name = getName(node);
     let fields = node.signature.parameters.map(
-      (p) => p.range.toString() + ` = defaultValue<${getName(p.type)}>()`
+      (p) => `${toString(p.name)}: ${getName(p.type)}`
     );
     let params = node.signature.parameters.map((p) => `this.${getName(p)}`);
     if (fields.length > 0) {
       // add blank to make join add ;
       fields.push("");
     }
+
     const fieldStrs = fields.join(";\n");
     let _classStr = `class ${name}__class {
   ${fieldStrs}
-  call(): ${getName(node.signature.returnType)} {
-    return ${name}(${params.join(",")});
+  call(): ${getTypeName(node.signature.returnType)} {
+    ${returnsVoid(node) ? "" : "return "}${name}(${params.join(",")});
   }
 }`;
+    console.log(_classStr);
     let _class = <ClassDeclaration>(
       SimpleParser.parseTopLevelStatement(_classStr)
     );
-    MethodInjector.visit(_class);
+    // MethodInjector.visit(_class);
     this._class = _class;
   }
 
@@ -57,38 +59,9 @@ export class FunctionClass extends BaseVisitor {
   }
 }
 
-// class RenamedExport {
-//   constructor(public from: string, public to: string){}
-
-//   parse(): Statement {
-//     const val = this.toString();
-//     console.log(`About to parse ${val}`);
-//     return SimpleParser.parseTopLevelStatement(val);
-//   }
-
-//   toString(): string {
-//     return `\nexport { ${this.from} as ${this.to}}`;
-//   }
-
-//   addExport(p: Program): void {
-//     for (let file of p.filesByName.values()) {
-//       const _export = file.lookupInSelf(this.from);
-//       if (_export) {
-//         console.log(`about to rename ${this.from} to ${this.to}`);
-//         // file.ensureExport(this.to, _export);
-//         return
-//       } else {
-//         if (file.members && !isLibrary(file.source)) {
-//           console.log(file.name)
-//           file.members.forEach(m => {
-//             console.log(m.name)
-//           })
-//         }
-//       }
-//     }
-//   }
-// }
-
+function emptySignature(node: FunctionDeclaration): boolean {
+  return numOfParameters(node) == 0 && returnsVoid(node);
+}
 export class FunctionExportWrapper extends BaseVisitor {
   static isTest: boolean = false;
   functions: Statement[] = [];
@@ -103,7 +76,7 @@ export class FunctionExportWrapper extends BaseVisitor {
   needsWrapper(node: FunctionDeclaration): boolean {
     let isExport = node.is(CommonFlags.EXPORT);
     let alreadyWrapped = this.wrappedFuncs.has(toString(node.name));
-    let noInputOrOutput = numOfParameters(node) == 0 && returnsVoid(node);
+    let noInputOrOutput = emptySignature(node);
     if (
       !isExport ||
       alreadyWrapped ||
@@ -115,27 +88,30 @@ export class FunctionExportWrapper extends BaseVisitor {
   }
 
   visitFunctionDeclaration(node: FunctionDeclaration): void {
-    const name = getName(node);
+    const name = toString(node.name);
     if (!this.needsWrapper(node)) {
       if (
         (isEntry(node) || utils.hasDecorator(node, NEAR_DECORATOR)) &&
         !this.wrappedFuncs.has(name) &&
         node.is(CommonFlags.EXPORT)
       ) {
-        console.log("adding...  " + name);
-        this.exports.push(this.camelCaseToSnakeCaseExport(name, ""));
+        const snakeCase = this.camelCaseToSnakeCaseExport(name, "");
         this.wrappedFuncs.add(name);
+        if (snakeCase) {
+          this.exports.push(snakeCase);
+        }
       }
       super.visitFunctionDeclaration(node);
       return;
     }
-    const _class = FunctionClass.visit(node);
-    RangeTransform.visit(_class, node);
-    this.classWrappers.push(_class);
+    if (numOfParameters(node) > 0) {
+      const _class = FunctionClass.visit(node);
+      RangeTransform.visit(_class, node);
+      this.classWrappers.push(_class);
+    }
     this.functions.push(
       parseTopLevelStatements(this.generateWrapperFunction(node))[0]
     );
-    console.log(utils.toString(this.functions[this.functions.length - 1]));
     // Change function to not be an export
     node.flags = node.flags ^ CommonFlags.EXPORT;
     this.wrappedFuncs.add(name);
@@ -161,12 +137,6 @@ export class FunctionExportWrapper extends BaseVisitor {
     let params = signature.parameters;
     let returnType = signature.returnType;
     let returnTypeName = toString(returnType);
-    // let returnTypeNameNoNull = returnTypeName
-    //   .split("|")
-    //   .map((name) => name.trim())
-    //   .filter((name) => name !== "null")
-    //   .join("");
-    // let hasNull = returnTypeName.includes("null");
     let name = getName(func);
     if (func.decorators && func.decorators.length > 0) {
       funcSource.push(
@@ -178,19 +148,25 @@ export class FunctionExportWrapper extends BaseVisitor {
     function __wrapper_${name}(): void {`);
     if (params.length > 0) {
       funcSource.push(
-        `  const _class = JSON.decode<${className}>(getInputString())`
+        `  const _class = JSON.parse<${className}>(getInputString())`
       );
-    } else {
-      `const _class = instantiate<${className}>();`;
     }
     if (returnTypeName !== "void") {
-      funcSource.push(`  
-      let result: ${returnTypeName} = _class.call();
-      const val = String.UTF8.encode(JSON.encode(result));
+      if (params.length > 0) {
+        funcSource.push(`let result: ${returnTypeName} = _class.call();`);
+      } else {
+        funcSource.push(`let result: ${returnTypeName} = ${name}();`);
+      }
+      funcSource.push(`
+      const val = String.UTF8.encode(JSON.stringify(result));
       value_return(val.byteLength, changetype<usize>(val));
   `);
     } else {
-      funcSource.push(`_class.call()`);
+      if (params.length > 0) {
+        funcSource.push(`_class.call()`);
+      } else {
+        funcSource.push(`${name}();`);
+      }
     }
     funcSource.push(`}`);
     this.addExport(name);
@@ -198,7 +174,6 @@ export class FunctionExportWrapper extends BaseVisitor {
   }
 
   addExport(name: string): void {
-    console.log(`adding ${name}!!!`);
     this.exports.push(`export {${WRAPPER_PREFIX + name} as ${name}}`);
     let res = this.camelCaseToSnakeCaseExport(name, WRAPPER_PREFIX);
     if (res) {
@@ -207,28 +182,20 @@ export class FunctionExportWrapper extends BaseVisitor {
   }
 
   visitSource(node: Source): void {
-    // this.functions = [];
-    // this.exports = [];
-    // this.classWrappers = [];
-    // let exports: Statement[] = this.exports.map(parseTopLevelStatements).flat();
-
-    // console.log(`exports:\n${exports.map(utils.toString)}`)
-    // console.log(this.functions.join("\n"))
-    // console.log(this.exports.join("\n"));
     super.visitSource(node);
     const newParser = new Parser();
-    // const newCode = this.functions.join("\n")
+    const lastStatement =
+      (node.statements.length && node.statements[node.statements.length - 1]) ||
+      node;
     if (this.functions.length > 0) {
       node.statements.push(
-        ...this.functions.map((n) => RangeTransform.visit(n, node))
+        ...this.functions.map((n) => RangeTransform.visit(n, lastStatement))
       );
 
       const str = this.exports.join("\n");
       newParser.parseFile(str, node.normalizedPath, isEntry(node));
       const exportsSource = newParser.sources[0];
-      // RangeTransform.visit(exportsSource, node);
       node.statements = node.statements.concat(exportsSource.statements);
-      // console.log(`source: ${utils.toString(node)}`)
       node.statements.push(...this.classWrappers);
     }
   }
