@@ -1,5 +1,5 @@
 #!/bin/bash
-TESTS=(getDefaultValue mapTestsWithArray base58Test base64Test logTest storageStringRoundtripTest storageBytesRoundtripTest storageGenericGetSetRoundtripTest mapTests mapTestsWithPrimitices vectorTests dequeTests promiseTests mathTests)
+TESTS=(getDefaultValue mapTestsWithArray base58Test base64Test logTest storageStringRoundtripTest storageBytesRoundtripTest storageGenericGetSetRoundtripTest storageRawRoundtripTest mapTests mapTestsWithPrimitices vectorTests dequeTests promiseTests mathTests)
 DISABLED_TESTS=(contextTests)
 
 [[ -e /tmp/main.wasm ]] && rm /tmp/main.wasm

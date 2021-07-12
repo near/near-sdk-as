@@ -1,3 +1,4 @@
+import { util } from "near-sdk-core";
 import {
   Context,
   storage,
@@ -417,6 +418,29 @@ describe("Map should handle", () => {
     );
   });
 
+  it("raw operations", () => {
+    const map = new PersistentMap<u32, string>("mapId");
+
+    map.set(1, "testString");
+    const reg = map.get_raw(1);
+
+    expect(util.read_register_string(reg)).toStrictEqual(
+      "testString",
+      "Incorrect result from raw map get"
+    );
+
+    map.set_raw(2, reg);
+
+    expect(map.contains(2)).toBe(
+      true,
+      "Map does not contain a key that was added (1)"
+    );
+    expect(map.getSome(2)).toStrictEqual(
+      "testString",
+      "Incorrect result from map get"
+    );
+  })
+
   it("some entries", () => {
     const map = new PersistentMap<string, TextMessage>("mapId");
     // add some entries to the map
@@ -572,6 +596,47 @@ describe("Vectors should handle", () => {
     expect(vector.first).toBe("bb", "Incorrect first entry");
   });
 
+  it("raw operations", () => {
+    vector.push("a");
+    vector.push("b");
+    vector.push("c");
+
+    let reg = vector.pop_raw();
+    expect(_vectorHasContents(vector, ["a", "b"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [a, b]"
+    );
+    expect(vector.length).toBe(2, "Vector has incorrect length after pop_raw");
+    expect(util.read_register_string(reg)).toBe("c", "Incorrect evicted entry");
+    
+    reg = vector.get_raw(0);
+    expect(util.read_register_string(reg)).toBe("a", "Incorrect first entry");
+
+    vector.push_raw(reg);
+    expect(_vectorHasContents(vector, ["a", "b", "a"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [a, b, a]"
+    );
+    expect(vector.length).toBe(3, "Vector has incorrect length after push_raw");
+
+    storage.setString("key", "d");
+    storage.read_raw("key", 1);
+    vector.replace_raw(2, 1);
+    expect(_vectorHasContents(vector, ["a", "b", "d"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [a, b, d]"
+    );
+    expect(vector.length).toBe(3, "Vector has incorrect length after replace_raw");
+    
+    reg = vector.swap_remove_raw(0);
+    expect(_vectorHasContents(vector, ["d", "b"])).toBe(
+      true,
+      "Unexpected vector contents. Expected [d, b]"
+    );
+    expect(vector.length).toBe(2, "Vector has incorrect length after swap_remove_raw");
+    expect(util.read_register_string(reg)).toBe("a", "Incorrect evicted entry after swap_remove_raw");
+  });
+
   it("popping from the front", () => {
     vector.push("bb");
     vector.pushBack("bc");
@@ -662,6 +727,29 @@ describe("Deque should handle", () => {
     expect(deque.front).toBe("-2", "wrong front element");
     expect(deque.first).toBe("-2", "wrong first element");
     expect(deque.last).toBe("1", "wrong last element");
+  });
+
+  it("raw operations", () => {
+    deque.pushBack("1");
+    deque.pushFront("-2");
+
+    let reg = deque.popBack_raw();
+    expect(deque.length).toBe(1, "deque length is wrong");
+    expect(util.read_register_string(reg)).toBe("1", "wrong value for evicted element");
+
+    deque.pushFront_raw(reg);
+    expect(deque.length).toBe(2, "deque length is wrong");
+    expect(deque.front).toBe("1", "wrong front element");
+    expect(deque.back).toBe("-2", "wrong back element");
+
+    reg = deque.popFront_raw();
+    expect(deque.length).toBe(1, "deque length is wrong");
+    expect(util.read_register_string(reg)).toBe("1", "wrong value for evicted element");
+
+    deque.pushBack_raw(reg);
+    expect(deque.length).toBe(2, "deque length is wrong");
+    expect(deque.front).toBe("-2", "wrong front element");
+    expect(deque.back).toBe("1", "wrong back element");
   });
 
   it("popping front", () => {

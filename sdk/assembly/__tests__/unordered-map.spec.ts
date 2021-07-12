@@ -1,4 +1,5 @@
-import { PersistentUnorderedMap, RNG } from "..";
+import { storage } from "near-sdk-core";
+import { PersistentUnorderedMap, RNG, util } from "..";
 import { TextMessage } from "./model";
 import {
   _testTextMessage,
@@ -155,6 +156,17 @@ describe("Unordered Map should handle", () => {
     // return arr1;
     map.set(1, arr1);
     expect(map.getSome(1)[0]).toBe("123456789");
+  });
+
+  it("should handle raw operations", () => {
+    const map = new PersistentUnorderedMap<i32, string>("mapNumber");
+    map.set(1, "testString");
+
+    let reg = map.get_raw(1);
+    expect(util.read_register_string(reg)).toBe("{\"key\":1,\"value\":\"testString\"}");
+
+    map.set_raw(2, reg);
+    expect(map.getSome(2)).toBe("testString");
   });
 
   describe("Unordered Map order", () => {

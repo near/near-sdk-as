@@ -243,6 +243,73 @@ export class Storage {
     }
   }
 
+  /**
+   * Reads value of key into register.
+   *
+   * ```ts
+   * storage.read_raw("myKey", 1);
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param register_id The ID of the register to store the value of key into
+   * @returns An errorcode. A value of `1` means success.
+   */
+  static read_raw(key: string, register_id: u64): u64 {
+    let key_encoded = util.stringToBytes(key);
+    return env.storage_read(
+      key_encoded.byteLength,
+      key_encoded.dataStart,
+      register_id
+    );
+  }
+
+  /**
+   * Writes value of given register into the storage under the key.
+   *
+   * ```ts
+   * storage.write_key("myKey", 1);
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param register_id The ID of the register from which the value is obtained
+   * @returns An errorcode. A value of `1` means success.
+   */
+  static write_raw(key: string, register_id: u64): u64 {
+    let key_encoded = util.stringToBytes(key);
+    let res = env.storage_write(
+      key_encoded.byteLength,
+      key_encoded.dataStart,
+      0,
+      register_id,
+      register_id
+    );
+
+    return res;
+  }
+
+  /**
+   * Write input into register and then write that into storage under the key.
+   *
+   * ```ts
+   * storage.write_input("myKey"); // Defaults to using register 1
+   * storage.write_input("myKey", 1);
+   * ```
+   *
+   * @param key The unique identifier associated with a value in a key-value store
+   * @param register_id The ID of the register from which the input value is stored, defaults to 1
+   */
+  static write_input(key: string, register_id: u64 = 1): void {
+    let key_encoded = util.stringToBytes(key);
+    env.input(register_id);
+    env.storage_write(
+      key_encoded.byteLength,
+      key_encoded.dataStart,
+      0,
+      register_id,
+      register_id
+    );
+  }
+
   private static _internalReadBytes(key: string): Uint8Array | null {
     let key_encoded = util.stringToBytes(key);
     let res = env.storage_read(
