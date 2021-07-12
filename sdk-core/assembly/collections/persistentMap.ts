@@ -110,7 +110,10 @@ export class PersistentMap<K, V> {
    * @returns Value for the given key or the default value.
    */
   get(key: K, defaultValue: V | null = null): V | null {
-    return storage.get<V>(this._key(key), defaultValue);
+    if (defaultValue) {
+      return storage.get<V>(this._key(key), defaultValue);
+    }
+    return storage.get<V>(this._key(key));
   }
 
   /**
