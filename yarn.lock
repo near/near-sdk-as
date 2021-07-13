@@ -2073,13 +2073,13 @@ asap@^2.0.0:
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
-asbuild@^0.2.1-0:
-  version "0.2.1-0"
-  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.2.1-0.tgz#92e1c2eb607cb2e91eb9fdcfcbb21fe28e24d22a"
-  integrity sha512-Okd6qKHdLCC1D0OuHFOxav/9rOFB7Tf3z88fD/56XzLmDsuGdy3ohdmNSZy1kT93HVpmhfJEzyI8/nneI3YpnQ==
+asbuild@^0.3.0-0:
+  version "0.3.0-0"
+  resolved "https://registry.yarnpkg.com/asbuild/-/asbuild-0.3.0-0.tgz#40284d5a0c04f9b31d9672ae6fdc82b38a62a7d4"
+  integrity sha512-DH+gzUPbsl2cEMCAvDdigT188WZGV0NxrCR5tUlYWCPod1jtFAgoec0H3+ebhc6CxljAXxwKO4M5t04ONooY/Q==
   dependencies:
     "@as-pect/cli" "^6.0.0"
-    assemblyscript "^0.18.31"
+    assemblyscript "^0.19.6"
     chalk "^4.1.1"
     eslint "^7.17.0"
     yargs "^15.4.1"
@@ -2107,14 +2107,6 @@ assemblyscript-temporal@^1.11.0:
   integrity sha512-wpt49CdNPs0bTCn1IkssCWSFoO+hHwX/uCghQdjs+j8+PkxI+sbzfcoxabaCD4hcgY2qV7VahO4ulPXZSXrdtA==
   dependencies:
     assemblyscript-regex "^1.6.3"
-
-assemblyscript@^0.18.31:
-  version "0.18.32"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.18.32.tgz#cbb76076bd4d9702f4baae0a2910c9755c8e4ecd"
-  integrity sha512-Py6zremwGhO3nSoI/VxyVUzTZfNhTjzNzFDaUdG4JhPJHeG+FzVlEoNCrw4bE5nPc7F+P2DJ8tZQCqIt15ceKw==
-  dependencies:
-    binaryen "100.0.0-nightly.20210413"
-    long "^4.0.0"
 
 assemblyscript@^0.19.6:
   version "0.19.6"
@@ -2293,11 +2285,6 @@ binary-install@0.0.1, binary-install@^0.0.1:
     rimraf "^3.0.0"
     tar "^5.0.5"
     universal-url "^2.0.0"
-
-binaryen@100.0.0-nightly.20210413:
-  version "100.0.0-nightly.20210413"
-  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-100.0.0-nightly.20210413.tgz#b7f2a5bb1f76b2d6f9c67486ca218714b3766790"
-  integrity sha512-EeGLIxQmJS0xnYl+SH34mNBqVMoixKd9nsE7S7z+CtS9A4eoWn3Qjav+XElgunUgXIHAI5yLnYT2TUGnLX2f1w==
 
 binaryen@101.0.0-nightly.20210703:
   version "101.0.0-nightly.20210703"
@@ -8424,10 +8411,10 @@ visitor-as@^0.6.0:
     lodash.clonedeep "^4.5.0"
     ts-mixer "^5.4.1"
 
-visitor-as@^0.7.0-1:
-  version "0.7.0-1"
-  resolved "https://registry.yarnpkg.com/visitor-as/-/visitor-as-0.7.0-1.tgz#88009d6acca30c1be4d9b93429f1204a63f78874"
-  integrity sha512-0X1t0HbzCGDIC9Q8A27KMEUMrMtmWdS8YoJK4oF9ppo4CKZGKIJPphz5ZzuHuLdEC6eHhj9BYEBseaV5VT2F+A==
+visitor-as@^0.7.0-2:
+  version "0.7.0-2"
+  resolved "https://registry.yarnpkg.com/visitor-as/-/visitor-as-0.7.0-2.tgz#28f1c51801a677f14c4487c78a85ad541cfe382d"
+  integrity sha512-JDviqVnGn8i5qafLYuZUGlNeyc/8STIBnmNiXizvHO29xxJDaHNHxbr4Gh+9ksIJvMh9TNQKBeSyT2tldNbpJw==
   dependencies:
     lodash.clonedeep "^4.5.0"
     ts-mixer "^5.4.1"

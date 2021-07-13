@@ -22,12 +22,15 @@ import { getName, makeSnakeCase, toString } from "./utils";
 import { RangeTransform } from "visitor-as/dist/transformRange";
 
 export class FunctionClass extends BaseVisitor {
-  _class: ClassDeclaration;
+  _class!: ClassDeclaration;
 
   visitFunctionDeclaration(node: FunctionDeclaration): void {
     let name = getName(node);
     let fields = node.signature.parameters.map(
-      (p) => `${toString(p.name)}: ${getName(p.type)}`
+      (p) =>
+        `${toString(p.name)}: ${getName(p.type)}${
+          p.initializer ? " = " + toString(p.initializer) : ""
+        }`
     );
     let params = node.signature.parameters.map((p) => `this.${getName(p)}`);
     if (fields.length > 0) {

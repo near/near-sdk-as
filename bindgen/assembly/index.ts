@@ -1,5 +1,5 @@
 import { env, u128, util, Context, JSON as json } from "near-sdk-core";
-import { JSONEncoder as _JSONEncoder, JSON } from "assemblyscript-json";
+import { JSON } from "assemblyscript-json";
 import { storage } from "near-sdk-core";
 
 // Runtime functions

@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p src",
     "build:asconfig": "node asconfig.js",
     "pretest": "yarn build && yarn build:asconfig",
     "test": "node ./test.js"
@@ -38,6 +38,6 @@
     "near-sdk-core": "^3.2.0"
   },
   "dependencies": {
-    "visitor-as": "^0.6.0"
+    "visitor-as": "^0.7.0-2"
   }
 }

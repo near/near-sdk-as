@@ -73,3 +73,11 @@ declare function mutateState(): (target: any,
 declare function contractPrivate(): (target: any,
 propertyKey: string,
 descriptor: any) => void;
+
+
+declare namespace JSON {
+
+  function parse<T>(str: string): T;
+
+  function stringify<T>(t: T): string;
+}
