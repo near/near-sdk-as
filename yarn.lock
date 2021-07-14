@@ -1517,35 +1517,36 @@
   dependencies:
     "@octokit/openapi-types" "^8.2.1"
 
-"@serial-as/borsh@^1.0.1-alpha.0":
-  version "1.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/@serial-as/borsh/-/borsh-1.0.1-alpha.0.tgz#a2523df1058e1fab7e106b312006bd5e37b53101"
-  integrity sha512-Ck4X/UBHRumaquBViicSsfZ24eq9HvcZzheoDTCJL40TQYpEj8g/4T3PAhxsblMzoazLzBbA58MvVBTH4B1PeQ==
+"@serial-as/borsh@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@serial-as/borsh/-/borsh-1.0.2.tgz#20f2ff55783fb056a0aef3214e840a3c9460a6a9"
+  integrity sha512-CH1LV9Lo23Xj+BkoX17TVbqeK1bTQZNvJMzfBoBaevDqBf8Z2V6SCVGoKfgVINHbPSanpt0L2CiWsWPKRe7upQ==
   dependencies:
-    "@serial-as/core" "^1.0.1-alpha.0"
+    "@serial-as/core" "1.0.2"
 
-"@serial-as/core@^1.0.1-alpha.0":
-  version "1.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/@serial-as/core/-/core-1.0.1-alpha.0.tgz#e474f60e6f27c883f471ba1880fd675b315e1412"
-  integrity sha512-QMx8rDafBio5F/v1Ysw0JOHXElLTW8QTfroF2iQA7um6vqRA3TK1Bfh1tD+VnoIBS4+XRi1uoB/cgnrKGDK7Jg==
+"@serial-as/core@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@serial-as/core/-/core-1.0.2.tgz#a3b21d6962fed7aaae978d63bc0551be65b36ea6"
+  integrity sha512-aJFMzEn5eztHI5ZcxCGYiRXuj8xVQt+JGTzCVHq/NMBHubAi4MC48/e3VVjqGoHo+FdPlnGropx08YPrc3ENCw==
   dependencies:
-    "@serial-as/transform" "^1.0.1-alpha.0"
+    "@serial-as/transform" "1.0.2"
     as-bignum "^0.2.17"
 
-"@serial-as/json@^1.0.1-alpha.0":
-  version "1.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/@serial-as/json/-/json-1.0.1-alpha.0.tgz#02e69c10cbd8c1d5d4b30f1ce7838f0283297172"
-  integrity sha512-koP4yhXgCLwPtdWemaHnH/73bt0DWM2/3ZdCxRdh9efojwZXDkRz3n4N6aghVykhHIgpC0woEy94TWz4Ux1RTQ==
+"@serial-as/json@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@serial-as/json/-/json-1.0.2.tgz#7854a37df7f1805f3b1ad4508d1177faba9d79a5"
+  integrity sha512-ZuMb8bUJmo7aJGoAWp3xHYh/5K/BbYcID+sZlcILHQEWAz/2RaW4dkOquMmtBha+4PaaJ1RzDuTDe3zHuWBsSQ==
   dependencies:
-    "@serial-as/core" "^1.0.1-alpha.0"
+    "@serial-as/core" "1.0.2"
     as-base64 "^0.2.0"
+    assemblyscript-json "^1.1.0"
 
-"@serial-as/transform@^1.0.1-alpha.0":
-  version "1.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/@serial-as/transform/-/transform-1.0.1-alpha.0.tgz#6a30e100420afd902ccfc6fb4c21032e8e488647"
-  integrity sha512-ZO5xh6E/OvcveyYXqXi37LOXqTvNWhkvyLVtjsm0TpfFpf1293mrElMyHt5NZhsxG9koJFpH9b48NsKS588/rg==
+"@serial-as/transform@1.0.2", "@serial-as/transform@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@serial-as/transform/-/transform-1.0.2.tgz#95ed7aa2879f13825ea4b404718ee1eca9ad71c7"
+  integrity sha512-1Uti3bxGYrkN1yhV0aVuAQ46dsEvWXUDVQ+2btC5nFo0N2UJ8860K3HVc6y3Xm2pEDMW/6IrmfZoapNV1E3jMw==
   dependencies:
-    visitor-as "^0.6.0"
+    visitor-as "^0.7.0-1"
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -2091,7 +2092,7 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-assemblyscript-json@^1.0.0:
+assemblyscript-json@^1.0.0, assemblyscript-json@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/assemblyscript-json/-/assemblyscript-json-1.1.0.tgz#49d38bc21f1ac36f2887528a35de6cf7d59c17be"
   integrity sha512-UbE8ts8csTWQgd5TnSPN7MRV9NveuHv1bVnKmDLoo/tzjqxkmsZb3lu59Uk8H7SGoqdkDSEE049alx/nHnSdFw==
@@ -8411,7 +8412,7 @@ visitor-as@^0.6.0:
     lodash.clonedeep "^4.5.0"
     ts-mixer "^5.4.1"
 
-visitor-as@^0.7.0-2:
+visitor-as@^0.7.0-1, visitor-as@^0.7.0-2:
   version "0.7.0-2"
   resolved "https://registry.yarnpkg.com/visitor-as/-/visitor-as-0.7.0-2.tgz#28f1c51801a677f14c4487c78a85ad541cfe382d"
   integrity sha512-JDviqVnGn8i5qafLYuZUGlNeyc/8STIBnmNiXizvHO29xxJDaHNHxbr4Gh+9ksIJvMh9TNQKBeSyT2tldNbpJw==

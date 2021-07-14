@@ -86,7 +86,7 @@ export function reverseWordTwo(): void {
   let promise = ContractPromise.create(
     contract, // contract account name
     method, // contract method name
-    reverseArgs.encode(), // serialized contract method arguments encoded as Uint8Array
+    reverseArgs, // serialized contract method arguments encoded as Uint8Array
     DEFAULT_GAS, // gas attached to the call
     u128.Zero // attached deposit to be sent with the call
   );
@@ -160,7 +160,7 @@ export function contractPromiseBatch(): ContractPromiseBatch {
 
   return ContractPromiseBatch.create(contract).function_call(
     method,
-    reverseArgs.encode(),
+    reverseArgs,
     u128.Zero,
     DEFAULT_GAS
   );

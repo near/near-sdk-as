@@ -38,6 +38,7 @@
     "near-sdk-core": "^3.2.0"
   },
   "dependencies": {
+    "@serial-as/transform": "^1.0.2",
     "visitor-as": "^0.7.0-2"
   }
 }

@@ -10,7 +10,7 @@ import { posixRelativePath } from "./utils";
 
 const regex = /\/\/.*@nearfile .*out/;
 class JSONTransformer extends Transform {
-  parser: Parser;
+  parser!: Parser;
 
   afterParse(parser: Parser): void {
     this.parser = parser;
