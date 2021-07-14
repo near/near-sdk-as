@@ -170,10 +170,10 @@ export function payableFunction(): void {}
 
 export function nonPayableFunction(): void {
   notPayable();
-  throw new Error("shouldn't see this " + Context.attachedDeposit.toString());
+  throw new Error(`shouldn't see this`);
 }
 
 export function oneYoctoFunction(): void {
   oneYocto();
-  throw new Error("shouldn't see this " + Context.attachedDeposit.toString());
+  throw new Error(`shouldn't see this`);
 }
