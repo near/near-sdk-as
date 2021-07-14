@@ -10,5 +10,6 @@ export declare class ClassExporter extends ClassDecorator {
     visitMethodDeclaration(node: MethodDeclaration): void;
     visitClassDeclaration(node: ClassDeclaration): void;
     get name(): string;
-    static visit(source: Source): void;
+    visitSource(node: Source): void;
+    static visit(sources: Source[]): Source[];
 }

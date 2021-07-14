@@ -1,5 +1,6 @@
+// @nearfile out
 import * as main from "./main";
-import { base64, logging, u128 } from "near-sdk-as";
+import { base64, logging, u128, JSON, util } from "near-sdk-as";
 import {
   FooBar,
   Nullables,
@@ -7,8 +8,8 @@ import {
   AnotherContainerClass,
 } from "./model";
 
-function roundtrip<T>(obj: T): T {
-  return decode<T>(encode<T>(obj));
+function roundTrip<T>(obj: T): T {
+  return JSON.parse<T>(JSON.stringify<T>(obj));
 }
 
 function isNull<T>(t: T): bool {
@@ -24,8 +25,16 @@ function equalFloat(f: f64, f1: f64): boolean {
   return Math.abs(f - f1) < SMALL_FLOAT;
 }
 
+function decodeJSON<T>(encoded: Uint8Array): T {
+  const str = util.bytesToString(encoded)!;
+  return JSON.parse<T>(str);
+}
+
+function encodeJSON<T>(t: T): Uint8Array {
+  return util.stringToBytes(JSON.stringify<T>(t));
+}
+
 export function runTest(): void {
-  logging.log("starting test");
   const original = new FooBar();
   original.u32Arr = [42, 11];
   original.foo = 321;
@@ -39,15 +48,11 @@ export function runTest(): void {
   original.uint8arrays[0] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
   original.uint8arrays[1] = base64.decode("aGVsbG8sIHdvcmxkIQ==");
   original.u64Arr = [10000000000, 100000000000];
-  // @ts-ignore
-  logging.log("Before: " + original.toJSON());
-  // @ts-ignore
-  const encoded = original.encode();
-  // @ts-ignore
-  let decoded: FooBar = decode<FooBar>(encoded);
-  logging.log("After:  " + decoded.toJSON());
-  let decodedStatic: FooBar = FooBar.decode(encoded);
-  assert(decoded.toJSON() == decodedStatic.toJSON());
+
+  const encoded = encodeJSON(original);
+  let decoded: FooBar = decodeJSON<FooBar>(encoded);
+  let decodedStatic: FooBar = decodeJSON<FooBar>(encoded);
+  assert(JSON.stringify(decoded) == JSON.stringify(decodedStatic));
   assert(original.foo == decoded.foo);
   assert(original.bar == decoded.bar);
   assert(
@@ -57,16 +62,14 @@ export function runTest(): void {
     base64.encode(original.uint8arrays[0]) ==
       base64.encode(decoded.uint8arrays[0])
   );
-  assert(original.arr[0][0] == "Hello");
+  assert(original.arr![0][0] == "Hello");
   assert(original.u64Arr[0] == decoded.u64Arr[0]);
   assert(original.u64_zero == decoded.u64_zero);
 
   const nullable = new Nullables();
-  logging.log(String.UTF8.decode(nullable.encode().buffer));
-  // @ts-ignore
-  const nullable2 = decode<Nullables>(nullable.encode());
+  
+  const nullable2 = roundTrip(nullable);
   assert(nullable2.str == null);
-  logging.log(isNull(nullable2.u128).toString());
   assert(
     isNull(nullable2.uint8Array),
     "expected nullable2.uint8Array to be null"
@@ -74,36 +77,41 @@ export function runTest(): void {
 
   const foobar2 = new FooBar();
   foobar2.arr = [];
-  const foobar2_ = decode<FooBar>(foobar2.encode());
-  assert(foobar2_.arr.length == foobar2.arr.length);
+  const foobar2_ = roundTrip(foobar2);
+  assert(foobar2_.arr!.length == foobar2.arr!.length);
 
   // Handle arrays without field;
   const arr: u64[] = [123456789];
   const encodedArr: Uint8Array = encode<u64[]>(arr);
-  const arr2: u64[] = decode<u64[]>(encodedArr);
+  const arr2: u64[] = decodeJSON<u64[]>(encodedArr);
   assert(arr[0] == arr2[0]);
   assert(original.f32 == decoded.f32);
   assert(original.f64 == decoded.f64);
   assert(original.f32_zero == decoded.f32_zero);
   assert(original.f64_zero == decoded.f64_zero);
 
-  assert(roundtrip<f32>(3.4) == 3.4);
+  assert(roundTrip<f32>(3.4) == 3.4);
 
-  assert(roundtrip<u64[]>([]).length == 0);
-  assert(roundtrip<i32>(42) == 42);
-  assert(roundtrip<i64>(42) == 42);
+  assert(roundTrip<u64[]>([]).length == 0);
+  assert(roundTrip<i32>(42) == 42);
+  assert(roundTrip<i64>(42) == 42);
+  const str = roundTrip<string>("hello world");
   assert(
-    roundtrip<string>("hello world") == "hello world",
-    'expected "hello world"'
+    str == "hello world",
+    'expected "hello world" + got '+ str
   );
-  assert(roundtrip<u128>(new u128(42, 42)).lo == 42);
+  assert(roundTrip<u128>(new u128(42, 42)).lo == 42);
 
   logging.log("Test Passed");
 }
 
+function _convertFoobars(foobars: Array<FooBar>): Array<ContainerClass> {
+  return foobars.map<ContainerClass>((foobar) => ({ foobar }));
+}
+
 export function convertFoobars(foobars: Array<FooBar>): Array<ContainerClass> {
   // @ts-ignore will be converted when parsed
-  return main.convertFoobars(foobars);
+  return _convertFoobars(foobars);
 }
 
 export function getStringArrayLength(arr: string[]): i32 {

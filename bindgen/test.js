@@ -137,6 +137,33 @@ async function loadModule(path) {
     return wrapped;
 }
 
+function defaultFoobar() { 
+  return {
+      foo: 42,
+      bar: 1,
+      u64Val: "4294967297",
+      i64Val: "-64",
+      f32: 3.140000104904175,
+      f64: 3.141592653589793238462643383279,
+      f32_zero: 0,
+      f64_zero: 0,
+      flag: false,
+      baz: "123",
+      uint8array: "",
+      arr: null,
+      u32Arr: [],
+      i32Arr: [],
+      uint8arrays: [],
+      u128Val: null,
+      u64Arr: [],
+      u64_zero: "0"
+  }
+}
+
+function insertFoobar(val) { 
+  return Object.assign(defaultFoobar(), val)
+}
+
 
 (async function() {
     const module = await loadModule(localize("/build/debug/test.wasm"));
@@ -150,28 +177,7 @@ async function loadModule(path) {
         foobars: [{ foo: -12345, bar: 123, flag: true, baz: "bazinga" }]
       }),
       [
-        {
-          foobar: {
-            foo: -12345,
-            bar: 123,
-            u64Val: (2 ** 32 + 1).toString(),
-            i64Val: "-64",
-            f32: 3.140000104904175,
-            f64: 3.141592653589793238462643383279,
-            f32_zero: 0,
-            f64_zero: 0,
-            flag: true,
-            baz: "bazinga",
-            uint8array: null,
-            arr: null,
-            u32Arr: null,
-            i32Arr: null,
-            u128Val: null,
-            uint8arrays: null,
-            u64Arr: null,
-            u64_zero: "0",
-          }
-        }
+        {foobar: insertFoobar({ foo: -12345, bar: 123, flag: true, baz: "bazinga" })}
       ]
     );
     assert.deepStrictEqual(
@@ -179,28 +185,7 @@ async function loadModule(path) {
         foobars: [{ arr: [["1", "2"], ["3"]] }]
       }),
       [
-        {
-          foobar: {
-            foo: 0,
-            bar: 1,
-            u64Val: "4294967297",
-            i64Val: "-64",
-            f32: 3.140000104904175,
-            f64: 3.141592653589793238462643383279,
-            f32_zero: 0,
-            f64_zero: 0,
-            flag: false,
-            baz: "123",
-            uint8array: null,
-            u128Val: null,
-            arr: [["1", "2"], ["3"]],
-            u32Arr: null,
-            i32Arr: null,
-            uint8arrays: null,
-            u64Arr: null,
-            u64_zero: "0"
-          }
-        }
+        {foobar: insertFoobar({ arr: [["1", "2"], ["3"]] })}
       ]
     );
     assert.equal(
@@ -212,52 +197,14 @@ async function loadModule(path) {
       {
         foobars: [
           [
-            {
-              foo: 123,
-              bar: 1,
-              u64Val: "4294967297",
-              i64Val: "-64",
-              f32: 3.140000104904175,
-              f64: 3.141592653589793238462643383279,
-              f32_zero: 0,
-              f64_zero: 0,
-              flag: false,
-              baz: "123",
-              uint8array: null,
-              arr: null,
-              u32Arr: null,
-              i32Arr: null,
-              uint8arrays: null,
-              u128Val: null,
-              u64Arr: null,
-              u64_zero: "0"
-            }
+            insertFoobar({foo: 123})
           ]
         ]
       }
     );
     assert.deepStrictEqual(
       await module.unwrapFoobar({ container: { foobars: [[{ foo: 123 }]] } }),
-      {
-        foo: 123,
-        bar: 1,
-        u64Val: "4294967297",
-        i64Val: "-64",
-        f32: 3.140000104904175,
-        f64: 3.141592653589793238462643383279,
-        f32_zero: 0,
-        f64_zero: 0,
-        u128Val: null,
-        flag: false,
-        baz: "123",
-        uint8array: null,
-        arr: null,
-        u32Arr: null,
-        i32Arr: null,
-        uint8arrays: null,
-        u64Arr: null,
-        u64_zero: "0"
-      }
+      insertFoobar({foo: 123})
     );
     assert.deepStrictEqual(await module.stringOrNull(), null);
     assert.deepStrictEqual(
@@ -266,26 +213,7 @@ async function loadModule(path) {
     );
 
     assert.deepStrictEqual(await module.classOrNull(),
-      {
-        foo: 0,
-        bar: 1,
-        u64Val: "4294967297",
-        i64Val: "-64",
-        f32: 3.140000104904175,
-        f64: 3.141592653589793238462643383279,
-        f32_zero: 0,
-        f64_zero: 0,
-        flag: false,
-        baz: "123",
-        uint8array: null,
-        arr: null,
-        u32Arr: null,
-        i32Arr: null,
-        uint8arrays: null,
-        u128Val: null,
-        u64Arr: null,
-        u64_zero: "0"
-      }
+      defaultFoobar()
     );
     assert.deepStrictEqual(await module.classAndNull(), null);
 

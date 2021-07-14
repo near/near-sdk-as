@@ -40,7 +40,6 @@ module.exports = {
     /** To select an appropriate runtime, use the --runtime compiler flag. */
     "--runtime": ["stub"], // Acceptable values are: full, half, stub (arena),
     "--baseDir": process.cwd(),
-    "--runPasses": ["inlining,dce"],
     "--config": path.join(__dirname, "asp.asconfig.json"),
     // "--showConfig": []
   },

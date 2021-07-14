@@ -1,3 +1,3 @@
-import { JSON } from "assemblyscript-json";
+import * as JSON from "@serial-as/json";
 
 export { JSON };

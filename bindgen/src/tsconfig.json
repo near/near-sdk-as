@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "../dist",
     "inlineSourceMap": true,
     "inlineSources": true,
     "target": "esnext",
@@ -12,10 +12,11 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noEmitOnError": true,
-    "allowJs": true,
+    "allowJs": false,
     "strictNullChecks": true,
     "experimentalDecorators": true,
-    "declaration": true
+    "declaration": true,
+    "lib": ["esnext","esnext.string"]
   },
-  "include": ["src/**/*"]
+  "include": ["./**/*"]
 }

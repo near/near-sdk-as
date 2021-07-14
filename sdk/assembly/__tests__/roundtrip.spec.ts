@@ -25,7 +25,7 @@ describe("Round Trip", () => {
     const message = _testTextMessage();
     // @ts-ignore
     const messageFromStorage = util.parseFromBytes<TextMessage>(
-      message.serialize()
+      encode(message)
     );
     expect<string>(messageFromStorage.sender).toStrictEqual(
       "mysteriousStranger",
@@ -46,7 +46,7 @@ describe("Round Trip", () => {
     log<TextMessage>(message);
     // @ts-ignore
     const messageFromStorage = util.parseFromBytes<TextMessage>(
-      message.serialize()
+      encode(message)
     );
     expect<string>(messageFromStorage.sender).toStrictEqual(
       message.sender,
@@ -66,7 +66,7 @@ describe("Round Trip", () => {
     const u32 = new Box<u32>();
     u32.t = 42;
     // @ts-ignore
-    const u32_2 = util.parseFromBytes<Box<u32>>(u32.serialize());
+    const u32_2 = util.parseFromBytes<Box<u32>>(encode(u32));
     expect<u32>(u32.t).toBe(u32_2.t);
   });
 
@@ -157,6 +157,7 @@ describe("Round Trip", () => {
 
     it("should handle entries", () => {
       aSet.add("hello");
+      const encodedA = String.UTF8.decode(encode(aSet).buffer);
       expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());
       aSet.add("world");
       expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());

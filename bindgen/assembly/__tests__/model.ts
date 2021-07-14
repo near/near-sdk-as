@@ -1,8 +1,9 @@
+// @nearfile out
 import { u128 } from "near-sdk-core";
 
 @nearBindgen
 export class FooBar {
-  foo: i32 = 0;
+  foo: i32 = 42;
   bar: u32 = 1;
   u64Val: u64 = 4294967297;
   u64_zero: u64;
@@ -13,26 +14,26 @@ export class FooBar {
   f64_zero: f64;
   flag: bool;
   baz: string = "123";
-  uint8array: Uint8Array;
-  arr: Array<Array<string>>;
-  u32Arr: u32[];
-  i32Arr: i32[];
-  u128Val: u128;
-  uint8arrays: Array<Uint8Array>;
+  uint8array: Uint8Array = new Uint8Array(0);
+  arr: Array<Array<string>> | null;
+  u32Arr: u32[] = [];
+  i32Arr: i32[] = [];
+  u128Val: u128 | null;
+  uint8arrays: Array<Uint8Array> = [];
   // TODO: Fix u64 arrays
-  u64Arr: u64[];
+  u64Arr: u64[] = [];
 }
 
 @nearBindgen
 export class Nullables {
-  str: string;
-  u128: u128;
-  uint8Array: Uint8Array;
+  str: string | null;
+  u128: u128 | null;
+  uint8Array: Uint8Array | null;
 }
 
 @nearBindgen
 export class ContainerClass {
-  foobar: FooBar;
+  foobar: FooBar | null;
 }
 
 @nearBindgen

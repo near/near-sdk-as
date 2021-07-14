@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p src",
     "build:asconfig": "node asconfig.js",
     "pretest": "yarn build && yarn build:asconfig",
     "test": "node ./test.js"
@@ -35,6 +35,10 @@
     "assembly/index.ts"
   ],
   "devDependencies": {
-    "near-sdk-core": "^3.2.1"
+    "near-sdk-core": "^3.2.0"
+  },
+  "dependencies": {
+    "@serial-as/transform": "^1.0.2",
+    "visitor-as": "^0.7.0-2"
   }
 }
