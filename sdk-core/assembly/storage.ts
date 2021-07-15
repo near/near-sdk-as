@@ -1,5 +1,8 @@
 import { env } from "./env";
 import { isNumber, isPrimitive, util } from "./util";
+import { Serializer, JSONSerial,
+  BorshSerial,
+} from "./serializer";
 
 /**
  * This class represents contract storage.
@@ -7,9 +10,15 @@ import { isNumber, isPrimitive, util } from "./util";
  * It is a key-value store that is persisted on the NEAR blockchain.
  */
 export class Storage {
-  @lazy static readonly storage: Storage = new Storage();
-  // @ts-ignore will exist when initialized
-  @lazy static readonly cachingStorage: CachingStorage = new CachingStorage();
+  constructor(protected serializer: Serializer = new JSONSerial()){}
+
+  protected encodeVal<T>(value: T): Uint8Array {
+    return this.serializer.encode<T>(value);
+  }
+
+  protected decodeVal<T>(value: Uint8Array): T {
+    return this.serializer.decode<T>(value);
+  }
 
   /**
    * Store string value under given key. Both key and value are encoded as UTF-8 strings.
@@ -151,16 +160,8 @@ export class Storage {
    * @param value The value stored at a particular key in a key-value store
    */
   set<T>(key: string, value: T): u64 {
-    if (isString<T>()) {
-      // @ts-ignore
-      return this.setString(key, value);
-    } else if (isInteger<T>()) {
-      // @ts-ignore
-      return this.setString(key, value.toString());
-    } else {
-      // @ts-ignore
-      return this.setBytes(key, encode<T>(value));
-    }
+    return this.setBytes(key, this.serializer.encode<T>(value));
+    
   }
 
   /**
@@ -182,21 +183,13 @@ export class Storage {
   get<T>(key: string, defaultValue: T | null = null): T | null {
     if (isPrimitive<T>()) {
       ERROR(
-        "Operation not supported. Please use storage.get<T> for non-primitives"
+        "Operation not supported. Please use storage.getPrimitive<T> for non-primitives"
       );
-      return null;
     }
-    if (isString<T>()) {
-      const strValue = this.getString(key);
-      return strValue == null
-        ? defaultValue
-        : util.parseFromString<T>(<string>strValue);
-    } else {
-      const byteValue = this.getBytes(key);
-      return byteValue == null
-        ? defaultValue
-        : util.parseFromBytes<T>(byteValue);
-    }
+    const byteValue = this.getBytes(key);
+    return byteValue == null
+      ? defaultValue
+      : this.serializer.decode<T>(byteValue);
   }
 
   /**
@@ -220,10 +213,7 @@ export class Storage {
         "Operation not supported. Please use storage.get<T> for non-primitives"
       );
     }
-    const strValue = this.getString(key);
-    return strValue == null
-      ? defaultValue
-      : util.parseFromString<T>(<string>strValue);
+    return <NonNullable<T>>this.get(key, defaultValue);
   }
 
   /**
@@ -244,11 +234,8 @@ export class Storage {
     if (!this.hasKey(key)) {
       assert(false, "Key '" + key + "' is not present in the storage");
     }
-    if (isString<T>() || isInteger<T>()) {
-      return util.parseFromString<T>(this.getString(key)!);
-    } else {
-      return util.parseFromBytes<T>(this.getBytes(key)!);
-    }
+    return this.serializer.decode<T>(<NonNullable<Uint8Array>>this.getBytes(key));
+    
   }
 
   private _internalReadBytes(key: string): Uint8Array | null {
@@ -504,3 +491,8 @@ export class CachingStorage extends Storage {
   }
 }
 
+// @ts-ignore will exist when initialized
+@lazy export const jsonStorage: CachingStorage = new CachingStorage();
+
+// @ts-ignore
+@lazy export const borshStorage: CachingStorage = new CachingStorage(new BorshSerial());

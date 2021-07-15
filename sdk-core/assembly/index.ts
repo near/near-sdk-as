@@ -12,11 +12,10 @@ export * from "./datetime";
 import * as JSON from "@serial-as/json";
 export { JSON };
 export * from "@serial-as/borsh";
+export * from "./serializer";
 
 export { u128, u256 } from "./bignum";
 
-import { Storage } from "./storage";
-
-// @ts-ignore
-@lazy
-export const storage = Storage.cachingStorage;
+export * from "./storage";
+import { jsonStorage } from "./storage";
+export { jsonStorage as storage };

@@ -1,16 +1,11 @@
 import { collections } from ".";
-import { Storage } from "..";
+import { Storage, jsonStorage } from "..";
 
 /**
  * Top level Collection class.
  */
 export abstract class Collection {
-
-  
-  constructor(protected storage: Storage = Storage.cachingStorage) {}
-
-
-
+  constructor(protected storage: Storage = jsonStorage) {}
 }
 
 export abstract class PrefixedCollection<K> extends Collection {
@@ -18,7 +13,7 @@ export abstract class PrefixedCollection<K> extends Collection {
     return this.prefix + collections._KEY_ELEMENT_SUFFIX;
   }
 
-  constructor(protected prefix: string, storage: Storage = Storage.cachingStorage){
+  constructor(protected prefix: string, storage: Storage = jsonStorage){
     super(storage);
   }
 
