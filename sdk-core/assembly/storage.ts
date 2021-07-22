@@ -1,5 +1,5 @@
 import { env } from "./env";
-import { isNumber, isPrimitive, util } from "./util";
+import { isNumber, util } from "./util";
 import { Serializer, JSONSerial,
   BorshSerial,
 } from "./serializer";
@@ -13,11 +13,11 @@ export class Storage {
   constructor(protected serializer: Serializer = new JSONSerial()){}
 
   protected encodeVal<T>(value: T): Uint8Array {
-    return this.serializer.encode<T>(value);
+    return this.serializer.ser<T>(value);
   }
 
   protected decodeVal<T>(value: Uint8Array): T {
-    return this.serializer.decode<T>(value);
+    return this.serializer.deser<T>(value);
   }
 
   /**
@@ -31,15 +31,7 @@ export class Storage {
    * @param value The value stored at a particular key in a key-value store
    */
   setString(key: string, value: string): u64 {
-    let key_encoded = util.stringToBytes(key);
-    let value_encoded = util.stringToBytes(value);
-    return env.storage_write(
-      key_encoded.byteLength,
-      key_encoded.dataStart,
-      value_encoded.byteLength,
-      value_encoded.dataStart,
-      0
-    );
+    return this.set<string>(key, value);
     // TODO: handle return value?
   }
 
@@ -54,7 +46,7 @@ export class Storage {
    * @returns String value stored under given key
    */
   getString(key: string): string | null {
-    return util.bytesToString(this._internalReadBytes(key));
+    return this.get<string>(key);
   }
 
   /**
@@ -160,8 +152,7 @@ export class Storage {
    * @param value The value stored at a particular key in a key-value store
    */
   set<T>(key: string, value: T): u64 {
-    return this.setBytes(key, this.serializer.encode<T>(value));
-    
+    return this.setBytes(key, this.serializer.ser<T>(value));
   }
 
   /**
@@ -181,7 +172,7 @@ export class Storage {
    * @returns A value of type T stored under the given key.
    */
   get<T>(key: string, defaultValue: T | null = null): T | null {
-    if (isPrimitive<T>()) {
+    if (isNumber<T>()) {
       ERROR(
         "Operation not supported. Please use storage.getPrimitive<T> for non-primitives"
       );
@@ -189,7 +180,7 @@ export class Storage {
     const byteValue = this.getBytes(key);
     return byteValue == null
       ? defaultValue
-      : this.serializer.decode<T>(byteValue);
+      : this.serializer.deser<T>(byteValue);
   }
 
   /**
@@ -208,12 +199,15 @@ export class Storage {
    * @returns A value of type T stored under the given key.
    */
   getPrimitive<T>(key: string, defaultValue: T): T {
-    if (!isPrimitive<T>()) {
+    if (!isNumber<T>()) {
       ERROR(
         "Operation not supported. Please use storage.get<T> for non-primitives"
       );
     }
-    return <NonNullable<T>>this.get(key, defaultValue);
+    if (!this.contains(key)) {
+      return defaultValue;
+    }
+    return this.getSome<T>(key);
   }
 
   /**
@@ -234,8 +228,7 @@ export class Storage {
     if (!this.hasKey(key)) {
       assert(false, "Key '" + key + "' is not present in the storage");
     }
-    return this.serializer.decode<T>(<NonNullable<Uint8Array>>this.getBytes(key));
-    
+    return this.serializer.deser<T>(<NonNullable<Uint8Array>>this.getBytes(key));
   }
 
   private _internalReadBytes(key: string): Uint8Array | null {
@@ -442,7 +435,7 @@ export class CachingStorage extends Storage {
    */
   get<T>(key: string, defaultValue: T | null = null): T | null {
     if (this.cache.has(key)) {
-      return this.cacheGet<T | null>(key);
+      return this.cacheGet<NonNullable<T>>(key);
     }
     return this.cacheSet(key, super.get<T>(key, defaultValue));
   }
@@ -466,7 +459,9 @@ export class CachingStorage extends Storage {
     if (this.cache.has(key)) {
       return this.cacheGet<T>(key);
     }
-    return this.cacheSet<T>(key, super.getPrimitive<T>(key, defaultValue));
+    let val = super.getPrimitive<T>(key, defaultValue);
+    if (val == defaultValue) { return defaultValue; }
+    return this.cacheSet<T>(key, val);
   }
 
   /**
@@ -492,7 +487,7 @@ export class CachingStorage extends Storage {
 }
 
 // @ts-ignore will exist when initialized
-@lazy export const jsonStorage: CachingStorage = new CachingStorage();
+@lazy export const jsonStorage: Storage = new Storage();
 
 // @ts-ignore
-@lazy export const borshStorage: CachingStorage = new CachingStorage(new BorshSerial());
+@lazy export const borshStorage: Storage = new Storage(new BorshSerial());

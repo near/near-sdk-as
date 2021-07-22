@@ -1,5 +1,5 @@
 import { collections } from ".";
-import { Storage } from "..";
+import { Storage, jsonStorage } from "..";
 import { PrefixedCollection } from "./collection";
 
 /**
@@ -27,7 +27,7 @@ import { PrefixedCollection } from "./collection";
  * @typeParam T The generic type parameter `T` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
  */
 @nearBindgen
-export class PersistentVector<T>  extends PrefixedCollection<i32>{
+export class PersistentVector<T> extends PrefixedCollection<i32>{
   private _lengthKey: string;
   private _length: i32;
 
@@ -44,8 +44,8 @@ export class PersistentVector<T>  extends PrefixedCollection<i32>{
    *
    * @param prefix A prefix to use for every key of this vector.
    */
-  constructor(prefix: string, storage: Storage = Storage.cachingStorage) {
-    super(prefix, storage);
+  constructor(prefix: string) {
+    super(prefix);
     this._lengthKey = prefix + collections._KEY_LENGTH_SUFFIX;
     this._length = -1;
   }
@@ -418,5 +418,11 @@ export class PersistentVector<T>  extends PrefixedCollection<i32>{
   @inline
   get first(): T {
     return this.front;
+  }
+}
+
+export class PersistentVectorJSON<T> extends PersistentVector<T>{
+  get storage(): Storage {
+    return jsonStorage;
   }
 }

@@ -172,9 +172,9 @@ describe("outcome", () => {
 
   it("should increase the storage usage more when first added", () => {
     const key = "hello";
-    const key_cost = String.UTF8.byteLength(key);
+    const key_cost = String.UTF8.byteLength(key, false);
     const value = "world";
-    const value_cost = String.UTF8.byteLength(value);
+    const value_cost = String.UTF8.byteLength(value, false) + 4; // u32 for length in borsh
     const initial_base_cost = 0;
 
     if (storage.contains("hello")) {
@@ -966,7 +966,7 @@ export function simple(s: string): string {
 }
 
 export function setKeyValue(key: string, value: string): void {
-  storage.set<string>(key, value);
+  storage.set(key, value);
 }
 
 export function getValueByKey(key: string): string | null {
@@ -974,7 +974,7 @@ export function getValueByKey(key: string): string | null {
 }
 
 export function setValue(value: string): string {
-  storage.set<string>("name", value);
+  storage.set("name", value);
   return value;
 }
 

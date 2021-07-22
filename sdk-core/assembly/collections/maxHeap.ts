@@ -1,11 +1,11 @@
-import { PersistentVector } from ".";
+import { Collection, orElse, PersistentVectorJSON, PersistentVector } from ".";
 
 /**
  * A max heap. Maintains a tree structure on an underlying vector. Storage cost Θ(n)
  * @typeParam T must implement `@operator(">")`
  */
 @nearBindgen
-export class MaxHeap<T> {
+export class MaxHeap<T> extends Collection {
   /**
    * Underlying vector
    */
@@ -22,8 +22,9 @@ export class MaxHeap<T> {
    *
    * @param prefix A unique prefix (per NEAR account) identifying this MaxHeap
    */
-  constructor(prefix: string) {
-    this._heap = new PersistentVector<T>(prefix);
+  constructor(prefix: string, _heap: PersistentVector<T> | null = null) {
+    super();
+    this._heap = orElse(_heap, new PersistentVector<T>(prefix));
   }
 
   /**
@@ -376,5 +377,12 @@ export class MaxHeap<T> {
     }
 
     return -1;
+  }
+}
+
+export class MaxHeapJSON<T> extends MaxHeap<T> {
+  constructor(prefix: string){
+    super(prefix, 
+      new PersistentVectorJSON<T>(prefix));
   }
 }

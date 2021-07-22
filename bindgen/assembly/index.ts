@@ -1,10 +1,13 @@
-import { env, u128, util, Context, JSON as json } from "near-sdk-core";
+import { env, u128, Context, JSONSerial } from "near-sdk-core";
 import { JSON } from "assemblyscript-json";
 import { storage } from "near-sdk-core";
 
 // Runtime functions
 // tslint:disable: no-unsafe-any
 /* eslint-disable  @typescript-eslint/no-unused-vars */
+
+// @ts-ignore
+@lazy const serializer = new JSONSerial();
 
 // @ts-ignore
 @global
@@ -26,21 +29,6 @@ function notPayable(): void {
 function oneYocto(): void {
   assert(Context.attachedDeposit == u128.One, "Requires attached deposit of exactly 1 yoctoNEAR");
 }
-
-// @ts-ignore
-// @global
-// function requireParameter<T>(name: string): T {
-//   assert(
-//     false,
-//     "Parameter " +
-//       name +
-//       " with type " +
-//       nameof<T>() +
-//       " is required but missing"
-//   );
-//   return __defaultValue<T>();
-// }
-
 
 type Usize = u64;
 // @ts-ignore
@@ -117,7 +105,7 @@ function getInputString(): string {
 function encode<T, _To = Uint8Array>(
   value: T
 ): Uint8Array {
-  return  util.stringToBytes(json.stringify(value));
+  return  serializer.ser(value);
 }
 
 
@@ -128,22 +116,11 @@ function isNumber<T>(): boolean {
 
 // @ts-ignore
 @global
-function decode<T>(buf: Uint8Array, name: string = ""): T {
-  const str = util.bytesToString(buf)!;
-  return json.parse<T>(str);
+function decode<T>(buf: Uint8Array): T {
+  return serializer.deser<T>(buf);
 
 }
 
-// @ts-ignore
-// @global
-// function __defaultValue<T>(): T {
-//   if (isInteger<T>() || isFloat<T>()) {
-//     // @ts-ignore
-//     return <T>0;
-//   }
-//   if (isString<T>()) return "";
-//   return changetype<T>(0);
-// }
 
 /**
  * Singleton support functions
@@ -172,7 +149,7 @@ function __setState<T>(state: T): void {
     storage.set(__STATE_KEY, state);
 }
 
-
+// @ts-ignore
 @global
 function __assertPrivate(): void {
   let contractName = Context.contractName;

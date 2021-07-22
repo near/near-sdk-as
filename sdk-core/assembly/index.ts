@@ -17,5 +17,5 @@ export * from "./serializer";
 export { u128, u256 } from "./bignum";
 
 export * from "./storage";
-import { jsonStorage } from "./storage";
-export { jsonStorage as storage };
+import { borshStorage } from "./storage";
+export { borshStorage as storage };

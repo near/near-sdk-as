@@ -1,6 +1,6 @@
 import { env } from "./env";
 import { util } from "./util";
-import { storage } from ".";
+import { borshStorage as storage } from ".";
 
 export namespace math {
   /**
@@ -99,16 +99,12 @@ export namespace math {
 
   export function keccak256(inp: Uint8Array): Uint8Array {
     env.keccak256(inp.byteLength, inp.dataStart, 0);
-    const hashedBytes = new Uint8Array(env.register_len(0) as i32);
-    env.read_register(0, hashedBytes.dataStart);
-    return hashedBytes;
+    return util.read_register(0);
   }
 
   export function keccak512(inp: Uint8Array): Uint8Array {
     env.keccak512(inp.byteLength, inp.dataStart, 0);
-    const hashedBytes = new Uint8Array(env.register_len(0) as i32);
-    env.read_register(0, hashedBytes.dataStart);
-    return hashedBytes;
+    return util.read_register(0);
   }
   /**
    * Returns a random seed.

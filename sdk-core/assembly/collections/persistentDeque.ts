@@ -1,4 +1,5 @@
 import { collections } from ".";
+import { jsonStorage, Storage } from "..";
 import { PrefixedCollection } from "./collection";
 
 /**
@@ -373,5 +374,12 @@ export class PersistentDeque<T> extends PrefixedCollection<i32> {
   @inline
   get last(): T {
     return this.back;
+  }
+}
+
+export class PersistentDequeJSON<T> extends PersistentDeque<T> {
+
+  get storage(): Storage {
+    return jsonStorage;
   }
 }

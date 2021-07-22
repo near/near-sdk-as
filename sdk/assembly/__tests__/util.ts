@@ -1,4 +1,8 @@
 import { TextMessage } from "./model";
+import { BorshSerial, JSONSerial } from "..";
+
+let serializer = new JSONSerial();
+let borshSerializer = new BorshSerial();
 
 // Testing helper functions
 export function _testBytes(): Uint8Array {
@@ -38,6 +42,11 @@ export function _testTextMessageThree(): TextMessage {
   return message;
 }
 
-export function roundtrip<T>(obj: T): T {
-  return decode<T>(encode<T>(obj));
+export function roundtrip<T>(obj: T, json: boolean = true, justVal: boolean = false): T {
+  const val = true ? serializer.deser<T>(serializer.ser<T>(obj))
+    : borshSerializer.deser<T>(borshSerializer.ser<T>(obj));
+  if (!justVal) {
+    expect(val).toStrictEqual(obj);
+  }
+  return val;
 }

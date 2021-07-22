@@ -1,3 +1,4 @@
+import { Storage, jsonStorage } from "..";
 import { PrefixedCollection } from "./collection";
 
 /**
@@ -136,5 +137,11 @@ export class PersistentMap<K, V> extends PrefixedCollection<K> {
    */
   set(key: K, value: V): void {
     this.storage.set<V>(this._key(key), value);
+  }
+}
+
+export class PersistentMapJSON<K, V> extends PersistentMap<K, V> {
+  get storage(): Storage {
+    return jsonStorage;
   }
 }

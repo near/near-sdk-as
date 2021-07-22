@@ -127,9 +127,3 @@ export function persist<T>(state: T): void {
 export function isNumber<T>(): boolean { 
   return isInteger<T>() || isFloat<T>();
 }
-
-// @ts-ignore
-@inline
-export function isPrimitive<T>(): boolean {
-  return isNumber<T>() || isString<T>();
-}

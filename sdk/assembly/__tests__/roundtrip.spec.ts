@@ -15,7 +15,8 @@ const NUM_RANDOM_FLOATS = 100;
 function testFloat<T>(): void {
   let rng = new RNG<T>(NUM_RANDOM_FLOATS);
   for (let i = 0; i < NUM_RANDOM_FLOATS; i++) {
-    expect(rng.next()).toBeCloseTo(roundtrip<T>(rng.last()));
+    expect(rng.next()).toBeCloseTo(roundtrip<T>(rng.last(), true, true));
+    expect(rng.last()).toBeCloseTo(roundtrip<T>(rng.last(), false, true));
   }
 }
 
@@ -65,24 +66,27 @@ describe("Round Trip", () => {
   it("should handle generics", () => {
     const u32 = new Box<u32>();
     u32.t = 42;
-    // @ts-ignore
-    const u32_2 = util.parseFromBytes<Box<u32>>(encode(u32));
-    expect<u32>(u32.t).toBe(u32_2.t);
+    roundtrip(u32);
+    roundtrip(u32, false);
   });
 
   it("should handle non-empty arrays", () => {
     const arr: Array<i32> = [42, 84];
-    expect<i32[]>(roundtrip<i32[]>(arr)).toStrictEqual(arr);
+    roundtrip(arr);
+    roundtrip(arr, false);
   });
 
   it("should handle empty arrays", () => {
     const arr: Array<i32> = [];
-    expect<i32[]>(roundtrip<i32[]>(arr)).toStrictEqual(arr);
+    roundtrip(arr);
+    roundtrip(arr, false);
   });
 
   it("should handle integers", () => {
-    expect<i32>(roundtrip<i32>(42)).toBe(42);
-    expect<i64>(roundtrip<i64>(42)).toBe(42);
+    roundtrip(42);
+    roundtrip(42, false);
+    roundtrip(42);
+    roundtrip(42, false);
   });
 
   it("should handle strings", () => {
@@ -106,27 +110,35 @@ describe("Round Trip", () => {
   describe("Persistent Collections are serializable ", () => {
     it("Vector", () => {
       let arr = new PersistentVector<string>("hi");
-      expect<PersistentVector<string>>(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
       arr.push("hello");
-      expect<PersistentVector<string>>(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
     });
     it("Set", () => {
       let arr = new PersistentSet<string>("hi");
-      expect(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
       arr.add("hello");
-      expect(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
     });
     it("Map", () => {
       let arr = new PersistentMap<string, string>("hi");
-      expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
       arr.set("hello", "world");
-      expect<PersistentMap<string, string>>(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
     });
     it("Deque", () => {
       let arr = new PersistentDeque<string>("hi");
-      expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
       arr.pushFront("hello");
-      expect<PersistentDeque<string>>(roundtrip(arr)).toStrictEqual(arr);
+      roundtrip(arr);
+      roundtrip(arr, false);
     });
   });
 
@@ -136,14 +148,17 @@ describe("Round Trip", () => {
     });
 
     it("should handle an empty map", () => {
-      expect(roundtrip(map)).toStrictEqual(map);
+      roundtrip(map);
+      roundtrip(map, false);
     });
 
     it("should handle entries", () => {
       map.set("hello", "world");
-      expect(roundtrip(map)).toStrictEqual(map);
+      roundtrip(map);
+      roundtrip(map, false);
       map.set("world", "hello");
-      expect(roundtrip(map)).toStrictEqual(map);
+      roundtrip(map);
+      roundtrip(map, false);
     });
   });
   describe("Set", () => {
@@ -152,15 +167,17 @@ describe("Round Trip", () => {
     });
 
     it("should handle an empty set", () => {
-      expect(roundtrip(aSet.values())).toStrictEqual([]);
+      roundtrip(aSet.values());
+      roundtrip(aSet.values(), false);
     });
 
     it("should handle entries", () => {
       aSet.add("hello");
-      const encodedA = String.UTF8.decode(encode(aSet).buffer);
-      expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());
+      roundtrip(aSet);
+      roundtrip(aSet, false);
       aSet.add("world");
-      expect(roundtrip(aSet).values()).toStrictEqual(aSet.values());
+      roundtrip(aSet);
+      roundtrip(aSet, false);
     });
   });
 });

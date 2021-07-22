@@ -1,8 +1,7 @@
-import { Storage } from "..";
-import { Collection } from "./collection";
-import { PersistentMap } from "./persistentMap";
-import { PersistentVector } from "./persistentVector";
-import { MapEntry } from "./util";
+import { Collection } from ".";
+import { PersistentMapJSON, PersistentMap } from "./persistentMap";
+import { PersistentVectorJSON, PersistentVector } from "./persistentVector";
+import { MapEntry, orElse } from "./util";
 
 export class PersistentUnorderedMap<K, V> extends Collection {
   private _map: PersistentMap<K, i32>;
@@ -20,10 +19,10 @@ export class PersistentUnorderedMap<K, V> extends Collection {
    *
    * @param prefix A prefix to use for every key of this map.
    */
-  constructor(prefix: string, storage: Storage = Storage.cachingStorage) {
-    super(storage);
-    this._map = new PersistentMap<K, i32>(prefix + ":map"); // stores key=>index
-    this._entries = new PersistentVector<MapEntry<K, V>>(prefix + ":entries"); // stores vec[index]=<key,value>
+  constructor(prefix: string, map: PersistentMap<K, i32> | null = null, entries: PersistentVector<MapEntry<K, V>> | null = null) {
+    super();
+    this._map = orElse(map, new PersistentMap<K, i32>(prefix + ":map")); // stores key=>index
+    this._entries = orElse(entries, new PersistentVector<MapEntry<K, V>>(prefix + ":entries")); // stores vec[index]=<key,value>
   }
 
   /**
@@ -232,5 +231,14 @@ export class PersistentUnorderedMap<K, V> extends Collection {
       let entry = this._entries.popBack();
       this._map.delete(entry.key);
     }
+  }
+}
+
+export class PersistentUnorderedMapJSON<K, V> extends PersistentUnorderedMap<K,V> {
+  constructor(prefix: string){
+    super(prefix, 
+      new PersistentMapJSON<K, i32>(prefix + ":map"),
+      new PersistentVectorJSON<MapEntry<K, V>>(prefix + ":entries")
+    );
   }
 }

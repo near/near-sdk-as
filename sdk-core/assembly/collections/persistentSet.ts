@@ -1,8 +1,8 @@
-import { PersistentMap } from "./persistentMap";
-import { PersistentVector } from "./persistentVector";
+import { PersistentMapJSON, PersistentMap } from "./persistentMap";
+import { PersistentVectorJSON, PersistentVector } from "./persistentVector";
 import { math } from "../math";
 import { Collection } from "./collection";
-import { Storage } from '../storage';
+import { orElse } from ".";
 
 /**
  * A vector class that implements a persistent array.
@@ -34,10 +34,13 @@ export class PersistentSet<T> extends Collection {
    * Always use a unique storage prefix for different collections.
    * @param prefix A prefix to use for every key of this set.
    */
-  constructor(prefix: string, storage: Storage = Storage.cachingStorage ) {
-    super(storage);
-    this._map = new PersistentMap<Uint8Array, i32>("_map" + prefix);
-    this._vector = new PersistentVector<T>("_vector" + prefix);
+  constructor(prefix: string, 
+    _map: PersistentMap<Uint8Array, i32> | null = null,
+    _vector: PersistentVector<T> | null = null, 
+  ) {
+    super();
+    this._map = orElse(_map, new PersistentMap<Uint8Array, i32>("_map" + prefix));
+    this._vector = orElse(_vector, new PersistentVector<T>("_vector" + prefix));
   }
 
   /**
@@ -129,5 +132,14 @@ export class PersistentSet<T> extends Collection {
     }
 
     return values;
+  }
+}
+
+export class PersistentSetJSON<T> extends PersistentSet<T> {
+  constructor(prefix: string){
+    super(prefix, 
+      new PersistentMapJSON<Uint8Array, i32>("_map" + prefix),
+      new PersistentVectorJSON<T>("_vector" + prefix)
+    );
   }
 }

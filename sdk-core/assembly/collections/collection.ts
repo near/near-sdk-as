@@ -1,11 +1,27 @@
 import { collections } from ".";
-import { Storage, jsonStorage } from "..";
-
+import { Storage, borshStorage } from "..";
+/* eslint-disable @typescript-eslint/no-empty-function */
 /**
- * Top level Collection class.
+ * Top level Collection class. Uses Borsh Storage by default
  */
 export abstract class Collection {
-  constructor(protected storage: Storage = jsonStorage) {}
+  /**
+   * The serializer should be a property so that the correct
+   * one is used when deserializing from storage.
+   *  */ 
+  get storage(): Storage {
+    return borshStorage;
+  }
+
+  /**
+   * Empty decode so as to not use property.
+   */
+  decode<T>(t: T): void {}
+  
+  /**
+   * Empty encode so as to not encode property.
+   */
+  encode<T>(t: T): void {}
 }
 
 export abstract class PrefixedCollection<K> extends Collection {
@@ -13,8 +29,8 @@ export abstract class PrefixedCollection<K> extends Collection {
     return this.prefix + collections._KEY_ELEMENT_SUFFIX;
   }
 
-  constructor(protected prefix: string, storage: Storage = jsonStorage){
-    super(storage);
+  constructor(protected prefix: string){
+    super();
   }
 
   /**

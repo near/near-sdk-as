@@ -1,6 +1,6 @@
-import { collections, PersistentMap, PersistentVector } from ".";
-import { MapEntry } from "./util";
-import { Storage } from "..";
+import { collections, PersistentMap, PersistentMapJSON, PersistentVector, PersistentVectorJSON, PrefixedCollection } from ".";
+import { MapEntry, orElse } from "./util";
+import { Storage, jsonStorage } from "..";
 
 @nearBindgen
 class Nullable<T> {
@@ -27,19 +27,22 @@ class AVLTreeNode<K> {
 }
 
 @nearBindgen
-export class AVLTree<K, V> {
-  private _val: PersistentMap<K, V>;
-  private _tree: PersistentVector<AVLTreeNode<K>>;
-  private _rootId: Nullable<NodeId> | null;
+export class AVLTree<K, V> extends PrefixedCollection<K>{
+  protected _val!: PersistentMap<K, V>;
+  protected _tree!: PersistentVector<AVLTreeNode<K>>;
+  protected _rootId: Nullable<NodeId> | null;
 
   /**
    * A string used as a prefix for writing keys to storage.
    */
-  constructor(private prefix: string, private storage: Storage = Storage.cachingStorage) {
-    this._val = new PersistentMap<K, V>(this._elementPrefix + "val");
-    this._tree = new PersistentVector<AVLTreeNode<K>>(
-      this._elementPrefix + "tree"
-    );
+  constructor(prefix: string, val: PersistentMap<K, V> | null = null, tree: PersistentVector<AVLTreeNode<K>> | null = null) {
+    super(prefix);
+    this._val = orElse(val,new PersistentMap<K, V>(this._elementPrefix + "val"));
+    this._tree = orElse(tree, new PersistentVector<AVLTreeNode<K>>(this._elementPrefix + "tree"));
+    this.initRoot();
+  }
+
+  initRoot(): void {
     this._rootId = this.storage.get<Nullable<NodeId>>(this._elementPrefix + "root");
   }
 
@@ -681,5 +684,20 @@ export class AVLTree<K, V> {
       ? this.isBalanced(this.node(root.left)) &&
           this.isBalanced(this.node(root.right))
       : true;
+  }
+}
+
+
+export class AVLTreeBorsh<K, V> extends AVLTree<K, V> {
+
+  constructor(prefix: string){
+    super(prefix, 
+      new PersistentMapJSON<K, V>(prefix + collections._KEY_ELEMENT_SUFFIX + "val"),
+    ), new PersistentVectorJSON<AVLTreeNode<K>>(
+      prefix + collections._KEY_ELEMENT_SUFFIX + "tree"
+    );
+  }
+  get storage(): Storage {
+    return jsonStorage;
   }
 }

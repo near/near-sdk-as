@@ -24,7 +24,7 @@ function loadNTimes(key: string, n: i32, s: Storage, message: string): void {
     if (i % 2)
       s.getSome<Foo>(key);
   }
-  log(`using ${message} host gas used after ${n} reads: ${Context.usedGas - before}`);
+  logging.log(`using ${message} host gas used after ${n} reads: ${Context.usedGas - before}`);
 }
 
 
@@ -32,8 +32,8 @@ export function runTest(i: i32): void {
   borshStorage.set(key2, value);
   jsonStorage.set(key1, value);
 
-  log(borshStorage.getSome<Uint8Array>(key2).length);
-  log(jsonStorage.getSome<Uint8Array>(key1).length);
+  log(borshStorage.getBytes(key2)!.length);
+  log(jsonStorage.getBytes(key1)!.length);
   loadNTimes(key1, i, normalStorage, "json no caching");
   loadNTimes(key1, i, jsonStorage, `json with caching`);
   loadNTimes(key2, i, borshNoCaching, "borsh no caching");

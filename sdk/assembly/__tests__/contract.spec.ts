@@ -9,7 +9,7 @@ describe("Contract", () => {
       "contract shouldn't exist in storage before putting it in."
     );
     storage.set("contract", contract);
-    const otherContract = storage.get<Contract>("contract")!;
+    const otherContract = storage.getSome<Contract>("contract");
     expect(contract.name).toBe(
       otherContract.name,
       "contracts should have the same name"
