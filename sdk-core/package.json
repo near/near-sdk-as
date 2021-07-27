@@ -12,18 +12,17 @@
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
     "@as-pect/cli": "^6.2.4",
-    "@serial-as/borsh": "^1.0.2",
+    "@serial-as/borsh": "^1.0.3",
     "@serial-as/json": "^1.0.2",
     "as-bignum": "^0.2.15",
     "asbuild": "^0.3.0-0",
-    "assemblyscript": "^0.19.6",
+    "assemblyscript": "^0.19.9",
     "assemblyscript-json": "^1.0.0",
     "assemblyscript-temporal": "^1.11.0",
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",
     "js-base64": "^3.4.3",
-    "near-vm": "^1.1.0",
-    "serial-as": "gagdiez/serial-as#feat/update_json"
+    "near-vm": "^1.1.0"
   },
   "scripts": {
     "test": "yarn build",

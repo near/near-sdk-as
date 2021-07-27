@@ -1517,10 +1517,10 @@
   dependencies:
     "@octokit/openapi-types" "^8.2.1"
 
-"@serial-as/borsh@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@serial-as/borsh/-/borsh-1.0.2.tgz#20f2ff55783fb056a0aef3214e840a3c9460a6a9"
-  integrity sha512-CH1LV9Lo23Xj+BkoX17TVbqeK1bTQZNvJMzfBoBaevDqBf8Z2V6SCVGoKfgVINHbPSanpt0L2CiWsWPKRe7upQ==
+"@serial-as/borsh@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@serial-as/borsh/-/borsh-1.0.3.tgz#30edf6414eff77f1f1bfe07c2146b7bb2538d5d3"
+  integrity sha512-g76LZ3+61y/TWA67uPz+namJ+/UMnuMSqFtXFP3G6iJwT18C/UR/crj737HkhKqvKrTayidJiB38C5lGgdYVgg==
   dependencies:
     "@serial-as/core" "1.0.2"
 
@@ -2117,6 +2117,14 @@ assemblyscript@^0.19.6:
     binaryen "101.0.0-nightly.20210703"
     long "^4.0.0"
 
+assemblyscript@^0.19.9:
+  version "0.19.9"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.19.9.tgz#c86abab27fd6639fc2de92261334ba2c899f64ae"
+  integrity sha512-nVEg1bbGBegJp+UO9okNHgjCX6sri4OrIkl/LCaNWLIvioN2IjFeYt3R6ppZ6L813VYJxKhf0hr6lhXOXw3dvA==
+  dependencies:
+    binaryen "101.0.0-nightly.20210723"
+    long "^4.0.0"
+
 assert-no-diff@^3.0.4:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/assert-no-diff/-/assert-no-diff-3.0.6.tgz#8e3c57747e6e24618ae490fe6d87c04d87f5f154"
@@ -2291,6 +2299,11 @@ binaryen@101.0.0-nightly.20210703:
   version "101.0.0-nightly.20210703"
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-101.0.0-nightly.20210703.tgz#dd722063eb7594a65b7128b7e4506201e22c27f5"
   integrity sha512-7iuRy/aSsd8BlO0ZOG4GqDI8z66UhazD10eeC3i14SOhZJ+MLC3I+BX5ydr3nk9g5j2PDGndxuYvm0gy+VJHYg==
+
+binaryen@101.0.0-nightly.20210723:
+  version "101.0.0-nightly.20210723"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-101.0.0-nightly.20210723.tgz#b6bb7f3501341727681a03866c0856500eec3740"
+  integrity sha512-eioJNqhHlkguVSbblHOtLqlhtC882SOEPKmNFZaDuz1hzQjolxZ+eu3/kaS10n3sGPONsIZsO7R9fR00UyhEUA==
 
 bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5:
   version "3.7.2"
@@ -7318,10 +7331,6 @@ semver@^6.0.0, semver@^6.2.0, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
-
-serial-as@gagdiez/serial-as#feat/update_json:
-  version "1.0.1-0"
-  resolved "https://codeload.github.com/gagdiez/serial-as/tar.gz/01a05a6befd3a11f6202d3569de071f8ead1a650"
 
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
