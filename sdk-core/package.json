@@ -12,7 +12,7 @@
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
     "@as-pect/cli": "^6.2.4",
-    "@serial-as/borsh": "^1.0.3",
+    "@serial-as/borsh": "^1.0.4",
     "@serial-as/json": "^1.0.2",
     "as-bignum": "^0.2.15",
     "asbuild": "^0.3.0-0",
