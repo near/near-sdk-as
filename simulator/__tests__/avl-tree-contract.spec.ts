@@ -1,4 +1,4 @@
-import { Runtime, Account } from "..";
+import { createSandbox, Account, ContractAccount, SandboxRunner, SandboxRuntime, TestRunnerFn } from "near-sandbox-runner";
 
 // copied and modified from https://gist.github.com/lsenta/15d7f6fcfc2987176b54
 class LittleRNG {
@@ -14,43 +14,43 @@ class LittleRNG {
   }
 }
 
-let runtime: Runtime;
-let avlTreeContract: Account, alice: Account;
+const AVL = "avl.test.near";
 
-function has(key: number): boolean {
-  return alice.call_other("avlTreeContract", "has", { key }).return_data;
+async function has(acct: ContractAccount, key: number): Promise<boolean> {
+  return (await acct.view("has", { key })).result;
 }
 
-function insert(key: number, value: number): void {
-  alice.call_other("avlTreeContract", "insert", { key, value });
+async function insert(acct: Account, key: number, value: number): Promise<void> {
+  await acct.call(AVL, "insert", { key, value });
 }
 
-function getSome(key: number): number {
-  return alice.call_other("avlTreeContract", "getSome", { key }).return_data;
+async function remove(acct: Account, key: number): Promise<void> {
+  await acct.call(AVL, "remove", { key });
 }
 
-function remove(key: number): void {
-  alice.call_other("avlTreeContract", "remove", { key });
+async function getSome(acct: ContractAccount, key: number): Promise<number> {
+  return (await acct.view("getSome", { key })).result;
 }
 
-function size(): number {
-  return alice.call_other("avlTreeContract", "size").return_data;
+async function size(acct: ContractAccount): Promise<number> {
+  return (await acct.view("size")).result;
 }
 
-function isBalanced(): boolean {
-  return alice.call_other("avlTreeContract", "isBalanced").return_data;
+async function isBalanced(acct: ContractAccount): Promise<boolean> {
+  return (await acct.view("isBalanced")).result;
 }
 
-function height(): number {
-  return alice.call_other("avlTreeContract", "height").return_data;
+
+async function height(acct: ContractAccount): Promise<number> {
+  return (await acct.view("height")).result;
 }
 
-function keys(): number[] {
-  return alice.call_other("avlTreeContract", "keys").return_data;
+async function keys(acct: ContractAccount): Promise<number[]> {
+  return (await acct.view("keys")).result;
 }
 
-function values(): number[] {
-  return alice.call_other("avlTreeContract", "values").return_data;
+async function values(acct: ContractAccount): Promise<number[]> {
+  return (await acct.view("values")).result;
 }
 
 function random(n: number): number[] {
@@ -78,36 +78,36 @@ function maxTreeHeight(n: number): number {
   return Math.ceil(h);
 }
 
-function insertKeys(keysToInsert: number[], map: Map<number, number>): void {
+async function insertKeys(root: Account, avl: ContractAccount, keysToInsert: number[], map: Map<number, number>): Promise<void> {
   for (let i = 0; i < keysToInsert.length; ++i) {
     const key = keysToInsert[i];
-    expect(has(key)).toBeFalsy();
+    expect(await has(avl, key)).toBeFalsy();
 
-    insert(key, i);
-    expect(getSome(key)).toStrictEqual(i);
+    await insert(root, key, i);
+    expect(await getSome(avl, key)).toStrictEqual(i);
 
     if (map) {
       map.set(key, i);
-      expect(getSome(key)).toStrictEqual(map.get(key)!);
+      expect(await getSome(avl, key)).toStrictEqual(map.get(key)!);
     }
   }
 }
 
-function removeKeys(keysToRemove: number[], map: Map<number, number>): void {
+async function removeKeys(root: Account, avl: ContractAccount, keysToRemove: number[], map: Map<number, number>): Promise<void> {
   for (let i = 0; i < keysToRemove.length; ++i) {
     const key = keysToRemove[i];
 
     if (map && map.has(key)) {
-      expect(getSome(key)).toStrictEqual(map.get(key)!);
+      expect(await getSome(avl, key)).toStrictEqual(map.get(key)!);
       map.delete(key);
     }
 
-    remove(key);
-    expect(has(key)).toBeFalsy();
+    await remove(root, key);
+    expect(await has(avl, key)).toBeFalsy();
   }
 }
 
-function generateRandomTree(n: number): Map<number, number> {
+async function generateRandomTree(root: Account, avl: ContractAccount, n: number): Promise<Map<number, number>> {
   const map = new Map<number, number>();
   const keysToInsert = random(2 * n);
   const keysToRemove = [];
@@ -115,35 +115,44 @@ function generateRandomTree(n: number): Map<number, number> {
     keysToRemove.push(keysToInsert[i]);
   }
 
-  insertKeys(keysToInsert, map);
-  removeKeys(keysToRemove, map);
+  await insertKeys(root, avl, keysToInsert, map);
+  await removeKeys(root, avl, keysToRemove, map);
 
   return map;
 }
 
-describe("avl tree contract calls", () => {
-  beforeEach(() => {
-    runtime = new Runtime();
-    alice = runtime.newAccount("alice");
-    avlTreeContract = runtime.newAccount(
-      "avlTreeContract",
+let avlSandbox: SandboxRunner;
+
+jest.setTimeout(10000)
+
+beforeAll(async () => {
+
+  avlSandbox = await createSandbox(async (sandbox: SandboxRuntime) => {
+    await sandbox.createAndDeploy(
+      AVL,
       __dirname + "/../build/debug/avlTreeContract.wasm"
     );
   });
+});
+describe("avl tree contract calls", () => {
 
-  it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", () => {
-    const n = 10;
-    const map = generateRandomTree(n);
-    const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
-    const sortedValues = [];
-    for (let i = 0; i < sortedKeys.length; ++i) {
-      sortedValues.push(map.get(sortedKeys[i])!);
-    }
+  it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", async () => {
+    await avlSandbox(async (sandbox: SandboxRuntime) => {
+      const root = sandbox.getRoot();
+      const avl = sandbox.getContractAccount(AVL);
+      const n = 10;
+      const map = await generateRandomTree(root, avl, n);
+      const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
+      const sortedValues = [];
+      for (let i = 0; i < sortedKeys.length; ++i) {
+        sortedValues.push(map.get(sortedKeys[i])!);
+      }
 
-    expect(size()).toStrictEqual(n);
-    expect(isBalanced()).toBeTruthy();
-    expect(height()).toBeLessThanOrEqual(maxTreeHeight(n));
-    expect(keys()).toStrictEqual(sortedKeys);
-    expect(values()).toStrictEqual(sortedValues);
+      expect(await size(avl)).toStrictEqual(n);
+      expect(await isBalanced(avl)).toBeTruthy();
+      expect(await height(avl)).toBeLessThanOrEqual(maxTreeHeight(n));
+      expect(await keys(avl)).toStrictEqual(sortedKeys);
+      expect(await values(avl)).toStrictEqual(sortedValues);
+    });
   });
 });
