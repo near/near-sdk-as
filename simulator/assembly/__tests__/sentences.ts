@@ -21,10 +21,10 @@ export function sample(): string {
   return "hello world";
 }
 export const DEFAULT_GAS: u64 = 10_000_000_000_000;
+const contract = "words.test.near";
 
 export function reverseWordThree(): void {
   const word = new Word("sample");
-  const contract = "words.examples";
   const method = "reverse";
 
   // setup args object for cross-contract call as key-value of contract method parameters
@@ -76,7 +76,6 @@ export function _onReverseCalledThree(word: Word): bool {
 
 export function reverseWordTwo(): void {
   const word = new Word("sample");
-  const contract = "words.examples";
   const method = "reverse";
 
   // setup args object for cross-contract call as key-value of contract method parameters
@@ -124,7 +123,6 @@ export function _onReverseCalledTwo(): bool {
 
 export function reverseWordOne(): void {
   const word = new Word("sample");
-  const contract = "words.examples";
   const method = "reverse";
 
   // setup args object for cross-contract call as key-value of contract method parameters
@@ -153,7 +151,6 @@ export function getBlock_timestamp(): u64 {
 
 export function contractPromiseBatch(): ContractPromiseBatch {
   const word = new Word("sample");
-  const contract = "words.examples";
   const method = "reverse";
 
   let reverseArgs = new ReverseArgs(word);

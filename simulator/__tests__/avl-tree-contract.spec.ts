@@ -17,7 +17,7 @@ class LittleRNG {
 const AVL = "avl.test.near";
 
 async function has(acct: ContractAccount, key: number): Promise<boolean> {
-  return (await acct.view("has", { key })).result;
+  return acct.view("has", { key })!;
 }
 
 async function insert(acct: Account, key: number, value: number): Promise<void> {
@@ -110,10 +110,7 @@ async function removeKeys(root: Account, avl: ContractAccount, keysToRemove: num
 async function generateRandomTree(root: Account, avl: ContractAccount, n: number): Promise<Map<number, number>> {
   const map = new Map<number, number>();
   const keysToInsert = random(2 * n);
-  const keysToRemove = [];
-  for (let i = 0; i < n; ++i) {
-    keysToRemove.push(keysToInsert[i]);
-  }
+  const keysToRemove = keysToInsert.slice(0, n);
 
   await insertKeys(root, avl, keysToInsert, map);
   await removeKeys(root, avl, keysToRemove, map);
@@ -123,25 +120,28 @@ async function generateRandomTree(root: Account, avl: ContractAccount, n: number
 
 let avlSandbox: SandboxRunner;
 
-jest.setTimeout(10000)
+jest.setTimeout(100_000)
 
 beforeAll(async () => {
-
   avlSandbox = await createSandbox(async (sandbox: SandboxRuntime) => {
     await sandbox.createAndDeploy(
       AVL,
       __dirname + "/../build/debug/avlTreeContract.wasm"
     );
   });
+  console.log('avlSandbox', avlSandbox)
 });
 describe("avl tree contract calls", () => {
 
   it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", async () => {
+    console.log('starting actual test')
     await avlSandbox(async (sandbox: SandboxRuntime) => {
+      console.log('in main test func')
       const root = sandbox.getRoot();
       const avl = sandbox.getContractAccount(AVL);
       const n = 10;
       const map = await generateRandomTree(root, avl, n);
+      console.log('generated Tree', map)
       const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
       const sortedValues = [];
       for (let i = 0; i < sortedKeys.length; ++i) {
