@@ -1,4 +1,11 @@
-import { createSandbox, Account, ContractAccount, SandboxRunner, SandboxRuntime, TestRunnerFn } from "near-sandbox-runner";
+import {
+  createSandbox,
+  Account,
+  ContractAccount,
+  SandboxRunner,
+  SandboxRuntime,
+  TestRunnerFn,
+} from "near-runner";
 
 // copied and modified from https://gist.github.com/lsenta/15d7f6fcfc2987176b54
 class LittleRNG {
@@ -17,10 +24,14 @@ class LittleRNG {
 const AVL = "avl.test.near";
 
 async function has(acct: ContractAccount, key: number): Promise<boolean> {
-  return acct.view("has", { key })!;
+  return acct.view("has", { key });
 }
 
-async function insert(acct: Account, key: number, value: number): Promise<void> {
+async function insert(
+  acct: Account,
+  key: number,
+  value: number
+): Promise<void> {
   await acct.call(AVL, "insert", { key, value });
 }
 
@@ -29,28 +40,27 @@ async function remove(acct: Account, key: number): Promise<void> {
 }
 
 async function getSome(acct: ContractAccount, key: number): Promise<number> {
-  return (await acct.view("getSome", { key })).result;
+  return await acct.view("getSome", { key });
 }
 
 async function size(acct: ContractAccount): Promise<number> {
-  return (await acct.view("size")).result;
+  return await acct.view("size");
 }
 
 async function isBalanced(acct: ContractAccount): Promise<boolean> {
-  return (await acct.view("isBalanced")).result;
+  return await acct.view("isBalanced");
 }
 
-
 async function height(acct: ContractAccount): Promise<number> {
-  return (await acct.view("height")).result;
+  return await acct.view("height");
 }
 
 async function keys(acct: ContractAccount): Promise<number[]> {
-  return (await acct.view("keys")).result;
+  return await acct.view("keys");
 }
 
 async function values(acct: ContractAccount): Promise<number[]> {
-  return (await acct.view("values")).result;
+  return await acct.view("values");
 }
 
 function random(n: number): number[] {
@@ -78,7 +88,12 @@ function maxTreeHeight(n: number): number {
   return Math.ceil(h);
 }
 
-async function insertKeys(root: Account, avl: ContractAccount, keysToInsert: number[], map: Map<number, number>): Promise<void> {
+async function insertKeys(
+  root: Account,
+  avl: ContractAccount,
+  keysToInsert: number[],
+  map: Map<number, number>
+): Promise<void> {
   for (let i = 0; i < keysToInsert.length; ++i) {
     const key = keysToInsert[i];
     expect(await has(avl, key)).toBeFalsy();
@@ -93,7 +108,12 @@ async function insertKeys(root: Account, avl: ContractAccount, keysToInsert: num
   }
 }
 
-async function removeKeys(root: Account, avl: ContractAccount, keysToRemove: number[], map: Map<number, number>): Promise<void> {
+async function removeKeys(
+  root: Account,
+  avl: ContractAccount,
+  keysToRemove: number[],
+  map: Map<number, number>
+): Promise<void> {
   for (let i = 0; i < keysToRemove.length; ++i) {
     const key = keysToRemove[i];
 
@@ -107,7 +127,11 @@ async function removeKeys(root: Account, avl: ContractAccount, keysToRemove: num
   }
 }
 
-async function generateRandomTree(root: Account, avl: ContractAccount, n: number): Promise<Map<number, number>> {
+async function generateRandomTree(
+  root: Account,
+  avl: ContractAccount,
+  n: number
+): Promise<Map<number, number>> {
   const map = new Map<number, number>();
   const keysToInsert = random(2 * n);
   const keysToRemove = keysToInsert.slice(0, n);
@@ -120,7 +144,7 @@ async function generateRandomTree(root: Account, avl: ContractAccount, n: number
 
 let avlSandbox: SandboxRunner;
 
-jest.setTimeout(100_000)
+jest.setTimeout(100_000);
 
 beforeAll(async () => {
   avlSandbox = await createSandbox(async (sandbox: SandboxRuntime) => {
@@ -129,19 +153,18 @@ beforeAll(async () => {
       __dirname + "/../build/debug/avlTreeContract.wasm"
     );
   });
-  console.log('avlSandbox', avlSandbox)
+  console.log("avlSandbox", avlSandbox);
 });
 describe("avl tree contract calls", () => {
-
   it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", async () => {
-    console.log('starting actual test')
+    console.log("starting actual test");
     await avlSandbox(async (sandbox: SandboxRuntime) => {
-      console.log('in main test func')
+      console.log("in main test func");
       const root = sandbox.getRoot();
       const avl = sandbox.getContractAccount(AVL);
       const n = 10;
       const map = await generateRandomTree(root, avl, n);
-      console.log('generated Tree', map)
+      console.log("generated Tree", map);
       const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
       const sortedValues = [];
       for (let i = 0; i < sortedKeys.length; ++i) {

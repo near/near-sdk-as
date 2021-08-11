@@ -19,13 +19,13 @@ describe("cross contract calls", () => {
   });
 
   function addWord(alice: Account, hello: string) {
-    return alice.call({contractId: SENTENCES, methodName: "SetWord", args: {word: { text: hello }}});
+    return alice.call(SENTENCES, "SetWord", {word: { text: hello }});
   }
 
   test("single promise", async () => {
     await sandboxRunner(async (sandbox: SandboxRuntime) => {
       const alice = sandbox.getAccount(ALICE);
-      let res = await alice.call({contractId: SENTENCES, methodName: "reverseWordOne", args: {}});
+      let res = await alice.call(SENTENCES, "reverseWordOne", {});
       expect(res.text).toBe("elpmas");
     });
   });

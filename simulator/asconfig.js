@@ -15,3 +15,4 @@ let tests = [
 ];
 
 tests.map(compile_file);
+asb(["../sdk/assembly/__tests__/main.ts", ...process.argv.slice(2)]);
