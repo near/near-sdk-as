@@ -1,6 +1,7 @@
 test.sh
 tsconfig.json
 nearcore-tests/
+sdk-tests/
 assembly/__tests__
 **/*/out/
 bindgen/src

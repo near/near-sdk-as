@@ -1,0 +1,18 @@
+{
+  "name": "near-sdk-tests",
+  "version": "0.1.0",
+  "description": "Tests for near-sdk-as",
+  "license": "(MIT AND Apache-2.0)",
+  "private": true,
+  "author": "Willem Wyndham <willem@nearprotocol.com>",
+  "scripts": {
+    "build:release": "node asconfig.js",
+    "build": "node asconfig.js --target debug --wat",
+    "test": "yarn jest",
+    "pretest": "yarn build"
+  },
+  "devDependencies": {
+    "near-sdk-core": "^3.2.1",
+    "near-runner": "^0.5.2"
+  }
+}

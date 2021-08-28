@@ -6043,6 +6043,11 @@ near-sandbox@^0.0.5:
   dependencies:
     binary-install "^0.1.1"
 
+near-sdk-simulator@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/near-sdk-simulator/-/near-sdk-simulator-3.2.1.tgz#01097a0bb4798749a1223b0a88645ed608f3e0c7"
+  integrity sha512-ITAXyjDwYSDE6mD/q7SYk08NnQUCMe0UBB1gF9zkxicS+NKr6BIDNZ9JfHwKbaukvgZQGcsKUyd1v3luhePQaw==
+
 near-vm@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/near-vm/-/near-vm-1.1.0.tgz#3166bdef13e7071829d2f5621b16ddfe298e011c"

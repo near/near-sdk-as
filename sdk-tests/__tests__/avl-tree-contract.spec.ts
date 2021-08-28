@@ -168,7 +168,7 @@ describe("avl tree contract calls", () => {
       const root = alice;
       const n = 10;
       const map = await generateRandomTree(root, avl, n);
-      console.log("generated Tree", map);
+      // console.log("generated Tree", map);
       const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
       const sortedValues = [];
       for (let i = 0; i < sortedKeys.length; ++i) {
