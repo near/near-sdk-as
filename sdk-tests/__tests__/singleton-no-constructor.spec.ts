@@ -6,22 +6,8 @@ const SINGLETON = "singleton.test.near";
 let runner: Runner;
 jest.setTimeout(150_000);
 
-// function getErrorMsg(res: any) {
-//   try {
-//     return res.err["FunctionCallError"]["HostError"]["GuestPanic"].panic_msg;
-//   } catch (e) {
-//     throw new Error(JSON.stringify(res.err, null, 2));
-//   }
-// }
-
 describe("cross contract calls", () => {
   beforeEach(async () => {
-    // runtime = new Runtime();
-    // alice = runtime.newAccount("alice");
-    // singleton = runtime.newAccount(
-    //   "singleton",
-    //   __dirname + "/../build/debug/singleton-no-constructor.wasm"
-    // );
     runner = await Runner.create(async ({ root }) => {
       const alice = await root.createAccount(ALICE, {
         initialBalance: toYocto("200"),
@@ -42,9 +28,6 @@ describe("cross contract calls", () => {
   }
 
   it("should only initialize once", async () => {
-    // init();
-    // let res = init();
-    // expect(getErrorMsg(res)).toContain("contract is already initialized");
     await runner.run(async ({ alice, bob, singleton }) => {
       await init(alice);
       let _init = async () => await init(alice);
@@ -54,8 +37,6 @@ describe("cross contract calls", () => {
     });
   });
   it("shouldn't work if not initialized", async () => {
-    // let res = alice.call_other("singleton", "owner", {});
-    // expect(getErrorMsg(res)).toContain("contract is not initialized");
     await runner.run(async ({ alice, bob, singleton }) => {
       let res = async () => await alice.call(SINGLETON, "owner", {});
       await expect(res()).rejects.toThrowError("contract is not initialized");
@@ -63,9 +44,6 @@ describe("cross contract calls", () => {
   });
 
   it("should return owner", async () => {
-    // init();
-    // let res = singleton.view("owner");
-    // expect(res.return_data).toStrictEqual("alice");
     await runner.run(async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await singleton.view("owner");
@@ -74,17 +52,6 @@ describe("cross contract calls", () => {
   });
 
   it("should be able to visit", async () => {
-    // init();
-    // const bob = runtime.newAccount("bob");
-    // let res = bob.call_other("singleton", "visit");
-    // expect(res.result.outcome.logs).toContainEqual(
-    //   "Visited the first time by bob"
-    // );
-    // expect(singleton.view("hasVisited", { visitor: "bob" }).return_data).toBe(
-    //   true
-    // );
-    // expect(singleton.view("lastVisited", {}).return_data).toBe("bob");
-
     await runner.run(async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await bob.call_raw(SINGLETON, "visit", {});
@@ -98,17 +65,6 @@ describe("cross contract calls", () => {
   });
 
   it("should be able to visit without decorator", async () => {
-    // init();
-    // const bob = runtime.newAccount("bob");
-    // let res = bob.call_other("singleton", "visit_without_updated_decorator");
-    // expect(res.result.outcome.logs).toContainEqual(
-    //   "Visited the first time by bob"
-    // );
-    // expect(singleton.view("hasVisited", { visitor: "bob" }).return_data).toBe(
-    //   true
-    // );
-    // expect(singleton.view("lastVisited", {}).return_data).toBe("bob");
-
     await runner.run(async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await bob.call_raw(
@@ -125,14 +81,6 @@ describe("cross contract calls", () => {
   });
 
   it("should not update state to visit_without_change decorator", async () => {
-    // init();
-    // const bob = runtime.newAccount("bob");
-    // let res = bob.call_other("singleton", "visit_without_change");
-    // expect(res.result.outcome.logs).toContainEqual(
-    //   "Visited the first time by bob"
-    // );
-    // expect(singleton.view("lastVisited", {}).return_data).toBe("NULL");
-
     await runner.run(async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await bob.call_raw(SINGLETON, "visit_without_change", {});
@@ -144,12 +92,6 @@ describe("cross contract calls", () => {
   });
 
   it("should not have private methods", async () => {
-    // init();
-    // let res = alice.call_other("singleton", "hasNotVisited", {});
-    // expect(res.err["FunctionCallError"]["MethodResolveError"]).toContain(
-    //   "MethodNotFound"
-    // );
-
     await runner.run(async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = async () => await alice.call(SINGLETON, "hasNotVisited", {});

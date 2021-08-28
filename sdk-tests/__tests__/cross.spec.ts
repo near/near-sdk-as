@@ -15,17 +15,6 @@ jest.setTimeout(150_000);
 describe("cross contract calls", () => {
   let runner: Runner;
   beforeAll(async () => {
-    // sandboxRunner = await createSandbox(async (sandbox: SandboxRuntime) => {
-    //   await sandbox.createAccount(ALICE);
-    //   await sandbox.createAndDeploy(
-    //     SENTENCES,
-    //     __dirname + "/../build/debug/sentences.wasm"
-    //   );
-    //   await sandbox.createAndDeploy(
-    //     WORDS,
-    //     __dirname + "/../build/debug/words.wasm"
-    //   );
-    // });
     runner = await Runner.create(async ({ root }) => {
       const alice = await root.createAccount(ALICE);
       const words = await root.createAndDeploy(
@@ -45,11 +34,6 @@ describe("cross contract calls", () => {
   }
 
   test("single promise", async () => {
-    // await sandboxRunner(async (sandbox: SandboxRuntime) => {
-    //   const alice = sandbox.getAccount(ALICE);
-    //   let res = await alice.call(SENTENCES, "reverseWordOne", {});
-    //   expect(res.text).toBe("elpmas");
-    // });
     await runner.run(async ({ alice, words, sentences }) => {
       let res = await alice.call(SENTENCES, "reverseWordOne", {});
       expect(res.text).toBe("elpmas");
@@ -57,10 +41,6 @@ describe("cross contract calls", () => {
   });
 
   test("promise + then with no arguments", async () => {
-    // await sandboxRunner(async (sandbox: SandboxRuntime) => {
-    // let res = alice.call_other(SENTENCES, "reverseWordTwo");
-    // expect(res.return_data).toBe(true);
-    // });
     await runner.run(async ({ alice, words, sentences }) => {
       let res = await alice.call(
         SENTENCES,
@@ -73,10 +53,6 @@ describe("cross contract calls", () => {
   });
 
   test("promise + then with arguments", async () => {
-    // await sandboxRunner(async (sandbox: SandboxRuntime) => {
-    // let res = alice.call_other(SENTENCES, "reverseWordThree");
-    // expect(res.return_data).toBe(true);
-    // });
     await runner.run(async ({ alice, words, sentences }) => {
       let res = await alice.call(
         SENTENCES,
@@ -89,10 +65,6 @@ describe("cross contract calls", () => {
   });
 
   test("add to storage", async () => {
-    // await sandboxRunner(async (sandbox: SandboxRuntime) => {
-    //   addWord("hello");
-    //   expect(sentences.storage_usage).toBeGreaterThan(0);
-    // });
     await runner.run(async ({ alice, words, sentences }) => {
       await addWord(alice, "hello");
       expect(
@@ -102,10 +74,6 @@ describe("cross contract calls", () => {
   });
 
   test("read from storage with default", async () => {
-    // const word = sentences.view("GetWord").return_data;
-    // expect(word.text).toBe("DEFAULT");
-    // expect(sentences.state["word"]).toBe(undefined);
-
     await runner.run(async ({ alice, words, sentences }) => {
       const word: any = await sentences.view("GetWord");
       expect(word.text).toBe("DEFAULT");
@@ -114,11 +82,6 @@ describe("cross contract calls", () => {
   });
 
   test("read from storage", async () => {
-    // addWord("hello");
-    // const word = sentences.view("GetWord").return_data;
-    // expect(word.text).toBe("hello");
-    // expect(sentences.state["word"]).toStrictEqual(word);
-
     await runner.run(async ({ alice, words, sentences }) => {
       await addWord(alice, "hello");
       const word: Word = await sentences.view("GetWord");
@@ -171,19 +134,6 @@ describe("cross contract calls", () => {
   });
 
   test("contract should throw if attached deposit and non-payable method", async () => {
-    // let res = alice.call_other(
-    //   SENTENCES,
-    //   "nonPayableFunction",
-    //   {},
-    //   10000000000000,
-    //   "10"
-    // );
-    // expect(
-    //   res.err.FunctionCallError.HostError.GuestPanic.panic_msg.startsWith(
-    //     "Method doesn't accept deposit"
-    //   )
-    // ).toBe(true);
-
     await runner.run(async ({ alice, words, sentences }) => {
       let res = async () =>
         await alice.call(
@@ -197,19 +147,6 @@ describe("cross contract calls", () => {
   });
 
   test("contract should throw if attached deposit is not 1 yoctoNEAR and one yocto method", async () => {
-    // let res = alice.call_other(
-    //   SENTENCES,
-    //   "oneYoctoFunction",
-    //   {},
-    //   10000000000000,
-    //   "2"
-    // );
-    // expect(res.err.FunctionCallError.HostError.GuestPanic.panic_msg).toEqual(
-    //   expect.stringContaining(
-    //     "Requires attached deposit of exactly 1 yoctoNEAR"
-    //   )
-    // );
-
     await runner.run(async ({ alice, words, sentences }) => {
       let res = async () =>
         await alice.call(
@@ -225,11 +162,6 @@ describe("cross contract calls", () => {
   });
 
   test("exported from submodule", async () => {
-    // const str = "hello";
-    // const res = words.view("capitalize", { s: str }).result.outcome as any;
-    // expect(res.return_data.Value.substr(1, str.length)).toStrictEqual(
-    //   str.toUpperCase()
-    // );
     await runner.run(async ({ alice, words, sentences }) => {
       const str = "hello";
       const res = await words.view("capitalize", { s: str });

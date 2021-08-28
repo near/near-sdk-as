@@ -141,14 +141,6 @@ let runner: Runner;
 jest.setTimeout(100_000);
 
 beforeAll(async () => {
-  // avlSandbox = await createSandbox(async (sandbox: SandboxRuntime) => {
-  //   await sandbox.createAndDeploy(
-  //     AVL,
-  //     __dirname + "/../build/debug/avlTreeContract.wasm"
-  //   );
-  // });
-  // console.log("avlSandbox", avlSandbox);
-
   runner = await Runner.create(async ({ root }) => {
     const alice = await root.createAccount(ALICE, {
       initialBalance: toYocto("200"),
