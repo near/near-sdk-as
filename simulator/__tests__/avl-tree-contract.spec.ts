@@ -1,11 +1,4 @@
-import {
-  createSandbox,
-  Account,
-  ContractAccount,
-  SandboxRunner,
-  SandboxRuntime,
-  TestRunnerFn,
-} from "near-runner";
+import { Account, Runner, toYocto } from "near-runner";
 
 // copied and modified from https://gist.github.com/lsenta/15d7f6fcfc2987176b54
 class LittleRNG {
@@ -22,8 +15,9 @@ class LittleRNG {
 }
 
 const AVL = "avl.test.near";
+const ALICE = "alice.test.near";
 
-async function has(acct: ContractAccount, key: number): Promise<boolean> {
+async function has(acct: Account, key: number): Promise<boolean> {
   return acct.view("has", { key });
 }
 
@@ -39,27 +33,27 @@ async function remove(acct: Account, key: number): Promise<void> {
   await acct.call(AVL, "remove", { key });
 }
 
-async function getSome(acct: ContractAccount, key: number): Promise<number> {
+async function getSome(acct: Account, key: number): Promise<number> {
   return await acct.view("getSome", { key });
 }
 
-async function size(acct: ContractAccount): Promise<number> {
+async function size(acct: Account): Promise<number> {
   return await acct.view("size");
 }
 
-async function isBalanced(acct: ContractAccount): Promise<boolean> {
+async function isBalanced(acct: Account): Promise<boolean> {
   return await acct.view("isBalanced");
 }
 
-async function height(acct: ContractAccount): Promise<number> {
+async function height(acct: Account): Promise<number> {
   return await acct.view("height");
 }
 
-async function keys(acct: ContractAccount): Promise<number[]> {
+async function keys(acct: Account): Promise<number[]> {
   return await acct.view("keys");
 }
 
-async function values(acct: ContractAccount): Promise<number[]> {
+async function values(acct: Account): Promise<number[]> {
   return await acct.view("values");
 }
 
@@ -90,7 +84,7 @@ function maxTreeHeight(n: number): number {
 
 async function insertKeys(
   root: Account,
-  avl: ContractAccount,
+  avl: Account,
   keysToInsert: number[],
   map: Map<number, number>
 ): Promise<void> {
@@ -110,7 +104,7 @@ async function insertKeys(
 
 async function removeKeys(
   root: Account,
-  avl: ContractAccount,
+  avl: Account,
   keysToRemove: number[],
   map: Map<number, number>
 ): Promise<void> {
@@ -129,7 +123,7 @@ async function removeKeys(
 
 async function generateRandomTree(
   root: Account,
-  avl: ContractAccount,
+  avl: Account,
   n: number
 ): Promise<Map<number, number>> {
   const map = new Map<number, number>();
@@ -142,26 +136,36 @@ async function generateRandomTree(
   return map;
 }
 
-let avlSandbox: SandboxRunner;
+let runner: Runner;
 
 jest.setTimeout(100_000);
 
 beforeAll(async () => {
-  avlSandbox = await createSandbox(async (sandbox: SandboxRuntime) => {
-    await sandbox.createAndDeploy(
+  // avlSandbox = await createSandbox(async (sandbox: SandboxRuntime) => {
+  //   await sandbox.createAndDeploy(
+  //     AVL,
+  //     __dirname + "/../build/debug/avlTreeContract.wasm"
+  //   );
+  // });
+  // console.log("avlSandbox", avlSandbox);
+
+  runner = await Runner.create(async ({ root }) => {
+    const alice = await root.createAccount(ALICE, {
+      initialBalance: toYocto("200"),
+    });
+    const avl = await root.createAndDeploy(
       AVL,
       __dirname + "/../build/debug/avlTreeContract.wasm"
     );
+    return { alice, avl };
   });
-  console.log("avlSandbox", avlSandbox);
 });
 describe("avl tree contract calls", () => {
   it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", async () => {
     console.log("starting actual test");
-    await avlSandbox(async (sandbox: SandboxRuntime) => {
+    await runner.run(async ({ alice, avl }) => {
       console.log("in main test func");
-      const root = sandbox.getRoot();
-      const avl = sandbox.getContractAccount(AVL);
+      const root = alice;
       const n = 10;
       const map = await generateRandomTree(root, avl, n);
       console.log("generated Tree", map);

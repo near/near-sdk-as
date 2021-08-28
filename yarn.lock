@@ -6020,16 +6020,19 @@ near-hello@^0.5.0:
   resolved "https://registry.yarnpkg.com/near-hello/-/near-hello-0.5.1.tgz#68621928857afc21f5a7e0c21a47069a5dc058ef"
   integrity sha512-k7S8VFyESWgkKYDso99B4XbxAdo0VX9b3+GAaO5PvMgQjNr/6o09PHRywg/NkBQpf+ZYj7nNpJcyrNJGQsvA3w==
 
-near-runner@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/near-runner/-/near-runner-0.3.0.tgz#4ce204cbdbf684db72a339cf4d6b73eeccf01eb9"
-  integrity sha512-hfWQ4aqHe4mZNdWJPocIwZKomRYyi22Fcr9FkeabO8ifzOiYs3avB7+yccWBHbHB74KDadZdpv3WMsbTnFkiGg==
+near-runner@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/near-runner/-/near-runner-0.5.2.tgz#48494e1d4686d347d4ca6ccf979cf20d9234f3b4"
+  integrity sha512-C/Yvy6GjmHVIBszqXlOg6vjFemlRiHiF5OI/xMJRu8oCDvQ3RejsIG6valxtzHO4JrAtIf+DmRS8Zb7oSkruxg==
   dependencies:
     bn.js "^5.2.0"
+    borsh "^0.5.0"
     fs-extra "^10.0.0"
     near-api-js near/near-api-js#spike/sandbox-runner-tweaks
     near-sandbox "^0.0.5"
+    node-port-check "^2.0.1"
     promisify-child-process "^4.1.1"
+    pure-uuid "^1.6.2"
     rimraf "^3.0.2"
     temp-dir "^2.0.0"
 
@@ -6119,6 +6122,11 @@ node-notifier@^8.0.0:
     shellwords "^0.1.1"
     uuid "^8.3.0"
     which "^2.0.2"
+
+node-port-check@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/node-port-check/-/node-port-check-2.0.1.tgz#72cae367d3ca906b0903b261ce818c297aade11f"
+  integrity sha512-PV1tj5OPbWwxvhPcChXxwCIKl/IfVEdPP4u/gQz2lao/VGoeIUXb/4U72KSHLZpTVBmgTnMm0me7yR0wUsIuPg==
 
 nopt@^4.0.1:
   version "4.0.3"
@@ -6857,6 +6865,11 @@ punycode@^2.1.0, punycode@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+pure-uuid@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/pure-uuid/-/pure-uuid-1.6.2.tgz#64f3032d54953b93b0585be3263a2629f1d60a04"
+  integrity sha512-WQ4xz74ApW6s0BToRuuyuMo9g0VHx1HljY0H2gPng+mqqz/K1yLj7sHZonZZQ2++WfHl/ZzruilWvuz+WtmxjQ==
 
 q@^1.5.1:
   version "1.5.1"
