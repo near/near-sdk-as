@@ -12,7 +12,6 @@
     "pretest": "yarn build"
   },
   "devDependencies": {
-    "near-sdk-core": "^3.2.1",
-    "near-runner": "^0.5.2"
+    "near-sdk-core": "^3.2.1"
   }
 }

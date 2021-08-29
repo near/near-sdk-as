@@ -11,7 +11,7 @@
   "author": "Willem Wyndham <willem@nearprotocol.com>",
   "license": "(MIT AND Apache-2.0)",
   "dependencies": {
-    "@as-pect/cli": "^6.0.0",
+    "@as-pect/cli": "^6.2.4",
     "as-bignum": "^0.2.15",
     "asbuild": "^0.2.0",
     "assemblyscript": "^0.18.25",
