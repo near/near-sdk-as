@@ -9,6 +9,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     name: "${{ matrix.platform }} ${{ matrix.nodeversion }}"
     strategy:
+      fail-fast: false
       matrix:
         platform: [ubuntu-latest, macos-latest]
         nodeversion: ["14.x", "16.x"]
