@@ -20,7 +20,7 @@
     "bn.js": "^5.1.1",
     "bs58": "^4.0.1",
     "js-base64": "^3.4.3",
-    "near-runner": "^0.5.2",
+    "near-runner": "near/runner-js#feat/account-manager",
     "near-vm": "^1.1.0",
     "visitor-as": "^0.6.0"
   },
