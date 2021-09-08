@@ -1,4 +1,4 @@
-import { Account, Runner, toYocto } from "near-runner";
+import { NearAccount, Runner, toYocto } from "near-runner";
 
 // copied and modified from https://gist.github.com/lsenta/15d7f6fcfc2987176b54
 class LittleRNG {
@@ -17,44 +17,44 @@ class LittleRNG {
 const AVL = "avl.test.near";
 const ALICE = "alice.test.near";
 
-async function has(acct: Account, key: number): Promise<boolean> {
-  return acct.view("has", { key });
+async function has(acct: NearAccount, key: number): Promise<boolean> {
+  return <boolean>await acct.view("has", { key });
 }
 
 async function insert(
-  acct: Account,
+  acct: NearAccount,
   key: number,
   value: number
 ): Promise<void> {
   await acct.call(AVL, "insert", { key, value });
 }
 
-async function remove(acct: Account, key: number): Promise<void> {
+async function remove(acct: NearAccount, key: number): Promise<void> {
   await acct.call(AVL, "remove", { key });
 }
 
-async function getSome(acct: Account, key: number): Promise<number> {
-  return await acct.view("getSome", { key });
+async function getSome(acct: NearAccount, key: number): Promise<number> {
+  return <number>await acct.view("getSome", { key });
 }
 
-async function size(acct: Account): Promise<number> {
-  return await acct.view("size");
+async function size(acct: NearAccount): Promise<number> {
+  return <number>await acct.view("size");
 }
 
-async function isBalanced(acct: Account): Promise<boolean> {
-  return await acct.view("isBalanced");
+async function isBalanced(acct: NearAccount): Promise<boolean> {
+  return <boolean>await acct.view("isBalanced");
 }
 
-async function height(acct: Account): Promise<number> {
-  return await acct.view("height");
+async function height(acct: NearAccount): Promise<number> {
+  return <number>await acct.view("height");
 }
 
-async function keys(acct: Account): Promise<number[]> {
-  return await acct.view("keys");
+async function keys(acct: NearAccount): Promise<number[]> {
+  return <number[]>await acct.view("keys");
 }
 
-async function values(acct: Account): Promise<number[]> {
-  return await acct.view("values");
+async function values(acct: NearAccount): Promise<number[]> {
+  return <number[]>await acct.view("values");
 }
 
 function random(n: number): number[] {
@@ -83,8 +83,8 @@ function maxTreeHeight(n: number): number {
 }
 
 async function insertKeys(
-  root: Account,
-  avl: Account,
+  root: NearAccount,
+  avl: NearAccount,
   keysToInsert: number[],
   map: Map<number, number>
 ): Promise<void> {
@@ -103,8 +103,8 @@ async function insertKeys(
 }
 
 async function removeKeys(
-  root: Account,
-  avl: Account,
+  root: NearAccount,
+  avl: NearAccount,
   keysToRemove: number[],
   map: Map<number, number>
 ): Promise<void> {
@@ -122,8 +122,8 @@ async function removeKeys(
 }
 
 async function generateRandomTree(
-  root: Account,
-  avl: Account,
+  root: NearAccount,
+  avl: NearAccount,
   n: number
 ): Promise<Map<number, number>> {
   const map = new Map<number, number>();
@@ -136,12 +136,9 @@ async function generateRandomTree(
   return map;
 }
 
-let runner: Runner;
-
-jest.setTimeout(100_000);
-
-beforeAll(async () => {
-  runner = await Runner.create(async ({ root }) => {
+describe("avl tree contract calls", () => {
+  jest.setTimeout(100_000);
+  const runner = Runner.create(async ({ root }) => {
     const alice = await root.createAccount(ALICE, {
       initialBalance: toYocto("200"),
     });
@@ -151,8 +148,7 @@ beforeAll(async () => {
     );
     return { alice, avl };
   });
-});
-describe("avl tree contract calls", () => {
+
   it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", async () => {
     console.log("starting actual test");
     await runner.run(async ({ alice, avl }) => {
