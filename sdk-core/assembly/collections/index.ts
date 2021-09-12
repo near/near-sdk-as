@@ -57,3 +57,5 @@ export * from "./persistentUnorderedMap";
 export * from "./util";
 export * from "./avlTree";
 export * from "./maxHeap";
+export * from "./record";
+
