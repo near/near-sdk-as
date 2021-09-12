@@ -11,6 +11,9 @@
     "test": "yarn ava",
     "pretest": "yarn build"
   },
+  "dependencies": {
+    "near-sdk-core": "^3.2.1"
+  },
   "devDependencies": {
     "near-runner-ava": "^0.1.0",
     "near-sdk-core": "^3.2.1"
