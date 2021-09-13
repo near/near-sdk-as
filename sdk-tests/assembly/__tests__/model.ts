@@ -1,4 +1,4 @@
-import { ActiveRecord, Record, u128 } from "near-sdk-core";
+import { Record, u128 } from "near-sdk-core";
 
 // Exporting a new class TextMessage so it can be used outside of this file.
 @nearBindgen

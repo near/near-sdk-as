@@ -1,11 +1,12 @@
 import { storage, math } from "../..";
 
+@global
 @nearBindgen
 export class ActiveRecord<T> {
   public recordId: string;
   public records: Set<string>;
 
-  static _newRecord<T>(
+  private static _newRecord<T>(
     recordId: string,
     records: Set<string>
   ): ActiveRecord<T> {
@@ -15,8 +16,17 @@ export class ActiveRecord<T> {
     return n;
   }
 
-  _saveRecord(): void {
+  private _saveRecord(): void {
     storage.set(this.recordId, this);
+  }
+
+  private _get(pk: string): T {
+    const uri = this.getUri(pk);
+    const t = storage.get<T>(uri);
+    if (!t) {
+      throw new Error("Item with key '" + pk + "' found in Record but missing from storage");
+    }
+    return t;
   }
 
   static getOrCreateRecord<T>(recordId: string): ActiveRecord<T> {
@@ -30,15 +40,6 @@ export class ActiveRecord<T> {
 
   getUri(pk: string): string {
     return this.recordId + "#" + pk;
-  }
-
-  _get(pk: string): T {
-    const uri = this.getUri(pk);
-    const t = storage.get<T>(uri);
-    if (!t) {
-      throw new Error("Item found in Record but missing from storage");
-    }
-    return t;
   }
 
   add(pk: string, item: T): void {
