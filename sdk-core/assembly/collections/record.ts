@@ -1,4 +1,4 @@
-import { storage, math } from "..";
+import { storage } from "..";
 
 /**
  * This is an internal helper class for Active Record interface built on
@@ -120,14 +120,8 @@ export class ActiveRecord<T> {
 
 
 export class Record {
-  private _hashedItem<T>(item: T): Uint8Array {
-    let encodedItem = encode<T, Uint8Array>(item); // prep for hash
-    let hashedItem = math.keccak256(encodedItem); // produce the key
-    return hashedItem;
-  }
-
   primaryKey(): string {
-    return String.UTF8.decode(this._hashedItem(this));
+    throw new Error("NotImplemented");
   }
 
   static recordId(): string {
