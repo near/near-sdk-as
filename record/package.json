@@ -1,0 +1,24 @@
+{
+  "name": "near-active-record",
+  "version": "0.1.0",
+  "description": "Transform to enable Active Record Interface for Near Contract State",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Ashutosh Varma",
+  "license": "(MIT AND Apache-2.0)",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nearprotocol/near-sdk-as.git",
+    "directory": "record"
+  },
+  "bugs": {
+    "url": "https://github.com/nearprotocol/near-sdk-as/issues"
+  },
+  "homepage": "https://github.com/nearprotocol/near-sdk-as/tree/master/bindgen#readme",
+  "dependencies": {
+    "visitor-as": "^0.6.0"
+  },
+  "scripts": {
+    "build": "rimraf dist/ && tsc"
+  }
+}

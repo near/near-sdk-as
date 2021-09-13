@@ -29,6 +29,11 @@ declare function isNull<T>(t: T): bool;
  */
 declare function nearBindgen(_class: any): void;
 
+declare function record(_name: string): (_class: any) => void;
+declare function record(_class: any): void;
+
+declare function primaryKey(): any;
+
 declare function defaultValue<T>(): T;
 
 /**

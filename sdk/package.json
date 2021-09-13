@@ -15,7 +15,8 @@
     "near-mock-vm": "^3.2.2",
     "near-sdk-bindgen": "^3.2.1",
     "near-sdk-core": "^3.2.1",
-    "near-sdk-simulator": "^3.2.1"
+    "near-sdk-simulator": "^3.2.1",
+    "near-active-record": "^0.1.0"
   },
   "scripts": {
     "test": "yarn asp",

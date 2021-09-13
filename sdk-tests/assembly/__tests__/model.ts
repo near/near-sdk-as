@@ -20,8 +20,6 @@ export function capitalize(s: string): string {
   return s.toUpperCase();
 }
 
-
-
 @nearBindgen
 @record("UserXYZ")
 export class User extends Record{
@@ -37,42 +35,43 @@ export class User extends Record{
     this.has_claimed = has_claimed;
   }
 
-  //
-  // Transform Generated
-  //
+  // //
+  // // Transform Generated
+  // //
 
-  static recordId(): string {
-    return "UserXYZ";
-  }
+  // primaryKey(): string {
+  //   return this.name;
+  // }
 
-  primaryKey(): string {
-    return this.name;
-  }
+  // static recordId(): string {
+  //   return "UserXYZ";
+  // }
 
-  exists(): bool {
-    return ActiveRecord.getOrCreateRecord<User>(User.recordId()).exists(this.primaryKey());
-  }
+  // exists(): bool {
+  //   return ActiveRecord.getOrCreateRecord<User>(User.recordId()).exists(this.primaryKey());
+  // }
 
-  save(): void {
-    ActiveRecord.getOrCreateRecord<User>(User.recordId()).add(
-      this.primaryKey(),
-      this
-    );
-  }
+  // save(): void {
+  //   ActiveRecord.getOrCreateRecord<User>(User.recordId()).add(
+  //     this.primaryKey(),
+  //     this
+  //   );
+  // }
 
-  delete(): void {
-    ActiveRecord.getOrCreateRecord<User>(User.recordId()).delete(this.primaryKey());
-  }
+  // delete(): void {
+  //   ActiveRecord.getOrCreateRecord<User>(User.recordId()).delete(this.primaryKey());
+  // }
 
-  static findOne(pk: string): User | null {
-    return ActiveRecord.getOrCreateRecord<User>(User.recordId()).findOne(pk);
-  }
+  // static findOne(pk: string): User | null {
+  //   return ActiveRecord.getOrCreateRecord<User>(User.recordId()).findOne(pk);
+  // }
 
-  static find(pks?: string[]): Array<User | null> {
-    return ActiveRecord.getOrCreateRecord<User>(User.recordId()).find(pks);
-  }
+  // static find(pks?: string[]): Array<User | null> {
+  //   return ActiveRecord.getOrCreateRecord<User>(User.recordId()).find(pks);
+  // }
 
-  static getAll(): User[] {
-    return ActiveRecord.getOrCreateRecord<User>(User.recordId()).getAll();
-  }
+  // static getAll(): User[] {
+  //   return ActiveRecord.getOrCreateRecord<User>(User.recordId()).getAll();
+  // }
 }
+
