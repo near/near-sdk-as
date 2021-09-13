@@ -126,4 +126,18 @@ describe("Active Record", () => {
       expect(res[1]).toBeNull();
     });
   });
+
+  test.concurrent("empty user", async () => {
+    await runner.run(async ({ alice, record }) => {
+      const errFn = async () =>
+        await alice.call<boolean>(RECORD, "testEmptyFail", {});
+      await expect(errFn()).rejects.toThrowError("NotImplemented");
+    });
+  });
+  
+  test.concurrent("manual primary key user", async () => {
+    await runner.run(async ({ alice, record }) => {
+      await alice.call<boolean>(RECORD, "testManualPrimaryKey", {});
+    });
+  });
 });

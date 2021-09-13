@@ -75,3 +75,19 @@ export class User extends Record{
   // }
 }
 
+
+@nearBindgen
+@record
+export class UserManualPrimaryKey extends Record {
+  public name: string;
+  public balance: u128;
+  public has_claimed: bool
+
+  primaryKey(): string {
+    return this.name;
+  }
+}
+
+@nearBindgen
+@record
+export class UserEmpty extends Record {}

@@ -1,5 +1,5 @@
 import { u128 } from "near-sdk-core";
-import { User } from "./model";
+import { User, UserEmpty, UserManualPrimaryKey } from "./model";
 
 
 // ----------------------------------------------------------------------------
@@ -55,4 +55,24 @@ export function getClaimed(): User[] {
 
 export function searchUser(names: string[]): Array<User|null> {
   return <Array<User|null>>User.find(names);
+}
+
+export function testEmptyFail(): void {
+  const u = new UserEmpty();
+  u.save();
+}
+
+export function testManualPrimaryKey(): void {
+  const u = new UserManualPrimaryKey();
+  u.balance = u128.from(0);
+  u.name = "u1";
+  u.has_claimed = false;
+  u.save();
+
+  let found = UserManualPrimaryKey.findOne(u.primaryKey());
+  assert(found, "Save or Find Fail");
+
+  u.delete();
+  found = UserManualPrimaryKey.findOne(u.primaryKey());
+  assert(!found, "Delete Fail");
 }
