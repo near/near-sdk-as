@@ -22,13 +22,13 @@ export function delete_user(name: string): boolean {
 }
 
 export function get_user(name: string): User  {
-  const u = User.findOne(name);
+  const u = <User|null>User.findOne(name);
   if (!u) throw new Error("User not found");
   return u;
 }
 
 export function claim(name: string): User {
-  const u = User.findOne(name);
+  const u = <User|null>User.findOne(name);
   if (!u) throw new Error("User not found");
   u.has_claimed = true;
   u.save();
@@ -36,7 +36,7 @@ export function claim(name: string): User {
 }
 
 export function updateBalance(name: string, balance: u128): User {
-  const u = User.findOne(name);
+  const u = <User|null>User.findOne(name);
   if (!u) throw new Error("User not found");
   u.balance = balance;
   u.save();
@@ -44,7 +44,7 @@ export function updateBalance(name: string, balance: u128): User {
 }
 
 export function getClaimed(): User[] {
-  const all = User.getAll();
+  const all = <User[]>User.getAll();
   const claimed: User[] = [];
   for (let index = 0; index < all.length; index++) {
     const u = all[index];
@@ -54,5 +54,5 @@ export function getClaimed(): User[] {
 }
 
 export function searchUser(names: string[]): Array<User|null> {
-  return User.find(names);
+  return <Array<User|null>>User.find(names);
 }
