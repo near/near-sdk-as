@@ -1,4 +1,4 @@
-import { storage, math } from "../..";
+import { storage, math } from "..";
 
 @global
 @nearBindgen
