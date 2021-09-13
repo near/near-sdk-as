@@ -1,5 +1,33 @@
 import { storage, math } from "..";
 
+/**
+ * This is an internal helper class for Active Record interface built on
+ * top of NEAR Storage` class exposed by the NEAR platform.  It provides basic interface
+ * for an ORM-like records.
+ * 
+ * To get an active record for class T (that extends Record and decorated with @nearBindgen)
+ * 
+ * ```ts
+ * let record = ActiveRecord.getOrCreateRecord<T>("someId")   // choose unique key for each near account
+ * ```
+ * 
+ * To access the record
+ * 
+ * ```ts
+ * // add item (instance of T)
+ * record.add("abc", item);
+ * 
+ * // delete item
+ * record.delete("abc");
+ * 
+ * // find item
+ * let found = record.findOne("abc");
+ * ```
+ * 
+ * @typeParam T The generic type parameter `T` can be any class that extends `Record` and decorated with @nearBindgen.
+ *
+ * @internal
+ */
 @global
 @nearBindgen
 export class ActiveRecord<T> {
