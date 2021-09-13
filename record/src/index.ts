@@ -55,10 +55,10 @@ class RecordDecorator extends ClassDecorator {
 
   visitClassDeclaration(node: ClassDeclaration): void {
     const fields = node.members.filter(isInstanceField);
-    if (!fields) {
+    if (fields.length === 0) {
       return;
     }
-    this.visit(node.members);
+    this.visit(fields);
 
     const name = getName(node);
     const recordId = getRecordId(node);
