@@ -1,4 +1,4 @@
-import { storage } from "../..";
+import { storage, math } from "../..";
 
 @nearBindgen
 export class ActiveRecord<T> {
@@ -86,5 +86,46 @@ export class ActiveRecord<T> {
       res.push(this._get(pks[i]));
     }
     return res;
+  }
+}
+
+
+export class Record {
+  private _hashedItem<T>(item: T): Uint8Array {
+    let encodedItem = encode<T, Uint8Array>(item); // prep for hash
+    let hashedItem = math.keccak256(encodedItem); // produce the key
+    return hashedItem;
+  }
+
+  primaryKey(): string {
+    return String.UTF8.decode(this._hashedItem(this));
+  }
+
+  static recordId(): string {
+    throw new Error("NotImplemented");
+  }
+
+  exists(): bool {
+    throw new Error("NotImplemented");
+  }
+
+  save(): void {
+    throw new Error("NotImplemented");
+  }
+
+  delete(): void {
+    throw new Error("NotImplemented");
+  }
+
+  static findOne(pk: string): Record | null {
+    throw new Error("NotImplemented");
+  }
+
+  static find(pks?: string[]): Array<Record | null> {
+    throw new Error("NotImplemented");
+  }
+
+  static getAll(): Record[] {
+    throw new Error("NotImplemented");
   }
 }

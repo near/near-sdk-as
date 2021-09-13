@@ -1,5 +1,4 @@
-import { ActiveRecord, u128 } from "near-sdk-core";
-
+import { ActiveRecord, Record, u128 } from "near-sdk-core";
 
 // Exporting a new class TextMessage so it can be used outside of this file.
 @nearBindgen
@@ -24,14 +23,15 @@ export function capitalize(s: string): string {
 
 
 @nearBindgen
-// @record("UserXYZ")
-export class User {
-  // @primaryKey()
+@record("UserXYZ")
+export class User extends Record{
+  @primaryKey()
   name: string;
   balance: u128;
   has_claimed: bool;
 
   constructor(name: string, balance: u128,  has_claimed: bool) {
+    super();
     this.name = name;
     this.balance = balance;
     this.has_claimed = has_claimed;
