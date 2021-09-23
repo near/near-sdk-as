@@ -35,11 +35,11 @@ describe("Active Record", () => {
       );
       expect(res).toBe(true);
 
-      // check if it exists in contract state
-      let data = (await record.viewState()).get_raw(
-        "UserXYZ" + "#" + user1.name
+      // check if it exists
+      let u = <User>(
+        await alice.call<User>(RECORD, "get_user", { name: user1.name })
       );
-      expect(data.length).toBeGreaterThan(0);
+      expect(u.name).toBe(user1.name);
 
       // adding record with same pk should cause error
       const errFn = async () =>
@@ -134,7 +134,7 @@ describe("Active Record", () => {
       await expect(errFn()).rejects.toThrowError("NotImplemented");
     });
   });
-  
+
   test.concurrent("manual primary key user", async () => {
     await runner.run(async ({ alice, record }) => {
       await alice.call<boolean>(RECORD, "testManualPrimaryKey", {});

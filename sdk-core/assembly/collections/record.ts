@@ -1,3 +1,4 @@
+import { PersistentMap } from ".";
 import { storage, PersistentSet } from "..";
 
 /**
@@ -29,54 +30,47 @@ import { storage, PersistentSet } from "..";
  * @internal
  */
 @global
-@nearBindgen
 export class ActiveRecord<T> {
   public _id: string;
-  public _set: PersistentSet<string>;
+  public _map: PersistentMap<string, T>;
+  public _keys: PersistentSet<string>;
 
   constructor(recordId: string) {
-    const setKey = "_ps:" + recordId;
-    let pSet = storage.get<PersistentSet<string>>(setKey);
-    if (!pSet) {
-      pSet = new PersistentSet<string>("_ps:" + recordId);
+    let pMap = storage.get<PersistentMap<string, T>>("_map:" + recordId);
+    let pSet = storage.get<PersistentSet<string>>("_set:" + recordId);
+    if (!(pMap && pSet)) {
+      pMap = new PersistentMap<string, T>("_map:" + recordId);
+      pSet = new PersistentSet<string>("_set:" + recordId);
     }
     this._id = recordId;
-    this._set = pSet;
-  }
-
-  private _get(pk: string): T {
-    const uri = this._getUri(pk);
-    const t = storage.get<T>(uri);
-    if (!t) {
-      throw new Error("Item with key '" + pk + "' found in Record but missing from storage");
-    }
-    return t;
+    this._map = pMap;
+    this._keys = pSet;
   }
 
   static getOrCreateRecord<T>(recordId: string): ActiveRecord<T> {
     return new ActiveRecord<T>(recordId);
   }
 
-  private _getUri(pk: string): string {
-    return this._id + "#" + pk;
+  private _get(pk: string): T {
+    const t = this._map.get(pk);
+    if (!t) {
+      throw new Error("Item with key '" + pk + "' found in Record but missing from storage");
+    }
+    return t;
   }
 
   add(pk: string, item: T): void {
-    const uri = this._getUri(pk);
-    this._set.add(pk);
-
-    storage.set(uri, item);
+    this._map.set(pk, item);
+    this._keys.add(pk);
   }
 
   delete(pk: string): void {
-    const uri = this._getUri(pk);
-    this._set.delete(pk);
-
-    storage.delete(uri);
+    this._map.delete(pk);
+    this._keys.delete(pk);
   }
 
   exists(pk: string): bool {
-    return this._set.has(pk); 
+    return this._keys.has(pk); 
   }
 
   findOne(pk: string): T | null {
@@ -89,7 +83,7 @@ export class ActiveRecord<T> {
   find(pks?: string[]): Array<T | null> {
     const res: Array<T | null> = [];
     if (!pks) {
-      pks = this._set.values();
+      pks = this._keys.values();
     }
     for (let i = 0; i < pks.length; i++) {
       res.push(this.findOne(pks[i]));
@@ -99,7 +93,7 @@ export class ActiveRecord<T> {
 
   getAll(): T[] {
     const res: Array<T> = [];
-    const pks = this._set.values();
+    const pks = this._keys.values();
     for (let i = 0; i < pks.length; i++) {
       res.push(this._get(pks[i]));
     }
