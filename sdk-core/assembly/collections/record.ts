@@ -34,14 +34,14 @@ export class ActiveRecord<T> {
   public _id: string;
   public _set: PersistentSet<string>;
 
-  private static _newRecord<T>(
-    recordId: string,
-    records: PersistentSet<string>
-  ): ActiveRecord<T> {
-    const n = new ActiveRecord<T>();
-    n._id = recordId;
-    n._set = records;
-    return n;
+  constructor(recordId: string) {
+    const setKey = "_ps:" + recordId;
+    let pSet = storage.get<PersistentSet<string>>(setKey);
+    if (!pSet) {
+      pSet = new PersistentSet<string>("_ps:" + recordId);
+    }
+    this._id = recordId;
+    this._set = pSet;
   }
 
   private _get(pk: string): T {
@@ -54,12 +54,7 @@ export class ActiveRecord<T> {
   }
 
   static getOrCreateRecord<T>(recordId: string): ActiveRecord<T> {
-    const setKey = "_ps:" + recordId;
-    let pSet = storage.get<PersistentSet<string>>(setKey);
-    if (!pSet) {
-      pSet = new PersistentSet<string>("_ps:" + recordId);
-    }
-    return this._newRecord<T>(recordId, pSet);
+    return new ActiveRecord<T>(recordId);
   }
 
   private _getUri(pk: string): string {
