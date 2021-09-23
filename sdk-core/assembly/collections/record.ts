@@ -1,4 +1,4 @@
-import { storage } from "..";
+import { storage, PersistentSet } from "..";
 
 /**
  * This is an internal helper class for Active Record interface built on
@@ -31,25 +31,21 @@ import { storage } from "..";
 @global
 @nearBindgen
 export class ActiveRecord<T> {
-  public recordId: string;
-  public records: Set<string>;
+  public _id: string;
+  public _set: PersistentSet<string>;
 
   private static _newRecord<T>(
     recordId: string,
-    records: Set<string>
+    records: PersistentSet<string>
   ): ActiveRecord<T> {
     const n = new ActiveRecord<T>();
-    n.recordId = recordId;
-    n.records = records;
+    n._id = recordId;
+    n._set = records;
     return n;
   }
 
-  private _saveRecord(): void {
-    storage.set(this.recordId, this);
-  }
-
   private _get(pk: string): T {
-    const uri = this.getUri(pk);
+    const uri = this._getUri(pk);
     const t = storage.get<T>(uri);
     if (!t) {
       throw new Error("Item with key '" + pk + "' found in Record but missing from storage");
@@ -58,36 +54,34 @@ export class ActiveRecord<T> {
   }
 
   static getOrCreateRecord<T>(recordId: string): ActiveRecord<T> {
-    let record = storage.get<ActiveRecord<T>>(recordId);
-    if (!record) {
-      record = ActiveRecord._newRecord<T>(recordId, new Set<string>());
-      storage.set(recordId, record);
+    const setKey = "_ps:" + recordId;
+    let pSet = storage.get<PersistentSet<string>>(setKey);
+    if (!pSet) {
+      pSet = new PersistentSet<string>("_ps:" + recordId);
     }
-    return record;
+    return this._newRecord<T>(recordId, pSet);
   }
 
-  getUri(pk: string): string {
-    return this.recordId + "#" + pk;
+  private _getUri(pk: string): string {
+    return this._id + "#" + pk;
   }
 
   add(pk: string, item: T): void {
-    const uri = this.getUri(pk);
-    this.records.add(pk);
+    const uri = this._getUri(pk);
+    this._set.add(pk);
 
     storage.set(uri, item);
-    this._saveRecord();
   }
 
   delete(pk: string): void {
-    const uri = this.getUri(pk);
-    this.records.delete(pk);
+    const uri = this._getUri(pk);
+    this._set.delete(pk);
 
     storage.delete(uri);
-    this._saveRecord();
   }
 
   exists(pk: string): bool {
-    return this.records.has(pk); 
+    return this._set.has(pk); 
   }
 
   findOne(pk: string): T | null {
@@ -100,7 +94,7 @@ export class ActiveRecord<T> {
   find(pks?: string[]): Array<T | null> {
     const res: Array<T | null> = [];
     if (!pks) {
-      pks = this.records.values();
+      pks = this._set.values();
     }
     for (let i = 0; i < pks.length; i++) {
       res.push(this.findOne(pks[i]));
@@ -110,7 +104,7 @@ export class ActiveRecord<T> {
 
   getAll(): T[] {
     const res: Array<T> = [];
-    const pks = this.records.values();
+    const pks = this._set.values();
     for (let i = 0; i < pks.length; i++) {
       res.push(this._get(pks[i]));
     }
