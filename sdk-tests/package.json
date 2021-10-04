@@ -8,7 +8,7 @@
   "scripts": {
     "build:release": "node asconfig.js",
     "build": "node asconfig.js --target debug --wat",
-    "test": "yarn jest",
+    "test": "yarn ava",
     "pretest": "yarn build"
   },
   "devDependencies": {
