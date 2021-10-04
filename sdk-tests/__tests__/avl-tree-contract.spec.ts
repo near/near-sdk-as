@@ -1,4 +1,4 @@
-import { NearAccount, Runner, toYocto } from "near-runner";
+import { NearAccount, Runner, toYocto } from "near-runner-ava";
 
 // copied and modified from https://gist.github.com/lsenta/15d7f6fcfc2987176b54
 class LittleRNG {
@@ -16,6 +16,50 @@ class LittleRNG {
 
 const AVL = "avl.test.near";
 const ALICE = "alice.test.near";
+
+
+function random(n: number): number[] {
+  const rng = new LittleRNG(12345);
+  const keys = [];
+
+  for (let i = 0; i < n; ++i) {
+    keys.push(rng.next());
+  }
+
+  return keys;
+}
+
+function maxTreeHeight(n: number): number {
+  // From near-sdk-rs TreeMap:
+  // h <= C * log2(n + D) + B
+  // where:
+  // C =~ 1.440, D =~ 1.065, B =~ 0.328
+  // (source: https://en.wikipedia.org/wiki/AVL_tree)
+  const B = -0.328;
+  const C = 1.44;
+  const D = 1.065;
+
+  const h = C * Math.log2(n + D) + B;
+  return Math.ceil(h);
+}
+
+
+
+const runner = Runner.create(async ({ root }) => {
+  const alice = await root.createAccount(ALICE, {
+    initialBalance: toYocto("200"),
+  });
+  const avl = await root.createAndDeploy(
+    AVL,
+    __dirname + "/../build/debug/avlTreeContract.wasm"
+  );
+  return { alice, avl };
+});
+
+runner.test(
+  "remains balanced and sorted after 2n insertions and n deletions when called in a contract",
+  async (t, { alice, avl }) => {
+
 
 async function has(acct: NearAccount, key: number): Promise<boolean> {
   return <boolean>await acct.view("has", { key });
@@ -56,32 +100,6 @@ async function keys(acct: NearAccount): Promise<number[]> {
 async function values(acct: NearAccount): Promise<number[]> {
   return <number[]>await acct.view("values");
 }
-
-function random(n: number): number[] {
-  const rng = new LittleRNG(12345);
-  const keys = [];
-
-  for (let i = 0; i < n; ++i) {
-    keys.push(rng.next());
-  }
-
-  return keys;
-}
-
-function maxTreeHeight(n: number): number {
-  // From near-sdk-rs TreeMap:
-  // h <= C * log2(n + D) + B
-  // where:
-  // C =~ 1.440, D =~ 1.065, B =~ 0.328
-  // (source: https://en.wikipedia.org/wiki/AVL_tree)
-  const B = -0.328;
-  const C = 1.44;
-  const D = 1.065;
-
-  const h = C * Math.log2(n + D) + B;
-  return Math.ceil(h);
-}
-
 async function insertKeys(
   root: NearAccount,
   avl: NearAccount,
@@ -90,14 +108,14 @@ async function insertKeys(
 ): Promise<void> {
   for (let i = 0; i < keysToInsert.length; ++i) {
     const key = keysToInsert[i];
-    expect(await has(avl, key)).toBeFalsy();
+    t.true(await has(avl, key))
 
     await insert(root, key, i);
-    expect(await getSome(avl, key)).toStrictEqual(i);
+    t.deepEqual(await getSome(avl, key), i)
 
     if (map) {
       map.set(key, i);
-      expect(await getSome(avl, key)).toStrictEqual(map.get(key)!);
+      t.deepEqual(await getSome(avl, key), key)
     }
   }
 }
@@ -112,12 +130,12 @@ async function removeKeys(
     const key = keysToRemove[i];
 
     if (map && map.has(key)) {
-      expect(await getSome(avl, key)).toStrictEqual(map.get(key)!);
+      t.deepEqual(await getSome(avl, key), key);
       map.delete(key);
     }
 
     await remove(root, key);
-    expect(await has(avl, key)).toBeFalsy();
+    t.true(await has(avl, key))
   }
 }
 
@@ -136,38 +154,22 @@ async function generateRandomTree(
   return map;
 }
 
-describe("avl tree contract calls", () => {
-  jest.setTimeout(100_000);
-  const runner = Runner.create(async ({ root }) => {
-    const alice = await root.createAccount(ALICE, {
-      initialBalance: toYocto("200"),
-    });
-    const avl = await root.createAndDeploy(
-      AVL,
-      __dirname + "/../build/debug/avlTreeContract.wasm"
-    );
-    return { alice, avl };
-  });
 
-  it("remains balanced and sorted after 2n insertions and n deletions when called in a contract", async () => {
-    console.log("starting actual test");
-    await runner.run(async ({ alice, avl }) => {
-      console.log("in main test func");
-      const root = alice;
-      const n = 10;
-      const map = await generateRandomTree(root, avl, n);
-      // console.log("generated Tree", map);
-      const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
-      const sortedValues = [];
-      for (let i = 0; i < sortedKeys.length; ++i) {
-        sortedValues.push(map.get(sortedKeys[i])!);
-      }
+    console.log("in main test func");
+    const root = alice;
+    const n = 10;
+    const map = await generateRandomTree(root, avl, n);
+    // console.log("generated Tree", map);
+    const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
+    const sortedValues = [];
+    for (let i = 0; i < sortedKeys.length; ++i) {
+      sortedValues.push(map.get(sortedKeys[i])!);
+    }
 
-      expect(await size(avl)).toStrictEqual(n);
-      expect(await isBalanced(avl)).toBeTruthy();
-      expect(await height(avl)).toBeLessThanOrEqual(maxTreeHeight(n));
-      expect(await keys(avl)).toStrictEqual(sortedKeys);
-      expect(await values(avl)).toStrictEqual(sortedValues);
-    });
-  });
-});
+    t.is(await size(avl), n);
+    t.true(await isBalanced(avl));
+    t.is(await height(avl), maxTreeHeight(n));
+    t.deepEqual(await keys(avl), sortedKeys);
+    t.deepEqual(await values(avl), sortedValues);
+  }
+);

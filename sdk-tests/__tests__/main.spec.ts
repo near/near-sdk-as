@@ -1,10 +1,9 @@
-import { Account, Runner, toYocto } from "near-runner";
+import { Account, Runner, toYocto } from "near-runner-ava";
 
 let runner: Runner;
 const MAIN = "main.test.near";
 const ALICE = "alice.test.near";
 
-describe("cross contract calls", () => {
   jest.setTimeout(100_000);
 
   const runner = Runner.create(async ({ root }) => {
@@ -18,86 +17,72 @@ describe("cross contract calls", () => {
     return { alice, main };
   });
 
-  test.concurrent("getDefaultValue", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("getDefaultValue", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "getDefaultValue", {});
     });
   });
 
-  test.concurrent("mapTestsWithArray", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("mapTestsWithArray", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "mapTestsWithArray", {});
     });
   });
 
-  test.concurrent("base58Test", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("base58Test", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "base58Test", {});
     });
   });
 
-  test.concurrent("base64Test", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("base64Test", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "base64Test", {});
     });
   });
 
-  test.concurrent("logTest", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("logTest", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "logTest", {});
     });
   });
 
-  test.concurrent("storageStringRoundtripTest", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("storageStringRoundtripTest", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "storageStringRoundtripTest", {});
     });
   });
 
-  test.concurrent("storageBytesRoundtripTest", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("storageBytesRoundtripTest", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "storageBytesRoundtripTest", {});
     });
   });
 
-  test.concurrent("storageGenericGetSetRoundtripTest", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("storageGenericGetSetRoundtripTest", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "storageGenericGetSetRoundtripTest", {});
     });
   });
 
-  test.concurrent("mapTests", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("mapTests", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "mapTests", {});
     });
   });
 
-  test.concurrent("mapTestsWithPrimitices", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("mapTestsWithPrimitices", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "mapTestsWithPrimitices", {});
     });
   });
 
-  test.concurrent("vectorTests", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("vectorTests", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "vectorTests", {});
     });
   });
 
-  test.concurrent("dequeTests", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("dequeTests", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "dequeTests", {});
     });
   });
 
-  test.concurrent("promiseTests", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("promiseTests", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "promiseTests", {});
     });
   });
 
-  test.concurrent("mathTests", async () => {
-    await runner.run(async ({ alice, avl }) => {
+  runner.test("mathTests", (async ({ alice, avl }) => {
       let res = await alice.call(MAIN, "mathTests", {});
     });
   });

@@ -1,4 +1,4 @@
-import { NearAccount, Runner, toYocto } from "near-runner";
+import { NearAccount, Runner, toYocto } from "near-runner-ava";
 import { main } from "asbuild";
 import { join } from "path";
 
@@ -30,7 +30,6 @@ async function compile(contract: string): Promise<void> {
   return new Promise(asb);
 }
 
-describe("Complier fails", () => {
   test("shouldn't allow methods with the same name as init function", async () => {
     try {
       await compile("singleton-fail");
@@ -43,7 +42,6 @@ describe("Complier fails", () => {
   });
 });
 
-describe("Singleton Contract", () => {
   jest.setTimeout(150_000);
 
   const runner = Runner.create(async ({ root }) => {
@@ -64,8 +62,7 @@ describe("Singleton Contract", () => {
     return await alice.call(SINGLETON, "new", { owner: ALICE });
   }
 
-  test.concurrent("should only initialize once", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("should only initialize once", (async ({ alice, bob, singleton }) => {
       await init(alice);
       let _init = async () => await init(alice);
       await expect(_init()).rejects.toThrowError(
@@ -74,23 +71,20 @@ describe("Singleton Contract", () => {
     });
   });
 
-  test.concurrent("shouldn't work if not initialized", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("shouldn't work if not initialized", (async ({ alice, bob, singleton }) => {
       let res = async () => await alice.call(SINGLETON, "owner", {});
       await expect(res()).rejects.toThrowError("contract is not initialized");
     });
   });
 
-  test.concurrent("should return owner", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("should return owner", (async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await singleton.view("owner");
       await expect(res).toStrictEqual(ALICE);
     });
   });
 
-  test.concurrent("should be able to visit", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("should be able to visit", (async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await bob.call_raw(SINGLETON, "visit", {});
       expect(res.logs).toContainEqual(
@@ -101,8 +95,7 @@ describe("Singleton Contract", () => {
     });
   });
 
-  test.concurrent("should be able to visit without decorator", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("should be able to visit without decorator", (async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await bob.call_raw(
         SINGLETON,
@@ -131,16 +124,14 @@ describe("Singleton Contract", () => {
     }
   );
 
-  test.concurrent("should not have private methods", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("should not have private methods", (async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = async () => await alice.call(SINGLETON, "hasNotVisited", {});
       await expect(res()).rejects.toThrowError("Contract method is not found");
     });
   });
 
-  test.concurrent("should not allow contract private methods", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("should not allow contract private methods", (async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = async () => await alice.call(SINGLETON, "privateMethod", {});
       await expect(res()).rejects.toThrowError(
@@ -160,8 +151,7 @@ describe("Singleton Contract", () => {
     }
   );
 
-  test.concurrent("works with static members", async () => {
-    await runner.run(async ({ alice, bob, singleton }) => {
+  runner.test("works with static members", (async ({ alice, bob, singleton }) => {
       await init(alice);
       let res = await singleton.view("get_storage_key");
       expect(res).toEqual("key");
