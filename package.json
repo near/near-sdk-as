@@ -56,6 +56,7 @@
     "sdk-core",
     "sdk-tests",
     "nearcore-tests",
-    "near-mock-vm"
+    "near-mock-vm",
+    "record"
   ]
 }

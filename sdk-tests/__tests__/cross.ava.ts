@@ -1,5 +1,5 @@
 // import { Runtime, NearAccount, stateSize } from "..";
-import { Runner, NearAccount, toYocto } from "near-runner-ava";
+import { Workspace, NearAccount, toYocto } from "near-workspaces-ava";
 import BN from "bn.js";
 import { Word } from "../assembly/__tests__/model";
 
@@ -7,7 +7,7 @@ const SENTENCES = "sentences.test.near";
 const WORDS = "words.test.near";
 const ALICE = "alice.test.near";
 
-const runner = Runner.create(async ({ root }) => {
+const workspace = Workspace.init(async ({ root }) => {
   const alice = await root.createAccount(ALICE);
   const words = await root.createAndDeploy(
     WORDS,
@@ -24,12 +24,12 @@ async function addWord(alice: NearAccount, hello: string) {
   return await alice.call(SENTENCES, "SetWord", { word: { text: hello } });
 }
 
-runner.test("single promise", async (t, { alice }) => {
+workspace.test("single promise", async (t, { alice }) => {
   let res = <Word>await alice.call<Word>(SENTENCES, "reverseWordOne", {});
   t.is(res.text, "elpmas");
 });
 
-runner.test("promise + then with no arguments", async (t, { alice }) => {
+workspace.test("promise + then with no arguments", async (t, { alice }) => {
   let res = await alice.call(
     SENTENCES,
     "reverseWordTwo",
@@ -39,7 +39,7 @@ runner.test("promise + then with no arguments", async (t, { alice }) => {
   t.true(res);
 });
 
-runner.test("promise + then with arguments", async (t, { alice }) => {
+workspace.test("promise + then with arguments", async (t, { alice }) => {
   let res = await alice.call(
     SENTENCES,
     "reverseWordThree",
@@ -49,19 +49,19 @@ runner.test("promise + then with arguments", async (t, { alice }) => {
   t.true(res);
 });
 
-runner.test("add to storage", async (t, { alice, sentences }) => {
+workspace.test("add to storage", async (t, { alice, sentences }) => {
   const before = (await sentences.accountView()).storage_usage;
   await addWord(alice, "hello");
   t.assert((await sentences.accountView()).storage_usage > before);
 });
 
-runner.test("read from storage with default", async (t, { sentences }) => {
+workspace.test("read from storage with default", async (t, { sentences }) => {
   const word: any = await sentences.view("GetWord");
   t.is(word.text, "DEFAULT");
   t.deepEqual((await sentences.viewState()).get("word").data, []);
 });
 
-runner.test("read from storage", async (t, { alice, words, sentences }) => {
+workspace.test("read from storage", async (t, { alice, words, sentences }) => {
   await addWord(alice, "hello");
   const word: Word = <Word>await sentences.view("GetWord");
   const state = await sentences.viewState();
@@ -73,8 +73,8 @@ runner.test("read from storage", async (t, { alice, words, sentences }) => {
   t.deepEqual(JSON.parse(wordFromContract.toString("utf-8")), word);
 });
 
-runner.test("setting state", async (t, { sentences }) => {
-  if (Runner.networkIsSandbox()) {
+workspace.test("setting state", async (t, { sentences }) => {
+  if (Workspace.networkIsSandbox()) {
     let state = { text: "hello" };
     await sentences.patchState("word", JSON.stringify(state));
     const word = <Word>await sentences.view("GetWord");
@@ -84,25 +84,25 @@ runner.test("setting state", async (t, { sentences }) => {
   t.assert(true, "skipping; not on sandbox");
 });
 
-runner.test("getting view with arg", async (t, { words }) => {
+workspace.test("getting view with arg", async (t, { words }) => {
   const res: Word = <Word>await words.view("reverse", {
     word: { text: "hello" },
   });
   t.is(res.text, "olleh");
 });
 
-runner.test("get block_timestanp", async (t, { sentences }) => {
+workspace.test("get block_timestanp", async (t, { sentences }) => {
   t.assert(
     parseInt(await sentences.view<string>("getBlock_timestamp", {})) > 0
   );
 });
 
-runner.test("contract promise batch", async (t, { alice, sentences }) => {
+workspace.test("contract promise batch", async (t, { alice, sentences }) => {
   t.log(await alice.call(sentences, "contractPromiseBatch", {}));
   t.assert(true);
 });
 
-runner.test(
+workspace.test(
   "contract should throw if attached deposit and non-payable method",
   async (t, { alice }) => {
     await t.throwsAsync(
@@ -118,7 +118,7 @@ runner.test(
   }
 );
 
-runner.test(
+workspace.test(
   "contract should throw if attached deposit is not 1 yoctoNEAR and one yocto method",
   async (t, { alice }) => {
     await t.throwsAsync(
@@ -134,7 +134,7 @@ runner.test(
   }
 );
 
-runner.test("exported from submodule", async (t, { words }) => {
+workspace.test("exported from submodule", async (t, { words }) => {
   const str = "hello";
   const res = await words.view("capitalize", { s: str });
   t.is(res, str.toUpperCase());

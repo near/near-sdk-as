@@ -8,11 +8,14 @@
   "scripts": {
     "build:release": "node asconfig.js",
     "build": "node asconfig.js --target debug --wat",
-    "test": "yarn ava",
+    "test": "near-workspaces-ava",
     "pretest": "yarn build"
   },
-  "devDependencies": {
-    "near-runner-ava": "^0.1.0",
+  "dependencies": {
     "near-sdk-core": "^3.2.1"
+  },
+  "devDependencies": {
+    "near-sdk-core": "^3.2.1",
+    "near-workspaces-ava": "^1.0.0"
   }
 }

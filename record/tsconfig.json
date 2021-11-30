@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "downlevelIteration": true,
+    "preserveConstEnums": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noEmitOnError": true,
+    "allowJs": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "declaration": true
+  },
+  "include": ["src/**/*"]
+}

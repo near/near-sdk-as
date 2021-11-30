@@ -1,8 +1,8 @@
 import * as fs from "fs/promises";
 import * as path from "path";
-import { ava as test } from "near-runner-ava";
+import { ava as avaTest } from "near-workspaces-ava";
 
-test("should be mostly empty", async (t) => {
+avaTest("should be mostly empty", async (t) => {
   let x = new String(
     await fs.readFile(
       path.join(__dirname, "..", "build", "debug", "exportAs.wat")
