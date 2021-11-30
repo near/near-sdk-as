@@ -19,6 +19,7 @@
     "visitor-as": "^0.6.0"
   },
   "scripts": {
-    "build": "rimraf dist/ && tsc"
+    "build": "rimraf dist/ && tsc",
+    "test": "yarn build"
   }
 }
