@@ -31,6 +31,14 @@ export class Nullables {
 }
 
 @nearBindgen
+export class OrNullables {
+  str: string | null;
+  u128: u128 | null;
+  // TODO: Fix uint8Array or null
+  // uint8Array: Uint8Array | null;
+}
+
+@nearBindgen
 export class ContainerClass {
   foobar: FooBar;
 }
