@@ -102,6 +102,9 @@ export namespace env {
   @external("env", "panic_utf8")
   export declare function panic_utf8(len: u64, ptr: u64): void;
   // @ts-ignore
+  @external("env", "panic_str")
+  export declare function panic_str(msg: string): void;
+  // @ts-ignore
   @external("env", "log_utf8")
   export declare function log_utf8(len: u64, ptr: u64): void;
   // @ts-ignore
