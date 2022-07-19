@@ -1976,9 +1976,9 @@ arrify@^1.0.1:
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
 as-bignum@^0.2.15:
-  version "0.2.15"
-  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.15.tgz#34c9787d096943a8d3ded5ef3a89844bce27b2ac"
-  integrity sha512-pGUyKIQ/KQa5L44IStjuZLJPJAPeuFK6SvlhlhTIvqMHdc2OTfxJbWaz4Zx2dczOMaOq8ohPAMa/qq1N+k3yQg==
+  version "0.2.21"
+  resolved "https://registry.yarnpkg.com/as-bignum/-/as-bignum-0.2.21.tgz#393d5568749fb89625ebcd2a06518b82f9db9a51"
+  integrity sha512-VvjDsGYjLnmBnumBdgiIZ+bck48AzkvXPkbsFZdcSaBKNyMjHqrRlCwNZGf1Fj9WUd2QdmVOBURiEYnE7Ee/8w==
 
 asap@^2.0.0:
   version "2.0.6"
