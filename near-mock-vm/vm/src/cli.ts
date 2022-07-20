@@ -2,7 +2,12 @@ import { scriptName } from "yargs";
 import { VMRunner } from "./runner";
 import * as fs from "fs";
 const v8 = require("v8");
-v8.setFlagsFromString("--experimental-wasm-bigint");
+
+const nodeVersion = process.versions.node;
+
+if (parseInt(nodeVersion.substring(0, nodeVersion.indexOf("."))) < 16) {
+  v8.setFlagsFromString("--experimental-wasm-bigint");
+}
 
 function serve(port: string) {
   console.info(`Serve on port ${port}.`);

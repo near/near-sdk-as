@@ -1,5 +1,13 @@
 const v8 = require('v8');
-v8.setFlagsFromString('--experimental-wasm-bigint');
+
+const nodeVersion = process.versions.node;
+
+if (
+    parseInt(nodeVersion.substring(0, nodeVersion.indexOf('.'))) < 16
+) {
+  v8.setFlagsFromString("--experimental-wasm-bigint");
+}
+
 let rust = require("near-mock-vm/vm");
 let path = require("path");
 let posixRelativePath = require("near-sdk-bindgen/dist/utils").posixRelativePath;

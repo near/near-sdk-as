@@ -1,8 +1,15 @@
 const v8 = require('v8');
-v8.setFlagsFromString('--experimental-wasm-bigint');
 let runner = require('..').VMRunner;
 let fs = require("fs");
 let assert = require("assert");
+
+const nodeVersion = process.versions.node;
+
+if (
+    parseInt(nodeVersion.substring(0, nodeVersion.indexOf('.'))) < 16
+) {
+    v8.setFlagsFromString("--experimental-wasm-bigint");
+}
 
 let bin = fs.readFileSync(__dirname + "/../../build/debug/main.wasm");
 // console.log(bin.length)
