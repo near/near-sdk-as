@@ -1,10 +1,17 @@
 const v8 = require('v8');
-v8.setFlagsFromString('--experimental-wasm-bigint');
 const fs = require('fs');
 const assert = require('assert');
 let asc = require("assemblyscript/cli/asc");
 const loader = require('assemblyscript/lib/loader');
 const path = require('path');
+
+const nodeVersion = process.versions.node;
+
+if (
+    parseInt(nodeVersion.substring(0, nodeVersion.indexOf('.'))) < 16
+) {
+    v8.setFlagsFromString("--experimental-wasm-bigint");
+}
 
 function localize(p) { return path.join(__dirname, p); }
 
