@@ -24,6 +24,7 @@
     "build": "asb assembly/__tests__/main.ts -- --noEmit"
   },
   "devDependencies": {
+    "@as-pect/cli": "^6.2.4",
     "@assemblyscript/loader": "^0.18.9",
     "@types/bn.js": "^5.1.0",
     "@types/bs58": "^4.0.1",
