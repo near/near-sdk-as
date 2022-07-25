@@ -1,0 +1,8 @@
+{
+  "exclude": ["**/*/__tests__"],
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "entryPointStrategy": "packages",
+  "entryPoints": ["sdk-core", "near-mock-vm", "sdk"]
+}
