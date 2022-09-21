@@ -1,4 +1,4 @@
-import { math, VMContext, RNG } from "..";
+import { math, VMContext, RNG, RNG_xorshift128p } from "..";
 
 function test(i: u32): void {
   expect(<f64>math.binaryLog(i)).toBe(Math.floor(Math.log2(i)));
@@ -24,6 +24,18 @@ describe("RNG", () => {
     let count: u32 = 0;
     for (let i: u32 = 0; i < 10_000; i++) {
       count += <u32>isOdd(rng);
+    }
+    expect(count).toBeGreaterThan(4900);
+    expect(count).toBeLessThan(5100);
+  });
+});
+describe("RNG_xorshift128p", () => {
+  it("coin flip should be 50/50", () => {
+    VMContext.setPrepaid_gas(8446744073709552000);
+    let rng = new RNG_xorshift128p();
+    let count: u64 = 0;
+    for (let i: u64 = 0; i < 10_000; i++) {
+      count += rng.next_integer(2);
     }
     expect(count).toBeGreaterThan(4900);
     expect(count).toBeLessThan(5100);

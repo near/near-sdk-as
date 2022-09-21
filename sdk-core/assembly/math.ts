@@ -181,3 +181,47 @@ export class RNG<T> {
     return this._last;
   }
 }
+/**
+ * Random Number Generator - xorshift128+
+ */
+export class RNG_xorshift128p {
+  private seed_i: Array<u64> = [0,0];
+
+  constructor() {
+    this.seed();
+  }
+
+  private uint8ArrayToU64(data: Uint8Array): u64 {
+    return (
+      ((0xff & data[0]) << 56) |
+      ((0xff & data[1]) << 48) |
+      ((0xff & data[2]) << 40) |
+      ((0xff & data[3]) << 32) |
+      ((0xff & data[4]) << 24) |
+      ((0xff & data[5]) << 16) |
+      ((0xff & data[6]) << 8) |
+      ((0xff & data[7]) << 0)
+    );
+  }
+
+  seed(): void {
+    let vrf_seed = math.randomSeed();
+    this.seed_i[0] = this.uint8ArrayToU64(vrf_seed);
+    this.seed_i[1] = this.uint8ArrayToU64(vrf_seed.slice(8,16));
+  }
+
+  next(): u64 {
+    let t = this.seed_i[0];
+    let s = this.seed_i[1];
+    this.seed_i[0] = s;
+    t ^= t << 23;
+    t ^= t >> 18;
+    t ^= s ^ (s >> 5);
+    this.seed_i[1] = t;
+    return t+s;
+  }
+
+  next_integer(max: u64): u64 {
+    return this.next() % max;
+  }
+}
