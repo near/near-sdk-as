@@ -122,7 +122,7 @@ function encode<T, Output = Uint8Array>(
       encoder.setNull(name);
     } else {
       // @ts-ignore
-      encoder.setString(name, value);
+      encoder.setString(name, value as string);
     }
   } else if (isReference<T>()) {
     // @ts-ignore

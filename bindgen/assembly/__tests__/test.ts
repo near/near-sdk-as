@@ -3,6 +3,7 @@ import { base64, logging, u128 } from "near-sdk-as";
 import {
   FooBar,
   Nullables,
+  OrNullables,
   ContainerClass,
   AnotherContainerClass,
 } from "./model";
@@ -63,6 +64,9 @@ export function runTest(): void {
 
   const nullable = new Nullables();
   logging.log(String.UTF8.decode(nullable.encode().buffer));
+  const ornullable = new OrNullables();
+  logging.log(String.UTF8.decode(ornullable.encode().buffer));
+
   // @ts-ignore
   const nullable2 = decode<Nullables>(nullable.encode());
   assert(nullable2.str == null);
