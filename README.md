@@ -44,6 +44,10 @@ will create a debug build and place it in `./build/debug/..`
 
 See the [sdk's as-pect tests for an example](./sdk/assembly/__tests__) of creating unit tests.  Must be ending in `.spec.ts` in a `assembly/__tests__`.
 
+## FAQ / Troubleshooting
+
+* Floating point arithmetics are not supported in NEAR smart contracts.
+
 ## License
 
 `near-sdk-as` is distributed under the terms of both the MIT license and the Apache License (Version 2.0).
