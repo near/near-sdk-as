@@ -25,8 +25,8 @@ import { storage } from "../storage";
  * (2) Since all data stored on the blockchain is kept in a single key-value store under the contract account,
  * you must always use a *unique storage prefix* for different collections to avoid data collision.
  *
- * @typeParam K The generic type parameter `K` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
- * @typeParam V The generic type parameter `V` can be any [valid AssemblyScript type](https://docs.assemblyscript.org/basics/types).
+ * @typeParam K The generic type parameter `K` can be any [valid AssemblyScript type](https://www.assemblyscript.org/types.html).
+ * @typeParam V The generic type parameter `V` can be any [valid AssemblyScript type](https://www.assemblyscript.org/types.html).
  */
 @nearBindgen
 export class PersistentMap<K, V> {
