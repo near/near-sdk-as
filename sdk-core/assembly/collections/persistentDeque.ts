@@ -270,6 +270,34 @@ export class PersistentDeque<T> {
   }
 
   /**
+   * Adds the contents of the specified register in front of the deque.
+   * Increases the length of the deque.
+   *
+   * @param register_id The register where the new element is located.
+   * @returns The index of a newly added element
+   */
+  pushFront_raw(register_id: u64): i32 {
+    this.frontIndex -= 1;
+    storage.write_raw(this._key(this.frontIndex), register_id);
+    return 0;
+  }
+
+  /**
+   * Removes the first/front element from the deque and put it in the specified register.
+   * Asserts that the deque is not empty. Decreases the length of the deque.
+   *
+   * @param register_id The register to hold the popped element. Defaults to 1.
+   * @returns The register ID used to store the popped element.
+   */
+  popFront_raw(register_id: u64 = 1): u64 {
+    assert(this.length > 0, "Deque is empty");
+    storage.read_raw(this._key(this.frontIndex), register_id);
+    storage.delete(this._key(this.frontIndex));
+    this.frontIndex += 1;
+    return register_id;
+  }
+
+  /**
    * Returns the first element in the deque without changing the queue
    *
    * ```ts
@@ -347,6 +375,36 @@ export class PersistentDeque<T> {
     storage.delete(this._key(this.backIndex));
     this.backIndex -= 1;
     return result;
+  }
+
+  /**
+   * Adds the contents of the specified register to the end of the deque.
+   * Increases the length of the deque.
+   *
+   * @param register_id The register where the new element is located.
+   * @returns The index of a newly added element
+   */
+  pushBack_raw(register_id: u64): i32 {
+    let index = this.length;
+    this.backIndex += 1;
+    storage.write_raw(this._key(index + this.frontIndex), register_id);
+    return index;
+  }
+
+  /**
+   * Removes the last/back element from the deque and puts it in the specified register.
+   * Asserts that the deque is not empty. Decreases the length of the deque.
+   *
+   * @param register_id The register to hold the popped element. Defaults to 1.
+   * @returns The register ID used to store the popped element.
+   */
+  popBack_raw(register_id: u64 = 1): u64 {
+    let index = this.length - 1;
+    assert(index >= 0, "Deque is empty");
+    storage.read_raw(this._key(index + this.frontIndex), register_id);
+    storage.delete(this._key(this.backIndex));
+    this.backIndex -= 1;
+    return register_id;
   }
 
   /**

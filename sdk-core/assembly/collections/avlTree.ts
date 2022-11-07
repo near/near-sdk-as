@@ -94,6 +94,23 @@ export class AVLTree<K, V> {
   }
 
   /**
+   * If key is not present in the tree, a new node is added with the value.
+   * Otherwise update the node with the new value.
+   * The new value is retrieved from the specified register.
+   *
+   * @param key Key of the element.
+   * @param register_id The register containing the value.
+   * @returns An errorcode. A value of `1` means success.
+   */
+  set_raw(key: K, register_id: u64): u64 {
+    if (!this.has(key)) {
+      this.rootId = new Nullable(this.insertAt(this.rootNode, key).id);
+    }
+
+    return this._val.set_raw(key, register_id);
+  }
+
+  /**
    * Retrieves a related value for a given key or uses the `defaultValue` if not key is found
    *
    * @param key Key of the element.
@@ -112,6 +129,18 @@ export class AVLTree<K, V> {
    */
   getSome(key: K): V {
     return this._val.getSome(key);
+  }
+
+  /**
+   * Stores the related value for a given key in the specified register, or throws error "key not found"
+   *
+   * @param key Key of the element.
+   * @param register_id The register to store the value. Defaults to 1.
+   * @returns The register used to store the value.
+   */
+  get_raw(key: K, register_id: u64 = 1): u64 {
+    this._val.get_raw(key, register_id);
+    return register_id;
   }
 
   /**
